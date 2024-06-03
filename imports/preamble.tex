@@ -31,6 +31,9 @@
     bookmarksopen=true
 ]{hyperref}
 
+% authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
+\usepackage{authblk}
+
 %https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
 \newbibmacro{string+doiurlisbn}[1]{%
   \iffieldundef{doi}{%

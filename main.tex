@@ -1,8 +1,14 @@
 \documentclass[notitlepage]{article}
 \input{imports/preamble}
 
+\author[1]{Thomas C. Fraser}
+\author[1]{Matthias Christandl}
+\author[2]{Anton Alekseev}
+\affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
+\affil[2]{\small{Anton's affiliations}}
+
 \title{On the spectra of tetrahedral sums of Hermitian matrices}
-\author{Thomas C. Fraser, Matthias Christandl, Anton Alekseev}
+
 \date{\today}
 
 \begin{document}
@@ -26,6 +32,60 @@ It will be ideal to illustrate with figures.
 
 \section{Introduction}
 
-This is a github sync test.
+
+
+\clearpage
+\section*{Reference notes}
+
+\begin{itemize}
+    \item A popular textbook on quantum groups with an emphasis on the connection to Poisson manifolds, Lie bialgebras and their quantizations by \citeauthor{chari1995guide} \cite{chari1995guide}
+    \item The general subject of multivariate trace inequalities involving exponentials of sums of Hermitian and products of their exponentials is, of course, intimately related. See for instance the paper by \citeauthor{sutter2017multivariate} \cite{sutter2017multivariate}.
+    \item Also the article \cite{forrester2014golden} by \citeauthor{forrester2014golden} which describes the connection to hyperbolic geometry quite explicitly.
+    \item Course notes on Poisson geometry with an eye toward quantization by \citeauthor{ciccoli2006poisson} \cite{ciccoli2006poisson}
+    \item An excellent expository overview of the big picture by \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}
+    \item The masters essay/thesis of \citeauthor{backens2010sixjsymbols} (\textcolor{red}{TODO: check if the pdf Matthias sent to me is the final version}) \cite{backens2010sixjsymbols}
+    \item An excellent introduction to these ideas is the recent masters thesis on various aspects of additive and multiplicative Horn problems in connection to Vinnikov curves and the Lax conjecture due to \citeauthor{hess2020examination} and supervised by S. Kuhlmann and M. Infusino \cite{hess2020examination}
+    \item The PhD thesis of \citeauthor{esposito2012classical} (from the maths department here in Copenhagen) serves as a introduction to the world of Poisson momentum maps and the notion of a ``quantum'' momentum map as a deformation of the ordinary ``classical'' momentum map (where deformation is in the sense of deformation quantization) \cite{esposito2012classical}.
+    \item \citeauthor{alekseev1997poisson} \cite{alekseev1997poisson}
+    \item Papers contained results pertaining to the generalization of Duistermaat-Heckman measures for Hamiltonian group actions with group-valued moment maps by \citeauthor{alekseev2000group} \cite{alekseev1999duistermaat,alekseev2000group}
+    \item The proof of Thompson's conjecture in the style of \citeauthor{alekseev2001linearization} is the ``linearization paper'' due to \cite{alekseev2001linearization}. 
+    \item See also the related article due to \citeauthor{lamb2005proof} which summarizes the ideas of \cite{alekseev2001linearization} while also providing more technical background \cite{lamb2005proof}
+    \item \citeauthor{lu2003thompson} extend the proof technique of \cite{alekseev2001linearization} to a larger class of Lie groups \cite{lu2003thompson}
+    \item \citeauthor{alekseev2017symplectic} \cite{alekseev2017symplectic}
+    \item \citeauthor{alekseev2017horn} \cite{alekseev2017horn}
+    \item \citeauthor{alekseev2007ginzburg} \cite{alekseev2007ginzburg}
+    \item Deforming the symplectic volume by the $s$ paramater \citeauthor{alekseev2018concentration} \cite{alekseev2018concentration}
+    \item \citeauthor{klyachko2000random} \cite{klyachko2000random}
+    \item \citeauthor{christandl2008quantum} \cite{christandl2008quantum}
+    \item \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}
+    \item \citeauthor{kirillov1990representations} \cite{kirillov1990representations}
+    \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
+    \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
+    \item \Citeauthor{coquereaux2018orbital} explictly outline the link between the orbital measures (i.e. the induced distributions in the sense of Klyachko's random walk approach) and the magnitude of the stretched Littlewood-Richardson coefficients \cite{coquereaux2018orbital}. See also the papers \cite{coquereaux2020horn,coquereaux2019revisiting,zuber2018horn}.
+    \item A recent article by \citeauthor{mcswiggen2021harish} is an excellent introduction to the Harish-Chandra integral \cite{mcswiggen2021harish}. The proof of the Harish-Chandra formula provide by \citeauthor{mcswiggen2021harish} using the heat equation methods from \citeauthor{fegan1978heat}'s 1978 paper \cite{fegan1978heat} seems very promising for deriving a connection to the character formula for the norm of the recoupling operator!
+    \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
+    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
+    \item \citeauthor{boalch2007regge} \cite{boalch2007regge}
+    \item \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
+    \item \citeauthor{henriques2005crystals} \cite{henriques2005crystals}
+    \item Octahedron Recurrence/Rule \citeauthor{robbins1986determinants} \cite{robbins1986determinants} applied to the ``Hive'' ring \citeauthor{knutson2003positive} \cite{knutson2003positive}, and also \citeauthor{henriques2006octahedron} \cite{henriques2006octahedron}
+    \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
+    \item \citeauthor{speyer2005horn} \cite{speyer2005horn}
+    \item Generalizations of Horn's problem to the product of unitary matrices \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}
+    \item \citeauthor{bhatia2001linear} \cite{bhatia2001linear}
+    \item History account offered by \citeauthor{daftuar2005quantum} \cite{daftuar2005quantum}, and technical review article by \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues}.
+    \item Connecting group-valued moment maps to spherical, flat, and hyperbolic tetrahedron via Minkowski's theorem from the reconstruction of flat tetrahedron \citeauthor{haggard2016encoding}. See also the comments in \cite[Section 11]{haggard2016encoding} on the utility of \textit{quasi-poisson} (controlled failure of the Jacobi identity) manifolds and group-valued moment maps.
+    \item Foundational results conerning the relationships between the edge lengths, face areas, dihedral and solid angles of a tetrahedron by \citeauthor{richardson1902trigonometry} \cite{richardson1902trigonometry}
+    \item Potential application to inverse kinematics of $3$-link arms in three dimensions? (\textcolor{blue}{Thanks Harold!})
+    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Therianos titled ``On the singular values of matrix products'' I, II, and III from 1973}
+    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Freede titled ``On the eigenvalues of sums of Hermitian matrices'' I, II, and III from 1973}
+    \item \textcolor{red}{TODO: track down a pdf for Thompson's 1988 ``Matrix Spectral Inequalities'' referenced by Klyachko}
+    \item \Citeauthor{thompson1973eigenvalues} \cite{thompson1973eigenvalues} present a number of interesting counter-examples to the question of whether the inequalities pertaining to the spectra of general matrices can be deduced from looking at the spectra of diagonal matrices (both in the additive and multiplicative cases).
+    \item Elementary introduction to toy models of three-dimensional quantum space \cite{barrett2003geometrical}
+\end{itemize}
+
+\clearpage
+\printbibliography
+
 
 \end{document}
