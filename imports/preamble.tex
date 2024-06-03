@@ -1,0 +1,132 @@
+% ===== BASIC PACKAGES ================
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage{latexsym}
+\usepackage{mathtools}
+\usepackage{braket}
+% ===== BIBLIOGRAPHY SETTINGS =========
+% biblatex
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    doi=false,
+    url=false,
+    isbn=false
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage[
+    unicode=true,
+    colorlinks=true,
+    urlcolor=blue!75!black,
+    linkcolor=blue!75!black,
+    citecolor=blue!75!black,
+    pdfusetitle,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=true
+]{hyperref}
+
+%https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
+\newbibmacro{string+doiurlisbn}[1]{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+          #1%
+        }{%
+          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+      }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+      }%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
+}
+
+\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article,incollection]{title}%
+    {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
+% ===== AMSTHM CONFIG =================
+\usepackage{amsthm}
+\usepackage[capitalise]{cleveref} % https://stackoverflow.com/questions/6499504/cleveref-fails-for-theorem-environments-sharing-the-same-counter
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}%[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}%[section]
+\newtheorem{prob}{Problem}%[section]
+\newtheorem{exam}{Example}%[section]
+\newtheorem{rem}{Remark}%[section]
+
+% https://tex.stackexchange.com/questions/126020/cleveref-doesnt-use-correct-capitalized-name-if-used-with-amsthm
+\makeatletter
+\if@cref@capitalise
+\Crefname{thm}{Theorem}{Theorems}
+\Crefname{lem}{Lemma}{Lemmas}
+\Crefname{cor}{Corollary}{Corollaries}
+\Crefname{conj}{Conjecture}{Conjectures}
+\Crefname{defn}{Definition}{Definitions}
+\Crefname{prop}{Proposition}{Propositions}
+\Crefname{exam}{Example}{Examples}
+\Crefname{prob}{Problem}{Problems}
+\Crefname{rem}{Remark}{Remarks}
+\else
+\crefname{thm}{theorem}{theorems}
+\crefname{lem}{lemma}{lemma}
+\crefname{cor}{corollary}{corollaries}
+\crefname{conj}{conjecture}{conjectures}
+\crefname{defn}{definition}{definitions}
+\crefname{prop}{proposition}{propositions}
+\crefname{exam}{example}{examples}
+\crefname{prob}{problem}{problems}
+\crefname{rem}{remark}{remarks}
+\fi
+\makeatother
+% ===== LABELS FOR REFERENCES =========
+\usepackage[inline]{showlabels}
+\renewcommand{\showlabelfont}{\ttfamily\scriptsize} %https://tex.stackexchange.com/questions/472619/showlabels-change-of-font-size
+\def\showlabelsetlabel#1{\raise1ex\hbox{\showlabelfont \textcolor{blue}{#1}}}
+% ======== TIKZ & TIKZIT ==============
+\usepackage{tikz}
+\usepackage{tikz/config/tikzit}
+\input{tikz/config/tensors.tikzdefs}
+\input{tikz/config/tensors.tikzstyles}
+% ======== NOTATION MACROS ============
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\sing}{sing}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Herm}{Herm}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Inv}{Inv}
+\DeclareMathOperator{\BCH}{BCH}
+\DeclareMathOperator{\csch}{csch}
+\newcommand{\card}[1]{\left|#1\right|}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\partitiondegen}[1]{\tilde #1}
+\newcommand{\s}{\mathcal}
+\newcommand{\Hilb}{\mathcal H}
+\newcommand{\orbit}{\mathcal O}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\kl}[2]{D\!\left(#1\!\parallel\! #2\right)} % KL divergence
+
+% Groups and Lie algebras
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\U}{U}
+% =====================================

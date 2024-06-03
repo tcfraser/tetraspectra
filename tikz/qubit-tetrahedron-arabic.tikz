@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=blackdot] (0) at (0, 0) {};
+		\node [style=blackdot] (1) at (-4, -2) {};
+		\node [style=blackdot] (2) at (0, 6) {};
+		\node [style=blackdot] (3) at (8, 0) {};
+		\node [style=none] (4) at (0.75, 6) {$\rho_A$};
+		\node [style=none] (5) at (-4.5, -2) {$\rho_C$};
+		\node [style=none] (6) at (8.5, 0) {$\rho_B$};
+		\node [style=none] (7) at (-0.5, 0.5) {$\frac{I}{2}$};
+		\node [style=blackdot] (8) at (2.25, -1) {};
+		\node [style=blackdot] (9) at (2.5, 4) {};
+		\node [style=blackdot] (13) at (1, 2.75) {};
+		\node [style=none] (11) at (3.5, 4) {$\rho_{AB}$};
+		\node [style=none] (12) at (3, -1.25) {$\rho_{BC}$};
+		\node [style=none] (14) at (1, 3.5) {$\rho_{ABC}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=arrow] (0) to (13);
+		\draw [style=arrow] (0) to (9);
+		\draw [style=arrow] (0) to (8);
+		\draw [style=arrow] (0) to (2);
+		\draw [style=arrow] (0) to (3);
+		\draw [style=arrow] (0) to (1);
+		\draw [style=dashedannotate] (9) to (2);
+		\draw [style=dashedannotate] (9) to (3);
+		\draw [style=dashedannotate] (3) to (8);
+		\draw [style=dashedannotate] (8) to (1);
+		\draw [style=dashedannotate] (1) to (2);
+		\draw [style=dashedannotate] (9) to (13);
+		\draw [style=dashedannotate] (13) to (8);
+		\draw [style=dashedannotate] (2) to (13);
+		\draw [style=dashedannotate] (13) to (1);
+		\draw [style=dashedannotate] (13) to (3);
+	\end{pgfonlayer}
+\end{tikzpicture}

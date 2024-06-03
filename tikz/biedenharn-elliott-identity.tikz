@@ -1,0 +1,126 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (51) at (-6.75, -3.75) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=none] (79) at (-3.75, -3.75) {$M_{\lambda}^{\mu,\gamma}$};
+		\node [style=none] (80) at (-0.75, -3.75) {$M_{\zeta}^{\lambda,\delta}$};
+		\node [style=none] (81) at (-5, -3.75) {};
+		\node [style=none] (82) at (-2, -3.75) {};
+		\node [style=none] (83) at (-8, -3.75) {};
+		\node [style=none] (94) at (-0.75, 3.75) {$M_{\omega}^{\gamma,\delta}$};
+		\node [style=none] (95) at (-3.75, 3.75) {$M_{\tau}^{\beta,\omega}$};
+		\node [style=none] (96) at (-6.75, 3.75) {$M_{\zeta}^{\alpha,\tau}$};
+		\node [style=none] (97) at (-5, 3.75) {};
+		\node [style=none] (98) at (-2, 3.75) {};
+		\node [style=none] (99) at (-8, 3.75) {};
+		\node [style=none] (36) at (-5, -2.75) {};
+		\node [style=none] (37) at (-2, -2.75) {};
+		\node [style=none] (39) at (-5, -0.75) {};
+		\node [style=none] (59) at (-3.5, -1.75) {$\begin{bmatrix} \mu & \gamma & \lambda \\ \delta & \zeta & \omega \end{bmatrix}$};
+		\node [style=none] (84) at (-2, -0.75) {};
+		\node [style=none] (85) at (-8, 0.75) {};
+		\node [style=none] (86) at (-5, 0.75) {};
+		\node [style=none] (87) at (-8, 2.75) {};
+		\node [style=none] (92) at (-6.5, 1.75) {$\begin{bmatrix} \alpha & \beta & \mu \\ \omega & \zeta & \tau \end{bmatrix}$};
+		\node [style=none] (93) at (-5, 2.75) {};
+		\node [style=none] (88) at (-8.25, 2.75) {};
+		\node [style=none] (89) at (-8.25, 0.75) {};
+		\node [style=none] (90) at (-4.75, 2.75) {};
+		\node [style=none] (91) at (-4.75, 0.75) {};
+		\node [style=none] (55) at (-5.25, -0.75) {};
+		\node [style=none] (56) at (-5.25, -2.75) {};
+		\node [style=none] (57) at (-1.75, -0.75) {};
+		\node [style=none] (58) at (-1.75, -2.75) {};
+		\node [style=none] (100) at (-4, 0) {$M_{\zeta}^{\mu,\omega}$};
+		\node [style=none] (101) at (0, 0) {$=$};
+		\node [style=none] (102) at (1.25, 0) {$\sum_{\nu}$};
+		\node [style=none] (103) at (4, -5.5) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=none] (104) at (7, -5.5) {$M_{\lambda}^{\mu,\gamma}$};
+		\node [style=none] (105) at (10, -5.5) {$M_{\zeta}^{\lambda,\delta}$};
+		\node [style=none] (106) at (5.75, -5.5) {};
+		\node [style=none] (107) at (8.75, -5.5) {};
+		\node [style=none] (108) at (2.75, -5.5) {};
+		\node [style=none] (109) at (10, 5.25) {$M_{\omega}^{\gamma,\delta}$};
+		\node [style=none] (110) at (6.75, 5.25) {$M_{\tau}^{\beta,\omega}$};
+		\node [style=none] (111) at (4, 5.25) {$M_{\zeta}^{\alpha,\tau}$};
+		\node [style=none] (112) at (5.75, 5.25) {};
+		\node [style=none] (113) at (8.75, 5.25) {};
+		\node [style=none] (114) at (2.75, 5.25) {};
+		\node [style=none] (126) at (4.75, -1.75) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=none] (127) at (2.5, -1.75) {$M_{\lambda}^{\alpha,\nu}$};
+		\node [style=none] (128) at (2.75, -4.5) {};
+		\node [style=none] (129) at (5.75, -4.5) {};
+		\node [style=none] (130) at (5.75, -2.5) {};
+		\node [style=none] (132) at (2.5, -2.5) {};
+		\node [style=none] (133) at (2.5, -4.5) {};
+		\node [style=none] (134) at (6, -2.5) {};
+		\node [style=none] (135) at (6, -4.5) {};
+		\node [style=none] (136) at (4.25, -3.5) {$\begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$};
+		\node [style=none] (137) at (7.25, -1) {};
+		\node [style=none] (142) at (4.25, 1) {};
+		\node [style=none] (143) at (5.75, 0) {$\begin{bmatrix} \alpha & \nu & \lambda \\ \delta & \zeta & \tau \end{bmatrix}$};
+		\node [style=none] (144) at (7.25, 1) {};
+		\node [style=none] (149) at (5.75, 2.5) {};
+		\node [style=none] (150) at (8.75, 2.5) {};
+		\node [style=none] (151) at (5.75, 4.5) {};
+		\node [style=none] (152) at (7.25, 3.5) {$\begin{bmatrix} \beta & \gamma & \nu \\ \delta & \tau & \omega \end{bmatrix}$};
+		\node [style=none] (153) at (8.75, 4.5) {};
+		\node [style=none] (158) at (9.5, 1.75) {$M_{\tau}^{\nu,\delta}$};
+		\node [style=none] (159) at (2.75, -2.5) {};
+		\node [style=none] (160) at (4.25, -1) {};
+		\node [style=none] (161) at (5.75, -1.25) {};
+		\node [style=none] (162) at (5.75, 1.25) {};
+		\node [style=none] (163) at (6.75, 1.75) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=none] (154) at (5.5, 4.5) {};
+		\node [style=none] (155) at (5.5, 2.5) {};
+		\node [style=none] (156) at (9, 4.5) {};
+		\node [style=none] (157) at (9, 2.5) {};
+		\node [style=none] (145) at (4, 1) {};
+		\node [style=none] (146) at (4, -1) {};
+		\node [style=none] (147) at (7.5, 1) {};
+		\node [style=none] (148) at (7.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=kron] (81.center) to (36.center);
+		\draw [style=kron] (82.center) to (37.center);
+		\draw [style=kron] (83.center) to (85.center);
+		\draw [style=kron] (39.center) to (86.center);
+		\draw [style=kron] (84.center) to (98.center);
+		\draw [style=kron] (93.center) to (97.center);
+		\draw [style=kron] (87.center) to (99.center);
+		\draw [style=box] (90.center)
+			 to (88.center)
+			 to (89.center)
+			 to (91.center)
+			 to cycle;
+		\draw [style=box] (57.center)
+			 to (55.center)
+			 to (56.center)
+			 to (58.center)
+			 to cycle;
+		\draw [style=box] (134.center)
+			 to (132.center)
+			 to (133.center)
+			 to (135.center)
+			 to cycle;
+		\draw [style=kron] (106.center) to (129.center);
+		\draw [style=kron] (108.center) to (128.center);
+		\draw [style=kron, in=-90, out=90] (107.center) to (137.center);
+		\draw [style=kron, in=-90, out=90] (142.center) to (114.center);
+		\draw [style=kron, in=-90, out=90] (144.center) to (150.center);
+		\draw [style=kron] (151.center) to (112.center);
+		\draw [style=kron] (153.center) to (113.center);
+		\draw [style=kron, in=-90, out=90] (159.center) to (160.center);
+		\draw [style=kron] (130.center) to (161.center);
+		\draw [style=kron] (162.center) to (149.center);
+		\draw [style=box] (154.center)
+			 to (155.center)
+			 to (157.center)
+			 to (156.center)
+			 to cycle;
+		\draw [style=box] (145.center)
+			 to (146.center)
+			 to (148.center)
+			 to (147.center)
+			 to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

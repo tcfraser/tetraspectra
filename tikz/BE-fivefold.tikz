@@ -1,0 +1,76 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (0) at (-5.5, -0.5) {};
+		\node [style=dot] (1) at (-3.25, 0.25) {};
+		\node [style=dot] (2) at (3.25, 0.25) {};
+		\node [style=dot] (3) at (5.5, -0.5) {};
+		\node [style=dot] (4) at (-1.25, -3) {};
+		\node [style=dot] (5) at (1.25, -3) {};
+		\node [style=dot] (6) at (-1.25, -5.5) {};
+		\node [style=dot] (7) at (1.25, -5.5) {};
+		\node [style=dot] (8) at (-2.5, -2) {};
+		\node [style=dot] (9) at (-4.75, -2.75) {};
+		\node [style=dot] (10) at (2.5, -2) {};
+		\node [style=dot] (11) at (4.75, -2.75) {};
+		\node [style=dot] (12) at (0.75, 3.5) {};
+		\node [style=dot] (13) at (2.75, 2) {};
+		\node [style=dot] (14) at (4, 4) {};
+		\node [style=dot] (15) at (2, 5.5) {};
+		\node [style=dot] (16) at (-0.75, 3.5) {};
+		\node [style=dot] (17) at (-2.75, 2) {};
+		\node [style=dot] (18) at (-2.25, 5.5) {};
+		\node [style=dot] (19) at (-4.25, 4) {};
+		\node [style=none] (20) at (0, -2.5) {$\alpha$};
+		\node [style=none] (21) at (0, -6) {$\gamma$};
+		\node [style=none] (22) at (0.25, -3.5) {$\beta$};
+		\node [style=none] (23) at (0.25, -5) {$\lambda$};
+		\node [style=none] (24) at (1.75, -4.25) {$\mu$};
+		\node [style=none] (25) at (-1.75, -4.25) {$\nu$};
+		\node [style=none] (26) at (-4.5, -1.75) {$\nu$};
+		\node [style=none] (27) at (-2.25, 3) {$\lambda$};
+		\node [style=none] (28) at (2.75, 3.25) {$\mu$};
+		\node [style=none] (29) at (3.5, -2.75) {$\lambda$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=kron] (14) to (3);
+		\draw [style=kron] (11) to (7);
+		\draw [style=kron] (6) to (9);
+		\draw [style=kron] (0) to (19);
+		\draw [style=kron] (18) to (15);
+		\draw [style=kron] (1) to (12);
+		\draw [style=kron] (13) to (5);
+		\draw [style=kron] (4) to (17);
+		\draw [style=kron] (16) to (2);
+		\draw [style=kron] (10) to (8);
+		\draw [style=mid-route] (3) to (2);
+		\draw [style=mid-route] (2) to (10);
+		\draw [style=mid-route] (2) to (11);
+		\draw [style=mid-route] (3) to (11);
+		\draw [style=mid-route] (11) to (10);
+		\draw [style=mid-route] (10) to (3);
+		\draw [style=mid-route] (6) to (4);
+		\draw [style=mid-route] (7) to (5);
+		\draw [style=mid-route] (5) to (4);
+		\draw [style=mid-route] (7) to (6);
+		\draw [style=mid-route] (9) to (8);
+		\draw [style=mid-route] (0) to (1);
+		\draw [style=mid-route] (8) to (1);
+		\draw [style=mid-route] (9) to (0);
+		\draw [style=mid-route] (19) to (17);
+		\draw [style=mid-route] (18) to (16);
+		\draw [style=mid-route] (19) to (18);
+		\draw [style=mid-route] (15) to (12);
+		\draw [style=mid-route] (14) to (13);
+		\draw [style=mid-route] (15) to (14);
+		\draw [style=mid-route] (12) to (13);
+		\draw [style=mid-route] (5) to (6);
+		\draw [style=mid-route] (8) to (0);
+		\draw [style=mid-route] (12) to (14);
+		\draw [style=mid-route] (13) to (15);
+		\draw [style=mid-route] (16) to (19);
+		\draw [style=mid-route] (1) to (9);
+		\draw [style=mid-route] (4) to (7);
+		\draw [style=mid-route] (17) to (16);
+		\draw [style=mid-route] (17) to (18);
+	\end{pgfonlayer}
+\end{tikzpicture}

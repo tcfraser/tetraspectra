@@ -1,0 +1,82 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (0) at (-2.75, -1.5) {};
+		\node [style=none] (4) at (-3.75, -3.25) {};
+		\node [style=none] (6) at (-2.25, 0) {$\gamma$};
+		\node [style=none] (7) at (-0.75, 0) {$\nu$};
+		\node [style=none] (8) at (-2.75, -3) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=dot] (9) at (-2.75, 1.5) {};
+		\node [style=none] (13) at (-3.75, 3.25) {};
+		\node [style=none] (18) at (-1.25, -1.25) {};
+		\node [style=none] (19) at (-1.25, 1.25) {};
+		\node [style=none] (20) at (-1.75, 0) {};
+		\node [style=none] (25) at (-4.25, -1) {$\beta$};
+		\node [style=none] (29) at (1.25, -0.75) {};
+		\node [style=none] (30) at (2.25, -0.75) {};
+		\node [style=none] (31) at (1.75, -0.75) {$\beta$};
+		\node [style=none] (32) at (0.75, 0) {};
+		\node [style=none] (33) at (3, 0) {};
+		\node [style=none] (34) at (0.75, 0.75) {};
+		\node [style=none] (35) at (1.75, 0.75) {};
+		\node [style=none] (36) at (1.25, 0.75) {$\mu$};
+		\node [style=none] (37) at (3.5, 2.5) {};
+		\node [style=none] (38) at (4.5, 2.25) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=none] (41) at (3.5, -2.5) {};
+		\node [style=none] (42) at (4.5, -2.25) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=none] (60) at (0, 0) {$=$};
+		\node [style=dot] (68) at (-5.75, 1.5) {};
+		\node [style=none] (69) at (-4.75, 3.25) {};
+		\node [style=none] (70) at (-6.25, 0) {$\alpha$};
+		\node [style=none] (71) at (-7.75, 0) {$\mu$};
+		\node [style=none] (72) at (-5.75, 3) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=dot] (73) at (-5.75, -1.5) {};
+		\node [style=none] (74) at (-4.75, -3.25) {};
+		\node [style=none] (75) at (-5.75, -3) {$M_{\mu}^{\alpha,\beta}$};
+		\node [style=none] (76) at (-7.25, 1.25) {};
+		\node [style=none] (77) at (-7.25, -1.25) {};
+		\node [style=none] (78) at (-6.75, 0) {};
+		\node [style=none] (82) at (-4.25, 1) {$\beta$};
+		\node [style=none] (83) at (-2.75, 3) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=none] (84) at (6, 2.5) {};
+		\node [style=none] (86) at (6, -2.5) {};
+		\node [style=none] (87) at (7, 2.25) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=none] (88) at (7, -2.25) {$M_{\nu}^{\beta,\gamma}$};
+		\node [style=none] (89) at (2, 0.75) {};
+		\node [style=none] (90) at (3, 0.75) {};
+		\node [style=none] (91) at (2.5, 0.75) {$\nu$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=kron, in=-135, out=90] (4.center) to (0);
+		\draw [style=mid-route] (9)
+			 to [in=90, out=60, looseness=1.50] (19.center)
+			 to (18.center)
+			 to [in=-60, out=-90, looseness=1.50] (0);
+		\draw [style=kron, in=-90, out=135] (9) to (13.center);
+		\draw [style=mid-route] (0)
+			 to [in=-90, out=45, looseness=0.75] (20.center)
+			 to [in=-45, out=90, looseness=0.75] (9);
+		\draw [style=mid-route] (29.center)
+			 to [bend left=90, looseness=1.75] (30.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw (33.center) to (32.center);
+		\draw [style=mid-route] (35.center)
+			 to [bend left=90, looseness=1.75] (34.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (37.center) to (41.center);
+		\draw [style=kron, in=45, out=-90] (69.center) to (68);
+		\draw [style=mid-route] (73)
+			 to [in=-90, out=-120, looseness=1.50] (77.center)
+			 to (76.center)
+			 to [in=120, out=90, looseness=1.50] (68);
+		\draw [style=kron, in=90, out=-45] (73) to (74.center);
+		\draw [style=mid-route] (68)
+			 to [in=90, out=-135, looseness=0.75] (78.center)
+			 to [in=135, out=-90, looseness=0.75] (73);
+		\draw [style=mid-route, bend right=60, looseness=1.25] (68) to (9);
+		\draw [style=mid-route, bend left=300, looseness=1.25] (0) to (73);
+		\draw [style=kron] (86.center) to (84.center);
+		\draw [style=mid-route] (90.center)
+			 to [bend left=90, looseness=1.75] (89.center)
+			 to [bend left=90, looseness=1.75] cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

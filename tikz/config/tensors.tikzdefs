@@ -1,0 +1,145 @@
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[vcentermath]{youngtab}
+\newcommand{\tyt}[1]{\vcenter{\hbox{\text{\tiny$#1$}}}}
+\usetikzlibrary{arrows, arrows.meta}
+\usetikzlibrary{decorations.pathreplacing} 
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{shapes.geometric}
+%\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzset{ 
+    every picture/.style={
+        baseline={(current bounding box.center)}, % sets the baseline to the vertical midpoint; aligns with equal signs
+        scale=0.5
+    }
+}
+\tikzset{
+    % style to apply some styles to each segment of a path
+    on each segment/.style={
+        decorate,
+        decoration={
+            show path construction,
+            moveto code={},
+            lineto code={
+                \path [#1] (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+            },
+            curveto code={
+                \path [#1] (\tikzinputsegmentfirst) .. controls (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb) .. (\tikzinputsegmentlast);
+            },
+            closepath code={
+                \path [#1] (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+            },
+        },
+    },
+    % style to add an arrow in the middle of a path
+    ->-/.style={
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position #1 with {\arrow{>[length=1mm,width=1mm]}}
+            }
+        }
+    },
+    ->-/.default=.6,
+    % style to add a reverse arrow in the middle of a path
+    -<-/.style={
+        postaction={
+            decorate,
+            decoration={
+                markings,
+                mark=at position #1 with {\arrowreversed{>[length=1mm,width=1mm]}}
+            }
+        }
+    },
+    -<-/.default=.4,
+}
+\tikzset{ % overline
+    overline/.style = {
+        preaction={
+            draw, white, line width=#1
+        }
+    },
+    overline/.default=0.5mm
+}
+\tikzstyle{densely dashed}=[dash pattern=on 3pt off 1pt]
+\tikzset{
+    route/.style = {
+        postaction={
+            decorate,
+            decoration={
+                markings, mark=at position #1 with {\arrow{Straight Barb[angle'=90,scale=0.75]}}
+            }
+        }
+    },
+    route/.default=.6
+}
+\tikzset{
+    endointernal/.style={
+        double,
+        postaction={
+            decorate,
+            decoration={
+                markings, mark=at position #1 with {\arrow{Straight Barb[angle'=90,scale=0.5]}}
+            }
+        }
+    },
+    endointernal/.default=.6
+}
+\tikzset{
+    cutline/.style = {
+        thick,
+        densely dotted
+    }
+}
+\tikzset{
+    annotate/.style = {
+        thick,
+        draw={rgb,255: red,191; green,0; blue,64},
+        densely dotted
+    }
+}
+\tikzset{
+    arrow annotate/.style = {
+        annotate,
+        -{Straight Barb[angle'=90, scale=0.5]}
+    }
+}
+\tikzset{
+    preorder/.style = {
+        draw={rgb,255: red,191; green,0; blue,64}
+    }
+}
+\tikzset{
+    arrow preorder/.style = {
+        preorder,
+        -{Straight Barb[angle'=90, scale=0.5]}
+    }
+}
+
+\tikzset{
+    mult/.style = {
+        densely dashed,
+        postaction={
+            decorate,
+            decoration={
+                markings, mark=at position #1 with {\arrow{Straight Barb[angle'=90,scale=0.75]}}
+            }
+        }
+    },
+    mult/.default=.6
+}
+\tikzset{squareint/.style={regular polygon,regular polygon sides=4}}
+\tikzset{
+    zzint/.style = {
+        decorate,
+        decoration={zigzag, segment length=1mm,amplitude=0.25mm,pre=lineto,pre length=.25mm,post=lineto,post length=.25mm}
+    }
+}

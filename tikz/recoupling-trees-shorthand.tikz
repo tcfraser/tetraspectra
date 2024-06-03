@@ -1,0 +1,50 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (59) at (0, 0) {$\begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$};
+		\node [style=none] (89) at (-4.25, -2.25) {};
+		\node [style=dot] (90) at (-4.25, -0.75) {};
+		\node [style=dot] (91) at (-5.25, 0.5) {};
+		\node [style=none] (92) at (-4.25, 1.75) {};
+		\node [style=none] (93) at (-6.25, 1.75) {};
+		\node [style=none] (94) at (-2.25, 1.75) {};
+		\node [style=none] (95) at (5.25, -2.25) {};
+		\node [style=dot] (96) at (5.25, -0.75) {};
+		\node [style=dot] (97) at (6.25, 0.5) {};
+		\node [style=none] (98) at (5.25, 1.75) {};
+		\node [style=none] (99) at (7.25, 1.75) {};
+		\node [style=none] (100) at (3.25, 1.75) {};
+		\node [style=none] (101) at (-6.75, 0.5) {};
+		\node [style=none] (103) at (2.75, 0.5) {};
+		\node [style=none] (104) at (2.75, -0.75) {};
+		\node [style=none] (106) at (-6.75, -0.75) {};
+		\node [style=none] (107) at (-4.75, -1.75) {$\lambda$};
+		\node [style=none] (110) at (-5.25, -0.25) {$\mu$};
+		\node [style=none] (111) at (-2.75, 1.75) {$\gamma$};
+		\node [style=none] (112) at (-6.75, 1.75) {$\alpha$};
+		\node [style=none] (113) at (-4.75, 1.75) {$\beta$};
+		\node [style=none] (114) at (6.75, 1.75) {$\gamma$};
+		\node [style=none] (115) at (2.75, 1.75) {$\alpha$};
+		\node [style=none] (116) at (4.75, 1.75) {$\beta$};
+		\node [style=none] (117) at (6.25, -0.25) {$\nu$};
+		\node [style=none] (129) at (4.75, -1.75) {$\lambda$};
+		\node [style=none] (130) at (-2, -1) {};
+		\node [style=none] (131) at (2, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=kron] (103.center) to (97);
+		\draw [style=mid-route, in=270, out=90] (89.center) to (90);
+		\draw [style=mid-route] (90) to (91);
+		\draw [style=mid-route] (91) to (93.center);
+		\draw [style=mid-route] (91) to (92.center);
+		\draw [style=mid-route] (90) to (94.center);
+		\draw [style=mid-route, in=270, out=90] (95.center) to (96);
+		\draw [style=mid-route] (96) to (97);
+		\draw [style=mid-route] (97) to (99.center);
+		\draw [style=mid-route] (97) to (98.center);
+		\draw [style=mid-route] (96) to (100.center);
+		\draw [style=kron] (101.center) to (91);
+		\draw [style=kron] (104.center) to (96);
+		\draw [style=kron] (106.center) to (90);
+		\draw [style=arrannotate] (130.center) to (131.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

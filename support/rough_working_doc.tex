@@ -1,0 +1,2277 @@
+\documentclass[notitlepage]{article}
+
+\input{imports/preamble}
+\author{Thomas C. Fraser, Matthias Christandl}
+\date{\today}
+\title{[WORKING DOCUMENT]}
+
+\begin{document}
+\maketitle
+%\begin{abstract}
+%\end{abstract}
+
+%\tableofcontents
+
+\section{Introduction}
+
+{\color{blue} This document represents the state of the working document as of May 30, 2024.}
+
+%{\color{blue}
+%    \textbf{FOR MATTHIAS:}
+%    The current introduction of this document is split into two subsections.
+%    The first subsection, \cref{sec:2by2case_intuitively}, covers the relationship between the additive and multiplicative Horn-type problems in the case of $2 \times 2$ matrices directly using insights from the geometry of Euclidean and hyperbolic triangles respectively.
+%    Thompson's conjecture in this case follows as a corollary of from the fact that the moduli space of side lengths of Euclidean triangles is diffeomorphic to the moduli space of side lengths of Hyperbolic triangles (the diffeomorphism essentially corresponds to appropriately modifying the interior angles to go from geometry to the other).
+%    The second subsection, \cref{sec:general_theory}, attempts to summarize the proof of Thompson's conjecture using the theory of Hamiltonian $K$-manifolds with $K^{*}$-valued moment maps due to \citeauthor{alekseev2017symplectic} \cite{alekseev2017symplectic}. 
+%
+%    The remainder of this document (Section 2 onward) is quite messy and disorganized and I \textbf{do not} expect you to read through it.
+%    I have also attached a small handful of notes I've taken on my tablet which trying to better understand things better.
+%}
+
+\subsection{Thompson's conjecture for \texorpdfstring{$\boldsymbol{2\times 2}$}{2 by 2} matrices}
+\label{sec:2by2case_intuitively}
+
+The purpose of this section is to sketch how to prove Thompson's conjecture for the case of $2\times 2$ matrices.
+Given $\lambda \geq 0$, let $\mathcal O_{\lambda}$ denotes the set of $2\times 2$ traceless Hermitian operators with eigenvalues $\pm \lambda$ and $\mathcal C_{\exp(\lambda)}$ denote the set of $2\times 2$ unit determinant Hermitian operators with singular-values $\exp(\pm \lambda)$.
+Note that the matrix exponential $\exp : \mathcal O_{\lambda} \to \mathcal C_{\exp(\lambda)}$ here is a bijective map with inverse $\log : \mathcal C_{\exp(\lambda)} \to \mathcal O_{\lambda}$.
+
+The central idea is to show that exists a diffeomorphism on $\orbit_{\alpha} \times \orbit_{\beta}$, sending each pair of matrices $(A,B)$ with eigenvalues $(\pm \alpha, \pm \beta)$ to another pair of matrices
+\begin{equation}
+    (A,B) \mapsto (\tilde A, \tilde B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}
+\end{equation}
+with the same eigenvalues as $(A, B)$ but with the additional property:
+\begin{equation}
+    A + B \in \mathcal O_{\gamma} \iff \exp(\tilde A)\exp(\tilde B) \in \mathcal C_{\exp(\gamma)}.
+\end{equation}
+From the existence of this map one can therefore prove Thompson's conjecture: there exists $(A,B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ satisfying $A+B\in\mathcal O_{\gamma}$ if and only if there exists $(X,Y) \in \mathcal C_{\exp(\alpha)} \times \mathcal C_{\exp(\beta)}$ satisfying $XY \in \mathcal C_{\exp(\gamma)}$.
+For the only if portion of the proof, simply take $(X,Y)$ to be $(\exp(\tilde A), \exp(\tilde B))$.
+For the if portion of the proof, define $(\tilde A, \tilde B)$ to equal $(\log X, \log Y)$ and then apply the inverse of the above diffeomorphism to obtain the desired $(A, B)$ from $(\tilde A, \tilde B)$.
+
+\subsubsection{Euclidean triangles and eigenvalues}
+
+Letting $\sigma_1$, $\sigma_2$ and $\sigma_3$ be the $2 \times 2$ Pauli matrices,
+\begin{equation}
+    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
+    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
+    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+\end{equation}
+it becomes possible to identify the space of traceless $2\times 2$ Hermitian matrices, $i\mathfrak{su}(2)$, with $\mathbb R^{3}$ via the standard parameterization associating $(x_1, x_2, x_3) \in \mathbb R^{3}$ to
+\begin{equation}
+    X = x \cdot \sigma = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
+\end{equation}
+The spectrum of $X$ obtained in this way is simply $(+\chi, -\chi)$ where $\chi = \norm{x}$ and $\norm{x}$ the Euclidean norm of the vector $x \in \mathbb R^3$
+\begin{equation}
+    \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+\end{equation}
+From this point of view, it is possible to characterize the set of possible spectra, $(\alpha, \beta, \gamma) \in \mathbb R^{3}$, for the set of two Hermitian operators,
+\begin{equation}
+    A = a_1 \sigma_1 + a_2 \sigma_2 + a_3 \sigma_3, \qquad B = b_1 \sigma_1 + b_2 \sigma_2 + b_3 \sigma_3
+\end{equation}
+with spectra $(\alpha, \beta) = (\norm{a}, \norm{b})$ and there sum $A+B$
+\begin{equation}
+    A+B = (a_1+b_1) \sigma_1 + (a_2+b_2) \sigma_2 + (a_3+b_3) \sigma_3,
+\end{equation}
+with spectrum $\gamma = \norm{a+b}$ where
+\begin{equation}
+    \norm{a+b}^2 = \norm{a}^2 + \norm{b}^{2} + 2 \norm{a} \norm{b} \cos \theta, \qquad \cos \theta = \frac{a \cdot b}{\norm{a} \norm{b}}.
+\end{equation}
+As the only parameter not fixed by spectra is the angle $\theta$, it is easy to see that $(\alpha, \beta, \gamma) \in \mathbb R^3$ is precisely determined by the triangle inequalities for the Euclidean norm in $\mathbb R^3$:
+\begin{align}
+    \abs{\norm{a} - \norm{b}} &\leq \norm{a+b} \leq \norm{a} + \norm{b}, \\
+    \abs{\alpha - \beta} &\leq \gamma \leq \alpha + \beta,
+\end{align}
+where the extreme cases are characterized by anti-alignment $\cos \theta = -1$ and alignment $\cos \theta = 1$ respectively.
+
+\begin{equation}
+    \tikzfig{tikz/euclidean-triangle}.
+\end{equation}
+
+In summary, given a pair $(A,B) = (a\cdot \sigma, b\cdot \sigma)$ of traceless $2\times 2$ Hermitian operators with spectra $(\pm \alpha, \pm \beta)$ we saw that the spectrum $\pm \gamma$ of their sum, $A+B$, is given by the Euclidean cosine law with $\cos \theta = \frac{a \cdot b}{\alpha \beta}$\footnote{Note that the angle $\theta$ used here is not the interior angle typically used in the statement of cosine law, hence the difference in minus sign.}
+\begin{equation}
+    \gamma^2 = \alpha^2 + \beta^2 + 2 \alpha \beta \cos \theta.
+\end{equation}
+
+\subsubsection{Hyperbolic triangles and singular values}
+
+An analogous calculation can be performed to character the spectra of certain invertible matrices in $\SL(2, \mathbb C)$ (obtained by exponentiation of the traceless Hermitian matrices previously considered) and their products.
+Given the traceless Hermitian matrix $X = x \cdot \sigma$, the identity $X^2 = \norm{x}^{2} I$ yields a well-known pair of results (see \cite{forrester2014golden}):
+\begin{equation}
+    \exp(iX) = \cos \norm{x} I + i\frac{\sin \norm{x}}{\norm{x}} X, \qquad 
+    \exp(X) = \cosh \norm{x} I + \frac{\sinh \norm{x}}{\norm{x}} X.
+\end{equation}
+As before, consider traceless Hermitian matrices, $A = a \cdot \sigma$ and $B = b \cdot \sigma$ with $\alpha = \norm{a}$ and $\beta = \norm{b}$.
+Now consider their exponentials $\exp(A)$ and $\exp(B)$ and their product $\exp(A)\exp(B)$:
+\begin{align}
+    &\exp(A)\exp(B) 
+    = \left(\cosh \alpha I + \frac{\sinh \alpha}{\alpha} A\right)\left(\cosh \beta I + \frac{\sinh \beta}{\beta} B\right)
+    %\\&\quad=\cosh \alpha\cosh\beta I + \frac{\cosh \alpha \sinh \beta}{\beta}B +\frac{\sinh \alpha \cosh \beta}{\alpha}A+ \frac{\sinh \alpha\sinh \beta}{\alpha\beta} AB 
+\end{align}
+Notice the singular values of $\exp(A)$ and $\exp(B)$ are given by $\exp(\pm \alpha)$ and $\exp(\pm \beta)$.
+The singular values of their product, $\exp(A)\exp(B)$, are however equal to the positive square-root of the eigenvalues of
+\begin{align}
+    \exp(A)\exp(B)(\exp(A)\exp(B))^{\dagger} = \exp(A)\exp(B)^2\exp(A).
+\end{align}
+%\begin{align}
+%    \exp(B)^2 
+%    &= \left(\cosh \beta I + \frac{\sinh \beta}{\beta} B\right)^2 \\
+%    &= \cosh(2 \beta) I + \frac{\sinh (2\beta)}{\beta} B \\
+%\end{align}
+Using the identity $\{A,B\} = AB+BA = 2 (a \cdot b) I$ yields
+\begin{align}
+    &\exp(A)\exp(B)^2\exp(A)\\
+    % Calculation 1:
+    %c(\alpha)c(2\beta)c(\alpha)III+
+    %c(\alpha)c(2\beta)s(\alpha)IIA+
+    %c(\alpha)s(2\beta)c(\alpha)IBI+
+    %c(\alpha)s(2\beta)s(\alpha)IBA+
+    %s(\alpha)c(2\beta)c(\alpha)AII+
+    %s(\alpha)c(2\beta)s(\alpha)AIA+
+    %s(\alpha)s(2\beta)c(\alpha)ABI+
+    %s(\alpha)s(2\beta)s(\alpha)ABA
+    % Calculation 2:
+    %c(\alpha)^2c(2\beta)I+
+    %c(\alpha)c(2\beta)s(\alpha)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)c(2\beta)c(\alpha)A+
+    %s(\alpha)^2c(2\beta)I+
+    %s(\alpha)^2s(2\beta)ABA
+    % Calculation 3:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)^2s(2\beta)ABA
+    % Calculation 4:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)^2s(2\beta){A,B}A
+    %-s(\alpha)^2s(2\beta)B
+    % Calculation 5:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %s(2\beta)B+
+    %s(2\alpha)s(2\beta)cosOI+
+    %2s(\alpha)^2s(2\beta)cos0A
+    % Calculation 6:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)s(2\beta)cosOI+
+    %s(2\alpha)c(2\beta)A+
+    %2s(\alpha)^2s(2\beta)cos0A
+    %s(2\beta)B+
+    %&= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\cosh^2 \alpha \sinh(2\beta)}{\beta} B\cdots\\
+    %&\cdots+\frac{\sinh (2\alpha) \sinh (2\beta)}{2\alpha \beta}\{A,B\} + \frac{\sinh^2 \alpha \sinh (2\beta)}{\alpha^2 \beta}ABA \\
+    %&= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\cosh^2 \alpha \sinh(2\beta)}{\beta} B\cdots\\
+    %&\cdots+\sinh (2\alpha) \sinh (2\beta)\cos \theta I+ 2\frac{\sinh^2 \alpha \sinh (2\beta) \cos \theta}{\alpha}A - \frac{\sinh^2 \alpha \sinh (2\beta)}{\beta}B\\
+    &= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\sinh(2\beta)}{\beta} B\cdots\\
+    &\cdots+\sinh (2\alpha) \sinh (2\beta)\cos \theta I+ \frac{2\sinh^2 \alpha \sinh (2\beta) \cos \theta}{\alpha}A
+\end{align}
+While there is an asymmetry in $\exp(A)\exp(B)^2\exp(A)$ with respect to $A \leftrightarrow B$, this asymmetry disappears when calculating the eigenvalues; the eigenvalues are given by $\eta\pm\delta$ where $\eta^2 - \delta^2 = 1$ and
+\begin{align}
+    \eta&=\cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \theta, \\
+    \delta&=\frac{1}{4} \bigg(8 \sinh ^2(2 \alpha ) \sinh ^2(2 \beta ) \cos (2 \theta )+8 \sinh (4 \alpha ) \sinh (4 \beta ) \cos (\theta )+\cdots\\&\cdots+3 \cosh (4 (\alpha -\beta ))+3 \cosh (4 (\alpha +\beta ))+2 \cosh (4 \alpha )+2 \cosh (4 \beta )-10\bigg)^{\frac{1}{2}}.
+\end{align}
+Alternatively, defining $\gamma' \geq 0$ such that
+\begin{equation}
+    \cosh(2 \gamma') = \eta, \qquad \sinh(2 \gamma') = \delta,
+\end{equation}
+One has that the singular values of $\exp(A)\exp(B)$ are equal to $\exp(\pm \gamma')$.
+Once again, there exists only one parameter that is not fixed by specifying the singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ of $\exp(A)$ and $\exp(B)$; specifically the angle $\theta \in [0,2\pi)$ fixes the singular values of $\exp(A)\exp(B)$ by
+\begin{equation}
+    \cosh(2 \gamma') = \cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \theta,
+\end{equation}
+which is the \textit{hyperbolic} cosine law with Gaussian curvature $-4$ (again note that the angle $\theta$ used is not interior to the hyperbolic triangle, hence the difference in minus sign).
+
+Also note the singular values $\exp(\pm \gamma')$ of $\exp(A)\exp(B)$ at the values of $\theta \in \{0, \pi\}$ are
+\begin{align}
+    \theta = 0 \implies \exp(\pm(\alpha+\beta)), \qquad \theta = \pi \implies \exp(\pm(\alpha-\beta)).
+\end{align}
+
+\subsubsection{Thompson's conjecture via angle modifications}
+
+Thompson's conjecture in the context of $2\times 2$ matrices corresponds to the following conjecture:
+there exists a pair $(A,B)$ of traceless $2\times 2$ Hermitian matrices with spectra $(\pm\alpha, \pm\beta)$ such that $A + B$ has spectra $\pm \gamma$ if and only if there exists a pair $(X, Y)$ of unit determinant positive-definite Hermitian matrices with singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ such that $X Y$ has singular values $\exp(\pm \gamma)$. 
+
+By the above analysis, letting $(X,Y) = (\exp A, \exp B)$ does \textit{not} prove the conjecture;
+while the singular values of $(\exp A, \exp B)$ are $(\exp (\pm \alpha), \exp(\pm \beta))$ as desired, the singular values of their product $\exp A \exp B$ are equal to $\exp(\pm \gamma')$ which, in general, are not equal to $\exp(\pm \gamma)$ (the singular values of $\exp (A + B)$).
+This difference is to be expected because in general, one has
+\begin{equation}
+    \exp(A)\exp(B) = \exp(A+B+\frac{1}{2}[A,B]+\cdots) \neq \exp(A+B),
+\end{equation}
+or alternatively
+\begin{equation}
+    \exp(A)\exp(B)^2\exp(A) \neq \exp(2(A+B)).
+\end{equation}
+Nevertheless, there is a relationship between $\gamma$ and $\gamma'$ provided by the Golden-Thompson inequality $\Tr(\exp(A'+B')) \leq \Tr(\exp(A')\exp(B'))$.
+Letting $A'=2A$ and $B'=2B$ implies
+\begin{equation}
+    \Tr(\exp(2(A+B))) \leq \Tr(\exp(2A)\exp(2B)) = \Tr(\exp(A)\exp(B)^2\exp(A)).
+\end{equation}
+Or by dividing by $2$, one obtains
+\begin{equation}
+    \cosh(2\gamma) \leq \cosh(2 \gamma') \implies \gamma \leq \gamma',
+\end{equation}
+which essentially states that the side-lengths, $\gamma'$, of hyperbolic triangles are generally longer than their Euclidean counter-parts, $\gamma$:
+\begin{equation}
+    \tikzfig{tikz/hyperbolic-triangle}.
+\end{equation}
+Therefore, in order to prove Thompson's conjecture in the context of $2\times 2$ matrices, one needs to pick the pair $(X,Y)$ to be something other than $(\exp(A), \exp(B))$ but with the \textit{same} singular values.
+The solution comes from choosing a different pair $(\tilde A, \tilde B) = (\tilde a \cdot \sigma, \tilde b \cdot b)$ of Hermitian matrices with the \textit{same} spectra $(\pm \alpha, \pm \beta)$ as $(A,B)$ such that $\exp(\tilde A)\exp(\tilde B)$ has as singular values $\exp(\pm \gamma)$ where $(\pm \gamma)$ are the eigenvalues of $A+B$.
+
+As we have shown, the only freedom in this choice for $(\tilde A, \tilde B)$ is the angle $\tilde \theta$ between $\tilde a$ and $\tilde b$: 
+\begin{equation}
+    \cos \tilde \theta = \frac{\tilde a \cdot \tilde b}{\alpha \beta}.
+\end{equation}
+The value $\tilde \theta$ determines the value $\tilde \gamma'$, and thus the singular values of $\exp(\tilde A)\exp(\tilde B)$ by the previously derived formula:
+\begin{equation}
+    \cosh(2 \tilde \gamma') = \cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \tilde \theta.
+\end{equation}
+Setting $\tilde \gamma' = \gamma$ and solving for $\tilde \theta$ yields
+\begin{equation}
+    \cos \tilde \theta = \cosh(2 \gamma)\csch (2\alpha) \csch (2\beta)-\tanh(2\alpha)\tanh(2\beta).
+\end{equation}
+Recalling that $\gamma$ itself is fixed by the angle $\theta$ between the original $(A,B)$, one obtains a formula for $\tilde \theta$ in terms of $(\theta, \alpha, \beta)$:
+\begin{equation}
+    \cos \tilde \theta = \cosh(2 \sqrt{\alpha^2+\beta^2+2\alpha\beta\cos \theta})\csch (2\alpha) \csch (2\beta)-\tanh(2\alpha)\tanh(2\beta).
+\end{equation}
+In summary, when the spectra $\alpha, \beta,$ and $\gamma$ are fixed and there exists a pair of Hermitian matrices $(A,B)$ with spectra $(\pm \alpha, \pm \beta)$ whose sum $A+B$ has spectra $\pm \gamma$ (thus there exists a value for $\theta$), the above formula describes precisely how to reduce the angle $\theta$ between $A$ and $B$ to the value $\tilde \theta$ obtaining another pair of Hermitian matrices $(\tilde A, \tilde B)$ such that $(\exp(\tilde A), \exp(\tilde B))$ have singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ and their product $\exp(\tilde A)\exp(\tilde B)$ has singular values $\exp(\pm \gamma)$.
+
+\begin{equation}
+    \tikzfig{tikz/hyperbolic-deformation-triangle}
+\end{equation}
+
+Of course, this only proves one half of Thompson's conjecture in this setting, one also needs to prove the reverse: given positive definite $(X,Y, XY)$ with singular values $\exp(\pm\alpha),\exp(\pm\beta)$ and $\exp(\pm\gamma)$, find the corresponding Hermitian matrices $(A,B)$.
+This can be done simply by defining $(\tilde A, \tilde B) = (\log X, \log Y)$ with separated by angle $\tilde \theta$ and then modifying this angle to obtain $(A, B)$.
+
+\subsubsection{Scaling hyperbolic curvature}
+
+In the previous section, it was noted that in general $\exp(A)\exp(B) \neq \exp(A+B)$ because of the Baker-Campbell-Hausdorff term:
+\begin{equation}
+    \exp(A)\exp(B) = \exp(A+B+\frac{1}{2}[A,B]+\cdots) \neq \exp(A+B).
+\end{equation}
+If $(A, B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ is replaced with $(sA, sB) \in \mathcal O_{s\alpha} \times \mathcal O_{s \beta}$ above for some $s \geq 0$, then one obtains
+\begin{equation}
+    \exp(sA)\exp(sB) = \exp(sA+sB+\frac{s^2}{2}[A,B]+\cdots) \neq \exp(s(A+B)).
+\end{equation}
+Consequently, one still should expect the singular values of $\exp(sA)\exp(sB)$ to be different from the singular values, $\exp(\pm s \gamma)$, of $\exp(s(A+B))$.
+Nevertheless, for small $s \approx 0$, one might expect an approximation of the form
+\begin{equation}
+    \exp(sA)\exp(sB) \approx \exp(s(A+B)).
+\end{equation}
+and thus the singular values of $\exp(sA)\exp(sB)$ might approximate $\exp(\pm s \gamma)$ in a suitable sense.
+This intuition is also encoded in the hyperbolic geometry; rescaling $(\alpha,\beta)\mapsto (s\alpha, s\beta)$ amounts to changing the singular values $\exp(\pm \gamma')$ of $\exp(A)\exp(B)$ to $\exp(\pm s \gamma_s')$ where $\gamma_s'$ is given by the formula
+\begin{equation}
+    \cosh(2 s \gamma_s') = \cosh(2 s\alpha) \cosh(2 s\beta) + \sinh (2s\alpha) \sinh (2s\beta)\cos \theta.
+\end{equation}
+This formula is the hyperbolic cosine law for triangles in hyperbolic space whose Gaussian curvature is $-4s^2$, meaning $\gamma_s'$ is the side length of a hyperbolic triangle whose opposite sides are $\alpha,\beta$ with opposite angle $\pi-\theta$ in a space with Guassian curvature $-4s^2$.
+For small $s\approx 0$, space is approximately Euclidean: $\cosh(2sx) = 1 + 2s^2x^2 + O(s^4)$ and $\sinh(2sx) = 2sx + O(s^3)$ together yield 
+\begin{equation}
+    1 + 2 s^2 (\gamma_s')^2 = 1 + 2 s^2 \alpha^2 + 2 s^2 \beta^2 + 4 s^2 \alpha \beta \cos \theta + O(s^3).
+\end{equation}
+Simplifying yields the expected result that $\gamma_s' \approx \gamma$ when $s \approx 0$:
+\begin{equation}
+    (\gamma_s')^2 = \alpha^2 + \beta^2 + 2 \alpha \beta \cos \theta + O(s) = \gamma^2 + O(s).
+\end{equation}
+
+%\subsection{Cosets, orbits and spectral problems}
+%
+%\begin{equation}
+%    (U_1,U_2,U_3) \cdot (X_1, X_2, X_3) = (U_1 X_1 U_2^{-1}, U_2 X_2 U_3^{-1}, U_3 X_3 U_3^{-1})
+%\end{equation}
+%
+%\begin{equation}
+%    U \cdot (H_1, H_2, H_3) = (U H_1 U^{-1}, U H_2 U^{-1}, U H_3 U^{-1})
+%\end{equation}
+%
+%\begin{equation}
+%    \mathcal M_{\alpha,\beta,\gamma}^{\mathrm{add}} = \{ (A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma} \mid A + B + C = 0 \}
+%\end{equation}
+%
+%The coadjoint action of $k \in K$ on $\xi \in \mathfrak k^{*}$,
+%\begin{equation}
+%    k \cdot \xi \coloneqq \mathrm{Ad}^{*}(k)(\xi) = \xi(k^{-1} \cdot k)
+%\end{equation}
+%The dressing action of $k \in K$ on $b \in K^{*}$,
+%\begin{equation}
+%    k \cdot b \coloneqq \varphi_{G \to K^{*}}(bk) = b^{k},
+%\end{equation}
+%where $b^{k} \in K^{*}$ is the unique element such that there exists $k' \in K$ satisfying $k' b^{k} = b \cdot k$.
+%The double action of $(k_1, k_2) \in K^{\times 2}$ on $a \in A^+$ by 
+%\begin{equation}
+%    (k_1, k_2) \cdot a \coloneqq \varphi_{G \to A_+}(k_1 a k_2) = a^{k_1;k_2}
+%\end{equation}
+%where $a^{k_1;k_2} \in A^{+}$ is the projection of
+%
+%The \textit{coadjoint orbit} of $\xi \in \mathfrak k^{*}$,
+%\begin{equation}
+%    \mathcal O(\xi) \coloneqq \{ k \cdot \xi = \mathrm{Ad}^{*}(k)(\xi) = \xi(k^{-1} \cdot k) \mid k \in K\},
+%\end{equation}
+%the \textit{dressing orbit} of $b \in K^{*}$,
+%\begin{equation}
+%    \mathcal D(b) \coloneqq \{ k \cdot b = b^{k} \mid k \in K\},
+%\end{equation}
+%
+%
+%\begin{align}
+%    \mathcal M_{\mathcal O} &= \{ (\xi_1, \xi_2, \xi_3) \in \mathcal O_{\lambda_1} \times \mathcal O_{\lambda_2} \times \mathcal O_{\lambda_3} \mid \xi_1 + \xi_2 + \xi_3 = 0\}/K \\
+%    \mathcal M_{\mathcal D} &= \{ (b_1, b_2, b_3) \in \mathcal D_{\sigma_1} \times \mathcal D_{\sigma_2} \times \mathcal D_{\sigma_3} \mid b_1 b_2 b_3 = e\}/K \\
+%    \mathcal M_{\mathcal C} &= \{ (g_1, g_2, g_3) \in \mathcal C_{\sigma_1} \times \mathcal C_{\sigma_2} \times \mathcal C_{\sigma_3} \mid g_1 g_2 g_3 = e\}/K^{\times 3}
+%\end{align}
+%
+%$\varphi_{G \to K^{*}}$
+%
+%$G = K^{\mathbb C} \simeq K\times K^{*} \simeq K \times A \times N \simeq K \times A^{+} \times K$
+%
+%The double coset map $G \to K \backslash G / K$ can be composed with the section $K \backslash G / K \to A^{+} \subset G$ such that their composite $\varphi_{G \to A^+} : G \to A^{+}$ is a idempotent
+%\begin{equation}
+%    K \backslash G / K \simeq A^{+}
+%\end{equation}
+%
+%\begin{prop}
+%    The map $\mathcal M_{\mathcal D} \to \mathcal M_{\mathcal C}$
+%\end{prop}
+%\begin{proof}
+%    Given a triple $(g_1, g_2, g_3) \in G^{\times 3}$ with product $g_1 g_2 g_3 = e$, construct a triple $(k_1, k_2, k_3) \in K^{\times 3}$ as follows.
+%    Let $k_1 = e$, then let $k_2 \in K$ is the unique element so that $k_1 g_1 k_2^{-1} \in K^{*}$, then $k_3 \in K$ is the unique element such that $k_2 g_2 k_3^{-1} \in K^{*}$.
+%    By construction, we obtain a triple $(b_1, b_2, b_3) \in (K^{*})^{\times 3}$ such that
+%    \begin{align}
+%        (b_1, b_2, b_3)
+%        &= (k_1, k_2, k_3) \cdot (g_1, g_2, g_3) \\
+%        &= (k_1 g_1 k_2^{-1}, k_2 g_2 k_3^{-1}, k_3 g_1 k_1^{-1}) \\
+%        &= (g_1 k_2^{-1}, k_2 g_2 k_3^{-1}, k_3 g_1).
+%    \end{align}
+%    While the first two components, $(b_1, b_2)$, must lie in $K^{*} \times K^{*}$ by construction, the last entry, $b_3 = k_3 g_1$ must lie in the subgroup $K^{*} \subset G$ because of the identity $b_1b_2b_3 = e$ which implies $b_3 = (b_1b_2)^{-1} \in K^{*}$. 
+%    Moreover, both $b_i \in K^{*}$ and $g_i \in G$ necessarily belong to the same double coset in $K \backslash G / K$.
+%\end{proof}
+
+\subsection{General theory}
+\label{sec:general_theory}
+
+\subsubsection{The additive case \& symplectic geometry}
+
+Horn's problem is concerned with a fundamental question about how the eigenvalues of a sum of Hermitian matrices relates to the eigenvalues of the individual summands.
+More concretely, let $\mathcal O_{\lambda}$ denote the set of Hermitian matrices with fixed eigenvalues $\lambda$, Horn's problem is to determine for a given triple of eigenvalues $(\alpha, \beta; \gamma)$ if there exists a pair of Hermitian matrices $(A, B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ such that $A+B \in \mathcal O_{\gamma}$.
+
+Modern approaches to Horn's problem use tools and results from \textit{symplectic geometry} and, in particular, the notion of \textit{Hamiltonian $K$-manifold}.
+Hamiltonian $K$-manifolds are symplectic manifolds $(M, \omega)$ together with an action of a Lie group $K$ on $M$ which is both symplectomorphic and for which there exists a $K$-equivariant map $\Phi : M \to \mathfrak k^{*}$ called the \textit{moment map} that satisfies the condition
+\begin{equation}
+    \diff \langle\Phi,\xi\rangle = \iota_{\xi_M}\omega
+\end{equation}
+for each element $\xi \in \mathfrak k$ of the Lie algebra of $K$ where $\xi_{M}$ denotes the vector field on $M$ induced by the $K$-action.
+
+This theory is applicable to Horn's problem when $K = \U(n)$ because it is possible to identify the set of $n\times n$ Hermitian matrices with the dual $\mathfrak k^{*} = \mathfrak u(n)^{*}$ of the Lie algebra $\mathfrak k = \mathfrak u(n)$ of $n\times n$ skew-Hermitian matrices such that the orbits $\mathcal O_{\lambda}$ of the coadjoint action of $K=\U(n)$ on $\mathfrak u(n)^{*}$ labelled by $\lambda$ are identified with sets of Hermitian matrices with fixed eigenvalues $\lambda$.
+
+In general, each coadjoint orbit $M = \mathcal O_{\lambda}$ of $K$ on $\mathfrak k^{*}$ labelled by $\lambda$ can be equipped with a symplectic form (the Kirillov-Kostant-Souriau symplectic form) such that the inclusion map $\mathcal O_{\lambda} \xhookrightarrow{} \mathfrak k^{*}$ is the corresponding moment map.
+The property of Hamiltonian $K$-manifolds, $(M, \omega, \Phi)$ which is crucial for Horn's problem is the following: given a pair $(M_1, \omega_1, \Phi_1)$ and $(M_2, \omega_1, \Phi_2)$ of Hamiltonian $K$-manifolds the diagonal action of $K$ on $M_1 \times M_2$ given by
+\begin{equation}
+    k \cdot (m_1, m_2) = (k \cdot m_1, k \cdot m_2)
+\end{equation}
+turns the product symplectic manifold $(M_1 \times M_2, \omega_1 + \omega_2)$ into a Hamiltonian $K$-manifold with moment map $\Phi : M_1 \times M_2 \to \mathfrak k^{*}$ given by
+\begin{equation}
+    \Phi(m_1,m_2) = \Phi_1(m_1) + \Phi_2(m_2).
+\end{equation}
+In other words, moment maps behave additivity with respect to the Cartesian product of symplectic manifolds.
+
+In the context of Horn's problem, when $K = \U(n)$ acts on $M = \mathcal O_{\alpha} \times \mathcal O_{\beta}$ via the diagonal coadjoint action, the corresponding $\U(n)$-equivariant moment map $\Phi$ sends the pair $(A, B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ to their sum $\Phi(A+B) = A + B$.
+
+\subsubsection{The multiplicative case \& Poisson geometry}
+
+As it turns out, there is a generalization of the theory of symplectic manifolds and Hamiltonian $K$-manifolds with $\mathfrak k^{*}$-valued moment maps to the setting of Poisson manifolds and Hamiltonian $K$-manifolds with $K^{*}$-valued moment maps where $K^{*}$ is a group dual to $K$ in a sense which will be defined shortly.
+As we will see, while $\mathfrak k^{*}$-valued moment maps, $\Phi : M \to \mathfrak k^{*}$, can added together in a commutative way, $K^{*}$-valued moment maps, $\Psi : M \to K^{*}$, can be multiplied together in a non-commutative way.
+It is in this sense that \citeauthor{alekseev2001linearization} generalize the additive Horn problem to a multiplicative one \cite{alekseev2001linearization}.
+
+In this generalized setting, the manifold $M$ upon which $K$ acts need not be a symplectic manifold, but can be a Possion manifold equipped with a Poisson bracket $\{\cdot, \cdot\}_M : C^{\infty}(M) \times C^{\infty}(M) \to C^{\infty}(M)$ or equivalently a Poisson bivector field $\pi_M \in \Gamma(\wedge^{2} TM)$.
+This is a generalization of a symplectic manifold in the sense that every symplectic form $\omega_M \in \Gamma(\wedge^{2}T^{*}M)$ on $M$ gives rise to Poisson bivector $\pi_M \in \Gamma(\wedge^2 TM)$ on $M$ but not all Poisson bivectors arise in this way.
+
+In addition to the generalized structure on the manifold $M$, the Lie group $K$ itself is equipped with its own Poisson structure $\pi_K \in \Gamma(\wedge^{2} T K)$ which is compatible with group multiplication of $K$ turning $(K, \pi_K)$ into a Poisson Lie group. 
+It turns out that \citeauthor{lu1990poisson} constructively showed how every connected, compact Lie group, like $K = \U(n)$, admits of a non-trivial Poisson bivector $\pi_K$, called the \textit{Lu-Weinstein Poisson-Lie} structure, making $(K, \pi_K)$ into a Poisson-Lie group \cite{lu1990poisson} (see also \cite{levendorskii1991algebras}).
+In general, Poisson Lie groups $(K, \pi_K)$ have very rich structure.
+For instance, viewing the Poisson bivector field $\pi_K \in \Gamma(\wedge^{2} T K)$ as a map $K \to \mathfrak k \wedge \mathfrak k$, its linearization is a map $\delta : \mathfrak k \to \mathfrak k \wedge \mathfrak k$ which is a $1$-cocycle on $\mathfrak k$ and for which the dual map $\delta^{*} : \mathfrak k^{*} \wedge \mathfrak k^{*} \to \mathfrak k^{*}$ defines a Lie bracket on $\mathfrak k^{*}$ turning $(\mathfrak k, \mathfrak k^{*})$ into the structure of a \textit{Lie bialgebra}.
+The connected, simply connected Lie group $K^{*}$ with whose Lie algebra is $\mathfrak k^{*}$ with bracket $\delta^{*}$ is called the \textit{Poisson dual} of $K$.
+
+Moreover, there is a way to equip the vector space $\mathfrak g = \mathfrak k \oplus \mathfrak k^{*}$ with a Lie algebra structure such that it is the Lie algebra of a Lie group $G$ (called the \textit{double} for $K$) with closed subgroups $K$ and $K^{*}$ such that the map $K \times K^{*} \to G$ sending $(k,b) \in K \times K^{*}$ to $G$ is a diffeomorphism.
+Typically, the diffeomorphism $K \times K^{*} \to G$ does not respect the group structure of $G$ in the sense that $(k_1b_1)(k_2b_2) \neq (k_1k_2)(b_1b_2)$.
+Nevertheless, the diffeomorphism defines so-called \textit{dressing actions} of $K$ on $K^{*}$ (where $k \in K$ sends $b \in K^{*}$ to some element denoted by $b^{k} \in K^{*}$), and $K^{*}$ on $K$ (where $b \in K^{*}$ sends $k \in K$ to some element denoted by $k^{b} \in K$) such that for all $k \in K$ and $b \in K^{*}$, 
+\begin{equation}
+    bk = k^{b} b^{k}.
+\end{equation}
+
+With respect to the Lu-Weinstein Poisson structure on $K$, the double $G$ is equivalent to the \textit{complexification} of $K$ with Iwasawa decomposition $G = K^{\mathbb C} = KAN$ and the dual $K^{*}$ is $K^{*} = AN$.
+
+Now, when a Poisson manifold $(M, \pi_M)$ is acted upon by a Poisson-Lie group $(K, \pi_K)$ there are additional compatibility conditions which generalize the moment map conditions above.
+The moment map itself if generalized to a map $\Psi : M \to K^{*}$, called the a \textit{$K^{*}$-valued moment}.
+At the very least, $\Psi : M \to K^{*}$ must be a Poisson map (in that it respects the Poisson structures on $\pi_M$ and $\pi_{K^{*}}$).
+Using the Poisson map, it is possible to define a Lie algebra action of $\mathfrak k$ on $M$ sending every $\xi \in \mathfrak k$ to the vector field $\xi_M$ defined in the following way.
+First from $\xi \in \mathfrak k \simeq T_e K^{*}$ construct a $1$-form on $K^{*}$, denoted by $\tilde \xi \in \Gamma(T^{*} K^{*})$ which, for all vector fields $\zeta \in \Gamma(TK^{*})$, satisfies at $b \in K^{*}$
+\begin{equation}
+    \langle \tilde \xi_b, \zeta_b \rangle = \langle (R_{b^{-1}})_{*}\zeta)_b, \xi \rangle
+\end{equation}
+where $(R_{b'})_{*;b} : T_b K^{*} \to T_bb' K^{*} \simeq \mathfrak k^{*}$ is the pushfoward of the right-translate $R_{b'} : K^{*} \to K^{*}$ (sending $b$ to $b b'$).%
+\footnote{
+    Note that $\tilde \xi = \theta^{R}(\cdot \otimes \xi)$ where $\theta^{R}$ is the right Maurer-Cartan form.
+}
+Second, pullback this $1$-form on $K^{*}$ through the Poisson map $\Psi : M \to K^{*}$ to obtain the $1$-form on $M$ denoted by $\Psi^{*}\tilde \xi \in \Gamma(T^* M)$. 
+Finally, using the Poisson bivector $\pi_M \in \Gamma(\wedge^2 TM)$ on $M$, identify $\Psi^{*} \xi$ with the unique vector field on $M$, denoted by $\xi_M$, satisfying for all $1$-forms $\alpha \in \Gamma(T^{*} M)$ the equality
+\begin{equation}
+    \langle \alpha, \xi_M \rangle = \langle \alpha \wedge \Psi^{*} \tilde \xi, \pi_M \rangle.
+\end{equation}
+
+It can be shown that the map sending $\xi \in \mathfrak k$ to $\xi_M \in \Gamma(TM)$ just defined is a Lie algebra action of $\mathfrak k$ on $M$ in the sense that $[\xi,\eta]_M = [\xi_M, \eta_M]$.
+If this action integrates to a full $K$-action on $M$, then the triple $(M, \pi_M, \Psi)$ is referred to as a \textit{Hamiltonian $K$-manifold with $K^{*}$-valued moment map}.\footnote{Note that \citeauthor{lamb2005proof} \cite{lamb2005proof}, in summarizing \citeauthor{alekseev2001linearization}'s paper \cite{lamb2005proof}, uses the more manageable terminology of a \textit{Poisson $K$-space}. I am not sure if this terminology is standard.}
+
+As previously mentioned, $K^{*}$-valued moment maps can be multiplied in the following way.
+If $(M_1, \pi_1, \Psi_1)$ and $(M_2, \pi_2, \Psi_2)$ are a pair of Hamiltonian $K$-manifolds with $K^{*}$-valued moment maps, the Poisson map $\Psi : M_1 \times M_2 \to K^{*}$ defined by
+\begin{equation}
+    \Psi(m_1,m_2) = \Psi_1(m_1)\Psi_2(m_2)
+\end{equation}
+is indeed a $K^{*}$-valued moment map for the Poisson manifold $(M_1 \times M_2, \pi_1 + \pi_2)$ but with respect to \textit{twisted (diagonal) $K$-action} 
+\begin{equation}
+    k \cdot (m_1, m_2) = (k \cdot m_1, k^{\Psi_1(m_1)} \cdot m_2)
+\end{equation}
+
+Just as coadjoint action of $K$ on $\mathfrak k^{*}$ produces coadjoint orbits $\mathcal O_{\lambda} \subset \mathfrak k^{*}$ with the structure of a symplectic manifold such that the inclusion map is the corresponding $\mathfrak k^{*}$-valued moment map, the dressing action of $K$ on $K^{*}$ produces dressing orbits $\mathcal D_{\lambda'} \subset K^{*}$ with Poisson structure such that the inclusion map is the corresponding $K^{*}$-valued moment map. 
+This gives rise to a multiplicative generalization of the ``additive'' Horn-type problem: given a triple $(\mathcal D_{\alpha}, \mathcal D_{\beta}, \mathcal D_{\gamma})$ of dressing orbits, does there exist a pair $(X,Y) \in \mathcal D_{\alpha} \times \mathcal D_{\beta}$ such that $XY \in \mathcal D_{\gamma}$?
+
+\subsubsection{The linearization theorem}
+
+Under suitable conditions, it was shown by \cite{alekseev1997poisson} that there exists an equivalence between the category of Hamiltonian $K$-manifolds $(M, \omega, \Phi)$ with $\mathfrak k^{*}$-valued moment maps $\Phi : M \to \mathfrak k^{*}$ and the category of Hamiltonian $K$-manifolds $(M, \pi, \Psi)$ with $K^{*}$-valued moment maps $\Psi : M \to K^{*}$ \cite{alekseev1997poisson}.
+Generally speaking, this process is referred to as \textit{linearization}.
+
+The conditions require $K$ to be a compact connected Lie group with Lu-Weinstein Poisson-Lie structure and for the Poisson structure $\pi$ on $M$ to be symplectic in the sense that it comes from symplectic form $\Omega$ on $M$.
+Associated to $K$ are its dual $K^{*} = AN$ and its double $G = K^{\mathbb C} = KAN$. Furthermore, in \cite{alekseev2001linearization}, \citeauthor{alekseev2001linearization} define an invertible $K$-equivariant map
+\begin{equation}
+    E : \mathfrak k^{*} \to K^{*}
+\end{equation}
+together with a $1$-form $\beta \in \Omega(\mathfrak k^{*})$.
+The two objects $E$ and $\beta$ depend implicitly upon a choice of a $K$-invariant inner product $B : \mathfrak k \times \mathfrak k \to \mathbb R$ on $\mathfrak k$ (think negative scalar multiples of the Killing form) used to identify $\mathfrak k^{*}$ with $\mathfrak a \oplus \mathfrak n$ in the Iwasawa decomposition of the Lie algebra $\mathfrak g$ of the double $G$.
+Using these maps, the following theorem holds.
+
+\begin{thm}[Linearization]
+    Let $M$ be a $K$-manifold and let $\pi \in \Gamma(\wedge^2 TM)$ be the Poisson bivector induced by a symplectic form $\Omega \in \Gamma(\wedge^2 T^* M)$ on $M$.
+    Let $\Psi : M \to K^{*}$ be a map and define 
+    \begin{equation}
+        \Phi : M \to \mathfrak k^{*}, \qquad \omega \in \Gamma(\wedge^2 T^* M)
+    \end{equation}
+    in terms of $E, \beta$ (depending on $K$), and $\Psi,\Omega$ (depending on $(M, \Omega)$) by
+    \begin{equation}
+        \Phi = E^{-1} \circ \Psi, \qquad \omega = \Omega - \diff \Phi^{*} \beta.
+    \end{equation}
+    Then $(M, \pi, \Psi)$ is a Hamiltonian $K$-manifold with $K^*$-valued moment map $\Psi$ if and only if $(M, \omega, \Phi)$ is a Hamiltonian $K$-manifold with $\mathfrak k^{*}$-valued moment map.
+\end{thm}
+
+The linearization theorem plays a crucial role in \citeauthor{alekseev2001linearization}'s proving a kind of equivalence between the additive-type Horn problems to the multiplicative-type Horn problems. 
+Suppose that $(M_1, \pi_1, \Psi_1)$ and $(M_2, \pi_2, \Psi_2)$ are a pair of Hamiltonian $K$-manifolds with $K^{*}$-valued moment maps (where the Poisson bivector $\pi_1$ comes from a symplectic form $\Omega_1$ on $M_1$ and likewise $\pi_2$ comes from $\Omega_2$ on $M_2)$.
+As we have seen before, $(M_1 \times M_2, \pi_1 + \pi_2, \Psi_1 \Psi_2)$ is a Hamiltonian $K$-manifold with $K^{*}$-valued moment with respect to the twisted diagonal action of $K$ on $M_1 \times M_2$.
+Similarly, one could consider $(M_2 \times M_1, \pi_1 + \pi_2, \Psi_2\Psi_1 )$ where the order of $\Psi_1$ and $\Psi_2$ is swapped.
+By applying the linearization theorem to the triplet of $K^{*}$-valued moment maps, one obtains three symplectic manifolds with $\mathfrak k^{*}$-valued moment maps:
+\begin{align}
+    (M_1, \omega_1, \Phi_1) &\Longleftarrow (M_1, \pi_1, \Psi_1) \\
+    (M_2, \omega_2, \Phi_2) &\Longleftarrow (M_2, \pi_2, \Psi_2) \\
+    (M_1 \times M_2, \omega_{1,2}, \Phi_{1,2}) &\Longleftarrow (M_1 \times M_2, \pi_1 + \pi_2, \Psi_1\Psi_2) 
+    %(M_2 \times M_1, \omega_{2,1}, \Phi_{2,1}) &\Longleftarrow (M_2 \times M_1, \pi_1 + \pi_2, \Psi_2\Psi_1)
+\end{align}
+What is the relationship between $\Phi_{1,2}$ and $\Phi_{1} + \Phi_{2}$? In general, they are distinct maps, meaning
+\begin{equation}
+    \Phi_{2,1} (m_2, m_1) \neq \Phi_1(m_1) + \Phi_2(m_2) \neq \Phi_{1,2} (m_1, m_2),
+\end{equation}
+but they are both moment maps, albeit associated to two different symplectic forms (namely $\omega_{1,2}$ and $\omega_1 + \omega_2$).
+Amazingly, by appropriately rescaling the $E$ and $\beta$ maps by a parameter $s \geq 0$,
+\citeauthor{alekseev2001linearization} \cite{alekseev2001linearization} derive a smooth family $\{\omega^{s}_{1,2}\}_{s \in [0,1]}$ of symplectic forms of $M_1 \times M_2$ together with a smooth family of $\mathfrak k^{*}$-valued moment maps $\{\Phi_{1,2}^{s}\}_{s\in[0,1]}$ such that the $s=0$ case recovers the sum of linearizations 
+\begin{equation}
+    (M_1\times M_2, \omega^{0}_{1,2}, \Phi^{0}_{1,2}) = (M_1 \times M_2, \omega_{1} + \omega_{2}, \Phi_1 + \Phi_2)
+\end{equation}
+whereas the $s=1$ case recovers the linearization of the product, i.e.
+\begin{equation}
+    (M_1\times M_2, \omega^{1}_{1,2}, \Phi^{1}_{1,2}) = (M_1 \times M_2, \omega_{1,2}, \Phi_{1,2}).
+\end{equation}
+Furthermore, using a Moser isotropy argument, they prove that there exists a $K$-equivariant family of symplectomorphisms $\{\phi_s\}_{s \in [0,1]}$ (symplecomorphic from $(M_1 \times M_2, \omega_{1} + \omega_{2})$ to $(M_1 \times M_2, \omega_{1,2}^{s})$, and $K$-equivariant from diagonal action to an $s$-scaled twisted diagonal action) such that
+\begin{equation}
+    \omega_{1,2}^{s} = (\phi_s)^{*} (\omega_1 + \omega_2), \qquad \Phi_{1,2}^{s} = (\phi_s)^{*} (\Phi_1 + \Phi_2).
+\end{equation}
+
+As a corrolary, one can show, in a certain sense, that the space of solutions to the additive Horn-type problem is symplectomorphic to the space of solutions to the space of solutions of the multiplicative Horn-type problem.
+This proves Thompson's conjecture when one takes $K = U(n)$.
+
+
+\clearpage
+\section*{Reference notes}
+
+\begin{itemize}
+    \item A popular textbook on quantum groups with an emphasis on the connection to Poisson manifolds, Lie bialgebras and their quantizations by \citeauthor{chari1995guide} \cite{chari1995guide}
+    \item The general subject of multivariate trace inequalities involving exponentials of sums of Hermitian and products of their exponentials is, of course, intimately related. See for instance the paper by \citeauthor{sutter2017multivariate} \cite{sutter2017multivariate}.
+    \item Also the article \cite{forrester2014golden} by \citeauthor{forrester2014golden} which describes the connection to hyperbolic geometry quite explicitly.
+    \item Course notes on Poisson geometry with an eye toward quantization by \citeauthor{ciccoli2006poisson} \cite{ciccoli2006poisson}
+    \item An excellent expository overview of the big picture by \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}
+    \item The masters essay/thesis of \citeauthor{backens2010sixjsymbols} (\textcolor{red}{TODO: check if the pdf Matthias sent to me is the final version}) \cite{backens2010sixjsymbols}
+    \item An excellent introduction to these ideas is the recent masters thesis on various aspects of additive and multiplicative Horn problems in connection to Vinnikov curves and the Lax conjecture due to \citeauthor{hess2020examination} and supervised by S. Kuhlmann and M. Infusino \cite{hess2020examination}
+    \item The PhD thesis of \citeauthor{esposito2012classical} (from the maths department here in Copenhagen) serves as a introduction to the world of Poisson momentum maps and the notion of a ``quantum'' momentum map as a deformation of the ordinary ``classical'' momentum map (where deformation is in the sense of deformation quantization) \cite{esposito2012classical}.
+    \item \citeauthor{alekseev1997poisson} \cite{alekseev1997poisson}
+    \item Papers contained results pertaining to the generalization of Duistermaat-Heckman measures for Hamiltonian group actions with group-valued moment maps by \citeauthor{alekseev2000group} \cite{alekseev1999duistermaat,alekseev2000group}
+    \item The proof of Thompson's conjecture in the style of \citeauthor{alekseev2001linearization} is the ``linearization paper'' due to \cite{alekseev2001linearization}. 
+    \item See also the related article due to \citeauthor{lamb2005proof} which summarizes the ideas of \cite{alekseev2001linearization} while also providing more technical background \cite{lamb2005proof}
+    \item \citeauthor{lu2003thompson} extend the proof technique of \cite{alekseev2001linearization} to a larger class of Lie groups \cite{lu2003thompson}
+    \item \citeauthor{alekseev2017symplectic} \cite{alekseev2017symplectic}
+    \item \citeauthor{alekseev2017horn} \cite{alekseev2017horn}
+    \item \citeauthor{alekseev2007ginzburg} \cite{alekseev2007ginzburg}
+    \item Deforming the symplectic volume by the $s$ paramater \citeauthor{alekseev2018concentration} \cite{alekseev2018concentration}
+    \item \citeauthor{klyachko2000random} \cite{klyachko2000random}
+    \item \citeauthor{christandl2008quantum} \cite{christandl2008quantum}
+    \item \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}
+    \item \citeauthor{kirillov1990representations} \cite{kirillov1990representations}
+    \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
+    \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
+    \item \Citeauthor{coquereaux2018orbital} explictly outline the link between the orbital measures (i.e. the induced distributions in the sense of Klyachko's random walk approach) and the magnitude of the stretched Littlewood-Richardson coefficients \cite{coquereaux2018orbital}. See also the papers \cite{coquereaux2020horn,coquereaux2019revisiting,zuber2018horn}.
+    \item A recent article by \citeauthor{mcswiggen2021harish} is an excellent introduction to the Harish-Chandra integral \cite{mcswiggen2021harish}. The proof of the Harish-Chandra formula provide by \citeauthor{mcswiggen2021harish} using the heat equation methods from \citeauthor{fegan1978heat}'s 1978 paper \cite{fegan1978heat} seems very promising for deriving a connection to the character formula for the norm of the recoupling operator!
+    \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
+    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
+    \item \citeauthor{boalch2007regge} \cite{boalch2007regge}
+    \item \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
+    \item \citeauthor{henriques2005crystals} \cite{henriques2005crystals}
+    \item Octahedron Recurrence/Rule \citeauthor{robbins1986determinants} \cite{robbins1986determinants} applied to the ``Hive'' ring \citeauthor{knutson2003positive} \cite{knutson2003positive}, and also \citeauthor{henriques2006octahedron} \cite{henriques2006octahedron}
+    \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
+    \item \citeauthor{speyer2005horn} \cite{speyer2005horn}
+    \item Generalizations of Horn's problem to the product of unitary matrices \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}
+    \item \citeauthor{bhatia2001linear} \cite{bhatia2001linear}
+    \item History account offered by \citeauthor{daftuar2005quantum} \cite{daftuar2005quantum}, and technical review article by \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues}.
+    \item Connecting group-valued moment maps to spherical, flat, and hyperbolic tetrahedron via Minkowski's theorem from the reconstruction of flat tetrahedron \citeauthor{haggard2016encoding}. See also the comments in \cite[Section 11]{haggard2016encoding} on the utility of \textit{quasi-poisson} (controlled failure of the Jacobi identity) manifolds and group-valued moment maps.
+    \item Foundational results conerning the relationships between the edge lengths, face areas, dihedral and solid angles of a tetrahedron by \citeauthor{richardson1902trigonometry} \cite{richardson1902trigonometry}
+    \item Potential application to inverse kinematics of $3$-link arms in three dimensions? (\textcolor{blue}{Thanks Harold!})
+    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Therianos titled ``On the singular values of matrix products'' I, II, and III from 1973}
+    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Freede titled ``On the eigenvalues of sums of Hermitian matrices'' I, II, and III from 1973}
+    \item \textcolor{red}{TODO: track down a pdf for Thompson's 1988 ``Matrix Spectral Inequalities'' referenced by Klyachko}
+    \item \Citeauthor{thompson1973eigenvalues} \cite{thompson1973eigenvalues} present a number of interesting counter-examples to the question of whether the inequalities pertaining to the spectra of general matrices can be deduced from looking at the spectra of diagonal matrices (both in the additive and multiplicative cases).
+    \item \cite{barrett2003geometrical}
+\end{itemize}
+
+\clearpage
+
+\section{Asymptotic recoupling from spectral estimation}
+
+\subsection{Converting Hermitian matrices to density matrices}
+
+The approach taken in this section and the next is based on extending the application of \citeauthor{keyl2001estimating}'s spectral estimation theorem \cite{keyl2001estimating} to Horn's problem (i.e. relations between the spectra of $A$, $B$ and $A+B$) provided by \citeauthor{christandl2008quantum} \cite{christandl2008quantum} to the generalised setting concerning relations between the spectra of $A$, $B$, $C$, $A+B$, $B+C$, $A+C$, and $A+B+C$.
+Our approach will parallel the techniques developed by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling} for the purposes of tackling the spectral marginal problem.
+
+
+Consider the following decision problems.
+\begin{prob}[Trivariate Horn's problem]
+    \label{prob:thp}
+    Let $d \in \mathbb N$ and let 
+    \begin{equation}
+        (s_{A}, s_{B}, s_{C}, s_{AB}, s_{BC}, s_{AC}, s_{ABC}) \in (\mathbb R^{d})^{\times 7}
+    \end{equation}
+    be given as input.
+    Does there exist a triple of $d\times d$ Hermitian matrices, $A,B$ and $C$, such that
+    \begin{equation}
+        \begin{alignedat}{2}
+            \spec(A) &= s_{A}, \qquad \spec(A+B) &&= s_{AB}, \\
+            \spec(B) &= s_{B}, \qquad \spec(B+C) &&= s_{BC}, \qquad \spec(A+B+C) = s_{ABC}, \\
+            \spec(C) &= s_{C}, \qquad \spec(A+C) &&= s_{AC}.
+        \end{alignedat}
+    \end{equation}
+\end{prob}
+
+There are two properties of the spectral map $\spec : \Herm_{d} \to \mathbb R^{d}$ worth emphasizing, namely for all $X \in \Herm_{d}$ and $\lambda \in \mathbb R$,
+\begin{equation}
+    \spec(\lambda X) = \lambda \spec(X), \qquad \spec(X + \lambda I_{d}) = \spec(X) + \lambda \spec(I_d)
+\end{equation}
+where $u \coloneqq \spec(I_d) = (1, \ldots, 1)$.
+
+Consequently, the collection of tuples of spectra $(s_{A}, \ldots, s_{ABC})$ for which there exists Hermitian matrices $A$, $B$ and $C$ satisfying the above equations is closed under scalar multiplication and and affine shifts by scalar multiples of $(u, \ldots, u)$.
+\begin{lem}
+    \label{lem:shifting_scaling}
+    Given a $d\times d$ Hermitian operator, $X$, then the operator
+    \begin{equation}
+        T_{\lambda}(X) \coloneqq \frac{X + \lambda I_d}{\Tr(X) + \lambda d},
+    \end{equation}
+    satisfies $\Tr(T_{\lambda}(X)) = 1$ and, for sufficiently large $\lambda \in \mathbb R$, $T_{\lambda}(X) > 0$ is positive definite.
+\end{lem}
+
+Therefore, a solution to \Cref{prob:thp} can always be extracted from a solution to the following related problem.
+
+\begin{prob}[Triviate density matrix Horn's problem]
+    \label{prob:dmhp}
+    Let $d \in \mathbb N$, let $p = (p_A, p_B, p_C) \in \Delta_{3}$ have strictly positive entries and let
+    \begin{equation}
+        (r_{A}, r_{B}, r_{C}, r_{AB}, r_{BC}, r_{AC}, r_{ABC}) \in (\Delta_d^{\geq})^{\times 7}
+    \end{equation}
+    be given as input.
+    Does there exist a triple of $d\times d$ density matrices, $\rho_{A}, \rho_{B}$ and $\rho_{C}$ such that
+    \begin{align}
+        \begin{split}
+            &\spec(\rho_{A}) = r_{A}, \qquad \spec\left(\frac{p_A \rho_A + p_B \rho_B}{p_A + p_B}\right) = r_{AB}, \\
+            &\spec(\rho_{B}) = r_{B}, \qquad \spec\left(\frac{p_B \rho_B + p_C \rho_C}{p_B + p_C}\right) = r_{BC}, \\
+            &\spec(\rho_{C}) = r_{C}, \qquad \spec \left(\frac{p_A \rho_A + p_C \rho_C}{p_A + p_C}\right) = r_{AC}, \\
+            &\spec\left(p_A \rho_A + p_B \rho_B + p_C \rho_C\right) = r_{ABC}.
+        \end{split}
+    \end{align}
+\end{prob}
+
+\begin{rem}
+    The conversion from \cref{prob:thp} to \cref{prob:dmhp} lies with picking $\lambda \in \mathbb R$ sufficiently large (see \cref{lem:shifting_scaling}) and then letting
+    \begin{equation}
+        (\rho_{A}, \rho_{B}, \rho_{C}) \coloneqq (T_{\lambda}(A), T_{\lambda}(B), T_{\lambda}(C)),
+    \end{equation}
+    and furthermore letting
+    \begin{equation}
+        (p_A, p_B, p_C) \coloneqq \frac{(\Tr(A)+\lambda d,\Tr(B)+\lambda d,\Tr(C)+\lambda d)}{\Tr(A+B+C) + 3 \lambda d}
+    \end{equation}
+    such that, for example,
+    \begin{equation}
+        \frac{p_{A} \rho_{A} + p_{B} \rho_{B}}{p_{A} + p_{B}} = \frac{A + B + 2 \lambda d}{\Tr(A+B) + 2 \lambda d},
+    \end{equation}
+    and furthermore if $r_{AB}$ is related to $s_{AB} = \spec(A+B)$ by the formula
+    \begin{equation}
+        r_{AB} = \spec\left(\frac{p_{A} \rho_{A} + p_{B} \rho_{B}}{p_{A} + p_{B}}\right) = \frac{1}{\Tr(A+B) + 2 \lambda d} \left(s_{AB} + 2 \lambda \spec(I_d)\right)
+    \end{equation}
+\end{rem}
+
+\subsection{Spectral Estimation}
+
+The following lemma \cite{christandl2008quantum} places an upper bound on the value of $\Tr(P_{\lambda} \rho^{\otimes n})$ for given $\lambda$ and $\rho$.
+\begin{lem}
+    Let $\Hilb \cong \mathbb C^{d}$ and let $\Hilb^{\otimes n} \cong \bigoplus_{\lambda \vdash_{d} n} V_{\lambda} \otimes U_{\lambda}^{d}$ be the Schur-Weyl decomposition and $P_{\lambda}$ the Hermitian projection operator acting on $\Hilb^{\otimes n}$ which projects into the isotypic component $V_{\lambda} \otimes U_{\lambda}^{d}$. Then for any density operator $\rho$ with spectrum $r$,
+    \begin{equation}
+        \Tr(P_{\lambda} \rho^{\otimes n}) \leq (n+1)^{d(d-1)/2} \exp(-n \kl{\bar \lambda}{r}),
+    \end{equation}
+    where $\kl{\cdot}{\cdot}$ us the Kullbeck-Leibler divergence and $\bar \lambda_j \coloneqq \lambda_j/n$.
+\end{lem}
+
+\begin{cor}
+    Let $\epsilon > 0$, let $n \in \mathbb N$ and let $\Lambda_{<\epsilon}^{nr}$ denote the set of integer partitions, $\lambda \vdash k$, satisfying $\kl{\bar\lambda}{r} < \epsilon$.
+    Define
+    \begin{equation}
+        E_{<\epsilon}^{nr} = \sum_{\lambda \in \Lambda_{<\epsilon}^{kr}} P_{\lambda}.
+    \end{equation}
+    For any $\rho$ with spectrum $\spec(\rho) = r$,
+    \begin{equation}
+        \Tr(E_{<\epsilon}^{nr} \rho^{\otimes n}) \geq 1 - (n+1)^{(d+2)(d-1)/2} \exp(-n \epsilon).
+    \end{equation}
+\end{cor}
+
+\subsection{Recoupling operators}
+
+\begin{defn}[F-Symbols]
+    Let $U_{\alpha}^{d}, U_{\beta}^{d}, U_{\gamma}^{d}, U_{\mu}^{d}, U_{\nu}^{d}$ and $U_{\lambda}^{d}$ be irreducible highest-weight representations of $\mathrm{SU}(d)$.
+    Define the \textit{recoupling operator} or \textit{F-symbol} as the linear operator
+    \begin{equation}
+        \begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}
+        :
+        C_{\mu}^{\alpha,\beta} \otimes C_{\lambda}^{\mu,\gamma} \to C_{\lambda}^{\alpha, \nu} \otimes C_{\nu}^{\beta,\gamma},
+    \end{equation}
+    between the multiplicity spaces of irreps of $\mathrm{SU}(d)$ defined as
+    \begin{equation}
+        \tikzfig{tikz/recoupling-defn}.
+    \end{equation}
+\end{defn}
+
+\subsection{Ensemble Approximation Lemma}
+
+\textcolor{red}{TODO: this section needs lots of work}
+
+\begin{lem}
+    Let $(p_A, p_B, p_C) \in \Delta_3$ be a probability distribution, let $n \in \mathbb N$ and let $X$ be any $S_n$-equivariant and positive semi-definite operator acting on $\Hilb^{\otimes n}$.
+    Then there exists an explicit triple of sequences $(k_A^{(n)}, k_B^{(n)}, k_C^{(n)})_{n \in \mathbb N}$ such that for all $n \in \mathbb N$, $k_{A}^{(n)} + k_{B}^{(n)} + k_{C}^{(n)} = n$ and
+    \begin{equation}
+        \lim_{n \to \infty} \left( \frac{k_A^{(n)}}{n}, \frac{k_B^{(n)}}{n}, \frac{k_C^{(n)}}{n} \right) = (p_A, p_B, p_C),
+    \end{equation}
+    and furthermore for all $n \in \mathbb N$,
+    \begin{equation}
+        \Tr\left[X (p_{A} \rho_{A} + p_{B} \rho_{B} + p_{C} \rho_{C})^{\otimes n} \right] \geq (n+1)^{-2} \Tr\left[X (\rho_{A}^{\otimes k_A^{(n)}} \otimes \rho_{B}^{\otimes k_B^{(n)}} \otimes \rho_{C}^{\otimes k_C^{(n)}}) \right]
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The $S_n$-equivariance of $X$ simplifies the non-commutative multinomial expansion of $(p_{A} \rho_{A} + p_{B} \rho_{B} + p_{C} \rho_{C})^{\otimes n}$ to obtain an ordinary multinomial expansion of the form:
+    \begin{align}
+        \begin{split}
+            &\Tr\left[X (p_{A} \rho_{A} + p_{B} \rho_{B} + p_{C} \rho_{C})^{\otimes n} \right] \\
+            &\qquad= \sum_{\substack{k_1, k_2, k_3 = 0\\ k_1 + k_2 + k_3 = n}}^{n} \binom{n}{k_1, k_2, k_3} p_{A}^{k_1} p_{B}^{k_2} p_{C}^{k_3} \Tr\left[X (\rho_{A}^{\otimes k_1} \otimes \rho_{B}^{\otimes k_2} \otimes \rho_{C}^{\otimes k_3}) \right].
+        \end{split}
+    \end{align}
+    Since the summand is always non-negative (because $X \geq 0$ by assumption) the overall sum can be lower-bounded by the value of any particular summand.
+    Consider the term, indexed by $(k_1, k_2, k_3)$, which (approximately) maximizes the probability 
+    \begin{equation}
+        m(k_1, k_2, k_3) \coloneqq \binom{n}{k_1, k_2, k_3} p_{A}^{k_1} p_{B}^{k_2} p_{C}^{k_3}.
+    \end{equation}
+    Specifically, take $(k_1', k_2', k_3')$ to be a rational approximation to the distribution $(p_A, p_B, p_C)$ satisfying
+    \begin{equation}
+        \norm{(k_1', k_2', k_3') - n (p_{A}, p_{B}, p_{C})}_{1} \leq 3.
+    \end{equation}
+    Then ``it can be shown'' that $m(k_1', k_2', k_3')$, viewed as a function of $n$, cannot decay to zero faster than one over the number of summands up to a constant independent of $n$ \textcolor{red}{TODO}.
+    A crude approximation of $m(k_1', k_2', k_3') \geq (n+1)^{-2}$ is then obtained from ignoring the condition $k_1 + k_2 + k_3 = n$.
+\end{proof}
+
+
+\begin{equation}
+    \sum_{i=1}^{k}p_i\Tr[E \rho_i] = \Tr[E \rho]
+\end{equation}
+
+\begin{equation}
+    \sum_{i,j=1}^{k}p_ip_j\Tr[E (\rho_i\otimes \rho_j)] = \Tr[E (\rho \otimes \rho)]
+\end{equation}
+
+Let $\tilde E$ be $S_n$-equivariant, then
+\begin{equation}
+    \label{eq:symmetric-multinomial-expansion}
+    \sum_{n_1, \ldots, n_k} m_{p}(n_1, \ldots, n_k) \Tr[\tilde E (\rho_1^{\otimes n_1} \otimes \cdots \otimes \rho_k^{\otimes n_k}) ] = \Tr[\tilde E \rho^{\otimes n}]
+\end{equation}
+where $m_{p}$ is the multinomial distribution
+\begin{equation}
+    m_{p}(n_1, \ldots, n_k) = \binom{n}{n_1, \ldots, n_k} p_1^{n_1}\cdots p_{k}^{n_k}
+\end{equation}
+If $q = (n_1/n, \ldots, n_k/n)$ is the empirical distribution, then a classical result due to \cite{sanov1961probability,dembo2010large} places the following bounds on $m_{p}$ in terms of the relative entropy or Kullback-Liebler divergence \cite{kullback1997information} of $q$ from $p$:
+\begin{equation}
+    (n+1)^{-k} \exp(-n \kl{q}{p}) \leq m_{p}(n_1, \ldots, n_k) \leq \exp(-n \kl{q}{p}).
+\end{equation}
+Since $\Tr[\tilde E (\rho_1^{\otimes n_1} \otimes \cdots \otimes \rho_k^{\otimes n_k}) ] \in [0,1]$, one obtains from \cref{eq:symmetric-multinomial-expansion} the following lower bound where $(n_1, \ldots, n_k)$ is choosen such that $\kl{q}{p} \leq C_p n^{-2}$ where $C_p$ is a constant independent of $n$ but dependent upon $p$ (TODO: Prove that this choice can be made using reverse Pinsker's inequality or by constructing $q$ explicitly):
+\begin{equation}
+    \Tr[\tilde E \rho^{\otimes n}] \geq (n+1)^{-k}\exp(-C_p/n)\Tr[\tilde E (\rho_1^{\otimes n q_1} \otimes \cdots \otimes \rho_k^{\otimes n q_k}) ]
+\end{equation}
+
+In fact, one should be able to do much better by noting that the number of partitions $(n_1, \ldots, n_k)$ of $n$ (with at most $k$ rows) is upper bounded by the number of compositions (partitions without order) which admits the following upper bound
+\begin{align}
+    \binom{n+k-1}{n} 
+    &= \frac{n+k-1}{k-1}\frac{n+k-2}{k-2}\cdots\frac{n+1}{1}, \\
+    &= \left(1+\frac{n}{k-1}\right)\left(1+\frac{n}{k-2}\right)\cdots\left(1+\frac{n}{1}\right), \\
+    &\leq (1+n)^{k-1}.
+\end{align}
+The maximum likelihood $q$ (taken with respect to $m_p$ and also dependent on $n$) must be greater than the average likelihood which can be lower-bounded by the reciprocal of the above upper bound and therefore:
+\begin{equation}
+    \Tr[\tilde E \rho^{\otimes n}] \geq (n+1)^{-(k-1)}\Tr[\tilde E (\rho_1^{\otimes n q_1} \otimes \cdots \otimes \rho_k^{\otimes n q_k}) ]
+\end{equation}
+Purifying all the states involved separately ($\rho_i = \Tr_{\mathcal Z}(\psi_i)$ with $\psi_i$ rank one projection) yields
+\begin{equation}
+    \Tr[(\tilde E \otimes I^{\otimes n}) \psi^{\otimes n}] \geq (n+1)^{-(k-1)}\Tr[(\tilde E \otimes I^{\otimes n}) (\psi_1^{\otimes n q_1} \otimes \cdots \otimes \psi_k^{\otimes n q_k}) ]
+\end{equation}
+
+\subsection{From states to recoupling}
+
+In this section we repeat the proof technique used in \cite{christandl2008quantum} to prove the existence of a sextuple of convergent sequences of Young diagrams satisfying the recoupling operator lower bound.
+
+Let $(p_1, p_2, p_3) \in \Delta_3$, let $\rho_{1}, \rho_{2}, \rho_{3}, \rho_{4}, \rho_{5}, \rho_{6}$ be a sextuple of $d\times d$ density operators (with spectra $r_i = \mathrm{spec}(\rho_{i})$), and suppose that the density matrices $\{\rho_1, \ldots, \rho_6\}$ are subject to the constraints
+\begin{align}
+    \label{eq:sextuple_config_constraints}
+    \begin{split}
+        (p_1+p_2)\rho_{4} &= p_1 \rho_1 + p_2 \rho_2, \\
+        (p_2+p_3)\rho_{5} &= p_2 \rho_2 + p_3 \rho_3, \\
+        (p_1+p_2+p_3)\rho_{6} &= p_1 \rho_2 + p_2 \rho_2 + p_3 \rho_3. \\
+    \end{split}
+\end{align}
+In the case of $d=2$, this configuration can be depicted faithfully as a configuration of points in $\mathbb R^{3}$:
+\begin{equation}
+    \tikzfig{tikz/qubit-tetrahedron}.
+\end{equation}
+\begin{equation}
+    \tikzfig{tikz/qubit-tetrahedron-arabic}.
+\end{equation}
+
+Using spectra estimation theorem, we have for each $i \in \{1, \ldots, 6\}$, $k_i \in \mathbb N$, and $\lambda \vdash k_i$,
+\begin{equation}
+    \Tr(P_{\lambda} \rho_i^{\otimes k_i}) \leq (k_i + 1)^{d(d-1)/2} \exp(-k_i \kl{\bar \lambda}{r_i}).
+\end{equation}
+In particular, if $\kl{\bar \lambda}{r_i} < \epsilon$, then
+\begin{equation}
+    \Tr(P_{\lambda} \rho_i^{\otimes k_i}) \leq (k_i + 1)^{d(d-1)/2} \exp(-k_i \epsilon).
+\end{equation}
+Furthermore, the ensemble approximation lemma applied to $\rho_{4} = x \rho_1 + (1-x) \rho_2$ with $x = \frac{p_1}{p_1+p_2}$ and $\mu \vdash k_1 + k_2 = k_4$ (satisfying $k_4 x \approx k_1$ and $k_4 (1-x) \approx k_2$) 
+\begin{equation}
+    \Tr(P_{\mu} \rho_4^{\otimes k_4}) = \Tr(P_{\mu} (x \rho_1 + (1-x) \rho_2)^{\otimes k_4}) \geq \frac{1}{k_4 + 1}\Tr(P_{\mu} \rho_1^{\otimes k_1} \otimes \rho_2^{\otimes k_2})
+\end{equation}
+Combining this with spectral estimation yields the following bound
+\begin{equation}
+    \Tr(P_{\mu} \rho_1^{\otimes k_1} \otimes \rho_2^{\otimes k_2}) \leq (k_4 + 1) \Tr(P_{\mu} \rho_4^{\otimes k_4}) \leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}).
+\end{equation}
+Let $k_6 = k_1 + k_2 + k_4$ and note that $k_i \leq k_6$ for all $i$.
+Then one obtains the following collection of upper bounds
+\begin{align}
+    \Tr(P_{\alpha} \rho_1^{\otimes k_1}) &\leq (k_1 + 1)^{d(d-1)/2} \exp(-k_1 \kl{\bar \alpha}{r_1}), \\
+    \Tr(P_{\beta} \rho_2^{\otimes k_2}) &\leq (k_2 + 1)^{d(d-1)/2} \exp(-k_2 \kl{\bar \beta}{r_2}), \\
+    \Tr(P_{\gamma} \rho_3^{\otimes k_3}) &\leq (k_3 + 1)^{d(d-1)/2} \exp(-k_3 \kl{\bar \gamma}{r_3}), \\
+    \Tr(P_{\mu} \rho_1^{\otimes k_1} \otimes \rho_2^{\otimes k_2}) &\leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}), \\
+    \Tr(P_{\nu} \rho_2^{\otimes k_2} \otimes \rho_3^{\otimes k_3}) &\leq (k_5+1)^{d(d-1)/2+1} \exp(-k_5 \kl{\bar \nu}{r_5}), \\
+    \Tr(P_{\lambda} \rho_1^{\otimes k_1} \otimes \rho_2^{\otimes k_2} \otimes \rho_3^{\otimes k_3}) &\leq (k_6+1)^{d(d-1)/2+2} \exp(-k_6 \kl{\bar \lambda}{r_6}).
+\end{align}
+At the moment, there is an important subtlety which has NOT been addressed.
+In order to apply the ensemble approximation lemma it must be the case that the vales of $k_1, k_2,$ and $k_3$ are reasonably good approximations of $p_1, p_2,$ and $p_3$ in the sense that the multinomial probability $m_{p}(k_1, k_2, k_3)$ is taken larger than the crude, albeit polynomial, lower bound of $(k_1+k_2+k_3+1)^{-2}$.
+Additionally, in order to apply the ensemble approximation lemma in parallel three times as we have done here, one must show that these reasonably good approximations can be made for $(p_1, p_2, p_3)$, $(p_1, p_2)/(p_1+p_2)$ and $(p_2, p_3)/(p_2+p_3)$ for the \textit{same} tuple of integers $(k_1, k_2, k_3)$.
+While this is not too difficult to demonstrate, we omit a proof of this claim here.
+
+At this stage, consider the following sextuple of projection operators actings on $\mathcal H^{\otimes k_6}$,
+\begin{align}
+    \Pi_{\alpha} &\coloneqq P_{\alpha} \otimes I^{\otimes k_2 + k_3}, \\
+    \Pi_{\beta} &\coloneqq I^{\otimes k_1} \otimes P_{\beta} \otimes I^{\otimes k_3}, \\
+    \Pi_{\gamma} &\coloneqq I^{\otimes k_1 + k_2} \otimes P_{\gamma} , \\
+    \Pi_{\mu} &\coloneqq P_{\mu} \otimes I^{\otimes k_3}, \\
+    \Pi_{\nu} &\coloneqq I^{\otimes k_1} \otimes P_{\nu}, \\
+    \Pi_{\lambda} &\coloneqq P_{\lambda}.
+\end{align}
+It can be shown (using applications of Schur's lemma for $U(d)$ for example) that almost all pairs of projection operators in $\{\Pi_{\alpha}, \Pi_{\beta}, \ldots, \Pi_{\lambda}\}$ are commuting; the only exception is the pair $\{ \Pi_{\mu}, \Pi_{\nu} \}$.
+Define the following projection operators,
+\begin{align}
+    \Pi_{\alpha\beta\gamma} &= \Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}, \\
+    \Pi_{\alpha\beta\gamma\lambda} &= \Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}, \\
+    \Pi^{\mu}_{\alpha\beta\gamma\lambda} &= \Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}, \\
+    \Pi^{\nu}_{\alpha\beta\gamma\lambda} &= \Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}.
+\end{align}
+Additionally, define
+\begin{equation}
+    \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \coloneqq \rho_1^{\otimes k_1} \otimes \rho_2^{\otimes k_2} \otimes \rho_3^{\otimes k_3}.
+\end{equation}
+In any case, the upper bounds above are equivalent to the following upper bounds:
+\begin{align}
+    \Tr(\Pi_{\alpha} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_1 + 1)^{d(d-1)/2} \exp(-k_1 \kl{\bar \alpha}{r_1}), \\
+    \Tr(\Pi_{\beta} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_2 + 1)^{d(d-1)/2} \exp(-k_2 \kl{\bar \beta}{r_2}), \\
+    \Tr(\Pi_{\gamma} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_3 + 1)^{d(d-1)/2} \exp(-k_3 \kl{\bar \gamma}{r_3}), \\
+    \Tr(\Pi_{\mu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}), \\
+    \Tr(\Pi_{\nu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_5+1)^{d(d-1)/2+1} \exp(-k_5 \kl{\bar \nu}{r_5}), \\
+    \Tr(\Pi_{\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_6+1)^{d(d-1)/2+2} \exp(-k_6 \kl{\bar \lambda}{r_6}).
+\end{align}
+Henceforth let the polynomial prefactors be accounted for using the expression
+\begin{equation}
+    L^d_c(k) \coloneqq \left(\frac{d(d-1)}{2} + c\right)\log (k+1).
+\end{equation}
+Using $L^d_c(k)$, the above bounds can be re-expressed as
+\begin{align}
+    \Tr(\Pi_{\alpha} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_1 \kl{\bar \alpha}{r_1} + L^d_0(k_1)), \\
+    \Tr(\Pi_{\beta} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_2 \kl{\bar \beta}{r_2} + L^d_0(k_2)), \\
+    \Tr(\Pi_{\gamma} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_3 \kl{\bar \gamma}{r_3} + L^d_0(k_3)), \\
+    \Tr(\Pi_{\mu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_4 \kl{\bar \mu}{r_4} + L^d_1(k_4)), \\
+    \Tr(\Pi_{\nu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_5 \kl{\bar \nu}{r_5} + L^d_1(k_5)), \\
+    \Tr(\Pi_{\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_6 \kl{\bar \lambda}{r_6} + L^d_2(k_6)).
+\end{align}
+An application of the Cauchy-Schwarz inequality to the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ with $X = \Omega^{\frac{1}{2}}\Pi_1$ and $Y = \Omega^{\frac{1}{2}}\Pi_2$ (where $\Pi_i$ Hermitian projector and $\Omega$ positive-semi definite Hermitian) yields
+\begin{align}
+    \abs{\Tr(\Pi_1 \Omega \Pi_2)}^2 
+    &= \abs{\Tr((\Omega^{\frac{1}{2}}\Pi_1)^{\dagger}(\Omega^{\frac{1}{2}}\Pi_2))}^2 \\
+    &= \abs{\braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_2}}^{2} \\
+    &\leq \braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_1}\braket{\Omega^{\frac{1}{2}}\Pi_2, \Omega^{\frac{1}{2}}\Pi_2} \\
+    &= \Tr(\Pi_1 \Omega)\Tr(\Pi_2 \Omega)
+\end{align}
+Additionally, if $[\Pi_1, \Pi_2]=0$ then $\abs{\Tr(\Pi_1 \Omega \Pi_2)} = \abs{\Tr(\Pi_2\Pi_1\Pi_2\Omega)} = \Tr(\Pi_2\Pi_1\Pi_2\Omega) \geq 0$.
+Similarly, taking $X = \left(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}\right)^{\frac{1}{2}}\Pi^{\mu}_{\alpha\beta\gamma\lambda}$ and $Y = \left(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}\right)^{\frac{1}{2}}\Pi^{\nu}_{\alpha\beta\gamma\lambda}$ yields
+\begin{equation}
+    \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}^{2} \leq \Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi^{\nu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}).
+\end{equation}
+Chaining these bounds together produces a (perhaps sub-optimal but nevertheless sufficient) upper bound
+\begin{align}
+    &\abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}^4\\
+    &\qquad\leq \Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2\Tr(\Pi^{\nu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2, \\
+    &\qquad\leq \Tr(\Pi_{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\nu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2, \\
+    &\qquad\leq \Tr(\Pi_{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\nu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\alpha}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\times \cdots \\
+    &\qquad\qquad\times \Tr(\Pi_{\beta}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\Tr(\Pi_{\gamma}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\Tr(\Pi_{\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}
+\end{align}
+Therefore,
+\begin{equation}
+    \label{eq:sextuple_total_upper_bound}
+    \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})} \leq \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6)))
+\end{equation}
+where (under the hand-wavy approximations $p_i \approx k_i/k_6$) we define
+\begin{align}
+    \begin{split}
+        I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}
+        &= \frac{p_1}{2}\kl{\bar \alpha}{r_1}+\frac{p_2}{2}\kl{\bar \beta}{r_2}+\frac{p_3}{2}\kl{\bar \gamma}{r_3}+\cdots \\
+        &\qquad \cdots +\frac{p_1+p_2}{4}\kl{\bar \mu}{r_4}+\frac{p_2+p_3}{4}\kl{\bar \nu}{r_5}+\frac{1}{2}\kl{\bar \lambda}{r_6}
+    \end{split}
+\end{align}
+The crucial property of the rate function here is that $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} \geq 0$ always while $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} = 0$ only if $\bar \alpha = r_1$, $\bar \beta = r_2$, $\ldots$, $\bar \lambda = r_6$.
+
+At this stage, one can use the completeness property $\sum_{\lambda} \Pi_{\lambda} = I$ to prove
+\begin{equation}
+    1 
+    = \Tr(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})
+    = \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda}\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda}).
+\end{equation}
+Taking absolute values (and using subaddivity) and applying \cref{eq:sextuple_total_upper_bound} produces
+\begin{align}
+    1
+    &\leq \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda}\abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}, \\ 
+    &\leq \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda} \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6))).
+\end{align}
+As there are at most
+\begin{equation}
+    U(k_1, k_2, k_3) \coloneqq (k_1+1)^{d-1}(k_2+1)^{d-1}(k_3+1)^{d-1}(k_1+k_2+1)^{d-1}(k_2+k_3+1)^{d-1}(k_1+k_2+k_3+1)^{d-1}
+\end{equation}
+possible summands, the above equation implies there exists a (possibly non-unique) sextuple $\alpha', \beta', \gamma', \mu', \nu', \lambda'$ (implicitly dependent upon the $k_i$'s) such that
+\begin{equation}
+    \label{eq:occasionality_lower_bound}
+    \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha', \beta', \gamma', \mu', \nu', \lambda'} + O(\log(k_6))) \geq \abs{\Tr(\Pi^{\mu'}_{\alpha'\beta'\gamma'\lambda'} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu'}_{\alpha'\beta'\gamma'\lambda'})} \geq U(k_1, k_2, k_3)^{-1}
+\end{equation}
+which implies
+\begin{equation}
+    I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha', \beta', \gamma', \mu', \nu', \lambda'} \leq \frac{1}{k_6}\log U(k_1,k_2,k_3) + \frac{1}{k_6}O(\log(k_6)) = O(\log(k_6)/k_6)
+\end{equation}
+which tends to zero as $k_i$'s tend to infinity.
+Therefore, this sequence of sextuples of integer partitions converge to the given spectra in the sense that
+\begin{align}
+    \bar \alpha' \to r_1, \quad
+    \bar \beta' \to r_2, \quad
+    \bar \gamma' \to r_3, \quad
+    \bar \mu' \to r_4, \quad
+    \bar \nu' \to r_5, \quad
+    \bar \lambda' \to r_6.
+\end{align}
+
+In addition, by considering any purification of $\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}$ one additionally obtains a bound on the \textit{operator norm}, $\norm{\cdot}_{\infty}$, of the product of all $\Pi$'s (noting that the operator norm also satisfies $\norm{X \otimes I}_{\infty} = \norm{X}_{\infty}$).
+This bound takes the form
+\begin{equation}
+    \label{eq:prod_proj_op_lower_bound}
+    \norm{\Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty} = \norm{\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Pi^{\nu}_{\alpha\beta\gamma\lambda}}_{\infty} \geq \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}.
+\end{equation}
+(The inequality comes from $\norm{XY}_{\infty}^2 \geq \braket{XY v, XY v} \geq \abs{\braket{v, XYv}}^{2}$ for all $v$ with unit norm.)
+Furthermore, one can show by a detailed diagrammatic calculation that there exists appropriate isometries $\iota_{I}$ and $\iota_{II}$ such that
+\begin{equation}
+    \label{eq:recoupling_prod_proj_iso}
+    \iota_{II} \left(I_{U^{d}_{\lambda}} \otimes I_{V_{\alpha}} \otimes I_{V_{\beta}} \otimes I_{V_{\gamma}} \otimes \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger} = \Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}
+\end{equation}
+which in turn implies an equality of operator norms
+\begin{equation}
+    \label{eq:recoupling_prod_proj_iso_norm}
+    \norm{\begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty} = \norm{\Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty}
+\end{equation}
+By combining \cref{eq:prod_proj_op_lower_bound,eq:recoupling_prod_proj_iso_norm,eq:occasionality_lower_bound} we obtain a inverse polynomial lower bound for the operator norm of the recoupling operator of the form
+\begin{equation}
+    \norm{\begin{Bmatrix} \alpha' & \beta' & \mu' \\ \gamma' & \lambda' & \nu' \end{Bmatrix}}_{\infty}
+    \geq U(k_1,k_2,k_3)^{-1} \geq (k_1+k_2+k_3+1)^{-6(d-1)}
+\end{equation}
+
+In summary, we have shown that the existence of a certain configuration of density matrices implies a polynomial lower bound on the operator norm of the recoupling operator for $U(d)$ representations (modulo the $p_i \approx k_i/k_6$ approximation which needs to be justified),
+\begin{thm}
+    Let $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ be given and let $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$ be a sextuple of candidate spectra.
+    If there exists a sextuple of density operators $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a sequence of sextuples $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ of integer partitions satisfying both
+    \begin{equation}
+        \label{eq:sequential_recoupling_norm_lower_bound}
+        \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
+        \geq (n+1)^{-6(d-1)}
+    \end{equation}
+    (for sufficiently large $n$) and the following convergences
+    \begin{equation}
+        \label{eq:sextuple_convergence_condition}
+        \begin{alignedat}{3}
+            \lim_{n\to\infty} \frac{\alpha^{(n)}}{\abs{\alpha^{(n)}}} &= r_1, \qquad
+            \lim_{n\to\infty} \frac{\beta^{(n)}}{\abs{\beta^{(n)}}} &&= r_2, \qquad
+            \lim_{n\to\infty} \frac{\gamma^{(n)}}{\abs{\gamma^{(n)}}} &&= r_3, \\
+            \lim_{n\to\infty} \frac{\mu^{(n)}}{\abs{\mu^{(n)}}} &= r_4, \qquad
+            \lim_{n\to\infty} \frac{\nu^{(n)}}{\abs{\nu^{(n)}}} &&= r_5, \qquad
+            \lim_{n\to\infty} \frac{\lambda^{(n)}}{\abs{\lambda^{(n)}}} &&= r_6, \\
+            \lim_{n\to\infty} \frac{\abs{\alpha^{(n)}}}{\abs{\lambda^{(n)}}} &= p_1, \qquad
+            \lim_{n\to\infty} \frac{\abs{\beta^{(n)}}}{\abs{\lambda^{(n)}}} &&= p_2, \qquad
+            \lim_{n\to\infty} \frac{\abs{\gamma^{(n)}}}{\abs{\lambda^{(n)}}} &&= p_3.
+        \end{alignedat}
+    \end{equation}
+\end{thm}
+
+\begin{rem}
+    Note that the satisfication of \cref{eq:sequential_recoupling_norm_lower_bound} for some $n \in \mathbb N$ automatically entails that $\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix} \neq 0$ and thus $c_{\alpha,\beta}^{\mu}, c_{\beta,\gamma}^{\nu}, c_{\mu,\gamma}^{\lambda}, c_{\alpha,\nu}^{\lambda} \neq 0$ and thus the sequences of integer partitions also satisfy equality the following equality constraints
+    \begin{align}
+        \abs{\alpha^{(n)}} + \abs{\beta^{(n)}} &= \abs{\mu^{(n)}}, \\
+        \abs{\beta^{(n)}} + \abs{\gamma^{(n)}} &= \abs{\nu^{(n)}}, \\
+        \abs{\alpha^{(n)}} + \abs{\beta^{(n)}} + \abs{\gamma^{(n)}} &= \abs{\lambda^{(n)}}.
+    \end{align}
+\end{rem}
+
+\subsection{From recoupling to states}
+
+In this section, our objective is to prove the converse of the above theorem.
+Specifically, if the norm of a sequence of recoupling operators with components satisfying \cref{eq:sextuple_convergence_condition} admits of a polynomial lower bound, then there necessarily exists of a configuration of density matrices satisfying \cref{eq:sextuple_config_constraints}.
+In fact, this converse statement follows from a stronger claim that when there does not exist a configuration of density matrices satisfying the spectral constraints, every tuple of sequences of integer partitions satisfying \cref{eq:sextuple_config_constraints} has recoupling operator norm eventually decaying at an exponential rate.
+
+Consider the following operator defined by an integeral over the normalized Hilbert-Schmidt measure $\diff \rho$ on density matrices and a given $k \in \mathbb N$:
+\begin{equation}
+    \mathbb E\left[ \sigma^{\otimes k} \right] = \int \diff \sigma \sigma^{\otimes k} \geq \binom{k+d^2-1}{k}^{-1} \rho^{\otimes k} \geq (k+1)^{-(d^2-1)} \rho^{\otimes k}.
+\end{equation}
+The three-fold tensor product of the above operator is an integral over $\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}$ and has the form
+\begin{equation}
+    \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \coloneqq \int \diff \sigma_1 \int \diff \sigma_2 \int \diff \sigma_3 \Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}.
+\end{equation}
+The operator $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ is equivariant with respect to the natural action of 
+\begin{equation}
+    S_{k_1} \times S_{k_2} \times S_{k_3} \times U(d) \times U(d) \times U(d).
+\end{equation}
+Schur's lemma therefore implies that the operator $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ is equal to a positive sum of projection operators of the form $\Pi_{\alpha\beta\gamma}$ (where $\alpha \vdash k_1, \beta \vdash k_2$, and $\gamma \vdash k_3$) with the following coefficients:
+\begin{equation}
+    \label{eq:mean_tensor_power_decomp}
+    \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] = \sum_{\alpha,\beta,\gamma} R_{\alpha\beta \gamma}\Pi_{\alpha\beta\gamma}
+\end{equation}
+with coefficient $R_{\alpha \beta \gamma}$ given by a ratio of dimensions
+\begin{equation}
+    R_{\alpha \beta \gamma} 
+    =
+    \frac{1}{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})} 
+    \frac{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})}{\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})}.
+\end{equation}
+Consequently, $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ commutes with the projection operators $\Pi_{\mu}, \Pi_{\nu}$ and $\Pi_{\lambda}$ and thus also $\Pi_{\alpha\beta\gamma\lambda}^{\mu}$ and $\Pi_{\alpha\beta\gamma\lambda}^{\nu}$.
+In fact the following holds
+\begin{equation}
+    \Pi_{\alpha\beta\gamma\lambda}^{\mu}\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]\Pi_{\alpha\beta\gamma\lambda}^{\nu} = R_{\alpha\beta\gamma} \Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}
+\end{equation}
+
+Also since operator $X$ acting on a $D$-dimesional vector space satisfies $\norm{X}_{\infty} \leq \norm{X}_{\mathrm{HS}} \leq \sqrt{D}\norm{X}_{\infty}$, one has a polynomial equivalence between the norms of the recoupling symbol
+\begin{equation}
+    \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty}
+    \leq \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\mathrm{HS}}
+    \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}}\norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty}
+\end{equation}
+For the product of projectors, $\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}$, the only (polynomial or better) bound one has is simply
+\begin{equation}
+    \norm{\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}}_{\infty} 
+    \leq 
+    \norm{\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}}_{\mathrm{HS}} 
+    = \sqrt{ \Tr(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu})}
+\end{equation}
+Using the decomposition provided by \cref{eq:recoupling_prod_proj_iso}, together with \cref{eq:sextuple_total_upper_bound} and \cref{eq:mean_tensor_power_decomp} yields
+\begin{align}
+    \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\mathrm{HS}}^2
+    &= \Tr\left(\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}^{\dagger}\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \\
+    &= \frac{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}{\dim(U^{d}_{\lambda})\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})} \\
+    &= Q_{\alpha\beta\gamma\lambda}\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu} \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)  \\
+    &\leq \sup_{\rho_1 \rho_2 \rho_3} Q_{\alpha\beta\gamma\lambda}\abs{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}  \\
+    &\leq Q_{\alpha\beta\gamma\lambda} \exp( - k_6 \inf_{\rho_1\rho_2\rho_3} I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6)))
+\end{align}
+where the infimum is taken over all density matrices $\rho_1, \rho_2, \rho_3$ with $r_i = \spec(\rho_i)$ for $i \in \{1,2,3\}$ and $r_4,r_5,r_6$ the spectra of the appropriate convex combinations of $\rho_1,\rho_2,\rho_3$ with weights determined by the relative sizes of the integer partitions involved (again here we are making the rather dubious substitution $p_i \approx k_i /k_6$ when substituting the function $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ \textcolor{red}{TODO: resolve this issue formally}.
+Also the scalar $Q_{\alpha\beta\gamma\lambda}$ is
+\begin{align}
+    Q_{\alpha\beta\gamma\lambda} 
+    &\coloneq \frac{1}{ R_{\alpha\beta\gamma} \dim(U^{d}_{\lambda}) \dim(V_\alpha) \dim(V_{\beta}) \dim(V_{\gamma})} \\
+    &= \frac{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})}{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})\dim(U^d_{\lambda})}
+\end{align}
+As we have seen prior, the rate function $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ only vanishes if all of the spectra match exactly.
+Furthermore, it can be shown that the infimum over $\rho_1, \rho_2, \rho_3$ of $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ is always bounded below by a constant $I^{*} > 0$ if there does not exist a configuration of density matrices satisfying the requirements.
+Consequently, we conclude the following theorem.
+\begin{thm}
+    Suppose $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ is a sequence of integer partitions satisfying \cref{eq:sextuple_convergence_condition} for some $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ and $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$.
+    If there does not exist a collection of density matrices $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a constant $I^{*} > 0$ such that
+    \begin{equation}
+        \label{eq:sequential_recoupling_norm_upper_bound}
+        \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
+        \leq \exp(-n I^{*} + O(\log n))
+    \end{equation}
+\end{thm}
+
+\begin{rem}
+    It appears that I did not make explicit use of the following operator inequalities when proving the above theorem.
+    \begin{equation}
+        \mathbb E\left[ \sigma^{\otimes k} \right] \geq (k+1)^{-(d^2-1)} \rho^{\otimes k}.
+    \end{equation}
+    \begin{equation}
+        \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \geq \left((k_1+1)(k_2+1)(k_3+1)\right)^{-d^2+1}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}.
+    \end{equation}
+\end{rem}
+
+\subsection{From the perspective of strong duality}
+
+It would be very desirable to articulate the above result as an application of the strong duality and shifted/deformed strong duality results of non-commmutative optimization theory~\cite{burgisser2019towards}, specifically the presentation offered by \citeauthor{franks2020minimal}~\cite{franks2020minimal}.
+
+Given a representation $\Phi : G \to \mathrm{GL}(V)$ of complex reductive group $G = K_{\mathbb C}$ on a finite dimensional complex vector space $V$ equipped with $K$-invariant inner product $\braket{\cdot, \cdot}$, the \textit{moment map} associated to viewing $\mathbb P V$ as a symplectic, Hamiltonian $G$-manifold is (perhaps up to some constants) equal to
+\begin{equation}
+    \mu (\psi) (X) = \Tr(P_{\psi} \phi(X)) = \frac{\braket{v, \phi(X) v}}{\braket{v,v}}.
+\end{equation}
+In the special case where $G = \mathrm{SL}(d)$, $\mu (\psi) \in i\mathfrak{su}(d)^{\ast}$ can be identity with a $d\times d$ density operator $\rho_{\psi}$ in a canonical way such that $\Tr(\rho_{\psi} X) = \mu (\psi)(X)$ for all Hermitian operators $X \in i\mathfrak{su}(d)$.
+The (projective) capacity of $\psi \in \mathbb P V$ is
+\begin{equation}
+    \mathrm{cap}(\psi) = \inf_{g \in G} \Tr(P_{\psi} \Phi(g^{*}g)) = \inf_{g \in G} \frac{\braket{\Phi(g) v, \Phi(g) v}}{\braket{v,v}}
+\end{equation}
+In particular, it can be seen that $0 \leq \mathrm{cap}(\psi) \leq 1$ and it can be shown that $\mathrm{cap}(\psi) = 1$ if and only if $\mu(\psi) = 0$.
+Furthermore, define $\gamma_n(\psi)$ for $n \in \mathbb N$ to be equal to
+\begin{equation}
+    \gamma_{n}(\psi) = \Tr(P_{\psi}^{\otimes n} \Gamma_{n})^{\frac{1}{n}}
+\end{equation}
+where $\Gamma_{n} = \int_{K} \diff k \Phi(k)^{\otimes n}$ is the orthogonal projection operator onto the subspace of invariant vectors $(V^{\otimes n})^{G}$.
+The strong duality result in \cite{franks2020minimal} simply states the following
+\begin{equation}
+    \sup_{n \in \mathbb N} \gamma_{n}(\psi) = \mathrm{cap}(\psi)
+\end{equation}
+In particular, $\mathrm{cap}(\psi) = 1$ if and only if $\mu(\psi) = 0$ if and only if $\limsup_{n\to\infty} \gamma_n(\psi) = 1$.
+
+\textcolor{red}{TODO}
+ 
+\subsection{Comparison with \texorpdfstring{$S_k$}{Sk} recoupling}
+
+A similar problem concerning sextuples of spectra is to characterize the admissible $A$,$B$,$C$, $AB$, $BC$, and $ABC$ subsystem spectra of a tripartite mixed state $\rho_{ABC}$ (or equivalently quadripartite pure state $\psi_{ABCD}$). 
+This spectral problem was consider by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
+The approach adopted in \cite{christandl2018recoupling} was to use the spectral estimation method developed by \citeauthor{keyl2001estimating} \cite{keyl2001estimating} which essentially establishes an approximate correspondence between (i) density operators $\rho$ with spectra $r$ and (ii) representations of the symmetric group $S_k$ labelled by Young diagrams $\lambda$ such that $\lambda \approx k r$.
+This approximate correspondence becomes exact in the limit of large symmetric groups $S_k$ (specifically as $k \to \infty$).
+
+The second half of the paper \cite{christandl2018recoupling} considers how to reduce the partial Horn problem (concerning the spectra of Hermitian matrices $H_A$, $H_B$, $H_C$, $H_A + H_B$, $H_B + H_C$ and $H_A + H_B + H_C$) to a special case of the spectral marginal problem stated above.
+Their demonstration of this reduction consists of two complementary results:
+their first result shows how to embed the triple of Hermitian matrices $H_A$, $H_B$, and $H_C$ into a tripartite quantum state in a manner which \textit{preserves} the spectral information of the Hermitian matrices and their partial sums,
+while their second result demonstrates how to recover certain combinatorial data for the representation theory of the unitary group $U(k)$ as a special case of the analogous combinatorial data for the representation theory of the symmetric group $S_k$.
+
+\subsection{The representation-theoretic connection}
+
+The second result follows from a theorem due to \cite{nishiyama2000restriction}, which describes the restriction of the irrep of $U(k)$ labelled by $\lambda \vdash k$ to the symmetric subgroup $S_k \subseteq U(k)$, namely \cite[Theorem 2.3]{nishiyama2000restriction}.
+\begin{thm}
+    Let $k \in \mathbb N$ and let $\lambda \vdash k$.
+    Let $\mathcal U_{\lambda}^{(k)}$ denote the irrep of $U(k)$ and $V_{\lambda}$ the irrep of $S_k$.
+    Given a partition $\mu$ with $\ell(\mu) \leq k$, let $\Upsilon_{\mu}$ denote the Young subgroup $\Upsilon_{\mu} = S_{\mu_1} \times \cdots \times S_{\mu_k} \subseteq S_k$ and let $\partitiondegen{\mu}$ denote the (not necessarily sorted) partition of $\ell(\mu)$ corresponding to the multiplicies of $\mu$.
+    Alternatively, $\partitiondegen{\mu}$ can be characterised in terms of the normaliser of $\Upsilon_\mu$ inside $S_k$ via the formula
+    \begin{equation}
+        N_{S_k}(\Upsilon_\mu) = \Upsilon_{\partitiondegen{\mu}} \ltimes \Upsilon_{\mu}
+    \end{equation}
+    Then the restriction of $\mathcal U_{\lambda}^{(k)}$ to $S_k$ decomposes as follows:
+    \begin{equation}
+        \label{eq:nishiyama-decomp}
+        \Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)} \simeq \bigoplus_{\mu \vdash_k \abs{\lambda}} \Ind_{S_{k-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_k}(1 \otimes \mathcal V_\lambda^{\Upsilon_{\mu}})
+    \end{equation}
+    where $1$ is the trivial representation of $S_{k-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
+\end{thm}
+
+While the summands appearing on the right-hand side of \cref{eq:nishiyama-decomp} are quite complicated in general, it was shown in \cite{christandl2018recoupling} that the irreducible representations of $S_k$, labelled by $\nu \vdash k$, which appear in the decomposition of $\Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)}$ and constrained in a particular manner.
+Specifically, it can be shown that the size of first row $\nu_1$ of $\nu$ can be lowered bounded by $k - \abs{\lambda}$ when $k$ is sufficiently large.
+Here is \cite[Lemma 13]{christandl2018recoupling}:
+\begin{thm}
+    Consider a sorted partition $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_\ell(\lambda))$ of size $\abs{\lambda}$.
+    If $k \geq \lambda_1 + \abs{\lambda}$, then it is possible to view $\lambda$ as a Young sub-diagram of the Young diagram $\lambda^{+k}$ defined by
+    \begin{equation}
+        \lambda^{+k} \coloneqq (k - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})
+    \end{equation}
+    with length $\ell(\lambda^{+k}) = \ell(\lambda) + 1$.
+    In this case, $k \geq \lambda_1 + \abs{\lambda}$ and $\lambda^{+k}$ is well-defined, and \cref{eq:nishiyama-decomp} implies
+    \begin{equation}
+        \Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)} \simeq V_{\lambda^{+k}} \oplus \bigoplus_{\substack{\mu \vdash k \\ \mu_1 > k - \abs{\lambda}}} V_{\mu} \otimes \Hom(V_\mu, \Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)}).
+    \end{equation}
+    In other words the multiplicity of $V_{\lambda^{+k}}$ appearing in $\Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)}$ is one and all other irreps of $S_k$ have first rows \textit{larger} than $\lambda_1^{+k} = k - \abs{\lambda}$.
+
+    On the other hand, if $k < \lambda_1 + \abs{\lambda}$ is too small, then
+    \begin{equation}
+        \Hom(V_\mu, \Res^{U(k)}_{S_k} \mathcal U_{\lambda}^{(k)}) > 0 \implies \mu_1 > k - \abs{\lambda}.
+    \end{equation}
+\end{thm}
+
+From this result, one can consider $k$ sufficiently large to obtain a relationship between the Littlewood-Richardson coefficients,
+\begin{equation}
+    c_{\gamma}^{\alpha, \beta} = \dim \Hom (\mathcal U_{\gamma}^{(k)}, \mathcal U_{\alpha}^{(k)} \otimes \mathcal U_{\beta}^{(k)})
+\end{equation}
+(which are independent of $k$ for $k \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$) and the Kroncecker coefficients
+\begin{equation}
+    g_{\lambda}^{\mu, \nu} = \dim \Hom (\mathcal V_{\lambda}, \mathcal V_{\mu} \otimes \mathcal V_{\nu})
+\end{equation}
+(which are implicitly dependent on $k$ because $k = \abs{\mu} = \abs{\nu} = \abs{\lambda}$).
+
+Specifically, it can be shown that the Littlewood-Richardson coefficients can be obtained from the Kronecker coeffients by appropriately augmenting the Young diagrams involved:
+\begin{cor}
+    Let $\alpha, \beta, \gamma$ be Young diagrams and let $k$ be sufficiently large such that $\alpha^{+k}, \beta^{+k}$ and $\gamma^{+k}$ are all well-defined.
+    Then $c_{\gamma}^{\alpha, \beta} = g_{\gamma^{+k}}^{\alpha^{+k}, \beta^{+k}}$.
+\end{cor}
+
+\begin{rem}
+    Note that this result indirectly implies a stability result for the Kronecker coefficents, namely that the value of $g_{\lambda + (k)}^{\mu + (k), \nu + (k)}$ is eventually independent of $k$ and reachs the value $c_{\lambda_{-1}}^{\mu_{-1}, \nu_{-1}}$ where $\lambda_{-1}$ is obtained from $\lambda$ by removal of its first row.
+\end{rem}
+
+\subsection{The quantum-information connection}
+
+The purpose of this section is to describe the spectrum-preserving embedding of a triple of Hermitian operators into the space of tripartite density matrices used in \cite{christandl2018recoupling} to reduce the partial-sum Horn problem to the quantum marginal problem.
+
+\subsubsection{Bipartite case}
+
+Before describing this embedding, it is worth considering an analogue of this embedding in the bivariate case; in particular, given a pair of $d\times d$ Hermitian operators $\sigma_X$ and $\sigma_Y$ (on $\mathbb C^{d} \simeq \mathrm{span}\{\ket 1, \ldots, \ket d\}$) (which I will assume are density operators), is there a way to construct a pure tripartite quantum state $\ket \psi_{XYZ}$ which has marginals $\rho_X, \rho_Y$ and $\rho_Z$ satisfying some relationship to $\sigma_X$ and $\sigma_Y$?
+
+Let $\sigma_X$ and $\sigma_Y$ have purifications $\ket{\phi}_{XZ}$ and $\ket{\phi}_{YZ}$ on a shared purifying space $Z$.
+Furthermore, let $p \in (0,1)$ be given.
+Then define a control register $C$ which is a two dimensional $\{\ket 0_C, \ket 1_C\}$ and define the pure state
+\begin{equation}
+    \ket \psi_{CXYZ} 
+    = \sqrt{p}\ket{0}_{C} \ket{0}_Y \ket{\phi}_{XZ} + \sqrt{1-p}\ket{1}_{C}\ket{0}_{X} \ket{\phi}_{YZ}
+\end{equation}
+The reduced state on $XYZ$ is simply
+\begin{equation}
+    \rho_{XYZ}
+    = p \ket{0}\bra{0}_Y \ket{\phi}\bra{\phi}_{XZ} + (1-p)\ket{0}\bra{0}_{X} \ket{\phi}\bra{\phi}_{YZ}
+\end{equation}
+In this way, one can interpret this state as a description of a controlled preparation wherein a Bernoulli trial (with probability $p$) is perfored to prepare either $\ket{\phi}_{XZ}$ or $\ket{\phi}_{YZ}$.
+While the outcome of the trial can be determined directly by a measurement of system $C$, it can also be determined by measuring either subsystem $X$ or $Y$; if the outcome on system $X$ is zero $\ket{0}_X$, then it is known that $C$ obtained outcome $\ket{1}_C$, if the outcome on system $X$ is non-zero, then it is known that $C$ obtained the complementary outcome $\ket{0}_{C}$.
+As this information is accessible from subsystem $X$, it is perhaps not surprising that the reduced state on subsystem $XZ$ and $Y$ has the form
+\begin{align}
+    \rho_{XZ} &= p \ket{\phi}\bra{\phi}_{XZ} + (1-p)\ket{0}\bra{0}_{X} \otimes (\sigma_{Y})_Z, \\
+    \rho_{X} &= p \sigma_X + (1-p)\ket{0}\bra{0}_{X}.
+\end{align}
+In particular, the information encoded in $\sigma_Y$ is not accessible in subsystem $X$.
+The somewhat interesting case here is the reduced state on $\sigma_Z$:
+\begin{align}
+    \rho_{Z} &= p (\sigma_{X})_Z + (1-p)(\sigma_{Y})_Z.
+\end{align}
+In otherwords, performing local measurements of system $Z$ alone is indistinguishable from performing measurements on the convex combination of $\rho_{X}$ and $\rho_{Y}$.
+Where this becomes interesting is when one considers the moment map of the ray defined by $\ket{\psi}_{CXYZ}$ with respect to the representation of $K = U(1) \times \SU(d) \times \SU(d) \times \SU(d)$ on $\mathbb C^{2} \otimes \mathbb C^{1+d} \otimes \mathbb C^{1+d} \otimes \mathbb C^{d}$ by the formula,
+\begin{equation}
+    (e^{i \theta}, U_1, U_2, U_3) \mapsto \begin{pmatrix} e^{i\theta} & 0 \\ 0 & e^{-i\theta} \end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & U_1 \end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & U_2 \end{pmatrix} \otimes U_3
+\end{equation}
+It is not too difficult to show that the moment map can be identified in a suitable sense with the data
+\begin{equation}
+    \mu(\psi_{CXYZ}) \simeq (p, p\sigma_X, (1-p)\sigma_Y, p\sigma_X + (1-p)\sigma_Y).
+\end{equation}
+Note that another equivalent option is to consider a representation without the control register $C$ of the form
+\begin{equation}
+    (e^{i \theta}, U_1, U_2, U_3) \mapsto \begin{pmatrix} e^{-i\theta} & 0 \\ 0 & U_1 \end{pmatrix} \otimes \begin{pmatrix} e^{i\theta} & 0 \\ 0 & U_2 \end{pmatrix} \otimes U_3.
+\end{equation}
+Furthermore, the $K$-orbit of $\psi_{CXYZ}$ under the moment map $\mu$ takes the form
+\begin{align}
+    \begin{split}
+        \mu(K\cdot \psi_{CXYZ}) \simeq \{&(p, pU_1\sigma_XU_1^{-1}, (1-p)U_2\sigma_YU_2^{-1},\\& pU_3\sigma_XU_3^{-1} + (1-p)U_3\sigma_YU_3^{-1}) \mid (U_1,U_2,U_3) \in \mathrm{SU}(d)^{\times 3} \}.
+    \end{split}
+\end{align}
+The unique intersection of this orbit under $\mu$ with the dominant Weyl chamber for $K$ yields the spectral data $(p, r_{X}, r_{Y}, r_{XY})$ where $r_{XY}$ is the spectra of $p \sigma_X + (1-p) \sigma_Y$.
+
+The existence or non-existence of a pair $\sigma_X$ and $\sigma_Y$ satisfying this spectral constraint is therefore, by spectral estimation theory, encoded in the asymptotics of the appropriate representation theoretic data (in this case, the data is the Littlewood-Richardson coefficient $c_{\alpha,\beta}^{\gamma}$ where $\abs{\alpha} \approx p \abs{\gamma}$, $\bar \alpha \approx r_X$, $\bar \beta \approx r_Y$, and $\bar \gamma \approx r_{XY}$ \cite{christandl2008quantum}.
+
+\subsubsection{Tripartite case}
+
+Given any collection of three $d\times d$ Hermitian matrices $H_A$, $H_B$, and $H_C$, one can assume without loss of generality that $H_{A}, H_{B}, H_{C} \geq 0$ are all positive semidefinite an normalized such that the eigenvalues of $A+B+C$ are small in the sense that
+\begin{equation}
+    \Tr(H_A + H_B + H_C) + \norm{H_A + H_B + H_C}_{\infty} \leq 1.
+\end{equation}
+If $H_A'$, $H_B'$ and $H_C'$ did not satisfy this condition, then one can define
+\begin{equation}
+    H_A = \mu \left(H_A' + \nu I\right), \qquad
+    H_B = \mu \left(H_B' + \nu I\right), \qquad
+    H_C = \mu \left(H_C' + \nu I\right).
+\end{equation}
+for $\mu > 0$ and $\nu \geq 0$ such that $H_A, H_B$ and $H_C$ satisfy the desired conditions.
+Specifically, let $\nu \geq \abs{\min(0, \lambda_d(H_A), \lambda_d(H_B), \lambda_d(H_C))}$ (the magnitude of the largest negative eigenvalue of all three matrices), and let $\mu > 0$ is choosen sufficiently small so that the following holds
+\begin{equation}
+    \Tr(H_A' + H_B' + H_C') + \norm{H_A' + H_B' + H_C'}_{\infty} + 3 (d+1) \nu \leq \frac{1}{\mu}.
+\end{equation}
+For each positive semidefinite Hermitian matrix, $H_X$, let $\ket{\phi_X}$ be the vector in $\mathbb C^d \times \mathbb C^d$ defined by
+\begin{equation}
+    \ket{\phi}_{XZ} = \sum_{i=1}^{d} H_X^{\frac{1}{2}} \ket{i}_X \otimes \ket{i}_Z.
+\end{equation}
+Then the (non-normalized) reduced state on the first subsystem satisfies
+\begin{equation}
+    \rho_X \coloneqq \Tr_Z(\ket{\phi}_{XZ}\bra{\phi}_{XZ}) = H_X.
+\end{equation}
+Therefore, one can define a quadripartite pure state $\ket{\psi}_{ABCZ}$ on $(\mathbb C^{d+1})^{\otimes 4}$ by
+\begin{align}
+    \ket{\psi}_{ABCZ} 
+    &=\kappa_{ABC}^{\frac{1}{2}} \ket{0000}_{ABCZ} + \ket{\phi}_{AZ} \ket{00}_{BC} + \ket{\phi}_{BZ} \ket{00}_{AC}  + \ket{\phi}_{CZ} \ket{00}_{AB},\\
+    &=\kappa_{ABC}^{\frac{1}{2}} \ket{0000}_{ABCZ} + \sum_{i=1}^{d} \ket{\omega_i}_{ABC}\ket{i}_{Z},
+\end{align}
+where $\kappa_{ABC} = 1 - \Tr(H_A + H_B + H_C)$ and
+\begin{equation}
+    \ket{\omega_i}_{ABC} \coloneqq H_A^{\frac{1}{2}}\ket{i}_{A}\ket{00}_{BC} + H_B^{\frac{1}{2}}\ket{i}_{B}\ket{00}_{AC} + H_C^{\frac{1}{2}}\ket{i}_{C}\ket{00}_{AB}.
+\end{equation}
+The coefficients of $\ket{\omega_i}_{ABC}$ in the computational basis $\ket{j_1 j_2 j_3}_{ABC}$ are therefore
+\begin{equation}
+    \braket{j_1 j_2 j_3 | \omega_i}_{ABC} = 
+    \delta_{j_1,0}\delta_{j_2,0} \braket{j_3|H_C^{\frac{1}{2}}|i} +
+    \delta_{j_1,0}\delta_{j_3,0} \braket{j_2|H_B^{\frac{1}{2}}|i} +
+    \delta_{j_2,0}\delta_{j_3,0} \braket{j_1|H_A^{\frac{1}{2}}|i}
+\end{equation}
+which implies
+\begin{equation}
+    \sum_{j_1,j_2,j_3=0}^{d} \braket{j_1 j_2 j_3 | \omega_{i_1}} \braket{\omega_{i_2} | j_1 j_2 j_3} = \braket{i_2|H_A|i_1} +\braket{i_2|H_B|i_1} + \braket{i_2|H_C|i_1}
+\end{equation}
+The marginals of $\ket{\psi}_{ABCZ}$ encode faithfully the spectra of $H_A$, $H_B$, $H_C$ and their partial sums in the following manner:
+\begin{align}
+    \rho_{Z} 
+    &= \kappa_{ABC} \ket{0}\bra{0}_{Z} + \sum_{i_1,i_2=1}^{d}\bra{i_2}H_A + H_B + H_C\ket{i_1} \ket{i_1}\bra{i_2}_{Z} \\
+    &= \kappa_{ABC} \ket{0}\bra{0}_{Z} + \overline{H_A + H_B + H_C}.
+\end{align}
+Similarly, letting $\ket{\eta} \coloneqq \ket{\phi}_{CZ} + \kappa_{ABC}^{\frac{1}{2}} \ket{00}_{CZ}$, one obtains 
+\begin{align}
+    \rho_{CZ} = \ket{\eta}\bra{\eta}_{CZ} + \ket{0}\bra{0}_{C}\otimes\overline{H_A + H_B}
+\end{align}
+
+\subsubsection{On the entropics sub-ensembles}
+
+\textcolor{blue}{TC: While at dinner on May 29th, 2024, Matthias suggested the possibility for an additive, Horn-like notion of an entropy cone which would serve as an analogue to the ordinary quantum entropy cone in the sense of \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}. The purpose of this section is to articulate the proposal more carefully.}
+
+A \textit{ensemble of states} $\s E$ is simply a finite collection of \textit{weight}-\textit{state} pairs:
+\begin{equation}
+    \s E = \{ (p_1, \rho_1), \ldots, (p_k, \rho_k) \},
+\end{equation}
+where the weights, $p_i$ for $i \in [k]$, are \textit{strictly positive} real numbers summing to one, while the states, $\rho_i$ for $i \in [k]$, are $d\times d$ density matrices (Hermitian matrices, positive semidefinite, trace one).
+
+Given an ensemble $\s E$, there are two derived states of interest, $\sigma(\s E)$ and $\tau(\s E)$, defined as follows;
+$\sigma(\s E)$ is the bipartite \textit{quantum-classical (QC)} state $\sigma(\s E) \in \s S(\mathbb C^{k}\otimes \mathbb C^{d})$ defined by
+\begin{equation}
+    \sigma(\s E) \coloneqq p_1 \rho_1 \otimes \ket{1}\!\bra{1} + \cdots + p_k \rho_k \otimes \ket{k}\!\bra{k}
+\end{equation}
+whereas $\tau(\s E) \in \s S(\mathbb C^{d})$ is 
+\begin{equation}
+    \tau(\s E) \coloneqq p_1 \rho_1 + \cdots + p_k \rho_k.
+\end{equation}
+Note that $\tau(\s E)$ is simply the partial trace of $\sigma(\s E)$ over the subsystem encoding the index $j$.
+Moreover, we remark that given a QC state of the above form, it is possible to extract the corresponding ensemble $\s E$.
+
+Now given a non-empty subset $S \subseteq [k]$, the subensemble associated to $S$, called the $S$-ensemble, is
+\begin{equation}
+    \s E_{S} = \{ (q^{S}_j, \rho_j) \mid j \in S \},
+\end{equation}
+where the $j$th weight of the $S$-ensemble, denoted by $q^{S}_j$, is defined by renormalization:
+\begin{equation}
+    q^{S}_j \coloneqq \frac{p_j}{\sum_{i \in S} p_i}.
+\end{equation}
+The state $\sigma(\s E_S)$ associated to the $S$-ensemble can be interpretted as the post-measurement state obtained from performing the binary $S$ vs. not $S$ measurement on the classical register of $\sigma(\s E_S)$.
+
+Ultimately, we are interested in the \textit{entropics} of ensembles and subensembles and the relations between them.
+Specifically, if $\s E$ is an ensemble, then we are interested in the von Neumann entropies of the states $\tau(\s E_S)$ for various subsets $S \subseteq [k]$.
+For example, we say that a given collection $(p_1, p_2, h_1, h_2, h_{12})$ of non-negative real numbers is \textit{admissible} (realizable/compatible/consistent/etc.) if there exists density matrices $\rho_1$ and $\rho_2$ such that the ensemble $\s E = \{(p_1, \rho_1),(p_2,\rho_2)\}$ simultaneously satisfies
+\begin{align}
+    h_{12} &= H(\tau(\s E_{12})) = H(p_1 \rho_1 + p_2 \rho_2), \\
+    h_{1} &= H(\tau(\s E_{1})) = H(\rho_1), \\
+    h_{2} &= H(\tau(\s E_{2})) = H(\rho_2).
+\end{align}
+For example, the convexity of the logarithm implies a concavity of von Neumann entropy:
+\begin{equation}
+    \chi(\s E_{12}) \coloneqq H(p_1 \rho_1 + p_2 \rho_2) - p_1 H(\rho_1) - p_2 H(\rho_2) \geq 0
+\end{equation}
+where $\chi(\s E)$ is called the \textit{Holevo information} of the ensemble.
+This implies that the collection of numbers $(p_1, p_2, h_1, h_2, h_{12})$ are admissible \textit{only if} they satisfy the linear constraint
+\begin{equation}
+    h_{12} - p_1 h_1 - p_2 h_2 \geq 0.
+\end{equation}
+Similarly, $(p_1, p_2, p_3, h_1, h_2, h_3, h_{12}, h_{23}, h_{13})$, are said to be admissible if there exists $(\rho_1, \rho_2, \rho_3)$ forming the ensemble
+\begin{equation}
+    \s E_{123} \coloneqq \{ (p_1, \rho_1), (p_2, \rho_2), (p_3, \rho_3) \},
+\end{equation}
+such that
+\begin{equation}
+    \begin{alignedat}{2}
+        h_1 &= H(\tau(\s E_{1})), \qquad h_{12} &&= H(\tau(\s E_{12})), \\
+        h_2 &= H(\tau(\s E_{2})), \qquad h_{23} &&= H(\tau(\s E_{23})), \qquad h_{123} = H(\tau(\s E_{123})), \\
+        h_3 &= H(\tau(\s E_{3})), \qquad h_{13} &&= H(\tau(\s E_{13})).
+    \end{alignedat}
+\end{equation}
+Just as in the bipartite case, this allocation of entropies is admissible \textit{only if} if all instances of concavity hold:
+\textcolor{red}{TODO}
+
+\subsection{Miscellaneous Diagrammatics}
+
+\begin{equation}
+    \tikzfig{tikz/recoupling-integral-form}.
+\end{equation}
+
+\begin{equation}
+    \tikzfig{tikz/recoupling-U-schur-weyl}.
+\end{equation}
+
+\begin{equation}
+    \tikzfig{tikz/sextuple-projector-decomp}.
+\end{equation}
+
+\subsection{Integral formula for the squared recoupling operator}
+
+By the above diagrammatic reasoning, it can be shown that the \textit{square} of the $6j$ symbols can be written in terms of an integral over a quadruple $(k_1, k_2, k_3, k_4) \in \SU(2)^{\times 4}$ according to the formula
+\begin{equation}
+    S\left[ \{l_{xy}\} \right] \coloneqq
+    \begin{Bmatrix}
+        l_{12} & l_{13} & l_{14} \\
+        l_{34} & l_{24} & l_{23}
+    \end{Bmatrix}^2
+    = \int_{\SU(2)^{4}} [\diff k_x] \prod_{x < y} \chi_{l_{xy}}(k_x k_y^{-1})
+\end{equation}
+where $x,y \in [4] = \{1,2,3,4\}$ and $l_{xy}$ labels a spin $j_{xy} = l_{xy}/2$ representation $V_{l_{xy}}$ of $\SU(2)$ of dimension $l_{xy} + 1$ and $\chi_{l_{xy}}$ its character (see also \cite[Equation (1)]{freidel2003asymptotics}).
+The proof essentially follows by noting that each $k_x$ for $x \in [4]$ appears exactly three times and moreover, for each such $x$ the following integral over $k_x$, 
+\begin{equation}
+    \int_{\SU(2)} \diff k_x \bigotimes_{y \neq x} \pi_{l_{xy}}(k_x)
+\end{equation}
+is a projection operator onto the subspace of $\SU(2)$-invariant vectors $\Inv(\otimes_{y \neq x} V_{l_{xy}})$ in $\otimes_{y \neq x} V_{l_{xy}}$ which is either zero or one dimensional. 
+
+
+\clearpage
+\section{Random walks on symmetric spaces}
+
+The purpose of this section is to summarize the conceptual and technical contributions of \citeauthor{klyachko2000random}'s paper \citetitle{klyachko2000random} \cite{klyachko2000random}.
+
+\subsection{Symmetric spaces}
+
+\subsubsection{Definitions}
+
+As formulated in \cite[Sec. 2.1]{klyachko2000random}, \textit{symmetric spaces} are parametrized by so-called \textit{Cartan pairs} $(G, \sigma)$ consisting of a Lie group $G$ and an involution $\sigma : G \to G$ with compact centralizer $K = \{ g \in G \mid g \sigma = \sigma g\}$.
+Given a Cartan pair $(G, \sigma)$ the space of cosets $X \coloneqq G/K$ can be equipped with a $G$-invariant metric (unique up to proportionality) which makes $X = G/K$ a homogeneous space (upon which $G$ acts transitively by left multiplication).
+The space $X = G/K$ is a \textit{symmetric space} in the sense that the geodesic symmetry, $\sigma$, with center at $x_0 = g_0 K \in X = G/K$ is an isometry, sending points $x$ lying on geodesics through $x_0$ to their symmetric point $x'$ lying on the same geodesic at the same distance from $x_0$.
+Specifically, given $x = g K \in X = G/K$, the isometry with center at $x_0 = g_0 K$ is
+\begin{equation}
+    g K \mapsto g_0 g_0^{-\sigma} g^{\sigma} K.
+\end{equation}
+
+Following \cite[Sec. 2.2.2]{klyachko2000random}, a compact Lie group $K$ can be used to define the following three symmetric spaces:
+\begin{itemize}
+    \item (Positive curvature) The compact group $K$ itself can be considered as a symmetric space with isometry group $K \times K$, acting by left and right multiplication sending $x \in K$ to $(k_1, k_2) \cdot x \mapsto k_1 x k_2^{-1} \in K$. The Cartan involution here, $\sigma : K \times K \to K \times K$ swaps the factors. The isotropy group is $K$ itself embedded diagonally in $K \times K$.
+    \item (Zero curvature) The Lie algebra $\mathfrak k = \mathrm{Lie}(K)$ of $K$ is a symmetric space with noncompact isometry group generated by translations and the adjoint action of $K$.
+    \item (Negative curvature) The complexification of $K$, denoted $G = K_{\mathbb C}$, is a complex reductive group with Lie algebra $\mathfrak g = \mathfrak k \otimes \mathbb C$. The coset space $H = G/K$ is a symmetric space, called the \textit{dual symmetric space}, with complex conjugation in $G$ as a Cartan involution.
+\end{itemize}
+
+Notice that in all three cases, the compact centralizer of the involution $\sigma$ is (isomorphic to) the compact group $K$ itself; what distinguishes the three cases is the enveloping group $G$ and the involution itself: positive curvature $G = K \times K$, negative curvature $G = K_{\mathbb C}$ and zero curvature $G = \mathfrak k$.
+
+\subsubsection{Examples}
+
+The example of a compact group which will receive the most attention here is the group $K = \SU(d)$ of $d\times d$ complex unitary matrices with unit determinant.
+For this special case, the three symmetric spaces are as follows.
+
+In the \textit{zero curvature} case, the associated symmetric space is the real Lie algebra $X = \mathfrak{su}(d)$ of skew-Hermitian traceless matrices.
+The presentation of $\mathrm{su}(d)$ as a quotient takes the isometry group to be equal to the group generated by both the translations in $\mathfrak{su}(d)$ as a vector space together with the adjoint action of $\SU(d)$ on $\mathfrak{su}(d)$.
+The geodesic involution $\sigma : \mathfrak{su}(d) \to \mathfrak{su}(d)$ with center taken at the zero element in $\mathfrak{su}(d)$ sends every skew-Hermitian matrix $A \in \mathfrak{su}(d)$ to $\sigma(A) = -A$.
+The compact isometry subgroup (subgroup of translations and adjoint actions on $\mathfrak{su}(d)$) which fixes the center of involution or equivalently is the centralizer of the geodesic involution by be identified with $\SU(d)$ itself through the aforementioned coadjoint action on $\mathfrak{su}(d)$.
+In the subcase where $d=2$, as a real vector space $\mathfrak{su}(2)$ is isomorphic to $\mathbb R^3$ and as a Riemannian manifold is isomorphic to Euclidean space $\mathbb E^{3}$.
+
+In the \textit{positive curvature} case, the associated symmetric space is $\SU(d)$ itself.
+The group $\SU(d) \times \SU(d)$ acts on $\SU(d)$ by left and right actions $(g_1, g_2) \cdot x = g_1xg_2^{-1}$ and the involution on $\SU(d) \times \SU(d)$ simply acts by swapping $\sigma(g_1, g_2) = (g_2, g_1)$.
+The compact centralizer of $\sigma$ in this case is the diagonal subgroup $\SU(d) \simeq \{(g,g)\mid g \in \SU(d)\} \subset \SU(d) \times \SU(d)$; one can see that this subgroup under the left/right action fixes the element $x_0 = e \in \SU(d)$.
+
+In the subcase where $d=2$, the manifold $\SU(2)$ may be identified with the $3$-sphere $\mathbb S^{3}$ in the sense that $\begin{pmatrix} a & b \\ -\bar b & \bar a \end{pmatrix} \in \SU(2)$ for $a,b\in \mathbb C$ satisfies $|a|^2 + |b|^2 = 1$.
+
+In the \textit{negative curvature} case, the symmetric space (called the \textit{dual} symmetric space) is a quotient of the complexification of $\SU(d)$.
+The complexification of $\SU(d)$ is the group $\SL(d, \mathbb C)$ of $d\times d$ complex matrices with unitary determinant.
+The involution $\sigma : \SL(d, \mathbb C) \to \SL(d, \mathbb C)$ for this example is the complex conjugation of $\SL(d, \mathbb C)$ (as a complexification).
+Specifically, the local involution here leaves skew-Hermitian matrices $A \in \mathfrak{su}(d)$ unchanged but sends Hermitian matrices $H \in i \mathfrak {su}(d)$ to $- H \in i \mathfrak {su}(d)$, and thus the global involution leaves unitary matrices $U = \exp(A)$ unchanged but sends positive definite matrices $P = \exp(H)$ to their inverses $P^{-1} = \exp(-H)$.
+The centralizer of this involution is therefore the subgroup $\SU(d) \subset \SL(d, \mathbb C)$ of unitary matrices and thus the symmetric space is the quotient $\SL(d, \mathbb C)/\SU(d)$.
+By the (left-) polar-decomposition (also called the Cartan decomposition) every $M \in \SL(d, \mathbb C)$ can be written uniquely as $M = P \cdot U$ for some positive definite matrix $P$ and unitary matrix $U$.
+Through this decomposition, the symmetric space $\SU(d) \subset \SL(d, \mathbb C)$ may be identified with the space of positive definite matrices.
+Equivalently, every $M \in \SL(d, \mathbb C)$ can be used to calculate this $P$ by the formula $M \sigma(M)^{-1} = (PU)(P^{-1}U)^{-1} = P^2$ and thus $P = \sqrt{M\sigma(M)^{-1}}$ where $M \mapsto \sigma(M)^{-1}$ is equivalent to complex conjugate transpose of matrices.
+The positive numbers forming the eigenvalues of $P$ are called the \textit{singular values} of $M$.
+It is important to note that there exists another way to think about this symmetric space.
+Since every positive-definite matrix $P$ admits of a unique \textit{Cholesky decomposition} $P = T^{*}T$ where $T$ is an upper triangular matrix with real positive diagonal entries, one can also identify this dual symmetric space with the Borel subgroup $B(d) \subseteq \SL(d, \mathbb C)$ of such upper triangular matrices.
+This further decomposition is of course consistent with the Iwasawa decomposition $\SL(d, \mathbb C) \simeq \SU(d) \times A(d) \times N(d)$ where $B(d) \simeq A(d) \times N(d)$.
+
+In the subcase where $d=2$, the symmetric space of positive Hermitian $2\times 2$ matrices is the hyperbolic three-space or Lobachevskii space $\mathbb L^{3}$.
+In particular, since $\det(P) = 1$ the most general form has $P$ diagonalize to $\mathrm{diag}(e^{r/2}, e^{-r/2})$ for some $r \geq 0$.
+Given $P_1,P_2 \in \SL(2,\mathbb C)/\SU(2)$, the metric is simply $d(P_1,P_2)=r$ where $r$ is obtained by calulating the $P$ such that $P U = P_2^{-1}P_1$ for some $U \in \SU(2)$ or equivalently just calculating
+\begin{equation}
+    P = \sqrt{(P_2^{-1}P_1)(\sigma(P_2^{-1}P_1)^{-1})} = \sqrt{P_2^{-1}P_1^2P_2^{-1}}
+\end{equation}
+and diagonalizing to find $r$.
+To get a sense, consider the extremely special case wherein $P_i = \mathrm{diag}(e^{r_i/2},e^{-r_i/2})$ are both diagonal in the same basis.
+Then the distance between $P_1$ and $P_2$ has a particularly simply form because
+\begin{equation}
+    \sqrt{P_2^{-1}P_1^2P_2^{-1}} = \mathrm{diag}(e^{(r_1-r_2)/2}, e^{(r_2-r_1)/2})
+\end{equation}
+and therefore $d(P_1, P_2) = |r_1 - r_2|$.
+
+\subsection{Random walks}
+
+Given a symmetric space $X = G/K$, the Haar measure $\mu$ on $K$ induces a well-defined uniform measure, $\mu_i$, over each double coset $X_i \in K \backslash G / K$.
+A \textit{random walk} in the symmetric space $X = G/K$ depends upon on a fixed sequence of (double) cosets $(X_1, X_2, X_3, \ldots)$ where each $X_i$ is a left-coset of $X = G/K$ or equivalently a double coset of $G$ given by $X_i \in K \backslash G / K$.
+Treating this sequence as input, one can sample a sequence $(g_i \in X_i)$ where each $g_i \in X_i$ is chosen uniformly and independently from all other $g_j$ by sampling a Haar random $k_i \in K$ and letting $g_i = k_i r_i$ where $r_i \in X = G/K$ is any representaive element of the coset $X_i = Kr_i \in K \backslash G/K$.
+While the ``step sizes'' of the random walk on $X = G/K$ are the given cosets $X_i \in K \backslash X$, the ``locations'' of the random walk after a fixed number of ``steps'' are interpreted as follows: 
+\begin{itemize}
+    \item The starting location is the element $x_0 \coloneqq e K \in G/K = X$.
+    \item The first step is the element $g_1 \in X_1 = K r_1 \in K\backslash X$.
+    \item The first location is the element $x_1 \coloneqq g_1 K = (k_1 r_1) K \in G/K = X$.
+    \item The second step is the element $g_2 \in X_2 = K r_2 \in K\backslash X$.
+    \item The second location is the element $x_2 \coloneqq g_1 g_2 K = (k_1 r_1)(k_2 r_2) K \in G/K = X$.
+    \item $\cdots$
+    \item The $n$th step is the element $g_n \in X_n = K r_n \in K\backslash X$.
+    \item The $n$th location is the element $x_n \coloneqq g_1 \cdots g_n K = (k_1 r_1)\cdots (k_n r_n) K \in G/K = X$.
+\end{itemize}
+
+The result quantity of interest is the induced probability measure/density for the final point $x \coloneqq x_n$ after $n$ steps. 
+The probability density, $P_n(x) = P(x \mid X_1, \ldots, X_n)$, is density for the pushforward of the product Haar measure $\mu_K^{\otimes n}$ on $K^{\times n}$ through the map $\psi_n : K^{\times n} \to G/K$ defined by
+\begin{equation}
+    \label{eq:n_step_process}
+    \psi_n(k_1, \ldots, k_n) \coloneqq (k_1 r_1)\cdots (k_n r_n)K
+\end{equation}
+relative to the Haar measure $\diff x \cong \diff \mu_X(x)$ on $X = G/K$:
+
+\begin{equation}
+    (\psi_n)_{*}(\mu^{\otimes n})(\diff x) = \mu^{\otimes n}(\psi_n^{-1}(\diff x)) = P_n(x)\diff x.
+\end{equation}
+
+\subsection{Spherical Functions}
+
+Below is a preliminary summary of the utility of spherical functions in this context.
+The textbooks by \citeauthor{helgason1994geometric} are a fantastic references \cite{helgason1984groups,helgason1994geometric}. 
+
+Given some continuous measurable function $f : G/K \to \mathbb C$, the expected value of $f(x)$ when $x \in X = G/K$ is distributed according to $P_n(x) \diff x$ is therefore expressible as an integral over $K^{\times n}$.
+\begin{equation}
+    \mathbb E [ f ] = \int_{x \in X} f(x) P_n(x)\diff x = \int_{K^{\times n}} \diff k_1 \cdots \diff k_n f(k_1r_1\cdots k_nr_nK)
+\end{equation}
+The technique used by \citeauthor{klyachko2000random} to derive an expression for $P_n(x)$ is to consider a special family of functions, denoted by $\varphi_{\lambda} \in L_{2}(G/K)$ and indexed by $\lambda \in \Lambda$ for some set $\Lambda$, called \textit{spherical functions}.
+A non-zero function $\varphi \in L_{2}(G)$ is spherical if it is normalized $\varphi(e) = 1$ and satisfies the following decomposition for all $x, y \in G$:
+\begin{equation}
+    \varphi(x)\varphi(y) = \int_{k \in K} \diff k \varphi(x k y).
+\end{equation}
+This property implies that $\varphi$ is also bi-invariant in that $\varphi(k_1 x k_2) = \varphi(x)$ for all $k_1,k_2\in K$ because
+\begin{equation}
+    \int_{k \in K} \diff k \varphi(k x) = \varphi(e)\varphi(x) = \varphi(x) = \varphi(x)\varphi(e) = \int_{k \in K} \diff k \varphi(x k)
+\end{equation}
+As a consequence, we can identify spherical functions $\varphi \in L_{2}(G)$ on $G$ with their pushforward through the coset projections $G \mapsto G/K \mapsto K\backslash G/ K$.
+
+An elementary example of a spherical function occurs when $\pi_{\lambda}$ is an irreducible unitary representation of $G$ on a Hilbert space $\mathcal H_{\lambda}$ (with inner product $\braket{\cdot, \cdot}$) such that the subspace of vector $v \in \mathcal H_{\lambda}$ which are fixed by $K$, i.e.,
+\begin{equation}
+    \mathcal H_{\lambda}^{K} \coloneqq \{v \in \mathcal H \mid \forall k \in K : \pi_{\lambda}(k) v = v \},
+\end{equation}
+is exactly one dimensional, i.e., $\dim(\mathcal H_{\lambda}^{K}) = 1$.
+In this setting, the map $\varphi_{\lambda} : G \to \mathbb C$, defined for all $g \in G$ by
+\begin{equation}
+    \varphi_{\lambda}(g) = \frac{\braket{v, \pi_{\lambda}(g) v}}{\braket{v,v}}
+\end{equation}
+is an elementary spherical function.
+
+
+Whenever $f=\varphi$, as considered above, is a spherical function (or rather the pullback of $f$ through $G \mapsto G/K$ is the spherical function $\varphi$), the expectation value $\mathbb E[\varphi]$ can be computed directly:
+\begin{align}
+    \mathbb E [ \varphi ] 
+    &= \int_{x \in X} \varphi(x) P_n(x)\diff x, \\
+    &= \int_{K^{\times n}} \diff k_1 \cdots \diff k_n \varphi(k_1r_1k_2r_2\cdots k_nr_nK), \\
+    &= \int_{K^{\times n-1}} \diff k_2 \cdots \diff k_n \varphi(e)\varphi(r_1k_2r_2\cdots k_nr_nK), \\
+    &= \int_{K^{\times n-2}} \diff k_3 \cdots \diff k_n \varphi(e)\varphi(r_1)\varphi(r_2\cdots k_nr_nK), \\
+    &= \varphi(r_1)\varphi(r_2) \cdots \varphi(r_n), \\
+    &= \varphi(X_1)\varphi(X_2) \cdots \varphi(X_n).
+\end{align}
+
+The space of bi-invariant functions on $G$, identified with $f \in L_2(K\backslash G / K$, there exists a \textit{spherical transform} sending $f \in L_2(K \backslash G / K)$ to the function $\hat f \in L_2(\Lambda)$ where $\lambda \in \Lambda$ indexes the spherical functions $\varphi_\lambda$ such that
+\begin{equation}
+    \int_{g \in G} \abs{f(g)}^{2} \diff g = \int_{\lambda \in \Lambda} \abs{\hat f (\lambda)}^{2} \diff \lambda
+\end{equation}
+where $\diff g$ is the Haar measure on $G$ and $\diff \lambda$ is known as the \textit{Plancherel measure} on $\Lambda$.
+Explicitly, the spherical transform of $f \in L_2(K \backslash G / K)$ is
+\begin{equation}
+    \hat f(\lambda) = \int_{g \in G} f(g) \varphi_{\lambda}^{*}(g) \diff g.
+\end{equation}
+The inversion formula for the spherical transform is
+\begin{equation}
+    f(g) = \int_{\lambda \in \Lambda} \hat f(\lambda) \varphi_{\lambda}(g) \diff \lambda.
+\end{equation}
+As mentioned in \cite[Remark 3.4.3]{klyachko2000random}, the spherical transform can be described as a homomorphism from convolution of bi-invariant functions $p,q \in L_2(K\backslash G / K)$,
+\begin{equation}
+    (p \ast q)(x) = \int_{g \in G} p(x g) q(g^{-1}x) \diff g,
+\end{equation}
+to pointwise multiplication of transformed functions $\hat p , \hat q \in L_2(\Lambda)$ such that $\widehat{p\ast q} = \hat p \cdot \hat q$.
+
+Furthermore, as the product of spherical functions is a bi-invariant, it is possible to perform a spherical transform of a product of spherical functions.
+Specifically, letting
+\begin{equation}
+    (\varphi_{\alpha} \cdot \varphi_{\beta})(g) \coloneqq \varphi_{\alpha}(g)\varphi_{\beta}(g),
+\end{equation}
+and letting $\Phi_{\alpha,\beta}^{\gamma}$ be the coefficient
+\begin{equation}
+    \Phi_{\alpha,\beta}^{\gamma} \coloneqq \widehat{\varphi_{\alpha} \cdot \varphi_{\beta}}(\gamma) = \int_{g \in G} \varphi_{\alpha}(g)\varphi_{\beta}(g)\varphi_{\gamma}^{*}(g) \diff g,
+\end{equation}
+the product of spherical functions can be written as a linear combination of spherical functions as
+\begin{equation}
+    (\varphi_{\alpha} \cdot \varphi_{\beta})(g) = \int_{\gamma \in \Lambda} \Phi_{\alpha,\beta}^{\gamma}\varphi_{\gamma}(g) \diff \gamma
+\end{equation}
+
+The probability density $P_n(x)$ above is bi-invariant, therefore its spherical transform gives rise to a formula for $P_n(x)$ in terms of an integration over $\lambda \in \Lambda$:
+\begin{align}
+    P_n(x) 
+    &= \int_{\lambda \in \Lambda} \hat P_n(\lambda) \varphi_{\lambda}(x) \diff \lambda \\
+    &= \int_{\lambda \in \Lambda} \left(\int_{g \in G} P_n(g) \varphi_{\lambda}^{*}(g) \diff g\right) \varphi_{\lambda}(x) \diff \lambda \\
+    &= \int_{\lambda \in \Lambda} \left(\int_{y \in X} P_n(y) \varphi_{\lambda}^{*}(y) \diff y\right) \varphi_{\lambda}(x) \diff \lambda \\
+    &= \int_{\lambda \in \Lambda} \varphi^{*}_{\lambda}(X_1)\cdots\varphi^{*}_{\lambda}(X_n) \varphi_{\lambda}(x) \diff \lambda.
+\end{align}
+At this stage, two steps remain to compute the density $P_n(x)$.
+The first is to identify the space of spherical functions, $\{\varphi_{\lambda}\}_{\lambda \in \Lambda}$, (together with the Plancherel measure on $\Lambda$).
+The second is then to perform the above integral over $\Lambda$.
+As the spherical functions and the Plancherel measures are known is great detail for a many symmetric spaces (for arbitrary complex semisimple groups, the formula is due to Harish-Chandra \cite[Theorem 5.7]{helgason1984groups}), all that remains is to perform the integral which \citeauthor{klyachko2000random} performs/sketches in \cite{klyachko2000random}.
+
+\subsection{Intermediate random walks}
+
+The purpose of this subsection is to turn our attention to a situation where one is not merely interested in the distribution of the \textit{terminal} point $x_n$ but also potentially a subsequence $x_{i_1}, \ldots, x_{i_\ell}$ of length $\ell > 1$ or additionally intervals describing intermediate random walks.
+Our primary focus for now will be a short process of $n=3$ steps: let $(k_1, k_2, k_3)$ are uniformly sampled from the Haar measure $\mu_K^{\otimes 3}$ on $K^{\times 3}$ and let $r_1, r_2, r_3 \in G$ be fixed double coset representatives. 
+Then let $\Psi : K^{\times 3} \to (G/K)^{\times 3}$ be the map defined
+\begin{equation}
+    \Psi(k_1, k_2, k_3) \coloneqq (\Psi_{12}(k_1, k_2), \Psi_{23}(k_2, k_3), \Psi_{123}(k_1, k_2, k_3))
+\end{equation}
+where the component maps $\Psi_{12} : K^{\times 2} \to G/K$, $\Psi_{23} : K^{\times 2} \to G/K$ and $\Psi_{123} : K^{\times 3} \to G/K$ are defined as follows:
+\begin{align}
+    \Psi_{12}(k_1, k_2) &\coloneqq k_1 r_1 k_2 r_2 K, \\
+    \Psi_{23}(k_2, k_3) &\coloneqq k_2 r_2 k_3 r_3 K, \\
+    \Psi_{123}(k_1, k_2, k_3) &\coloneqq k_1 r_1 k_2 r_2 k_3 r_3 K.
+\end{align}
+Note that $\Psi_{12} = \psi_2$ and $\Psi_{123} = \psi_3$ where $\psi_n$ is defined by \cref{eq:n_step_process}.
+The induced probability measure of interest is now the joint measure over $X^{3} = (G/K)^{\times 3}$ obtained from the pushforward of $\mu_K^{\otimes 3}$ through $\Psi$:
+
+\begin{equation}
+    P(x_1, x_2, x_3) \diff x_1 \diff x_2 \diff x_3 = (\Psi)_{*}(\mu^{\otimes 3})(\diff x_1 \diff x_2 \diff x_3) = \mu^{\otimes 3}(\Psi^{-1}(\diff x_1\diff x_2 \diff x_3)).
+\end{equation}
+
+Given a function $f \in L_2((G/K)^{3})$ its expected value is therefore
+\begin{equation}
+    \mathbb E[f] = \int_{K^{\times 3}} \diff k_1 \diff k_2 \diff k_3 f(k_1r_1k_2r_2K, k_2r_2k_3r_3K, k_1r_1k_2r_2k_3r_3K).
+\end{equation}
+\textcolor{red}{TODO: Figure out how to perform these types of integrals and relate them back to recoupling symbols.}
+
+In the special case where $f(x_1, x_2, x_3) = \varphi_{\mu}(x_1)\varphi_{\nu}(x_2)\varphi_{\lambda}(x_3)$ happens to be a product of spherical functions, only a moderate amount of simplication occurs
+\begin{align}
+    \mathbb E[\varphi_{\mu}\varphi_{\nu}\varphi_{\lambda}] 
+    &= \int_{K^{\times 3}} \diff k_1 \diff k_2 \diff k_3 \varphi_{\mu}(k_1r_1k_2r_2K)\varphi_{\nu}(k_2r_2k_3r_3K)\varphi_{\lambda}(k_1r_1k_2r_2k_3r_3K) \\
+    &= \int_{K^{\times 2}}\diff k_2 \diff k_3 \varphi_{\mu}(r_1k_2r_2)\varphi_{\nu}(r_2k_3r_3)\varphi_{\lambda}(r_1k_2r_2k_3r_3).
+\end{align}
+
+\subsection{Joint statistics for partial sums of traceless \texorpdfstring{$2\times 2$}{2 by 2} matrices}
+
+In this section we consider a three-step random walk in the symmetric space $\mathfrak{su}(2) \simeq \mathbb E^{3}$ starting at the origin $O = (0,0,0)$ and terminating at $C$ with intermediate steps $A,B$.
+\begin{equation}
+    \tikzfig{tikz/random-walk-tetra}
+\end{equation}
+Supposing the step sizes $(a,b,c) \in \mathbb R_{\geq 0}^{3}$ are fixed, we are interested in the induced correlations between the interval sizes $(x,y,z) \in \mathbb R_{\geq 0}^{3}$ when the angles planar angles $(\phi, \psi) \in [0,\pi]$ and dihedral angle $\eta \in [0,\pi]$ are sampled independently according to the measures $\frac{1}{2}\sin \phi \diff \phi$, $\frac{1}{2}\sin \psi \diff \psi$ and $\pi^{-1}\diff \eta$ respectively (note it is a non-trivial observation that sampling the vectors $A, B,$ and $C$ uniformly from spheres of radii $a,b,$ and $c$ induces the same correlations between $x,y,$ and $z$ as the correlations induced by the random angles $\phi, \psi$ and $\eta$).
+
+Begin by noting that $x$ and $y$ are fixed by $\phi$ and $\psi$ respectively by the law of cosines:
+\begin{align}
+    x^2 &= a^2 + b^2 - 2ab \cos \phi, \\
+    y^2 &= b^2 + c^2 - 2bc \cos \psi.
+\end{align}
+As $x$ is functionally (and thus satistically) independent of $\phi$ and $\eta$ and $y$ is independent of $\psi$ and $\eta$, one can expect $x$ and $y$ to be independent of each other and thus the support of the marginal distribution over $x$ and $y$ is a rectangle:
+\begin{equation}
+    (x,y) \in [\abs{a-b}, a+b] \times [\abs{b-c}, b+c]
+\end{equation}
+Comparatively less obvious is the relationship between $z$ and the variables $a,b,c,x,y$.
+To process, we begin by introducing two more planar angles, $\omega$ and $\zeta$, at the vertex $A$:
+\begin{equation}
+    \tikzfig{tikz/random-walk-tetra-more-angles}
+\end{equation}
+The cosine laws for the planar angles incident to $A$ are
+\begin{align}
+    \cos \phi = \frac{a^2 + b^2 - z^2}{2ab}, \qquad
+    \cos \omega = \frac{b^2 + y^2 - c^2}{2by}, \qquad
+    \cos \zeta = \frac{a^2 + y^2 - z^2}{2ay}.
+\end{align}
+To make progress, one needs to use a relationship holding between the dihedral angle $\eta$ and the other specified variables.
+For instance \cite{richardson1902trigonometry},
+\begin{equation}
+    \cos \eta = \frac{\cos\zeta - \cos\phi \cos \omega}{\sin \phi \sin \omega}.
+\end{equation}
+Combining the above identities, one obtains
+\begin{align}
+    z^2 &= a^2 + y^2 - 2 a y\cos \zeta, \\
+    \cos \zeta &= \cos \eta \sin \phi \sin \omega + \cos \phi \cos \omega, \\
+    \cos \omega &= \frac{b - c \cos \psi}{\sqrt{b^2 + c^2 - 2bc \cos \psi}}, \\
+    \sin \omega &= \frac{c \sin\psi}{\sqrt{b^2 + c^2 - 2bc \cos \psi}}.
+\end{align}
+Thus, one can determine $z$ as a function of the side lengths $a,b,c$ and the angles $\eta,\phi,\psi$:
+\begin{align}
+    z^2 
+    &= a^2 + y^2 - 2 a y\cos \zeta, \\
+    &= a^2 + y^2 - 2 a y\cos \eta \sin \phi \sin \omega - 2 a y \cos \phi \cos \omega, \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 a\cos \eta \sin \phi (c \sin \psi) - 2 a \cos \phi (b-c\cos\psi), \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ac\cos \eta \sin \phi \sin \psi + 2 a c \cos \phi \cos\psi- 2 ab \cos \phi, \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ab \cos \phi - 2 ac(\cos \eta \sin \phi \sin \psi -\cos \phi \cos\psi),
+\end{align}
+or alternatively as function of $a,b,c$ and $x,y,\eta$:
+\begin{align}
+    \begin{split}
+        z^2
+        &= x^2 + y^2 - b^2 + \frac{(a^2+b^2-x^2)(b^2+c^2-y^2)}{2b^2} + \cdots \\
+        &\qquad \cdots - \cos \eta \frac{\sqrt{4a^2b^2-(a^2+b^2-x^2)^2}\sqrt{4b^2c^2-(b^2+c^2-y^2)^2}}{2b^2}
+    \end{split}
+\end{align}
+Consequently, the admissible values of $z$ (found by varying $\cos \eta \in [-1, +1]$) depend upon $x,y$ according to $Z_{-}(x,y) \leq z \leq Z_{+}(x,y)$ where
+\begin{align}
+    \begin{split}
+        Z_{\pm}(x,y) 
+        &= \bigg(x^2 + y^2 - b^2 + \frac{(a^2+b^2-x^2)(b^2+c^2-y^2)}{2b^2} +\cdots\\&\qquad\cdots\pm \frac{\sqrt{4a^2b^2-(a^2+b^2-x^2)^2}\sqrt{4b^2c^2-(b^2+c^2-y^2)^2}}{2b^2}\bigg)^{\frac{1}{2}}
+    \end{split}
+\end{align}
+
+The change of variables from $(\phi,\psi,\eta)$ to $(x,y,z)$ (for constant $a,b,c$) is
+\begin{equation}
+    \begin{pmatrix}
+        x^2 \\ y^2 \\ z^2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a^2 + b^2 - 2ab \\ 
+        b^2 + c^2 - 2bc \\ 
+        a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ab \cos \phi - 2 ac(\cos \eta \sin \phi \sin \psi -\cos \phi \cos\psi)
+    \end{pmatrix}.
+\end{equation}
+After taking square-roots, it has a Jacobian determinant equal to
+\begin{equation}
+    \det J(\phi, \psi, \eta) = \frac{a^2b^2c^2 \sin \eta \sin^2 \phi \sin^2 \psi}{xyz}
+\end{equation}
+If $(\phi, \psi, \eta)$ is sampled according to the measure 
+\begin{equation}
+    \frac{1}{4 \pi}\sin \phi \sin \psi \diff \phi \diff \psi \diff \eta,
+\end{equation}
+then the joint probability density for $(x,y,z)$ can be shown to be equal to
+\begin{align}
+    p(x,y,z|a,b,c) 
+    &= \left(\frac{1}{4\pi}\sin \phi \sin \psi\right) \left(\det J(\phi, \psi, \eta)\right)^{-1}, \\
+    &= \frac{1}{4\pi} \frac{xyz}{a^2b^2c^2 \sin \eta \sin \phi \sin \psi}, \\
+    &= \frac{xyz}{2 \pi abc}\frac{1}{\sqrt{Q(a,b,c,x,y,z)}}
+\end{align}
+where $Q(a,b,c,x,y,z)$ is the following homogeneous degree $6$ polynomial:
+\begin{align}
+    Q(a,b,c,x,y,z) 
+    &\coloneqq
+    -a^4 c^2+a^2 b^2 c^2-a^2 b^2 x^2+a^2 b^2 z^2-a^2c^4+a^2 c^2 x^2\\&\qquad+a^2 c^2 y^2+a^2 c^2 z^2+a^2 x^2 y^2-a^2 y^2 z^2-b^4 z^2-b^2 c^2 y^2\\&\qquad+b^2 c^2 z^2+b^2 x^2 y^2 +b^2 x^2 z^2+b^2 y^2 z^2-b^2 z^4\\&\qquad+c^2 x^2 y^2-c^2 x^2 z^2-x^4 y^2-x^2 y^4+x^2 y^2 z^2
+\end{align}
+Further analysis \cite{richardson1902trigonometry} (being careful to note the notational convention in \cite{richardson1902trigonometry} in incompatible with the one used here $(a,b,c,x,y,z)\leftrightarrow (a,x,z,c,y,b)$) reveals that $Q(a,b,c,x,y,z)$ is equal to $114$ times the volume squared of the tetrahedron with side lengths $a,b,c,x,y,z$, i.e.
+\begin{align}
+    Q(a,b,c,x,y,z) 
+    &= 144 \mathrm{Vol}(a,b,c,x,y,z)^2, \\
+    &= \frac{1}{2}\det
+    \left(
+    \begin{array}{ccc}
+     2 a^2 & a^2+b^2-x^2 & a^2+y^2-z^2 \\
+     a^2+b^2-x^2 & 2 b^2 & b^2-c^2+y^2 \\
+     a^2+y^2-z^2 & b^2-c^2+y^2 & 2 y^2 \\
+    \end{array}
+    \right)
+\end{align}
+Therefore, the resulting probability density is simply
+\begin{equation}
+    p(x,y,z|a,b,c) = \frac{xyz}{24 \pi abc \mathrm{Vol}(a,b,c,x,y,z)}
+\end{equation}
+
+\begin{center}
+    \begin{figure}
+        \includegraphics[width=0.48\textwidth]{figures/analytic-test-ab-bc-abc.pdf}
+        \includegraphics[width=0.5\textwidth]{figures/numerical-test-ab-bc-abc.pdf}
+        \caption{Admissible eigenvalues of partial sums ($A+B$, $B+C$ and $A+B+C$) of traceless $2 \times 2$ matrices ($A,B,C$) with spectra $(\alpha,\beta,\gamma)=(a,b,c)=(0.5,0.6,0.7)$. Left is a density plot of the analytic formula $p(x,y,z|a,b,c)$ restricted to the admissble region. Right is a numerical sample with admissible region boundary plotted in green.}
+    \end{figure}
+\end{center}
+
+\clearpage
+\subsection{Admissibility of Hyperbolic tetrahedron}
+
+\textcolor{red}{TODO, TC: Type up the proof from my tablet notes ``Positive definite products of 2 by 2 matrices''}
+The space of admissible $(a,b,c,x,y,z)$ is given by triangle inequalities on $x,y$ in terms of $a,b,c$ as well as the following constraint on $z$ in terms of $x,y,a,b,c$:
+\begin{equation}
+    \begin{split}
+        &+2 \cosh (2 s (a-b-c-z))+2 \cosh (2 s (a+b-c-z))+2 \cosh (2 s (a-b+c-z))\\
+        &+2 \cosh (2 s (a+b+c-z))+2 \cosh (2 s (a-b-c+z))+2 \cosh (2 s (a+b-c+z))\\
+        &+2 \cosh (2 s (a-b+c+z))+2 \cosh (2 s (a+b+c+z))+2 \cosh (2 s (a-c-x-y))\\
+        &+2 \cosh (2 s (a+c-x-y))+2 \cosh (2 s (a-c+x-y))+2 \cosh (2 s (a+c+x-y))\\
+        &+2 \cosh (2 s (a-c-x+y))+2 \cosh (2 s (a+c-x+y))+2 \cosh (2 s (a-c+x+y))\\
+        &+2 \cosh (2 s (a+c+x+y))+2 \cosh (2 s (b-x-y-z))+2 \cosh (2 s (b+x-y-z))\\
+        &+2 \cosh (2 s (b-x+y-z))+2 \cosh (2 s (b+x+y-z))+2 \cosh (2 s (b-x-y+z))\\
+        &+2 \cosh (2 s (b+x-y+z))+2 \cosh (2 s (b-x+y+z))+2 \cosh (2 s (b+x+y+z))\\
+        &+2 \cosh (4 a s)+2 \cosh (4 b s)+2 \cosh (4 c s)+2 \cosh (4 s x)+2 \cosh (4 s y)+2 \cosh (4 s z)+10\\
+        &\geq\\
+        &+4 \cosh (2 s (a-b-x))+4 \cosh (2 s (a+b-x))+4 \cosh (2 s (a-b+x))\\
+        &+4 \cosh (2 s (a+b+x))+4 \cosh (2 s (a-y-z))+4 \cosh (2 s (a+y-z))\\
+        &+4 \cosh (2 s (a-y+z))+4 \cosh (2 s (a+y+z))+4 \cosh (2 s (b-c-y))\\
+        &+4 \cosh (2 s (b+c-y))+4 \cosh (2 s (b-c+y))+4 \cosh (2 s (b+c+y))\\
+        &+4 \cosh (2 s (c-x-z))+4 \cosh (2 s (c+x-z))+4 \cosh (2 s (c-x+z))\\
+        &+4 \cosh (2 s (c+x+z))\\
+        &+\cosh (4 s (x-y))+\cosh (4 s (x+y))+\cosh (4 s (a-c))\\
+        &+\cosh (4 s (a+c))+\cosh (4 s (b-z))+\cosh (4 s (b+z))
+    \end{split}
+\end{equation}
+
+\clearpage
+\section{Multiplicative and additive Horn problems}
+
+%\subsection{Random walks with \texorpdfstring{$\boldsymbol{K=\SU(2)}$}{K=SU(2)}}
+%Given Haar random elements of the group $\SU(2)$ of $2\times 2$ unitary complex matrices,
+
+\subsection{On the validity of Thompson's conjecture}
+
+To begin, re we use the notation of \citeauthor{speyer2005horn} \cite{speyer2005horn}.
+
+Given a triple of $n$-tuples of real numbers, $(\alpha, \beta, \gamma) \in (\mathbb R^n)^{\times 3}$, Horn's problem is concerned with whether there exists a triple $(A,B,C)$ of $n\times n$ Hermitian matrices with eigenvalues $(\alpha, \beta, \gamma)$ that also satisfies the constraint $A+B+C=0$.
+Without of loss of generality, one can always assume the eigenvalues are sorted such that one can restrict their attention to the subset of non-increasing lists of real numbers, $\mathbb R^{n}_{\downarrow} \subset \mathbb R^n$.
+In addition, if the triple $(A,B,C)$ of Hermitian operators satisfies the conditions required, then so will the triple of matrices
+\begin{equation}
+    U\cdot (A,B,C) \coloneqq (UAU^{-1}, UBU^{-1}, UCU^{-1})
+\end{equation}
+where $U \in \U(n)$ is an $n\times n$ unitary matrix and $U^{-1}$ its inverse.
+
+There is a variation of this problem also concerned with a triple of $n$-tuples of real numbers, $(\alpha, \beta, \gamma)$, that is concerned with singular values instead of eigenvalues.
+The singular values of an $n\times n$ matrix $A$ are simply the positive square-roots of the eigenvalues of the matrix positive semidefinite matrix $A^{*}A$ (or equivalently $AA^{*}$).
+Just as the eigenvalues of a matrix $A$ characterize the orbit under the action $U\cdot A = UAU^{-1}$ by $U \in \U(d)$, the singular values of a matrix $A$ characterize the orbit under the action $(U,V)\cdot A = UAV^{-1}$ by $(U,V)\in\U(d) \times \U(d)$.
+In a similar fashion, without loss of generality, one can always assume the singular values are non-increasing but also non-negative.
+Furthermore, if one restricts their attention to matrices $(A,B,C)$ which are additionally \textit{invertible}, then their singular values are necessarily strictly positive.
+The multiplicative variation of Horn's problem is concerned with whether there exists a triple $(A,B,C)$ of $n\times n$ matrices with singular values $(\alpha,\beta,\gamma)$ that also satisfy the constraint $ABC = I_n$ where $I_n$ is the $n\times n$ identity matrix.
+While the additive problem possesses a $\U(d)$ symmetry, the multiplicative problem possesses a $\U(d)^{\times 3}$ symmetry given by the action
+\begin{equation}
+    (U,V,W)\cdot (A,B,C) \coloneqq (UAV^{-1}, VBW^{-1}, WCU^{-1}).
+\end{equation}
+
+The following result, originally due to \citeauthor{klyachko2000random} \cite{klyachko2000random}, demonstrates a correspondence between the solutions to the multiplicative and additive variants of this problem.
+\begin{thm}[Klyachko's Theorem]
+    There exists a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\alpha, \beta, \gamma) \in (\mathbb R^{n}_{\downarrow})^{\times 3}$ satisfying $A+B+C=0$ if and only if there exists a triple of invertible matrices $(A',B',C')$ with singular values $(e^{\alpha},e^{\beta},e^{\gamma})$ satisfying $ABC=I_n$.
+\end{thm}
+The method used by \citeauthor{klyachko2000random} \cite{klyachko2000random} to prove this statement rather indirect when compared to the method used by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization}.
+In \cite{alekseev2001linearization}, \citeauthor{alekseev2001linearization} construct an implicit homeomorphism, $\alpha : \mathcal O^{\mathrm{add}} \to \mathcal O^{\mathrm{mult}}$, between the set $\mathcal O^{\mathrm{add}}$ of triples of Hermitian matrices $(A,B,C)$ (modulo $U \in \U(d)$) and the set $\mathcal O^{\mathrm{mult}}$ of triples of invertible matrices $(A',B',C')$ (modulo $(U,V,W) \in \U(d)^{\times 3}$).
+
+This homeomorphism preserves the spectral information in the sense that it maps the fiber $\mathcal O^{\mathrm{add}}_{\alpha,\beta,\gamma}$ of triples of Hermitian matrices $(A,B,C)$ (modulo $U \in \U(d)$) with eigenvaleus $(\alpha, \beta, \gamma)$ to the set $\mathcal O^{\mathrm{mult}}_{e^{\alpha},e^{\beta},e^{\gamma}}$ of triples of invertible matrices $(A',B',C')$ (modulo $(U,V,W) \in \U(d)^{\times 3}$) with singular values $(e^{\alpha},e^{\beta},e^{\gamma})$.
+In summary, one has $\mathrm{sing} \circ \alpha = \exp \circ \mathrm{eigen}$.
+
+\subsection{The implicit homeomorphism}
+
+The article by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization} proves a large generalization of the above result, from which the above result (concerning the relation between $\mathcal O^{\mathrm{add}}_{\alpha,\beta,\gamma}$ and $\mathcal O^{\mathrm{mult}}_{e^{\alpha},e^{\beta},e^{\gamma}}$) follows as a special case.
+The purpose of this section is to sketch how the techniques of the general method specialize to this case (see \cite[Section 4]{alekseev2001linearization} for comparison).
+
+\subsubsection{A Naive Guess}
+
+Given a triple of \textit{mutually commuting} Hermitian matrices $(A, B, C)$ satisfying $A+B+C=0$ it is not too difficult to see that
+\begin{equation}
+    (A', B', C') = (\exp(A), \exp(B), \exp(C))
+\end{equation}
+is a triple of positive semidefinite matrices satisfying $A'B'C' = I_n$ such that if $(\alpha, \beta, \gamma)$ were the eigenvalues of $(A,B,C)$, then $(e^{\alpha}, e^{\beta}, e^{\gamma})$ would be the eigenvalues of $(A', B', C')$.
+If the triple $(A,B,C)$ are \textit{not} mutually commuting, then it becomes possible that $A'B'C' \neq I_n$ (see \cite[Example 3,31]{hess2020examination} for explicit examples and counterexamples) because
+\begin{equation}
+    A'B'C' = \exp(A)\exp(B)\exp(C) \neq \exp(A+B+C) = \exp(0_n) = I_n.
+\end{equation}
+In general, one has that 
+\begin{equation}
+    \exp(A)\exp(B)\exp(C) = \exp(A+B+C+\BCH_3^{\delta}(A,B,C))
+\end{equation}
+where $\BCH_k$ for $k \geq 2$ is the Baker-Campbell-Haussdorff formula where for $k = 2$
+\begin{align}
+    \BCH_2(X,Y) 
+    &= X + Y + \frac{1}{2}[X,Y] + \frac{1}{12}[X,[X,Y]] - \frac{1}{12}[Y, [X,Y]] + \cdots
+\end{align}
+and, because $\BCH_2$ is associative, $\BCH_3$ is defined by
+\begin{equation}
+    \BCH_3(A,B,C) = \BCH_2(\BCH_2(A,B),C) = \BCH_2(A, \BCH_2(B,C)).
+\end{equation}
+Moreover, we let 
+\begin{align}
+    \BCH_2^{\delta}(X,Y) &\coloneqq \BCH_2(X,Y)-X-Y, \\
+    \BCH_3^{\delta}(X,Y,Z) &\coloneqq \BCH_3(X,Y,Z)-X-Y-Z.
+\end{align}
+In any case, we note that applying the matrix exponential is insufficient, in general, for transporting solutions from the additive problem to the multiplicative problem.%
+\footnote{
+    It is worth noting that the matrix exponential still preserves some spectral information; for example, the well-known Golden-Thompson inequality states that $\Tr(\exp(A+B)) \leq \Tr(\exp(A)\exp(B))$ holds for all Hermitian matrices $A,B$.
+    Also note that there exists generalizations of this inequality to three or more matrices \cite{sutter2017multivariate}.
+}
+
+Nevertheless, this naive attempt points in the right direction.
+If $(A,B)$ are small in some suitable sense, say $(A,B) = (\varepsilon X, \varepsilon Y)$, then $\BCH_2^{\delta}(A,B)$ will be even smaller (of order $\epsilon^2$) because
+\begin{equation}
+    \exp(\varepsilon X)\exp(\varepsilon Y) = \exp(\varepsilon X + \varepsilon Y + \frac{\varepsilon^2}{2}[X,Y] + O(\varepsilon^3)).
+\end{equation}
+
+\subsubsection{The Alekseev-Meinrenken-Woodward \texorpdfstring{$\boldsymbol{E}$}{E}-map}
+Given a Hermitian operator $A$ with eigenvalues $\alpha$, let $E(A)$ denote the unique upper triangular matrix with real diagonal entries satisfying%
+\footnote{
+    Note that $E(A)$ is related to the Cholesky decomposition of the positive semidefinite $\exp(2A)$ as follows.
+    The Cholesky decomposition of $\exp(2A)$ is an upper triangular $C$ such that $C^{*}C = \exp(2A)$.
+    Given the unitary involutive permutation $P$ which reverses the rows and columns,
+    the Cholesky decomposition of $P\exp(2A)P$ is therefore an upper triangular $\tilde C$ such that $\tilde C^{*}\tilde C = P\exp(2A)P$.
+    From this, one notes that $\exp(2A) = (P \tilde C^{*} P) (P \tilde C^{*} P)^{*}$ and therefore concludes that $E(A) = P \tilde C^{*} P$ where $\tilde C$ is the upper triangular matrix in the Cholesky decomposition of $P\exp(2A)P$.
+}
+\begin{equation}
+    E(A) E(A)^{*} = \exp(2A).
+\end{equation}
+Under this definition, the singular values of $E(A)$ are equal to $e^{\alpha}$.
+\footnote{
+    Note that \cite[Lemma 4.1]{alekseev2001linearization} allows us, without loss of generality, to restrict our attention to the multiplicative problem for dressing orbits in $\U(n)^{*}$ instead of the double coset orbits $\U(n) \backslash \GL(n,\mathbb C) / \U(n)$.
+    \textcolor{red}{TODO: Elaborate on the triple (quadruplet with unitary case) of problems earlier in this working document.}
+}
+This definition places $E(A)$ in the canonical Borel subgroup $B$ of $\GL(n, \mathbb C)$ (which constitutes the Poisson-Lie group $K^{*} = \U(n)^{*}$ which is dual to $K = \U(n)$).
+Given an upper triangular matrix invertible matrix with real diagonals $T$, define 
+\begin{equation}
+    E^{-1}(T) = \log(\sqrt{T T^{*}}).
+\end{equation}
+If $A$ is a positive \textit{definite} Hermitian matrix, $E(A)$ is invertible and thus $E^{-1}(E(A)) = A$.
+
+The $E$-map is extended to a family of associated maps $E_s$ parametrized by $s \in [0, \infty]$ (with $E \cong E_1$ and $E_s = E(s \cdot)$) as follows:
+\begin{equation}
+    E_s(A) E_s(A)^{*} = \exp(2sA).
+\end{equation}
+The singular values of $E_s(A)$ are therefore equal to $e^{s \alpha}$.
+Similarly, define
+\begin{equation}
+    E_s^{-1}(T) = s^{-1}\log\sqrt{TT^{*}}.
+\end{equation}
+
+
+Given a pair of Hermitian operators $(A,B)$ with eigenvalues $(\alpha, \beta)$, the singular values of $(E(A), E(B))$ will be $(e^{\alpha}, e^{\beta})$.
+It is not too surprising to notice that in general
+\begin{equation}
+    A+B \neq E^{-1}(E(A)E(B))
+\end{equation}
+Moreover, the singular values of $E(A)E(B)$ (eigenvalues of $\sqrt{E(A)E(B)E(B)^{*}E(A)^{*}}$) will not necessarily be equal to the eigenvalues of $\exp(A+B)$.
+Consider instead the pair $(E_s(A), E_s(B))$; their singular values will be $(e^{s\alpha}, e^{s\beta})$ and the singular values of $E_s(A)E_s(B)$ will also be distinct from the eigenvalues of $\exp(s(A+B))$.
+However, when $s \approx 0$ is small, one might expect to observe approximation of the following type:
+\begin{equation}
+    A+B \approx E_s^{-1}(E_s(A)E_s(B)).
+\end{equation}
+Similarly, one might expect for small $s \approx 0$,
+\begin{equation}
+    A+B+C \approx E_s^{-1}(E_s(A)E_s(B)E_s(C)).
+\end{equation}
+
+\subsection{Moser's isotropy lemma}
+
+Here we summarize parts of the wikipedia page \url{https://en.wikipedia.org/wiki/Moser%27s_trick}.
+
+Moser's isotropy lemma provides sufficient conditions to conclude when a parameterized family $\{\omega_t\}_{t\in[0,1]} \subset \Omega^{k}(M)$ of differential forms on a manifold $M$ are related by a corresponding family of diffeomorphisms $\{\psi_t\}_{t\in[0,1]} \subset \mathrm{Diff}(M)$ such that $\omega_0$ is the pullback of $\omega_t$ by $\psi_t$, i.e. $\psi_t^{*}\omega_t = \omega_0$ where $\psi_0 = \mathrm{id}_M$.
+
+The sufficient condition is the existence of a smooth family $\{X_t\}_{t \in [0,1]} \subset \mathfrak{X}(M)$ of vector fields satisfying a certain differential equation involving $\{\omega_t\}$ and $\{X_t\}$:
+\begin{equation}
+    \label{eq:mosers_condition}
+    \frac{\diff}{\diff t} \omega_t + \mathcal L_{X_t} \omega_t = 0.
+\end{equation}
+Given such a family of vector fields, with initial condition $\psi_0 = \mathrm{id}_M$, one can define $\psi_t$ by the solution to the equation $\frac{\diff}{\diff t}\psi_t = X_t \circ \psi_t$ for every $t \in [0,1]$.
+Intuitively speaking, the diffeomorphism $\psi_{t}$ sends the point $p_0 \in M$ to $p_t = \psi_{t}(p_0) \in M$ for all $t \in [0,1]$ in a manner such that $p_{t+\diff t}$ is obtained from $p_{t}$ by flowing along the vector field $X_t$ for a duration of $\diff t$.
+If $X_t$ is a solution to \cref{eq:mosers_condition}, then the family $\{\psi_t^{*}\omega_{t}\}_{t \in [0,1]}$ of differential forms is actually independent of $t \in [0,1]$ in the sense that
+\begin{equation}
+    \frac{\diff}{\diff t} (\psi_t^{*}\omega_t) = \psi_t^{*} \left(\frac{\diff}{\diff t}\omega_t + \mathcal L_{X_t} \omega_t \right) = 0.
+\end{equation}
+
+In the special case where the family of differential forms $\{\omega_t\}_{t\in[0,1]}$ under consideration is a family of symplectic forms, the conditions of Moser's lemma simplify both because $\omega_t$ is closed ($\diff \omega_t = 0$) and because $\omega_t$ is non-degenerate meaning that the family of vector fields $\{X_t\}_{t \in [0,1]}$ may be related to a corresponding family of $1$-forms $\{\alpha_t\}_{t \in [0,1]}$ defined by 
+\begin{equation}
+    \alpha_t = -\iota_{X_t}\omega_t.
+\end{equation}
+In this setting, the existence of vector fields $\{X_t\}_{t \in [0,1]}$ satisfying \cref{eq:mosers_condition} is supplanted by the existence $1$-forms satisfying \cref{eq:symplectic_mosers_condition}:
+\begin{equation}
+    \label{eq:symplectic_mosers_condition}
+    \frac{\diff}{\diff t} \omega_t = \diff \alpha_t.
+\end{equation}
+The satisfaction of \cref{eq:mosers_condition} then follows from Cartan's formula because
+\begin{align}
+    \mathcal L_{X_t}(\omega_t) 
+    = \iota_{X_t} (\underbrace{\diff \omega_t}_{=0}) + \diff (\underbrace{\iota_{X_t} \omega_t}_{=-\alpha_t})
+    = -\diff \alpha_t.
+\end{align}
+
+\subsection{The \texorpdfstring{$\boldsymbol{\beta}$}{beta} form}
+
+An important entity in the ``linearization'' paper due to \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization} is the $1$-form on $\mathfrak k^{*}$ denoted by $\beta$.
+It is defined according to \cite[Equation (8)]{alekseev2001linearization} by
+\begin{equation}
+    \beta = \frac{1}{2i} \mathcal H \left(E^{*} B^{\mathbb C}(\theta^{L}, \theta^{\dagger;L})   \right) \in \Omega^{1}(\mathfrak k^{*})
+\end{equation}
+In order to understand this $1$-form better we analyze each of its pieces separately.
+
+\subsubsection{The Homotopy Operator}
+
+The operator $\mathcal H : \Omega^{2}(\mathfrak k^{*}) \to \Omega^{1}(\mathfrak k^{*})$ is the homotopy operator sending $2$-forms to $1$-forms on $\mathfrak k^{*}$ (it also sends $k$-forms to $k-1$ forms) which has the exterior derivative $\diff : \Omega^{1}(\mathfrak k^{*}) \to \Omega^{2}(\mathfrak k^{*})$ as its left-inverse when restricted to closed $2$-forms in the sense that $\diff \omega = 0$ implies $\omega = \diff (\mathcal H \omega)$ and thus $\omega$ is exact.
+This operator appears in the context of the Poincaré lemma which states that closed $k$-forms on a open ball in $\mathbb R^{n}$ are also exact for all $1 \leq k \leq n$.
+
+As we are only interested in the application of $\mathcal H$ to $2$-forms on $\mathfrak k^{*} \simeq \mathbb R^{n}$, it is relatively easy to state $\mathcal H$ as follows.
+Let $h : \mathfrak k^{*} \times [0,1] \to \mathfrak k^{*}$ be defined by the scaling $h_t : \mathfrak k^{*} \to \mathfrak k^{*}$ by $t \in [0,1]$, i.e.
+\begin{equation}
+    h(x_1, \ldots, x_n, t) \coloneqq h_t(x_1, \ldots, x_n) = (tx_1, \ldots, tx_n).
+\end{equation}
+Note that $h_t$ is a diffeomorphism of $\mathfrak k^{*}$ for all $t \in (0,1]$.
+
+Consider a generic $2$-form, denoted by $\omega$, on $\mathfrak k^{*} \simeq \mathbb R^{n}$ in the coordinates $(x_1, \ldots, x_n)$:
+\begin{equation}
+    \omega = {\sum}_{i<j} \omega_{i,j} \diff x^{i} \wedge \diff x^{j}
+\end{equation}
+The pullback of $\omega$ along $h_t$ is therefore simply
+\begin{align}
+    h_t^{*} \omega 
+    &= {\sum}_{i<j} (\omega_{i,j} \circ h_t) \diff (x^{i}\circ h_t) \wedge \diff (x^{j}\circ h_t), \\
+    &= t^2 {\sum}_{i<j} (\omega_{i,j} \circ h_t) \diff x^{i} \wedge \diff x^{j}
+\end{align}
+which means $\omega$ can be re-expressed as an integral:
+\begin{align}
+    \omega 
+    = \underbrace{h_1^{*} \omega}_{=\omega} - \underbrace{h_0^{*}\omega}_{=0}
+    = \int_{0}^{1} \frac{\diff}{\diff t} (h_t^{*} \omega) \diff t
+    = \int_{0}^{1} h_t^{*} (\mathcal L_{\xi_t} \omega) \diff t
+    = \int_{0}^{1} h_t^{*} (\diff \iota_{\xi_{t}} \omega + \iota_{\xi_{t}} \diff \omega) \diff t
+\end{align}
+where $\xi_t$ is the vector field on $\mathfrak k^{*}$ such that $(\xi_t)_x$ is the tangent vector to the curve $t \mapsto h_t(x)$, \textcolor{red}{TODO: Figure out what this vector field is}.
+If $\omega$ is additionally closed ($\diff \omega = 0$), then
+\begin{align}
+    \omega 
+    = \int_{0}^{1} (h_t^{*} \diff \iota_{\xi_{t}} \omega) \diff t
+    = \diff \left(\int_{0}^{1} (h_t^{*} \iota_{\xi_{t}} \omega) \diff t\right)
+\end{align}
+where the exterior derivative commutes with the pullback by $h_t^{*}$ and with the integration over $t \in [0,1]$.
+
+Given a closed $\omega \in \Omega^{2}(\mathfrak k^{*})$, the $1$-form $\mathcal H(\omega)$ is therefore defined as
+\begin{equation}
+    \mathcal H(\omega) \coloneqq \int_{0}^{1} \diff t h_{t}^{*} \iota_{\xi_{t}} \omega.
+\end{equation}
+Given a vector field $Y \in \mathfrak{X}(\mathfrak k^{*})$, \textcolor{red}{TODO: Figure out how to calculate this contraction in local coordinates explicitly}.
+
+\subsubsection{The Maurer-Cartan Forms}
+
+\textcolor{red}{TODO:}
+
+\subsubsection{Bringing it altogether}
+
+\textcolor{red}{TODO:}
+
+
+%Consider a generic $2$-form, denoted by $\eta$, on $\mathfrak k^{*} \times [0,1] \subset \mathbb R^{n+1}$ in the coordinates $(x_1, \ldots, x_n, t)$
+%\begin{equation}
+%    \eta = {\sum}_{i} \alpha_i \diff t \wedge \diff x^{i} + \sum_{j<k} {\beta}_{j,k} \diff x^{j} \wedge \diff x^{k}
+%\end{equation}
+%Then let the \textit{fiber integration}, denoted by $\pi_{*}$
+%\begin{equation}
+%    \pi_{*} : \Omega^{2}(\mathfrak k^{*} \times [0,1]) \to \Omega^{1}(\mathfrak k^{*})
+%\end{equation}
+%act on $\eta$ by integration of the $t \in [0,1]$ coordinate:
+%\begin{equation}
+%    \pi_{*}(\eta) = {\sum}_{i}\left(\int_{0}^{1} \alpha_{i}(\cdot, t) \diff t\right) \diff x^{i}
+%\end{equation}
+%
+%Letting $\mathcal H = \pi_{*} \circ h^{*}$ yields the formula
+%\begin{equation}
+%    h_1^{*}\omega - h_0^{*}\omega = \mathcal H \diff \omega + \diff (\mathcal H \omega).
+%\end{equation}
+%
+%serving as the local inverse to the restriction of the exterior derivative $d : \Omega^{1}(\mathfrak k^{*}) \to \Omega^{2}(\mathfrak k^{*})$ to closed forms in ; such an operator exists and is well-defined because $\mathfrak k^{*}$ is simply connected 
+%
+%This $1$-form (together with its scaling by $s$)
+
+
+\subsection{An application of the Moser isotropy lemma}
+
+In this section, we borrow some of the notation of \citeauthor{lu2003thompson} \cite{lu2003thompson}.
+Let $\U(n)^{*}$ ($= B = AN$) denote the upper triangular Borel subgroup of $\GL(n,\mathbb C)$ and define two maps
+\begin{align}
+    \boldsymbol{m} &: (\U(n)^{*})^{\times 3} \to \U(n)^{*} :: (A', B', C') \mapsto A'B'C', \\
+    \boldsymbol{a} &: (i \mathfrak u(n))^{\times 3} \to i\mathfrak u(n) :: (A, B, C) \mapsto A + B + C.
+\end{align}
+In the previous section, we defined a pair of maps
+\begin{align}
+    E_s &: i \mathfrak u(n) \to \U(n)^{*}. \\
+    E_s^{-1} &: \U(n)^{*} \to i \mathfrak u(n).
+\end{align}
+The proof of Thompson's conjecture follows if one can prove there exists a $\U(n)$-equivariant diffeomorphism 
+\begin{equation}
+    L : (\U(n)^{*})^{\times 3} \to (i \mathfrak u(n))^{\times 3}
+\end{equation}
+such that $\boldsymbol{m} = E_1 \circ \boldsymbol{s} \circ L$, i.e. for all $(A', B', C') \in (\U(n)^{*})^{\times 3}$ one has a corresponding triple 
+\begin{equation}
+    (A, B, C) \coloneqq L(A', B', C')
+\end{equation}
+(with components possibily depending on each of $(A', B', C')$ non-trivially) such that
+\begin{equation}
+    E_1(A+B+C) = E_1(\boldsymbol{s}(A,B,C)) = \boldsymbol{m}(A',B',C') = A' B' C'
+\end{equation}
+In this manner, if $A'B'C' = I_n$, then one automatically has a triple $(A,B,C)$ such that $A+B+C = 0_n$.
+The equivariance of $L$ ensures that the appropriate spectral data is preserved.
+In fact, the desried map will be of the form $L = (E^{-1}_1)^{\times 3} \circ \psi_1$ where $\psi_1$ is a diffeomorphism of $(U(n)^{*})^{\times 3}$, meaning there exists 
+\begin{equation}
+    (A'', B'', C'') = \psi_1(A', B', C') \in (U(n)^{*})^{\times 3}
+\end{equation}
+such that the following holds
+\begin{equation}
+    E_1(A+B+C) = E_1(E^{-1}_1(A'')+E^{-1}_1(B'')+E^{-1}_1(C'')) = A' B' C'
+\end{equation}
+
+\subsection{Linearization commutes with products}
+
+In an earlier article by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization}, a map sending $\mathfrak k^{*}$ to the dual Poisson-Lie group $K^{*}$, denoted by $E : \mathfrak k^{*} \to K^{*}$, is defined as follows.
+Given the (local) Cartan involution $\kappa : \mathfrak g \to \mathfrak g$ (complex conjugation) (denoted by $\theta$ in my thesis), the map $\dagger = - \kappa$ becomes an anti-involution (called the $\ast$-involution in my thesis, ``anti-'' refers to anti-linear). 
+
+Now let $B : \mathfrak k \times \mathfrak k \to \mathbb R$ be an invariant inner product on $\mathfrak k$ (for $\mathfrak k = \mathfrak{su}(d)$ think the negative of the Killing form $K(a,b) = \Tr(\mathrm{ad}_a \mathrm{ad}_{b})$ (which is $-2 d \Tr(ab)$ for $\mathfrak{su}(d)$) and let $B^{\sharp} : \mathfrak k^{*} \to \mathfrak k$ denote the isomorphism identifying linear functionals $\mathfrak k^{*}$ on $\mathfrak k$ with elements of $\mathfrak k$ induced by $B$ (i.e., $B(B^{\sharp}(F),X) = F(X)$).
+Then $i B^{\sharp}(F) \in i \mathfrak k$ and $\exp(i B^{\sharp}(F)) \in P \subseteq G$.
+Furthermore, every element in $P$ can be written uniquely as $l l^{\dagger}$ for some some $l \in K^{*} = A N$.
+Therefore, there exists a map $E : \mathfrak k^{*} \to K^{*}$ sending $F \in \mathfrak k^{*}$ to $E(F) \in K^{*}$ uniquely determined by the non-linear equation
+\begin{equation}
+    \label{eq:E-map}
+    E(F) E(F)^{\dagger} = \exp( i B^{\sharp}(F)).
+\end{equation}
+
+This map is equivariant in the sense that the coadjoint action of $K$ on $F \in \mathfrak k^{*}$ coincides with the so-called \textit{dressing} action on $K^{*}$.
+
+For the group $K = U(d)$ of unitary matrices, its Lie algebra $\mathfrak k = \mathfrak u(d)$ consists of skew-Hermitian matrices and the invariant inner product $B$ on $\mathfrak u(d)$ can be taken to be $B(A_1, A_2) = - \Tr(A_1 A_2)$ (or any constant multiple of this).
+Then $B^{\sharp}$ identifies linear functional over skew-Hermitian matrices $F \in \mathfrak u(d)^{*}$ with the skew-Hermitian matrix $A_F \coloneqq B^{\sharp}(F)$ defined by $B(A_F, \cdot) = - \Tr(A_F \cdot) = F(\cdot)$.
+Then $i A_F$ is a Hermitian matrix and $\exp(i A_F)$ is positive semidefinite matrix with Cholesky decomposition $\exp(i A_F) = L_F^{\dagger}L_F$ where $L_F$ is upper-triangular.
+
+In the context of additive and multiplicative Horn problems, the map $E$ (acting on Hermitian matrices now) satisfies the equation
+\begin{equation}
+    \mathrm{Sing} \circ E = \exp \circ \mathrm{Eigen}
+\end{equation}
+Given the eigenvalues $\mathrm{Eigen}(H) = \lambda(H)$ of a Hermitian matrix $H$, the values appearing in $\exp(\lambda(H))$ (taken component-wise) are equivalent to the singular values of $E(H)$, i.e. the square roots of the eigenvalues of $E(H)^{\dagger} E(H)$.
+Note that this statement is not totally consistent with \cref{eq:E-map}; the square-root in the definition of singular values must be related to the choice of inner product $B$?
+
+Now given an invariant inner product $B_s : \mathfrak k \times \mathfrak k \to \mathbb R$ on $\mathfrak k$ (possibly depending on some data $s$), one can consider the corresponding equivariant map $E_s : \mathfrak k^{*} \to K^{*}$. 
+Given a moment map $\Phi : M \to \mathfrak k^{*}$ for a Hamiltonian $K$-manifold $M$, the map $\Psi_s : M \to K^{*}$ formed by composing $\Phi$ with $E_s$ yields the $K^{*}$-valued moment map $\Psi_s$.
+
+The family of invariant inner products eventually considered are those which are obtained by rescalings by a positive $s > 0$, i.e. $B_s = s^{-1} B$.
+In this setting, the map $E_s$ satisfies
+\begin{equation}
+    \label{eq:Es-map}
+    E_s(F) E_s(F)^{\dagger} = \exp( i B_s^{\sharp}(F)),
+\end{equation}
+but $s^{-1}B(B_s^{\sharp}(F), \cdot) = B_s(B_s^{\sharp}(F), \cdot) = F(X)$ should be independent of $s$ so clearly $B_s^{\sharp}(F) = sB^{\sharp}(F)$.
+
+In any case, if $\Phi_1 : M_1 \to \mathfrak k^{*}$ and $\Phi_2 : M_2 \to \mathfrak k^{*}$ are two moment maps, then the moment map on the product $M_1 \times M_2$ is given by a sum
+\begin{equation}
+    \Phi_{1,2} (x_1, x_2) = \Phi_1(x_1) + \Phi_2(x_2).
+\end{equation}
+Now for each $s$, there exists a moment map $\Phi^{s}_{1,2} : M_1 \times M_2 \to \mathfrak k^{*}$ (with modifed symplectic form $\omega_s$ on $M_1 \times M_2$) such that $\Phi^{s}_{1,2}$ satisfies
+\begin{equation}
+    \Phi^{s}_{1,2} = E_s^{-1}\left[(E_s \circ \Phi_1)(E_s \circ \Phi_2)\right]
+\end{equation}
+and a linearization property $\lim_{s\to 0^+}\Phi^{s}_{1,2} = \Phi_1 + \Phi_2$.
+
+In this setting, $K = \U(n)$, its double is its complexification $K^{\mathbb C} = \GL(n,C)$, and the Lie algebra $\mathfrak k = \mathfrak u(n)$ consists of anti-Hermitian $n\times n$ matrices.
+One can identify the dual $\mathfrak u(n)^{*}$ with the space of $n \times n$ Hermitian matrices using the invertible linear map
+\begin{equation}
+    H :: \xi \mapsto H_\xi
+\end{equation}
+such that each $\xi \in \mathfrak u(n)^{*}$ acting on the skew-Hermitian matrix $x \in \mathfrak u(n)$ is identified with the Hermitian matrix $H_\xi$ satisfying
+\begin{equation}
+    \xi(x) = \braket{\xi, x} = \mathrm{Im} \Tr( H_{\xi} x) = - i \Tr(H_{\xi}x).
+\end{equation}
+In the notation of \cite{alekseev2001linearization}, we have $H = i B^{\sharp}$.
+
+Note there exists a unique $\mathfrak u(n)^{*}$ with the Poisson bracket $\{\cdot, \cdot\}$ which is the unique bracket satisfying $\{f_x, f_y\} = f_{[x,y]}$ where $f_x$ is the linear function on $\mathfrak u(n)^{*}$ defined by $f_x(\xi) = \braket{\xi, x} = \xi(x)$.
+Through the identification $\xi \mapsto H_\xi$ made above, the space of Hermitian $n\times n$ matrices inherits this Poisson structure in a manner which is dependent upon the identification made.
+
+\subsection{Coordinates for \texorpdfstring{$\boldsymbol{\SL_2(\mathbb C)}$}{SL(2,C)}}
+
+In the multiplicative variant of Horn's problem, one is interested in matrices $A \in \SL(n, \mathbb C)$ and their \textit{singular values} $\sigma(A) \coloneqq \lambda(\sqrt{A A^{*}})$.
+For example, when $n = 2$, we have coordinates $(a,b,c,d) \in \mathbb C^{4}$ subject to the constraint $ad - bc = 1$ specifying $A \in \SL(2, \mathbb C)$ via
+\begin{equation}
+    A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}.
+\end{equation}
+Alternatively, using the polar decomposition we have coordinates $(x,y,z) \in \mathbb R^{2} \times \mathbb C$ subject to $x^2 - y^2 - \abs{z}^{2} = 1$ and $(u,v) \in \mathbb C^{2}$ subject to $\abs{u}^{2}+\abs{v}^{2} = 1$
+\begin{equation}
+    A = \exp\left[\begin{pmatrix} x+y & z \\ z^* & x-y \end{pmatrix}\right]\begin{pmatrix} u & v \\ -v^{*} & u^{*} \end{pmatrix}.
+\end{equation}
+Using these coordinates, $AA^{*}$ depends only on $(x,y,z) \in \mathbb R^{2} \times \mathbb C$,
+\begin{equation}
+    AA^{*} = \exp\left[2\begin{pmatrix} x+y & z \\ z^* & x-y \end{pmatrix}\right],
+\end{equation}
+and then $\sqrt{AA^{*}}$ is simply
+\begin{equation}
+    \sqrt{AA^{*}} = \exp\left[\begin{pmatrix} x+y & z \\ z^* & x-y \end{pmatrix}\right].
+\end{equation}
+The characteristic polynomial of the exponent is
+\begin{equation}
+    \det\begin{pmatrix} x+y-\lambda & z \\ z^* & x-y-\lambda \end{pmatrix} = \lambda^2 - 2x \lambda + 1.
+\end{equation}
+At this stage, it is useful to let $w = \sqrt{x^2 - 1} = \sqrt{y^2 + \abs{z}^2}$.
+Therefore, the eigenvalues of the exponent are 
+\begin{equation}
+    x \pm \sqrt{x^2 - 1} = x \pm \sqrt{y^2 + \abs{z}^2} = x \pm w.
+\end{equation}
+Therefore the eigenvalues of $\sqrt{AA^{*}}$ (singular values of $A$) are given by
+\begin{equation}
+    \lambda(\sqrt{AA^{*}}) = \left(e^{x+w}, e^{x-w} \right)
+\end{equation}
+
+\subsection{The Ginzburg-Weinstein diffeomorphism}
+At the core of the relationships holding between the multiplicative and additive perspectives seems to be this mysterious \textit{Ginzburg-Weinstein} diffeomorphism from $\mathfrak{u}(n)^*$ (the dual of the Lie algebra of $U(n)$) equipped with the KKS Poisson bracket and the Poisson Lie group $U(n)^*$ with some unique Poisson Lie bracket which is compatible with the KKS Poisson bracket in some sense.
+The details of this construction are the content of \citeauthor{alekseev2007ginzburg} \cite{alekseev2007ginzburg}.
+
+The Lie algebra $\mathfrak{u}(n)$ consists of $n\times n$ complex matrices $X$ which are skew-Hermitian ($X^* = - X$).
+The dual of this algebra can be identified with the space of $n\times n$ complex matrices $H$ which are Hermitian ($H^{*} = H$).
+Specifically, one can identify $H$ with the linear map sending $X \in \mathfrak{u}(n)$ to $\braket{X, H} \coloneqq \mathrm{Im}\Tr(HX) \in \mathbb R$.
+Moreover, the Poisson Lie group $U(n)^*$ can be identified with the space of $n\times n$ complex upper triangular matrices with positive real numbers along the diagonal.
+
+In the special case where $n = 2$, the aforementioned isomorphism $\varphi : \mathfrak u(2)^{*} \to U(2)^{*}$ admits an of a simple expression.
+Let $H \in \mathfrak u(2)^{*}$ be written in Pauli coordinates $(x,y,z) \in \mathbb R^{3}$ (without loss of generality, $H$ is taken to be traceless because $\varphi(H+t I) = e^{t} \varphi(H)$),
+\begin{equation}
+    H = \begin{pmatrix}
+        z & x + i y \\
+        x - i y & - z
+    \end{pmatrix},
+\end{equation}
+and furthermore define $(\rho, r, \phi) \in \mathbb R_{\geq 0} \times \mathbb R_{\geq 0} \times [0,2\pi)$ such that
+\begin{equation}
+    r = (x^2 + y^2 + z^2)^{\frac{1}{2}}, \qquad x + i y = \rho e^{i \phi}.
+\end{equation}
+Then the Ginzburg-Weinstein map $\varphi$ sends $H$ to (taken from \href{https://www.youtube.com/watch?v=U6MoHazD_YM}{Anton's ICM2014 talk on youtube}):
+\begin{equation}
+    \varphi
+    \begin{pmatrix}
+        z & x + i y \\
+        x - i y & - z
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        e^{z} & e^{i \phi} (e^{+2 r} + e^{-2 r} - e^{+2 z} - e^{-2 z})^{\frac{1}{2}} \\
+        0 & e^{-z} 
+    \end{pmatrix}.
+\end{equation}
+This map is interesting because it is a Poisson map in the sense that for all $H \in \mathfrak{u}(n)^{*}$ and all $F, G \in C^{\infty}(U(2)^{*})$,
+\begin{equation}
+    \left\{F, G \right\}_{U(2)^{*}}(\varphi(H)) = \left\{F\circ \varphi, G \circ \varphi\right\}_{\mathfrak{u}(2)^{*}}(H)
+\end{equation}
+where $\left\{\cdot, \cdot \right\}_{U(2)^{*}}$ is the unique Poisson bracket on $U(2)^{*}$ satisfying certain conditions (according to Drinfeld, Semenov-Tian-Shansky, Lu-Weinstein (see the youtube talk))
+where $\left\{\cdot, \cdot \right\}_{\mathfrak{u}(2)^{*}}$ is the Kirillov-Kostant-Souriau (KKS) Poisson bracket on $\mathfrak{u}(n)^{*}$ defined to be
+\begin{equation}
+    \left\{ f_{A_1}, f_{A_2} \right\}_{\mathfrak{u}(2)^{*}} = f_{[A_1,A_2]}
+\end{equation}
+where $f_{A} : H \to \braket{H, A} = \mathrm{Im}\Tr(H A)$ is a linear function on $\mathfrak{u}(n)^{*}$.
+
+Furthermore, this Poisson diffeomorphism belongs to a family of Poisson diffeomorphisms obtained by scaling all of the exponential quantities except $\phi$:
+\begin{equation}
+    \varphi_{\tau}
+    \begin{pmatrix}
+        z & x + i y \\
+        x - i y & - z
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        e^{\tau z} & e^{i \phi} (e^{+2 \tau r} + e^{-2 \tau r} - e^{+2 \tau z} - e^{-2 \tau z})^{\frac{1}{2}} \\
+        0 & e^{-\tau z} 
+    \end{pmatrix}.
+\end{equation}
+If $\tau = 1$, then $\varphi_{\tau} = \varphi$. Also if $\tau \to \infty$, then
+\begin{equation}
+    \varphi_{\tau \to \infty}
+    \begin{pmatrix}
+        z & x + i y \\
+        x - i y & - z
+    \end{pmatrix}
+    \approx
+    \begin{pmatrix}
+        e^{\tau z} & e^{i \phi + \tau r} \\
+        0 & e^{-\tau z} 
+    \end{pmatrix},
+\end{equation}
+because $r \geq z$ always.
+
+\subsection{Leading coefficient of L-R polynomials}
+
+The probability measure associated to the pushforward of the $G$-invariant probability measure over the product of orbits, $\mathcal O_{\alpha} \times \mathcal O_{\beta}$, through the addition map $(A,B) \mapsto A+B$ and then through the orbital projection $V \mapsto V/G$ is termed the \textit{Horn probability measure}.
+In \cite{coquereaux2018orbital}, \citeauthor{coquereaux2018orbital} consider two specical cases of the Horn probability measure: the coadjoint case wherein $V = \mathfrak g^{*}$ and the orbits under consideration are coadjoint orbits and the ``self-adjoint'' case where the groups $\mathrm{SO}(n), \mathrm{SU}(n)$, and $\mathrm{USp}(n)$ are acting on real-symmetric, complex-Hermitian, and quaternionic self-dual matrices respectively.
+Focusing on the coadjoint case, their derivation of the integral form of the Horn probability measure is essential identical (modulo notation and normalization conventions) to the form considered by \citeauthor{klyachko2000random} \cite{klyachko2000random}.
+In particular, the Horn probability density for the ``random'' orbit $\mathcal O_{\gamma}$ is
+\begin{equation}
+    p(\gamma \mid \alpha, \beta) = \frac{1}{(2\pi)^{r} \abs{W}} \left(\frac{\Delta_{\mathfrak g}(\gamma)}{\Delta_{\mathfrak g}(\rho)}\right)^{2} \int_{\mathfrak t} \diff t \Delta_{\mathfrak g}(t)\mathcal H(\alpha, i t)\mathcal H(\beta, i t)\mathcal H(\gamma, i t)^{*}
+\end{equation}
+Here the expression $\Delta_{\mathfrak g}(x) = \prod_{\alpha > 0} \braket{\alpha, x}$ is a product over the positive roots of $\mathfrak g$, $\abs{W}$ is the order of the Weyl group and $r$ is the rank of $K$.
+The expression $\mathcal H(\alpha, i t)$ for $\alpha, t \in C_+$ lying in the dominant Weyl chamber is given by the Harish-Chandra orbital function:
+\begin{equation}
+    \mathcal H(\alpha, i t) = \int_{G} \diff g \exp(i \braket{g \cdot \alpha, x})
+\end{equation}
+where $\braket{\cdot, \cdot}$ is $-1$ times the Killing form on $\mathfrak g$.
+
+The so-called \textit{volume function} considered in \cite{coquereaux2018orbital} is the expression
+\begin{equation}
+    J(\alpha, \beta; \gamma) = \frac{\Delta_{\mathfrak{g}}(\alpha)\Delta_{\mathfrak{g}}(\beta)}{\Delta_{\mathfrak{g}}(\gamma)\Delta_{\mathfrak{g}}(\rho)} p(\gamma \mid \alpha, \beta).
+\end{equation}
+
+In the case where $G = SU(n)$, the explicit connection to the Littlewood-Richardson coefficients made by \cite{coquereaux2018orbital} is to related the integral form of $p(\gamma \mid \alpha, \beta)$ over Harish-Chandra orbital functions in terms of an integral expression reminiscent of the integral expression for the Littlewood-Richardson coefficient $c_{\lambda, \mu}^{\nu}$ (note that $N_{\lambda, \mu}^{\nu}$ is used in \cite{coquereaux2018orbital}) in terms of characters:
+\begin{equation}
+    c_{\lambda, \mu}^{\nu} = \int_{\mathbb{T}_{n}} \diff T \chi_{\lambda}(T) \chi_{\mu}(T) \chi_{\nu}^{*}(T).
+\end{equation}
+where $\diff T$ is the normalized Haar measure on $\mathbb T_n$ given by \cite[Equation (17)]{coquereaux2018orbital}.
+Their method for establishing the connection is through Weyl's character formula which yields \cite[Section 2.2.1]{coquereaux2018orbital}:
+\begin{equation}
+    \frac{\chi_{\lambda}(e^{i t})}{\chi_{\lambda}(1)} = \frac{\Delta_{\mathfrak g}(it)}{\Delta_{\mathfrak g}(e^{it})} \mathcal H(\lambda', i t)
+\end{equation}
+where the prime $\lambda' = \lambda + \rho$ is $\lambda$ shifted by the Weyl vector $\rho = \sum_{\alpha > 0} \alpha/2$ (the half sum of positive roots).%\citeauthor{kirillov2004lectures} \cite{kirillov2004lectures}
+Altogether, a sketch of their asymptotic correspondence is provided by taking $k \in \mathbb N$ very large and then \cite[Equation (44)]{coquereaux2018orbital} reads:
+\begin{equation}
+    c_{k\lambda, k\mu}^{k\nu} \approx \mathcal J(k \lambda + \rho, k \mu + \rho; k \nu + \rho) \approx \mathcal J(k \lambda, k \beta; k \gamma) = s^{(n-1)(n-2)/2} \mathcal J(\alpha, \beta; \gamma).
+\end{equation}
+
+\subsection{Singular values of partial products}
+
+One objective of this research project is to solve the following generalization of the multiplicative version of Horn's problem.
+
+\begin{prob}[Trivariate Multiplicative Horn's problem]
+    Let $d \in \mathbb N$ and let
+    \begin{equation}
+        (s_{A}, s_{B}, s_{C}, s_{AB}, s_{BC}, s_{ABC}) \in (\mathbb R^{d})^{\times 6}
+    \end{equation}
+    be given as input.
+    Decide if there exists matrices $M_{A}, M_{B}, M_{C} \in \SL(d,\mathbb C)$ satisfying
+    \begin{equation}
+        \begin{alignedat}{2}
+            \sing(M_A) &= s_{A}, \qquad \sing(M_AM_B) &&= s_{AB}, \\
+            \sing(M_B) &= s_{B}, \qquad \sing(M_BM_C) &&= s_{BC}, \\
+            \sing(M_C) &= s_{C}, \qquad \sing(M_AM_BM_C) &&= s_{ABC},
+        \end{alignedat}
+    \end{equation}
+    or equivalently,
+    \begin{equation}
+        \begin{alignedat}{2}
+            \spec(\sqrt{M_AM_A^{*}}) &= s_{A}, \qquad \spec(\sqrt{M_AM_BM_B^{*}M_{A}^{*}}) &&= s_{AB}, \\
+            \spec(\sqrt{M_BM_B^{*}}) &= s_{B}, \qquad \spec(\sqrt{M_AM_BM_B^{*}M_{A}^{*}}) &&= s_{BC}, \\
+            \spec(\sqrt{M_CM_C^{*}}) &= s_{C}, \qquad \spec(\sqrt{M_AM_BM_CM_C^{*}M_B^{*}M_{A}^{*}}) &&= s_{ABC},
+        \end{alignedat}
+    \end{equation}
+\end{prob}
+
+% biblatex
+\printbibliography
+% natbib
+% \bibliographystyle{plainnat}
+% \bibliography{references}
+% OR \bibliography{../literature/references}
+
+%\appendix
+
+\end{document}

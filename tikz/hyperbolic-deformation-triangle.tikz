@@ -1,0 +1,70 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=blackdot] (1) at (3.25, 7) {};
+		\node [style=blackdot] (2) at (7, 6.75) {};
+		\node [style=none] (9) at (3.5, 5.25) {$\alpha$};
+		\node [style=none] (10) at (5, 7) {$\beta$};
+		\node [style=none] (11) at (5.75, 5) {$\gamma'$};
+		\node [style=blackdot] (13) at (4, 3.75) {};
+		\node [style=blackdot] (14) at (-5, 7.25) {};
+		\node [style=blackdot] (15) at (-1, 6.75) {};
+		\node [style=none] (16) at (-5, 5.25) {$\alpha$};
+		\node [style=none] (17) at (-3, 7.5) {$\beta$};
+		\node [style=none] (18) at (-2, 5) {$\gamma$};
+		\node [style=blackdot] (19) at (-4, 3.75) {};
+		\node [style=none] (20) at (-5.5, 8.5) {};
+		\node [style=none] (21) at (-4.75, 7.75) {$\theta$};
+		\node [style=none] (22) at (-4, 2.75) {$\lambda(A) = \pm \alpha$};
+		\node [style=none] (23) at (-4, 1.75) {$\lambda(B) = \pm \beta$};
+		\node [style=none] (24) at (-4, 0.75) {$\lambda(A+ B) = \pm \gamma$};
+		\node [style=none] (25) at (5.25, 2.75) {$\sigma(\exp(A)) = \exp(\pm \alpha)$};
+		\node [style=none] (26) at (5.25, 1.75) {$\sigma(\exp(B)) = \exp(\pm \beta)$};
+		\node [style=none] (27) at (5.25, 0.75) {$\sigma(\exp(A)\exp(B)) = \exp(\pm \gamma')$};
+		\node [style=blackdot] (28) at (-5, -1.75) {};
+		\node [style=blackdot] (29) at (-1.25, -3.25) {};
+		\node [style=none] (30) at (-5, -3.75) {$\alpha$};
+		\node [style=none] (31) at (-3.25, -2) {$\beta$};
+		\node [style=none] (32) at (-2.25, -4.5) {$\tilde \gamma$};
+		\node [style=blackdot] (33) at (-4, -5.25) {};
+		\node [style=none] (34) at (-5.5, -0.5) {};
+		\node [style=none] (35) at (-4.75, -1.25) {$\tilde \theta$};
+		\node [style=none] (36) at (-4, -6.25) {$\lambda(\tilde A) = \pm \alpha$};
+		\node [style=none] (37) at (-4, -7.25) {$\lambda(\tilde B) = \pm \beta$};
+		\node [style=none] (38) at (-4, -8.25) {$\lambda(\tilde A+ \tilde B) = \pm \tilde \gamma$};
+		\node [style=blackdot] (39) at (3, -1.75) {};
+		\node [style=blackdot] (40) at (6.75, -3.25) {};
+		\node [style=none] (41) at (3.25, -3.75) {$\alpha$};
+		\node [style=none] (42) at (4.75, -2.25) {$\beta$};
+		\node [style=none] (43) at (5.75, -4.5) {$\tilde \gamma' = \gamma$};
+		\node [style=blackdot] (44) at (4, -5.25) {};
+		\node [style=none] (47) at (4.75, -6.25) {$\sigma(\exp(\tilde A)) = \exp(\pm \alpha)$};
+		\node [style=none] (48) at (4.75, -7.25) {$\sigma(\exp(\tilde B)) = \exp(\pm \beta)$};
+		\node [style=none] (49) at (4.75, -8.25) {$\sigma(\exp(\tilde A)\exp(\tilde B)) = \exp(\pm \gamma)$};
+		\node [style=none] (50) at (-7, 0) {};
+		\node [style=none] (51) at (9.25, 0) {};
+		\node [style=none] (52) at (0, 7.75) {};
+		\node [style=none] (53) at (0, -8.5) {};
+		\node [style=none] (54) at (12, 2.75) {$\gamma \leq \gamma'$};
+		\node [style=none] (55) at (12, -1.25) {$\tilde \gamma \leq \gamma $};
+		\node [style=none] (56) at (12, 1.75) {$\tilde \gamma \leq \tilde \gamma'$};
+		\node [style=none] (57) at (12, -2.25) {$\tilde \gamma' = \gamma$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend right, looseness=0.75] (1) to (2);
+		\draw [bend right] (13) to (1);
+		\draw [bend left=15, looseness=1.25] (13) to (2);
+		\draw (14) to (15);
+		\draw (19) to (14);
+		\draw (19) to (15);
+		\draw [style=dashedannotate] (14) to (20.center);
+		\draw (28) to (29);
+		\draw (33) to (28);
+		\draw (33) to (29);
+		\draw [style=dashedannotate] (28) to (34.center);
+		\draw [bend right, looseness=0.50] (39) to (40);
+		\draw [bend right, looseness=0.75] (44) to (39);
+		\draw [bend left, looseness=1.25] (44) to (40);
+		\draw [style=dashedannotate] (51.center) to (50.center);
+		\draw [style=dashedannotate] (53.center) to (52.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
