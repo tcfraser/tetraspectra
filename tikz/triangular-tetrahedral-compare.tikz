@@ -1,0 +1,38 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=blackdot] (0) at (1, -2) {};
+		\node [style=blackdot] (1) at (3.75, 0) {};
+		\node [style=blackdot] (2) at (3.75, 3) {};
+		\node [style=blackdot] (3) at (6.5, -2) {};
+		\node [style=none] (8) at (3.75, -2.5) {$C$};
+		\node [style=none] (9) at (5.5, 1) {$B$};
+		\node [style=none] (10) at (2, 1) {$A$};
+		\node [style=none] (11) at (4.75, -1.375) {$X$};
+		\node [style=none] (12) at (2.75, -1.375) {$Y$};
+		\node [style=none] (24) at (4.25, 1) {$Z$};
+		\node [style=none] (25) at (3.75, -4.5) {$A+Z=Y$};
+		\node [style=none] (26) at (3.75, -5.25) {$B+X=Z$};
+		\node [style=none] (27) at (3.75, -6) {$C+X=Y$};
+		\node [style=none] (28) at (3.75, -3.75) {$A+B=C$};
+		\node [style=blackdot] (29) at (-6.5, -2) {};
+		\node [style=blackdot] (31) at (-3.75, 3) {};
+		\node [style=blackdot] (32) at (-1, -2) {};
+		\node [style=none] (33) at (-3.75, -2.5) {$C$};
+		\node [style=none] (34) at (-2, 1) {$B$};
+		\node [style=none] (35) at (-5.5, 1) {$A$};
+		\node [style=none] (42) at (-3.75, -3.75) {$A+B=C$};
+		\node [style=none] (43) at (-3.75, 4) {Triangular};
+		\node [style=none] (44) at (3.75, 4) {Tetrahedral};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route] (0) to (2);
+		\draw [style=mid-route] (0) to (3);
+		\draw [style=mid-route] (0) to (1);
+		\draw [style=mid-route] (2) to (1);
+		\draw [style=mid-route] (2) to (3);
+		\draw [style=mid-route] (3) to (1);
+		\draw [style=mid-route] (29) to (31);
+		\draw [style=mid-route] (29) to (32);
+		\draw [style=mid-route] (31) to (32);
+	\end{pgfonlayer}
+\end{tikzpicture}

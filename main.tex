@@ -7,7 +7,7 @@
 \affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 \affil[2]{\small{Anton's affiliations}}
 
-\title{On the spectra of tetrahedral sums of Hermitian matrices}
+\title{Eigenvalues of tetrahedral sums of Hermitian matrices}
 
 \date{\today}
 
@@ -15,23 +15,44 @@
 
 \maketitle
 
-\section*{Outline Draft May 30 2024}
+\begin{abstract}
+    This is the abstract.
+\end{abstract}
 
-Below is the proposed outline of the paper as of May 30, 2024.
-Our proposed journal is \textit{Communications in Mathematical Physics}.
-It will be ideal to illustrate with figures.
-\begin{itemize}
-    \item introduction (include 2x2 case)
-    \item general definition
-    \item relationship to Horn's problem, (how does it generalizes the problem)
-    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
-    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
-    \item spectral embedding into the quantum marginal problem
-    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
-\end{itemize}
+\tableofcontents
 
 \section{Introduction}
 
+
+\section{Tetrahedral sums}
+{\color{blue}
+    This section will include a formal statement of the problem under investigation, its relation to Horn's original problem and other generalizations of Horn's problem.
+    This section will hopefully briefly describe what is known about the eigenvalues of triangular sums of matrices.
+    Regarding tetrahedral spectra, we will describe many of the symmetries of the problem statement and various ``gauge'' choices that one could make.
+    Additional generalizations of the problem statement, like to more matrices, linear combinations, etc. will be mentioned here.
+    It will be important to mention the manner in which the analogue of the ``Thompson-Klyachko'' theorem does not hold, i.e. singular values of tetrahedral products are not the exponentials of eigenvalues of tetrahedral sums in general.
+}
+
+\begin{center}
+    \begin{figure}
+        \ctikzfig{tikz/triangular-tetrahedral-compare}
+    \end{figure}
+\end{center}
+
+\section{Recoupling theory}
+{\color{blue}
+    The purpose of this section is widen the bridge between representation theory and Horn-type problems.
+    We will begin with a treatment of the connection between triangular spectra and the Littlewood-Richardson coefficients and discuss its connection to symplectic geometry and moment maps.
+    Then we will articulate the manner in which tetrahedral spectra are related to the norm of the recoupling operator for $\SU(d)$ and discuss the manner in which convexity results for moment maps cannot be applied and thus one must not expect the space of tetrahedral spectra to be convex (indeed it is not).
+}
+
+\section{Spectral embedding and quantum information theory}
+{\color{blue}
+    The purpose of this section will be to re-articulate the spectral embedding defined in \cite{christandl2018recoupling} and state the sense in which the tetrahedral spectra problem is an instance of the quantum marginal problem.
+    From here we can discuss the extent to which known inequalities coming from quantum information theory yield constraints necessarily satisfied by tetrahedral.
+}
+
+\section{Discussion}
 
 
 \clearpage
@@ -82,7 +103,26 @@ It will be ideal to illustrate with figures.
     \item \textcolor{red}{TODO: track down a pdf for Thompson's 1988 ``Matrix Spectral Inequalities'' referenced by Klyachko}
     \item \Citeauthor{thompson1973eigenvalues} \cite{thompson1973eigenvalues} present a number of interesting counter-examples to the question of whether the inequalities pertaining to the spectra of general matrices can be deduced from looking at the spectra of diagonal matrices (both in the additive and multiplicative cases).
     \item Elementary introduction to toy models of three-dimensional quantum space \cite{barrett2003geometrical}
+    \item \Citeauthor{horn1962eigenvalues}'s original paper where they conjectured the form of a necessary and sufficient set of inequalities via an inductive scheme for increasing dimension \cite{horn1962eigenvalues}
 \end{itemize}
+
+\clearpage
+\section*{Outline Draft May 30 2024}
+
+Below is the proposed outline of the paper as of May 30, 2024.
+Our proposed journal is \textit{Communications in Mathematical Physics}.
+It will be ideal to illustrate with figures.
+\begin{itemize}
+    \item introduction (include 2x2 case)
+    \item general definition
+    \item relationship to Horn's problem, (how does it generalizes the problem)
+    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
+    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
+    \item spectral embedding into the quantum marginal problem
+    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
+\end{itemize}
+
+
 
 \clearpage
 \printbibliography
