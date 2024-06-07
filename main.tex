@@ -23,6 +23,15 @@
 
 \section{Introduction}
 
+{\color{blue}
+    Notational conventions:
+}
+Throughout this paper, $n \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
+We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(n)$ as shorthand for $\GL(n, \mathbb C)$.
+Weights for $\GL(n)$ will be denoted using Greek letters and will be identified with $n$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_n) \in \mathbb Z^{n}$.
+The weight lattice for $\GL(n)$ is denoted by $\weights(n) \simeq \mathbb Z^{n}$ in the usual way; a weight $\alpha \in \weights(n)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_n$ and the set of all dominant weights for $\GL(n)$ is denoted by $\domweights(n)$.
+
+The set of $n\times n$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_n)$ will be denoted by $\orbit_x$.
 
 \section{Tetrahedral sums}
 {\color{blue}
@@ -45,6 +54,26 @@
     We will begin with a treatment of the connection between triangular spectra and the Littlewood-Richardson coefficients and discuss its connection to symplectic geometry and moment maps.
     Then we will articulate the manner in which tetrahedral spectra are related to the norm of the recoupling operator for $\SU(d)$ and discuss the manner in which convexity results for moment maps cannot be applied and thus one must not expect the space of tetrahedral spectra to be convex (indeed it is not).
 }
+\subsection{Triangular spectra \& Littlewood-Richardson coefficients}
+\cite{lidskii1982spectral}
+
+
+\begin{defn}
+    Let $\alpha, \beta, \gamma \in \domweights(n)$ be a triple of dominant weights for $\GL(n)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(n)$ with corresponding highest weights.
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(n)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \otimes V_{\beta}$:
+    \begin{equation}
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(n)}(V_{\gamma}, V_{\alpha}\otimes V_{\beta}).
+    \end{equation}
+    The \defnsty{Littlewood-Richardson coefficient} is defined as
+    \begin{equation}
+        c_{\alpha,\beta}^{\gamma} \coloneqq \dim(C_{\alpha, \beta}^{\gamma}).
+    \end{equation}
+\end{defn}
+
+\begin{prop}
+    
+\end{prop}
+
 
 \section{Spectral embedding and quantum information theory}
 {\color{blue}
