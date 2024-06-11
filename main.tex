@@ -26,12 +26,12 @@
 {\color{blue}
     Notational conventions:
 }
-Throughout this paper, $n \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
-We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(n)$ as shorthand for $\GL(n, \mathbb C)$.
-Weights for $\GL(n)$ will be denoted using Greek letters and will be identified with $n$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_n) \in \mathbb Z^{n}$.
-The weight lattice for $\GL(n)$ is denoted by $\weights(n) \simeq \mathbb Z^{n}$ in the usual way; a weight $\alpha \in \weights(n)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_n$ and the set of all dominant weights for $\GL(n)$ is denoted by $\domweights(n)$.
+Throughout this paper, $d \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
+We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(d)$ as shorthand for $\GL(d, \mathbb C)$.
+Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
+The weight lattice for $\GL(d)$ is denoted by $\weights(d) \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights(d)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights(d)$.
 
-The set of $n\times n$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_n)$ will be denoted by $\orbit_x$.
+The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d)$ will be denoted by $\orbit_x$.
 
 \section{Tetrahedral sums}
 {\color{blue}
@@ -59,10 +59,10 @@ The set of $n\times n$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
 
 
 \begin{defn}
-    Let $\alpha, \beta, \gamma \in \domweights(n)$ be a triple of dominant weights for $\GL(n)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(n)$ with corresponding highest weights.
-    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(n)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \otimes V_{\beta}$:
+    Let $\alpha, \beta, \gamma \in \domweights(d)$ be a triple of dominant weights for $\GL(d)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \otimes V_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(n)}(V_{\gamma}, V_{\alpha}\otimes V_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(V_{\gamma}, V_{\alpha}\otimes V_{\beta}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as
     \begin{equation}
@@ -70,16 +70,179 @@ The set of $n\times n$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     \end{equation}
 \end{defn}
 
-\begin{prop}
-    
-\end{prop}
 
 
 \section{Spectral embedding and quantum information theory}
 {\color{blue}
     The purpose of this section will be to re-articulate the spectral embedding defined in \cite{christandl2018recoupling} and state the sense in which the tetrahedral spectra problem is an instance of the quantum marginal problem.
-    From here we can discuss the extent to which known inequalities coming from quantum information theory yield constraints necessarily satisfied by tetrahedral.
+    From here we can discuss the extent to which known inequalities coming from quantum information theory yield constraints necessarily satisfied by tetrahedral spectra.
 }
+
+
+
+
+\begin{defn}
+    \label{defn:spec_embed}
+    Let $(H_1, \ldots, H_k) \in \mathcal H(d)^{\times k}$ be a $k$-tuple of $d\times d$ positive-semidefinite Hermitian matrices and let $X$ be a subset of $\{1, \ldots, k\}$.
+    Let $\{\ket 1,\ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d}$ and $\{\ket 0, \ket 1, \ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d+1}$.
+    Define $H_{X} \coloneqq \sum_{i \in X}H_i$ as the partial sum.
+    Define a Hermitian operator, $\Phi_{X}$, acting on $(\mathbb C^{d+1})^{\otimes k}$ with coefficients with respect to the computational bases $\ket{i_1\cdots i_k}$ be given by the following formula:%
+    \footnote{%
+        Specifically, $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ is non-zero only if there exists a unique $p \in [k]$ such that $i_p > 0$ and a unique $q \in [k]$ such that $j_q > 0$ (with all other indices $i_{p'}$ and $j_{q'}$ for $p' \neq p$ and $q' \in q$ being zero). 
+        Furthermore, if $p, q \in [k]$ are the unique such indices, then $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ is zero if either $p \not \in X$ or $q \not \in X$; otherwise $p,q \in X$ and then  $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ takes the value $\braket{i_p | H_{p}^{\frac{1}{2}} H_{q}^{\frac{1}{2}} | j_{q}}$, the inner product between the $i_{p}$th column of $H_{p}^{\frac{1}{2}}$ and the $j_q$th column of $H_{q}^{\frac{1}{2}}$.
+    }%
+    \begin{equation}
+        \braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k} =
+        \begin{cases}
+            \braket{i_p | H_{p}^{\frac{1}{2}} H_{q}^{\frac{1}{2}} | j_{q}} & \exists! i_p, j_q > 0, p, q \in X \\
+            0 & \text{otherwise}.
+        \end{cases}
+    \end{equation}
+    Note that, up to shuffling the $k+1$ copies of $\mathbb C^{d+1}$ in $(\mathbb C^{d+1})^{\otimes k}$, $\Phi_{X}$ is of the form $\tilde \Phi_{X} \otimes Z_{[k]\setminus X}$ where
+    \begin{equation}
+        Z_{X} = \ket{0\stackrel{\card{X}}{\cdots} 0}\bra{0\stackrel{\card{X}}{\cdots} 0}.
+    \end{equation}
+    and where $\tilde \Phi_{X}$ acts on $(\mathbb C^{d+1})^{\otimes \card{X}}$.
+    Also define the operator $\Gamma_{X}$ which is $\tilde \Phi_{X}$ shifted by $Z_{X}$ 
+    \begin{equation}
+        \Gamma_{X} \coloneqq  \tilde \Phi_{X} + (1-\Tr(H_{X})) Z_{X},
+    \end{equation}
+    and in particular $\Gamma_{\emptyset} \coloneqq 1$.
+\end{defn}
+\begin{exam}
+    Given two Hermitian operators $(H_1, H_2) \in \mathcal H(d)^{\times 2}$, the matrix $\Gamma_{1,2}$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
+    \begin{align}
+        \braket{00|\Gamma_{1,2}|00} &= 1-\Tr(H_{1,2}), \\
+        \braket{i0|\Gamma_{1,2}|j0} &= \braket{i|H_{1}|j}, \\
+        \braket{0i|\Gamma_{1,2}|0j} &= \braket{i|H_{2}|j}, \\
+        \braket{i0|\Gamma_{1,2}|0j} &= \braket{i|H_{1}^{\frac{1}{2}}H_{2}^{\frac{1}{2}}|j}, \\
+        \braket{0i|\Gamma_{1,2}|j0} &= \braket{i|H_{2}^{\frac{1}{2}}H_{1}^{\frac{1}{2}}|j}, \\
+        \braket{ik|\Gamma_{1,2}|jl} &= 0.
+    \end{align}
+\end{exam}
+
+\begin{lem}
+    \label{lem:spec_embed}
+    Let everything be defined as in \cref{defn:spec_embed}.
+    The follow statements hold for all subsets $X \subseteq [k]$.
+    \begin{enumerate}[(i)]
+        \item Up to padding by zeros, the eigenvalues of $\tilde \Phi_{X}$, $\Phi_{X}$ and $H_{X}$ are all identical.
+        \begin{equation}
+            \lambda(\tilde \Phi_{X}) \simeq \lambda(\Phi_X) \simeq \lambda(H_X).
+        \end{equation}
+        \item The eigenvalues of $\Gamma_{X}$ are equal to the eigenvalues of $\tilde \Phi_{X}$ plus the additional value of $1-\Tr(H_{X})$.
+        \begin{equation}
+            \lambda(\Gamma_{X}) \simeq \lambda(\tilde \Phi_{X}) \oplus \{1-\Tr(H_{X})\}.
+        \end{equation}
+        \item The partial trace of $\Gamma_{[k]}$ over $[k]\setminus X$ is equal to $\Gamma_{X}$:
+        \begin{equation}
+            \Tr_{[k]\setminus X} (\Gamma_{[k]}) = \Gamma_{X}.
+        \end{equation}
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    (i) From the definition of $\Phi_{X}$, one observes that $\braket{i_1\cdots i_k | \Phi_{X} | i_1\cdots i_k}$ is only non-zero if there exists a unique non-zero $i_{p} \neq 0$ where $p \in X$ and thus
+    \begin{equation}
+        \Tr(\Phi_{X}) = \sum_{p\in X}\sum_{j=1}^{d} \braket{j|H_{p}|j} = \sum_{p\in X} \Tr(H_{p}) = \Tr(H_{X}).
+    \end{equation}
+    More generally, for any positive integer $\ell \in \mathbb N_{> 0}$, one observes that $\Tr(\Phi_{X}^{\ell}) = \Tr(H_{X}^{\ell})$.
+    (\textcolor{red}{TODO: Prove this directly.})
+    As the eigenvalues of any matrix $X$ are determined (up to padding by zeros) by the values of $\Tr(X^{\ell})$, we conclude that $\Phi_{X}$ and $H_{X}$ have the same eigenvalues (up to padding by zeros)
+    (\textcolor{red}{TODO: Is there a more direct way to prove this.})
+
+    (ii) Note that $\tilde \Phi_{X}$ and its eigenvectors are supported in the subspace of $(\mathbb C^{d+1})^{\otimes \card{X}}$ spanned by $\ket{i_1 \cdots i_{\card{X}}}$ for which exactly one if the $i_p$'s is non-zero. 
+    Therefore $\ket{0\stackrel{\card{X}}{\cdots} 0}$ is orthogonal to all eigenvectors of $\tilde \Phi_{X}$ and thus $\ket{0\stackrel{\card{X}}{\cdots} 0}$ is an eigenvector of $\Gamma_{X}$ with eigenvalue $1-\Tr(H_X)$.
+
+    (iii) The partial trace of $\Phi_{[k]}$ over $[k]\setminus X$, when performed in the computational basis $\ket{i_1 \cdots i_k}$, can be divided into three portions depending on the number of non-zero entries in $(i_p \mid p \in [k]\setminus X)$; first, is all indices $i_p$ are zero, second, where exactly one $i_p$ is non-zero, and third where more than one index $i_p$ is non-zero.
+    The respective contributions are as follows:
+    \begin{equation}
+        \Tr_{[k]\setminus X}(\Phi_{[k]}) = \tilde \Phi_{X} + \Tr(H_{[k] \setminus X}) Z_{X} + 0
+    \end{equation}
+    Recalling the definition of $\Gamma_{[k]}$,
+    \begin{equation}
+        \Gamma_{[k]} \coloneqq \Phi_{[k]} + (1-\Tr(H_{[k]}))Z_{[k]}
+    \end{equation}
+    One concludes
+    \begin{align}
+        \begin{split}
+            \Tr_{[k]\setminus X} (\Gamma_{[k]})
+            &= \Tr_{[k]\setminus X}(\Phi_{[k]} + (1-\Tr(H_{[k]}))Z_{[k]}), \\
+            &= \tilde \Phi_{X} + \Tr(H_{[k]\setminus X}) Z_{X} + (1-\Tr(H_{[k]}))Z_{X}, \\
+            &= \tilde \Phi_{X} + (1-\Tr(H_{X}))Z_{X}, \\
+            &= \Gamma_{X}.
+        \end{split}
+    \end{align}
+\end{proof}
+\begin{cor}
+    By \cref{lem:spec_embed}, one has $\Tr(\Gamma_{X}) = 1$.
+    If the eigenvalues of $H_{X}$ satisfy
+    \begin{equation}
+        \Tr(H_X) \leq 1,
+    \end{equation}
+    then $\Gamma_{X}$ is positive semidefinite, and thus $\Gamma_{X}$ is a denisty matrix.
+    In such a case, assuming $H_X\neq 0$ so that $\Tr(H_X) \in (0,1]$, the von Neumann entropy of $\Gamma_{X}$ is related to the von Neumann entropy of $H_{X} / \Tr(H_X)$ by the equation
+    \footnote{%
+        Here $h(p) = -p\log p - (1-p)\log(1-p)$ denotes the binary entropy of $p \in [0,1]$.
+    }
+    \begin{equation}
+        S\left(\Gamma_{X}\right) = h(\Tr(H_X)) + \Tr(H_X)S\left(\frac{H_{X}}{\Tr(H_X)}\right).
+    \end{equation}
+    Moreover, if the eigenvalues of $H_{X}$ satisfy the stronger condition
+    \begin{equation}
+        \lambda_{1}(H_X) + \Tr(H_X) \leq 1,
+    \end{equation}
+    then the maximum eigenvalue of $\Gamma_{X}$ is $1-\Tr(H_X)$.
+\end{cor}
+\begin{proof}
+    The only non-trivial claim involves the relation between the von Neumann entropies of $\Gamma_{X}$ and $H_{X} / \Tr(H_X)$, respectively given by
+    \begin{align}
+        S\left(\Gamma_{X}\right) &= -(1-\Tr(H_X))\log(1-\Tr(H_X)) - \sum_{i=1}^{d} \lambda_1(H_X) \log \lambda_1(H_X), \\
+        S\left(\frac{H_{X}}{\Tr(H_X)}\right) &= - \frac{1}{\Tr(H_X)}\sum_{i=1}^{d} \lambda_1(H_X) \log \lambda_1(H_X) + \log(\Tr(H_X)).
+    \end{align}
+    Multiplying the von Neumann entropy of $H_{X} / \Tr(H_X)$ by $\Tr(H_X)$ yields
+    \begin{equation}
+        \Tr(H_X)S\left(\frac{H_{X}}{\Tr(H_X)}\right) = S\left(\Gamma_{X}\right) + \Tr(H_X)\log(\Tr(H_X)) + (1-\Tr(H_X))\log(1-\Tr(H_X)),
+    \end{equation}
+    which is the claimed result.
+\end{proof}
+
+%\begin{proof}
+%    Fix $i \in \{1,\ldots, d\}$ and let $\ket{\phi_i} \in (\mathbb C^{d+1})^{\otimes k}$ be the unique vector with coefficients $\braket{j_1\cdots j_k | \phi_i}$ (with respect to the computational basis where $j_1, \ldots, j_k \in \{0,1,\ldots, d\}$) given by the formula
+%    \begin{equation}
+%        \braket{j_1\cdots j_k | \phi_i} = \sum_{p=1}^{k} (\prod_{q\neq p} \delta_{j_{q}, 0})\braket{j_p | \bar H_{p}^{\frac{1}{2}} | i} 
+%        = \begin{cases}
+%            0 & \exists p \neq q : j_{p}, j_{q} \neq 0, \\
+%            \braket{j_p | \bar H_{p}^{\frac{1}{2}} | i} & \exists p : j_{p} > 0, \forall q \neq p : j_{q} = 0, \\
+%            0 & \forall p : j_{p} = 0.
+%        \end{cases}
+%    \end{equation}
+%    In particular, $\ket{\phi_i}$ lies in the subspace of $(\mathbb C^{d+1})^{\otimes k}$ spanned by computational basis vectors $\ket{j_1, \ldots, j_k}$ wherein exactly \textit{one} of the $j_p$'s is non-zero. 
+%    Moreover, when $j_p > 0$ is the only non-zero element, the coefficient $\braket{j_1\cdots j_k|\phi_i} = \braket{0 \cdots j_p \cdots 0|\phi_i}$ depends only on $H_p$ (and not on $H_q$ for $q \neq p$).
+%    \begin{equation}
+%        \Phi \coloneqq \sum_{i=1}^{d} \ket{\phi_i}\!\bra{\phi_i}
+%    \end{equation}
+%
+%    \begin{equation}
+%        \braket{j_1\cdots j_k | \Phi | j_1'\cdots j_k'} = \sum_{p,p'=1}^{k} (\prod_{q\neq p} \delta_{j_{q}, 0})(\prod_{q'\neq p'} \delta_{j'_{q'}, 0})\braket{j_p | \bar H_{p}^{\frac{1}{2}}\bar H_{p'}^{\frac{1}{2}} | j'_{p'}}
+%    \end{equation}
+%    The expression $\braket{j_1\cdots j_k | \Phi | j_1'\cdots j_k'}$ is only non-zero if exactly one of the $j_p$'s is non-zero and also if exactly one of the $j'_{p'}$'s is non-zero.
+%    In particular,
+%    \begin{equation}
+%        \braket{j_1\cdots j_k | \Phi | j_1'\cdots j_k'} = 
+%        \begin{cases}
+%            \braket{j_p | \bar H_{p}^{\frac{1}{2}}\bar H_{p'}^{\frac{1}{2}} | j'_{p'}} & \exists! j_p \neq 0, j'_{p'} \neq 0 \\
+%            0 & \text{otherwise}
+%        \end{cases}
+%    \end{equation}
+%    Ximilarly define
+%    \begin{equation}
+%        \braket{j_1\cdots j_k | \Phi_{X} | j_1'\cdots j_k'} = 
+%        \begin{cases}
+%            \braket{j_p | \bar H_{p}^{\frac{1}{2}}\bar H_{p'}^{\frac{1}{2}} | j'_{p'}} & \exists! j_p \neq 0, j'_{p'} \neq 0 : p, p' \in X \\
+%            0 & \text{otherwise}
+%        \end{cases}
+%    \end{equation}
+%\end{proof}
 
 \section{Discussion}
 
