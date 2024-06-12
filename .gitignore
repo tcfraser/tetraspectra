@@ -294,3 +294,5 @@ TSWLatexianTemp*
 notes/
 
 :w
+# when syncing with overleaf, it makes sense to omit the main.pdf file
+math.pdf
