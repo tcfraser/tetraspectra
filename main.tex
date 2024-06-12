@@ -31,9 +31,10 @@ We also exclusively work with matrices with coefficients in the field of complex
 Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
 The weight lattice for $\GL(d)$ is denoted by $\weights(d) \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights(d)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights(d)$.
 
-The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d)$ will be denoted by $\orbit_x$.
+The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs(d) \subset \mathbb R^{d}$.
+The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs(d)$ will be denoted by $\orbit_x$. 
 
-\section{Tetrahedral sums}
+\section{Generalizations of Horn's problem}
 {\color{blue}
     This section will include a formal statement of the problem under investigation, its relation to Horn's original problem and other generalizations of Horn's problem.
     This section will hopefully briefly describe what is known about the eigenvalues of triangular sums of matrices.
@@ -42,11 +43,182 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     It will be important to mention the manner in which the analogue of the ``Thompson-Klyachko'' theorem does not hold, i.e. singular values of tetrahedral products are not the exponentials of eigenvalues of tetrahedral sums in general.
 }
 
+
+\subsection{Graphical Horn problems}
+
 \begin{center}
     \begin{figure}
         \ctikzfig{tikz/triangular-tetrahedral-compare}
+        \caption{Examples of graphical Horn problems.}
     \end{figure}
 \end{center}
+
+\begin{defn}
+    Let $\s G = (\s V, \s E)$ be a finite directed graph with vertex set $\s V$ and edge set $\s E$ together with source and target maps $s, t : \s E \to \s V$.
+    Let $d$ be a positive integer.
+    A \textit{spectral map} (for $\s G$ of dimension $d$) is a function $\lambda : \s E \to \eigs(d)$ assigning to each edge $e \in \s E$ in the directed graph a $d$-tuple of real numbers $\lambda(e) = (\lambda_1(e), \cdots, \lambda_d(e))$.
+    The map $\lambda : \s E \to \eigs(d)$ is said to be \defnsty{realizable (by Hermitian matrices)} if there exists a map $H : \s E \to \herm(d)$ assigning to each edge $e \in \s E$ a $d \times d$ Hermitian matrix $H(e)$ such that
+    \begin{itemize}
+        \item for each edge $e \in \s E$, $H(e)$ has eigenvalues $\lambda(e)$, 
+            \begin{equation}
+                \label{eq:spec_cond}
+                \eig(H(e)) = \lambda(e),
+            \end{equation}
+        \item for each cycle $\ell \subseteq \s E$ with orientation map $\gamma_{\ell} : \ell \to \{\pm1\}$,
+            \begin{equation}
+                \label{eq:cycle_cond}
+                \sum_{e \in \ell} \gamma_{\ell}(e)H(e) = 0.
+            \end{equation}
+    \end{itemize}
+    Alternatively, one can equivalently encode the constraints imposed by \cref{eq:cycle_cond} in terms of a $\{-1, 0, +1\}$-valued $L \times \card{E}$ matrix (where $L$ is the number of (generating) cycles in $\s G$), denoted by $\Gamma(\s G)$, where
+    \begin{equation}
+        \Gamma(\s G)_{\ell, e} 
+        = \begin{cases}
+            0 & e \not \in \ell, \\
+            \gamma_{\ell}(e) & e \in \ell.
+        \end{cases}
+    \end{equation}
+    In terms of $\Gamma(\s G)$, \cref{eq:cycle_cond} reads for all cycles $\ell$:
+    \begin{equation}
+        \sum_{e \in \s E} \Gamma(\s G)_{\ell, e} H(e) = 0
+    \end{equation}
+\end{defn}
+
+\begin{prob}[Graphical Horn problem]
+    \label{prob:ghp}
+    Let $\s G = (\s V, \s E)$ be a finite directed graph, let $d$ be a positive integer.
+    The \defnsty{graphical Horn problem} is to characterize the set of realizable spectral maps $\lambda : \s E \to \eigs(d)$ for $\s G$ of dimension $d$.
+\end{prob}
+
+{\color{red}
+    There might be an important connection to the their of quivers and representations of quivers. 
+    In particular, the notion of a morphism between a representation of a quiver in terms of operators on vertices forming computing squares models precisely the kinds of continuous symmetries which may be present in a given graphical Horn problem. 
+    Indeed, the spectral data were are ultimately interested in is equivalent to the orbit under such ``local'' isomorphisms (i.e. conjugation by isomorphisms).
+}
+
+{\color{red}
+    TC: It turns out that the only relavent data for statement of a graphical Horn problem is the matrix $\Gamma(\s G)$; perhaps its best to drop reference to $\s G$ altogether and just have the problem statement depend on a matrix $\Gamma$?
+    Moreover, one could in principle take the matrix to be $\mathbb R$-valued instead of $\{-1, 0, +1\}$-valued, although that would make the connection to the representation theory even weaker.
+    Generalizing to $\mathbb Z$-valued $\Gamma$ is also essentially the same I think...
+}
+
+There are a few operations which preserve the set of realizable spectral maps.
+\begin{lem}
+    Consider a graphical Horn problem of dimension $d$.
+    \begin{itemize}
+        \item The \defnsty{zero spectral map} $0_d : \s E \to \eigs(d)$ assigning to $e \in \s E$, the spectrum $0_d(e) = (0, \stackrel{d}{\ldots}, 0)$ is realizable.
+        \item If $\alpha : \s E \to \eigs(a)$ and $\beta : \s E \to \eigs(b)$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs(a+b)$ and tensor product $\alpha \otimes \beta : \s E \to \eigs(ab)$ (defined pointwise in the obvious manner), are both realizable.
+        \item If $\lambda : \s E \to \eigs(d)$ is a realizable and $p \in \mathbb R_{> 0}$ a positive real number, then $p \lambda : \s E \to \eigs(d)$, defined by $(p\lambda)(e) = (p\lambda_1(e), \ldots, p\lambda_d(e))$ is also a realizable.
+        \item If $\lambda : \s E \to \eigs(d)$ is a realizable, then $\lambda^{*} : \s E \to \eigs(d)$, defined by a pointwise application of the negation-reversal involution, is also realizable.
+    \end{itemize}
+\end{lem}
+
+\begin{exam}[The trigonal Horn problem]
+    Perhaps the smallest non-trivial example of a graphical Horn problem is the one for which \citeauthor{horn1962eigenvalues} originally conjectured a solution \cite{horn1962eigenvalues}, namely, what are the possible eigenvalues, $(\alpha, \beta, \gamma)$, of a triple of $d\times d$ Hermitian matrices $(A, B, C)$ satisfying the condition $A+B=C$?
+    From the perspective of \cref{prob:ghp}, we refer to this question as the \defnsty{trigonal Horn problem}.
+\end{exam}
+
+\begin{exam}[Polygonal Horn problems]
+    If the directed graph $\s G$ consists of a single closed cycle, then the corresponding Horn problem will be referred to as a \textit{polygonal Horn problem}; the polygonal Horn problem associated to an \textit{oriented} cycle $e_1 \to e_2 \to \cdots e_{r} \to e_1$ consisting of $r$ edges asks what are the possible eigenvalues $(\lambda_1, \ldots, \lambda_r)$ of $r$ Hermitian matrices $(H_1, \ldots, H_r)$ with zero-sum $H_1 +\cdots + H_r = 0$.
+    Evidently, there is a bijection between the set of realizable spectra $(\alpha, \beta, \gamma)$ and the set of realizable spectra $(\lambda_1, \lambda_2, \lambda_3)$ for the polygonal Horn problem where $r=3$: namely
+    \begin{equation}
+        (\lambda_1, \lambda_2, \lambda_3) = (\alpha, \beta, \gamma^{*})
+    \end{equation}
+    where $\gamma \mapsto \gamma^{*}$ is the involution on $\eigs(d)$ defined by negation of entries and then reversing to preserve the ordering:
+    \begin{equation}
+        \gamma^{*} = (-\gamma_d, \ldots, -\lambda_1).
+    \end{equation}
+\end{exam}
+
+\begin{exam}[Tetrahedral Horn problem]
+    In this paper, a considerable focus will be placed on the \defnsty{tetrahedral Horn problem} which is the graphical Horn problem associated with the directed graph above forming a tetrahedron.
+    Specifically, a sextuple of candidate spectra,
+    \begin{equation}
+        (\alpha, \beta, \gamma, \mu, \nu, \lambda) \in (\eigs(d))^{\times 6}
+    \end{equation}
+    are said to be \defnsty{tetrahedral} if they are the respective eigenvalues of Hermitian matrices 
+    \begin{equation}
+        (A,B,C,M,N,L) \in \herm(d)^{\times 6}
+    \end{equation}
+    satisfying the following four conditions:
+    \begin{equation}
+        A + B = M, \qquad M + C = L, \qquad B+C = N, \qquad A + N = L.
+    \end{equation}
+\end{exam}
+
+\begin{exam}[One-dimensional graphical Horn problems]
+    An important special case of graphical Horn problem for a digraph $\s G$ is the case where $d = 1$.
+    If $d=1$, then vector space of $1\times 1$ Hermitian matrices becomes isomorphic to the real numbers, $\herm(1) \simeq \mathbb R$, and similarly the space of candidate eigenvalues becomes $\eigs(1) = \mathbb R$.
+    Moreover, the spectral map $\lambda : \s E \to \mathbb R$ becomes an assignment of real numbers of the edges of $\s G$, the map $H : \s E \to \mathbb R$ must necessarily equal spectral map $\lambda$ by the spectral condition \cref{eq:spec_cond}, and the cycle condition characterizing realizable spectral maps simplifies to the condition that $\lambda$, viewed as a vector $(\lambda(e))_{e \in \s E} \in \mathbb R^{\card{\s E}}$, must lie in the kernel of $\Gamma(\s G)$,
+    \begin{equation}
+        \label{eq:ker_cond_d_1}
+        \lambda \in \ker(\Gamma(\s G)).
+    \end{equation}
+    In fact, this simple condition provids a complete solution to all graphical Horn problems where $d=1$.
+\end{exam}
+
+The solution to all one-dimensional graphical Horn problems provided by \cref{eq:ker_cond_d_1} also gives rise to a simple necessary condition for $d>1$ graphical Horn problems.
+\begin{lem}
+    \label{lem:trace_cond}
+    Consider the graphical Horn problem of dimension $d$ for the digraph $\s G = (\s V, \s E)$.
+    Then the spectral map $\lambda : \s E \to \eigs(d)$ is realizable only if 
+    \begin{equation}
+        \Tr \circ \lambda \in \ker(\Gamma(\s G)),
+    \end{equation}
+    where, by abuse of notation, $\Tr : \eigs(d) \to \mathbb R$ denotes the sum 
+    \begin{equation}
+        \Tr((\lambda_1, \cdots, \lambda_d)) \coloneqq \lambda_1 + \cdots \lambda_d.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Suppose that $\lambda : \s E \to \eigs(d)$ is a spectral map realized by the assignment $H : \s E \to \herm(d)$, meaning $\eig(H(e)) = \lambda(e)$ for all edges $e \in \s E$, and $\sum_{e\in E}\Gamma(\s G)_{\ell, e}H(e) = 0$ for all cycles $\ell$.
+    Taking the trace of cycle condition \cref{eq:cycle_cond} yields
+    \begin{equation}
+        0 = \sum_{e\in E}\Gamma(\s G)_{\ell, e}\Tr(H(e)) = \sum_{e\in E}\Gamma(\s G)_{\ell, e}\Tr(\lambda(e)).
+    \end{equation}
+    In other words, $\Tr \circ \lambda$ lies in the kernel of $\Gamma(\s G)$ which implies $\Tr \circ \lambda$ is a realizable spectral map for the $d=1$ case.
+\end{proof}
+
+\begin{lem}
+    \label{lem:ker_shift}
+    Consider the graphical Horn problem of dimension $d$ for the diagraph $\s G = (\s V, \s E)$.
+    Suppose $\mu : \s E \to \mathbb R$ lies in the kernel of $\Gamma(\s G)$ and define $\mu_{d} : \s E \to \eigs(d)$ to be the spectral map defined by
+    \begin{equation}
+        \mu_d(e) \coloneqq (\mu(e), \stackrel{d}{\ldots}, \mu(e)).
+    \end{equation}
+    Then $\mu_{d} : \s E \to \eigs(d)$ is a realizable spectral map.
+    Moreover, $\lambda : \s E \to \eigs(d)$ is a realizable spectral map if and only if $\lambda + \mu_{d}$ is a realizable.
+\end{lem}
+\begin{proof}
+    The spectral map $\mu_d$ is realized by the assignment $H_{\mu} : \s E \to \herm(d)$ defined by
+    \begin{equation}
+        H_{\mu}(e) \coloneqq \mu(e)I_{d}
+    \end{equation}
+    where $I_{d}$ is the $d\times d$ identity matrix.
+    This is because it was assumed that $\mu \in \ker(\Gamma(\s G))$ and therefore
+    \begin{equation}
+        \sum_{e\in E}\Gamma(\s G)_{\ell, e}H_{\mu}(e) = (\sum_{e\in E}\Gamma(\s G)_{\ell, e}\mu(e))I_{d} = 0.
+    \end{equation}
+    Now suppose $\lambda : \s E \to \eigs(d)$ is realized by the assignment $H_{\lambda} : \s E \to \herm(d)$, then it follows that $H_{\lambda}+H_{\mu}$, defined by
+    \begin{equation}
+        (H_{\lambda}+H_{\mu})(e) = H_{\lambda}(e) + \mu(e) I_d
+    \end{equation} 
+    realizes the spectral map $\lambda + \mu_d$ because the spectrum of $H_{\lambda}(e) + \mu(e) I_d$ is simply $\lambda(e) + \mu_d(e)$ (the eigenvalues add because $[H_{\lambda}(e), I_d] = 0$).
+\end{proof}
+
+A direct corollary of \cref{lem:ker_shift} is that one can always assume, without loss of generality, that the spectral map $\lambda : \s E \to \eigs(d)$ is traceless in the sense that $\Tr\circ \lambda = 0_d$.
+\begin{cor}
+    Let $\lambda : \s E \to \eigs(d)$ be a spectral map such that $\Tr\circ\lambda \in \ker(\Gamma(\s G))$ and let $\lambda^{0} : \s E \to \eigs(d)$ be the traceless spectral map defined by
+    \begin{equation}
+        \lambda^{0}(e) \coloneqq (\lambda_1(e) - \Tr(\lambda(e)), \ldots, \lambda_d(e) - \Tr(\lambda(e))).
+    \end{equation}
+    Then $\lambda$ is realizable if and only if $\lambda^{0}$ is realizable.
+\end{cor}
+\begin{proof}
+    The spectral map $\lambda^{0}$ is obtained from $\lambda$ by subtracting the spectral map $\Tr\circ \lambda$. 
+    By assumption, $\Tr\circ \lambda$ lies in the kernel of $\Gamma(\s G)$ by \cref{lem:trace_cond}, and thus \cref{lem:ker_shift} (when $\mu \mapsto \pm \Tr \circ \lambda$) implies $\lambda^{0}$ is realizable if and only if $\lambda$ is realizable.
+\end{proof}
+
 
 \section{Recoupling theory}
 {\color{blue}
@@ -75,18 +247,18 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
 \subsection{An entropy inequality for tetrahedral spectra}
 
 
-\section{Spectral embedding and quantum information theory}
+\section{The spectral quantum marginal problem}
 {\color{blue}
     The purpose of this section will be to re-articulate the spectral embedding defined in \cite{christandl2018recoupling} and state the sense in which the tetrahedral spectra problem is an instance of the quantum marginal problem.
     From here we can discuss the extent to which known inequalities coming from quantum information theory yield constraints necessarily satisfied by tetrahedral spectra.
 }
 
-
+\subsection{A spectral embedding}
 
 
 \begin{defn}
     \label{defn:spec_embed}
-    Let $(H_1, \ldots, H_k) \in \mathcal H(d)^{\times k}$ be a $k$-tuple of $d\times d$ positive-semidefinite Hermitian matrices and let $X$ be a subset of $\{1, \ldots, k\}$.
+    Let $(H_1, \ldots, H_k) \in \herm(d)^{\times k}$ be a $k$-tuple of $d\times d$ positive-semidefinite Hermitian matrices and let $X$ be a subset of $\{1, \ldots, k\}$.
     Let $\{\ket 1,\ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d}$ and $\{\ket 0, \ket 1, \ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d+1}$.
     Define $H_{X} \coloneqq \sum_{i \in X}H_i$ as the partial sum.
     Define a Hermitian operator, $\Phi_{X}$, acting on $(\mathbb C^{d+1})^{\otimes k}$ with coefficients with respect to the computational bases $\ket{i_1\cdots i_k}$ be given by the following formula:%
@@ -113,7 +285,7 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     and in particular $\Gamma_{\emptyset} \coloneqq 1$.
 \end{defn}
 \begin{exam}
-    Given two Hermitian operators $(H_1, H_2) \in \mathcal H(d)^{\times 2}$, the matrix $\Gamma_{1,2}$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
+    Given two Hermitian operators $(H_1, H_2) \in \herm(d)^{\times 2}$, the matrix $\Gamma_{1,2}$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
     \begin{align}
         \braket{00|\Gamma_{1,2}|00} &= 1-\Tr(H_{1,2}), \\
         \braket{i0|\Gamma_{1,2}|j0} &= \braket{i|H_{1}|j}, \\
