@@ -1,0 +1,142 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1098) at (-1.25, -0.75) {$V_{\beta}$};
+		\node [style=none] (1099) at (-2.5, 1.5) {};
+		\node [style=none] (1100) at (-2.5, -2) {};
+		\node [style=none] (1101) at (-2.5, -4.25) {};
+		\node [style=none] (1102) at (-2.5, -2.5) {};
+		\node [style=none] (1103) at (-1.75, -4) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1104) at (-2.5, 4) {};
+		\node [style=none] (1105) at (-2.5, 2) {};
+		\node [style=none] (1106) at (-1.75, 3.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1107) at (-2, 2) {};
+		\node [style=none] (1108) at (-1.25, 2) {};
+		\node [style=none] (1109) at (-0.75, -2.5) {};
+		\node [style=none] (1110) at (-2, -2.5) {};
+		\node [style=none] (1111) at (-3, 2) {};
+		\node [style=none] (1112) at (-0.75, 2) {};
+		\node [style=none] (1113) at (-3, -2.5) {};
+		\node [style=none] (1114) at (-4.25, -2.75) {};
+		\node [style=none] (1115) at (-4.25, 1) {};
+		\node [style=none] (1116) at (-4.25, -0.25) {};
+		\node [style=none] (1117) at (-4.25, -1.5) {};
+		\node [style=none] (1118) at (-3.5, -2) {};
+		\node [style=none] (1119) at (-1.5, -2) {};
+		\node [style=none] (1120) at (-3.25, -2.5) {};
+		\node [style=none] (1121) at (-1.75, -2.5) {};
+		\node [style=none] (1122) at (-3.5, 1.5) {};
+		\node [style=none] (1123) at (-1.5, 1.5) {};
+		\node [style=none] (1124) at (-3.25, 2) {};
+		\node [style=none] (1125) at (-1.75, 2) {};
+		\node [style=none] (1186) at (-7.75, -0.75) {$V_{\beta}$};
+		\node [style=none] (1187) at (-6.5, 1.5) {};
+		\node [style=none] (1188) at (-6.5, -2) {};
+		\node [style=none] (1189) at (-6.5, -4.25) {};
+		\node [style=none] (1190) at (-6.5, -2.5) {};
+		\node [style=none] (1191) at (-7.25, -4) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1192) at (-6.5, 4) {};
+		\node [style=none] (1193) at (-6.5, 2) {};
+		\node [style=none] (1194) at (-7.25, 3.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1195) at (-7, 2) {};
+		\node [style=none] (1196) at (-7.75, 2) {};
+		\node [style=none] (1197) at (-8.25, -2.5) {};
+		\node [style=none] (1198) at (-7, -2.5) {};
+		\node [style=none] (1199) at (-6, 2) {};
+		\node [style=none] (1200) at (-8.25, 2) {};
+		\node [style=none] (1201) at (-6, -2.5) {};
+		\node [style=none] (1202) at (-4.75, -2.75) {};
+		\node [style=none] (1203) at (-4.75, 1) {};
+		\node [style=none] (1204) at (-4.75, -0.25) {};
+		\node [style=none] (1205) at (-4.75, -1.5) {};
+		\node [style=none] (1206) at (-5.5, -2) {};
+		\node [style=none] (1207) at (-7.5, -2) {};
+		\node [style=none] (1208) at (-5.75, -2.5) {};
+		\node [style=none] (1209) at (-7.25, -2.5) {};
+		\node [style=none] (1210) at (-5.5, 1.5) {};
+		\node [style=none] (1211) at (-7.5, 1.5) {};
+		\node [style=none] (1212) at (-5.75, 2) {};
+		\node [style=none] (1213) at (-7.25, 2) {};
+		\node [style=none] (1214) at (-5, -1) {$V_{\mu}$};
+		\node [style=none] (1215) at (-5, 0.25) {$V_{\gamma}$};
+		\node [style=none] (1216) at (-5, 1.5) {$V_{\nu}$};
+		\node [style=none] (1217) at (-5, -2.25) {$V_{\alpha}$};
+		\node [style=none] (1219) at (0, 0) {$=$};
+		\node [style=none] (1220) at (2.5, 0) {$V_\alpha$};
+		\node [style=none] (1221) at (2, 0) {};
+		\node [style=none] (1222) at (3, 0) {};
+		\node [style=none] (1223) at (3.75, 0) {$V_\beta$};
+		\node [style=none] (1224) at (3.25, 0) {};
+		\node [style=none] (1225) at (4.25, 0) {};
+		\node [style=none] (1226) at (5, 0) {$V_\gamma$};
+		\node [style=none] (1227) at (4.5, 0) {};
+		\node [style=none] (1228) at (5.5, 0) {};
+		\node [style=none] (1229) at (5.5, -4.25) {};
+		\node [style=none] (1230) at (6.25, -3.75) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1231) at (5.5, 4) {};
+		\node [style=none] (1232) at (6.25, 3.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1233) at (2, -4.25) {};
+		\node [style=none] (1234) at (1.25, -3.75) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1235) at (2, 4) {};
+		\node [style=none] (1236) at (1.25, 3.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1266) at (-4.5, 3) {};
+		\node [style=none] (1267) at (-4.5, -3.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route] (1107.center)
+			 to [bend left=90, looseness=1.50] (1108.center)
+			 to [in=0, out=-90, looseness=1.50] (1116.center);
+		\draw [style=mid-route] (1111.center)
+			 to [bend left=90, looseness=1.25] (1112.center)
+			 to (1109.center)
+			 to [bend left=90] (1110.center);
+		\draw [style=mid-route, in=-90, out=0, looseness=0.50] (1115.center) to (1099.center);
+		\draw [style=mid-route, in=0, out=90, looseness=0.75] (1100.center) to (1117.center);
+		\draw [style=mid-route, in=-90, out=0, looseness=0.75] (1114.center) to (1113.center);
+		\draw [style=over-mult] (1101.center) to (1102.center);
+		\draw [style=over-mult] (1105.center) to (1104.center);
+		\draw [style=box] (1121.center)
+			 to (1119.center)
+			 to (1118.center)
+			 to (1120.center)
+			 to cycle;
+		\draw [style=box] (1122.center)
+			 to (1124.center)
+			 to (1125.center)
+			 to (1123.center)
+			 to cycle;
+		\draw [style=mid-route] (1204.center)
+			 to [in=-90, out=180, looseness=1.50] (1196.center)
+			 to [bend left=90, looseness=1.50] (1195.center);
+		\draw [style=mid-route] (1198.center)
+			 to [bend left=90] (1197.center)
+			 to (1200.center)
+			 to [bend left=90, looseness=1.25] (1199.center);
+		\draw [style=mid-route, in=180, out=-90, looseness=0.50] (1187.center) to (1203.center);
+		\draw [style=mid-route, in=90, out=180, looseness=0.75] (1205.center) to (1188.center);
+		\draw [style=mid-route, in=180, out=-90, looseness=0.75] (1201.center) to (1202.center);
+		\draw [style=over-mult] (1190.center) to (1189.center);
+		\draw [style=over-mult] (1192.center) to (1193.center);
+		\draw [style=box] (1207.center)
+			 to (1206.center)
+			 to (1208.center)
+			 to (1209.center)
+			 to cycle;
+		\draw [style=box] (1213.center)
+			 to (1211.center)
+			 to (1210.center)
+			 to (1212.center)
+			 to cycle;
+		\draw [style=mid-route] (1222.center)
+			 to [bend left=90, looseness=1.75] (1221.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1224.center)
+			 to [bend left=90, looseness=1.75] (1225.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1228.center)
+			 to [bend left=90, looseness=1.75] (1227.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=over-mult, bend right=90, looseness=1.25] (1235.center) to (1231.center);
+		\draw [style=over-mult, bend left=270, looseness=1.50] (1229.center) to (1233.center);
+		\draw [style=annotatebox] (1267.center) to (1266.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -4,16 +4,16 @@
 		\node [style=blackdot] (1) at (7, 2) {};
 		\node [style=blackdot] (2) at (4, 3) {};
 		\node [style=blackdot] (3) at (6.5, -2) {};
-		\node [style=none] (8) at (3.75, -2.5) {$C$};
+		\node [style=none] (8) at (3.75, -2.5) {$M$};
 		\node [style=none] (9) at (4.25, 1.5) {$B$};
 		\node [style=none] (10) at (2.25, 1) {$A$};
-		\node [style=none] (11) at (7.25, -0.375) {$X$};
-		\node [style=none] (12) at (3.75, -0.625) {$Y$};
-		\node [style=none] (24) at (6, 2.75) {$Z$};
-		\node [style=none] (25) at (3.75, -4.5) {$A+Z=Y$};
-		\node [style=none] (26) at (3.75, -5.25) {$B+X=Z$};
-		\node [style=none] (27) at (3.75, -6) {$C+X=Y$};
-		\node [style=none] (28) at (3.75, -3.75) {$A+B=C$};
+		\node [style=none] (11) at (7.25, -0.375) {$C$};
+		\node [style=none] (12) at (3.75, -0.625) {$L$};
+		\node [style=none] (24) at (6, 2.75) {$N$};
+		\node [style=none] (25) at (3.75, -4.5) {$A+N=L$};
+		\node [style=none] (26) at (3.75, -5.25) {$B+C=N$};
+		\node [style=none] (27) at (3.75, -6) {$M+C=L$};
+		\node [style=none] (28) at (3.75, -3.75) {$A+B=M$};
 		\node [style=blackdot] (29) at (-13.5, -2) {};
 		\node [style=blackdot] (31) at (-10.75, 3) {};
 		\node [style=blackdot] (32) at (-8, -2) {};
@@ -36,6 +36,23 @@
 		\node [style=blackdot] (56) at (-1.5, -2) {};
 		\node [style=none] (57) at (-1.5, 2.75) {$C$};
 		\node [style=none] (58) at (-0.5, -0.5) {$\cdots$};
+		\node [style=blackdot] (59) at (11, -2) {};
+		\node [style=blackdot] (60) at (11, 3) {};
+		\node [style=blackdot] (61) at (9, 1) {};
+		\node [style=blackdot] (62) at (13.5, 0) {};
+		\node [style=blackdot] (63) at (13.5, 2.5) {};
+		\node [style=none] (64) at (11, 4.5) {Pseudo-Polygonal};
+		\node [style=blackdot] (65) at (-15.5, -2) {};
+		\node [style=blackdot] (66) at (-15.5, 3) {};
+		\node [style=none] (67) at (-14, 0.5) {$B$};
+		\node [style=none] (68) at (-17, 0.5) {$A$};
+		\node [style=none] (69) at (-15.5, -3.25) {$A=-B$};
+		\node [style=blackdot] (70) at (-18.75, 0) {};
+		\node [style=none] (71) at (-18.75, 1.5) {};
+		\node [style=none] (72) at (-18.75, -3.25) {$A=0$};
+		\node [style=none] (73) at (-18.75, 0.75) {$A$};
+		\node [style=none] (74) at (-15.5, 4.5) {Bigonal};
+		\node [style=none] (75) at (-18.75, 4.5) {Trivial};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=mid-route] (0) to (2);
@@ -52,5 +69,17 @@
 		\draw [style=mid-route] (46) to (53);
 		\draw [style=mid-route] (53) to (54);
 		\draw [style=dashedannotate] (54) to (56);
+		\draw [style=mid-route] (59) to (60);
+		\draw [style=mid-route] (60) to (61);
+		\draw [style=mid-route] (60) to (63);
+		\draw [style=mid-route] (63) to (59);
+		\draw [style=mid-route] (61) to (59);
+		\draw [style=over-route] (60) to (62);
+		\draw [style=mid-route] (62) to (59);
+		\draw [style=mid-route, bend left=45] (65) to (66);
+		\draw [style=mid-route, bend left=45] (66) to (65);
+		\draw [style=mid-route] (70.center)
+			 to [in=-180, out=180, looseness=1.50] (71.center)
+			 to [in=0, out=0, looseness=1.50] cycle;
 	\end{pgfonlayer}
 \end{tikzpicture}

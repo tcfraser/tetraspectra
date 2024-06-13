@@ -44,6 +44,7 @@
 \tikzstyle{preorderline}=[-, preorder, tikzit draw={rgb,255: red,191; green,0; blue,64}]
 \tikzstyle{cut}=[-, cutline]
 \tikzstyle{kron}=[-, draw={rgb,255: red,191; green,191; blue,191}, route=0.6]
+\tikzstyle{over-mult}=[-, draw={rgb,255: red,191; green,191; blue,191}, route=0.6, overline=1mm]
 \tikzstyle{pointer}=[->, draw={rgb,255: red,197; green,0; blue,0}]
 \tikzstyle{mid-adjoint}=[-, route=0.6, mult]
 \tikzstyle{brackets}=[-, draw=black, thick]

@@ -1,0 +1,257 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (885) at (2.5, 0.5) {$V_{\lambda}$};
+		\node [style=none] (886) at (2, 1) {};
+		\node [style=none] (887) at (2, 0) {};
+		\node [style=none] (892) at (2.5, 1.5) {};
+		\node [style=none] (894) at (1.5, -0.5) {};
+		\node [style=none] (905) at (2.75, -4.5) {$C^{\lambda}_{\mu,\gamma}$};
+		\node [style=none] (908) at (2.75, 4.5) {$C^{\lambda}_{\alpha,\nu}$};
+		\node [style=none] (910) at (2.5, -0.5) {};
+		\node [style=none] (919) at (1.5, 1.5) {};
+		\node [style=none] (920) at (0.75, 1.5) {};
+		\node [style=none] (947) at (7, -1) {$V_{\beta}$};
+		\node [style=none] (949) at (5.75, 2.25) {};
+		\node [style=none] (953) at (5.75, -2.25) {};
+		\node [style=none] (955) at (5.75, -4.75) {};
+		\node [style=none] (956) at (5.75, -2.75) {};
+		\node [style=none] (957) at (6.5, -4.5) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (958) at (5.75, 5) {};
+		\node [style=none] (959) at (5.75, 2.75) {};
+		\node [style=none] (960) at (6.5, 4.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (969) at (6.25, 2.75) {};
+		\node [style=none] (970) at (7, 2.75) {};
+		\node [style=none] (971) at (7.5, -2.75) {};
+		\node [style=none] (972) at (6.25, -2.75) {};
+		\node [style=none] (973) at (5.25, 2.75) {};
+		\node [style=none] (974) at (7.5, 2.75) {};
+		\node [style=none] (976) at (5.25, -2.75) {};
+		\node [style=none] (993) at (3.75, -1.75) {};
+		\node [style=none] (994) at (3.75, -0.5) {};
+		\node [style=none] (995) at (3.75, 1.75) {};
+		\node [style=none] (996) at (3.75, -3) {};
+		\node [style=none] (997) at (4.25, -3) {};
+		\node [style=none] (998) at (4.25, 1.75) {};
+		\node [style=none] (999) at (4.25, -0.5) {};
+		\node [style=none] (1000) at (4.25, -1.75) {};
+		\node [style=none] (1001) at (3.5, -1.25) {$V_{\mu}$};
+		\node [style=none] (1002) at (3.5, 0) {$V_{\gamma}$};
+		\node [style=none] (1003) at (3.5, 2.25) {$V_{\nu}$};
+		\node [style=none] (1004) at (3.5, -2.5) {$V_{\alpha}$};
+		\node [style=none] (1005) at (0, 0) {$=$};
+		\node [style=none] (1012) at (-4, 0) {$V_{\lambda}$};
+		\node [style=none] (1013) at (-4.5, 0.75) {};
+		\node [style=none] (1014) at (-4.5, -0.75) {};
+		\node [style=none] (1015) at (-5.75, 0) {$V_{\alpha}$};
+		\node [style=none] (1016) at (-1.25, 0) {$V_{\beta}$};
+		\node [style=none] (1017) at (-2.25, 0) {$V_{\gamma}$};
+		\node [style=none] (1018) at (-4, 2.5) {};
+		\node [style=none] (1019) at (-4, 1.25) {};
+		\node [style=none] (1020) at (-3.525, 1.9) {$V_{\nu}$};
+		\node [style=none] (1021) at (-5, -1.25) {};
+		\node [style=none] (1022) at (-5, -2.5) {};
+		\node [style=none] (1023) at (-5.5, -1.875) {$V_{\mu}$};
+		\node [style=none] (1024) at (-5, -4.75) {};
+		\node [style=none] (1025) at (-5, -3) {};
+		\node [style=none] (1026) at (-4.25, -4.5) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1027) at (-4, 5) {};
+		\node [style=none] (1028) at (-4, 3) {};
+		\node [style=none] (1029) at (-3.25, 4.5) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1030) at (-2.5, -4.5) {$C^{\lambda}_{\mu,\gamma}$};
+		\node [style=none] (1031) at (-5, 4.5) {$C^{\lambda}_{\alpha,\nu}$};
+		\node [style=none] (1032) at (-2.75, -1.25) {};
+		\node [style=none] (1033) at (-4, -1.25) {};
+		\node [style=none] (1034) at (-3.5, 3) {};
+		\node [style=none] (1035) at (-2.75, 3) {};
+		\node [style=none] (1036) at (-1.75, -3) {};
+		\node [style=none] (1037) at (-4.5, -3) {};
+		\node [style=none] (1038) at (-4.5, 3) {};
+		\node [style=none] (1039) at (-1.75, 3) {};
+		\node [style=none] (1040) at (-6.25, -3) {};
+		\node [style=none] (1041) at (-5.5, -3) {};
+		\node [style=none] (1042) at (-5, 1.25) {};
+		\node [style=none] (1043) at (-6.25, 1.25) {};
+		\node [style=none] (1044) at (-3.25, -3) {};
+		\node [style=none] (1045) at (-4.5, -1.25) {};
+		\node [style=none] (1046) at (-5.75, 3) {};
+		\node [style=none] (1047) at (-4.5, 1.25) {};
+		\node [style=none] (1048) at (-3.25, -4.75) {};
+		\node [style=none] (1049) at (-5.75, 5) {};
+		\node [style=none] (1050) at (-5.5, -0.75) {};
+		\node [style=none] (1051) at (-3.5, -0.75) {};
+		\node [style=none] (1052) at (-5.25, -1.25) {};
+		\node [style=none] (1053) at (-3.75, -1.25) {};
+		\node [style=none] (1054) at (-6, -2.5) {};
+		\node [style=none] (1055) at (-4, -2.5) {};
+		\node [style=none] (1056) at (-5.75, -3) {};
+		\node [style=none] (1057) at (-4.25, -3) {};
+		\node [style=none] (1058) at (-5, 2.5) {};
+		\node [style=none] (1059) at (-3, 2.5) {};
+		\node [style=none] (1060) at (-4.75, 3) {};
+		\node [style=none] (1061) at (-3.25, 3) {};
+		\node [style=none] (1062) at (-5.5, 0.75) {};
+		\node [style=none] (1063) at (-3.5, 0.75) {};
+		\node [style=none] (1064) at (-5.25, 1.25) {};
+		\node [style=none] (1065) at (-3.75, 1.25) {};
+		\node [style=none] (903) at (2, -2.5) {};
+		\node [style=none] (904) at (2, -0.5) {};
+		\node [style=none] (906) at (2, 2.5) {};
+		\node [style=none] (907) at (2, 1.5) {};
+		\node [style=none] (921) at (2, -4.75) {};
+		\node [style=none] (922) at (2, 5) {};
+		\node [style=none] (923) at (1, 0) {};
+		\node [style=none] (924) at (3, 0) {};
+		\node [style=none] (925) at (1.25, -0.5) {};
+		\node [style=none] (926) at (2.75, -0.5) {};
+		\node [style=none] (935) at (1, 1) {};
+		\node [style=none] (936) at (3, 1) {};
+		\node [style=none] (937) at (1.25, 1.5) {};
+		\node [style=none] (938) at (2.75, 1.5) {};
+		\node [style=none] (985) at (4.75, -2.25) {};
+		\node [style=none] (986) at (6.75, -2.25) {};
+		\node [style=none] (987) at (5, -2.75) {};
+		\node [style=none] (988) at (6.5, -2.75) {};
+		\node [style=none] (989) at (4.75, 2.25) {};
+		\node [style=none] (990) at (6.75, 2.25) {};
+		\node [style=none] (991) at (5, 2.75) {};
+		\node [style=none] (992) at (6.5, 2.75) {};
+		\node [style=none] (1262) at (4, -4) {};
+		\node [style=none] (1263) at (4, 3.5) {};
+		\node [style=none] (1267) at (-10.75, -1) {};
+		\node [style=none] (1268) at (-8.75, -1) {};
+		\node [style=none] (1269) at (-8.75, 1) {};
+		\node [style=none] (1270) at (-10.75, 1) {};
+		\node [style=none] (1271) at (-10.75, -2) {};
+		\node [style=none] (1272) at (-8.75, 2) {};
+		\node [style=none] (1273) at (-10.75, 2) {};
+		\node [style=none] (1274) at (-8.75, -2) {};
+		\node [style=none] (1275) at (-11.5, 1) {};
+		\node [style=none] (1276) at (-11.5, -1) {};
+		\node [style=none] (1277) at (-8, 1) {};
+		\node [style=none] (1278) at (-8, -1) {};
+		\node [style=none] (1279) at (-9.75, 0) {$\begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$};
+		\node [style=none] (1281) at (-11.5, -1.75) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1282) at (-8, 1.75) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1283) at (-8, -1.75) {$C^{\lambda}_{\mu,\gamma}$};
+		\node [style=none] (1284) at (-11.5, 1.75) {$C^{\lambda}_{\alpha,\nu}$};
+		\node [style=none] (1285) at (-15.25, 0) {$V_\alpha$};
+		\node [style=none] (1286) at (-14.5, 0) {};
+		\node [style=none] (1287) at (-13.5, 0) {};
+		\node [style=none] (1288) at (-14, 0) {$V_\beta$};
+		\node [style=none] (1289) at (-13.25, 0) {};
+		\node [style=none] (1290) at (-12.25, 0) {};
+		\node [style=none] (1291) at (-12.75, 0) {$V_\gamma$};
+		\node [style=none] (1292) at (-15.75, 0) {};
+		\node [style=none] (1293) at (-14.75, 0) {};
+		\node [style=none] (1294) at (-7, 0) {$=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=annotatebox] (1263.center) to (1262.center);
+		\draw [style=mid-route, in=-90, out=90] (887.center) to (886.center);
+		\draw [style=mid-route] (919.center)
+			 to [bend right=90, looseness=2.00] (920.center)
+			 to [in=180, out=-90, looseness=1.50] (996.center);
+		\draw [style=mid-route] (969.center)
+			 to [bend left=90, looseness=1.50] (970.center)
+			 to [in=0, out=-90, looseness=1.50] (999.center);
+		\draw [style=mid-route] (973.center)
+			 to [bend left=90, looseness=1.25] (974.center)
+			 to (971.center)
+			 to [bend left=90] (972.center);
+		\draw [style=mid-route, in=-90, out=90] (1014.center) to (1013.center);
+		\draw [style=mid-route] (1019.center) to (1018.center);
+		\draw [style=mid-route] (1022.center) to (1021.center);
+		\draw [style=mid-route] (1034.center)
+			 to [bend left=90, looseness=2.00] (1035.center)
+			 to (1032.center)
+			 to [bend left=90] (1033.center);
+		\draw [style=mid-route] (1038.center)
+			 to [bend left=90] (1039.center)
+			 to (1036.center)
+			 to [bend left=90, looseness=0.75] (1037.center);
+		\draw [style=mid-route] (1042.center)
+			 to [bend right=90, looseness=2.00] (1043.center)
+			 to (1040.center)
+			 to [bend right=90, looseness=2.00] (1041.center);
+		\draw [style=over-mult] (1024.center) to (1025.center);
+		\draw [style=over-mult] (1028.center) to (1027.center);
+		\draw [style=over-mult] (1047.center)
+			 to [in=-90, out=90, looseness=0.75] (1046.center)
+			 to (1049.center);
+		\draw [style=over-mult] (1048.center)
+			 to (1044.center)
+			 to [in=-90, out=90, looseness=1.25] (1045.center);
+		\draw [style=box] (1052.center)
+			 to (1053.center)
+			 to (1051.center)
+			 to (1050.center)
+			 to cycle;
+		\draw [style=box] (1056.center)
+			 to (1057.center)
+			 to (1055.center)
+			 to (1054.center)
+			 to cycle;
+		\draw [style=box] (1059.center)
+			 to (1058.center)
+			 to (1060.center)
+			 to (1061.center)
+			 to cycle;
+		\draw [style=box] (1063.center)
+			 to (1062.center)
+			 to (1064.center)
+			 to (1065.center)
+			 to cycle;
+		\draw [style=mid-route, in=180, out=90, looseness=0.75] (892.center) to (995.center);
+		\draw [style=mid-route, in=-90, out=180, looseness=0.75] (993.center) to (894.center);
+		\draw [style=mid-route, in=-90, out=-180, looseness=1.50] (994.center) to (910.center);
+		\draw [style=mid-route, in=-90, out=0, looseness=0.50] (998.center) to (949.center);
+		\draw [style=mid-route, in=0, out=90, looseness=0.75] (953.center) to (1000.center);
+		\draw [style=mid-route, in=-90, out=0, looseness=0.75] (997.center) to (976.center);
+		\draw [style=over-mult] (907.center)
+			 to [in=-90, out=90, looseness=0.75] (906.center)
+			 to (922.center);
+		\draw [style=over-mult] (921.center)
+			 to (903.center)
+			 to [in=-90, out=90, looseness=1.25] (904.center);
+		\draw [style=over-mult] (955.center) to (956.center);
+		\draw [style=over-mult] (959.center) to (958.center);
+		\draw [style=box] (925.center)
+			 to (926.center)
+			 to (924.center)
+			 to (923.center)
+			 to cycle;
+		\draw [style=box] (935.center)
+			 to (937.center)
+			 to (938.center)
+			 to (936.center)
+			 to cycle;
+		\draw [style=box] (988.center)
+			 to (986.center)
+			 to (985.center)
+			 to (987.center)
+			 to cycle;
+		\draw [style=box] (989.center)
+			 to (991.center)
+			 to (992.center)
+			 to (990.center)
+			 to cycle;
+		\draw [style=over-mult] (1271.center) to (1267.center);
+		\draw [style=over-mult] (1270.center) to (1273.center);
+		\draw [style=over-mult] (1274.center) to (1268.center);
+		\draw [style=over-mult] (1269.center) to (1272.center);
+		\draw [style=box] (1277.center)
+			 to (1275.center)
+			 to (1276.center)
+			 to (1278.center)
+			 to cycle;
+		\draw [style=mid-route] (1287.center)
+			 to [bend left=90, looseness=1.75] (1286.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1290.center)
+			 to [bend left=90, looseness=1.75] (1289.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1293.center)
+			 to [bend left=90, looseness=1.75] (1292.center)
+			 to [bend left=90, looseness=1.75] cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

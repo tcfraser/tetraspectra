@@ -304,6 +304,64 @@
 		\node [style=none] (1009) at (10, -0.75) {$d_{\alpha}d_{\beta}d_{\gamma}$};
 		\node [style=none] (1010) at (31, 0) {$\lesssim_{HS^2} (\mathrm{poly}(\{c\})) (\frac{1}{d_\alpha d_\beta d_\gamma})^2\frac{d_{\alpha}d_{\mu}d_{\gamma}d_{\nu}}{d_\lambda}d_{\alpha}d_{\beta}d_{\gamma}$};
 		\node [style=none] (1011) at (29, 1.75) {$SSA$};
+		\node [style=none] (1016) at (5.75, -20.25) {$V_{\lambda}$};
+		\node [style=none] (1017) at (4.5, -19.5) {};
+		\node [style=none] (1018) at (5.25, -21) {};
+		\node [style=none] (1019) at (3, -21) {$V_{\alpha}$};
+		\node [style=none] (1020) at (8.5, -23.75) {$V_{\beta}$};
+		\node [style=none] (1021) at (7.5, -19) {$V_{\gamma}$};
+		\node [style=none] (1022) at (5.25, -17) {};
+		\node [style=none] (1023) at (5.25, -18.5) {};
+		\node [style=none] (1024) at (5.75, -17.75) {$V_{\nu}$};
+		\node [style=none] (1025) at (4.5, -22) {};
+		\node [style=none] (1026) at (4.5, -23.5) {};
+		\node [style=none] (1027) at (5, -22.75) {$V_{\mu}$};
+		\node [style=none] (1028) at (4.5, -27) {};
+		\node [style=none] (1029) at (4.5, -24.5) {};
+		\node [style=none] (1030) at (5.25, -26.75) {$C^{\mu}_{\alpha,\beta}$};
+		\node [style=none] (1031) at (5.25, -13.25) {};
+		\node [style=none] (1032) at (5.25, -16) {};
+		\node [style=none] (1033) at (6, -13.75) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (1034) at (7.25, -24) {};
+		\node [style=none] (1035) at (5.25, -22) {};
+		\node [style=none] (1036) at (8, -26.75) {$C^{\lambda}_{\mu,\gamma}$};
+		\node [style=none] (1037) at (2.5, -16.5) {};
+		\node [style=none] (1038) at (4.5, -18.5) {};
+		\node [style=none] (1039) at (3.25, -13.75) {$C^{\lambda}_{\alpha,\nu}$};
+		\node [style=none] (1040) at (7, -22) {};
+		\node [style=none] (1041) at (6, -22) {};
+		\node [style=none] (1042) at (5.75, -16) {};
+		\node [style=none] (1043) at (7, -16) {};
+		\node [style=none] (1044) at (8, -24.5) {};
+		\node [style=none] (1045) at (5.25, -24.5) {};
+		\node [style=none] (1046) at (4.75, -16) {};
+		\node [style=none] (1047) at (8, -16) {};
+		\node [style=none] (1048) at (2.5, -24.5) {};
+		\node [style=none] (1049) at (3.75, -24.5) {};
+		\node [style=none] (1050) at (3.75, -18.5) {};
+		\node [style=none] (1051) at (2.5, -18.5) {};
+		\node [style=none] (1052) at (7.25, -27) {};
+		\node [style=none] (1053) at (2.5, -13.25) {};
+		\node [style=none] (1054) at (3.75, -21) {};
+		\node [style=none] (1055) at (6.75, -21) {};
+		\node [style=none] (1056) at (4, -22) {};
+		\node [style=none] (1057) at (6.5, -22) {};
+		\node [style=none] (1058) at (3, -23.5) {};
+		\node [style=none] (1059) at (6, -23.5) {};
+		\node [style=none] (1060) at (3.25, -24.5) {};
+		\node [style=none] (1061) at (5.75, -24.5) {};
+		\node [style=none] (1062) at (3.75, -17) {};
+		\node [style=none] (1063) at (6.75, -17) {};
+		\node [style=none] (1064) at (4, -16) {};
+		\node [style=none] (1065) at (6.5, -16) {};
+		\node [style=none] (1066) at (3, -19.5) {};
+		\node [style=none] (1067) at (6, -19.5) {};
+		\node [style=none] (1068) at (3.25, -18.5) {};
+		\node [style=none] (1069) at (5.75, -18.5) {};
+		\node [style=none] (1070) at (0.75, -19.75) {$1$};
+		\node [style=none] (1071) at (0, -20.25) {};
+		\node [style=none] (1072) at (1.5, -20.25) {};
+		\node [style=none] (1073) at (0.75, -21) {$d_{\alpha}d_{\beta}d_{\gamma}$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=box] (3.center)
@@ -496,5 +554,49 @@
 		\draw [style=mid-route, in=-90, out=0, looseness=0.50] (862.center) to (814.center);
 		\draw [style=mid-route, in=0, out=-90] (833.center) to (859.center);
 		\draw (1008.center) to (1007.center);
+		\draw [style=mid-route, in=-90, out=90] (1018.center) to (1017.center);
+		\draw [style=mid-route] (1023.center) to (1022.center);
+		\draw [style=mid-route] (1026.center) to (1025.center);
+		\draw [style=kron] (1028.center) to (1029.center);
+		\draw [style=kron] (1032.center) to (1031.center);
+		\draw [style=kron] (1038.center)
+			 to [in=-90, out=90, looseness=0.75] (1037.center)
+			 to (1053.center);
+		\draw [style=mid-route] (1042.center)
+			 to [bend left=90, looseness=2.00] (1043.center)
+			 to (1040.center)
+			 to [bend left=90, looseness=2.00] (1041.center);
+		\draw [style=mid-route] (1046.center)
+			 to [bend left=90, looseness=1.50] (1047.center)
+			 to (1044.center)
+			 to [bend left=90] (1045.center);
+		\draw [style=mid-route] (1050.center)
+			 to [bend right=90, looseness=2.00] (1051.center)
+			 to (1048.center)
+			 to [bend right=90, looseness=2.00] (1049.center);
+		\draw [style=kron] (1052.center)
+			 to (1034.center)
+			 to [in=-90, out=90, looseness=1.25] (1035.center);
+		\draw [style=box] (1057.center)
+			 to (1055.center)
+			 to (1054.center)
+			 to (1056.center)
+			 to cycle;
+		\draw [style=box] (1060.center)
+			 to (1061.center)
+			 to (1059.center)
+			 to (1058.center)
+			 to cycle;
+		\draw [style=box] (1064.center)
+			 to (1065.center)
+			 to (1063.center)
+			 to (1062.center)
+			 to cycle;
+		\draw [style=box] (1068.center)
+			 to (1069.center)
+			 to (1067.center)
+			 to (1066.center)
+			 to cycle;
+		\draw (1072.center) to (1071.center);
 	\end{pgfonlayer}
 \end{tikzpicture}

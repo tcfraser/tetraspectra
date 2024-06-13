@@ -21,6 +21,22 @@
 
 \tableofcontents
 
+\clearpage
+\section*{Outline Draft May 30 2024}
+
+Below is the proposed outline of the paper as of May 30, 2024.
+Our proposed journal is \textit{Communications in Mathematical Physics}.
+It will be ideal to illustrate with figures.
+\begin{itemize}
+    \item introduction (include 2x2 case)
+    \item general definition
+    \item relationship to Horn's problem, (how does it generalizes the problem)
+    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
+    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
+    \item spectral embedding into the quantum marginal problem
+    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
+\end{itemize}
+
 \section{Introduction}
 
 {\color{blue}
@@ -30,6 +46,8 @@ Throughout this paper, $d \in \mathbb N_{>0}$ will denote the size of the matric
 We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(d)$ as shorthand for $\GL(d, \mathbb C)$.
 Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
 The weight lattice for $\GL(d)$ is denoted by $\weights(d) \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights(d)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights(d)$.
+
+Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights(d)$ are denoted by $L_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $V_{\lambda}$.
 
 The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs(d) \subset \mathbb R^{d}$.
 The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs(d)$ will be denoted by $\orbit_x$. 
@@ -113,13 +131,42 @@ There are a few operations which preserve the set of realizable spectral maps.
     \end{itemize}
 \end{lem}
 
+\begin{rem}
+    Graphical Horn problems can be reframed as a question about the simultaneous vanishing of a moment map in the sense of symplectic geometry.
+    Throughout this paper, we identify the set of $d\times d$ Hermitian matrices $H$, $\herm(d)$ with the set $\mathfrak u(d)^{*}$ of linear functionals on the Lie algebra $\mathfrak u(d)$ of $\U(d)$ by the pairing $(H, X) = i \Tr(XH)$.
+    Given a spectral map $\lambda : \s E \to \eigs(d)$ and a cycle $\ell$, we consider the symplectic manifold
+    \begin{equation}
+        \s M_{\ell} \coloneqq \prod_{e \in \s E} \orbit_{\lambda(e)^{\gamma_{\ell}(e)}}
+    \end{equation}
+    where $\lambda(e)^{+1} = \lambda(e)$ and $\lambda(e) = \lambda(e)^{*}$ and where $\orbit_{\mu}$ is the set of Hermitian $d\times d$ matrices with eigenvalues $\mu_1 \geq \cdots \geq \mu_d$ which may be identified with a corresponding coadjoint orbit in $\mathfrak u(d)^{*}$ (after identifying $\mu$ with the diagonal $d\times d$ matrix $\diag(\mu_1,\ldots, \mu_d)$) equipped with the standard KKS symplectic form.
+    Then define a Hamiltonian $U(d)$-action on $\s M_{\ell}$ where $u$ acts diagonally on $H(e)$ by conjugation ($u \cdot H(e) = u H(e) u^{-1}$).
+    It can be shown that the moment map $\Phi_{\ell} : \s M_{\ell} \to \herm(d)$ associated to this action satisfies
+    \begin{equation}
+        \Phi_{\ell}(\gamma_{\ell}(e)H(e) \mid e \in \ell) = \sum_{e \in \ell} \gamma_{\ell}(e)H(e)
+    \end{equation}
+    and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is satisfied.
+    
+    \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
+\end{rem}
+
 \begin{exam}[The trigonal Horn problem]
     Perhaps the smallest non-trivial example of a graphical Horn problem is the one for which \citeauthor{horn1962eigenvalues} originally conjectured a solution \cite{horn1962eigenvalues}, namely, what are the possible eigenvalues, $(\alpha, \beta, \gamma)$, of a triple of $d\times d$ Hermitian matrices $(A, B, C)$ satisfying the condition $A+B=C$?
+    As a graphical Horn problem,
+    \begin{equation}
+        \Gamma = \begin{pmatrix} 1 & 1 & - 1 \end{pmatrix}
+    \end{equation}
     From the perspective of \cref{prob:ghp}, we refer to this question as the \defnsty{trigonal Horn problem}.
 \end{exam}
 
 \begin{exam}[Polygonal Horn problems]
-    If the directed graph $\s G$ consists of a single closed cycle, then the corresponding Horn problem will be referred to as a \textit{polygonal Horn problem}; the polygonal Horn problem associated to an \textit{oriented} cycle $e_1 \to e_2 \to \cdots e_{r} \to e_1$ consisting of $r$ edges asks what are the possible eigenvalues $(\lambda_1, \ldots, \lambda_r)$ of $r$ Hermitian matrices $(H_1, \ldots, H_r)$ with zero-sum $H_1 +\cdots + H_r = 0$.
+    If the directed graph $\s G$ consists of a single closed cycle, then the corresponding Horn problem will be referred to as a \textit{polygonal Horn problem}; the polygonal Horn problem associated to an \textit{oriented} cycle $(e_1, e_2, \ldots, e_{r}, e_{1})$ consisting of $r$ edges asks what are the possible eigenvalues $(\lambda_1, \ldots, \lambda_r)$ of $r$ Hermitian matrices $(H_1, \ldots, H_r)$ with zero-sum $H_1 +\cdots + H_r = 0$.
+    \begin{equation}
+        \Gamma = \begin{pmatrix} 1 & \stackrel{r}{\cdots} & 1 \end{pmatrix}
+    \end{equation}
+
+\end{exam}
+
+\begin{rem}
     Evidently, there is a bijection between the set of realizable spectra $(\alpha, \beta, \gamma)$ and the set of realizable spectra $(\lambda_1, \lambda_2, \lambda_3)$ for the polygonal Horn problem where $r=3$: namely
     \begin{equation}
         (\lambda_1, \lambda_2, \lambda_3) = (\alpha, \beta, \gamma^{*})
@@ -128,7 +175,7 @@ There are a few operations which preserve the set of realizable spectral maps.
     \begin{equation}
         \gamma^{*} = (-\gamma_d, \ldots, -\lambda_1).
     \end{equation}
-\end{exam}
+\end{rem}
 
 \begin{exam}[Tetrahedral Horn problem]
     In this paper, a considerable focus will be placed on the \defnsty{tetrahedral Horn problem} which is the graphical Horn problem associated with the directed graph above forming a tetrahedron.
@@ -143,6 +190,16 @@ There are a few operations which preserve the set of realizable spectral maps.
     satisfying the following four conditions:
     \begin{equation}
         A + B = M, \qquad M + C = L, \qquad B+C = N, \qquad A + N = L.
+    \end{equation}
+    As a graphical Horn problem,
+    \begin{equation}
+        \Gamma = 
+        \begin{pmatrix} 
+            1 & 1 & 0 & -1 & 0 & 0 \\
+            0 & 1 & 1 & 0 & -1 & 0 \\
+            0 & 0 & 1 & 1 & 0 & -1 \\
+            1 & 0 & 0 & 0 & 1 & -1
+        \end{pmatrix}
     \end{equation}
 \end{exam}
 
@@ -182,15 +239,15 @@ The solution to all one-dimensional graphical Horn problems provided by \cref{eq
 \begin{lem}
     \label{lem:ker_shift}
     Consider the graphical Horn problem of dimension $d$ for the diagraph $\s G = (\s V, \s E)$.
-    Suppose $\mu : \s E \to \mathbb R$ lies in the kernel of $\Gamma(\s G)$ and define $\mu_{d} : \s E \to \eigs(d)$ to be the spectral map defined by
+    Suppose $\mu : \s E \to \mathbb R$ lies in the kernel of $\Gamma(\s G)$ and define $\mu \cdot 1_{d} : \s E \to \eigs(d)$ to be the spectral map defined by
     \begin{equation}
-        \mu_d(e) \coloneqq (\mu(e), \stackrel{d}{\ldots}, \mu(e)).
+        (\mu \cdot 1_d)(e) \coloneqq (\mu(e), \stackrel{d}{\ldots}, \mu(e)).
     \end{equation}
-    Then $\mu_{d} : \s E \to \eigs(d)$ is a realizable spectral map.
-    Moreover, $\lambda : \s E \to \eigs(d)$ is a realizable spectral map if and only if $\lambda + \mu_{d}$ is a realizable.
+    Then $\mu \cdot 1_{d} : \s E \to \eigs(d)$ is a realizable spectral map.
+    Moreover, $\lambda : \s E \to \eigs(d)$ is a realizable spectral map if and only if $\lambda + \mu \cdot 1_{d}$ is a realizable.
 \end{lem}
 \begin{proof}
-    The spectral map $\mu_d$ is realized by the assignment $H_{\mu} : \s E \to \herm(d)$ defined by
+    The spectral map $\mu \cdot 1_d$ is realized by the assignment $H_{\mu} : \s E \to \herm(d)$ defined by
     \begin{equation}
         H_{\mu}(e) \coloneqq \mu(e)I_{d}
     \end{equation}
@@ -203,10 +260,10 @@ The solution to all one-dimensional graphical Horn problems provided by \cref{eq
     \begin{equation}
         (H_{\lambda}+H_{\mu})(e) = H_{\lambda}(e) + \mu(e) I_d
     \end{equation} 
-    realizes the spectral map $\lambda + \mu_d$ because the spectrum of $H_{\lambda}(e) + \mu(e) I_d$ is simply $\lambda(e) + \mu_d(e)$ (the eigenvalues add because $[H_{\lambda}(e), I_d] = 0$).
+    realizes the spectral map $\lambda + \mu\cdot 1_d$ because the spectrum of $H_{\lambda}(e) + \mu(e) I_d$ is simply $\lambda(e) + \mu\cdot 1_d(e)$ (the eigenvalues add because $[H_{\lambda}(e), I_d] = 0$).
 \end{proof}
 
-A direct corollary of \cref{lem:ker_shift} is that one can always assume, without loss of generality, that the spectral map $\lambda : \s E \to \eigs(d)$ is traceless in the sense that $\Tr\circ \lambda = 0_d$.
+A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectral maps, $\lambda : \s E \to \eigs(d)$, is entirely determined by the set of realizable and \textit{traceless} spectral maps in the sense that $\Tr\circ \lambda = 0_d$.
 \begin{cor}
     Let $\lambda : \s E \to \eigs(d)$ be a spectral map such that $\Tr\circ\lambda \in \ker(\Gamma(\s G))$ and let $\lambda^{0} : \s E \to \eigs(d)$ be the traceless spectral map defined by
     \begin{equation}
@@ -219,21 +276,49 @@ A direct corollary of \cref{lem:ker_shift} is that one can always assume, withou
     By assumption, $\Tr\circ \lambda$ lies in the kernel of $\Gamma(\s G)$ by \cref{lem:trace_cond}, and thus \cref{lem:ker_shift} (when $\mu \mapsto \pm \Tr \circ \lambda$) implies $\lambda^{0}$ is realizable if and only if $\lambda$ is realizable.
 \end{proof}
 
+\begin{cor}
+    Suppose $\s G$ is a graphical Horn problem such that $\ker(\Gamma(\s G))$ contains a one-dimensional spectral map $\rho : \s E \to \mathbb R$ which is \textit{strictly positive}, meaning
+    \begin{equation}
+        \forall e \in \s E : \rho(e) > 0.
+    \end{equation}
+    Let $\lambda : \s E \to \eigs(d)$ be a spectral map.
+    Then there exists a sufficiently large positive $p \in \mathbb R_{>0}$ such that $\lambda^{+} \coloneqq \lambda + p \rho \cdot 1_d$ is a spectral map consisting of strictly positive spectra meaning
+    \begin{equation}
+        \label{eq:positive_spectra}
+        \forall e \in \s E : \lambda^{+}_d(e) > 0.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    The value of $\lambda^{+}_d(e)$ for $e \in \s E$ is determined by
+    \begin{equation}
+        \lambda^{+}_d(e) = \lambda_d(e) + p\rho(e).
+    \end{equation}
+    In order to satisfy \cref{eq:positive_spectra} it suffices to let $p$ satisfy
+    \begin{equation}
+        p > \max_{e \in \s E} \frac{-\lambda_d(e)}{\rho(e)}.
+    \end{equation}
+\end{proof}
 
-\section{Recoupling theory}
+\begin{exam}
+    The tetrahedral Horn problem defined above admits of strictly positive one-dimensional spectral maps.
+    Specifically, $\rho = (a,b,c,a+b,b+c,a+b+c)$ lies in the kernel of $\Gamma$ and is strictly positive whenever $a,b,c > 0$.
+\end{exam}
+
+
+
+\section{Representation theory}
 {\color{blue}
     The purpose of this section is widen the bridge between representation theory and Horn-type problems.
     We will begin with a treatment of the connection between triangular spectra and the Littlewood-Richardson coefficients and discuss its connection to symplectic geometry and moment maps.
     Then we will articulate the manner in which tetrahedral spectra are related to the norm of the recoupling operator for $\SU(d)$ and discuss the manner in which convexity results for moment maps cannot be applied and thus one must not expect the space of tetrahedral spectra to be convex (indeed it is not).
 }
 \subsection{Triangular spectra \& Littlewood-Richardson coefficients}
-\cite{lidskii1982spectral}
 
 \begin{defn}
-    Let $\alpha, \beta, \gamma \in \domweights(d)$ be a triple of dominant weights for $\GL(d)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
-    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \otimes V_{\beta}$:
+    Let $\alpha, \beta, \gamma \in \domweights(d)$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \otimes L_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(V_{\gamma}, V_{\alpha}\otimes V_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as
     \begin{equation}
@@ -241,10 +326,80 @@ A direct corollary of \cref{lem:ker_shift} is that one can always assume, withou
     \end{equation}
 \end{defn}
 
+Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
+Recall that $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(d)$ satisfying (i) $A+B+C=0$ and (ii)
+\begin{equation}
+    (\eig(A), \eig(B), \eig(C)) = (\alpha,\beta,\gamma).
+\end{equation}
+
+\begin{thm}
+    If $c_{\alpha,\beta,\gamma} > 0$ for some $\alpha, \beta, \gamma \in \domweights(d)$, then $(\alpha,\beta,\gamma)$ are trigonal.
+\end{thm}
+
+\begin{thm}
+    If $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are triangular, then there exists a graded sequence
+    $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)) \in \domweights(d)^{\times 3}$ such that (i) for all $n \in \mathbb N_{>0}$,
+    \begin{equation}
+        c_{\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)} > 0,
+    \end{equation}
+    and (ii)
+    \begin{align}
+        \lim_{n\to\infty} \frac{\tilde \alpha(n)}{n} = \alpha, \qquad
+        \lim_{n\to\infty} \frac{\tilde \beta(n)}{n} = \beta, \qquad
+        \lim_{n\to\infty} \frac{\tilde \gamma(n)}{n} = \gamma.
+    \end{align}
+\end{thm}
+
 \subsection{Tetrahedral spectra \& recoupling operators}
+\label{sec:recouple}
 
+\begin{defn}
+    \label{defn:young_recouple}
+    Let $a,b,c \in \mathbb N_{>0}$ be given and let 
+    \begin{equation}
+        \alpha \in \ydia{a},\quad \beta \in \ydia{b},\quad \gamma \in \ydia{c},\quad
+        \mu \in \ydia{a+b},\quad \nu \in \ydia{b+c},\quad \lambda \in \ydia{a+b+c}.
+    \end{equation}
+    The \defnsty{Young recoupling operator} is the operator
+    \begin{equation}
+        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        :
+        C^{\mu}_{\alpha,\beta} \otimes C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \otimes C^{\nu}_{\beta,\gamma},
+    \end{equation}
+    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\otimes V_{\beta}, V_{\mu})$ defined as
+    \begin{equation}
+        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        \coloneqq
+        \frac{
+            \Tr_{V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma}}[(\id_{V_{\alpha}}\otimes Y_{\beta\gamma}^{\nu;\dagger})
+            Y_{\alpha\nu}^{\lambda;\dagger}
+            Y_{\mu\gamma}^{\lambda}
+            (Y_{\alpha\beta}^{\mu}\otimes\id_{V_{\gamma}})]
+        }{\dim(V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma})}
+    \end{equation}
+    \begin{equation}
+        \tikzfig{tikz/young-subgroup-recouple-defn}.
+    \end{equation}
+\end{defn}
 
-\subsection{An entropy inequality for tetrahedral spectra}
+\subsection{An entropic inequality for tetrahedral spectra}
+
+In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\GL(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
+The purpose of this section is to prove an upper bound for the norm of the Young recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
+
+\begin{thm}
+    \label{thm:young_recouple_bound}
+    Let $\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the Young recoupling operator (\cref{defn:young_recouple}).
+    Then
+    \begin{equation}
+        \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}
+        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    See \cref{sec:young_recouple_bound_proof}.
+\end{proof}
+\textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
 
 
 \section{The spectral quantum marginal problem}
@@ -474,23 +629,32 @@ A direct corollary of \cref{lem:ker_shift} is that one can always assume, withou
     \item \citeauthor{berline2018horn} a pedagogical account of the triple role played by Horn's inequalities in characterizing the existence of invariants vectors in tensor products, the eigenvalues of sums of Hermitian matrices, and intersections of Schubert varieties \cite{berline2018horn}
 \end{itemize}
 
-\clearpage
-\section*{Outline Draft May 30 2024}
+\appendix
 
-Below is the proposed outline of the paper as of May 30, 2024.
-Our proposed journal is \textit{Communications in Mathematical Physics}.
-It will be ideal to illustrate with figures.
-\begin{itemize}
-    \item introduction (include 2x2 case)
-    \item general definition
-    \item relationship to Horn's problem, (how does it generalizes the problem)
-    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
-    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
-    \item spectral embedding into the quantum marginal problem
-    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
-\end{itemize}
+\section{Proof of Young recoupling upper bound}
+\label{sec:young_recouple_bound_proof}
 
+The purpose of this section is to prove \cref{thm:young_recouple_bound}.
 
+\begin{proof}
+    The proof follows by noting that the Young recoupling symbol can be written as the contraction of two smaller tensors across $V_{\nu}\otimes V_{\gamma} \otimes V_{\mu} \otimes V_{\alpha}$ (annotated below):
+    \begin{equation}
+        \tikzfig{tikz/yrb1}
+    \end{equation}
+    Applying the Cauchy-Schwarz inequality to $\norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}$ (with respect to this contraction), and noting that
+    \begin{equation}
+        \tikzfig{tikz/yrb3}
+    \end{equation}
+    holds because the $Y_{\alpha\beta}^{\mu}$ and $Y_{\beta\gamma}^{\nu}$ maps are isometries, and moreover
+    \begin{equation}
+        \tikzfig{tikz/yrb2}
+    \end{equation}
+    holds because of Schur's lemma (applied to $V_{\lambda}$) and that $Y_{\mu\gamma}^{\lambda}$ and $Y_{\alpha\nu}^{\lambda}$ are also isometries, yields the following upper bound:
+    \begin{equation}
+        (d_{\alpha} d_{\beta} d_{\gamma})^2 \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2} \leq \left[\left(d_{\alpha}d_{\beta}d_{\gamma}\right)^2\left(\frac{d_{\nu} d_{\gamma} d_{\mu} d_{\alpha}}{d_{\lambda}}\right)^{2}  c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda} \right]^{\frac{1}{2}},
+    \end{equation}
+    which is the statement of \cref{thm:young_recouple_bound}. 
+\end{proof}
 
 \clearpage
 \printbibliography
