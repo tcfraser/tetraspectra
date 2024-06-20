@@ -1,4 +1,4 @@
-\documentclass[notitlepage]{article}
+\documentclass[notitlepage, 12pt]{article}
 \input{imports/preamble}
 
 \author[1]{Thomas C. Fraser}
@@ -39,9 +39,12 @@ It will be ideal to illustrate with figures.
 
 \section{Introduction}
 
-{\color{blue}
-    Notational conventions:
-}
+\subsection{Triangles and tetrahedron}
+
+\textcolor{red}{TODO: Describe the moduli space of Euclidean triangles (up to rigid motions) and Euclidean tetrahedron (again up to rigid motions) and describe how applying the triangle inequalities to each face of the tetrahedron, while necessary, are ultimately insufficient for the existence of a tetrahedron with specified side lengths.}
+
+
+\subsection{Notational conventions}
 Throughout this paper, $d \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
 We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(d)$ as shorthand for $\GL(d, \mathbb C)$.
 Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
@@ -60,7 +63,6 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     Additional generalizations of the problem statement, like to more matrices, linear combinations, etc. will be mentioned here.
     It will be important to mention the manner in which the analogue of the ``Thompson-Klyachko'' theorem does not hold, i.e. singular values of tetrahedral products are not the exponentials of eigenvalues of tetrahedral sums in general.
 }
-
 
 \subsection{Graphical Horn problems}
 
@@ -118,6 +120,8 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     TC: It turns out that the only relavent data for statement of a graphical Horn problem is the matrix $\Gamma(\s G)$; perhaps its best to drop reference to $\s G$ altogether and just have the problem statement depend on a matrix $\Gamma$?
     Moreover, one could in principle take the matrix to be $\mathbb R$-valued instead of $\{-1, 0, +1\}$-valued, although that would make the connection to the representation theory even weaker.
     Generalizing to $\mathbb Z$-valued $\Gamma$ is also essentially the same I think...
+    One downside of dropping the graph $\s G$ is that the matrix $\Gamma$ loses the non-abelian information about the ordering of the elements in a cycle; this is problematic when discussing the ``quantum'' generalizations to multiplicative Horn-type problems.
+    One upside of dropping the graph $\s G$, is that is becomes possible to ignore certain cycles of the graph (by dropping rows of $\Gamma$) and/or additionally including constraints non-easily associated to cycles of a common graph (like $A+C=Q, B+Q=L$ constraints for the tetrahedral problem).
 }
 
 There are a few operations which preserve the set of realizable spectral maps.
@@ -131,23 +135,6 @@ There are a few operations which preserve the set of realizable spectral maps.
     \end{itemize}
 \end{lem}
 
-\begin{rem}
-    Graphical Horn problems can be reframed as a question about the simultaneous vanishing of a moment map in the sense of symplectic geometry.
-    Throughout this paper, we identify the set of $d\times d$ Hermitian matrices $H$, $\herm(d)$ with the set $\mathfrak u(d)^{*}$ of linear functionals on the Lie algebra $\mathfrak u(d)$ of $\U(d)$ by the pairing $(H, X) = i \Tr(XH)$.
-    Given a spectral map $\lambda : \s E \to \eigs(d)$ and a cycle $\ell$, we consider the symplectic manifold
-    \begin{equation}
-        \s M_{\ell} \coloneqq \prod_{e \in \s E} \orbit_{\lambda(e)^{\gamma_{\ell}(e)}}
-    \end{equation}
-    where $\lambda(e)^{+1} = \lambda(e)$ and $\lambda(e) = \lambda(e)^{*}$ and where $\orbit_{\mu}$ is the set of Hermitian $d\times d$ matrices with eigenvalues $\mu_1 \geq \cdots \geq \mu_d$ which may be identified with a corresponding coadjoint orbit in $\mathfrak u(d)^{*}$ (after identifying $\mu$ with the diagonal $d\times d$ matrix $\diag(\mu_1,\ldots, \mu_d)$) equipped with the standard KKS symplectic form.
-    Then define a Hamiltonian $U(d)$-action on $\s M_{\ell}$ where $u$ acts diagonally on $H(e)$ by conjugation ($u \cdot H(e) = u H(e) u^{-1}$).
-    It can be shown that the moment map $\Phi_{\ell} : \s M_{\ell} \to \herm(d)$ associated to this action satisfies
-    \begin{equation}
-        \Phi_{\ell}(\gamma_{\ell}(e)H(e) \mid e \in \ell) = \sum_{e \in \ell} \gamma_{\ell}(e)H(e)
-    \end{equation}
-    and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is satisfied.
-    
-    \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
-\end{rem}
 
 \begin{exam}[The trigonal Horn problem]
     Perhaps the smallest non-trivial example of a graphical Horn problem is the one for which \citeauthor{horn1962eigenvalues} originally conjectured a solution \cite{horn1962eigenvalues}, namely, what are the possible eigenvalues, $(\alpha, \beta, \gamma)$, of a triple of $d\times d$ Hermitian matrices $(A, B, C)$ satisfying the condition $A+B=C$?
@@ -305,26 +292,111 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
 \end{exam}
 
 
-
-\section{Representation theory}
+\section{A representation-theoretic characterization}
 {\color{blue}
     The purpose of this section is widen the bridge between representation theory and Horn-type problems.
     We will begin with a treatment of the connection between triangular spectra and the Littlewood-Richardson coefficients and discuss its connection to symplectic geometry and moment maps.
     Then we will articulate the manner in which tetrahedral spectra are related to the norm of the recoupling operator for $\SU(d)$ and discuss the manner in which convexity results for moment maps cannot be applied and thus one must not expect the space of tetrahedral spectra to be convex (indeed it is not).
 }
-\subsection{Triangular spectra \& Littlewood-Richardson coefficients}
+
+There is a well-established and fundamental connection between the eigenvalues of sums of Hermitian matrices and the representation theory of the general linear group \cite{klyachko1998stable,knutson1999honeycomb,knutson2000symplectic,fulton2000eigenvalues,bhatia2001linear,christandl2008quantum,berline2018horn}.
+The purpose of section is briefly summarize the nature of this connection (\cref{sec:trigonal_lr_coeff}) and then describe the manner in which this fundamental connection generalizes to graphical Horn problems.
+
+\subsection{Preliminaries}
+\label{sec:prelim}
+
+There are a number of approaches that can be taken to begin building the bridge which connects eigenvalues of sums of $d\times d$ Hermitian matrices to the representation theory of $\GL(d)$; the method taken here is through notions of stability in the sense of geometric invariant theory.
+We begin by recalling prerequisite notions from representation theory, symplectic geometry and geometric invariant theory, establishing our notation along the way.
+
+As always, we identify the set of $d\times d$ Hermitian matrices, $\herm(d)$ with the set $\mathfrak u(d)^{*}$ of linear functionals on the Lie algebra $\mathfrak u(d)$ of $\U(d)$ using the non-degenerate bilinear pairing $(H, X) = i \Tr(XH)$ for $H \in \herm(d)$ Hermitian and $X \in \mathfrak u(d)$ skew-Hermitian.
+Given $\lambda \in \eigs(d)$, let $D_{\lambda} = \diag(\lambda_1, \cdots, \lambda_d)$ be the diagonal $d \times d$ Hermitian matrix.
+The set $\orbit_{\lambda}$ of $d \times d$ Hermitian matrices with eigenvalues $\lambda$ can be identified with the $\U(d)$-orbit of $D_{\lambda}$ under the adjoint action, $U\cdot D_{\lambda} = U D_{\lambda} U^{-1}$, i.e.
+\begin{equation}
+    \orbit_{\lambda} = \U(d) \cdot D_{\lambda} = \{ U \cdot D_{\lambda} \mid U \in \U(d)\},
+\end{equation}
+or equivalently identified with a coadjoint orbit in $\mathfrak u(d)^{*}$.
+When $\lambda \in \domweights(d)$ is integer-valued, it may additionally be considered as a dominant weight for $\GL(d)$.
+In such cases, let $\pi_{\lambda} : \GL(d) \to \Aut(L_{\lambda})$\footnotemark{} denote the unique (up to isomorphism) irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $v_{\lambda} \in L_{\lambda}$ be a highest weight vector and let $[v_{\lambda}] \in \proj(L_{\lambda})$ be the associated highest weight ray.
+\footnotetext{
+    The representation space $L_{\lambda}$ can be realized concretely in the sense of Borel-Weil as follows.
+    Let $B(d)$ be the Borel subgroup of upper triangular matrices in $\GL(d)$ and $F(d) = \GL(d)/B(d)$ the corresponding flag variety/manifold with $\GL(d) \to F(d)$ the principle $B(d)$-bundle over $F(d)$.
+    Given a weight $\mu \in \weights(d)$, let $\chi_{\mu}$ be the one-dimensional complex representation of $B(d)$ sending the invertible diagonal $D_{t} = \diag(t_1, \ldots, t_d)$ to $\chi_{\mu}(D_{t}) = t_1^{\mu_1}\cdots t_d^{\mu_d} \in \mathbb C$.
+    The representation $\chi_{\mu}$ of $B(d)$ gives rise to the associated line bundle, $\GL(d) \times_{B(d)} \mathbb C \to F(d)$.
+    With respect to this construction, the representation space $L_{\lambda}$ can be identified with the vector space of holomorphic sections of the associated line bundle given by $\chi_{-\lambda^*}$, i.e. holomorphic functions $s : \GL(d) \to \mathbb C$ satisfying $s( g b ) = s(g) \chi_{\lambda^{*}}(b)$ for all $g \in \GL(d)$ and $b \in B(r)$.
+    \textcolor{red}{TODO: Check to signs in this footnote to make sure they are correct.}
+}%
+One important consequence of $v_{\lambda}$ being a highest weight vector is simply that the $B(d)$-orbit of $v_{\lambda}$, $B(d) \cdot v_{\lambda} = \{ \pi_{\lambda}(b) v_{\lambda} \}$, is contained within the ray $[v_{\lambda}]$.
+In addition, as each $g \in \GL(d)$ admits of a decomposition, $g = ub$, for $(u,b) \in \U(d) \times B(d)$, the $\U(d)$-orbit of $[v_{\lambda}]$ is equivalent to the $\GL(d)$-orbit of $[v_{\lambda}]$.
+Moreover, there is a well-defined $\U(d)$-equivariant diffeomorphism\footnote{This map is well-defined because the $\U(d)$-stablizers of $D_{\lambda}$ and $v_{\lambda}$ necessarily agree.} from $\orbit_{\lambda}$ to $\U(d) \cdot [v_{\lambda}]$ sending $u\cdot D_{\lambda} \in \orbit_{\lambda}$ to $u \cdot [v_{\lambda}] = [v_{\lambda}^{u}] \in \U(d)\cdot [v_{\lambda}] \subseteq \proj(L_{\lambda})$ where 
+\begin{equation}
+    v_{\lambda}^{u} \coloneqq \pi_{\lambda}(u) v_{\lambda}.
+\end{equation}
+Furthermore, if $X \in \mathfrak{gl}(d)$ is a $d\times d$ matrix, then it can be shown that $\Tr(X D_{\lambda}) = \braket{v_{\lambda}, \Pi_{\lambda}(X) v_{\lambda}}$ where $\Pi_{\lambda}$ is the induced representation of $\mathfrak{gl}(d)$ on $L_{\lambda}$, $\braket{\cdot,\cdot}$ is a $\U(d)$-invariant inner product on $L_{\lambda}$ and $v_{\lambda}$ is a highest weight vector of unit norm in $L_{\lambda}$.
+Using the aforementioned diffeomorphism, one can also show that for all $d\times d$ matrices $X \in \mathfrak{gl}(d)$,
+\begin{equation}
+    \Tr(X (u\cdot D_{\lambda})) = \braket{v_{\lambda}^{u}, \Pi_{\lambda}(X) v_{\lambda}^{u}}.
+\end{equation}
+
+Throughout this section, the following result serves a the basis for establishing a number of asymptotic results for large $k$.
+\begin{lem}
+    Let $\lambda \in \domweights{d}$ be a dominant weight for $\GL(d)$, let $L_{\lambda}$ be the irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $k \in \mathbb N_{> 0}$ be a positive integer.
+    Then $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\otimes k})) = 1$.
+    Let 
+    \begin{equation}
+        \iota_{\lambda}^{k} : L_{k\lambda} \to L_{\lambda}^{\otimes k}
+    \end{equation}
+    be a $\GL(d)$-intertwining isometry in $\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\otimes k})$.
+    If $v_{\lambda} \in L_{\lambda}$ is a highest weight vector, then there exists a highest weight vector $v_{k \lambda} \in L_{k\lambda}$ satisfying
+    \begin{equation}
+        \iota_{\lambda}^{k} v_{k\lambda} = v_{\lambda}^{\otimes k}.
+    \end{equation}
+    Moreover, for all $g \in \GL(d)$,
+    \begin{equation}
+        \norm{\pi_{k\lambda}(g) v_{k\lambda}} = \norm{\pi_{\lambda}(g) v_{\lambda}}^{k}.
+    \end{equation}
+\end{lem}
+
+
+\subsection{Reformulating the cycle condition}
+\label{sec:reform_cycle}
+
+It will be shown how the cycle condition, \cref{eq:cycle_cond}, is equivalent to the existence of certain vectors which are minimal in norm with respect to a representation of $\GL(d)$.
+Now consider a polygonal graph consisting of a single connected cycle of length $s$ such that $\Gamma$ is a $\{\pm 1\}$-valued $1\times s$ matrix.
+Let $\lambda : [s] \to \eigs(d)$ be an eigenvalue map for such a $\Gamma$, we consider the symplectic manifold
+\begin{equation}
+    \s M_{\ell} \coloneqq \prod_{e \in \s E} \orbit_{\lambda(e)^{\gamma_{\ell}(e)}}
+\end{equation}
+
+It can be shown that the moment map $\Phi_{\ell} : \s M_{\ell} \to \herm(d)$ associated to this action satisfies
+\begin{equation}
+    \Phi_{\ell}(\gamma_{\ell}(e)H(e) \mid e \in \ell) = \sum_{e \in \ell} \gamma_{\ell}(e)H(e)
+\end{equation}
+and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is satisfied.
+
+
+\subsection{Trigonal spectra \& Littlewood-Richardson coefficients}
+\label{sec:trigonal_lr_coeff}
 
 \begin{defn}
     Let $\alpha, \beta, \gamma \in \domweights(d)$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
     Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \otimes L_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) = \Inv_{\GL(d)}(L_{\gamma^*} \otimes L_{\alpha} \otimes L_{\beta}).
     \end{equation}
-    The \defnsty{Littlewood-Richardson coefficient} is defined as
+    The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
     \begin{equation}
         c_{\alpha,\beta}^{\gamma} \coloneqq \dim(C_{\alpha, \beta}^{\gamma}).
     \end{equation}
 \end{defn}
+
+Our first result can be viewed as a simple condition which is sufficient to conclude that a given triple of integer eigenvalues are trigonal.
+\begin{lem}
+    If $c_{\alpha,\beta}^{\gamma} > 0$, then there exists Hermitian matrices $A \in \orbit_{\alpha}$, $B \in \orbit_{\beta}$, and $C \in \orbit_{\gamma}$, satisfying $A + B - C = 0$.
+\end{lem}
+\begin{proof}
+    Our proof proceeds in the style of \cite[Proposition 2.3]{berline2018horn}.
+    Given any dominant weight $\lambda \in \domweights(d)$, let $P_{\lambda}$ denote the Hermitian projection operator onto the invariant
+\end{proof}
 
 Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
 Recall that $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(d)$ satisfying (i) $A+B+C=0$ and (ii)
@@ -350,56 +422,202 @@ Recall that $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are said to be \text
     \end{align}
 \end{thm}
 
+
+Consider the following well-known result, for instance see \cite[Proposition 2.3]{berline2018horn} or \cite{christandl2008quantum}.
+\begin{prop}
+    \label{prop:LR_pos_implies_herm}
+    Let $\lambda(1), \ldots, \lambda(\ell) \in \domweights(d)$ be dominant weights for $\GL(d)$ such that
+    \begin{equation}
+        (L_{\lambda(1)} \otimes \cdots \otimes L_{\lambda(d)})^{\GL(d)} \neq 0.
+    \end{equation}
+    Then there exists Hermitian matrices, $H(e) \in \orbit_{\lambda(e)}$ for all $e \in \{1,\ldots, \ell\}$, such that $\sum_{e = 1}^{\ell} H(e) = 0$.
+\end{prop}
+\begin{proof}
+    \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite{berline2018horn}.} 
+\end{proof}
+
 \subsection{Tetrahedral spectra \& recoupling operators}
 \label{sec:recouple}
 
+
+\textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
+
+\begin{rem}
+    As an immediate corollary of \cref{prop:LR_pos_implies_herm}, we conclude that if
+    \begin{equation}
+        \label{eq:face_inv}
+        (L_{\alpha} \otimes L_{\gamma}^{*} \otimes L_{\beta})^{\GL(d)} \otimes
+        (L_{\beta}^{*}  \otimes L_{\phi} \otimes L_{\delta}^{*})^{\GL(d)} \otimes
+        (L_{\delta} \otimes L_{\gamma} \otimes L_{\epsilon^{*}})^{\GL(d)} \otimes
+        (L_{\epsilon} \otimes L_{\phi}^{*}  \otimes L_{\alpha}^{*})^{\GL(d)} \neq 0,
+    \end{equation}
+    then there exists Hermitian operators
+    \begin{equation}
+        \label{eq:prime_unprime}
+        A, A' \in \orbit_{\alpha}, \quad
+        B, B' \in \orbit_{\beta}, \quad
+        C, C' \in \orbit_{\gamma}, \quad
+        D, D' \in \orbit_{\delta}, \quad
+        E, E' \in \orbit_{\epsilon}, \quad
+        F, F' \in \orbit_{\phi},
+    \end{equation}
+    satisfying the following four conditions
+    \begin{equation}
+        A - C' + B = 0, \quad
+        - B' + F - D' = 0, \quad
+        D + C - E' = 0, \quad
+        E - F' - A' = 0.
+    \end{equation}
+    From this perspective, it becomes clear that \cref{eq:face_inv} is a necessary condition for $\alpha,\beta, \gamma, \delta, \epsilon$, and $\phi$ to be tetrahedral spectra.
+    Unfortunately, it can be shown that this condition is indeed insufficient; the insufficiency can be attributed to the fact that \cref{eq:face_inv} does not require that the primed and unprimed Hermitian matrices are in \cref{eq:prime_unprime} are the same, i.e., that $A = A'$, $B = B'$, etc.
+\end{rem}
+
+\subsection{The \texorpdfstring{$\boldsymbol{\U(d)}$}{U(d)}-recoupling operator as a \texorpdfstring{$\boldsymbol{S_d}$}{Sd}-recoupling operator}
+\label{sec:recoupling-correspondence}
+
+The purpose of this section is to describe how to view certain aspects of the recoupling theory for the unitary group $\U(d)$ as a special case of the recoupling theory for the symmetric group $S_d$, at least when $d$ is taken to be sufficiently large.
+This connection between $\U(d)$ and $S_d$ is derived from considering the symmetric group $S_d$ as a \textit{subgroup} of $\U(d)$ with respect to the faithful representation of $S_d$ as $d\times d$ permutation matrices (taken with respect to the canonical basis).
+The critical theorem, due to \cite{nishiyama2000restriction}, describes the restriction of the irrep of $U(d)$ labelled by $\lambda \vdash d$ to the symmetric subgroup $S_d \subseteq U(d)$, namely \cite[Theorem 2.3]{nishiyama2000restriction}.
+\begin{thm}
+    Let $d \in \mathbb N$ and let $\lambda \vdash d$.
+    Let $L_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $V_{\lambda}$ the irrep of $S_d$.
+    Given a partition $\mu$ with length $\ell(\mu) \leq d$, let $\Upsilon_{\mu}$ denote the Young subgroup $\Upsilon_{\mu} = S_{\mu_1} \times \cdots \times S_{\mu_{\ell(\mu)}} \subseteq S_d$ and let $\partitiondegen{\mu}$ denote the (not necessarily sorted) partition of $\ell(\mu)$ corresponding to the multiplicies of $\mu$.
+    Alternatively, $\partitiondegen{\mu}$ can be characterised in terms of the normaliser of $\Upsilon_\mu$ inside $S_d$ via the formula
+    \begin{equation}
+        N_{S_d}(\Upsilon_\mu) = \Upsilon_{\partitiondegen{\mu}} \ltimes \Upsilon_{\mu}
+    \end{equation}
+    Then the restriction of the irrep $L_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
+    \begin{equation}
+        \label{eq:nishiyama-decomp}
+        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \otimes V_\lambda^{\Upsilon_{\mu}})
+    \end{equation}
+    where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
+\end{thm}
+
+While the summands appearing on the right-hand side of \cref{eq:nishiyama-decomp} are quite complicated in general, it was shown in \cite{christandl2018recoupling} that the irreducible representations of $S_d$, labelled by $\nu \vdash d$, which appear with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$ are constrained in a particular way for $d$ sufficiently large.
 \begin{defn}
-    \label{defn:young_recouple}
-    Let $a,b,c \in \mathbb N_{>0}$ be given and let 
+    Let $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})$ be a Young diagram of size $\abs{\lambda}$.
+    Let $d \geq \lambda_1 + \abs{\lambda}$ and define the \textit{(size $d$) augmentation} of $\lambda$ as
     \begin{equation}
-        \alpha \in \ydia{a},\quad \beta \in \ydia{b},\quad \gamma \in \ydia{c},\quad
-        \mu \in \ydia{a+b},\quad \nu \in \ydia{b+c},\quad \lambda \in \ydia{a+b+c}.
+        \lambda^{+d} \coloneqq (d - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)}).
     \end{equation}
-    The \defnsty{Young recoupling operator} is the operator
-    \begin{equation}
-        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
-        :
-        C^{\mu}_{\alpha,\beta} \otimes C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \otimes C^{\nu}_{\beta,\gamma},
-    \end{equation}
-    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\otimes V_{\beta}, V_{\mu})$ defined as
-    \begin{equation}
-        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
-        \coloneqq
-        \frac{
-            \Tr_{V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma}}[(\id_{V_{\alpha}}\otimes Y_{\beta\gamma}^{\nu;\dagger})
-            Y_{\alpha\nu}^{\lambda;\dagger}
-            Y_{\mu\gamma}^{\lambda}
-            (Y_{\alpha\beta}^{\mu}\otimes\id_{V_{\gamma}})]
-        }{\dim(V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma})}
-    \end{equation}
-    \begin{equation}
-        \tikzfig{tikz/young-subgroup-recouple-defn}.
-    \end{equation}
+    Note that $\lambda^{+d}$ also a Young diagram (because $d - \abs{\lambda} \geq \lambda_1$) of size $d = \abs{\lambda^{+d}}$ and length $\ell(\lambda^{+d}) = \ell(\lambda) + 1$.
 \end{defn}
+
+The following is \cite[Lemma 13]{christandl2018recoupling}:
+\begin{lem}
+    \label{lem:largest_first_rows}
+    Let $\lambda$ be a positive integer partition and let $d \in \mathbb N$ be given.
+    Let $L_{\lambda}$ be the irrep of $\U(d)$ with highest weight $\lambda$ and let $\mu \vdash d$ be an arbitrary Young diagram of size $d$.
+    Define $M^{\lambda}_{\mu}$ as the multiplicity space
+    \begin{equation}
+        M^{\lambda}_{\mu} \coloneqq \Hom_{S_d}(V_{\mu}, \Res^{\U(d)}_{S_d} L_{\lambda}).
+    \end{equation}
+    If $M^{\lambda}_{\mu}$ is non-zero, then the first row of $\mu$ cannot be smaller than $d - \lambda$:
+    \begin{equation}
+        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 \geq d - \abs{\lambda}.
+    \end{equation}
+    If $d < \lambda_1 + \abs{\lambda}$, then the above bound is strict
+    \begin{equation}
+        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 > d - \abs{\lambda}.
+    \end{equation}
+    Otherwise $d \geq \lambda_1 + \abs{\lambda}$ and the above bound is saturated only when $\mu = \lambda^{+d}$ and moreover $\dim(M^{\lambda}_{\lambda^{+d}}) = 1$ in this case.
+\end{lem}
+
+At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
+\begin{equation}
+    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \otimes L_{\beta}),
+\end{equation}
+are known to be independent of $d$ (whenever $d \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$),
+while the Kroncecker coefficients
+\begin{equation}
+    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \otimes V_{\nu})
+\end{equation}
+are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambda}$.
+
+As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
+\begin{cor}
+    Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\alpha^{+d}, \beta^{+d}$ and $\gamma^{+d}$ are all well-defined.
+    Then the multiplicity space of $S_d$-intertwiners from $V_{\gamma^{+d}}$ to $V_{\alpha^{+d}} \otimes V_{\beta^{+d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\otimes L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
+    \begin{equation}
+        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) \simeq \Hom_{S_d}(V_{\gamma^{+d}}, V_{\alpha^{+d}} \otimes V_{\beta^{+d}}) = G^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}.
+    \end{equation}
+    In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}$.
+\end{cor}
+\begin{proof}
+    The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
+    \begin{equation}
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}).
+        \label{eq:res_monoidal}
+    \end{equation}
+    Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
+    \begin{align}
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\gamma^{+d}} \oplus \cdots, \\
+        \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\alpha^{+d}} \oplus \cdots \right)\otimes \left( V_{\beta^{+d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}} V_{\gamma^{+d}} \oplus \cdots.
+    \end{align}
+    In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\gamma^{+d}$.
+    By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}$.
+\end{proof}
+
+\begin{rem}
+    Note that this result indirectly implies a stability result for the Kronecker coefficents, namely that the value of $g_{\lambda + (d)}^{\mu + (d), \nu + (d)}$ is eventually independent of $d$ and moreover reaches the value $c_{\lambda_{-1}}^{\mu_{-1}, \nu_{-1}}$ where $\lambda_{-1}$ is obtained from $\lambda$ by removal of the first row of $\lambda$.
+\end{rem}
+
+\begin{cor}
+    \label{cor:ud_sd_recouple_correspondence}
+    Let $\alpha, \beta, \gamma, \mu, \nu, \lambda$ be Young diagrams. 
+    Furthermore, take $d$ be sufficiently large such that $\alpha^{+d}, \beta^{+d}, \gamma^{+d}, \mu^{+d}, \nu^{+d}, \lambda^{+d}$ are all well-defined.
+    Then the following recoupling operator for $S_d$ is obtained from the corresponding recoupling operator for $\U(d)$ by restriction from $\U(d)$ to $S_d$:
+    \begin{equation}
+        \begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix} \simeq
+        \begin{bmatrix}\alpha^{+d} & \beta^{+d} & \mu^{+d} \\ \gamma^{+d} & \lambda^{+d} & \nu^{+d} \end{bmatrix}.
+    \end{equation}
+\end{cor}
+
+
 
 \subsection{An entropic inequality for tetrahedral spectra}
 
-In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\GL(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
-The purpose of this section is to prove an upper bound for the norm of the Young recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
+In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\U(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
+The purpose of this section is to prove an upper bound for the norm of the $\U(d)$ recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
 
-\begin{thm}
-    \label{thm:young_recouple_bound}
-    Let $\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the Young recoupling operator (\cref{defn:young_recouple}).
+\begin{lem}
+    \label{lem:sk_recouple_bound}
+    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{k}^{\times 6}$ be a sextuple of Young diagrams and let $\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the corresponding $S_k$-recoupling operator. 
     Then
     \begin{equation}
         \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}
-        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
+        \leq \left(g_{\alpha,\beta}^{\mu}g_{\beta,\gamma}^{\nu}g_{\mu,\gamma}^{\lambda}g_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
     \end{equation}
+\end{lem}
+\begin{proof}
+    See \cref{sec:sk_recouple_bound_proof}.
+\end{proof}
+
+\begin{cor}
+    \label{cor:ud_recouple_bound}
+    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{a} \times \ydia{b} \times \ydia{c} \times \ydia{a+b} \times \ydia{b+c} \times \ydia{a+b+c}$ be Young diagrams, let $d \in \mathbb N$ be sufficiently large (as in \cref{cor:ud_recouple_bound}), and let $\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the corresponding $\U(d)$-recoupling operator. 
+    Then
+    \begin{equation}
+        \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\text{HS}}^{2}
+        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu^{+d}}) \dim(V_{\mu^{+d}})}{\dim(V_{\lambda^{+d}}) \dim(V_{\beta^{+d}})}
+    \end{equation}
+\end{cor}
+
+\begin{thm}
+    If $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \eigs(d)$ are realizable eigenvalues for the tetrahedral Horn problem, then the following inequality holds:
+    \begin{equation}
+        S_{p}^{a,b,c}(\mu) + S_{p}^{a,b,c}(\nu) - S_{p}^{a,b,c}(\beta) - S_{p}^{a,b,c}(\lambda)
+    \end{equation}
+    \textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
 \end{thm}
 \begin{proof}
-    See \cref{sec:young_recouple_bound_proof}.
+    Let $n \mapsto \lambda(n)$ be a sequence of Young diagrams satisfying $\lim_{n\to\infty} \frac{\lambda(n)}{\abs{\lambda(n)}} = r$ and $\lim_{n\to\infty} \frac{\abs{\lambda(n)}}{n} = p$ for some $p \in [0,1]$.
+    Then \textcolor{red}{TODO: prove this}
+    \begin{equation}
+        \lim_{n\to\infty} \frac{1}{n} \log \dim V_{\lambda(n)} = p S(r).
+    \end{equation}
 \end{proof}
-\textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
 
 
 \section{The spectral quantum marginal problem}
@@ -627,34 +845,148 @@ The purpose of this section is to prove an upper bound for the norm of the Young
     \item Elementary introduction to toy models of three-dimensional quantum space \cite{barrett2003geometrical}
     \item \Citeauthor{horn1962eigenvalues}'s original paper where they conjectured the form of a necessary and sufficient set of inequalities via an inductive scheme for increasing dimension \cite{horn1962eigenvalues}
     \item \citeauthor{berline2018horn} a pedagogical account of the triple role played by Horn's inequalities in characterizing the existence of invariants vectors in tensor products, the eigenvalues of sums of Hermitian matrices, and intersections of Schubert varieties \cite{berline2018horn}
+    \item \citeauthor{regge2000discrete} \cite{regge2000discrete} a relatively recent review of discrete approaches to gravity. 
+        The essential idea, in constrast to the differential geometry of general relativity, is to model curvature discretely instead of continuously. 
+        In particular, one can think of a triangulation of the surface of a sphere; the curvature of the sphere is encoded in the triangulation when a configuration of three (or more) triangles meet at a common vertex with sum of interior angles deviating from $\pi$.
+        It is in this sense that \citeauthor{regge2000discrete} refers to these types of models as ``piecewise-flat''.
+        Contained is an overview of various attempts to generalize discrete theories of three-dimensional gravity to four dimensions \cite[Section III]{regge2000discrete}.
 \end{itemize}
 
 \appendix
 
-\section{Proof of Young recoupling upper bound}
-\label{sec:young_recouple_bound_proof}
+\section{Proof of symmetric group recoupling operator upper bound}
+\label{sec:sk_recouple_bound_proof}
 
-The purpose of this section is to prove \cref{thm:young_recouple_bound}.
+The purpose of this section is to prove \cref{lem:sk_recouple_bound}.
 
-\begin{proof}
-    The proof follows by noting that the Young recoupling symbol can be written as the contraction of two smaller tensors across $V_{\nu}\otimes V_{\gamma} \otimes V_{\mu} \otimes V_{\alpha}$ (annotated below):
+\textcolor{red}{TODO: Make the notation and diagrammatic conventions used here match the rest of the document, also resolve ambiguities introduced by the the ``dot'' notation.}
+
+\begin{defn}[$S_k$ recoupling operators]
+    Given six Young diagrams $\alpha, \beta, \gamma, \mu, \nu$ and $\lambda$ (each with fixed size $k \in \mathbb N$), the \defnsty{recoupling operator} is a linear map 
     \begin{equation}
-        \tikzfig{tikz/yrb1}
+        \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        :
+        G^{\mu}_{\alpha,\beta} \otimes G^{\lambda}_{\mu,\gamma} \to G^{\lambda}_{\alpha, \nu} \otimes G^{\nu}_{\beta,\gamma},
     \end{equation}
-    Applying the Cauchy-Schwarz inequality to $\norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}$ (with respect to this contraction), and noting that
+    between the multiplicity spaces of irreps of the symmetric group defined as
     \begin{equation}
-        \tikzfig{tikz/yrb3}
+        \tikzfig{tikz/sk-recoupling-defn}.
     \end{equation}
-    holds because the $Y_{\alpha\beta}^{\mu}$ and $Y_{\beta\gamma}^{\nu}$ maps are isometries, and moreover
+\end{defn}
+
+The recoupling operator arises when applying Schur's lemma (with multiplicities) to diagram on the left-hand side of the subsequent equation:
+\begin{equation}
+    \tikzfig{tikz/recoupling-defn-relationship}.
+\end{equation}
+The recoupling operator derives its name from the recoupling theory of angular momenta and serves the purpose of a change of basis between two distinct (de-)coupling schemes.
+Specifically, the recoupling operator satisfies the following equation:
+\begin{equation}
+    \label{eq:recoupling-trees}
+    \tikzfig{tikz/recoupling-trees}.
+\end{equation}
+As a shorthand for this equation, we simply write:
+\begin{equation}
+    \tikzfig{tikz/recoupling-trees-shorthand}.
+\end{equation}
+
+The next result is a consequence of an application of Schur's lemma to the identity on $V_{\alpha}$:
+\begin{equation}
+    \tikzfig{tikz/offset-schur-lemma-untwist}.
+\end{equation}
+Combining two instances of the above result yields:
+\begin{equation}
+    \tikzfig{tikz/schur-lemma-ratio}.
+\end{equation}
+
+\begin{proof}[Proof of \cref{lem:sk_recouple_bound}]
+    Applying the Cauchy-Schwarz inequality along a particular edge-cut indicated below, and applying Schur's lemma multiple times yields
     \begin{equation}
-        \tikzfig{tikz/yrb2}
+        \tikzfig{tikz/SSA-dimension-upper-bound}
     \end{equation}
-    holds because of Schur's lemma (applied to $V_{\lambda}$) and that $Y_{\mu\gamma}^{\lambda}$ and $Y_{\alpha\nu}^{\lambda}$ are also isometries, yields the following upper bound:
-    \begin{equation}
-        (d_{\alpha} d_{\beta} d_{\gamma})^2 \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2} \leq \left[\left(d_{\alpha}d_{\beta}d_{\gamma}\right)^2\left(\frac{d_{\nu} d_{\gamma} d_{\mu} d_{\alpha}}{d_{\lambda}}\right)^{2}  c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda} \right]^{\frac{1}{2}},
-    \end{equation}
-    which is the statement of \cref{thm:young_recouple_bound}. 
 \end{proof}
+
+%\begin{proof}
+%    The proof follows by noting that the $S_k$ recoupling operator can be written as the contraction of two smaller tensors across $V_{\nu}\otimes V_{\gamma} \otimes V_{\mu} \otimes V_{\alpha}$ (annotated below):
+%    \begin{equation}
+%        \tikzfig{tikz/yrb1}
+%    \end{equation}
+%    Applying the Cauchy-Schwarz inequality to $\norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}$ (with respect to this contraction), and noting that
+%    \begin{equation}
+%        \tikzfig{tikz/yrb3}
+%    \end{equation}
+%    holds because the $Y_{\alpha\beta}^{\mu}$ and $Y_{\beta\gamma}^{\nu}$ maps are isometries, and moreover
+%    \begin{equation}
+%        \tikzfig{tikz/yrb2}
+%    \end{equation}
+%    holds because of Schur's lemma \textcolor{red}{FALSE!! Cannot apply Schur's lemma here.} (applied to $V_{\lambda}$) and that $Y_{\mu\gamma}^{\lambda}$ and $Y_{\alpha\nu}^{\lambda}$ are also isometries, yields the following upper bound:
+%    \begin{equation}
+%        (d_{\alpha} d_{\beta} d_{\gamma})^2 \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2} \leq \left[\left(d_{\alpha}d_{\beta}d_{\gamma}\right)^2\left(\frac{d_{\nu} d_{\gamma} d_{\mu} d_{\alpha}}{d_{\lambda}}\right)^{2}  c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda} \right]^{\frac{1}{2}},
+%    \end{equation}
+%    which is the statement of \cref{thm:young_recouple_bound}. 
+%\end{proof}
+
+
+\section{Proof of recoupling operator norm equivalences}
+\label{sec:recouple_norms}
+
+\textcolor{red}{TODO: Figure out if a ``Young recoupling operator'' is even a useful object to consider now that my entropy inequality proof failed.}
+\begin{defn}
+    \label{defn:young_recouple}
+    Let $a,b,c \in \mathbb N_{>0}$ be given and let 
+    \begin{equation}
+        \alpha \in \ydia{a},\quad \beta \in \ydia{b},\quad \gamma \in \ydia{c},\quad
+        \mu \in \ydia{a+b},\quad \nu \in \ydia{b+c},\quad \lambda \in \ydia{a+b+c}.
+    \end{equation}
+    The \defnsty{Young recoupling operator} is the operator
+    \begin{equation}
+        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        :
+        C^{\mu}_{\alpha,\beta} \otimes C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \otimes C^{\nu}_{\beta,\gamma},
+    \end{equation}
+    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\otimes V_{\beta}, V_{\mu})$ defined as
+    \begin{equation}
+        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        \coloneqq
+        \frac{
+            \Tr_{V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma}}[(\id_{V_{\alpha}}\otimes Y_{\beta\gamma}^{\nu;\dagger})
+            Y_{\alpha\nu}^{\lambda;\dagger}
+            Y_{\mu\gamma}^{\lambda}
+            (Y_{\alpha\beta}^{\mu}\otimes\id_{V_{\gamma}})]
+        }{\dim(V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma})}
+    \end{equation}
+    \begin{equation}
+        \tikzfig{tikz/young-subgroup-recouple-defn}.
+    \end{equation}
+\end{defn}
+
+\begin{lem}
+    Let $\begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the recoupling operator for $\U(d)$ and let $\begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the Young recoupling operator. 
+    Then
+    \begin{equation}
+        \label{eq:recoupling_prod_proj_iso_norm}
+        \norm{\Pi_{\nu}\Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty}
+        =\norm{\begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty}
+        =\norm{\begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\infty}
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The claim follows by demonstrating the existence of isometries $\iota_{I}, \iota_{II}, \iota_{III}$, and $\iota_{IV}$ such that
+    \begin{align}
+        \label{eq:recoupling_prod_proj_iso}
+        \Pi_{\nu}\Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda} 
+        &= \iota_{II} \left(\id_{L_{\lambda}} \otimes \id_{V_{\alpha}} \otimes \id_{V_{\beta}} \otimes \id_{V_{\gamma}} \otimes \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger}, \\
+        &= \iota_{III} \left(\id_{L_{\lambda}} \otimes \id_{V_{\alpha}} \otimes \id_{V_{\beta}} \otimes \id_{V_{\gamma}} \otimes \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}\right) \iota_{IV}^{\dagger}.
+    \end{align}
+    The first two isometries, $\iota_{I}$ and $\iota_{II}$, involve decompositions of tensor products of irreps of the symmetric group:
+    \begin{equation}
+        \scalebox{0.8}{\tikzfig{tikz/sextuple-proj-ud-recouple}}.
+    \end{equation}
+    The remaining two isometries, $\iota_{III}$ and $\iota_{IV}$, involve decompositions of tensor products of irreps of the unitary group:
+    \begin{equation}
+        \tikzfig{tikz/sextuple-proj-young-recouple}.
+    \end{equation}
+\end{proof}
+
 
 \clearpage
 \printbibliography

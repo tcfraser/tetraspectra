@@ -381,7 +381,7 @@
 		\node [style=none] (573) at (14, -10.75) {};
 		\node [style=none] (574) at (14, -9.75) {};
 		\node [style=none] (575) at (14, -10.75) {};
-		\node [style=none] (576) at (14.75, -10.25) {$C^{\nu}_{\beta,\gamma}$};
+		\node [style=none] (576) at (14.75, -10.25) {$C^{\lambda}_{\alpha,\nu}$};
 		\node [style=none] (577) at (12, -10.75) {};
 		\node [style=none] (578) at (12, -6.75) {};
 		\node [style=none] (579) at (11.5, -9.75) {$V_{\alpha}$};
