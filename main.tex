@@ -48,9 +48,9 @@ It will be ideal to illustrate with figures.
 Throughout this paper, $d \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
 We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(d)$ as shorthand for $\GL(d, \mathbb C)$.
 Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
-The weight lattice for $\GL(d)$ is denoted by $\weights(d) \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights(d)$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights(d)$.
+The weight lattice for $\GL(d)$ is denoted by $\weights{d} \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights{d}$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights{d}$.
 
-Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights(d)$ are denoted by $L_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $V_{\lambda}$.
+Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights{d}$ are denoted by $L_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $V_{\lambda}$.
 
 The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs(d) \subset \mathbb R^{d}$.
 The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs(d)$ will be denoted by $\orbit_x$. 
@@ -130,8 +130,8 @@ There are a few operations which preserve the set of realizable spectral maps.
     \begin{itemize}
         \item The \defnsty{zero spectral map} $0_d : \s E \to \eigs(d)$ assigning to $e \in \s E$, the spectrum $0_d(e) = (0, \stackrel{d}{\ldots}, 0)$ is realizable.
         \item If $\alpha : \s E \to \eigs(a)$ and $\beta : \s E \to \eigs(b)$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs(a+b)$ and tensor product $\alpha \otimes \beta : \s E \to \eigs(ab)$ (defined pointwise in the obvious manner), are both realizable.
-        \item If $\lambda : \s E \to \eigs(d)$ is a realizable and $p \in \mathbb R_{> 0}$ a positive real number, then $p \lambda : \s E \to \eigs(d)$, defined by $(p\lambda)(e) = (p\lambda_1(e), \ldots, p\lambda_d(e))$ is also a realizable.
-        \item If $\lambda : \s E \to \eigs(d)$ is a realizable, then $\lambda^{*} : \s E \to \eigs(d)$, defined by a pointwise application of the negation-reversal involution, is also realizable.
+        \item If $\lambda : \s E \to \eigs{d}$ is a realizable and $p \in \mathbb R_{> 0}$ a positive real number, then $p \lambda : \s E \to \eigs{d}$, defined by $(p\lambda)(e) = (p\lambda_1(e), \ldots, p\lambda_d(e))$ is also a realizable.
+        \item If $\lambda : \s E \to \eigs{d}$ is a realizable, then $\lambda^{*} : \s E \to \eigs{d}$, defined by a pointwise application of the negation-reversal involution, is also realizable.
     \end{itemize}
 \end{lem}
 
@@ -158,7 +158,7 @@ There are a few operations which preserve the set of realizable spectral maps.
     \begin{equation}
         (\lambda_1, \lambda_2, \lambda_3) = (\alpha, \beta, \gamma^{*})
     \end{equation}
-    where $\gamma \mapsto \gamma^{*}$ is the involution on $\eigs(d)$ defined by negation of entries and then reversing to preserve the ordering:
+    where $\gamma \mapsto \gamma^{*}$ is the involution on $\eigs{d}$ defined by negation of entries and then reversing to preserve the ordering:
     \begin{equation}
         \gamma^{*} = (-\gamma_d, \ldots, -\lambda_1).
     \end{equation}
@@ -168,7 +168,7 @@ There are a few operations which preserve the set of realizable spectral maps.
     In this paper, a considerable focus will be placed on the \defnsty{tetrahedral Horn problem} which is the graphical Horn problem associated with the directed graph above forming a tetrahedron.
     Specifically, a sextuple of candidate spectra,
     \begin{equation}
-        (\alpha, \beta, \gamma, \mu, \nu, \lambda) \in (\eigs(d))^{\times 6}
+        (\alpha, \beta, \gamma, \mu, \nu, \lambda) \in (\eigs{d})^{\times 6}
     \end{equation}
     are said to be \defnsty{tetrahedral} if they are the respective eigenvalues of Hermitian matrices 
     \begin{equation}
@@ -205,17 +205,17 @@ The solution to all one-dimensional graphical Horn problems provided by \cref{eq
 \begin{lem}
     \label{lem:trace_cond}
     Consider the graphical Horn problem of dimension $d$ for the digraph $\s G = (\s V, \s E)$.
-    Then the spectral map $\lambda : \s E \to \eigs(d)$ is realizable only if 
+    Then the spectral map $\lambda : \s E \to \eigs{d}$ is realizable only if 
     \begin{equation}
         \Tr \circ \lambda \in \ker(\Gamma(\s G)),
     \end{equation}
-    where, by abuse of notation, $\Tr : \eigs(d) \to \mathbb R$ denotes the sum 
+    where, by abuse of notation, $\Tr : \eigs{d} \to \mathbb R$ denotes the sum 
     \begin{equation}
         \Tr((\lambda_1, \cdots, \lambda_d)) \coloneqq \lambda_1 + \cdots \lambda_d.
     \end{equation}
 \end{lem}
 \begin{proof}
-    Suppose that $\lambda : \s E \to \eigs(d)$ is a spectral map realized by the assignment $H : \s E \to \herm(d)$, meaning $\eig(H(e)) = \lambda(e)$ for all edges $e \in \s E$, and $\sum_{e\in E}\Gamma(\s G)_{\ell, e}H(e) = 0$ for all cycles $\ell$.
+    Suppose that $\lambda : \s E \to \eigs{d}$ is a spectral map realized by the assignment $H : \s E \to \herm(d)$, meaning $\eig(H(e)) = \lambda(e)$ for all edges $e \in \s E$, and $\sum_{e\in E}\Gamma(\s G)_{\ell, e}H(e) = 0$ for all cycles $\ell$.
     Taking the trace of cycle condition \cref{eq:cycle_cond} yields
     \begin{equation}
         0 = \sum_{e\in E}\Gamma(\s G)_{\ell, e}\Tr(H(e)) = \sum_{e\in E}\Gamma(\s G)_{\ell, e}\Tr(\lambda(e)).
@@ -226,12 +226,12 @@ The solution to all one-dimensional graphical Horn problems provided by \cref{eq
 \begin{lem}
     \label{lem:ker_shift}
     Consider the graphical Horn problem of dimension $d$ for the diagraph $\s G = (\s V, \s E)$.
-    Suppose $\mu : \s E \to \mathbb R$ lies in the kernel of $\Gamma(\s G)$ and define $\mu \cdot 1_{d} : \s E \to \eigs(d)$ to be the spectral map defined by
+    Suppose $\mu : \s E \to \mathbb R$ lies in the kernel of $\Gamma(\s G)$ and define $\mu \cdot 1_{d} : \s E \to \eigs{d}$ to be the spectral map defined by
     \begin{equation}
         (\mu \cdot 1_d)(e) \coloneqq (\mu(e), \stackrel{d}{\ldots}, \mu(e)).
     \end{equation}
-    Then $\mu \cdot 1_{d} : \s E \to \eigs(d)$ is a realizable spectral map.
-    Moreover, $\lambda : \s E \to \eigs(d)$ is a realizable spectral map if and only if $\lambda + \mu \cdot 1_{d}$ is a realizable.
+    Then $\mu \cdot 1_{d} : \s E \to \eigs{d}$ is a realizable spectral map.
+    Moreover, $\lambda : \s E \to \eigs{d}$ is a realizable spectral map if and only if $\lambda + \mu \cdot 1_{d}$ is a realizable.
 \end{lem}
 \begin{proof}
     The spectral map $\mu \cdot 1_d$ is realized by the assignment $H_{\mu} : \s E \to \herm(d)$ defined by
@@ -243,16 +243,16 @@ The solution to all one-dimensional graphical Horn problems provided by \cref{eq
     \begin{equation}
         \sum_{e\in E}\Gamma(\s G)_{\ell, e}H_{\mu}(e) = (\sum_{e\in E}\Gamma(\s G)_{\ell, e}\mu(e))I_{d} = 0.
     \end{equation}
-    Now suppose $\lambda : \s E \to \eigs(d)$ is realized by the assignment $H_{\lambda} : \s E \to \herm(d)$, then it follows that $H_{\lambda}+H_{\mu}$, defined by
+    Now suppose $\lambda : \s E \to \eigs{d}$ is realized by the assignment $H_{\lambda} : \s E \to \herm(d)$, then it follows that $H_{\lambda}+H_{\mu}$, defined by
     \begin{equation}
         (H_{\lambda}+H_{\mu})(e) = H_{\lambda}(e) + \mu(e) I_d
     \end{equation} 
     realizes the spectral map $\lambda + \mu\cdot 1_d$ because the spectrum of $H_{\lambda}(e) + \mu(e) I_d$ is simply $\lambda(e) + \mu\cdot 1_d(e)$ (the eigenvalues add because $[H_{\lambda}(e), I_d] = 0$).
 \end{proof}
 
-A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectral maps, $\lambda : \s E \to \eigs(d)$, is entirely determined by the set of realizable and \textit{traceless} spectral maps in the sense that $\Tr\circ \lambda = 0_d$.
+A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectral maps, $\lambda : \s E \to \eigs{d}$, is entirely determined by the set of realizable and \textit{traceless} spectral maps in the sense that $\Tr\circ \lambda = 0_d$.
 \begin{cor}
-    Let $\lambda : \s E \to \eigs(d)$ be a spectral map such that $\Tr\circ\lambda \in \ker(\Gamma(\s G))$ and let $\lambda^{0} : \s E \to \eigs(d)$ be the traceless spectral map defined by
+    Let $\lambda : \s E \to \eigs{d}$ be a spectral map such that $\Tr\circ\lambda \in \ker(\Gamma(\s G))$ and let $\lambda^{0} : \s E \to \eigs{d}$ be the traceless spectral map defined by
     \begin{equation}
         \lambda^{0}(e) \coloneqq (\lambda_1(e) - \Tr(\lambda(e)), \ldots, \lambda_d(e) - \Tr(\lambda(e))).
     \end{equation}
@@ -268,7 +268,7 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
     \begin{equation}
         \forall e \in \s E : \rho(e) > 0.
     \end{equation}
-    Let $\lambda : \s E \to \eigs(d)$ be a spectral map.
+    Let $\lambda : \s E \to \eigs{d}$ be a spectral map.
     Then there exists a sufficiently large positive $p \in \mathbb R_{>0}$ such that $\lambda^{+} \coloneqq \lambda + p \rho \cdot 1_d$ is a spectral map consisting of strictly positive spectra meaning
     \begin{equation}
         \label{eq:positive_spectra}
@@ -311,18 +311,18 @@ There are a number of approaches that can be taken to begin building the bridge 
 We begin by recalling prerequisite notions from representation theory, symplectic geometry and geometric invariant theory, establishing our notation along the way.
 
 As always, we identify the set of $d\times d$ Hermitian matrices, $\herm(d)$ with the set $\mathfrak u(d)^{*}$ of linear functionals on the Lie algebra $\mathfrak u(d)$ of $\U(d)$ using the non-degenerate bilinear pairing $(H, X) = i \Tr(XH)$ for $H \in \herm(d)$ Hermitian and $X \in \mathfrak u(d)$ skew-Hermitian.
-Given $\lambda \in \eigs(d)$, let $D_{\lambda} = \diag(\lambda_1, \cdots, \lambda_d)$ be the diagonal $d \times d$ Hermitian matrix.
+Given $\lambda \in \eigs{d}$, let $D_{\lambda} = \diag(\lambda_1, \cdots, \lambda_d)$ be the diagonal $d \times d$ Hermitian matrix.
 The set $\orbit_{\lambda}$ of $d \times d$ Hermitian matrices with eigenvalues $\lambda$ can be identified with the $\U(d)$-orbit of $D_{\lambda}$ under the adjoint action, $U\cdot D_{\lambda} = U D_{\lambda} U^{-1}$, i.e.
 \begin{equation}
     \orbit_{\lambda} = \U(d) \cdot D_{\lambda} = \{ U \cdot D_{\lambda} \mid U \in \U(d)\},
 \end{equation}
 or equivalently identified with a coadjoint orbit in $\mathfrak u(d)^{*}$.
-When $\lambda \in \domweights(d)$ is integer-valued, it may additionally be considered as a dominant weight for $\GL(d)$.
+When $\lambda \in \domweights{d}$ is integer-valued, it may additionally be considered as a dominant weight for $\GL(d)$.
 In such cases, let $\pi_{\lambda} : \GL(d) \to \Aut(L_{\lambda})$\footnotemark{} denote the unique (up to isomorphism) irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $v_{\lambda} \in L_{\lambda}$ be a highest weight vector and let $[v_{\lambda}] \in \proj(L_{\lambda})$ be the associated highest weight ray.
 \footnotetext{
     The representation space $L_{\lambda}$ can be realized concretely in the sense of Borel-Weil as follows.
     Let $B(d)$ be the Borel subgroup of upper triangular matrices in $\GL(d)$ and $F(d) = \GL(d)/B(d)$ the corresponding flag variety/manifold with $\GL(d) \to F(d)$ the principle $B(d)$-bundle over $F(d)$.
-    Given a weight $\mu \in \weights(d)$, let $\chi_{\mu}$ be the one-dimensional complex representation of $B(d)$ sending the invertible diagonal $D_{t} = \diag(t_1, \ldots, t_d)$ to $\chi_{\mu}(D_{t}) = t_1^{\mu_1}\cdots t_d^{\mu_d} \in \mathbb C$.
+    Given a weight $\mu \in \weights{d}$, let $\chi_{\mu}$ be the one-dimensional complex representation of $B(d)$ sending the invertible diagonal $D_{t} = \diag(t_1, \ldots, t_d)$ to $\chi_{\mu}(D_{t}) = t_1^{\mu_1}\cdots t_d^{\mu_d} \in \mathbb C$.
     The representation $\chi_{\mu}$ of $B(d)$ gives rise to the associated line bundle, $\GL(d) \times_{B(d)} \mathbb C \to F(d)$.
     With respect to this construction, the representation space $L_{\lambda}$ can be identified with the vector space of holomorphic sections of the associated line bundle given by $\chi_{-\lambda^*}$, i.e. holomorphic functions $s : \GL(d) \to \mathbb C$ satisfying $s( g b ) = s(g) \chi_{\lambda^{*}}(b)$ for all $g \in \GL(d)$ and $b \in B(r)$.
     \textcolor{red}{TODO: Check to signs in this footnote to make sure they are correct.}
@@ -341,6 +341,7 @@ Using the aforementioned diffeomorphism, one can also show that for all $d\times
 
 Throughout this section, the following result serves a the basis for establishing a number of asymptotic results for large $k$.
 \begin{lem}
+    \label{lem:kth_tensor_power}
     Let $\lambda \in \domweights{d}$ be a dominant weight for $\GL(d)$, let $L_{\lambda}$ be the irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $k \in \mathbb N_{> 0}$ be a positive integer.
     Then $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\otimes k})) = 1$.
     Let 
@@ -364,7 +365,7 @@ Throughout this section, the following result serves a the basis for establishin
 
 It will be shown how the cycle condition, \cref{eq:cycle_cond}, is equivalent to the existence of certain vectors which are minimal in norm with respect to a representation of $\GL(d)$.
 Now consider a polygonal graph consisting of a single connected cycle of length $s$ such that $\Gamma$ is a $\{\pm 1\}$-valued $1\times s$ matrix.
-Let $\lambda : [s] \to \eigs(d)$ be an eigenvalue map for such a $\Gamma$, we consider the symplectic manifold
+Let $\lambda : [s] \to \eigs{d}$ be an eigenvalue map for such a $\Gamma$, we consider the symplectic manifold
 \begin{equation}
     \s M_{\ell} \coloneqq \prod_{e \in \s E} \orbit_{\lambda(e)^{\gamma_{\ell}(e)}}
 \end{equation}
@@ -380,7 +381,7 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
 \label{sec:trigonal_lr_coeff}
 
 \begin{defn}
-    Let $\alpha, \beta, \gamma \in \domweights(d)$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
+    Let $\alpha, \beta, \gamma \in \domweights{d}$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
     Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \otimes L_{\beta}$:
     \begin{equation}
         C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) = \Inv_{\GL(d)}(L_{\gamma^*} \otimes L_{\alpha} \otimes L_{\beta}).
@@ -397,22 +398,22 @@ Our first result can be viewed as a simple condition which is sufficient to conc
 \end{lem}
 \begin{proof}
     Our proof proceeds in the style of \cite[Proposition 2.3]{berline2018horn}.
-    Given any dominant weight $\lambda \in \domweights(d)$, let $P_{\lambda}$ denote the Hermitian projection operator onto the invariant
+    Given any dominant weight $\lambda \in \domweights{d}$, let $P_{\lambda}$ denote the Hermitian projection operator onto the invariant
 \end{proof}
 
 Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
-Recall that $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(d)$ satisfying (i) $A+B+C=0$ and (ii)
+Recall that $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(d)$ satisfying (i) $A+B+C=0$ and (ii)
 \begin{equation}
     (\eig(A), \eig(B), \eig(C)) = (\alpha,\beta,\gamma).
 \end{equation}
 
 \begin{thm}
-    If $c_{\alpha,\beta,\gamma} > 0$ for some $\alpha, \beta, \gamma \in \domweights(d)$, then $(\alpha,\beta,\gamma)$ are trigonal.
+    If $c_{\alpha,\beta,\gamma} > 0$ for some $\alpha, \beta, \gamma \in \domweights{d}$, then $(\alpha,\beta,\gamma)$ are trigonal.
 \end{thm}
 
 \begin{thm}
-    If $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are triangular, then there exists a graded sequence
-    $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)) \in \domweights(d)^{\times 3}$ such that (i) for all $n \in \mathbb N_{>0}$,
+    If $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are triangular, then there exists a graded sequence
+    $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)) \in (\domweights{d})^{\times 3}$ such that (i) for all $n \in \mathbb N_{>0}$,
     \begin{equation}
         c_{\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)} > 0,
     \end{equation}
@@ -428,7 +429,7 @@ Recall that $(\alpha,\beta,\gamma) \in \eigs(d)^{\times 3}$ are said to be \text
 Consider the following well-known result, for instance see \cite[Proposition 2.3]{berline2018horn} or \cite{christandl2008quantum}.
 \begin{prop}
     \label{prop:LR_pos_implies_herm}
-    Let $\lambda(1), \ldots, \lambda(\ell) \in \domweights(d)$ be dominant weights for $\GL(d)$ such that
+    Let $\lambda(1), \ldots, \lambda(\ell) \in \domweights{d}$ be dominant weights for $\GL(d)$ such that
     \begin{equation}
         (L_{\lambda(1)} \otimes \cdots \otimes L_{\lambda(d)})^{\GL(d)} \neq 0.
     \end{equation}
@@ -436,6 +437,34 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
 \end{prop}
 \begin{proof}
     \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite{berline2018horn}.} 
+\end{proof}
+
+\begin{prop}
+\end{prop}
+\begin{proof}
+    Using the resolution of identity for a highest weight vector $\ket{v_{\lambda}}$ of unit norm,
+    \begin{equation}
+        \id_{L_{\lambda}} = \dim(L_{\lambda}) \int_{u\in\U(d)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}},
+    \end{equation}
+    for $(\lambda_1, \ldots, \lambda_{\ell}) \in (\domweights{d})^{\ell}$, one obtains the bound
+    \begin{align}
+        \tilde c_{\lambda_1, \ldots, \lambda_{\ell}} 
+        &= \frac{\dim[(L_{\lambda_1} \otimes \cdots \otimes L_{\lambda_\ell})^{\GL(d)}]}{\dim(L_{\lambda_1})\cdots\dim(L_{\lambda_\ell})} \\
+        %&= \int_{u_0 \in \U(d)} \diff u \Tr[\pi_{\lambda_1}(u_0) \otimes \cdots \otimes \pi_{\lambda_\ell}(u_0)]  \\
+        %&= \int_{u_0 \in \U(d)} \diff u_0 \chi_{\lambda_1}(u_0)\cdots \chi_{\lambda_\ell}(u_0)  \\
+        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{u_1} \otimes \cdots \otimes v_{\lambda_\ell}^{u_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{u_1} \otimes \cdots \otimes v_{\lambda_\ell}^{u_\ell}}  \\
+        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{gu_1} \otimes \cdots \otimes v_{\lambda_\ell}^{gu_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{gu_1} \otimes \cdots \otimes v_{\lambda_\ell}^{gu_\ell}}  \\
+        &\leq \int_{u_i \in \U(d)} \diff u_i \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2} \\
+        &\leq \max_{u_i \in \U(d)} \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2}.
+    \end{align}
+    However, as $g \in \GL(d)$ was arbitary, we furthermore have
+    \begin{equation}
+        \tilde c_{\lambda_1,\ldots, \lambda_{\ell}} \leq \tilde C_{\lambda_1, \ldots, \lambda_\ell} \coloneqq \inf_{g \in \GL(d)}\max_{u_i \in \U(d)} \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2}
+    \end{equation}
+    Replacing $(\lambda_1, \ldots, \lambda_{\ell})$ by $(k\lambda_1, \ldots, k\lambda_{\ell})$ and applying \cref{lem:kth_tensor_power} yields
+    \begin{equation}
+        \tilde c_{k\lambda_1,\ldots, k\lambda_{\ell}} \leq \tilde C^{k}_{\lambda_1, \ldots, \lambda_\ell}
+    \end{equation}
 \end{proof}
 
 \subsection{Tetrahedral spectra \& recoupling operators}
@@ -607,7 +636,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \end{cor}
 
 \begin{thm}
-    If $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \eigs(d)$ are realizable eigenvalues for the tetrahedral Horn problem, then the following inequality holds:
+    If $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \eigs{d}$ are realizable eigenvalues for the tetrahedral Horn problem, then the following inequality holds:
     \begin{equation}
         S_{p}^{a,b,c}(\mu) + S_{p}^{a,b,c}(\nu) - S_{p}^{a,b,c}(\beta) - S_{p}^{a,b,c}(\lambda)
     \end{equation}
@@ -855,6 +884,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item \citeauthor{fulton1997young} provides a comphrensive treatment of the connection between representation theory of $\GL(d)$ and the geometry and (co)homology of the complex Grassmannians \cite{fulton1997young}
     \item \citeauthor{alcockspecial} consider the case of $6j$ symbols for $\SU(N)$ for wherein two opposing edges are labelled by fundamental irreps of $\SU(N)$ so that all vertices are multiplicity one (or zero) \cite{alcockspecial} \textcolor{blue}{TC: They also freely use the birdtrack notation which I enjoy.}
     \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
+    \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
 \end{itemize}
 
 \appendix
