@@ -1,0 +1,544 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (1.75, 5) {$\alpha$};
+		\node [style=dot] (9) at (2.25, 3.25) {};
+		\node [style=dot] (10) at (5.75, 3.25) {};
+		\node [style=dot] (11) at (5.75, 6.75) {};
+		\node [style=dot] (12) at (2.25, 6.75) {};
+		\node [style=crossing] (13) at (4, 5) {};
+		\node [style=none] (14) at (4, 5) {};
+		\node [style=none] (15) at (6.25, 5) {$\delta$};
+		\node [style=none] (16) at (4.5, 6) {$\beta$};
+		\node [style=none] (17) at (4.5, 4) {$\epsilon$};
+		\node [style=none] (18) at (4, 2.75) {$\gamma$};
+		\node [style=none] (19) at (4, 7.25) {$\phi$};
+		\node [style=none] (20) at (1.25, 3.25) {};
+		\node [style=none] (24) at (6.75, 3.25) {};
+		\node [style=none] (35) at (1.75, 10.5) {$\alpha$};
+		\node [style=dot] (36) at (2.25, 12.25) {};
+		\node [style=dot] (37) at (5.75, 12.25) {};
+		\node [style=dot] (38) at (5.75, 8.75) {};
+		\node [style=dot] (39) at (2.25, 8.75) {};
+		\node [style=crossing] (40) at (4, 10.5) {};
+		\node [style=none] (41) at (4, 10.5) {};
+		\node [style=none] (42) at (6.25, 10.5) {$\delta$};
+		\node [style=none] (43) at (4.5, 9.5) {$\beta$};
+		\node [style=none] (44) at (4.5, 11.5) {$\epsilon$};
+		\node [style=none] (45) at (4, 12.75) {$\gamma$};
+		\node [style=none] (46) at (4, 8.25) {$\phi$};
+		\node [style=none] (47) at (1.25, 12.25) {};
+		\node [style=none] (48) at (5.75, 7.75) {};
+		\node [style=none] (49) at (2.25, 7.75) {};
+		\node [style=none] (50) at (6.75, 12.25) {};
+		\node [style=none] (184) at (-10.5, -11.75) {$=$};
+		\node [style=none] (185) at (-9, -12.5) {};
+		\node [style=none] (186) at (-8, -12.5) {};
+		\node [style=none] (187) at (-8.5, -12.5) {$\beta$};
+		\node [style=none] (188) at (-9.75, -11.75) {};
+		\node [style=none] (189) at (-5.75, -11.75) {};
+		\node [style=none] (190) at (-8.25, -11) {};
+		\node [style=none] (191) at (-7.25, -11) {};
+		\node [style=none] (192) at (-7.75, -11) {$\gamma$};
+		\node [style=none] (198) at (-9.75, -11) {};
+		\node [style=none] (199) at (-8.75, -11) {};
+		\node [style=none] (200) at (-9.25, -11) {$\epsilon$};
+		\node [style=none] (201) at (-4.5, -11.5) {};
+		\node [style=none] (202) at (-3.5, -11.5) {};
+		\node [style=none] (204) at (-2.75, -11.5) {};
+		\node [style=none] (205) at (-1.75, -11.5) {};
+		\node [style=none] (218) at (-7.5, -12.5) {};
+		\node [style=none] (219) at (-6.5, -12.5) {};
+		\node [style=none] (220) at (-7, -12.5) {$\epsilon$};
+		\node [style=none] (223) at (-6.75, -11) {};
+		\node [style=none] (224) at (-5.75, -11) {};
+		\node [style=none] (225) at (-6.25, -11) {$\phi$};
+		\node [style=none] (229) at (-1, -11.5) {};
+		\node [style=none] (230) at (0, -11.5) {};
+		\node [style=none] (232) at (0.75, -11.5) {};
+		\node [style=none] (233) at (1.75, -11.5) {};
+		\node [style=none] (235) at (0, 7.75) {$=$};
+		\node [style=none] (236) at (-6, 5) {};
+		\node [style=none] (237) at (-4, 5) {};
+		\node [style=none] (238) at (-4, 7) {};
+		\node [style=none] (239) at (-6, 7) {};
+		\node [style=none] (240) at (-7.75, 5) {};
+		\node [style=none] (243) at (-2.25, 5) {};
+		\node [style=none] (244) at (-8.75, 7.75) {$C^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (245) at (-1.25, 7.75) {$C^{\epsilon}_{\gamma,\delta}$};
+		\node [style=none] (246) at (-3, 7.75) {$C^{\phi}_{\beta,\delta}$};
+		\node [style=none] (247) at (-7, 7.75) {$C^{\epsilon}_{\alpha,\phi}$};
+		\node [style=none] (252) at (-5, 6) {$\abcdefsymbol$};
+		\node [style=none] (253) at (-6, 10.5) {};
+		\node [style=none] (254) at (-4, 10.5) {};
+		\node [style=none] (255) at (-4, 8.5) {};
+		\node [style=none] (256) at (-6, 8.5) {};
+		\node [style=none] (257) at (-7.75, 10.5) {};
+		\node [style=none] (258) at (-4, 7.75) {};
+		\node [style=none] (259) at (-6, 7.75) {};
+		\node [style=none] (260) at (-2.25, 10.5) {};
+		\node [style=none] (265) at (-6.75, 8.5) {};
+		\node [style=none] (266) at (-6.75, 10.5) {};
+		\node [style=none] (267) at (-3.25, 8.5) {};
+		\node [style=none] (268) at (-3.25, 10.5) {};
+		\node [style=none] (269) at (-5, 9.5) {$\abcdefsymbol^{\dagger}$};
+		\node [style=none] (270) at (-11, 7.75) {};
+		\node [style=none] (271) at (-10, 7.75) {};
+		\node [style=none] (272) at (-10.5, 7.75) {$\epsilon$};
+		\node [style=none] (273) at (-10, 8.5) {$2$};
+		\node [style=none] (248) at (-6.75, 7) {};
+		\node [style=none] (249) at (-6.75, 5) {};
+		\node [style=none] (250) at (-3.25, 7) {};
+		\node [style=none] (251) at (-3.25, 5) {};
+		\node [style=none] (276) at (12, 6) {$\alpha$};
+		\node [style=dot] (277) at (9.75, 3.25) {};
+		\node [style=dot] (278) at (13.25, 3.25) {};
+		\node [style=dot] (279) at (13.25, 6.75) {};
+		\node [style=dot] (280) at (9.75, 6.75) {};
+		\node [style=crossing] (281) at (11.5, 5) {};
+		\node [style=none] (282) at (11.5, 5) {};
+		\node [style=none] (283) at (12, 4) {$\delta$};
+		\node [style=none] (284) at (9.25, 5) {$\beta$};
+		\node [style=none] (285) at (13.75, 5) {$\epsilon$};
+		\node [style=none] (286) at (11.5, 2.75) {$\gamma$};
+		\node [style=none] (287) at (11.5, 7.25) {$\phi$};
+		\node [style=none] (288) at (8.75, 3.25) {};
+		\node [style=none] (289) at (14.25, 3.25) {};
+		\node [style=none] (290) at (12, 9.5) {$\alpha$};
+		\node [style=dot] (291) at (9.75, 12.25) {};
+		\node [style=dot] (292) at (13.25, 12.25) {};
+		\node [style=dot] (293) at (13.25, 8.75) {};
+		\node [style=dot] (294) at (9.75, 8.75) {};
+		\node [style=crossing] (295) at (11.5, 10.5) {};
+		\node [style=none] (296) at (11.5, 10.5) {};
+		\node [style=none] (297) at (12, 11.5) {$\delta$};
+		\node [style=none] (298) at (9.25, 10.5) {$\beta$};
+		\node [style=none] (299) at (13.75, 10.5) {$\epsilon$};
+		\node [style=none] (300) at (11.5, 12.75) {$\gamma$};
+		\node [style=none] (301) at (11.5, 8.25) {$\phi$};
+		\node [style=none] (302) at (8.75, 12.25) {};
+		\node [style=none] (303) at (13.25, 7.75) {};
+		\node [style=none] (304) at (9.75, 7.75) {};
+		\node [style=none] (305) at (14.25, 12.25) {};
+		\node [style=none] (306) at (8.25, 13) {};
+		\node [style=none] (307) at (8.25, 2.5) {};
+		\node [style=none] (308) at (11, 13) {};
+		\node [style=none] (309) at (11, 2.5) {};
+		\node [style=none] (310) at (7.5, 7.75) {$=$};
+		\node [style=none] (311) at (5.5, 8.5) {};
+		\node [style=none] (312) at (2.5, 8.5) {};
+		\node [style=none] (313) at (4, 8.5) {};
+		\node [style=none] (314) at (5.5, 7) {};
+		\node [style=none] (315) at (2.5, 7) {};
+		\node [style=none] (316) at (4, 7) {};
+		\node [style=none] (317) at (-10.75, -3.5) {$\leq$};
+		\node [style=none] (319) at (1.25, 2) {$\frac{1}{2}$};
+		\node [style=none] (320) at (-8.75, -6.25) {$\beta$};
+		\node [style=dot] (321) at (-8.25, -8) {};
+		\node [style=dot] (322) at (-8.25, -4.5) {};
+		\node [style=none] (323) at (-9.25, -8) {};
+		\node [style=none] (324) at (-8.75, -0.75) {$\beta$};
+		\node [style=dot] (325) at (-8.25, 1) {};
+		\node [style=dot] (326) at (-8.25, -2.5) {};
+		\node [style=none] (327) at (-9.25, 1) {};
+		\node [style=none] (328) at (-8.25, -3.5) {};
+		\node [style=none] (329) at (-5.25, -6.25) {$\beta$};
+		\node [style=dot] (330) at (-5.75, -8) {};
+		\node [style=dot] (331) at (-5.75, -4.5) {};
+		\node [style=none] (332) at (-4.75, -8) {};
+		\node [style=none] (333) at (-5.25, -0.75) {$\beta$};
+		\node [style=dot] (334) at (-5.75, 1) {};
+		\node [style=dot] (335) at (-5.75, -2.5) {};
+		\node [style=none] (336) at (-4.75, 1) {};
+		\node [style=none] (337) at (-5.75, -3.5) {};
+		\node [style=none] (338) at (-7, -8.5) {$\gamma$};
+		\node [style=none] (339) at (-7, -4) {$\phi$};
+		\node [style=none] (340) at (-7, 1.5) {$\gamma$};
+		\node [style=none] (341) at (-7, -3) {$\phi$};
+		\node [style=none] (342) at (-7, 0.25) {$\alpha$};
+		\node [style=none] (343) at (-7, -1.75) {$\delta$};
+		\node [style=none] (344) at (-7, -5.25) {$\delta$};
+		\node [style=none] (345) at (-7, -7.25) {$\alpha$};
+		\node [style=none] (346) at (-3.75, -6.25) {$\epsilon$};
+		\node [style=dot] (347) at (-3.25, -8) {};
+		\node [style=dot] (348) at (-3.25, -4.5) {};
+		\node [style=none] (349) at (-4.25, -8) {};
+		\node [style=none] (350) at (-3.75, -0.75) {$\epsilon$};
+		\node [style=dot] (351) at (-3.25, 1) {};
+		\node [style=dot] (352) at (-3.25, -2.5) {};
+		\node [style=none] (353) at (-4.25, 1) {};
+		\node [style=none] (354) at (-3.25, -3.5) {};
+		\node [style=dot] (355) at (-0.75, -8) {};
+		\node [style=dot] (356) at (-0.75, -4.5) {};
+		\node [style=none] (357) at (0.25, -8) {};
+		\node [style=none] (358) at (-0.25, -0.75) {$\epsilon$};
+		\node [style=dot] (359) at (-0.75, 1) {};
+		\node [style=dot] (360) at (-0.75, -2.5) {};
+		\node [style=none] (361) at (0.25, 1) {};
+		\node [style=none] (362) at (-0.75, -3.5) {};
+		\node [style=none] (363) at (-2, -8.5) {$\gamma$};
+		\node [style=none] (364) at (-2, -4) {$\phi$};
+		\node [style=none] (365) at (-2, 1.5) {$\gamma$};
+		\node [style=none] (366) at (-2, -3) {$\phi$};
+		\node [style=none] (367) at (-2, -1.75) {$\alpha$};
+		\node [style=none] (368) at (-2, 0.25) {$\delta$};
+		\node [style=none] (369) at (-2, -7.25) {$\alpha$};
+		\node [style=none] (370) at (-2, -5.25) {$\delta$};
+		\node [style=none] (371) at (-0.25, -6.25) {$\epsilon$};
+		\node [style=none] (372) at (-9.5, 2) {};
+		\node [style=none] (373) at (-9.75, 2) {};
+		\node [style=none] (374) at (-9.75, -9) {};
+		\node [style=none] (375) at (-9.5, -9) {};
+		\node [style=none] (376) at (0.5, 2) {};
+		\node [style=none] (377) at (0.75, 2) {};
+		\node [style=none] (378) at (0.75, -9) {};
+		\node [style=none] (379) at (0.5, -9) {};
+		\node [style=none] (380) at (-8.75, -10.25) {$2$};
+		\node [style=none] (381) at (1.5, -3.5) {$=$};
+		\node [style=none] (382) at (16, 2) {$\frac{1}{2}$};
+		\node [style=none] (387) at (6.75, -0.75) {$\beta$};
+		\node [style=dot] (388) at (6.5, 1) {};
+		\node [style=dot] (389) at (6.5, -2.5) {};
+		\node [style=none] (390) at (5.5, 1) {};
+		\node [style=none] (396) at (8.75, -0.75) {$\beta$};
+		\node [style=dot] (397) at (9, 1) {};
+		\node [style=dot] (398) at (9, -2.5) {};
+		\node [style=none] (399) at (10, 1) {};
+		\node [style=none] (403) at (7.75, 1.5) {$\gamma$};
+		\node [style=none] (404) at (7.75, -3) {$\phi$};
+		\node [style=none] (405) at (7.75, 0.25) {$\alpha$};
+		\node [style=none] (406) at (7.75, -2) {$\delta$};
+		\node [style=none] (413) at (11.75, -0.75) {$\epsilon$};
+		\node [style=dot] (414) at (11.5, 1) {};
+		\node [style=dot] (415) at (11.5, -2.5) {};
+		\node [style=none] (416) at (10.5, 1) {};
+		\node [style=none] (421) at (13.75, -0.75) {$\epsilon$};
+		\node [style=dot] (422) at (14, 1) {};
+		\node [style=dot] (423) at (14, -2.5) {};
+		\node [style=none] (424) at (15, 1) {};
+		\node [style=none] (428) at (12.75, 1.5) {$\gamma$};
+		\node [style=none] (429) at (12.75, -3) {$\phi$};
+		\node [style=none] (430) at (12.75, -2) {$\alpha$};
+		\node [style=none] (431) at (12.75, 0.25) {$\delta$};
+		\node [style=none] (435) at (5.25, 2) {};
+		\node [style=none] (436) at (5, 2) {};
+		\node [style=none] (437) at (5, -9) {};
+		\node [style=none] (438) at (5.25, -9) {};
+		\node [style=none] (439) at (15.25, 2) {};
+		\node [style=none] (440) at (15.5, 2) {};
+		\node [style=none] (441) at (15.5, -9) {};
+		\node [style=none] (442) at (15.25, -9) {};
+		\node [style=none] (443) at (2.25, -4.25) {};
+		\node [style=none] (444) at (3.25, -4.25) {};
+		\node [style=none] (445) at (2.75, -4.25) {$\beta$};
+		\node [style=none] (446) at (2.25, -3.5) {};
+		\node [style=none] (447) at (4.5, -3.5) {};
+		\node [style=none] (448) at (3.5, -4.25) {};
+		\node [style=none] (449) at (4.5, -4.25) {};
+		\node [style=none] (450) at (4, -4.25) {$\epsilon$};
+		\node [style=none] (451) at (3.25, -3) {$1$};
+		\node [style=none] (452) at (6.75, -6.25) {$\beta$};
+		\node [style=dot] (453) at (6.5, -8) {};
+		\node [style=dot] (454) at (6.5, -4.5) {};
+		\node [style=none] (455) at (5.5, -8) {};
+		\node [style=none] (456) at (6.5, -3.5) {};
+		\node [style=none] (457) at (8.75, -6.25) {$\beta$};
+		\node [style=dot] (458) at (9, -8) {};
+		\node [style=dot] (459) at (9, -4.5) {};
+		\node [style=none] (460) at (10, -8) {};
+		\node [style=none] (461) at (9, -3.5) {};
+		\node [style=none] (462) at (7.75, -8.5) {$\gamma$};
+		\node [style=none] (463) at (7.75, -4) {$\phi$};
+		\node [style=none] (464) at (7.75, -7.25) {$\alpha$};
+		\node [style=none] (465) at (7.75, -5) {$\delta$};
+		\node [style=none] (466) at (11.75, -6.25) {$\epsilon$};
+		\node [style=dot] (467) at (11.5, -8) {};
+		\node [style=dot] (468) at (11.5, -4.5) {};
+		\node [style=none] (469) at (10.5, -8) {};
+		\node [style=none] (470) at (11.5, -3.5) {};
+		\node [style=none] (471) at (13.75, -6.25) {$\epsilon$};
+		\node [style=dot] (472) at (14, -8) {};
+		\node [style=dot] (473) at (14, -4.5) {};
+		\node [style=none] (474) at (15, -8) {};
+		\node [style=none] (475) at (14, -3.5) {};
+		\node [style=none] (476) at (12.75, -8.5) {$\gamma$};
+		\node [style=none] (477) at (12.75, -4) {$\phi$};
+		\node [style=none] (478) at (12.75, -5) {$\alpha$};
+		\node [style=none] (479) at (12.75, -7.25) {$\delta$};
+		\node [style=none] (480) at (3, -10.5) {$\frac{1}{2}$};
+		\node [style=none] (481) at (-5, -10.5) {};
+		\node [style=none] (482) at (-5.25, -10.5) {};
+		\node [style=none] (483) at (-5.25, -13) {};
+		\node [style=none] (484) at (-5, -13) {};
+		\node [style=none] (485) at (2.25, -10.5) {};
+		\node [style=none] (486) at (2.5, -10.5) {};
+		\node [style=none] (487) at (2.5, -13) {};
+		\node [style=none] (488) at (2.25, -13) {};
+		\node [style=none] (489) at (-0.5, -12.5) {$C^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (490) at (1.25, -12.5) {$C^{\epsilon}_{\gamma,\delta}$};
+		\node [style=none] (491) at (-2.25, -12.5) {$C^{\phi}_{\beta,\delta}$};
+		\node [style=none] (492) at (-4, -12.5) {$C^{\epsilon}_{\alpha,\phi}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route] (9) to (12);
+		\draw [style=mid-route] (10) to (11);
+		\draw [style=mid-route] (11) to (12);
+		\draw [style=mid-route] (10) to (9);
+		\draw [style=mid-route] (12)
+			 to (14.center)
+			 to (10);
+		\draw [style=mid-route] (9) to (13);
+		\draw [style=mid-route] (13) to (11);
+		\draw [style=kron] (36)
+			 to [bend left=270, looseness=1.25] (47.center)
+			 to (20.center)
+			 to [bend right=90, looseness=1.25] (9);
+		\draw [style=kron] (37)
+			 to [bend left=90, looseness=1.25] (50.center)
+			 to (24.center)
+			 to [bend left=90, looseness=1.25] (10);
+		\draw [style=mid-route] (39) to (36);
+		\draw [style=mid-route] (38) to (37);
+		\draw [style=mid-route] (39) to (38);
+		\draw [style=mid-route] (36) to (37);
+		\draw [style=mid-route] (37)
+			 to (41.center)
+			 to (39);
+		\draw [style=mid-route] (40) to (36);
+		\draw [style=mid-route] (38) to (40);
+		\draw [style=kron] (12)
+			 to (49.center)
+			 to (39);
+		\draw [style=kron] (11)
+			 to (48.center)
+			 to (38);
+		\draw [style=mid-route] (185.center)
+			 to [bend left=90, looseness=1.75] (186.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw (189.center) to (188.center);
+		\draw [style=mid-route] (191.center)
+			 to [bend left=90, looseness=1.75] (190.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (198.center)
+			 to [bend left=90, looseness=1.75] (199.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (201.center)
+			 to [bend left=90, looseness=1.75] (202.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (205.center)
+			 to [bend left=90, looseness=1.75] (204.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (219.center)
+			 to [bend left=90, looseness=1.75] (218.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (224.center)
+			 to [bend left=90, looseness=1.75] (223.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (230.center)
+			 to [bend left=90, looseness=1.75] (229.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (233.center)
+			 to [bend left=90, looseness=1.75] (232.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=kron] (253.center)
+			 to [bend right=90, looseness=1.50] (257.center)
+			 to (240.center)
+			 to [bend right=90, looseness=1.50] (236.center);
+		\draw [style=kron] (254.center)
+			 to [bend left=90, looseness=1.50] (260.center)
+			 to (243.center)
+			 to [bend left=90, looseness=1.50] (237.center);
+		\draw [style=kron] (239.center)
+			 to (259.center)
+			 to (256.center);
+		\draw [style=kron] (238.center)
+			 to (258.center)
+			 to (255.center);
+		\draw [style=box] (265.center)
+			 to (266.center)
+			 to (268.center)
+			 to (267.center)
+			 to cycle;
+		\draw [style=mid-route] (270.center)
+			 to [bend left=90, looseness=1.75] (271.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=box] (250.center)
+			 to (248.center)
+			 to (249.center)
+			 to (251.center)
+			 to cycle;
+		\draw [style=mid-route] (277) to (280);
+		\draw [style=mid-route] (279) to (278);
+		\draw [style=mid-route] (280) to (279);
+		\draw [style=mid-route] (278) to (277);
+		\draw [style=mid-route] (278)
+			 to (282.center)
+			 to (280);
+		\draw [style=mid-route] (277) to (281);
+		\draw [style=mid-route] (281) to (279);
+		\draw [style=kron] (291)
+			 to [bend left=270, looseness=1.25] (302.center)
+			 to (288.center)
+			 to [bend right=90, looseness=1.25] (277);
+		\draw [style=kron] (292)
+			 to [bend left=90, looseness=1.25] (305.center)
+			 to (289.center)
+			 to [bend left=90, looseness=1.25] (278);
+		\draw [style=mid-route] (294) to (291);
+		\draw [style=mid-route] (292) to (293);
+		\draw [style=mid-route] (293) to (294);
+		\draw [style=mid-route] (291) to (292);
+		\draw [style=mid-route] (294)
+			 to (296.center)
+			 to [in=-135, out=45] (292);
+		\draw [style=mid-route] (295) to (291);
+		\draw [style=mid-route] (293) to (295);
+		\draw [style=kron] (280)
+			 to (304.center)
+			 to (294);
+		\draw [style=kron] (279)
+			 to (303.center)
+			 to (293);
+		\draw [style=annotatebox] (306.center)
+			 to (308.center)
+			 to (309.center)
+			 to (307.center)
+			 to cycle;
+		\draw [style=arrannotate] (313.center) to (312.center);
+		\draw [style=arrannotate] (313.center) to (311.center);
+		\draw [style=arrannotate] (316.center) to (315.center);
+		\draw [style=arrannotate] (316.center) to (314.center);
+		\draw [style=mid-route] (321) to (322);
+		\draw [style=kron] (325)
+			 to [bend left=270, looseness=1.25] (327.center)
+			 to (323.center)
+			 to [bend right=90, looseness=1.25] (321);
+		\draw [style=mid-route] (326) to (325);
+		\draw [style=kron] (322)
+			 to (328.center)
+			 to (326);
+		\draw [style=mid-route] (331) to (330);
+		\draw [style=kron] (330)
+			 to [in=270, out=-90, looseness=1.25] (332.center)
+			 to (336.center)
+			 to [bend left=270, looseness=1.25] (334);
+		\draw [style=mid-route] (334) to (335);
+		\draw [style=kron] (335)
+			 to (337.center)
+			 to (331);
+		\draw [style=mid-route] (325) to (334);
+		\draw [style=mid-route] (335) to (326);
+		\draw [style=mid-route] (322) to (331);
+		\draw [style=mid-route] (330) to (321);
+		\draw [style=mid-route, bend left=75, looseness=1.75] (334) to (325);
+		\draw [style=mid-route, bend right=285, looseness=1.75] (326) to (335);
+		\draw [style=mid-route, bend left=75, looseness=1.75] (331) to (322);
+		\draw [style=mid-route, bend left=75, looseness=1.75] (321) to (330);
+		\draw [style=mid-route] (347) to (348);
+		\draw [style=kron] (351)
+			 to [bend left=270, looseness=1.25] (353.center)
+			 to (349.center)
+			 to [in=270, out=-90, looseness=1.25] (347);
+		\draw [style=mid-route] (352) to (351);
+		\draw [style=kron] (348)
+			 to (354.center)
+			 to [in=270, out=90] (352);
+		\draw [style=mid-route] (356) to (355);
+		\draw [style=kron] (355)
+			 to [bend right=90, looseness=1.25] (357.center)
+			 to (361.center)
+			 to [in=90, out=450, looseness=1.25] (359);
+		\draw [style=mid-route] (359) to (360);
+		\draw [style=kron] (360)
+			 to (362.center)
+			 to (356);
+		\draw [style=mid-route] (351) to (359);
+		\draw [style=mid-route] (360) to (352);
+		\draw [style=mid-route] (348) to (356);
+		\draw [style=mid-route] (355) to (347);
+		\draw [style=mid-route, bend right=75, looseness=1.75] (351) to (359);
+		\draw [style=mid-route, bend left=285, looseness=1.75] (360) to (352);
+		\draw [style=mid-route, bend left=75, looseness=1.75] (356) to (348);
+		\draw [style=mid-route, bend left=75, looseness=1.75] (347) to (355);
+		\draw (372.center)
+			 to (373.center)
+			 to (374.center)
+			 to (375.center);
+		\draw (376.center)
+			 to (377.center)
+			 to (378.center)
+			 to (379.center);
+		\draw [style=kron] (388)
+			 to [bend left=270, looseness=1.25] (390.center)
+			 to (455.center)
+			 to [bend left=270, looseness=1.25] (453);
+		\draw [style=kron] (458)
+			 to [bend left=270, looseness=1.25] (460.center)
+			 to (399.center)
+			 to [bend left=270, looseness=1.25] (397);
+		\draw [style=mid-route] (388) to (397);
+		\draw [style=mid-route] (398) to (389);
+		\draw [style=mid-route, bend left=75, looseness=1.50] (397) to (388);
+		\draw [style=mid-route, bend left=75, looseness=1.25] (389) to (398);
+		\draw [style=kron] (414)
+			 to [bend left=270, looseness=1.25] (416.center)
+			 to (469.center)
+			 to [bend left=270, looseness=1.25] (467);
+		\draw [style=kron] (472)
+			 to [in=-450, out=-90, looseness=1.25] (474.center)
+			 to (424.center)
+			 to [in=90, out=450, looseness=1.25] (422);
+		\draw [style=mid-route] (414) to (422);
+		\draw [style=mid-route] (423) to (415);
+		\draw [style=mid-route, bend right=75, looseness=1.50] (414) to (422);
+		\draw [style=mid-route, bend left=285, looseness=1.25] (423) to (415);
+		\draw (435.center)
+			 to (436.center)
+			 to (437.center)
+			 to (438.center);
+		\draw (439.center)
+			 to (440.center)
+			 to (441.center)
+			 to (442.center);
+		\draw [style=mid-route] (443.center)
+			 to [bend left=90, looseness=1.75] (444.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw (447.center) to (446.center);
+		\draw [style=mid-route] (448.center)
+			 to [bend left=90, looseness=1.75] (449.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route, bend left=90, looseness=2.25] (397) to (388);
+		\draw [style=mid-route, bend left=90, looseness=2.00] (389) to (398);
+		\draw [style=mid-route, bend left=90, looseness=2.25] (422) to (414);
+		\draw [style=mid-route, bend left=90, looseness=2.00] (415) to (423);
+		\draw [style=kron] (454)
+			 to (456.center)
+			 to (389);
+		\draw [style=kron] (398)
+			 to (461.center)
+			 to (459);
+		\draw [style=mid-route] (458) to (453);
+		\draw [style=mid-route] (454) to (459);
+		\draw [style=mid-route, bend left=75, looseness=1.50] (453) to (458);
+		\draw [style=mid-route, bend left=75, looseness=1.25] (459) to (454);
+		\draw [style=kron] (468)
+			 to [in=-90, out=-270] (470.center)
+			 to [in=270, out=90] (415);
+		\draw [style=kron] (423)
+			 to (475.center)
+			 to (473);
+		\draw [style=mid-route] (472) to (467);
+		\draw [style=mid-route] (468) to (473);
+		\draw [style=mid-route, bend right=75, looseness=1.50] (472) to (467);
+		\draw [style=mid-route, bend left=285, looseness=1.25] (468) to (473);
+		\draw [style=mid-route, bend left=90, looseness=2.25] (453) to (458);
+		\draw [style=mid-route, bend left=90, looseness=2.00] (459) to (454);
+		\draw [style=mid-route, bend left=90, looseness=2.25] (467) to (472);
+		\draw [style=mid-route, bend left=90, looseness=2.00] (473) to (468);
+		\draw (481.center) to (482.center);
+		\draw (482.center) to (483.center);
+		\draw (483.center) to (484.center);
+		\draw (485.center) to (486.center);
+		\draw (486.center) to (487.center);
+		\draw (487.center) to (488.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -52,8 +52,8 @@ The weight lattice for $\GL(d)$ is denoted by $\weights{d} \simeq \mathbb Z^{d}$
 
 Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights{d}$ are denoted by $L_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $V_{\lambda}$.
 
-The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs(d) \subset \mathbb R^{d}$.
-The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs(d)$ will be denoted by $\orbit_x$. 
+The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs{d} \subset \mathbb R^{d}$.
+The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs{d}$ will be denoted by $\orbit_x$. 
 
 \section{Generalizations of Horn's problem}
 {\color{blue}
@@ -76,8 +76,8 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
 \begin{defn}
     Let $\s G = (\s V, \s E)$ be a finite directed graph with vertex set $\s V$ and edge set $\s E$ together with source and target maps $s, t : \s E \to \s V$.
     Let $d$ be a positive integer.
-    A \textit{spectral map} (for $\s G$ of dimension $d$) is a function $\lambda : \s E \to \eigs(d)$ assigning to each edge $e \in \s E$ in the directed graph a $d$-tuple of real numbers $\lambda(e) = (\lambda_1(e), \cdots, \lambda_d(e))$.
-    The map $\lambda : \s E \to \eigs(d)$ is said to be \defnsty{realizable (by Hermitian matrices)} if there exists a map $H : \s E \to \herm(d)$ assigning to each edge $e \in \s E$ a $d \times d$ Hermitian matrix $H(e)$ such that
+    A \textit{spectral map} (for $\s G$ of dimension $d$) is a function $\lambda : \s E \to \eigs{d}$ assigning to each edge $e \in \s E$ in the directed graph a $d$-tuple of real numbers $\lambda(e) = (\lambda_1(e), \cdots, \lambda_d(e))$.
+    The map $\lambda : \s E \to \eigs{d}$ is said to be \defnsty{realizable (by Hermitian matrices)} if there exists a map $H : \s E \to \herm(d)$ assigning to each edge $e \in \s E$ a $d \times d$ Hermitian matrix $H(e)$ such that
     \begin{itemize}
         \item for each edge $e \in \s E$, $H(e)$ has eigenvalues $\lambda(e)$, 
             \begin{equation}
@@ -107,7 +107,7 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
 \begin{prob}[Graphical Horn problem]
     \label{prob:ghp}
     Let $\s G = (\s V, \s E)$ be a finite directed graph, let $d$ be a positive integer.
-    The \defnsty{graphical Horn problem} is to characterize the set of realizable spectral maps $\lambda : \s E \to \eigs(d)$ for $\s G$ of dimension $d$.
+    The \defnsty{graphical Horn problem} is to characterize the set of realizable spectral maps $\lambda : \s E \to \eigs{d}$ for $\s G$ of dimension $d$.
 \end{prob}
 
 {\color{red}
@@ -128,8 +128,8 @@ There are a few operations which preserve the set of realizable spectral maps.
 \begin{lem}
     Consider a graphical Horn problem of dimension $d$.
     \begin{itemize}
-        \item The \defnsty{zero spectral map} $0_d : \s E \to \eigs(d)$ assigning to $e \in \s E$, the spectrum $0_d(e) = (0, \stackrel{d}{\ldots}, 0)$ is realizable.
-        \item If $\alpha : \s E \to \eigs(a)$ and $\beta : \s E \to \eigs(b)$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs(a+b)$ and tensor product $\alpha \otimes \beta : \s E \to \eigs(ab)$ (defined pointwise in the obvious manner), are both realizable.
+        \item The \defnsty{zero spectral map} $0_d : \s E \to \eigs{d}$ assigning to $e \in \s E$, the spectrum $0_d(e) = (0, \stackrel{d}{\ldots}, 0)$ is realizable.
+        \item If $\alpha : \s E \to \eigs{a}$ and $\beta : \s E \to \eigs{b}$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs{a+b}$ and tensor product $\alpha \otimes \beta : \s E \to \eigs{ab}$ (defined pointwise), are both realizable.
         \item If $\lambda : \s E \to \eigs{d}$ is a realizable and $p \in \mathbb R_{> 0}$ a positive real number, then $p \lambda : \s E \to \eigs{d}$, defined by $(p\lambda)(e) = (p\lambda_1(e), \ldots, p\lambda_d(e))$ is also a realizable.
         \item If $\lambda : \s E \to \eigs{d}$ is a realizable, then $\lambda^{*} : \s E \to \eigs{d}$, defined by a pointwise application of the negation-reversal involution, is also realizable.
     \end{itemize}
@@ -503,12 +503,166 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     Unfortunately, it can be shown that this condition is indeed insufficient; the insufficiency can be attributed to the fact that \cref{eq:face_inv} does not require that the primed and unprimed Hermitian matrices are in \cref{eq:prime_unprime} are the same, i.e., that $A = A'$, $B = B'$, etc.
 \end{rem}
 
+
+\begin{lem}
+    \label{lem:completeness_relation}
+    Let $x,y,z$ and $d$ be fixed but arbitrary positive integers.
+    The recoupling operators $\abcdefsymbol$ for $\SU(d)$ satisfy the following identity:
+    \begin{equation}
+        \sum_{\substack{\alpha \beta \gamma \\ \delta \epsilon \phi}} \norm{\abcdefsymbol}_{\text{HS}}^{2} = d^{x+y+z}
+    \end{equation}
+    where the sum is taken for all $\alpha, \beta,\gamma, \delta, \epsilon,$ and $\phi$ such that
+    \begin{equation}
+        \alpha \vdash_d x, \quad 
+        \beta \vdash_d y, \quad 
+        \gamma \vdash_d x+y, \quad 
+        \delta \vdash_d z, \quad 
+        \epsilon \vdash_d x+y+z, \quad 
+        \phi \vdash_d y+z.
+    \end{equation}
+\end{lem}
+
+\subsection{An entropic inequality for tetrahedral spectra (Directly)}
+
+\begin{thm}
+    \label{thm:ud_recouple_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{d}$ be a sextuple of dominant weights for $\GL(d)$ and let $\abcdefsymbol$ be the corresponding $\GL(d)$-recoupling operator. 
+    Then
+    \begin{equation}
+        \norm{\abcdefsymbol}_{\text{HS}}^{2}
+        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(L_{\gamma}) \dim(L_{\phi})}{\dim(L_{\beta}) \dim(L_{\epsilon})}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    \textcolor{red}{TODO: Explain what this all means carefully.}
+    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
+    \begin{equation}
+        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
+    \end{equation}
+\end{proof}
+
+It will be useful for what follows to better understand how the dimension, $\dim(L_{\lambda}^{d})$, of the irreducible representation $L_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
+\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(L_{\lambda}^{d})$ \cite{itzykson1966unitary}.
+\begin{lem}
+    \label{lem:in_estimate}
+    Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $d \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(d)$.
+    The following approximation holds when $d \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
+    \begin{equation}
+        \label{eq:in_estimate}
+        \dim(L_{\lambda}^{d}) = \dim(L_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{d}\right)\right).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Weyl's character formula can be used to derive the following formula for $\dim(L_{\lambda}^{d})$ in terms of the Young diagram $\lambda$ and the dimension $d$ \cite{itzykson1966unitary}:
+    \begin{equation}
+        \dim(L_{\lambda}^{d}) = \frac{\Delta(\lambda + \rho^d)}{\Delta(\rho^d)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
+    \end{equation}
+    where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
+    Isolating the terms above which depend on $d$ from those that do not yields
+    \begin{equation}
+        \label{eq:dim_separation_large_d}
+        \dim(L_{\lambda}^{d}) = \dim(L_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}.
+    \end{equation}
+    Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
+    \begin{align}
+        \begin{split}
+            &\log\left(\frac{(a+b)!}{b!}\right) 
+            = \log \prod_{j=1}^{a} (b+j)
+            = \sum_{j=1}^{a} \log (b+j) \\
+            &\quad= a \log b + \sum_{j=1}^{a} \log \left(1+\frac{j}{b}\right)
+            = a \log b + O\left(\frac{a^2}{b}\right).
+        \end{split}
+    \end{align}
+    The assumption that $d \gg \abs{\lambda}^2$ and $i \leq \ell \ll \lambda_{\ell} \leq \abs{\lambda}$ also implies $d - i = \rho^{d}_i \gg \lambda_i^2$.
+    Therefore,
+    \begin{align}
+        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
+        &= \lambda_i\log\rho^{d}_i + O\left(\frac{\lambda_i^2}{\rho^{d}_i}\right).
+    \end{align}
+    The assumptions also imply the following simplification
+    \begin{align}
+        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
+        &= \lambda_i\log d + O\left(\frac{\abs{\lambda}^2}{d}\right)
+    \end{align}
+    which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
+\end{proof}
+Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(L_{\lambda}^{d})$ generally grows polynomially in $d$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
+The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $d$.
+\textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\lambda}, \abs{\lambda}/d\} \leq \epsilon$.}
+\begin{lem}
+    \label{lem:double_asymptotics}
+    Let everything be as in \cref{lem:in_estimate}. Then
+    \begin{equation}
+        \log \dim (L_{\lambda}^{d}) = \abs{\lambda} + \abs{\lambda}\log(d) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{d}\right)
+    \end{equation}
+    where $s(\lambda)$ is defined by
+    \begin{equation}
+        \label{eq:unnorm_shannon}
+        s(\lambda) \coloneqq -\sum_{i=1}^{\ell(\lambda)} \lambda_i \log \lambda_i.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
+    First, we upper bound the dimension $\dim(L_{\lambda}^{\ell})$; for indices $i<j\leq \ell$, one has $(\lambda_i-i)-(\lambda_j-j) \leq \abs{\lambda} + 1$ as well as $j-i \geq 1$ which implies
+    \begin{equation}
+        \label{eq:dim_lambda_ell_bound}
+        \dim(L_{\lambda}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i} \leq (\abs{\lambda}+1)^{\ell(\ell-1)/2},
+    \end{equation}
+    and thus $\log \dim(L_{\lambda}^{\ell}) = O(\ell^2 \log \abs{\lambda})$.
+
+    Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\lambda_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \lambda_{i}$),
+    \begin{align}
+        \log\left(\prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}\right) 
+        &= \sum_{i=1}^{\ell}\log \rho^{\ell}_i! - \sum_{i=1}^{\ell} \log (\lambda_i + \rho^{\ell}_i)!, \\
+        &= \abs{\lambda} + \sum_{i=1}^{\ell} \left(\rho^{\ell}_i\log \rho^{\ell}_i - (\lambda_i + \rho^{\ell}_i)\log (\lambda_i + \rho^{\ell}_i)+ O(\log \lambda_i )\right), \\
+        &= \abs{\lambda} - \sum_{i=1}^{\ell} \lambda_i\log \lambda_i + O( \ell \log \abs{\lambda} ), \\
+        \label{eq:unnorm_shannon_term}
+    \end{align}
+    Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
+\end{proof}
+\begin{rem}
+    Note that the quantity $s(\lambda)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon-entropy,
+    \begin{equation}
+        S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
+    \end{equation}
+    of a probability distribution $p = (p_1, \ldots, p_\ell)$.
+    Indeed, $s(\lambda)$ is related to the Shannon-entropy of the \textit{normalization} of $\lambda$ by the formula
+    \begin{equation}
+        s(\lambda) = \abs{\lambda} S\left(\frac{\lambda}{\abs{\lambda}}\right) - \abs{\lambda} \log \abs{\lambda}.
+    \end{equation}
+\end{rem}
+
+\begin{cor}
+    Let $\gamma,\phi,\beta,\epsilon$ be a quadruple of Young diagrams such that 
+    \begin{equation}
+        \label{eq:balanced_sizes}
+        \abs{\gamma}+\abs{\phi} = \abs{\beta}+\abs{\epsilon}
+    \end{equation}
+    and that $\abs{\epsilon} = \max\{\abs{\gamma}, \abs{\phi}, \abs{\beta}, \abs{\epsilon}\}$.
+    Let $\ell \coloneqq \max\{\ell(\gamma), \ell(\phi), \ell(\beta), \ell(\epsilon) \}$ and let $d$ be a positive integer such that $d \geq \ell$.
+    Then
+    \begin{equation}
+        \log\left(\frac{\dim(L_{\gamma}^d) \dim(L_{\phi}^d)}{\dim(L_{\beta}^d) \dim(L_{\epsilon}^d)}\right)
+        = s(\gamma) + s(\phi) - s(\beta) - s(\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
+    \end{equation}
+\end{cor}
+\begin{proof}
+    The proof follows from four applications of \cref{lem:double_asymptotics}.
+    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(d)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains
+    \begin{equation}
+        \frac{\dim(L_{\gamma}^d) \dim(L_{\phi}^d)}{\dim(L_{\beta}^d) \dim(L_{\epsilon}^d)} = 
+    \end{equation}
+\end{proof}
+
+
+
 \subsection{The \texorpdfstring{$\boldsymbol{\U(d)}$}{U(d)}-recoupling operator as a \texorpdfstring{$\boldsymbol{S_d}$}{Sd}-recoupling operator}
 \label{sec:recoupling-correspondence}
 
 The purpose of this section is to describe how to view certain aspects of the recoupling theory for the unitary group $\U(d)$ as a special case of the recoupling theory for the symmetric group $S_d$, at least when $d$ is taken to be sufficiently large.
-This connection between $\U(d)$ and $S_d$ is derived from considering the symmetric group $S_d$ as a \textit{subgroup} of $\U(d)$ with respect to the faithful representation of $S_d$ as $d\times d$ permutation matrices (taken with respect to the canonical basis).
-The critical theorem, due to \cite{nishiyama2000restriction}, describes the restriction of the irrep of $U(d)$ labelled by $\lambda \vdash d$ to the symmetric subgroup $S_d \subseteq U(d)$, namely \cite[Theorem 2.3]{nishiyama2000restriction}.
+This connection between $\U(d)$ and $S_d$ is derived from considering the symmetric group $S_d$ as a \textit{subgroup} of $\U(d)$ with respect to the representation of $S_d$ as $d\times d$ permutation matrices.
+When considering the symmetric group, $S_d$, as a subgroup of the unitary group, $\U(d)$, in this manner,
+\citeauthor{nishiyama2000restriction} describes the restriction of an irreducible representation of $U(d)$ to the symmetric group in terms of its decomposition into irreducible representations of $S_d$ \cite[Theorem 2.3]{nishiyama2000restriction}.
 \begin{thm}
     Let $d \in \mathbb N$ and let $\lambda \vdash d$.
     Let $L_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $V_{\lambda}$ the irrep of $S_d$.
@@ -525,15 +679,16 @@ The critical theorem, due to \cite{nishiyama2000restriction}, describes the rest
     where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
 \end{thm}
 
-While the summands appearing on the right-hand side of \cref{eq:nishiyama-decomp} are quite complicated in general, it was shown in \cite{christandl2018recoupling} that the irreducible representations of $S_d$, labelled by $\nu \vdash d$, which appear with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$ are constrained in a particular way for $d$ sufficiently large.
+Among the irreducible representations of $S_d$ appearing with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$, those labelled by Young diagrams with the largest possible first part are of particular interest \cite{christandl2018recoupling}.
 \begin{defn}
     Let $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})$ be a Young diagram of size $\abs{\lambda}$.
     Let $d \geq \lambda_1 + \abs{\lambda}$ and define the \textit{(size $d$) augmentation} of $\lambda$ as
     \begin{equation}
-        \lambda^{+d} \coloneqq (d - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)}).
+        \yaug{\lambda}{d} \coloneqq (d - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)}).
     \end{equation}
-    Note that $\lambda^{+d}$ also a Young diagram (because $d - \abs{\lambda} \geq \lambda_1$) of size $d = \abs{\lambda^{+d}}$ and length $\ell(\lambda^{+d}) = \ell(\lambda) + 1$.
+    Note that $\yaug{\lambda}{d}$ also a Young diagram (because $d - \abs{\lambda} \geq \lambda_1$) of size $d = \abs{\yaug{\lambda}{d}}$ and length $\ell(\yaug{\lambda}{d}) = \ell(\lambda) + 1$.
 \end{defn}
+Here we have adopted the notation for $\yaug{\lambda}{d}$ from \cite{pak2022combinatorial}.
 
 The following is \cite[Lemma 13]{christandl2018recoupling}:
 \begin{lem}
@@ -552,7 +707,7 @@ The following is \cite[Lemma 13]{christandl2018recoupling}:
     \begin{equation}
         M^{\lambda}_{\mu} \neq 0 \implies \mu_1 > d - \abs{\lambda}.
     \end{equation}
-    Otherwise $d \geq \lambda_1 + \abs{\lambda}$ and the above bound is saturated only when $\mu = \lambda^{+d}$ and moreover $\dim(M^{\lambda}_{\lambda^{+d}}) = 1$ in this case.
+    Otherwise $d \geq \lambda_1 + \abs{\lambda}$ and the above bound is saturated only when $\mu = \yaug{\lambda}{d}$ and moreover $\dim(M^{\lambda}_{\yaug{\lambda}{d}}) = 1$ in this case.
 \end{lem}
 
 At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
@@ -568,12 +723,12 @@ are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambd
 
 As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
 \begin{cor}
-    Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\alpha^{+d}, \beta^{+d}$ and $\gamma^{+d}$ are all well-defined.
-    Then the multiplicity space of $S_d$-intertwiners from $V_{\gamma^{+d}}$ to $V_{\alpha^{+d}} \otimes V_{\beta^{+d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\otimes L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
+    Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}$ and $\yaug{\gamma}{d}$ are all well-defined.
+    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \otimes V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\otimes L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
     \begin{equation}
-        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) \simeq \Hom_{S_d}(V_{\gamma^{+d}}, V_{\alpha^{+d}} \otimes V_{\beta^{+d}}) = G^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}.
+        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \otimes V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
     \end{equation}
-    In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}$.
+    In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
 \end{cor}
 \begin{proof}
     The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
@@ -583,12 +738,14 @@ As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method
     \end{equation}
     Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
     \begin{align}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\gamma^{+d}} \oplus \cdots, \\
-        \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\alpha^{+d}} \oplus \cdots \right)\otimes \left( V_{\beta^{+d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}} V_{\gamma^{+d}} \oplus \cdots.
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
+        \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\otimes \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
     \end{align}
-    In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\gamma^{+d}$.
-    By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\gamma^{+d}}_{\alpha^{+d}, \beta^{+d}}$.
+    In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\yaug{\gamma}{d}$.
+    By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
 \end{proof}
+
+
 
 \begin{rem}
     Note that this result indirectly implies a stability result for the Kronecker coefficents, namely that the value of $g_{\lambda + (d)}^{\mu + (d), \nu + (d)}$ is eventually independent of $d$ and moreover reaches the value $c_{\lambda_{-1}}^{\mu_{-1}, \nu_{-1}}$ where $\lambda_{-1}$ is obtained from $\lambda$ by removal of the first row of $\lambda$.
@@ -597,17 +754,15 @@ As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method
 \begin{cor}
     \label{cor:ud_sd_recouple_correspondence}
     Let $\alpha, \beta, \gamma, \mu, \nu, \lambda$ be Young diagrams. 
-    Furthermore, take $d$ be sufficiently large such that $\alpha^{+d}, \beta^{+d}, \gamma^{+d}, \mu^{+d}, \nu^{+d}, \lambda^{+d}$ are all well-defined.
+    Furthermore, take $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}, \yaug{\gamma}{d}, \yaug{\mu}{d}, \yaug{\nu}{d}, \yaug{\lambda}{d}$ are all well-defined.
     Then the following recoupling operator for $S_d$ is obtained from the corresponding recoupling operator for $\U(d)$ by restriction from $\U(d)$ to $S_d$:
     \begin{equation}
         \begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix} \simeq
-        \begin{bmatrix}\alpha^{+d} & \beta^{+d} & \mu^{+d} \\ \gamma^{+d} & \lambda^{+d} & \nu^{+d} \end{bmatrix}.
+        \begin{bmatrix}\yaug{\alpha}{d} & \yaug{\beta}{d} & \yaug{\mu}{d} \\ \yaug{\gamma}{d} & \yaug{\lambda}{d} & \yaug{\nu}{d} \end{bmatrix}.
     \end{equation}
 \end{cor}
 
-
-
-\subsection{An entropic inequality for tetrahedral spectra}
+\subsection{An entropic inequality for tetrahedral spectra (Indirectly)}
 
 In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\U(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
 The purpose of this section is to prove an upper bound for the norm of the $\U(d)$ recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
@@ -626,12 +781,12 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \end{proof}
 
 \begin{cor}
-    \label{cor:ud_recouple_bound}
-    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{a} \times \ydia{b} \times \ydia{c} \times \ydia{a+b} \times \ydia{b+c} \times \ydia{a+b+c}$ be Young diagrams, let $d \in \mathbb N$ be sufficiently large (as in \cref{cor:ud_recouple_bound}), and let $\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the corresponding $\U(d)$-recoupling operator. 
+    \label{cor:ud_recouple_bound_indirect}
+    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{a} \times \ydia{b} \times \ydia{c} \times \ydia{a+b} \times \ydia{b+c} \times \ydia{a+b+c}$ be Young diagrams, let $d \in \mathbb N$ be sufficiently large (as in \cref{cor:ud_sd_recouple_correspondence}), and let $\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the corresponding $\U(d)$-recoupling operator. 
     Then
     \begin{equation}
         \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\text{HS}}^{2}
-        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu^{+d}}) \dim(V_{\mu^{+d}})}{\dim(V_{\lambda^{+d}}) \dim(V_{\beta^{+d}})}
+        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\yaug{\nu}{d}}) \dim(V_{\yaug{\mu}{d}})}{\dim(V_{\yaug{\lambda}{d}}) \dim(V_{\yaug{\beta}{d}})}
     \end{equation}
 \end{cor}
 
@@ -649,6 +804,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
         \lim_{n\to\infty} \frac{1}{n} \log \dim V_{\lambda(n)} = p S(r).
     \end{equation}
 \end{proof}
+
 
 
 \section{The spectral quantum marginal problem}
@@ -775,8 +931,8 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \begin{proof}
     The only non-trivial claim involves the relation between the von Neumann entropies of $\Gamma_{X}$ and $H_{X} / \Tr(H_X)$, respectively given by
     \begin{align}
-        S\left(\Gamma_{X}\right) &= -(1-\Tr(H_X))\log(1-\Tr(H_X)) - \sum_{i=1}^{d} \lambda_1(H_X) \log \lambda_1(H_X), \\
-        S\left(\frac{H_{X}}{\Tr(H_X)}\right) &= - \frac{1}{\Tr(H_X)}\sum_{i=1}^{d} \lambda_1(H_X) \log \lambda_1(H_X) + \log(\Tr(H_X)).
+        S\left(\Gamma_{X}\right) &= -(1-\Tr(H_X))\log(1-\Tr(H_X)) - \sum_{i=1}^{d} \lambda_i(H_X) \log \lambda_i(H_X), \\
+        S\left(\frac{H_{X}}{\Tr(H_X)}\right) &= - \frac{1}{\Tr(H_X)}\sum_{i=1}^{d} \lambda_i(H_X) \log \lambda_i(H_X) + \log(\Tr(H_X)).
     \end{align}
     Multiplying the von Neumann entropy of $H_{X} / \Tr(H_X)$ by $\Tr(H_X)$ yields
     \begin{equation}
@@ -885,6 +1041,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item \citeauthor{alcockspecial} consider the case of $6j$ symbols for $\SU(N)$ for wherein two opposing edges are labelled by fundamental irreps of $\SU(N)$ so that all vertices are multiplicity one (or zero) \cite{alcockspecial} \textcolor{blue}{TC: They also freely use the birdtrack notation which I enjoy.}
     \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
     \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
+    \item The original Ponzano-Regge paper \cite{ponzano1968semiclassical}
 \end{itemize}
 
 \appendix
@@ -936,7 +1093,7 @@ Combining two instances of the above result yields:
 \begin{proof}[Proof of \cref{lem:sk_recouple_bound}]
     Applying the Cauchy-Schwarz inequality along a particular edge-cut indicated below, and applying Schur's lemma multiple times yields
     \begin{equation}
-        \tikzfig{tikz/SSA-dimension-upper-bound}
+        \tikzfig{tikz/SSA-dimension-upper-bound-sk}
     \end{equation}
 \end{proof}
 

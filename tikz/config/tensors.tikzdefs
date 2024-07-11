@@ -2,6 +2,19 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
+
+% Custom spaced ABCDEF 6j recoupling symbol
+\newcommand{\abcdefsymbol}{
+\begingroup
+\arraycolsep=1pt
+\renewcommand{\arraystretch}{0.5}
+\left\{\begin{array}{ccc}
+    \alpha & \beta & \gamma \\ 
+    \delta & \epsilon & \phi
+\end{array}\right\}
+\endgroup
+}
+
 \usepackage{mathtools}
 \usepackage[vcentermath]{youngtab}
 \newcommand{\tyt}[1]{\vcenter{\hbox{\text{\tiny$#1$}}}}
@@ -12,6 +25,8 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{circuits.ee.IEC}
 \usetikzlibrary{shapes.geometric}
+
+
 %\pgfsetlayers{edgelayer,nodelayer,main}
 
 \tikzset{ 
