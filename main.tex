@@ -16,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-    This is the abstract.
+    
 \end{abstract}
 
 \tableofcontents
@@ -129,7 +129,7 @@ There are a few operations which preserve the set of realizable spectral maps.
     Consider a graphical Horn problem of dimension $d$.
     \begin{itemize}
         \item The \defnsty{zero spectral map} $0_d : \s E \to \eigs{d}$ assigning to $e \in \s E$, the spectrum $0_d(e) = (0, \stackrel{d}{\ldots}, 0)$ is realizable.
-        \item If $\alpha : \s E \to \eigs{a}$ and $\beta : \s E \to \eigs{b}$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs{a+b}$ and tensor product $\alpha \otimes \beta : \s E \to \eigs{ab}$ (defined pointwise), are both realizable.
+        \item If $\alpha : \s E \to \eigs{a}$ and $\beta : \s E \to \eigs{b}$ are realizable, then their direct sum $\alpha \oplus \beta : \s E \to \eigs{a+b}$ and tensor product $\alpha \ot \beta : \s E \to \eigs{ab}$ (defined pointwise), are both realizable.
         \item If $\lambda : \s E \to \eigs{d}$ is a realizable and $p \in \mathbb R_{> 0}$ a positive real number, then $p \lambda : \s E \to \eigs{d}$, defined by $(p\lambda)(e) = (p\lambda_1(e), \ldots, p\lambda_d(e))$ is also a realizable.
         \item If $\lambda : \s E \to \eigs{d}$ is a realizable, then $\lambda^{*} : \s E \to \eigs{d}$, defined by a pointwise application of the negation-reversal involution, is also realizable.
     \end{itemize}
@@ -293,6 +293,45 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
 
 \textcolor{red}{TODO: Talk about subgraphs and projections, adhesivity proposition, etc.}
 
+\begin{rem}
+    It is also worth noting that the existence of a solution to a graphical Horn problem is eventually unchanging when considering the limit as $d \to \infty$.
+    Specifically, if there exists a solution for a particular value of $d$, then there exists solutions for all $d' > d$ obtained by padding the Hermitian matrices with zeros.
+    Moreover, if there exists a solution for any value of $d$, then there will necessarily exist a solution involving $d'\times d'$ matrices where $d' = \sum_{e} \rank(e)$ is the sum of the ranks (number of non-zero values) of all the eigenvalue lists involved.
+    {\color{red}
+        TODO: What is the smallest value of $d'$ which contains a solution is there is a solution for any $d$? Consider the following example which demonstrates that the ranks of the eigenvalue lists can in principle be much smaller that the dimension $d$:
+        \begin{equation}
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & -1 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+            \end{pmatrix}
+            +
+            \begin{pmatrix}
+                0 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & -1 & 0 \\
+                0 & 0 & 0 & 0 \\
+            \end{pmatrix}
+            +
+            \begin{pmatrix}
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & -1 \\
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 0 \\
+                0 & 0 & 0 & -1 \\
+            \end{pmatrix}
+        \end{equation}
+    What about what happens when positivity conditions are also imposed?
+    }
+\end{rem}
+
 
 \section{A representation-theoretic characterization}
 {\color{blue}
@@ -343,15 +382,15 @@ Throughout this section, the following result serves a the basis for establishin
 \begin{lem}
     \label{lem:kth_tensor_power}
     Let $\lambda \in \domweights{d}$ be a dominant weight for $\GL(d)$, let $L_{\lambda}$ be the irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $k \in \mathbb N_{> 0}$ be a positive integer.
-    Then $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\otimes k})) = 1$.
+    Then $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})) = 1$.
     Let 
     \begin{equation}
-        \iota_{\lambda}^{k} : L_{k\lambda} \to L_{\lambda}^{\otimes k}
+        \iota_{\lambda}^{k} : L_{k\lambda} \to L_{\lambda}^{\ot k}
     \end{equation}
-    be a $\GL(d)$-intertwining isometry in $\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\otimes k})$.
+    be a $\GL(d)$-intertwining isometry in $\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})$.
     If $v_{\lambda} \in L_{\lambda}$ is a highest weight vector, then there exists a highest weight vector $v_{k \lambda} \in L_{k\lambda}$ satisfying
     \begin{equation}
-        \iota_{\lambda}^{k} v_{k\lambda} = v_{\lambda}^{\otimes k}.
+        \iota_{\lambda}^{k} v_{k\lambda} = v_{\lambda}^{\ot k}.
     \end{equation}
     Moreover, for all $g \in \GL(d)$,
     \begin{equation}
@@ -382,9 +421,9 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
 
 \begin{defn}
     Let $\alpha, \beta, \gamma \in \domweights{d}$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
-    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \otimes L_{\beta}$:
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \ot L_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) = \Inv_{\GL(d)}(L_{\gamma^*} \otimes L_{\alpha} \otimes L_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) = \Inv_{\GL(d)}(L_{\gamma^*} \ot L_{\alpha} \ot L_{\beta}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
     \begin{equation}
@@ -431,7 +470,7 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     \label{prop:LR_pos_implies_herm}
     Let $\lambda(1), \ldots, \lambda(\ell) \in \domweights{d}$ be dominant weights for $\GL(d)$ such that
     \begin{equation}
-        (L_{\lambda(1)} \otimes \cdots \otimes L_{\lambda(d)})^{\GL(d)} \neq 0.
+        (L_{\lambda(1)} \ot \cdots \ot L_{\lambda(d)})^{\GL(d)} \neq 0.
     \end{equation}
     Then there exists Hermitian matrices, $H(e) \in \orbit_{\lambda(e)}$ for all $e \in \{1,\ldots, \ell\}$, such that $\sum_{e = 1}^{\ell} H(e) = 0$.
 \end{prop}
@@ -449,11 +488,11 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     for $(\lambda_1, \ldots, \lambda_{\ell}) \in (\domweights{d})^{\ell}$, one obtains the bound
     \begin{align}
         \tilde c_{\lambda_1, \ldots, \lambda_{\ell}} 
-        &= \frac{\dim[(L_{\lambda_1} \otimes \cdots \otimes L_{\lambda_\ell})^{\GL(d)}]}{\dim(L_{\lambda_1})\cdots\dim(L_{\lambda_\ell})} \\
-        %&= \int_{u_0 \in \U(d)} \diff u \Tr[\pi_{\lambda_1}(u_0) \otimes \cdots \otimes \pi_{\lambda_\ell}(u_0)]  \\
+        &= \frac{\dim[(L_{\lambda_1} \ot \cdots \ot L_{\lambda_\ell})^{\GL(d)}]}{\dim(L_{\lambda_1})\cdots\dim(L_{\lambda_\ell})} \\
+        %&= \int_{u_0 \in \U(d)} \diff u \Tr[\pi_{\lambda_1}(u_0) \ot \cdots \ot \pi_{\lambda_\ell}(u_0)]  \\
         %&= \int_{u_0 \in \U(d)} \diff u_0 \chi_{\lambda_1}(u_0)\cdots \chi_{\lambda_\ell}(u_0)  \\
-        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{u_1} \otimes \cdots \otimes v_{\lambda_\ell}^{u_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{u_1} \otimes \cdots \otimes v_{\lambda_\ell}^{u_\ell}}  \\
-        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{gu_1} \otimes \cdots \otimes v_{\lambda_\ell}^{gu_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{gu_1} \otimes \cdots \otimes v_{\lambda_\ell}^{gu_\ell}}  \\
+        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{u_1} \ot \cdots \ot v_{\lambda_\ell}^{u_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{u_1} \ot \cdots \ot v_{\lambda_\ell}^{u_\ell}}  \\
+        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{gu_1} \ot \cdots \ot v_{\lambda_\ell}^{gu_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{gu_1} \ot \cdots \ot v_{\lambda_\ell}^{gu_\ell}}  \\
         &\leq \int_{u_i \in \U(d)} \diff u_i \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2} \\
         &\leq \max_{u_i \in \U(d)} \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2}.
     \end{align}
@@ -470,19 +509,47 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
 \subsection{Tetrahedral spectra \& recoupling operators}
 \label{sec:recouple}
 
-
 \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
 
 \begin{rem}
-    As an immediate corollary of \cref{prop:LR_pos_implies_herm}, we conclude that if
+    Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(d)$:
     \begin{equation}
-        \label{eq:face_inv}
-        (L_{\alpha} \otimes L_{\gamma}^{*} \otimes L_{\beta})^{\GL(d)} \otimes
-        (L_{\beta}^{*}  \otimes L_{\phi} \otimes L_{\delta}^{*})^{\GL(d)} \otimes
-        (L_{\delta} \otimes L_{\gamma} \otimes L_{\epsilon^{*}})^{\GL(d)} \otimes
-        (L_{\epsilon} \otimes L_{\phi}^{*}  \otimes L_{\alpha}^{*})^{\GL(d)} \neq 0,
+        \s L = L_{\alpha}\ot L_{\alpha^*} \ot L_{\beta} \ot L_{\beta^*} \ot L_{\gamma} \ot L_{\gamma^*} \ot L_{\delta} \ot L_{\delta^*} \ot L_{\epsilon} \ot L_{\epsilon^*} \ot L_{\phi} \ot L_{\phi^*}.
     \end{equation}
-    then there exists Hermitian operators
+    While the vector space $\s L$ naturally supports a representation of $\GL(d)^{\times 12}$, for the purposes of the tetrahedral Horn problem, there are three additional representations acting on $\s L$ that will be of interest; $\sigma_6 : \GL(d)^{\times 6} \to \GL(\s L)$, $\sigma_4 : \GL(d)^{\times 4} \to \GL(\s L)$ and $\sigma_1 : \GL(d) \to \GL(\s L)$:
+    \begin{align}
+        \begin{split}
+            \label{eq:six_fold_action}
+            \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6)
+            &= \pi_{\alpha}(g_1) \ot \pi_{\alpha^*}(g_1) \ot \pi_{\beta}(g_2) \ot \pi_{\beta^*}(g_2) \ot \pi_{\gamma}(g_3) \ot \pi_{\gamma^*}(g_3) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g_4) \ot \pi_{\delta^*}(g_4) \ot \pi_{\epsilon}(g_5) \ot \pi_{\epsilon^*}(g_5) \ot \pi_{\phi}(g_6) \ot \pi_{\phi^*}(g_6)
+        \end{split}\\
+        \begin{split}
+            \label{eq:four_fold_action}
+            \sigma_{4}(g_1, g_2, g_3, g_4) 
+            &= \pi_{\alpha}(g_1) \ot \pi_{\alpha^*}(g_4) \ot \pi_{\beta}(g_1) \ot \pi_{\beta^*}(g_2) \ot \pi_{\gamma}(g_3) \ot \pi_{\gamma^*}(g_1) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g_3) \ot \pi_{\delta^*}(g_2) \ot \pi_{\epsilon}(g_4) \ot \pi_{\epsilon^*}(g_3) \ot \pi_{\phi}(g_2) \ot \pi_{\phi^*}(g_4)
+        \end{split}\\
+        \begin{split}
+            \label{eq:one_fold_action}
+            \sigma_{1}(g)
+            &= \pi_{\alpha}(g) \ot \pi_{\alpha^*}(g) \ot \pi_{\beta}(g) \ot \pi_{\beta^*}(g) \ot \pi_{\gamma}(g) \ot \pi_{\gamma^*}(g) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g) \ot \pi_{\delta^*}(g) \ot \pi_{\epsilon}(g) \ot \pi_{\epsilon^*}(g) \ot \pi_{\phi}(g) \ot \pi_{\phi^*}(g)
+        \end{split}
+    \end{align}
+    At this stage, it is worth noticing that $\sigma_1$ is the representation of $\GL(d)$ which is obtained by restricting $\sigma_4$ (respectively $\sigma_6$) to the diagonal subgroup $\GL(d) \subseteq \GL(d)^{\times 4}$ (respectively $\GL(d) \subseteq \GL(d)^{\times 6}$).
+    Now consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(d)^{\times 4}$ (via $\sigma_4$), i.e.,
+    \begin{equation}
+        \s L_{4} \coloneqq (\s L)^{\GL(d)^{\times 4}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4 \in \GL(d) : \sigma_{4}(g_1, g_2, g_3, g_4) w = w \}.
+    \end{equation}
+    Whenever it happens to be that $\s L_{4} \neq 0$, then one may conclude
+    \begin{align}
+        \begin{split}
+            \label{eq:face_inv}
+            (L_{\alpha} \ot L_{\gamma}^{*} \ot L_{\beta})^{\GL(d)} &\neq 0, \\
+            (L_{\beta}^{*}  \ot L_{\phi} \ot L_{\delta}^{*})^{\GL(d)} &\neq 0, \\
+            (L_{\delta} \ot L_{\gamma} \ot L_{\epsilon^{*}})^{\GL(d)} &\neq 0, \\
+            (L_{\epsilon} \ot L_{\phi}^{*}  \ot L_{\alpha}^{*})^{\GL(d)} &\neq 0,
+        \end{split}
+    \end{align}
+    which, by \cref{prop:LR_pos_implies_herm}, implies the existence of Hermitian operators
     \begin{equation}
         \label{eq:prime_unprime}
         A, A' \in \orbit_{\alpha}, \quad
@@ -499,11 +566,50 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         D + C - E' = 0, \quad
         E - F' - A' = 0.
     \end{equation}
-    From this perspective, it becomes clear that \cref{eq:face_inv} is a necessary condition for $\alpha,\beta, \gamma, \delta, \epsilon$, and $\phi$ to be tetrahedral spectra.
+    From this perspective, it becomes clear that the existence of non-zero $\GL(d)^{\times 4}$-invariant vectors in $\s L$ is a necessary condition for $\alpha,\beta, \gamma, \delta, \epsilon$, and $\phi$ to be tetrahedral spectra.
     Unfortunately, it can be shown that this condition is indeed insufficient; the insufficiency can be attributed to the fact that \cref{eq:face_inv} does not require that the primed and unprimed Hermitian matrices are in \cref{eq:prime_unprime} are the same, i.e., that $A = A'$, $B = B'$, etc.
 \end{rem}
-
-
+\begin{rem}
+    To address the insufficiency of \cref{eq:face_inv}, consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(d)^{\times 6}$ (via $\sigma_6$), i.e.,
+    \begin{equation}
+        \s L_{6} \coloneqq (\s L)^{\GL(d)^{\times 6}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4,g_5,g_6 \in \GL(d) : \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6) w = w \}.
+    \end{equation}
+    For all dominant weights $\lambda$, Schur's lemma implies
+    \begin{equation}
+        (L_{\lambda} \otimes L_{\lambda}^{*})^{\GL(d)} \simeq \Hom_{\GL(d)}(L_{\lambda}, L_{\lambda}) \simeq \mathbb C \id_{L_\lambda},
+    \end{equation}
+    which in turn implies the subspace of $\GL(d)^{\times 6}$-invariant vectors in $\s L$ is always one-dimensional, $\dim (\s L_{6}) = 1$.
+    In any case, if there exists a vector which is \textit{both} $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$, i.e., $w \in \s L_{6} \cap \s L_{4} \neq 0$, then it can be shown (by similar arguments to the proof of \cref{prop:LR_pos_implies_herm}\footnote{Specifically, one begins with a generic twelve-fold coherent product vector $v_0 \in \s L$ and iteratively flowing along gradients to minimize the norm of $\sigma_{6}(g'_i)\sigma_{4}(g_j)v_{n-1} \in \s L$ with respect to $g'_i$ and $g_j$ to obtain $v_{n} \in \s L$. The resulting sequence of points exhibits a limit point $\tilde v$ which is (i) non-zero (because $\braket{w, \tilde v} = \braket{w, v_n} = \braket{w, v_0} \neq 0$), and (ii) minimal in norm with respect to both orbits, i.e. both moment maps vanish: $\mu_4([\tilde v]) = 0$ and $\mu_{6}([\tilde v]) = 0$. \textcolor{blue}{Thanks to Harold for sketching out this argument for me.}}) that there exists Hermitian operators
+    \begin{equation}
+        \label{eq:prime_unprime}
+        A \in \orbit_{\alpha}, \quad
+        B \in \orbit_{\beta}, \quad
+        C \in \orbit_{\gamma}, \quad
+        D \in \orbit_{\delta}, \quad
+        E \in \orbit_{\epsilon}, \quad
+        F \in \orbit_{\phi},
+    \end{equation}
+    satisfying the following four conditions
+    \begin{equation}
+        A - C + B = 0, \quad
+        - B + F - D = 0, \quad
+        D + C - E = 0, \quad
+        E - F - A = 0.
+    \end{equation}
+    In other words, the existence of a $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
+    However, using the results of \cref{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
+\end{rem}
+\begin{rem}
+    In \cite{roberts1999classical}, \citeauthor{roberts1999classical} originally used the stationary phase  method to prove the \citeauthor{ponzano1968semiclassical} semiclassical formula \cite{ponzano1968semiclassical} for the $6j$ coefficients (i.e., the $d=2$ recoupling symbol).
+    In order to apply the technique of stationary phases, it must be the case that exponent in the integrand has \textit{isolated} critical points.
+    For the case of the $6j$ symbol (with generic values for the six $j$s), there were two isolated critical points corresponding to (i) the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with fixed side lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
+    
+    {\color{red}
+        TODO: For the more general case of $d \geq 3$, it is unclear to me if the analogous critical points (whose union is identified with all Hermitian matrix-valued solutions to the tetrahedral equations) correspond to a finite number of disjoint coadjoint orbits under the subgroup $\GL(d)$ (as in the $d=2$ case). 
+        As a result, at the moment, it is unclear to me how to establish an asymptotic formula $\abcdefsymbol$ in the ``scaling $\lambda \mapsto k \lambda$'' regime.
+        Instead, it seems the next best thing is to use the ``completeness-type'' relations between various recoupling symbols to prove the existence of a convergent sequence of weights such that the corresponding sequence of recoupling symbols admits of a power-law type lower bound.
+    }
+\end{rem}
 \begin{lem}
     \label{lem:completeness_relation}
     Let $x,y,z$ and $d$ be fixed but arbitrary positive integers.
@@ -522,24 +628,7 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     \end{equation}
 \end{lem}
 
-\subsection{An entropic inequality for tetrahedral spectra (Directly)}
-
-\begin{thm}
-    \label{thm:ud_recouple_bound}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{d}$ be a sextuple of dominant weights for $\GL(d)$ and let $\abcdefsymbol$ be the corresponding $\GL(d)$-recoupling operator. 
-    Then
-    \begin{equation}
-        \norm{\abcdefsymbol}_{\text{HS}}^{2}
-        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(L_{\gamma}) \dim(L_{\phi})}{\dim(L_{\beta}) \dim(L_{\epsilon})}
-    \end{equation}
-\end{thm}
-\begin{proof}
-    \textcolor{red}{TODO: Explain what this all means carefully.}
-    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
-    \begin{equation}
-        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
-    \end{equation}
-\end{proof}
+\subsection{The asymptotics of irrep dimensions}
 
 It will be useful for what follows to better understand how the dimension, $\dim(L_{\lambda}^{d})$, of the irreducible representation $L_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
 \Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(L_{\lambda}^{d})$ \cite{itzykson1966unitary}.
@@ -632,6 +721,36 @@ The objective of the following lemma is to characterize the asymptotics of this 
     \end{equation}
 \end{rem}
 
+{\color{red}
+TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}^{d})$ to $\dim(V_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
+}
+\begin{lem}
+    Let $\lambda$ be a Young diagram with at most $d$ parts. Then
+    \begin{equation}
+        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(L_{\lambda}^{d})}{\dim(V_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{d}\right)
+    \end{equation}
+\end{lem}
+
+
+
+\subsection{An entropic inequality for tetrahedral spectra (Directly)}
+
+\begin{thm}
+    \label{thm:ud_recouple_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{d}$ be a sextuple of dominant weights for $\GL(d)$ and let $\abcdefsymbol$ be the corresponding $\GL(d)$-recoupling operator. 
+    Then
+    \begin{equation}
+        \norm{\abcdefsymbol}_{\text{HS}}^{2}
+        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(L_{\gamma}) \dim(L_{\phi})}{\dim(L_{\beta}) \dim(L_{\epsilon})}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    \textcolor{red}{TODO: Explain what this all means carefully.}
+    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
+    \begin{equation}
+        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
+    \end{equation}
+\end{proof}
 \begin{cor}
     Let $\gamma,\phi,\beta,\epsilon$ be a quadruple of Young diagrams such that 
     \begin{equation}
@@ -656,6 +775,7 @@ The objective of the following lemma is to characterize the asymptotics of this 
 
 
 
+
 \subsection{The \texorpdfstring{$\boldsymbol{\U(d)}$}{U(d)}-recoupling operator as a \texorpdfstring{$\boldsymbol{S_d}$}{Sd}-recoupling operator}
 \label{sec:recoupling-correspondence}
 
@@ -674,7 +794,7 @@ When considering the symmetric group, $S_d$, as a subgroup of the unitary group,
     Then the restriction of the irrep $L_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
     \begin{equation}
         \label{eq:nishiyama-decomp}
-        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \otimes V_\lambda^{\Upsilon_{\mu}})
+        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \ot V_\lambda^{\Upsilon_{\mu}})
     \end{equation}
     where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
 \end{thm}
@@ -712,34 +832,34 @@ The following is \cite[Lemma 13]{christandl2018recoupling}:
 
 At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
 \begin{equation}
-    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \otimes L_{\beta}),
+    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \ot L_{\beta}),
 \end{equation}
 are known to be independent of $d$ (whenever $d \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$),
 while the Kroncecker coefficients
 \begin{equation}
-    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \otimes V_{\nu})
+    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \ot V_{\nu})
 \end{equation}
 are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambda}$.
 
 As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
 \begin{cor}
     Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}$ and $\yaug{\gamma}{d}$ are all well-defined.
-    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \otimes V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\otimes L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
+    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\ot L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
     \begin{equation}
-        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\otimes L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \otimes V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
+        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
     \end{equation}
     In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
 \end{cor}
 \begin{proof}
     The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
     \begin{equation}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}).
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}).
         \label{eq:res_monoidal}
     \end{equation}
     Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
     \begin{align}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\otimes L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
-        \Res^{\U(d)}_{S_d}(L_{\alpha})\otimes \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\otimes \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
+        \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\ot \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
     \end{align}
     In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\yaug{\gamma}{d}$.
     By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
@@ -821,7 +941,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     Let $(H_1, \ldots, H_k) \in \herm(d)^{\times k}$ be a $k$-tuple of $d\times d$ positive-semidefinite Hermitian matrices and let $X$ be a subset of $\{1, \ldots, k\}$.
     Let $\{\ket 1,\ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d}$ and $\{\ket 0, \ket 1, \ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d+1}$.
     Define $H_{X} \coloneqq \sum_{i \in X}H_i$ as the partial sum.
-    Define a Hermitian operator, $\Phi_{X}$, acting on $(\mathbb C^{d+1})^{\otimes k}$ with coefficients with respect to the computational bases $\ket{i_1\cdots i_k}$ be given by the following formula:%
+    Define a Hermitian operator, $\Phi_{X}$, acting on $(\mathbb C^{d+1})^{\ot k}$ with coefficients with respect to the computational bases $\ket{i_1\cdots i_k}$ be given by the following formula:%
     \footnote{%
         Specifically, $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ is non-zero only if there exists a unique $p \in [k]$ such that $i_p > 0$ and a unique $q \in [k]$ such that $j_q > 0$ (with all other indices $i_{p'}$ and $j_{q'}$ for $p' \neq p$ and $q' \in q$ being zero). 
         Furthermore, if $p, q \in [k]$ are the unique such indices, then $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ is zero if either $p \not \in X$ or $q \not \in X$; otherwise $p,q \in X$ and then  $\braket{i_1\cdots i_k | \Phi_{X} | j_1\cdots j_k}$ takes the value $\braket{i_p | H_{p}^{\frac{1}{2}} H_{q}^{\frac{1}{2}} | j_{q}}$, the inner product between the $i_{p}$th column of $H_{p}^{\frac{1}{2}}$ and the $j_q$th column of $H_{q}^{\frac{1}{2}}$.
@@ -833,11 +953,11 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
             0 & \text{otherwise}.
         \end{cases}
     \end{equation}
-    Note that, up to shuffling the $k+1$ copies of $\mathbb C^{d+1}$ in $(\mathbb C^{d+1})^{\otimes k}$, $\Phi_{X}$ is of the form $\tilde \Phi_{X} \otimes Z_{[k]\setminus X}$ where
+    Note that, up to shuffling the $k+1$ copies of $\mathbb C^{d+1}$ in $(\mathbb C^{d+1})^{\ot k}$, $\Phi_{X}$ is of the form $\tilde \Phi_{X} \ot Z_{[k]\setminus X}$ where
     \begin{equation}
         Z_{X} = \ket{0\stackrel{\card{X}}{\cdots} 0}\bra{0\stackrel{\card{X}}{\cdots} 0}.
     \end{equation}
-    and where $\tilde \Phi_{X}$ acts on $(\mathbb C^{d+1})^{\otimes \card{X}}$.
+    and where $\tilde \Phi_{X}$ acts on $(\mathbb C^{d+1})^{\ot \card{X}}$.
     Also define the operator $\Gamma_{X}$ which is $\tilde \Phi_{X}$ shifted by $Z_{X}$ 
     \begin{equation}
         \Gamma_{X} \coloneqq  \tilde \Phi_{X} + (1-\Tr(H_{X})) Z_{X},
@@ -885,7 +1005,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     As the eigenvalues of any matrix $X$ are determined (up to padding by zeros) by the values of $\Tr(X^{\ell})$, we conclude that $\Phi_{X}$ and $H_{X}$ have the same eigenvalues (up to padding by zeros)
     (\textcolor{red}{TODO: Is there a more direct way to prove this.})
 
-    (ii) Note that $\tilde \Phi_{X}$ and its eigenvectors are supported in the subspace of $(\mathbb C^{d+1})^{\otimes \card{X}}$ spanned by $\ket{i_1 \cdots i_{\card{X}}}$ for which exactly one if the $i_p$'s is non-zero. 
+    (ii) Note that $\tilde \Phi_{X}$ and its eigenvectors are supported in the subspace of $(\mathbb C^{d+1})^{\ot \card{X}}$ spanned by $\ket{i_1 \cdots i_{\card{X}}}$ for which exactly one if the $i_p$'s is non-zero. 
     Therefore $\ket{0\stackrel{\card{X}}{\cdots} 0}$ is orthogonal to all eigenvectors of $\tilde \Phi_{X}$ and thus $\ket{0\stackrel{\card{X}}{\cdots} 0}$ is an eigenvector of $\Gamma_{X}$ with eigenvalue $1-\Tr(H_X)$.
 
     (iii) The partial trace of $\Phi_{[k]}$ over $[k]\setminus X$, when performed in the computational basis $\ket{i_1 \cdots i_k}$, can be divided into three portions depending on the number of non-zero entries in $(i_p \mid p \in [k]\setminus X)$; first, is all indices $i_p$ are zero, second, where exactly one $i_p$ is non-zero, and third where more than one index $i_p$ is non-zero.
@@ -942,7 +1062,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \end{proof}
 
 %\begin{proof}
-%    Fix $i \in \{1,\ldots, d\}$ and let $\ket{\phi_i} \in (\mathbb C^{d+1})^{\otimes k}$ be the unique vector with coefficients $\braket{j_1\cdots j_k | \phi_i}$ (with respect to the computational basis where $j_1, \ldots, j_k \in \{0,1,\ldots, d\}$) given by the formula
+%    Fix $i \in \{1,\ldots, d\}$ and let $\ket{\phi_i} \in (\mathbb C^{d+1})^{\ot k}$ be the unique vector with coefficients $\braket{j_1\cdots j_k | \phi_i}$ (with respect to the computational basis where $j_1, \ldots, j_k \in \{0,1,\ldots, d\}$) given by the formula
 %    \begin{equation}
 %        \braket{j_1\cdots j_k | \phi_i} = \sum_{p=1}^{k} (\prod_{q\neq p} \delta_{j_{q}, 0})\braket{j_p | \bar H_{p}^{\frac{1}{2}} | i} 
 %        = \begin{cases}
@@ -951,7 +1071,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 %            0 & \forall p : j_{p} = 0.
 %        \end{cases}
 %    \end{equation}
-%    In particular, $\ket{\phi_i}$ lies in the subspace of $(\mathbb C^{d+1})^{\otimes k}$ spanned by computational basis vectors $\ket{j_1, \ldots, j_k}$ wherein exactly \textit{one} of the $j_p$'s is non-zero. 
+%    In particular, $\ket{\phi_i}$ lies in the subspace of $(\mathbb C^{d+1})^{\ot k}$ spanned by computational basis vectors $\ket{j_1, \ldots, j_k}$ wherein exactly \textit{one} of the $j_p$'s is non-zero. 
 %    Moreover, when $j_p > 0$ is the only non-zero element, the coefficient $\braket{j_1\cdots j_k|\phi_i} = \braket{0 \cdots j_p \cdots 0|\phi_i}$ depends only on $H_p$ (and not on $H_q$ for $q \neq p$).
 %    \begin{equation}
 %        \Phi \coloneqq \sum_{i=1}^{d} \ket{\phi_i}\!\bra{\phi_i}
@@ -1058,7 +1178,7 @@ The purpose of this section is to prove \cref{lem:sk_recouple_bound}.
     \begin{equation}
         \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
         :
-        G^{\mu}_{\alpha,\beta} \otimes G^{\lambda}_{\mu,\gamma} \to G^{\lambda}_{\alpha, \nu} \otimes G^{\nu}_{\beta,\gamma},
+        G^{\mu}_{\alpha,\beta} \ot G^{\lambda}_{\mu,\gamma} \to G^{\lambda}_{\alpha, \nu} \ot G^{\nu}_{\beta,\gamma},
     \end{equation}
     between the multiplicity spaces of irreps of the symmetric group defined as
     \begin{equation}
@@ -1098,7 +1218,7 @@ Combining two instances of the above result yields:
 \end{proof}
 
 %\begin{proof}
-%    The proof follows by noting that the $S_k$ recoupling operator can be written as the contraction of two smaller tensors across $V_{\nu}\otimes V_{\gamma} \otimes V_{\mu} \otimes V_{\alpha}$ (annotated below):
+%    The proof follows by noting that the $S_k$ recoupling operator can be written as the contraction of two smaller tensors across $V_{\nu}\ot V_{\gamma} \ot V_{\mu} \ot V_{\alpha}$ (annotated below):
 %    \begin{equation}
 %        \tikzfig{tikz/yrb1}
 %    \end{equation}
@@ -1133,18 +1253,18 @@ Combining two instances of the above result yields:
     \begin{equation}
         \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
         :
-        C^{\mu}_{\alpha,\beta} \otimes C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \otimes C^{\nu}_{\beta,\gamma},
+        C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma},
     \end{equation}
-    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\otimes V_{\beta}, V_{\mu})$ defined as
+    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\ot V_{\beta}, V_{\mu})$ defined as
     \begin{equation}
         \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
         \coloneqq
         \frac{
-            \Tr_{V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma}}[(\id_{V_{\alpha}}\otimes Y_{\beta\gamma}^{\nu;\dagger})
+            \Tr_{V_{\alpha}\ot V_{\beta}\ot V_{\gamma}}[(\id_{V_{\alpha}}\ot Y_{\beta\gamma}^{\nu;\dagger})
             Y_{\alpha\nu}^{\lambda;\dagger}
             Y_{\mu\gamma}^{\lambda}
-            (Y_{\alpha\beta}^{\mu}\otimes\id_{V_{\gamma}})]
-        }{\dim(V_{\alpha}\otimes V_{\beta}\otimes V_{\gamma})}
+            (Y_{\alpha\beta}^{\mu}\ot\id_{V_{\gamma}})]
+        }{\dim(V_{\alpha}\ot V_{\beta}\ot V_{\gamma})}
     \end{equation}
     \begin{equation}
         \tikzfig{tikz/young-subgroup-recouple-defn}.
@@ -1166,8 +1286,8 @@ Combining two instances of the above result yields:
     \begin{align}
         \label{eq:recoupling_prod_proj_iso}
         \Pi_{\nu}\Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda} 
-        &= \iota_{II} \left(\id_{L_{\lambda}} \otimes \id_{V_{\alpha}} \otimes \id_{V_{\beta}} \otimes \id_{V_{\gamma}} \otimes \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger}, \\
-        &= \iota_{III} \left(\id_{L_{\lambda}} \otimes \id_{V_{\alpha}} \otimes \id_{V_{\beta}} \otimes \id_{V_{\gamma}} \otimes \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}\right) \iota_{IV}^{\dagger}.
+        &= \iota_{II} \left(\id_{L_{\lambda}} \ot \id_{V_{\alpha}} \ot \id_{V_{\beta}} \ot \id_{V_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger}, \\
+        &= \iota_{III} \left(\id_{L_{\lambda}} \ot \id_{V_{\alpha}} \ot \id_{V_{\beta}} \ot \id_{V_{\gamma}} \ot \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}\right) \iota_{IV}^{\dagger}.
     \end{align}
     The first two isometries, $\iota_{I}$ and $\iota_{II}$, involve decompositions of tensor products of irreps of the symmetric group:
     \begin{equation}
@@ -1178,6 +1298,322 @@ Combining two instances of the above result yields:
         \tikzfig{tikz/sextuple-proj-young-recouple}.
     \end{equation}
 \end{proof}
+
+\section{[Calculations from previous draft]}
+\subsection{From states to recoupling}
+
+In this section we repeat the proof technique used in \cite{christandl2008quantum} to prove the existence of a sextuple of convergent sequences of Young diagrams satisfying the recoupling operator lower bound.
+
+Let $(p_1, p_2, p_3) \in \Delta_3$, let $\rho_{1}, \rho_{2}, \rho_{3}, \rho_{4}, \rho_{5}, \rho_{6}$ be a sextuple of $d\times d$ density operators (with spectra $r_i = \mathrm{spec}(\rho_{i})$), and suppose that the density matrices $\{\rho_1, \ldots, \rho_6\}$ are subject to the constraints
+\begin{align}
+    \label{eq:sextuple_config_constraints}
+    \begin{split}
+        (p_1+p_2)\rho_{4} &= p_1 \rho_1 + p_2 \rho_2, \\
+        (p_2+p_3)\rho_{5} &= p_2 \rho_2 + p_3 \rho_3, \\
+        (p_1+p_2+p_3)\rho_{6} &= p_1 \rho_2 + p_2 \rho_2 + p_3 \rho_3. \\
+    \end{split}
+\end{align}
+In the case of $d=2$, this configuration can be depicted faithfully as a configuration of points in $\mathbb R^{3}$:
+\begin{equation}
+    \tikzfig{tikz/qubit-tetrahedron}.
+\end{equation}
+\begin{equation}
+    \tikzfig{tikz/qubit-tetrahedron-arabic}.
+\end{equation}
+
+Using spectra estimation theorem, we have for each $i \in \{1, \ldots, 6\}$, $k_i \in \mathbb N$, and $\lambda \vdash k_i$,
+\begin{equation}
+    \Tr(P_{\lambda} \rho_i^{\ot k_i}) \leq (k_i + 1)^{d(d-1)/2} \exp(-k_i \kl{\bar \lambda}{r_i}).
+\end{equation}
+In particular, if $\kl{\bar \lambda}{r_i} < \epsilon$, then
+\begin{equation}
+    \Tr(P_{\lambda} \rho_i^{\ot k_i}) \leq (k_i + 1)^{d(d-1)/2} \exp(-k_i \epsilon).
+\end{equation}
+Furthermore, the ensemble approximation lemma applied to $\rho_{4} = x \rho_1 + (1-x) \rho_2$ with $x = \frac{p_1}{p_1+p_2}$ and $\mu \vdash k_1 + k_2 = k_4$ (satisfying $k_4 x \approx k_1$ and $k_4 (1-x) \approx k_2$) 
+\begin{equation}
+    \Tr(P_{\mu} \rho_4^{\ot k_4}) = \Tr(P_{\mu} (x \rho_1 + (1-x) \rho_2)^{\ot k_4}) \geq \frac{1}{k_4 + 1}\Tr(P_{\mu} \rho_1^{\ot k_1} \ot \rho_2^{\ot k_2})
+\end{equation}
+Combining this with spectral estimation yields the following bound
+\begin{equation}
+    \Tr(P_{\mu} \rho_1^{\ot k_1} \ot \rho_2^{\ot k_2}) \leq (k_4 + 1) \Tr(P_{\mu} \rho_4^{\ot k_4}) \leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}).
+\end{equation}
+Let $k_6 = k_1 + k_2 + k_4$ and note that $k_i \leq k_6$ for all $i$.
+Then one obtains the following collection of upper bounds
+\begin{align}
+    \Tr(P_{\alpha} \rho_1^{\ot k_1}) &\leq (k_1 + 1)^{d(d-1)/2} \exp(-k_1 \kl{\bar \alpha}{r_1}), \\
+    \Tr(P_{\beta} \rho_2^{\ot k_2}) &\leq (k_2 + 1)^{d(d-1)/2} \exp(-k_2 \kl{\bar \beta}{r_2}), \\
+    \Tr(P_{\gamma} \rho_3^{\ot k_3}) &\leq (k_3 + 1)^{d(d-1)/2} \exp(-k_3 \kl{\bar \gamma}{r_3}), \\
+    \Tr(P_{\mu} \rho_1^{\ot k_1} \ot \rho_2^{\ot k_2}) &\leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}), \\
+    \Tr(P_{\nu} \rho_2^{\ot k_2} \ot \rho_3^{\ot k_3}) &\leq (k_5+1)^{d(d-1)/2+1} \exp(-k_5 \kl{\bar \nu}{r_5}), \\
+    \Tr(P_{\lambda} \rho_1^{\ot k_1} \ot \rho_2^{\ot k_2} \ot \rho_3^{\ot k_3}) &\leq (k_6+1)^{d(d-1)/2+2} \exp(-k_6 \kl{\bar \lambda}{r_6}).
+\end{align}
+At the moment, there is an important subtlety which has NOT been addressed.
+In order to apply the ensemble approximation lemma it must be the case that the vales of $k_1, k_2,$ and $k_3$ are reasonably good approximations of $p_1, p_2,$ and $p_3$ in the sense that the multinomial probability $m_{p}(k_1, k_2, k_3)$ is taken larger than the crude, albeit polynomial, lower bound of $(k_1+k_2+k_3+1)^{-2}$.
+Additionally, in order to apply the ensemble approximation lemma in parallel three times as we have done here, one must show that these reasonably good approximations can be made for $(p_1, p_2, p_3)$, $(p_1, p_2)/(p_1+p_2)$ and $(p_2, p_3)/(p_2+p_3)$ for the \textit{same} tuple of integers $(k_1, k_2, k_3)$.
+While this is not too difficult to demonstrate, we omit a proof of this claim here.
+
+At this stage, consider the following sextuple of projection operators actings on $\mathcal H^{\ot k_6}$,
+\begin{align}
+    \Pi_{\alpha} &\coloneqq P_{\alpha} \ot I^{\ot k_2 + k_3}, \\
+    \Pi_{\beta} &\coloneqq I^{\ot k_1} \ot P_{\beta} \ot I^{\ot k_3}, \\
+    \Pi_{\gamma} &\coloneqq I^{\ot k_1 + k_2} \ot P_{\gamma} , \\
+    \Pi_{\mu} &\coloneqq P_{\mu} \ot I^{\ot k_3}, \\
+    \Pi_{\nu} &\coloneqq I^{\ot k_1} \ot P_{\nu}, \\
+    \Pi_{\lambda} &\coloneqq P_{\lambda}.
+\end{align}
+It can be shown (using applications of Schur's lemma for $U(d)$ for example) that almost all pairs of projection operators in $\{\Pi_{\alpha}, \Pi_{\beta}, \ldots, \Pi_{\lambda}\}$ are commuting; the only exception is the pair $\{ \Pi_{\mu}, \Pi_{\nu} \}$.
+Define the following projection operators,
+\begin{align}
+    \Pi_{\alpha\beta\gamma} &= \Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}, \\
+    \Pi_{\alpha\beta\gamma\lambda} &= \Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}, \\
+    \Pi^{\mu}_{\alpha\beta\gamma\lambda} &= \Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}, \\
+    \Pi^{\nu}_{\alpha\beta\gamma\lambda} &= \Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}.
+\end{align}
+Additionally, define
+\begin{equation}
+    \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \coloneqq \rho_1^{\ot k_1} \ot \rho_2^{\ot k_2} \ot \rho_3^{\ot k_3}.
+\end{equation}
+In any case, the upper bounds above are equivalent to the following upper bounds:
+\begin{align}
+    \Tr(\Pi_{\alpha} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_1 + 1)^{d(d-1)/2} \exp(-k_1 \kl{\bar \alpha}{r_1}), \\
+    \Tr(\Pi_{\beta} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_2 + 1)^{d(d-1)/2} \exp(-k_2 \kl{\bar \beta}{r_2}), \\
+    \Tr(\Pi_{\gamma} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_3 + 1)^{d(d-1)/2} \exp(-k_3 \kl{\bar \gamma}{r_3}), \\
+    \Tr(\Pi_{\mu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_4+1)^{d(d-1)/2+1} \exp(-k_4 \kl{\bar \mu}{r_4}), \\
+    \Tr(\Pi_{\nu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_5+1)^{d(d-1)/2+1} \exp(-k_5 \kl{\bar \nu}{r_5}), \\
+    \Tr(\Pi_{\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq (k_6+1)^{d(d-1)/2+2} \exp(-k_6 \kl{\bar \lambda}{r_6}).
+\end{align}
+Henceforth let the polynomial prefactors be accounted for using the expression
+\begin{equation}
+    L^d_c(k) \coloneqq \left(\frac{d(d-1)}{2} + c\right)\log (k+1).
+\end{equation}
+Using $L^d_c(k)$, the above bounds can be re-expressed as
+\begin{align}
+    \Tr(\Pi_{\alpha} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_1 \kl{\bar \alpha}{r_1} + L^d_0(k_1)), \\
+    \Tr(\Pi_{\beta} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_2 \kl{\bar \beta}{r_2} + L^d_0(k_2)), \\
+    \Tr(\Pi_{\gamma} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_3 \kl{\bar \gamma}{r_3} + L^d_0(k_3)), \\
+    \Tr(\Pi_{\mu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_4 \kl{\bar \mu}{r_4} + L^d_1(k_4)), \\
+    \Tr(\Pi_{\nu} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_5 \kl{\bar \nu}{r_5} + L^d_1(k_5)), \\
+    \Tr(\Pi_{\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}) &\leq \exp(-k_6 \kl{\bar \lambda}{r_6} + L^d_2(k_6)).
+\end{align}
+An application of the Cauchy-Schwarz inequality to the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ with $X = \Omega^{\frac{1}{2}}\Pi_1$ and $Y = \Omega^{\frac{1}{2}}\Pi_2$ (where $\Pi_i$ Hermitian projector and $\Omega$ positive-semi definite Hermitian) yields
+\begin{align}
+    \abs{\Tr(\Pi_1 \Omega \Pi_2)}^2 
+    &= \abs{\Tr((\Omega^{\frac{1}{2}}\Pi_1)^{\dagger}(\Omega^{\frac{1}{2}}\Pi_2))}^2 \\
+    &= \abs{\braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_2}}^{2} \\
+    &\leq \braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_1}\braket{\Omega^{\frac{1}{2}}\Pi_2, \Omega^{\frac{1}{2}}\Pi_2} \\
+    &= \Tr(\Pi_1 \Omega)\Tr(\Pi_2 \Omega)
+\end{align}
+Additionally, if $[\Pi_1, \Pi_2]=0$ then $\abs{\Tr(\Pi_1 \Omega \Pi_2)} = \abs{\Tr(\Pi_2\Pi_1\Pi_2\Omega)} = \Tr(\Pi_2\Pi_1\Pi_2\Omega) \geq 0$.
+Similarly, taking $X = \left(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}\right)^{\frac{1}{2}}\Pi^{\mu}_{\alpha\beta\gamma\lambda}$ and $Y = \left(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}\right)^{\frac{1}{2}}\Pi^{\nu}_{\alpha\beta\gamma\lambda}$ yields
+\begin{equation}
+    \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}^{2} \leq \Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi^{\nu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}).
+\end{equation}
+Chaining these bounds together produces a (perhaps sub-optimal but nevertheless sufficient) upper bound
+\begin{align}
+    &\abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}^4\\
+    &\qquad\leq \Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2\Tr(\Pi^{\nu}_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2, \\
+    &\qquad\leq \Tr(\Pi_{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\nu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\alpha\beta\gamma\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^2, \\
+    &\qquad\leq \Tr(\Pi_{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\nu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})\Tr(\Pi_{\alpha}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\times \cdots \\
+    &\qquad\qquad\times \Tr(\Pi_{\beta}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\Tr(\Pi_{\gamma}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}\Tr(\Pi_{\lambda}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})^{\frac{1}{2}}
+\end{align}
+Therefore,
+\begin{equation}
+    \label{eq:sextuple_total_upper_bound}
+    \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})} \leq \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6)))
+\end{equation}
+where (under the hand-wavy approximations $p_i \approx k_i/k_6$) we define
+\begin{align}
+    \begin{split}
+        I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}
+        &= \frac{p_1}{2}\kl{\bar \alpha}{r_1}+\frac{p_2}{2}\kl{\bar \beta}{r_2}+\frac{p_3}{2}\kl{\bar \gamma}{r_3}+\cdots \\
+        &\qquad \cdots +\frac{p_1+p_2}{4}\kl{\bar \mu}{r_4}+\frac{p_2+p_3}{4}\kl{\bar \nu}{r_5}+\frac{1}{2}\kl{\bar \lambda}{r_6}
+    \end{split}
+\end{align}
+The crucial property of the rate function here is that $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} \geq 0$ always while $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} = 0$ only if $\bar \alpha = r_1$, $\bar \beta = r_2$, $\ldots$, $\bar \lambda = r_6$.
+
+At this stage, one can use the completeness property $\sum_{\lambda} \Pi_{\lambda} = I$ to prove
+\begin{equation}
+    1 
+    = \Tr(\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3})
+    = \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda}\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda}).
+\end{equation}
+Taking absolute values (and using subaddivity) and applying \cref{eq:sextuple_total_upper_bound} produces
+\begin{align}
+    1
+    &\leq \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda}\abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}, \\ 
+    &\leq \sum_{\alpha, \beta, \gamma, \mu, \nu, \lambda} \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6))).
+\end{align}
+As there are at most
+\begin{equation}
+    U(k_1, k_2, k_3) \coloneqq (k_1+1)^{d-1}(k_2+1)^{d-1}(k_3+1)^{d-1}(k_1+k_2+1)^{d-1}(k_2+k_3+1)^{d-1}(k_1+k_2+k_3+1)^{d-1}
+\end{equation}
+possible summands, the above equation implies there exists a (possibly non-unique) sextuple $\alpha', \beta', \gamma', \mu', \nu', \lambda'$ (implicitly dependent upon the $k_i$'s) such that
+\begin{equation}
+    \label{eq:occasionality_lower_bound}
+    \exp( - k_6 I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha', \beta', \gamma', \mu', \nu', \lambda'} + O(\log(k_6))) \geq \abs{\Tr(\Pi^{\mu'}_{\alpha'\beta'\gamma'\lambda'} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu'}_{\alpha'\beta'\gamma'\lambda'})} \geq U(k_1, k_2, k_3)^{-1}
+\end{equation}
+which implies
+\begin{equation}
+    I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha', \beta', \gamma', \mu', \nu', \lambda'} \leq \frac{1}{k_6}\log U(k_1,k_2,k_3) + \frac{1}{k_6}O(\log(k_6)) = O(\log(k_6)/k_6)
+\end{equation}
+which tends to zero as $k_i$'s tend to infinity.
+Therefore, this sequence of sextuples of integer partitions converge to the given spectra in the sense that
+\begin{align}
+    \bar \alpha' \to r_1, \quad
+    \bar \beta' \to r_2, \quad
+    \bar \gamma' \to r_3, \quad
+    \bar \mu' \to r_4, \quad
+    \bar \nu' \to r_5, \quad
+    \bar \lambda' \to r_6.
+\end{align}
+
+In addition, by considering any purification of $\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}$ one additionally obtains a bound on the \textit{operator norm}, $\norm{\cdot}_{\infty}$, of the product of all $\Pi$'s (noting that the operator norm also satisfies $\norm{X \ot I}_{\infty} = \norm{X}_{\infty}$).
+This bound takes the form
+\begin{equation}
+    \label{eq:prod_proj_op_lower_bound}
+    \norm{\Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty} = \norm{\Pi^{\mu}_{\alpha\beta\gamma\lambda}\Pi^{\nu}_{\alpha\beta\gamma\lambda}}_{\infty} \geq \abs{\Tr(\Pi^{\mu}_{\alpha\beta\gamma\lambda} \Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi^{\nu}_{\alpha\beta\gamma\lambda})}.
+\end{equation}
+(The inequality comes from $\norm{XY}_{\infty}^2 \geq \braket{XY v, XY v} \geq \abs{\braket{v, XYv}}^{2}$ for all $v$ with unit norm.)
+Furthermore, one can show by a detailed diagrammatic calculation that there exists appropriate isometries $\iota_{I}$ and $\iota_{II}$ such that
+\begin{equation}
+    \label{eq:recoupling_prod_proj_iso}
+    \iota_{II} \left(I_{U^{d}_{\lambda}} \ot I_{V_{\alpha}} \ot I_{V_{\beta}} \ot I_{V_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger} = \Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}
+\end{equation}
+which in turn implies an equality of operator norms
+\begin{equation}
+    \label{eq:recoupling_prod_proj_iso_norm}
+    \norm{\begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty} = \norm{\Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty}
+\end{equation}
+By combining \cref{eq:prod_proj_op_lower_bound,eq:recoupling_prod_proj_iso_norm,eq:occasionality_lower_bound} we obtain a inverse polynomial lower bound for the operator norm of the recoupling operator of the form
+\begin{equation}
+    \norm{\begin{Bmatrix} \alpha' & \beta' & \mu' \\ \gamma' & \lambda' & \nu' \end{Bmatrix}}_{\infty}
+    \geq U(k_1,k_2,k_3)^{-1} \geq (k_1+k_2+k_3+1)^{-6(d-1)}
+\end{equation}
+
+In summary, we have shown that the existence of a certain configuration of density matrices implies a polynomial lower bound on the operator norm of the recoupling operator for $U(d)$ representations (modulo the $p_i \approx k_i/k_6$ approximation which needs to be justified),
+\begin{thm}
+    Let $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ be given and let $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$ be a sextuple of candidate spectra.
+    If there exists a sextuple of density operators $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a sequence of sextuples $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ of integer partitions satisfying both
+    \begin{equation}
+        \label{eq:sequential_recoupling_norm_lower_bound}
+        \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
+        \geq (n+1)^{-6(d-1)}
+    \end{equation}
+    (for sufficiently large $n$) and the following convergences
+    \begin{equation}
+        \label{eq:sextuple_convergence_condition}
+        \begin{alignedat}{3}
+            \lim_{n\to\infty} \frac{\alpha^{(n)}}{\abs{\alpha^{(n)}}} &= r_1, \qquad
+            \lim_{n\to\infty} \frac{\beta^{(n)}}{\abs{\beta^{(n)}}} &&= r_2, \qquad
+            \lim_{n\to\infty} \frac{\gamma^{(n)}}{\abs{\gamma^{(n)}}} &&= r_3, \\
+            \lim_{n\to\infty} \frac{\mu^{(n)}}{\abs{\mu^{(n)}}} &= r_4, \qquad
+            \lim_{n\to\infty} \frac{\nu^{(n)}}{\abs{\nu^{(n)}}} &&= r_5, \qquad
+            \lim_{n\to\infty} \frac{\lambda^{(n)}}{\abs{\lambda^{(n)}}} &&= r_6, \\
+            \lim_{n\to\infty} \frac{\abs{\alpha^{(n)}}}{\abs{\lambda^{(n)}}} &= p_1, \qquad
+            \lim_{n\to\infty} \frac{\abs{\beta^{(n)}}}{\abs{\lambda^{(n)}}} &&= p_2, \qquad
+            \lim_{n\to\infty} \frac{\abs{\gamma^{(n)}}}{\abs{\lambda^{(n)}}} &&= p_3.
+        \end{alignedat}
+    \end{equation}
+\end{thm}
+
+\begin{rem}
+    Note that the satisfication of \cref{eq:sequential_recoupling_norm_lower_bound} for some $n \in \mathbb N$ automatically entails that $\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix} \neq 0$ and thus $c_{\alpha,\beta}^{\mu}, c_{\beta,\gamma}^{\nu}, c_{\mu,\gamma}^{\lambda}, c_{\alpha,\nu}^{\lambda} \neq 0$ and thus the sequences of integer partitions also satisfy equality the following equality constraints
+    \begin{align}
+        \abs{\alpha^{(n)}} + \abs{\beta^{(n)}} &= \abs{\mu^{(n)}}, \\
+        \abs{\beta^{(n)}} + \abs{\gamma^{(n)}} &= \abs{\nu^{(n)}}, \\
+        \abs{\alpha^{(n)}} + \abs{\beta^{(n)}} + \abs{\gamma^{(n)}} &= \abs{\lambda^{(n)}}.
+    \end{align}
+\end{rem}
+
+\subsection{From recoupling to states}
+
+In this section, our objective is to prove the converse of the above theorem.
+Specifically, if the norm of a sequence of recoupling operators with components satisfying \cref{eq:sextuple_convergence_condition} admits of a polynomial lower bound, then there necessarily exists of a configuration of density matrices satisfying \cref{eq:sextuple_config_constraints}.
+In fact, this converse statement follows from a stronger claim that when there does not exist a configuration of density matrices satisfying the spectral constraints, every tuple of sequences of integer partitions satisfying \cref{eq:sextuple_config_constraints} has recoupling operator norm eventually decaying at an exponential rate.
+
+Consider the following operator defined by an integeral over the normalized Hilbert-Schmidt measure $\diff \rho$ on density matrices and a given $k \in \mathbb N$:
+\begin{equation}
+    \mathbb E\left[ \sigma^{\ot k} \right] = \int \diff \sigma \sigma^{\ot k} \geq \binom{k+d^2-1}{k}^{-1} \rho^{\ot k} \geq (k+1)^{-(d^2-1)} \rho^{\ot k}.
+\end{equation}
+The three-fold tensor product of the above operator is an integral over $\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}$ and has the form
+\begin{equation}
+    \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \coloneqq \int \diff \sigma_1 \int \diff \sigma_2 \int \diff \sigma_3 \Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}.
+\end{equation}
+The operator $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ is equivariant with respect to the natural action of 
+\begin{equation}
+    S_{k_1} \times S_{k_2} \times S_{k_3} \times U(d) \times U(d) \times U(d).
+\end{equation}
+Schur's lemma therefore implies that the operator $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ is equal to a positive sum of projection operators of the form $\Pi_{\alpha\beta\gamma}$ (where $\alpha \vdash k_1, \beta \vdash k_2$, and $\gamma \vdash k_3$) with the following coefficients:
+\begin{equation}
+    \label{eq:mean_tensor_power_decomp}
+    \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] = \sum_{\alpha,\beta,\gamma} R_{\alpha\beta \gamma}\Pi_{\alpha\beta\gamma}
+\end{equation}
+with coefficient $R_{\alpha \beta \gamma}$ given by a ratio of dimensions
+\begin{equation}
+    R_{\alpha \beta \gamma} 
+    =
+    \frac{1}{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})} 
+    \frac{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})}{\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})}.
+\end{equation}
+Consequently, $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ commutes with the projection operators $\Pi_{\mu}, \Pi_{\nu}$ and $\Pi_{\lambda}$ and thus also $\Pi_{\alpha\beta\gamma\lambda}^{\mu}$ and $\Pi_{\alpha\beta\gamma\lambda}^{\nu}$.
+In fact the following holds
+\begin{equation}
+    \Pi_{\alpha\beta\gamma\lambda}^{\mu}\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]\Pi_{\alpha\beta\gamma\lambda}^{\nu} = R_{\alpha\beta\gamma} \Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}
+\end{equation}
+
+Also since operator $X$ acting on a $D$-dimesional vector space satisfies $\norm{X}_{\infty} \leq \norm{X}_{\mathrm{HS}} \leq \sqrt{D}\norm{X}_{\infty}$, one has a polynomial equivalence between the norms of the recoupling symbol
+\begin{equation}
+    \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty}
+    \leq \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\mathrm{HS}}
+    \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}}\norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty}
+\end{equation}
+For the product of projectors, $\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}$, the only (polynomial or better) bound one has is simply
+\begin{equation}
+    \norm{\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}}_{\infty} 
+    \leq 
+    \norm{\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}}_{\mathrm{HS}} 
+    = \sqrt{ \Tr(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu})}
+\end{equation}
+Using the decomposition provided by \cref{eq:recoupling_prod_proj_iso}, together with \cref{eq:sextuple_total_upper_bound} and \cref{eq:mean_tensor_power_decomp} yields
+\begin{align}
+    \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\mathrm{HS}}^2
+    &= \Tr\left(\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}^{\dagger}\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \\
+    &= \frac{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}{\dim(U^{d}_{\lambda})\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})} \\
+    &= Q_{\alpha\beta\gamma\lambda}\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu} \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)  \\
+    &\leq \sup_{\rho_1 \rho_2 \rho_3} Q_{\alpha\beta\gamma\lambda}\abs{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}  \\
+    &\leq Q_{\alpha\beta\gamma\lambda} \exp( - k_6 \inf_{\rho_1\rho_2\rho_3} I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6)))
+\end{align}
+where the infimum is taken over all density matrices $\rho_1, \rho_2, \rho_3$ with $r_i = \spec(\rho_i)$ for $i \in \{1,2,3\}$ and $r_4,r_5,r_6$ the spectra of the appropriate convex combinations of $\rho_1,\rho_2,\rho_3$ with weights determined by the relative sizes of the integer partitions involved (again here we are making the rather dubious substitution $p_i \approx k_i /k_6$ when substituting the function $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ \textcolor{red}{TODO: resolve this issue formally}.
+Also the scalar $Q_{\alpha\beta\gamma\lambda}$ is
+\begin{align}
+    Q_{\alpha\beta\gamma\lambda} 
+    &\coloneq \frac{1}{ R_{\alpha\beta\gamma} \dim(U^{d}_{\lambda}) \dim(V_\alpha) \dim(V_{\beta}) \dim(V_{\gamma})} \\
+    &= \frac{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})}{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})\dim(U^d_{\lambda})}
+\end{align}
+As we have seen prior, the rate function $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ only vanishes if all of the spectra match exactly.
+Furthermore, it can be shown that the infimum over $\rho_1, \rho_2, \rho_3$ of $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ is always bounded below by a constant $I^{*} > 0$ if there does not exist a configuration of density matrices satisfying the requirements.
+Consequently, we conclude the following theorem.
+\begin{thm}
+    Suppose $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ is a sequence of integer partitions satisfying \cref{eq:sextuple_convergence_condition} for some $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ and $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$.
+    If there does not exist a collection of density matrices $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a constant $I^{*} > 0$ such that
+    \begin{equation}
+        \label{eq:sequential_recoupling_norm_upper_bound}
+        \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
+        \leq \exp(-n I^{*} + O(\log n))
+    \end{equation}
+\end{thm}
+
+\begin{rem}
+    It appears that I did not make explicit use of the following operator inequalities when proving the above theorem.
+    \begin{equation}
+        \mathbb E\left[ \sigma^{\ot k} \right] \geq (k+1)^{-(d^2-1)} \rho^{\ot k}.
+    \end{equation}
+    \begin{equation}
+        \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \geq \left((k_1+1)(k_2+1)(k_3+1)\right)^{-d^2+1}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3}.
+    \end{equation}
+\end{rem}
+
+
 
 
 \clearpage
