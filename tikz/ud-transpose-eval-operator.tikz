@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (62) at (2.25, 0.75) {};
+		\node [style=none] (63) at (3.25, 0.75) {};
+		\node [style=none] (64) at (3.25, -0.75) {};
+		\node [style=none] (65) at (2.25, -0.75) {};
+		\node [style=none] (66) at (2.25, 1.75) {};
+		\node [style=none] (70) at (1.5, 1.5) {$C^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (74) at (1.75, -0.75) {};
+		\node [style=none] (75) at (2, 0.75) {};
+		\node [style=none] (76) at (3.75, -0.75) {};
+		\node [style=none] (77) at (3.5, 0.75) {};
+		\node [style=none] (78) at (2.75, 0) {$Y^{\gamma \dagger}_{\alpha,\beta}$};
+		\node [style=none] (79) at (3.25, 1.75) {};
+		\node [style=none] (80) at (3.25, -1.75) {};
+		\node [style=none] (81) at (2.25, -1.75) {};
+		\node [style=none] (82) at (1.75, -1.5) {$L_\alpha$};
+		\node [style=none] (83) at (3.75, -1.5) {$L_\beta$};
+		\node [style=none] (84) at (3.75, 1.5) {$L_\gamma$};
+		\node [style=none] (89) at (-2.5, 1.75) {};
+		\node [style=none] (90) at (-3.25, 1.5) {$C^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (96) at (-1.5, 1.75) {};
+		\node [style=none] (97) at (-1.5, -1.75) {};
+		\node [style=none] (98) at (-2.5, -1.75) {};
+		\node [style=none] (99) at (-3, -1.5) {$L_\alpha$};
+		\node [style=none] (100) at (-1, -1.5) {$L_\beta$};
+		\node [style=none] (101) at (-1, 1.5) {$L_\gamma$};
+		\node [style=dot] (102) at (-2, 0) {};
+		\node [style=none] (103) at (0, 0) {$=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=kron] (62.center) to (66.center);
+		\draw [style=box] (76.center)
+			 to (74.center)
+			 to (75.center)
+			 to (77.center)
+			 to cycle;
+		\draw [style=mid-route] (63.center) to (79.center);
+		\draw [style=mid-route] (81.center) to (65.center);
+		\draw [style=mid-route] (80.center) to (64.center);
+		\draw [style=kron, in=-90, out=135, looseness=0.75] (102) to (89.center);
+		\draw [style=mid-route, in=-90, out=45, looseness=0.75] (102) to (96.center);
+		\draw [style=mid-route, in=-135, out=90, looseness=0.75] (98.center) to (102);
+		\draw [style=mid-route, in=-45, out=90, looseness=0.75] (97.center) to (102);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -5,7 +5,7 @@
 
 % Node styles
 \tikzstyle{tight}=[fill=white, draw=black, shape=circle, inner sep=0.1mm, minimum size=1.3em]
-\tikzstyle{dot}=[fill=white, draw=black, shape=circle, inner sep=0.3mm]
+\tikzstyle{dot}=[fill=white, draw=black, shape=circle, inner sep=0.5mm]
 \tikzstyle{adj}=[fill=black, draw=black, shape=circle, inner sep=0.15mm]
 \tikzstyle{crossing}=[fill=none, draw=none, shape=circle, tikzit fill={rgb,255: red,191; green,191; blue,191}, tikzit draw={rgb,255: red,191; green,191; blue,191}, inner sep=0.5mm]
 \tikzstyle{discard}=[fill=black, draw=black, inner sep=0.4mm, shape=circle]

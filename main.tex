@@ -1,4 +1,4 @@
-\documentclass[notitlepage, 12pt]{article}
+\documentclass[notitlepage, 10pt]{article}
 \input{imports/preamble}
 
 \author[1]{Thomas C. Fraser}
@@ -341,7 +341,7 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
 }
 
 There is a well-established and fundamental connection between the eigenvalues of sums of Hermitian matrices and the representation theory of the general linear group \cite{klyachko1998stable,knutson1999honeycomb,knutson2000symplectic,fulton2000eigenvalues,bhatia2001linear,christandl2008quantum,berline2018horn}.
-The purpose of section is briefly summarize the nature of this connection (\cref{sec:trigonal_lr_coeff}) and then describe the manner in which this fundamental connection generalizes to graphical Horn problems.
+The purpose of section is briefly summarize the nature of this connection and then describe the manner in which this fundamental connection generalizes to graphical Horn problems.
 
 \subsection{Preliminaries}
 \label{sec:prelim}
@@ -415,21 +415,116 @@ It can be shown that the moment map $\Phi_{\ell} : \s M_{\ell} \to \herm(d)$ ass
 \end{equation}
 and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is satisfied.
 
+\subsection{Littlewood-Richardson coefficients \& recoupling operators}
 
-\subsection{Trigonal spectra \& Littlewood-Richardson coefficients}
-\label{sec:trigonal_lr_coeff}
-
-\begin{defn}
+\begin{defn}[Littlewood-Richarson coefficients]
+    \label{defn:lr_coeffs}
     Let $\alpha, \beta, \gamma \in \domweights{d}$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
     Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \ot L_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) = \Inv_{\GL(d)}(L_{\gamma^*} \ot L_{\alpha} \ot L_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Inv_{\GL(d)}(L_{\gamma^*} \ot L_{\alpha} \ot L_{\beta}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
     \begin{equation}
         c_{\alpha,\beta}^{\gamma} \coloneqq \dim(C_{\alpha, \beta}^{\gamma}).
     \end{equation}
 \end{defn}
+\begin{defn}[Clebsch-Gordon isometries]
+    Given $\alpha,\beta,\gamma$ as in \cref{defn:lr_coeffs}, a \textit{Clebsch-Gordon isometry} is a $\GL(d)$-equivariant isometric linear map sending $f \ot v \in C_{\alpha,\beta}^{\gamma} \ot L_{\gamma}$ to $f(v) \in L_{\alpha}\ot L_{\beta}$\footnote{If $C_{\alpha,\beta}^{\gamma} = 0$, then $Y_{\alpha,\beta}^{\gamma}$ is identified with the origin in $L_{\alpha}\otimes L_{\beta}$.}.
+    Let
+    \begin{equation}
+        Y_{\alpha,\beta}^{\gamma} : C_{\alpha,\beta}^{\gamma} \ot L_{\gamma} \to L_{\alpha} \ot L_{\beta},
+    \end{equation}
+    be a Clebsch-Gordon isometry and depict it diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-eval-operator}.
+    \end{equation}
+    The conjugate transpose of the Clebsch-Gordon isometry is 
+    \begin{equation}
+        Y_{\alpha,\beta}^{\gamma \dagger} : L_{\alpha} \ot L_{\beta} \to C_{\alpha,\beta}^{\gamma} \ot L_{\gamma},
+    \end{equation}
+    will be depicted diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-transpose-eval-operator}.
+    \end{equation}
+\end{defn}
+
+
+\begin{defn}[Recoupling operators]
+    \label{defn:ud_recoupling_operator}
+    Let $x,y,z$ and $d$ be positive integers and let 
+    \begin{align}
+            \alpha \in \ydia[d]{x},
+            \delta \in \ydia[d]{z},
+            \beta \in \ydia[d]{y},
+            \epsilon \in \ydia[d]{x+y+z},
+            \gamma \in \ydia[d]{x+y},
+            \quad \phi \in \ydia[d]{y+z}.
+    \end{align}
+    The \defnsty{$\U(d)$-recoupling operator} is the operator
+    \begin{equation}
+        \abcdefsymbol
+        :
+        C^{\gamma}_{\alpha,\beta} \ot C^{\epsilon}_{\delta,\gamma} \to C^{\epsilon}_{\alpha, \phi} \ot C^{\phi}_{\beta,\delta},
+    \end{equation}
+    defined by
+    \begin{equation}
+        \abcdefsymbol 
+        \coloneqq
+        \frac{
+            \Tr_{L_{\epsilon}}[
+            Y_{\alpha,\phi}^{\epsilon\dagger}
+            (\id_{L_{\alpha}}\ot Y_{\beta,\delta}^{\phi\dagger})
+            (Y_{\alpha,\beta}^{\gamma}\ot\id_{L_{\delta}})
+            Y_{\gamma,\delta}^{\epsilon}
+            ]
+        }{\dim(L_{\epsilon})},
+    \end{equation}
+    which is depicted diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-recoupling-defn-explicit}.
+    \end{equation}
+\end{defn}
+{\color{red}
+    WARNING: The convention I am using for the curly braces seems to differ from many of the uses of the curly braces to define the Wigner 6j coefficient which differs in that I think the Wigner 6j coefficient does not include the additional factor of $\dim(L_{\epsilon})$.
+}
+
+Subsequent sections will primarily be interested in the square of the Hilbert-Schmidt norm of the recoupling operator in \cref{defn:ud_recoupling_operator}.
+While the individual coefficients of the recoupling operator are dependent on a choice of basis for each of the multiplicity spaces, its Hilbert-Schmidt and operator norms are not dependent on such a choice of basis.
+The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over a quadruple $(u_1, u_2, u_3, u_4) \in \SU(d)^{\times 4}$.
+\begin{lem}[Character formula]
+    \label{lem:character_formula}
+    Let $\abcdefsymbol : C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
+    Then
+    \begin{equation}
+        \label{eq:character_formula}
+        \dim(L_{\epsilon})^{2}
+        \norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
+        = \int_{\SU(d)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4).
+    \end{equation}
+    where
+    \begin{equation}
+        X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\alpha}(u_1^{-1}u_2)\chi_{\beta}(u_4^{-1}u_2)\chi_{\gamma}(u_2^{-1}u_3)\chi_{\delta}(u_4^{-1}u_3)\chi_{\epsilon}(u_3^{-1}u_1)\chi_{\phi}(u_1^{-1}u_4)
+    \end{equation}
+\end{lem}
+Note that when $d = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(2)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
+\begin{proof}[Proof of \cref{lem:character_formula}]
+    The proof follows from (i) the following identities concerning the character $\chi_{\lambda}(u) = \Tr(\pi_{\lambda}(u))$ and duality $\pi_{\lambda}^{*}(u) = (\pi_{\lambda}(u^{-1}))^{T}$ relations
+    \begin{equation}
+        \tikzfig{tikz/character-duality},
+    \end{equation}
+    and (ii) the integral formula for the projection operator $\Pi_{\alpha,\beta}^{\gamma}$ onto the subspace of invariant vectors in $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}^{*}$:
+    \begin{equation}
+        \tikzfig{tikz/triple-invariant-proj}.
+    \end{equation}
+    Applied four times, we obtain
+    \begin{equation}
+        \tikzfig{tikz/ud-recoupling-character-formula}.
+    \end{equation}
+\end{proof}
+
+\subsection{Trigonal \& polygonal spectra}
+\label{sec:trigonal_spectra}
 
 Our first result can be viewed as a simple condition which is sufficient to conclude that a given triple of integer eigenvalues are trigonal.
 \begin{lem}
@@ -507,14 +602,18 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
 \end{proof}
 
 \subsection{Tetrahedral spectra \& recoupling operators}
-\label{sec:recouple}
+\label{sec:tetraspec}
 
 \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
 
 \begin{rem}
     Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(d)$:
     \begin{equation}
-        \s L = L_{\alpha}\ot L_{\alpha^*} \ot L_{\beta} \ot L_{\beta^*} \ot L_{\gamma} \ot L_{\gamma^*} \ot L_{\delta} \ot L_{\delta^*} \ot L_{\epsilon} \ot L_{\epsilon^*} \ot L_{\phi} \ot L_{\phi^*}.
+        \s L = \s L^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq L_{\alpha}\ot L_{\alpha^*} \ot L_{\beta} \ot L_{\beta^*} \ot L_{\gamma} \ot L_{\gamma^*} \ot L_{\delta} \ot L_{\delta^*} \ot L_{\epsilon} \ot L_{\epsilon^*} \ot L_{\phi} \ot L_{\phi^*}.
+    \end{equation}
+    along with an associated symplectic manifold
+    \begin{equation}
+        \s M = \s M^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq \orbit_{\alpha} \times \orbit_{\alpha^*} \times \orbit_{\beta} \times \orbit_{\beta^*} \times \orbit_{\gamma} \times \orbit_{\gamma^*} \times \orbit_{\delta} \times \orbit_{\delta^*} \times \orbit_{\epsilon} \times \orbit_{\epsilon^*} \times \orbit_{\phi} \times \orbit_{\phi^*}.
     \end{equation}
     While the vector space $\s L$ naturally supports a representation of $\GL(d)^{\times 12}$, for the purposes of the tetrahedral Horn problem, there are three additional representations acting on $\s L$ that will be of interest; $\sigma_6 : \GL(d)^{\times 6} \to \GL(\s L)$, $\sigma_4 : \GL(d)^{\times 4} \to \GL(\s L)$ and $\sigma_1 : \GL(d) \to \GL(\s L)$:
     \begin{align}
@@ -549,7 +648,7 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
             (L_{\epsilon} \ot L_{\phi}^{*}  \ot L_{\alpha}^{*})^{\GL(d)} &\neq 0,
         \end{split}
     \end{align}
-    which, by \cref{prop:LR_pos_implies_herm}, implies the existence of Hermitian operators
+    which, by \cref{prop:LR_pos_implies_herm}, implies the existence of Hermitian operators in $\s M$
     \begin{equation}
         \label{eq:prime_unprime}
         A, A' \in \orbit_{\alpha}, \quad
@@ -576,12 +675,11 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     \end{equation}
     For all dominant weights $\lambda$, Schur's lemma implies
     \begin{equation}
-        (L_{\lambda} \otimes L_{\lambda}^{*})^{\GL(d)} \simeq \Hom_{\GL(d)}(L_{\lambda}, L_{\lambda}) \simeq \mathbb C \id_{L_\lambda},
+        (L_{\lambda} \ot L_{\lambda}^{*})^{\GL(d)} \simeq \Hom_{\GL(d)}(L_{\lambda}, L_{\lambda}) \simeq \mathbb C \id_{L_\lambda},
     \end{equation}
     which in turn implies the subspace of $\GL(d)^{\times 6}$-invariant vectors in $\s L$ is always one-dimensional, $\dim (\s L_{6}) = 1$.
     In any case, if there exists a vector which is \textit{both} $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$, i.e., $w \in \s L_{6} \cap \s L_{4} \neq 0$, then it can be shown (by similar arguments to the proof of \cref{prop:LR_pos_implies_herm}\footnote{Specifically, one begins with a generic twelve-fold coherent product vector $v_0 \in \s L$ and iteratively flowing along gradients to minimize the norm of $\sigma_{6}(g'_i)\sigma_{4}(g_j)v_{n-1} \in \s L$ with respect to $g'_i$ and $g_j$ to obtain $v_{n} \in \s L$. The resulting sequence of points exhibits a limit point $\tilde v$ which is (i) non-zero (because $\braket{w, \tilde v} = \braket{w, v_n} = \braket{w, v_0} \neq 0$), and (ii) minimal in norm with respect to both orbits, i.e. both moment maps vanish: $\mu_4([\tilde v]) = 0$ and $\mu_{6}([\tilde v]) = 0$. \textcolor{blue}{Thanks to Harold for sketching out this argument for me.}}) that there exists Hermitian operators
     \begin{equation}
-        \label{eq:prime_unprime}
         A \in \orbit_{\alpha}, \quad
         B \in \orbit_{\beta}, \quad
         C \in \orbit_{\gamma}, \quad
@@ -597,8 +695,9 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         E - F - A = 0.
     \end{equation}
     In other words, the existence of a $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
-    However, using the results of \cref{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
+    However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
 \end{rem}
+
 \begin{rem}
     In \cite{roberts1999classical}, \citeauthor{roberts1999classical} originally used the stationary phase  method to prove the \citeauthor{ponzano1968semiclassical} semiclassical formula \cite{ponzano1968semiclassical} for the $6j$ coefficients (i.e., the $d=2$ recoupling symbol).
     In order to apply the technique of stationary phases, it must be the case that exponent in the integrand has \textit{isolated} critical points.
@@ -608,12 +707,16 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         TODO: For the more general case of $d \geq 3$, it is unclear to me if the analogous critical points (whose union is identified with all Hermitian matrix-valued solutions to the tetrahedral equations) correspond to a finite number of disjoint coadjoint orbits under the subgroup $\GL(d)$ (as in the $d=2$ case). 
         As a result, at the moment, it is unclear to me how to establish an asymptotic formula $\abcdefsymbol$ in the ``scaling $\lambda \mapsto k \lambda$'' regime.
         Instead, it seems the next best thing is to use the ``completeness-type'' relations between various recoupling symbols to prove the existence of a convergent sequence of weights such that the corresponding sequence of recoupling symbols admits of a power-law type lower bound.
+    
+        Even if we were to stipulate/conjecture/assume that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are such that $(\mu_{E}^{-1}(0) \cap \mu_{V}^{-1}(0))/\GL(d)$ consists of a finite number of isolated fixed points (as in the $d = 2$, non-degenerate case considered by \citeauthor{roberts1999classical}, it would be a great deal of work to compute the Hessians and phases at each of the critical points in order to formally check that the phases are \textit{NOT} ``misaligned'' in the sense that the complex contributions destructively interfere leading to a trivial lower-bound on the norm of $\abcdefsymbol$ of zero.
     }
 \end{rem}
+
 \begin{lem}
     \label{lem:completeness_relation}
+    \textcolor{red}{TODO: Figure out what statement of the completeness relation is actually needed.}
     Let $x,y,z$ and $d$ be fixed but arbitrary positive integers.
-    The recoupling operators $\abcdefsymbol$ for $\SU(d)$ satisfy the following identity:
+    Then recoupling operators $\abcdefsymbol$ for $\SU(d)$ satisfy the following identity:
     \begin{equation}
         \sum_{\substack{\alpha \beta \gamma \\ \delta \epsilon \phi}} \norm{\abcdefsymbol}_{\text{HS}}^{2} = d^{x+y+z}
     \end{equation}
@@ -627,6 +730,8 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         \phi \vdash_d y+z.
     \end{equation}
 \end{lem}
+
+
 
 \subsection{The asymptotics of irrep dimensions}
 
@@ -1162,6 +1267,12 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
     \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
     \item The original Ponzano-Regge paper \cite{ponzano1968semiclassical}
+    \item \citeauthor{gurau2008ponzano} derives the Ponzano-Regge asymptotic formula directly using Stirling's approximation applied to Racah's single-sum formula \cite{gurau2008ponzano}
+    \item \citeauthor{bartlett2023coherent} work with so-called \textit{coherent loop states} or \textit{Bohr-Sommerfeld states} to develop some semiclassical results concerning the inner products between such states (see also the talk on Youtube) \cite{bartlett2023coherent}
+    \item \citeauthor{bianchi2011polyhedra} uses Minkowski's theorem to parametrize convex polyhedra in $\mathbb R^{3}$ with specified face areas and the associated Kapovich-Millson phase space (i.e., the \textit{space of shapes of polyhedra with fixed areas} and then considers its connection to loop quantum gravity via the usual Guillemin-Sternberg quantization commutes with reduction philosophy which associates invariants of the quantization of the unreduced phase space to the reduced phase space \cite{bianchi2011polyhedra} (notice the connection with \cite{haggard2016encoding}).
+    \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
+    \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
+    \item \citeauthor{charles2010quantization} quantization of polygon spaces, tetrahedron and semiclassical limits \cite{charles2010quantization}
 \end{itemize}
 
 \appendix
@@ -1251,7 +1362,7 @@ Combining two instances of the above result yields:
     \end{equation}
     The \defnsty{Young recoupling operator} is the operator
     \begin{equation}
-        \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
+        \abcdefsymbol
         :
         C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma},
     \end{equation}

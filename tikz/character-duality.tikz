@@ -1,0 +1,70 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (456) at (-1, 0) {$\lambda$};
+		\node [style=none] (458) at (-4, 0.5) {};
+		\node [style=none] (459) at (-4, -0.5) {};
+		\node [style=none] (460) at (-2, -0.5) {};
+		\node [style=none] (461) at (-2, 0.5) {};
+		\node [style=none] (462) at (-3, 0) {$\pi_{\lambda}(u)$};
+		\node [style=none] (463) at (-3, 0.5) {};
+		\node [style=none] (464) at (-3, -0.5) {};
+		\node [style=none] (465) at (-1.5, 0.5) {};
+		\node [style=none] (466) at (-1.5, -0.5) {};
+		\node [style=none] (467) at (-6, 0) {$\chi_{\lambda}(u)$};
+		\node [style=none] (468) at (-4.75, 0) {$=$};
+		\node [style=none] (469) at (2.5, -2) {$\gamma$};
+		\node [style=none] (470) at (2, -2) {};
+		\node [style=none] (471) at (2.5, 2) {$\gamma$};
+		\node [style=none] (472) at (2, 2) {};
+		\node [style=none] (473) at (1, 0.5) {};
+		\node [style=none] (474) at (1, -0.5) {};
+		\node [style=none] (475) at (3, -0.5) {};
+		\node [style=none] (476) at (3, 0.5) {};
+		\node [style=none] (477) at (2, 0) {$\pi_{\gamma}^{*}(u)$};
+		\node [style=none] (478) at (2, -0.5) {};
+		\node [style=none] (479) at (2, 0.5) {};
+		\node [style=none] (480) at (8.5, -2) {$\gamma$};
+		\node [style=none] (481) at (4.75, -0.5) {};
+		\node [style=none] (482) at (5.25, 2) {$\gamma$};
+		\node [style=none] (483) at (9, 0.5) {};
+		\node [style=none] (484) at (5.5, 0.5) {};
+		\node [style=none] (485) at (5.5, -0.5) {};
+		\node [style=none] (486) at (8.5, -0.5) {};
+		\node [style=none] (487) at (8.5, 0.5) {};
+		\node [style=none] (488) at (7, 0) {$\pi_{\gamma}(u^{-1})$};
+		\node [style=none] (489) at (7, -0.5) {};
+		\node [style=none] (490) at (7, 0.5) {};
+		\node [style=none] (492) at (9, -2) {};
+		\node [style=none] (494) at (4.75, 2) {};
+		\node [style=none] (495) at (3.75, 0) {$=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=box] (459.center)
+			 to (460.center)
+			 to (461.center)
+			 to (458.center)
+			 to cycle;
+		\draw [style=mid-route] (463.center)
+			 to [in=90, out=90, looseness=1.25] (465.center)
+			 to (466.center)
+			 to [in=-90, out=-90, looseness=1.25] (464.center);
+		\draw [style=box] (476.center)
+			 to (473.center)
+			 to (474.center)
+			 to (475.center)
+			 to cycle;
+		\draw [style=mid-route] (472.center) to (479.center);
+		\draw [style=mid-route] (478.center) to (470.center);
+		\draw [style=box] (487.center)
+			 to (484.center)
+			 to (485.center)
+			 to (486.center)
+			 to cycle;
+		\draw [style=mid-route] (490.center)
+			 to [bend left=90] (483.center)
+			 to (492.center);
+		\draw [style=mid-route] (494.center)
+			 to (481.center)
+			 to [bend right=90] (489.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

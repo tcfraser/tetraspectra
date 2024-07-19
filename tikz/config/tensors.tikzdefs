@@ -6,8 +6,8 @@
 % Custom spaced ABCDEF 6j recoupling symbol
 \newcommand{\abcdefsymbol}{
 \begingroup
-\arraycolsep=1pt
-\renewcommand{\arraystretch}{0.5}
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.75}
 \left\{\begin{array}{ccc}
     \alpha & \beta & \gamma \\ 
     \delta & \epsilon & \phi
