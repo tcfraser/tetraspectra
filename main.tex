@@ -16,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-    
+     
 \end{abstract}
 
 \tableofcontents
@@ -122,6 +122,13 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     Generalizing to $\mathbb Z$-valued $\Gamma$ is also essentially the same I think...
     One downside of dropping the graph $\s G$ is that the matrix $\Gamma$ loses the non-abelian information about the ordering of the elements in a cycle; this is problematic when discussing the ``quantum'' generalizations to multiplicative Horn-type problems.
     One upside of dropping the graph $\s G$, is that is becomes possible to ignore certain cycles of the graph (by dropping rows of $\Gamma$) and/or additionally including constraints non-easily associated to cycles of a common graph (like $A+C=Q, B+Q=L$ constraints for the tetrahedral problem).
+}
+
+{\color{red}
+    Another option is to consider dual graphs. 
+    The proposal would be to attribute a cycle constraints to oriented vertices with incoming and outgoing vertices.
+    This would make the connection to the networks built in the category of representations of $\GL(d)$ much more aparent.
+    TC: I missed this presentation because I fixated on the self-dual tetrahedron.
 }
 
 There are a few operations which preserve the set of realizable spectral maps.
@@ -491,15 +498,15 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
 
 Subsequent sections will primarily be interested in the square of the Hilbert-Schmidt norm of the recoupling operator in \cref{defn:ud_recoupling_operator}.
 While the individual coefficients of the recoupling operator are dependent on a choice of basis for each of the multiplicity spaces, its Hilbert-Schmidt and operator norms are not dependent on such a choice of basis.
-The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over a quadruple $(u_1, u_2, u_3, u_4) \in \SU(d)^{\times 4}$.
+The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over $\SU(d)^{\times 4}$.
 \begin{lem}[Character formula]
     \label{lem:character_formula}
     Let $\abcdefsymbol : C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
     Then
     \begin{equation}
         \label{eq:character_formula}
-        \dim(L_{\epsilon})^{2}
-        \norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
+        R^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq
+        \dim(L_{\epsilon})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
         = \int_{\SU(d)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4).
     \end{equation}
     where
@@ -522,6 +529,17 @@ Note that when $d = 2$, \cref{eq:character_formula} recovers the well-known form
         \tikzfig{tikz/ud-recoupling-character-formula}.
     \end{equation}
 \end{proof}
+
+{\color{blue}
+\begin{rem}
+    With the integral character formula $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cref{mcswiggen2021harish}:
+    \begin{equation}
+        K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim L_{\lambda}^{d} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
+    \end{equation}
+    where the sum is over all dominant integral weights $\lambda$ for $G$ and $\rho$ the associated Weyl vector.
+    It is conceivable that ther might be a method for expressing $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
+\end{rem}
+}
 
 \subsection{Trigonal \& polygonal spectra}
 \label{sec:trigonal_spectra}
@@ -668,6 +686,12 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
     From this perspective, it becomes clear that the existence of non-zero $\GL(d)^{\times 4}$-invariant vectors in $\s L$ is a necessary condition for $\alpha,\beta, \gamma, \delta, \epsilon$, and $\phi$ to be tetrahedral spectra.
     Unfortunately, it can be shown that this condition is indeed insufficient; the insufficiency can be attributed to the fact that \cref{eq:face_inv} does not require that the primed and unprimed Hermitian matrices are in \cref{eq:prime_unprime} are the same, i.e., that $A = A'$, $B = B'$, etc.
 \end{rem}
+\begin{center}
+    \begin{figure}
+        \ctikzfig{tikz/frustrated-tetrahedron-example}
+        \caption{A example of a sextuple of edge lengths, $(a,b,c,d,e,f) = (y,y,y,x,x,x)$, which satisfies all triangle inequality closure constraints when $y \leq 2x$, but cannot be the edge lengths of any Euclidean tetrahron when $\sqrt{3} x < y$.}
+    \end{figure}
+\end{center}
 \begin{rem}
     To address the insufficiency of \cref{eq:face_inv}, consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(d)^{\times 6}$ (via $\sigma_6$), i.e.,
     \begin{equation}
@@ -709,6 +733,10 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         Instead, it seems the next best thing is to use the ``completeness-type'' relations between various recoupling symbols to prove the existence of a convergent sequence of weights such that the corresponding sequence of recoupling symbols admits of a power-law type lower bound.
     
         Even if we were to stipulate/conjecture/assume that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are such that $(\mu_{E}^{-1}(0) \cap \mu_{V}^{-1}(0))/\GL(d)$ consists of a finite number of isolated fixed points (as in the $d = 2$, non-degenerate case considered by \citeauthor{roberts1999classical}, it would be a great deal of work to compute the Hessians and phases at each of the critical points in order to formally check that the phases are \textit{NOT} ``misaligned'' in the sense that the complex contributions destructively interfere leading to a trivial lower-bound on the norm of $\abcdefsymbol$ of zero.
+
+        Even worse, even in the $d=2$ case, one generically expects non-isolated critical points even after integrating over a global $\GL(d)$ because of the existence of non-rigid polyhedra with fixed edge lengths (the tetrahedron is locally rigid, while a cube is \textit{not} locally rigid in this sense).
+        
+        The issues which arise when attempting to generalize the scaling $\lambda \mapsto k \lambda$ asymptotics are very similar to the issues which arise when attempting to prove Mathieu's conjecture for $K$-finite functions $f(u) = \braket{w, \pi(u)v}$ in the non-positive-definite case, i.e., $w \neq v$ \cite{franks2020minimal}.
     }
 \end{rem}
 
@@ -1208,7 +1236,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 
 
 \clearpage
-\section{[For drafting] Reference notes}
+\section{[For drafting] Research notes}
 
 \begin{itemize}
     \item A popular textbook on quantum groups with an emphasis on the connection to Poisson manifolds, Lie bialgebras and their quantizations by \citeauthor{chari1995guide} \cite{chari1995guide}
@@ -1273,6 +1301,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
     \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
     \item \citeauthor{charles2010quantization} quantization of polygon spaces, tetrahedron and semiclassical limits \cite{charles2010quantization}
+    \item Regarding an algorithmic construction for the polyhedra appearing in Minkowski's theorem and their complexity, see this post: \url{https://math.stackexchange.com/questions/105033/constructive-algorithm-for-minkowskis-theorem}
 \end{itemize}
 
 \appendix
