@@ -577,52 +577,135 @@ Recall that $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are said to be \te
     \end{align}
 \end{thm}
 
-
-Consider the following well-known result, for instance see \cite[Proposition 2.3]{berline2018horn} or \cite{christandl2008quantum}.
-\begin{prop}
-    \label{prop:LR_pos_implies_herm}
-    Let $\lambda(1), \ldots, \lambda(\ell) \in \domweights{d}$ be dominant weights for $\GL(d)$ such that
+\begin{prop}[Kempf-Ness]
+    \label{prop:kempf-ness-abc}
+    Let $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ be a triple of $d\times d$ Hermitian matrices with integer-valued eigenvalues and let
     \begin{equation}
-        (L_{\lambda(1)} \ot \cdots \ot L_{\lambda(d)})^{\GL(d)} \neq 0.
+        \ket{w_{A,B,C}} \coloneqq \ket{v_\alpha^{u_A}} \ot \ket{v_\beta^{u_B}} \ot \ket{v_\gamma^{u_C}}
     \end{equation}
-    Then there exists Hermitian matrices, $H(e) \in \orbit_{\lambda(e)}$ for all $e \in \{1,\ldots, \ell\}$, such that $\sum_{e = 1}^{\ell} H(e) = 0$.
+    be the associated coherent state of unit norm in $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}$.
+    Define the capacity of $(A,B,C)$ as
+    \begin{align}
+        \capacity(A,B,C) 
+        &\coloneqq \inf_{g \in \GL(d)} \norm{[\pi_{\alpha}(g)\ot\pi_{\beta}(g)\ot\pi_{\gamma}(g)] w_{A,B,C}}^{2}, \\
+        &= \inf_{g \in \GL(d)} \norm{v_\alpha^{gu_A} \ot v_\beta^{gu_B} \ot v_\gamma^{gu_C}}^{2}.
+    \end{align}
+    Then $\capacity(A,B,C) \in [0,1]$ with 
+    \begin{equation}
+        \capacity(A,B,C) = 1 \iff \mu(A,B,C) = A+B+C = 0.
+    \end{equation}
 \end{prop}
 \begin{proof}
-    \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite{berline2018horn}.} 
+    \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite[Proposition 2.3]{berline2018horn}.} 
 \end{proof}
 
-\begin{prop}
-\end{prop}
-\begin{proof}
-    Using the resolution of identity for a highest weight vector $\ket{v_{\lambda}}$ of unit norm,
+The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} (using the convention where capacities and constant portions are defined in terms of squared norms instead of norms directly).
+\begin{thm}[Strong-duality \& Occasionality]
+    Let everything be as in \cref{prop:kempf-ness-abc} and let $k$ be a positive integer.
+    Define the constant portion of $A,B,C$ of degree $k$ to be
     \begin{equation}
-        \id_{L_{\lambda}} = \dim(L_{\lambda}) \int_{u\in\U(d)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}},
+        \cst_{k}(A,B,C) = \norm{\Gamma_{\alpha,\beta,\gamma}^{k} w_{A,B,C}^{\otimes k}}^{\frac{2}{k}},
     \end{equation}
-    for $(\lambda_1, \ldots, \lambda_{\ell}) \in (\domweights{d})^{\ell}$, one obtains the bound
+    where $\Gamma_{\alpha,\beta,\gamma}^{k}$ is the projection operator onto the subspace of $\GL(d)$-invariant vectors in $(L_{\alpha}\ot L_{\beta} \ot L_{\gamma})^{\ot k}$.
+    Then
+    \begin{equation}
+        \label{eq:strong_duality}
+        \capacity(A,B,C) = \sup_{k} \cst_{k}(A,B,C)
+    \end{equation}
+    Moreover, when $\capacity(A,B,C) = 1$ and $\mu(A,B,C) = 0$, there exists an integer $m > 0$ such that
+    \begin{equation}
+        \label{eq:occasionality}
+        \lim_{k\to\infty} (mk)^{s}\cst_{mk}(A,B,C) > 0
+    \end{equation}
+    where $s = \dim \U(d) - \dim \U(d)_{[w_{A,B,C}]}$.
+\end{thm}
+\begin{cor}
+    Consider the quantity $\tilde c_{\alpha,\beta,\gamma}$ which measures the fraction of vectors $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}$ which are $\GL(d)$-invariant:
     \begin{align}
-        \tilde c_{\lambda_1, \ldots, \lambda_{\ell}} 
-        &= \frac{\dim[(L_{\lambda_1} \ot \cdots \ot L_{\lambda_\ell})^{\GL(d)}]}{\dim(L_{\lambda_1})\cdots\dim(L_{\lambda_\ell})} \\
-        %&= \int_{u_0 \in \U(d)} \diff u \Tr[\pi_{\lambda_1}(u_0) \ot \cdots \ot \pi_{\lambda_\ell}(u_0)]  \\
-        %&= \int_{u_0 \in \U(d)} \diff u_0 \chi_{\lambda_1}(u_0)\cdots \chi_{\lambda_\ell}(u_0)  \\
-        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{u_1} \ot \cdots \ot v_{\lambda_\ell}^{u_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{u_1} \ot \cdots \ot v_{\lambda_\ell}^{u_\ell}}  \\
-        &= \int_{u_i \in \U(d)} \diff u_i \braket{v_{\lambda_1}^{gu_1} \ot \cdots \ot v_{\lambda_\ell}^{gu_\ell}, \Gamma_{\lambda_1,\ldots,\lambda_\ell}v_{\lambda_1}^{gu_1} \ot \cdots \ot v_{\lambda_\ell}^{gu_\ell}}  \\
-        &\leq \int_{u_i \in \U(d)} \diff u_i \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2} \\
-        &\leq \max_{u_i \in \U(d)} \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2}.
+        \tilde c_{\alpha, \beta, \gamma} 
+        &= \frac{\dim[(L_{\alpha} \ot L_{\beta} \ot L_{\gamma})^{\GL(d)}]}{\dim(L_{\alpha} \ot L_{\beta} \ot L_{\gamma})}.
     \end{align}
-    However, as $g \in \GL(d)$ was arbitary, we furthermore have
+    If there exists $(A,B,C)\in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C=0$, then there exists an integer $K > 0$ such that $c_{K\alpha,K\beta,K\gamma} \geq 1$\footnote{In fact the proof of the saturation conjecture implies $K = 1$ always suffices.}, and therefore for all integers $M > 0$
     \begin{equation}
-        \tilde c_{\lambda_1,\ldots, \lambda_{\ell}} \leq \tilde C_{\lambda_1, \ldots, \lambda_\ell} \coloneqq \inf_{g \in \GL(d)}\max_{u_i \in \U(d)} \norm{v_{\lambda_1}^{gu_1}}^{2}\cdots\norm{v_{\lambda_\ell}^{gu_\ell}}^{2}
+        \tilde c_{MK\alpha, MK\beta, MK\gamma} \geq \frac{1}{\dim(L_{MK\alpha} \ot L_{MK\beta} \ot L_{MK\gamma})}.
     \end{equation}
-    Replacing $(\lambda_1, \ldots, \lambda_{\ell})$ by $(k\lambda_1, \ldots, k\lambda_{\ell})$ and applying \cref{lem:kth_tensor_power} yields
+    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\alpha, k\beta, k\gamma}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(L_{k\lambda})$ combined with the exponential upper bound on $\tilde c_{k\alpha,k\beta,k\gamma}$ actually implies $c_{\alpha,\beta,\gamma} = 0$ whenever $A+B+C=0$.}
     \begin{equation}
-        \tilde c_{k\lambda_1,\ldots, k\lambda_{\ell}} \leq \tilde C^{k}_{\lambda_1, \ldots, \lambda_\ell}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \max_{A,B,C} \capacity(A,B,C)^{k}.
     \end{equation}
+\end{cor}
+\begin{proof}
+    The lower-bound follows from the operator inequality
+     \begin{equation}
+         \label{eq:inclusivity}
+         \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}} \leq \id_{L_{\lambda}},
+    \end{equation}
+    for all unit vectors $v_{\lambda}^{u} \in L_{\lambda}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(d)$:
+    \begin{equation}
+        \label{eq:resolution}
+        \id_{L_{\lambda}} = \dim(L_{\lambda}) \int_{u\in\U(d)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}}.
+    \end{equation}
+    %{v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma^{u_C}}
+    Applying \cref{eq:resolution} three times to the definition of $\tilde c_{k\alpha,k\beta,k\gamma}$ yields
+    \begin{align}
+        \label{eq:tilde_c_k_integral}
+        \begin{split}
+            \tilde c_{k\alpha, k\beta, k\gamma} 
+            &= \frac{\dim[(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})^{\GL(d)}]}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})} \\
+            &= \int \diff u_A \diff u_B \diff u_C \braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}.
+        \end{split}
+    \end{align}
+    While the operator $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(d)$-invariant vectors in $L_{k\alpha}\ot L_{k\beta} \ot L_{k\gamma}$, the operator $\Gamma_{\alpha,\beta,\gamma}^{k}$ projects onto the subspace of $\GL(d)$-invariant vectors in $(L_{\alpha}\otimes L_{\beta} \otimes L_{\gamma})^{\ot k}$.
+    By \cref{lem:kth_tensor_power}, $L_{k\alpha}\ot L_{k\beta} \ot L_{k\gamma}$ is a subspace of $(L_{\alpha}\otimes L_{\beta} \otimes L_{\gamma})^{\ot k}$ with respect to a $\GL(d)$-equivariant isometry and therefore the projection operators satisfy
+    \begin{equation}
+        \Gamma_{k\alpha,k\beta,k\gamma}^{1} = (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k})^{\dagger} \Gamma_{\alpha,\beta,\gamma}^{k} (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k}).
+    \end{equation}
+    Moreover, using the $\GL(d)$-equivariance of $\Gamma_{\alpha,\beta,\gamma}^{k}$ and the inequality $\Gamma_{\alpha,\beta,\gamma}^{k} \leq (\id_{L_{\alpha}\ot L_{\beta} \ot L_{\gamma}})^{\otimes k}$ yields, for all $g \in \GL(d)$, an upper bound on the integrand in \cref{eq:tilde_c_k_integral}:    \begin{align}
+        &\braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}\\
+        &\qquad=\braket{(v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}}, \\
+        &\qquad=\braket{(v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}}, \\
+        &\qquad\leq\braket{(v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}, (v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}}, \\
+        &\qquad= \norm{v_\alpha^{gu_A} \ot v_\beta^{gu_B} \ot v_\gamma^{gu_C}}^{2k}.
+    \end{align}
+    Finally, let $(u_{A}',u_{B}',u_{C}')$ be unitaries which achieve the maximum of the integrand appearing in \cref{eq:tilde_c_k_integral} (continuity of the integrand and compactness of $\U(d)$ gaurantees existence) such that $\tilde c_{k\alpha,k\beta,k\gamma}$ admits the bound
+    \begin{equation}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \norm{v_\alpha^{gu_A'} \ot v_\beta^{gu_B'} \ot v_\gamma^{gu_C'}}^{2k}.
+    \end{equation}
+    Since $g \in \GL(d)$ is arbitrary and $(u_{A}',u_{B}',u_{C}')$ is independent of $g$ by definition one obtains
+    \begin{equation}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \inf_{g \in \GL(d)} \norm{v_\alpha^{gu_A'} \ot v_\beta^{gu_B'} \ot v_\gamma^{gu_C'}}^{2k} = \capacity(A',B',C')^{k} \leq \max_{A,B,C}\capacity(A,B,C)^{k}.
+    \end{equation}
+    \textcolor{red}{TODO: Prove that the capacity is attained by some Hermitian matrices $A,B,C$ (maybe using the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
+    This establishes the claimed upper bound.
+    To prove the claimed lower bound, let $v_{\alpha}^{u_{A}'} \ot v_{\beta}^{u_{B}'} \ot v_{\gamma}^{u_{C}'}$ be the coherent state associated with the Hermitian matrices $(A,B,C)$ satisfying $A+B+C=0$.
+    Then using \cref{eq:inclusivity} and the positive demidefiniteness of $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ we obtain,
+    \begin{align}
+        \label{eq:tilde_c_k_inclusivity}
+        \begin{split}
+            \tilde c_{k\alpha, k\beta, k\gamma} 
+            &= \frac{\dim[(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})^{\GL(d)}]}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})} \\
+            &\geq \frac{\braket{(v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'})}}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}, \\
+            &= \frac{\braket{(v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}}}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}, \\
+            &= \frac{\cst_{k}(A,B,C)}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}.
+        \end{split}
+    \end{align}
+    Now \cref{eq:occasionality} implies there exists positive integers $m,s > 0$ such that for sufficiently large $k$, $(mk)^{s} \cst_{mk}(A,B,C) > 0$ which implies $c_{mk\alpha, mk\beta, mk\gamma} \neq 0$ and thus $c_{mk\alpha, mk\beta, mk\gamma} \geq 1$. 
+    Taking $K = mk$ for sufficiently large $k$ proves the claim. 
 \end{proof}
 
 \subsection{Tetrahedral spectra \& recoupling operators}
 \label{sec:tetraspec}
 
 \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
+
+The tetrahedral equations for $(A,B,C,D,E,F)$ are
+\begin{equation}
+    \label{eq:tetrahedral_constraints}
+    A + B = C, \quad
+    B + D = F, \quad
+    D + C = E, \quad
+    A + F = E.
+\end{equation}
 
 \begin{rem}
     Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(d)$:
@@ -716,8 +799,9 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         A - C + B = 0, \quad
         - B + F - D = 0, \quad
         D + C - E = 0, \quad
-        E - F - A = 0.
+        E - F - A = 0,
     \end{equation}
+    which are readily seen to be equivalent to tetrahedral constraints in \cref{eq:tetrahedral_constraints}.
     In other words, the existence of a $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
     However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
 \end{rem}
@@ -739,6 +823,11 @@ Consider the following well-known result, for instance see \cite[Proposition 2.3
         The issues which arise when attempting to generalize the scaling $\lambda \mapsto k \lambda$ asymptotics are very similar to the issues which arise when attempting to prove Mathieu's conjecture for $K$-finite functions $f(u) = \braket{w, \pi(u)v}$ in the non-positive-definite case, i.e., $w \neq v$ \cite{franks2020minimal}.
     }
 \end{rem}
+
+\begin{thm}
+    Let $(A,B,C,D,E,F) \in \s M_{\alpha,\beta,\gamma,\delta,\epsilon,\phi}$ be a sextuple of Hermitian matrices with integer-valued eigenvalues satisfying the tetrahedral equations in \cref{eq:tetrahedral_constraints}.
+\end{thm}
+
 
 \begin{lem}
     \label{lem:completeness_relation}
