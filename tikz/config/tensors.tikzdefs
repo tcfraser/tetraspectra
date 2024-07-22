@@ -4,16 +4,16 @@
 \usepackage{amssymb}
 
 % Custom spaced ABCDEF 6j recoupling symbol
-\newcommand{\abcdefsymbol}{
+\newcommand{\tightsixj}[1]{
 \begingroup
 \arraycolsep=2pt
 \renewcommand{\arraystretch}{0.75}
 \left\{\begin{array}{ccc}
-    \alpha & \beta & \gamma \\ 
-    \delta & \epsilon & \phi
+    #1
 \end{array}\right\}
 \endgroup
 }
+\newcommand{\abcdefsymbol}{\tightsixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
 
 \usepackage{mathtools}
 \usepackage[vcentermath]{youngtab}

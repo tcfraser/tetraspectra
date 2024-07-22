@@ -39,6 +39,10 @@ It will be ideal to illustrate with figures.
 
 \section{Introduction}
 
+
+
+
+
 \subsection{Triangles and tetrahedron}
 
 \textcolor{red}{TODO: Describe the moduli space of Euclidean triangles (up to rigid motions) and Euclidean tetrahedron (again up to rigid motions) and describe how applying the triangle inequalities to each face of the tetrahedron, while necessary, are ultimately insufficient for the existence of a tetrahedron with specified side lengths.}
@@ -375,15 +379,48 @@ In such cases, let $\pi_{\lambda} : \GL(d) \to \Aut(L_{\lambda})$\footnotemark{}
 }%
 One important consequence of $v_{\lambda}$ being a highest weight vector is simply that the $B(d)$-orbit of $v_{\lambda}$, $B(d) \cdot v_{\lambda} = \{ \pi_{\lambda}(b) v_{\lambda} \}$, is contained within the ray $[v_{\lambda}]$.
 In addition, as each $g \in \GL(d)$ admits of a decomposition, $g = ub$, for $(u,b) \in \U(d) \times B(d)$, the $\U(d)$-orbit of $[v_{\lambda}]$ is equivalent to the $\GL(d)$-orbit of $[v_{\lambda}]$.
-Moreover, there is a well-defined $\U(d)$-equivariant diffeomorphism\footnote{This map is well-defined because the $\U(d)$-stablizers of $D_{\lambda}$ and $v_{\lambda}$ necessarily agree.} from $\orbit_{\lambda}$ to $\U(d) \cdot [v_{\lambda}]$ sending $u\cdot D_{\lambda} \in \orbit_{\lambda}$ to $u \cdot [v_{\lambda}] = [v_{\lambda}^{u}] \in \U(d)\cdot [v_{\lambda}] \subseteq \proj(L_{\lambda})$ where 
+Moreover, there is a well-defined $\U(d)$-equivariant diffeomorphism
 \begin{equation}
-    v_{\lambda}^{u} \coloneqq \pi_{\lambda}(u) v_{\lambda}.
+    \varphi : \orbit_{\lambda} \to \U(d) \cdot [v_{\lambda}]
+\end{equation}
+sending $u\cdot D_{\lambda} \in \orbit_{\lambda}$ to $u \cdot [v_{\lambda}] = [v_{\lambda}^{u}] \in \U(d)\cdot [v_{\lambda}] \subseteq \proj(L_{\lambda})$\footnote{This map is well-defined because the $\U(d)$-stablizers of $D_{\lambda}$ and of $v_{\lambda}$ are equivalent.} where 
+\begin{equation}
+    \varphi(u \cdot D_{\lambda}) \coloneqq v_{\lambda}^{u} \coloneqq \pi_{\lambda}(u) v_{\lambda}.
 \end{equation}
 Furthermore, if $X \in \mathfrak{gl}(d)$ is a $d\times d$ matrix, then it can be shown that $\Tr(X D_{\lambda}) = \braket{v_{\lambda}, \Pi_{\lambda}(X) v_{\lambda}}$ where $\Pi_{\lambda}$ is the induced representation of $\mathfrak{gl}(d)$ on $L_{\lambda}$, $\braket{\cdot,\cdot}$ is a $\U(d)$-invariant inner product on $L_{\lambda}$ and $v_{\lambda}$ is a highest weight vector of unit norm in $L_{\lambda}$.
 Using the aforementioned diffeomorphism, one can also show that for all $d\times d$ matrices $X \in \mathfrak{gl}(d)$,
 \begin{equation}
     \Tr(X (u\cdot D_{\lambda})) = \braket{v_{\lambda}^{u}, \Pi_{\lambda}(X) v_{\lambda}^{u}}.
 \end{equation}
+
+\begin{rem}[Highest and lowest weights]
+    Let $\lambda = (\lambda_1, \ldots, \lambda_d)$ be a dominant weight for $\GL(d)$, and $L_{\lambda}$ the unique up to isomorphism finite dimensional irreducible representation of $\GL(d)$ with highest weight $\lambda$ and unique (up to phase) highest weight vector $v_{\lambda} \in L_{\lambda}$.
+    There exists a unique $\U(d)$-invariant inner product $\braket{\cdot,\cdot}$ on $L_{\lambda}$ which enables one to identify elements, $f : L_{\lambda} \to \mathbb C$, in the dual vector space, $L_{\lambda}^{*}$, with elements $w \in L_{\lambda}$ with the original vector space such that $f(v) = \braket{w, v}$ holds for all $v \in L_{\lambda}$. Moreover, the dual representation of $\GL(d)$ satisfies
+    \begin{equation}
+        [\pi^{*}_{\lambda}(g) f](v) = \braket{w, \pi_{\lambda}(g^{-1})v}.
+    \end{equation}
+    The highest weight appearing in the dual representation, $L_{\lambda}^{*}$, is the dominant weight
+    \begin{equation}
+        \lambda^{*} = (-\lambda_d, \ldots, -\lambda_1).
+    \end{equation}
+    Consequently, there exists an $\GL(d)$-equivariant isomorphism $L_{\lambda^{*}} \simeq L_{\lambda}^{*}$, justifying the abuse of notation.
+    Under this isomorphism, the vector $\braket{v_{\lambda}, \cdot} \in L_{\lambda}^{*}$ dual to $v_{\lambda} \in L_{\lambda}$ is a vector of \textit{lowest} weight in $L_{\lambda^{*}}$.
+    To obtain the vector $v_{\lambda^{*}}$ of \textit{highest} weight in $L_{\lambda^{*}}$, one must dualize the vector $v_{w_0(\lambda)} \coloneqq \pi_{\lambda}(w_0) v_{\lambda}$ of \textit{lowest} weight in $L_{\lambda}$, i.e., 
+    \begin{equation}
+        v_{\lambda^{*}} \simeq \braket{\pi_{\lambda}(w_0) v_{\lambda},\cdot}
+    \end{equation}
+    where $w_0 \in S_d$ is the permutation matrix which reverses the order of elements sending $(\lambda_1, \ldots, \lambda_d)$ to $(\lambda_d, \ldots, \lambda_1)$.
+
+    This notational convention is consistent with the diffeomorphism $\varphi : \orbit_{\lambda} \to \U(d) \cdot [v_{\lambda}]$ defined above in the following sense; if $X = u \cdot D_{\lambda} = uD_{\lambda}u^{-1}$ is a Hermitian matrix with eigenvalues equal to the dominant weight $\lambda$, then $-X = (uw_0)\cdot D_{\lambda^{*}}$ is a Hermitian matrix with eigenvalues equal to the dominant weight $\lambda^{*} = - w_0(\lambda)$.
+    Moreover the dual of $\varphi(X) = \pi_{\lambda}(u) v_{\lambda}$ under the inner product on $L_{\lambda}$ becomes (under the $L_{\lambda^*} \simeq L_{\lambda}^{*}$ isomorphism)
+    \begin{equation}
+        \varphi(-X) 
+        = \pi_{\lambda^{*}}(uw_0) v_{\lambda^{*}}
+        \simeq \braket{\pi_{\lambda}(w_0) v_{\lambda}, \pi_{\lambda}((uw_0)^{-1}) \cdot}
+        = \braket{\pi_{\lambda}(u)v_{\lambda}, \cdot}
+        = \braket{\varphi(X), \cdot}.
+    \end{equation}
+\end{rem}
 
 Throughout this section, the following result serves a the basis for establishing a number of asymptotic results for large $k$.
 \begin{lem}
@@ -404,6 +441,20 @@ Throughout this section, the following result serves a the basis for establishin
         \norm{\pi_{k\lambda}(g) v_{k\lambda}} = \norm{\pi_{\lambda}(g) v_{\lambda}}^{k}.
     \end{equation}
 \end{lem}
+\begin{proof}
+    \textcolor{red}{TODO: The following proof only makes sense for $\SL(d)$ because I'm implicitly assuming the labelling dominant weights are taken to be Young diagrams. Fix the proof so that it holds for $\GL(d)$.}
+    That $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})) = 1$ follows from
+    \begin{equation}
+        c^{k\lambda}_{\lambda, (k-1)\lambda} = \dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k}))
+    \end{equation}
+    and the Littlewood-Richardson rule applied to $c^{k\lambda}_{\lambda, (k-1)\lambda}$; the skew shape $k\lambda/(k-1)\lambda$ has $\lambda_j$ boxes appearing in row $j$ and consequently there is only one skew semistandard tableaux of shape $k\lambda/(k-1)\lambda$ with weight $\lambda$ (and moreover this tableaux is indeed a Littlewood-Richardson tableaux so $c^{k\lambda}_{\lambda, (k-1)\lambda} = 1$).
+    The existence of $v_{k\lambda}$ follows from the fact that $v_{\lambda}^{\otimes k}$ is already a highest weight vector of weight $k \lambda$ and therefore necessarily lives in image of $\iota_{\lambda}^{k}$.
+    Finally, let $g \in \GL(d)$ be arbitrary.
+    Then
+    \begin{equation}
+        \norm{\pi_{k\lambda}(g) v_{k\lambda}} = \norm{\iota_{\lambda}^{k} \pi_{k\lambda}(g) v_{k\lambda}} = \norm{\pi_{\lambda}(g)^{\otimes k} \iota_{\lambda}^{k} v_{k\lambda}} = \norm{\pi_{\lambda}(g)^{\otimes k} v_{\lambda}^{\otimes k}} = \norm{\pi_{\lambda}(g) v_{\lambda}}^{k}.
+    \end{equation}
+\end{proof}
 
 
 \subsection{Reformulating the cycle condition}
@@ -581,7 +632,7 @@ Recall that $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are said to be \te
     \label{prop:kempf-ness-abc}
     Let $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ be a triple of $d\times d$ Hermitian matrices with integer-valued eigenvalues and let
     \begin{equation}
-        \ket{w_{A,B,C}} \coloneqq \ket{v_\alpha^{u_A}} \ot \ket{v_\beta^{u_B}} \ot \ket{v_\gamma^{u_C}}
+        w_{A,B,C} \coloneqq \varphi(A) \ot \varphi(B) \ot \varphi(C) = v_\alpha^{u_A} \ot v_\beta^{u_B} \ot v_\gamma^{u_C}
     \end{equation}
     be the associated coherent state of unit norm in $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}$.
     Define the capacity of $(A,B,C)$ as
@@ -848,6 +899,33 @@ The tetrahedral equations for $(A,B,C,D,E,F)$ are
     \end{equation}
 \end{lem}
 
+\begin{thm}
+    \label{thm:seq_ud_recoupling_norm_lower_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of positive semidefinite Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_constraints}.
+    Then there exists a sextuple of sequences of Young diagrams $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n), \tilde \delta(n), \tilde \epsilon(n), \tilde \phi(n))$
+    satisfying
+    \begin{equation}
+        \label{eq:sextuple_convergence}
+        \begin{alignedat}{3}
+            \lim_{n\to\infty} \frac{\tilde \alpha(n)}{\abs{\tilde \alpha(n)}} &= \frac{\alpha}{\abs{\alpha}}, \qquad
+            \lim_{n\to\infty} \frac{\tilde \beta(n)}{\abs{\tilde \beta(n)}} &&= \frac{\beta}{\abs{\beta}}, \qquad
+            \lim_{n\to\infty} \frac{\tilde \gamma(n)}{\abs{\tilde \gamma(n)}} &&= \frac{\gamma}{\abs{\gamma}}, \\
+            \lim_{n\to\infty} \frac{\tilde \delta(n)}{\abs{\tilde \delta(n)}} &= \frac{\delta}{\abs{\delta}}, \qquad
+            \lim_{n\to\infty} \frac{\tilde \epsilon(n)}{\abs{\tilde \epsilon(n)}} &&= \frac{\epsilon}{\abs{\epsilon}}, \qquad
+            \lim_{n\to\infty} \frac{\tilde \phi(n)}{\abs{\tilde \phi(n)}} &&= \frac{\phi}{\abs{\phi}}, \\
+            \lim_{n\to\infty} \frac{\abs{\tilde \alpha(n)}}{\abs{\tilde \epsilon(n)}} &= \frac{\abs{\alpha}}{\abs{\epsilon}}, \qquad
+            \lim_{n\to\infty} \frac{\abs{\tilde \beta(n)}}{\abs{\tilde \epsilon(n)}} &&= \frac{\abs{\beta}}{\abs{\epsilon}}, \qquad
+            \lim_{n\to\infty} \frac{\abs{\tilde \delta(n)}}{\abs{\tilde \epsilon(n)}} &&= \frac{\abs{\beta}}{\abs{\epsilon}}.
+        \end{alignedat}
+    \end{equation}
+    both
+    \begin{equation}
+        \label{eq:seq_ud_recoupling_norm_lower_bound}
+        \norm{\tightsixj{\tilde \alpha(n) & \tilde\beta(n) & \tilde\gamma(n) \\ \tilde\delta(n) & \tilde \epsilon(n) & \tilde \phi(n)}}_{\mathrm{HS}}^{2}
+        \geq \frac{1}{\mathrm{poly}} 
+    \end{equation}
+    \textcolor{red}{TODO: Figure out the statement of the lower bound.}
+\end{thm}
 
 
 \subsection{The asymptotics of irrep dimensions}
@@ -932,13 +1010,14 @@ The objective of the following lemma is to characterize the asymptotics of this 
     Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
 \end{proof}
 \begin{rem}
-    Note that the quantity $s(\lambda)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon-entropy,
+    Note that the quantity $s(\lambda)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon entropy,
     \begin{equation}
         S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
     \end{equation}
     of a probability distribution $p = (p_1, \ldots, p_\ell)$.
-    Indeed, $s(\lambda)$ is related to the Shannon-entropy of the \textit{normalization} of $\lambda$ by the formula
+    Indeed, $s(\lambda)$ is related to the Shannon entropy of the \textit{normalization} of $\lambda$ by the formula
     \begin{equation}
+        \label{eq:little_s_relation}
         s(\lambda) = \abs{\lambda} S\left(\frac{\lambda}{\abs{\lambda}}\right) - \abs{\lambda} \log \abs{\lambda}.
     \end{equation}
 \end{rem}
@@ -973,7 +1052,8 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
         \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
     \end{equation}
 \end{proof}
-\begin{cor}
+\begin{lem}
+    \label{lem:asymptotic_dimension_ratio}
     Let $\gamma,\phi,\beta,\epsilon$ be a quadruple of Young diagrams such that 
     \begin{equation}
         \label{eq:balanced_sizes}
@@ -984,17 +1064,48 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
     Then
     \begin{equation}
         \log\left(\frac{\dim(L_{\gamma}^d) \dim(L_{\phi}^d)}{\dim(L_{\beta}^d) \dim(L_{\epsilon}^d)}\right)
-        = s(\gamma) + s(\phi) - s(\beta) - s(\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
+        = I(\gamma,\phi;\beta,\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
+        \label{eq:asymptotic_dimension_ratio}
     \end{equation}
-\end{cor}
+    where $I(\gamma,\phi;\beta,\epsilon)$ is the function
+    \begin{equation}
+        I(\gamma,\phi;\beta,\epsilon) \coloneqq s(\gamma) + s(\phi) - s(\beta) - s(\epsilon).
+    \end{equation}
+    Moreover, $I(k\gamma,k\phi;k\beta,k\epsilon) = k I(\gamma,\phi;\beta,\epsilon)$ for any $k > 0$.
+\end{lem}
 \begin{proof}
     The proof follows from four applications of \cref{lem:double_asymptotics}.
-    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(d)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains
+    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(d)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
+    
+    Four applications of \cref{eq:little_s_relation} yields
+    \begin{align}
+        \begin{split}
+            I(\gamma,\phi;\beta,\epsilon)
+            &= s(\gamma) + s(\phi) - s(\beta) - s(\epsilon) \\
+            &= \left\{\abs{\gamma}S(\bar \gamma) + \abs{\phi} S(\bar \phi) - \abs{\beta} S(\bar \beta) - \abs{\epsilon} S(\bar \epsilon)\right\} + \cdots \\
+            &\quad\cdots- \left\{\abs{\gamma}\log \abs{\gamma} + \abs{\phi}\log \abs{\phi} - \abs{\beta}\log \abs{\beta} - \abs{\epsilon}\log \abs{\epsilon}\right\}.
+        \end{split}
+    \end{align}
+    Under scaling $\lambda \mapsto k \lambda$ for any $k>0$, one has $\bar{k\lambda} = \bar \lambda$ and $\abs{k\lambda} = k \abs{\lambda}$.
+    Therefore the above expression implies
     \begin{equation}
-        \frac{\dim(L_{\gamma}^d) \dim(L_{\phi}^d)}{\dim(L_{\beta}^d) \dim(L_{\epsilon}^d)} = 
+        \label{eq:pseudo_ssa_scaling}
+        I(k\gamma,k\phi;k\beta,k\epsilon) = kI(\gamma,\phi;\beta,\epsilon) + (\abs{\gamma}+\abs{\phi}-\abs{\beta}-\abs{\epsilon}) k\log k.
     \end{equation}
+    Since \cref{eq:balanced_sizes} is assumed to hold, the coefficient in front of the $k\log k$ term appearing in \cref{eq:pseudo_ssa_scaling} vanishes and therefore $I(k\gamma,k\phi;k\beta,k\epsilon) = k I(\gamma,\phi;\beta,\epsilon)$ as claimed.
 \end{proof}
 
+\begin{thm}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_constraints}.
+    Then necessarily $\abs{\beta}+\abs{\epsilon} = \abs{\gamma}+\abs{\phi}$ and furthermore
+    \begin{equation}
+        I(\gamma, \phi; \beta, \epsilon) \geq 0.
+    \end{equation} 
+\end{thm}
+\begin{proof}
+    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $d \to \infty$, the upper bound provided by \cref{thm:ud_recouple_bound}, and the lower bound provided by \cref{thm:seq_ud_recoupling_norm_lower_bound}.
+    \textcolor{red}{TODO: Finish this}
+\end{proof}
 
 
 
@@ -1328,6 +1439,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \section{[For drafting] Research notes}
 
 \begin{itemize}
+    \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 10.
     \item A popular textbook on quantum groups with an emphasis on the connection to Poisson manifolds, Lie bialgebras and their quantizations by \citeauthor{chari1995guide} \cite{chari1995guide}
     \item The general subject of multivariate trace inequalities involving exponentials of sums of Hermitian and products of their exponentials is, of course, intimately related. See for instance the paper by \citeauthor{sutter2017multivariate} \cite{sutter2017multivariate}.
     \item Also the article \cite{forrester2014golden} by \citeauthor{forrester2014golden} which describes the connection to hyperbolic geometry quite explicitly.
@@ -1355,6 +1467,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item A recent article by \citeauthor{mcswiggen2021harish} is an excellent introduction to the Harish-Chandra integral \cite{mcswiggen2021harish}. The proof of the Harish-Chandra formula provide by \citeauthor{mcswiggen2021harish} using the heat equation methods from \citeauthor{fegan1978heat}'s 1978 paper \cite{fegan1978heat} seems very promising for deriving a connection to the character formula for the norm of the recoupling operator!
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
     \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
+    \item \citeauthor{keppeler2024wigner} recently calculated $\SU(d)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(d)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
     \item \citeauthor{boalch2007regge} \cite{boalch2007regge}
     \item \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
     \item \citeauthor{henriques2005crystals} \cite{henriques2005crystals}
@@ -1391,6 +1504,8 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
     \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
     \item \citeauthor{charles2010quantization} quantization of polygon spaces, tetrahedron and semiclassical limits \cite{charles2010quantization}
     \item Regarding an algorithmic construction for the polyhedra appearing in Minkowski's theorem and their complexity, see this post: \url{https://math.stackexchange.com/questions/105033/constructive-algorithm-for-minkowskis-theorem}
+    \item \citeauthor{artamonov2023classical} derives an explicit formula for the $d=3$ case \cite{artamonov2023classical}, and later to arbitrary $d$ \cite{artamonov2024calculation}.
+    \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $d$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $d$ \cite{lanina2023tug}.
 \end{itemize}
 
 \appendix
@@ -1705,15 +1820,15 @@ This bound takes the form
 (The inequality comes from $\norm{XY}_{\infty}^2 \geq \braket{XY v, XY v} \geq \abs{\braket{v, XYv}}^{2}$ for all $v$ with unit norm.)
 Furthermore, one can show by a detailed diagrammatic calculation that there exists appropriate isometries $\iota_{I}$ and $\iota_{II}$ such that
 \begin{equation}
-    \label{eq:recoupling_prod_proj_iso}
+    \label{eq:ud_recoupling_prod_proj_iso}
     \iota_{II} \left(I_{U^{d}_{\lambda}} \ot I_{V_{\alpha}} \ot I_{V_{\beta}} \ot I_{V_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger} = \Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}
 \end{equation}
 which in turn implies an equality of operator norms
 \begin{equation}
-    \label{eq:recoupling_prod_proj_iso_norm}
+    \label{eq:ud_recoupling_prod_proj_iso_norm}
     \norm{\begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\infty} = \norm{\Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}}_{\infty}
 \end{equation}
-By combining \cref{eq:prod_proj_op_lower_bound,eq:recoupling_prod_proj_iso_norm,eq:occasionality_lower_bound} we obtain a inverse polynomial lower bound for the operator norm of the recoupling operator of the form
+By combining \cref{eq:prod_proj_op_lower_bound,eq:ud_recoupling_prod_proj_iso_norm,eq:occasionality_lower_bound} we obtain a inverse polynomial lower bound for the operator norm of the recoupling operator of the form
 \begin{equation}
     \norm{\begin{Bmatrix} \alpha' & \beta' & \mu' \\ \gamma' & \lambda' & \nu' \end{Bmatrix}}_{\infty}
     \geq U(k_1,k_2,k_3)^{-1} \geq (k_1+k_2+k_3+1)^{-6(d-1)}
@@ -1724,7 +1839,7 @@ In summary, we have shown that the existence of a certain configuration of densi
     Let $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ be given and let $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$ be a sextuple of candidate spectra.
     If there exists a sextuple of density operators $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a sequence of sextuples $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ of integer partitions satisfying both
     \begin{equation}
-        \label{eq:sequential_recoupling_norm_lower_bound}
+        \label{eq:sequential_recoupling_norm_lower_bound_old}
         \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
         \geq (n+1)^{-6(d-1)}
     \end{equation}
@@ -1746,7 +1861,7 @@ In summary, we have shown that the existence of a certain configuration of densi
 \end{thm}
 
 \begin{rem}
-    Note that the satisfication of \cref{eq:sequential_recoupling_norm_lower_bound} for some $n \in \mathbb N$ automatically entails that $\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix} \neq 0$ and thus $c_{\alpha,\beta}^{\mu}, c_{\beta,\gamma}^{\nu}, c_{\mu,\gamma}^{\lambda}, c_{\alpha,\nu}^{\lambda} \neq 0$ and thus the sequences of integer partitions also satisfy equality the following equality constraints
+    Note that the satisfication of \cref{eq:sequential_recoupling_norm_lower_bound_old} for some $n \in \mathbb N$ automatically entails that $\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix} \neq 0$ and thus $c_{\alpha,\beta}^{\mu}, c_{\beta,\gamma}^{\nu}, c_{\mu,\gamma}^{\lambda}, c_{\alpha,\nu}^{\lambda} \neq 0$ and thus the sequences of integer partitions also satisfy equality the following equality constraints
     \begin{align}
         \abs{\alpha^{(n)}} + \abs{\beta^{(n)}} &= \abs{\mu^{(n)}}, \\
         \abs{\beta^{(n)}} + \abs{\gamma^{(n)}} &= \abs{\nu^{(n)}}, \\
@@ -1826,7 +1941,7 @@ Consequently, we conclude the following theorem.
     Suppose $(\alpha^{(n)}, \beta^{(n)}, \gamma^{(n)}, \mu^{(n)}, \nu^{(n)}, \lambda^{(n)})$ is a sequence of integer partitions satisfying \cref{eq:sextuple_convergence_condition} for some $0 < p_1, p_2, p_3 < 1$ satisfying $p_1 + p_2 + p_3 = 1$ and $(r_1, r_2, \ldots, r_6) \in \Delta_{d}^{\downarrow; \times 6}$.
     If there does not exist a collection of density matrices $\rho_1, \rho_2, \rho_3, \rho_4, \rho_5$ and $\rho_6$ with spectra $r_i = \spec(\rho_i)$ satisfying \cref{eq:sextuple_config_constraints}, then there exists a constant $I^{*} > 0$ such that
     \begin{equation}
-        \label{eq:sequential_recoupling_norm_upper_bound}
+        \label{eq:sequential_recoupling_norm_upper_bound_old}
         \norm{\begin{Bmatrix} \alpha^{(n)} & \beta^{(n)} & \mu^{(n)} \\ \gamma^{(n)} & \lambda^{(n)} & \nu^{(n)} \end{Bmatrix}}_{\infty}
         \leq \exp(-n I^{*} + O(\log n))
     \end{equation}
