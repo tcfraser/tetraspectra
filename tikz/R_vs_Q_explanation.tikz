@@ -1,0 +1,74 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (304) at (12.25, 1.5) {};
+		\node [style=none] (305) at (13.25, 1.5) {};
+		\node [style=none] (306) at (12.75, 1.5) {$\lambda$};
+		\node [style=none] (307) at (13.75, 1.5) {$\lambda$};
+		\node [style=none] (308) at (12.25, -1.5) {};
+		\node [style=none] (309) at (13.25, -1.5) {};
+		\node [style=none] (310) at (12.75, -1.5) {$\lambda$};
+		\node [style=none] (311) at (13.75, -1.5) {$\lambda$};
+		\node [style=none] (314) at (11.75, 1.5) {$\lambda$};
+		\node [style=none] (315) at (14.75, 1.5) {$\lambda$};
+		\node [style=none] (318) at (11.75, -1.5) {$\lambda$};
+		\node [style=none] (319) at (14.75, -1.5) {$\lambda$};
+		\node [style=none] (320) at (11.25, 1.5) {};
+		\node [style=none] (321) at (11.25, -1.5) {};
+		\node [style=none] (322) at (12.25, 1.5) {};
+		\node [style=none] (323) at (12.25, -1.5) {};
+		\node [style=dot] (324) at (11.75, -0.75) {};
+		\node [style=dot] (325) at (11.75, 0.75) {};
+		\node [style=none] (326) at (12.25, 0) {$2\lambda$};
+		\node [style=none] (327) at (13.25, 1.5) {};
+		\node [style=none] (328) at (13.25, -1.5) {};
+		\node [style=none] (329) at (14.25, 1.5) {};
+		\node [style=none] (330) at (14.25, -1.5) {};
+		\node [style=dot] (331) at (13.75, -0.75) {};
+		\node [style=dot] (332) at (13.75, 0.75) {};
+		\node [style=none] (333) at (14.25, 0) {$2\lambda$};
+		\node [style=none] (334) at (12.75, 3) {$Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}$};
+		\node [style=none] (335) at (18.5, 3) {$R^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}$};
+		\node [style=none] (336) at (11.25, 2) {};
+		\node [style=none] (337) at (14.25, 2) {};
+		\node [style=none] (338) at (14.25, -2) {};
+		\node [style=none] (339) at (11.25, -2) {};
+		\node [style=none] (340) at (17, -2) {};
+		\node [style=none] (341) at (20, -2) {};
+		\node [style=none] (342) at (17.5, -2) {$\lambda$};
+		\node [style=none] (343) at (20.5, -2) {$\lambda$};
+		\node [style=none] (344) at (17, 2) {};
+		\node [style=none] (345) at (20, 2) {};
+		\node [style=none] (346) at (17.5, 2) {$\lambda$};
+		\node [style=none] (347) at (20.5, 2) {$\lambda$};
+		\node [style=none] (348) at (17, -2) {};
+		\node [style=none] (349) at (17, 2) {};
+		\node [style=none] (350) at (20, -2) {};
+		\node [style=none] (351) at (20, 2) {};
+		\node [style=none] (352) at (11, 2.5) {};
+		\node [style=none] (353) at (20.5, 2.5) {};
+		\node [style=none] (354) at (15.75, 3.25) {};
+		\node [style=none] (355) at (15.75, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route, bend left=270, looseness=1.50] (305.center) to (304.center);
+		\draw [style=mid-route, bend left=270, looseness=1.50] (308.center) to (309.center);
+		\draw [bend left] (325) to (320.center);
+		\draw [bend right] (325) to (322.center);
+		\draw [bend left] (321.center) to (324);
+		\draw [bend right] (323.center) to (324);
+		\draw [style=over-route] (325) to (324);
+		\draw [bend left] (332) to (327.center);
+		\draw [bend right] (332) to (329.center);
+		\draw [bend left] (328.center) to (331);
+		\draw [bend right] (330.center) to (331);
+		\draw [style=over-route] (331) to (332);
+		\draw [style=mid-route] (338.center) to (330.center);
+		\draw [style=mid-route] (329.center) to (337.center);
+		\draw [style=mid-route] (336.center) to (320.center);
+		\draw [style=mid-route] (321.center) to (339.center);
+		\draw [style=mid-route, bend left=270, looseness=1.50] (341.center) to (340.center);
+		\draw [style=mid-route, bend left=270, looseness=1.50] (344.center) to (345.center);
+		\draw [style=dashedannotate] (355.center) to (354.center);
+		\draw [style=dashedannotate] (352.center) to (353.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

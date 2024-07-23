@@ -1034,7 +1034,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
 
 
 
-\subsection{An entropic inequality for tetrahedral spectra (Directly)}
+\subsection{An entropic inequality for tetrahedral spectra}
 
 \begin{thm}
     \label{thm:ud_recouple_bound}
@@ -1109,154 +1109,76 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
 
 
 
-\subsection{The \texorpdfstring{$\boldsymbol{\U(d)}$}{U(d)}-recoupling operator as a \texorpdfstring{$\boldsymbol{S_d}$}{Sd}-recoupling operator}
-\label{sec:recoupling-correspondence}
+\subsection{An alternative asymptotic characterization}
 
-The purpose of this section is to describe how to view certain aspects of the recoupling theory for the unitary group $\U(d)$ as a special case of the recoupling theory for the symmetric group $S_d$, at least when $d$ is taken to be sufficiently large.
-This connection between $\U(d)$ and $S_d$ is derived from considering the symmetric group $S_d$ as a \textit{subgroup} of $\U(d)$ with respect to the representation of $S_d$ as $d\times d$ permutation matrices.
-When considering the symmetric group, $S_d$, as a subgroup of the unitary group, $\U(d)$, in this manner,
-\citeauthor{nishiyama2000restriction} describes the restriction of an irreducible representation of $U(d)$ to the symmetric group in terms of its decomposition into irreducible representations of $S_d$ \cite[Theorem 2.3]{nishiyama2000restriction}.
-\begin{thm}
-    Let $d \in \mathbb N$ and let $\lambda \vdash d$.
-    Let $L_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $V_{\lambda}$ the irrep of $S_d$.
-    Given a partition $\mu$ with length $\ell(\mu) \leq d$, let $\Upsilon_{\mu}$ denote the Young subgroup $\Upsilon_{\mu} = S_{\mu_1} \times \cdots \times S_{\mu_{\ell(\mu)}} \subseteq S_d$ and let $\partitiondegen{\mu}$ denote the (not necessarily sorted) partition of $\ell(\mu)$ corresponding to the multiplicies of $\mu$.
-    Alternatively, $\partitiondegen{\mu}$ can be characterised in terms of the normaliser of $\Upsilon_\mu$ inside $S_d$ via the formula
-    \begin{equation}
-        N_{S_d}(\Upsilon_\mu) = \Upsilon_{\partitiondegen{\mu}} \ltimes \Upsilon_{\mu}
-    \end{equation}
-    Then the restriction of the irrep $L_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
-    \begin{equation}
-        \label{eq:nishiyama-decomp}
-        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \ot V_\lambda^{\Upsilon_{\mu}})
-    \end{equation}
-    where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
-\end{thm}
+There are a number of technical challenges, namely the difficulty in performing a stationary phase analysis, which prevent one from making concrete statements about the \textit{scaling} $\lambda \mapsto k\lambda$ limit of the squared norm of the $\SU(d)$ recoupling operator.
+However, there is another quantity, denoted by $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ in \cref{eq:workable-recoupling-like-quantity} below, for which it is comparatively easier to prove asymptotic bounds.
+Moreover, while the ``recoupling theory'' approach concerned with $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ is seemingly limited by the commutativity of the projection operators involved (the aproach cannot handle more than two mutual non-commuting projection operators), the approach which produces $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ does \textit{not} share this apparent limitation. 
 
-Among the irreducible representations of $S_d$ appearing with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$, those labelled by Young diagrams with the largest possible first part are of particular interest \cite{christandl2018recoupling}.
-\begin{defn}
-    Let $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})$ be a Young diagram of size $\abs{\lambda}$.
-    Let $d \geq \lambda_1 + \abs{\lambda}$ and define the \textit{(size $d$) augmentation} of $\lambda$ as
-    \begin{equation}
-        \yaug{\lambda}{d} \coloneqq (d - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)}).
-    \end{equation}
-    Note that $\yaug{\lambda}{d}$ also a Young diagram (because $d - \abs{\lambda} \geq \lambda_1$) of size $d = \abs{\yaug{\lambda}{d}}$ and length $\ell(\yaug{\lambda}{d}) = \ell(\lambda) + 1$.
-\end{defn}
-Here we have adopted the notation for $\yaug{\lambda}{d}$ from \cite{pak2022combinatorial}.
-
-The following is \cite[Lemma 13]{christandl2018recoupling}:
-\begin{lem}
-    \label{lem:largest_first_rows}
-    Let $\lambda$ be a positive integer partition and let $d \in \mathbb N$ be given.
-    Let $L_{\lambda}$ be the irrep of $\U(d)$ with highest weight $\lambda$ and let $\mu \vdash d$ be an arbitrary Young diagram of size $d$.
-    Define $M^{\lambda}_{\mu}$ as the multiplicity space
-    \begin{equation}
-        M^{\lambda}_{\mu} \coloneqq \Hom_{S_d}(V_{\mu}, \Res^{\U(d)}_{S_d} L_{\lambda}).
-    \end{equation}
-    If $M^{\lambda}_{\mu}$ is non-zero, then the first row of $\mu$ cannot be smaller than $d - \lambda$:
-    \begin{equation}
-        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 \geq d - \abs{\lambda}.
-    \end{equation}
-    If $d < \lambda_1 + \abs{\lambda}$, then the above bound is strict
-    \begin{equation}
-        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 > d - \abs{\lambda}.
-    \end{equation}
-    Otherwise $d \geq \lambda_1 + \abs{\lambda}$ and the above bound is saturated only when $\mu = \yaug{\lambda}{d}$ and moreover $\dim(M^{\lambda}_{\yaug{\lambda}{d}}) = 1$ in this case.
-\end{lem}
-
-At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
+The quantity is built from reconsidering the $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ fixed subspaces of $\s L = \s L^{\alpha \beta \gamma}_{\delta \epsilon \phi}$ defined above with projection operators $\Gamma_{4}$ and $\Gamma_{6}$; one can simply consider their tensor product and the associated $\GL(d)^{\times (4 + 6)}$ fixed subspace of $\s L^{\otimes 2}$ with projection operator $\Gamma_{4} \otimes \Gamma_{6}$.
+With these subspaces in mind, the quantity $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ is defined as 
 \begin{equation}
-    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \ot L_{\beta}),
+    Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi} \coloneqq \Tr_{\s L^{\otimes 2}}[(\Gamma_{4} \otimes \Gamma_{6}) \Pi_{\mathrm{double}}]
 \end{equation}
-are known to be independent of $d$ (whenever $d \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$),
-while the Kroncecker coefficients
+where $\Pi_{\mathrm{double}}$ is the projection operator onto the ``doubled'' subspace inside $\s L^{\otimes 2}$:
 \begin{equation}
-    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \ot V_{\nu})
+    \s L^{2\alpha, 2\beta, 2\gamma}_{2\delta, 2\epsilon, 2\phi} \subseteq \s L^{\alpha, \beta, \gamma}_{\delta, \epsilon, \phi} \ot \s L^{\alpha, \beta, \gamma}_{\delta, \epsilon, \phi}.
 \end{equation}
-are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambda}$.
+Diagrammatically, the quantity $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ equals
+\begin{equation}
+    \label{eq:workable-recoupling-like-quantity}
+    \tikzfig{tikz/workable-double-like-recoupling}.
+\end{equation}
+Using the strong-duality theorem and central-limit theorem results \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal}, one can prove that if $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral, then $Q^{k\alpha,k\beta,k\gamma}_{k\delta,k\epsilon,k\varphi}$ exhibits a power-law in $k$ lower bound, otherwise they are not tetrahedral and then $Q^{k\alpha,k\beta,k\gamma}_{k\delta,k\epsilon,k\varphi}$ exhbits exponential decay in $k$.
 
-As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
-\begin{cor}
-    Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}$ and $\yaug{\gamma}{d}$ are all well-defined.
-    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\ot L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
-    \begin{equation}
-        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
-    \end{equation}
-    In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
-\end{cor}
-\begin{proof}
-    The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
-    \begin{equation}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}).
-        \label{eq:res_monoidal}
-    \end{equation}
-    Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
-    \begin{align}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
-        \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\ot \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
-    \end{align}
-    In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\yaug{\gamma}{d}$.
-    By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
-\end{proof}
+The primary difference between $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ and $R^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ is diagrammatically expressed in the following figure:
+\begin{equation*}
+    \tikzfig{tikz/R-vs-Q-explanation}
+\end{equation*}
+\textcolor{red}{TC: Developing a better understand of the relationship between these two operators would be beneficial for proving cleaner and tighter results about the recoupling operator.}
 
-
-
-\begin{rem}
-    Note that this result indirectly implies a stability result for the Kronecker coefficents, namely that the value of $g_{\lambda + (d)}^{\mu + (d), \nu + (d)}$ is eventually independent of $d$ and moreover reaches the value $c_{\lambda_{-1}}^{\mu_{-1}, \nu_{-1}}$ where $\lambda_{-1}$ is obtained from $\lambda$ by removal of the first row of $\lambda$.
-\end{rem}
-
-\begin{cor}
-    \label{cor:ud_sd_recouple_correspondence}
-    Let $\alpha, \beta, \gamma, \mu, \nu, \lambda$ be Young diagrams. 
-    Furthermore, take $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}, \yaug{\gamma}{d}, \yaug{\mu}{d}, \yaug{\nu}{d}, \yaug{\lambda}{d}$ are all well-defined.
-    Then the following recoupling operator for $S_d$ is obtained from the corresponding recoupling operator for $\U(d)$ by restriction from $\U(d)$ to $S_d$:
-    \begin{equation}
-        \begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix} \simeq
-        \begin{bmatrix}\yaug{\alpha}{d} & \yaug{\beta}{d} & \yaug{\mu}{d} \\ \yaug{\gamma}{d} & \yaug{\lambda}{d} & \yaug{\nu}{d} \end{bmatrix}.
-    \end{equation}
-\end{cor}
-
-\subsection{An entropic inequality for tetrahedral spectra (Indirectly)}
-
-In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\U(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
-The purpose of this section is to prove an upper bound for the norm of the $\U(d)$ recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
-
-\begin{lem}
-    \label{lem:sk_recouple_bound}
-    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{k}^{\times 6}$ be a sextuple of Young diagrams and let $\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the corresponding $S_k$-recoupling operator. 
-    Then
-    \begin{equation}
-        \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}
-        \leq \left(g_{\alpha,\beta}^{\mu}g_{\beta,\gamma}^{\nu}g_{\mu,\gamma}^{\lambda}g_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
-    \end{equation}
-\end{lem}
-\begin{proof}
-    See \cref{sec:sk_recouple_bound_proof}.
-\end{proof}
-
-\begin{cor}
-    \label{cor:ud_recouple_bound_indirect}
-    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{a} \times \ydia{b} \times \ydia{c} \times \ydia{a+b} \times \ydia{b+c} \times \ydia{a+b+c}$ be Young diagrams, let $d \in \mathbb N$ be sufficiently large (as in \cref{cor:ud_sd_recouple_correspondence}), and let $\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the corresponding $\U(d)$-recoupling operator. 
-    Then
-    \begin{equation}
-        \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\text{HS}}^{2}
-        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\yaug{\nu}{d}}) \dim(V_{\yaug{\mu}{d}})}{\dim(V_{\yaug{\lambda}{d}}) \dim(V_{\yaug{\beta}{d}})}
-    \end{equation}
-\end{cor}
-
-\begin{thm}
-    If $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \eigs{d}$ are realizable eigenvalues for the tetrahedral Horn problem, then the following inequality holds:
-    \begin{equation}
-        S_{p}^{a,b,c}(\mu) + S_{p}^{a,b,c}(\nu) - S_{p}^{a,b,c}(\beta) - S_{p}^{a,b,c}(\lambda)
-    \end{equation}
-    \textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
-\end{thm}
-\begin{proof}
-    Let $n \mapsto \lambda(n)$ be a sequence of Young diagrams satisfying $\lim_{n\to\infty} \frac{\lambda(n)}{\abs{\lambda(n)}} = r$ and $\lim_{n\to\infty} \frac{\abs{\lambda(n)}}{n} = p$ for some $p \in [0,1]$.
-    Then \textcolor{red}{TODO: prove this}
-    \begin{equation}
-        \lim_{n\to\infty} \frac{1}{n} \log \dim V_{\lambda(n)} = p S(r).
-    \end{equation}
-\end{proof}
+%\subsection{An entropic inequality for tetrahedral spectra (Indirectly)}
+%
+%In \cref{sec:recouple}, it was shown that the realizability of a given sextuple of candidate eigenvalues, $(\alpha,\beta,\gamma,\mu,\nu,\lambda)$, for the tetrahedral Horn problem is encoded both the asymptotics of the a recoupling operator for $\U(d)$ as well as a recoupling operator for the Young subgroups of the symmetric group.
+%The purpose of this section is to prove an upper bound for the norm of the $\U(d)$ recoupling operator whose asymptotic limit gives rise to an entropic inequality which is necessarily satisfied by realizable spectra.
+%
+%\begin{lem}
+%    \label{lem:sk_recouple_bound}
+%    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{k}^{\times 6}$ be a sextuple of Young diagrams and let $\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}$ be the corresponding $S_k$-recoupling operator. 
+%    Then
+%    \begin{equation}
+%        \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}
+%        \leq \left(g_{\alpha,\beta}^{\mu}g_{\beta,\gamma}^{\nu}g_{\mu,\gamma}^{\lambda}g_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
+%    \end{equation}
+%\end{lem}
+%\begin{proof}
+%    See \cref{sec:sk_recouple_bound_proof}.
+%\end{proof}
+%
+%\begin{cor}
+%    \label{cor:ud_recouple_bound_indirect}
+%    Let $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \ydia{a} \times \ydia{b} \times \ydia{c} \times \ydia{a+b} \times \ydia{b+c} \times \ydia{a+b+c}$ be Young diagrams, let $d \in \mathbb N$ be sufficiently large (as in \cref{cor:ud_sd_recouple_correspondence}), and let $\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}$ be the corresponding $\U(d)$-recoupling operator. 
+%    Then
+%    \begin{equation}
+%        \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\text{HS}}^{2}
+%        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\yaug{\nu}{d}}) \dim(V_{\yaug{\mu}{d}})}{\dim(V_{\yaug{\lambda}{d}}) \dim(V_{\yaug{\beta}{d}})}
+%    \end{equation}
+%\end{cor}
+%
+%\begin{thm}
+%    If $(\alpha,\beta,\gamma,\mu,\nu,\lambda) \in \eigs{d}$ are realizable eigenvalues for the tetrahedral Horn problem, then the following inequality holds:
+%    \begin{equation}
+%        S_{p}^{a,b,c}(\mu) + S_{p}^{a,b,c}(\nu) - S_{p}^{a,b,c}(\beta) - S_{p}^{a,b,c}(\lambda)
+%    \end{equation}
+%    \textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
+%\end{thm}
+%\begin{proof}
+%    Let $n \mapsto \lambda(n)$ be a sequence of Young diagrams satisfying $\lim_{n\to\infty} \frac{\lambda(n)}{\abs{\lambda(n)}} = r$ and $\lim_{n\to\infty} \frac{\abs{\lambda(n)}}{n} = p$ for some $p \in [0,1]$.
+%    Then \textcolor{red}{TODO: prove this}
+%    \begin{equation}
+%        \lim_{n\to\infty} \frac{1}{n} \log \dim V_{\lambda(n)} = p S(r).
+%    \end{equation}
+%\end{proof}
 
 
 
@@ -1432,6 +1354,112 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 %    \end{equation}
 %\end{proof}
 
+\subsection{The \texorpdfstring{$\boldsymbol{\U(d)}$}{U(d)}-recoupling operator as a \texorpdfstring{$\boldsymbol{S_d}$}{Sd}-recoupling operator}
+\label{sec:recoupling-correspondence}
+
+The purpose of this section is to describe how to view certain aspects of the recoupling theory for the unitary group $\U(d)$ as a special case of the recoupling theory for the symmetric group $S_d$, at least when $d$ is taken to be sufficiently large.
+This connection between $\U(d)$ and $S_d$ is derived from considering the symmetric group $S_d$ as a \textit{subgroup} of $\U(d)$ with respect to the representation of $S_d$ as $d\times d$ permutation matrices.
+When considering the symmetric group, $S_d$, as a subgroup of the unitary group, $\U(d)$, in this manner,
+\citeauthor{nishiyama2000restriction} describes the restriction of an irreducible representation of $U(d)$ to the symmetric group in terms of its decomposition into irreducible representations of $S_d$ \cite[Theorem 2.3]{nishiyama2000restriction}.
+\begin{thm}
+    Let $d \in \mathbb N$ and let $\lambda \vdash d$.
+    Let $L_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $V_{\lambda}$ the irrep of $S_d$.
+    Given a partition $\mu$ with length $\ell(\mu) \leq d$, let $\Upsilon_{\mu}$ denote the Young subgroup $\Upsilon_{\mu} = S_{\mu_1} \times \cdots \times S_{\mu_{\ell(\mu)}} \subseteq S_d$ and let $\partitiondegen{\mu}$ denote the (not necessarily sorted) partition of $\ell(\mu)$ corresponding to the multiplicies of $\mu$.
+    Alternatively, $\partitiondegen{\mu}$ can be characterised in terms of the normaliser of $\Upsilon_\mu$ inside $S_d$ via the formula
+    \begin{equation}
+        N_{S_d}(\Upsilon_\mu) = \Upsilon_{\partitiondegen{\mu}} \ltimes \Upsilon_{\mu}
+    \end{equation}
+    Then the restriction of the irrep $L_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
+    \begin{equation}
+        \label{eq:nishiyama-decomp}
+        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \ot V_\lambda^{\Upsilon_{\mu}})
+    \end{equation}
+    where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
+\end{thm}
+
+Among the irreducible representations of $S_d$ appearing with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$, those labelled by Young diagrams with the largest possible first part are of particular interest \cite{christandl2018recoupling}.
+\begin{defn}
+    Let $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})$ be a Young diagram of size $\abs{\lambda}$.
+    Let $d \geq \lambda_1 + \abs{\lambda}$ and define the \textit{(size $d$) augmentation} of $\lambda$ as
+    \begin{equation}
+        \yaug{\lambda}{d} \coloneqq (d - \abs{\lambda}, \lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)}).
+    \end{equation}
+    Note that $\yaug{\lambda}{d}$ also a Young diagram (because $d - \abs{\lambda} \geq \lambda_1$) of size $d = \abs{\yaug{\lambda}{d}}$ and length $\ell(\yaug{\lambda}{d}) = \ell(\lambda) + 1$.
+\end{defn}
+Here we have adopted the notation for $\yaug{\lambda}{d}$ from \cite{pak2022combinatorial}.
+
+The following is \cite[Lemma 13]{christandl2018recoupling}:
+\begin{lem}
+    \label{lem:largest_first_rows}
+    Let $\lambda$ be a positive integer partition and let $d \in \mathbb N$ be given.
+    Let $L_{\lambda}$ be the irrep of $\U(d)$ with highest weight $\lambda$ and let $\mu \vdash d$ be an arbitrary Young diagram of size $d$.
+    Define $M^{\lambda}_{\mu}$ as the multiplicity space
+    \begin{equation}
+        M^{\lambda}_{\mu} \coloneqq \Hom_{S_d}(V_{\mu}, \Res^{\U(d)}_{S_d} L_{\lambda}).
+    \end{equation}
+    If $M^{\lambda}_{\mu}$ is non-zero, then the first row of $\mu$ cannot be smaller than $d - \lambda$:
+    \begin{equation}
+        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 \geq d - \abs{\lambda}.
+    \end{equation}
+    If $d < \lambda_1 + \abs{\lambda}$, then the above bound is strict
+    \begin{equation}
+        M^{\lambda}_{\mu} \neq 0 \implies \mu_1 > d - \abs{\lambda}.
+    \end{equation}
+    Otherwise $d \geq \lambda_1 + \abs{\lambda}$ and the above bound is saturated only when $\mu = \yaug{\lambda}{d}$ and moreover $\dim(M^{\lambda}_{\yaug{\lambda}{d}}) = 1$ in this case.
+\end{lem}
+
+At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
+\begin{equation}
+    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \ot L_{\beta}),
+\end{equation}
+are known to be independent of $d$ (whenever $d \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$),
+while the Kroncecker coefficients
+\begin{equation}
+    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \ot V_{\nu})
+\end{equation}
+are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambda}$.
+
+As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
+\begin{cor}
+    Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}$ and $\yaug{\gamma}{d}$ are all well-defined.
+    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\ot L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
+    \begin{equation}
+        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
+    \end{equation}
+    In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
+\end{cor}
+\begin{proof}
+    The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
+    \begin{equation}
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}).
+        \label{eq:res_monoidal}
+    \end{equation}
+    Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
+    \begin{align}
+        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
+        \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\ot \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
+    \end{align}
+    In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\yaug{\gamma}{d}$.
+    By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
+\end{proof}
+
+
+
+\begin{rem}
+    Note that this result indirectly implies a stability result for the Kronecker coefficents, namely that the value of $g_{\lambda + (d)}^{\mu + (d), \nu + (d)}$ is eventually independent of $d$ and moreover reaches the value $c_{\lambda_{-1}}^{\mu_{-1}, \nu_{-1}}$ where $\lambda_{-1}$ is obtained from $\lambda$ by removal of the first row of $\lambda$.
+\end{rem}
+
+\begin{cor}
+    \label{cor:ud_sd_recouple_correspondence}
+    Let $\alpha, \beta, \gamma, \mu, \nu, \lambda$ be Young diagrams. 
+    Furthermore, take $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}, \yaug{\gamma}{d}, \yaug{\mu}{d}, \yaug{\nu}{d}, \yaug{\lambda}{d}$ are all well-defined.
+    Then the following recoupling operator for $S_d$ is obtained from the corresponding recoupling operator for $\U(d)$ by restriction from $\U(d)$ to $S_d$:
+    \begin{equation}
+        \begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix} \simeq
+        \begin{bmatrix}\yaug{\alpha}{d} & \yaug{\beta}{d} & \yaug{\mu}{d} \\ \yaug{\gamma}{d} & \yaug{\lambda}{d} & \yaug{\nu}{d} \end{bmatrix}.
+    \end{equation}
+\end{cor}
+
 \section{Discussion}
 
 
@@ -1439,7 +1467,7 @@ The purpose of this section is to prove an upper bound for the norm of the $\U(d
 \section{[For drafting] Research notes}
 
 \begin{itemize}
-    \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 10.
+    \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
     \item A popular textbook on quantum groups with an emphasis on the connection to Poisson manifolds, Lie bialgebras and their quantizations by \citeauthor{chari1995guide} \cite{chari1995guide}
     \item The general subject of multivariate trace inequalities involving exponentials of sums of Hermitian and products of their exponentials is, of course, intimately related. See for instance the paper by \citeauthor{sutter2017multivariate} \cite{sutter2017multivariate}.
     \item Also the article \cite{forrester2014golden} by \citeauthor{forrester2014golden} which describes the connection to hyperbolic geometry quite explicitly.
