@@ -16,36 +16,123 @@
 \maketitle
 
 \begin{abstract}
-     
+    \textcolor{red}{TODO: write an abstract}
 \end{abstract}
 
 \tableofcontents
 
-\clearpage
-\section*{Outline Draft May 30 2024}
-
-Below is the proposed outline of the paper as of May 30, 2024.
-Our proposed journal is \textit{Communications in Mathematical Physics}.
-It will be ideal to illustrate with figures.
-\begin{itemize}
-    \item introduction (include 2x2 case)
-    \item general definition
-    \item relationship to Horn's problem, (how does it generalizes the problem)
-    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
-    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
-    \item spectral embedding into the quantum marginal problem
-    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
-\end{itemize}
-
 \section{Introduction}
 
+There are a number of operations involving the transformation of $d\times d$ Hermitian matrices under which it is possible to keep track of the set of eigenvalues, $\lambda(X)$, of a given Hermitian matrix $X$.
+For example, eigenvalues of Hermitian matrices are invariant under conjugation by unitary matrices, $\lambda(X) = \lambda(UXU^{\dagger})$, covariant under taking positive powers $\lambda(X^p) = \lambda(X)^p$, covariant under multiplication by real numbers, $\lambda(r X) = r \lambda(X)$, and covariant under the addition of scalar matrices, $\lambda(X+rI) = \lambda(X) + (r,\ldots,r)$.
+The operation of \textit{addition} of Hermitian matrices is however not an operation of this type.
+Specifically, the eigenvalues $\gamma = \lambda(A+B)$ of the sum of two matrices cannot be determined from the eigenvalues $\alpha = \lambda(A)$ and $\beta = \lambda(B)$ of the summands \textit{alone}; additional knowledge about the eigenvectors involved is typically required.
+Nevertheless, there are numerous mathematical situations wherein knowledge about the eigenvectors involved is lacking, yet it remains desirable to determine the set of \textit{possible} eigenvalues of a sum given the eigenvalues of the summands.
 
+The problem of determining the subset of admissible eigenvalues has come to be known as \textit{Horn's problem}; it is named after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined and finite set of homogeneous linear inequalities, known as the \textit{Horn inequalities} describing a polytope of admissible values for $(\alpha,\beta,\gamma)$ \cite{horn1962eigenvalues}.
+In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the \textit{saturation conjecture} due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
 
+\textcolor{red}{TODO: Summarize reviews \cite{fulton2000eigenvalues,knutson2000symplectic,fulton2000eigenvalues,bhatia2001linear}.}
 
+\textcolor{red}{TODO: Summarize multiplicative variations for products of unitaries \cite{belkale2008quantum,belkale2016multiplicative} and products of unimodular matrices and the proof of Thompson's conjecture \cite{klyachko2000random}.}
 
-\subsection{Triangles and tetrahedron}
+In this paper, we consider a generalization of the additive version of Horn's problem which we refer to as a \textit{linear eigenvalue constraint problems} or \textit{LECPs}.
+A linear eigenvalue constraint problem (LECP) may be viewed as a generalization of a homogeneous system of linear equations wherein real-valued variables are replaced with Hermitian-matrix-valued variables which are additionally subject to eigenvalue constraints.
+\begin{prob}[Linear eigenvalue constraint problem (LECP)]
+    Let $\Gamma \in \mathbb R^{p \times q}$ be a given $p \times q$ real-valued matrix and let $\Lambda \in \mathbb R^{q \times d}$ be a given $q \times d$ real-valued matrix.
+    If there exists a $q$-tuple $(X_1, \ldots, X_q)$ of $d\times d$ Hermitian matrices satisfying (i) for all $i \in \{1,\ldots, p\}$ the \textit{linear constraint}
+    \begin{equation}
+        \sum_{j=1}^{q} \Gamma_{i,j} X_j = 0,
+    \end{equation}
+    and (ii) for all $j \in \{1, \ldots q\}$ the \textit{eigenvalue constraint} 
+    \begin{equation}
+        \lambda(X_j) = (\Lambda_{j,1}, \ldots, \Lambda_{j, d}),
+    \end{equation}
+    then the matrix of eigenvalues $\Lambda$ is said to be \textit{admissible} for $\Gamma$.
+    The \defnsty{linear eigenvalue constraint problem} for $\Gamma$ is to describe or characterize the set of all admissible spectra for $\Gamma$.
+\end{prob}
 
-\textcolor{red}{TODO: Describe the moduli space of Euclidean triangles (up to rigid motions) and Euclidean tetrahedron (again up to rigid motions) and describe how applying the triangle inequalities to each face of the tetrahedron, while necessary, are ultimately insufficient for the existence of a tetrahedron with specified side lengths.}
+\textcolor{red}{TODO: Describe how the $d=1$ case reduces to ordinary homogeneous systems of linear equations, how one may always taken eigenvalues to be traceless if desired, how the $d=2$ traceless case with $\{-1,0,+1\}$-valued coefficients for $\Gamma$ reduces to three-dimensional Euclidean geometric constraint problems \cite{sitharam2018handbook} \cite{alfakih1998embeddability}, how the $p=1$ case reduces to the additive Horn problem and how some of the tree-like $p\geq 2$ cases also reduce to the ordinary Horn problem also.}
+
+Throughout this paper, a considerable focus will be placed on the following particular instance of a linear eigenvalue constraint problem involving six Hermitian matrices subject to four constraints which are derived from the four faces of a tetrahedron with six edges as depicted in \cref{fig:tetrahedron_labelling_scheme}.
+\begin{prob}[The tetrahedral eigenvalue constraint problem]
+    \label{prob:tetrahedral_problem}
+    A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
+    \begin{equation}
+        \label{eq:tetrahedral_linear_constraints}
+        A + B = C, \quad
+        B + D = F, \quad
+        D + C = E, \quad
+        A + F = E,
+    \end{equation}
+    and (ii) the six eigenvalue constraints
+    \begin{equation}
+        \label{eq:tetrahedral_eigenvalue_constraints}
+        \lambda(A) = \alpha, \quad
+        \lambda(B) = \beta, \quad
+        \lambda(C) = \gamma, \quad
+        \lambda(D) = \delta, \quad
+        \lambda(E) = \epsilon, \quad
+        \lambda(F) = \phi.
+    \end{equation}
+\end{prob}
+\begin{center}
+    \begin{figure}
+        \ctikzfig{tikz/tetrahedral-problem}
+        \caption{The six Hermitian operators appearing in the tetrahedral eigenvalue constraint problem (\cref{prob:tetrahedral_problem}), and denoted by $(A,B,C,D,E,F)$ above, are subject to four linear constraints corresponding to the four faces of the tetrahedron with coefficients determined by the edge orientations depicted here.}
+        \label{fig:tetrahedron_labelling_scheme}
+    \end{figure}
+\end{center}
+There are two reasons for our focus on the tetrahedral eigenalue constraint problem.
+The first reason simply that it exhibits many of the challenges typical of more general linear eigenvalue constraint problems that are not already challenges present in the original additive Horn problem.
+
+The second reason for our interest in the tetrahedral eigenvalue constraint problem stems from the fact that an elegant, complete solution already exists for the case of $2\times 2$ Hermitian matrices. 
+In order to describe this solution, first note that to solve a LECP it suffices to solve the specifical case where the Hermitian operators, and thus eigenvalues, are assumed traceless (see \cref{sec:linear_eigenvalue_constraint_problems}).
+Moreover, in the context of a two-dimensional LECP, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
+\begin{equation}
+    X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
+\end{equation}
+The eigenvalues of $X$ are then determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
+\begin{equation}
+    \lambda(X) = \lambda\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+\end{equation}
+%\begin{equation}
+%    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
+%    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
+%    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+%\end{equation}
+%it becomes possible to identify the space of traceless $2\times 2$ Hermitian matrices, $i\mathfrak{su}(2)$, with $\mathbb R^{3}$ via the standard parameterization associating $(x_1, x_2, x_3) \in \mathbb R^{3}$ to
+Now, for the special case of the tetrahedral eigenvalue constraint problem, one can assume the sextuple of eigenvalues are determined by a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that
+\begin{equation}
+    \alpha = (a, -a), \quad
+    \beta = (b, -b), \quad
+    \gamma = (c, -c), \quad
+    \delta = (d, -d), \quad
+    \epsilon = (e, -e), \quad
+    \phi = (f, -f).
+\end{equation}
+Using this parameterization, it can be shown that the constraints imposed in \cref{prob:tetrahedral_problem} precisely describe the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a genuine Euclidean tetrahedron in $\mathbb R^{3}$ \cite{richardson1902trigonometry}; namely, the conjunction of a quadruplet of triangle-inequalities,
+\begin{equation}
+    \label{eq:quadruplet_triangle_constraints}
+    \abs{a-b} \leq c \leq a+b, \qquad
+    \abs{b-d} \leq f \leq b+d, \qquad
+    \abs{d-c} \leq e \leq d+c, \qquad
+    \abs{a-f} \leq e \leq a+f,
+\end{equation}
+together with a single non-linear constraint of the form
+\begin{equation}
+    \label{eq:volume_positive_constraint}
+    D(a,b,c,d,e,f) = \frac{1}{288}\det 
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 & 1 \\ 
+        1 & 0 & a^2 & e^2 & c^2 \\ 
+        1 & a^2 & 0 & f^2 & b^2 \\ 
+        1 & e^2 & f^2 & 0 & d^2 \\ 
+        1 & c^2 & b^2 & d^2 & 0
+    \end{pmatrix}
+    \geq 0.
+\end{equation}
+The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when positive, is equal to square of the volume of the corresponding tetrahedron \cite{sitharam2018handbook}.
 
 
 \subsection{Notational conventions}
@@ -69,6 +156,7 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
 }
 
 \subsection{Graphical Horn problems}
+\label{sec:linear_eigenvalue_constraint_problems}
 
 \begin{center}
     \begin{figure}
@@ -133,6 +221,10 @@ The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, 
     The proposal would be to attribute a cycle constraints to oriented vertices with incoming and outgoing vertices.
     This would make the connection to the networks built in the category of representations of $\GL(d)$ much more aparent.
     TC: I missed this presentation because I fixated on the self-dual tetrahedron.
+}
+
+{\color{red}
+    In the case of traceless $2\times 2$ Hermitian matrices, the corresponding graphical Horn problem becomes equivalent to the problem of the existence of a embedding of an edge-weighted graph into $\mathbb R^{3}$. See \cite{alfakih1998embeddability} for a problem statement for embeddings into $\mathbb R^{r}$ and a constructive algorithm for producing a particular embedding when one exists.
 }
 
 There are a few operations which preserve the set of realizable spectral maps.
@@ -354,7 +446,7 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
 There is a well-established and fundamental connection between the eigenvalues of sums of Hermitian matrices and the representation theory of the general linear group \cite{klyachko1998stable,knutson1999honeycomb,knutson2000symplectic,fulton2000eigenvalues,bhatia2001linear,christandl2008quantum,berline2018horn}.
 The purpose of section is briefly summarize the nature of this connection and then describe the manner in which this fundamental connection generalizes to graphical Horn problems.
 
-\subsection{Preliminaries}
+\subsection{Representation \& geometric invariant theory preliminaries}
 \label{sec:prelim}
 
 There are a number of approaches that can be taken to begin building the bridge which connects eigenvalues of sums of $d\times d$ Hermitian matrices to the representation theory of $\GL(d)$; the method taken here is through notions of stability in the sense of geometric invariant theory.
@@ -583,7 +675,7 @@ Note that when $d = 2$, \cref{eq:character_formula} recovers the well-known form
 
 {\color{blue}
 \begin{rem}
-    With the integral character formula $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cref{mcswiggen2021harish}:
+    With the integral character formula $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cite{mcswiggen2021harish}:
     \begin{equation}
         K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim L_{\lambda}^{d} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
     \end{equation}
@@ -749,15 +841,6 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
 
 \textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
 
-The tetrahedral equations for $(A,B,C,D,E,F)$ are
-\begin{equation}
-    \label{eq:tetrahedral_constraints}
-    A + B = C, \quad
-    B + D = F, \quad
-    D + C = E, \quad
-    A + F = E.
-\end{equation}
-
 \begin{rem}
     Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(d)$:
     \begin{equation}
@@ -852,7 +935,7 @@ The tetrahedral equations for $(A,B,C,D,E,F)$ are
         D + C - E = 0, \quad
         E - F - A = 0,
     \end{equation}
-    which are readily seen to be equivalent to tetrahedral constraints in \cref{eq:tetrahedral_constraints}.
+    which are readily seen to be equivalent to tetrahedral constraints in \cref{eq:tetrahedral_linear_constraints}.
     In other words, the existence of a $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
     However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
 \end{rem}
@@ -876,7 +959,7 @@ The tetrahedral equations for $(A,B,C,D,E,F)$ are
 \end{rem}
 
 \begin{thm}
-    Let $(A,B,C,D,E,F) \in \s M_{\alpha,\beta,\gamma,\delta,\epsilon,\phi}$ be a sextuple of Hermitian matrices with integer-valued eigenvalues satisfying the tetrahedral equations in \cref{eq:tetrahedral_constraints}.
+    Let $(A,B,C,D,E,F) \in \s M_{\alpha,\beta,\gamma,\delta,\epsilon,\phi}$ be a sextuple of Hermitian matrices with integer-valued eigenvalues satisfying the tetrahedral equations in \cref{eq:tetrahedral_linear_constraints}.
 \end{thm}
 
 
@@ -901,7 +984,7 @@ The tetrahedral equations for $(A,B,C,D,E,F)$ are
 
 \begin{thm}
     \label{thm:seq_ud_recoupling_norm_lower_bound}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of positive semidefinite Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_constraints}.
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of positive semidefinite Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_linear_constraints}.
     Then there exists a sextuple of sequences of Young diagrams $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n), \tilde \delta(n), \tilde \epsilon(n), \tilde \phi(n))$
     satisfying
     \begin{equation}
@@ -1096,7 +1179,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
 \end{proof}
 
 \begin{thm}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_constraints}.
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_linear_constraints}.
     Then necessarily $\abs{\beta}+\abs{\epsilon} = \abs{\gamma}+\abs{\phi}$ and furthermore
     \begin{equation}
         I(\gamma, \phi; \beta, \epsilon) \geq 0.
@@ -1462,9 +1545,25 @@ As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method
 
 \section{Discussion}
 
+\clearpage
+\section*{[Proposed outline as of May 30 2024, for drafting]}
+
+Below is the proposed outline of the paper as of May 30, 2024.
+Our proposed journal is \textit{Communications in Mathematical Physics}.
+It will be ideal to illustrate with figures.
+\begin{itemize}
+    \item introduction (include 2x2 case)
+    \item general definition
+    \item relationship to Horn's problem, (how does it generalizes the problem)
+    \item representation theoretic/quantization analogue (Ponzano-Regge and connection to state-sum models? etc.)
+    \item comment about deviation from Thompson's conjecture (correspondence between eigenvalues of sums and logs of singularvalues of products)
+    \item spectral embedding into the quantum marginal problem
+    \item derivation of entropic inequalities (both from rep theory directly, and from embedding into QMP, things like concavity and data processing inequality for Renyi-entropies, etc), then prove they go beyond face constraints
+\end{itemize}
+
 
 \clearpage
-\section{[For drafting] Research notes}
+\section{[Research notes, for drafting]}
 
 \begin{itemize}
     \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
@@ -1534,6 +1633,9 @@ As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method
     \item Regarding an algorithmic construction for the polyhedra appearing in Minkowski's theorem and their complexity, see this post: \url{https://math.stackexchange.com/questions/105033/constructive-algorithm-for-minkowskis-theorem}
     \item \citeauthor{artamonov2023classical} derives an explicit formula for the $d=3$ case \cite{artamonov2023classical}, and later to arbitrary $d$ \cite{artamonov2024calculation}.
     \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $d$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $d$ \cite{lanina2023tug}.
+    \item Prakash Belkale has contributed greatly to the theory surrounding Horn-type problems: for example, in \cite{belkale2004invariant}, Belkale provides a \textit{geometric} proof of the equivalence between (i) the structure coefficients of the representation theory of $\GL(d)$ (i.e. the LR-coefficients $c_{\mu\nu}^{\lambda}$), and (ii) the structure coefficients of the cohomology ring of the Grassmannian $\mathrm{Gr}(d, n)$ of $d$-dimensional subspaces in $\mathbb C^{d}$. 
+        This proof is now complementary to the previously known algebraic proofs which rely on knowledge of the algebra of symmetric functions.
+        This geometric approach taken by Belkale, which emphasizes the tangent spaces of the involved Schubert varieties, is later used by Belkale to provide a geometric proof of the saturation conjecture \cite{belkale2002geometric}.
 \end{itemize}
 
 \appendix
