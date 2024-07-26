@@ -23,7 +23,7 @@
 		\node [style=none] (58) at (-0.5, -1) {};
 		\node [style=none] (59) at (-2.25, 0) {$\abcdefsymbol$};
 		\node [style=none] (60) at (1, 0) {$\coloneqq$};
-		\node [style=none] (61) at (2.75, -0.75) {$L_\epsilon$};
+		\node [style=none] (61) at (2.75, -0.75) {$V_\epsilon$};
 		\node [style=none] (62) at (5, -1) {};
 		\node [style=none] (63) at (6, -1) {};
 		\node [style=none] (64) at (6, 0.5) {};
@@ -37,9 +37,9 @@
 		\node [style=none] (72) at (5.5, -0.25) {$Y^{\gamma}_{\alpha,\beta}$};
 		\node [style=none] (74) at (6, 1.5) {};
 		\node [style=none] (75) at (5, 4.25) {};
-		\node [style=none] (76) at (4.5, 1) {$L_\alpha$};
-		\node [style=none] (77) at (5.5, 1) {$L_\beta$};
-		\node [style=none] (78) at (6.5, -1.5) {$L_\gamma$};
+		\node [style=none] (76) at (4.5, 1) {$V_\alpha$};
+		\node [style=none] (77) at (5.5, 1) {$V_\beta$};
+		\node [style=none] (78) at (6.5, -1.5) {$V_\gamma$};
 		\node [style=none] (79) at (6, -3.5) {};
 		\node [style=none] (80) at (7, -3.5) {};
 		\node [style=none] (81) at (7, -2) {};
@@ -48,8 +48,8 @@
 		\node [style=none] (84) at (6.75, -4.75) {$C^{\epsilon}_{\gamma,\delta}$};
 		\node [style=none] (89) at (6.5, -2.75) {$Y^{\epsilon}_{\gamma,\delta}$};
 		\node [style=none] (91) at (7, 1.5) {};
-		\node [style=none] (94) at (7.5, 1) {$L_\delta$};
-		\node [style=none] (95) at (8.5, 1) {$L_\epsilon$};
+		\node [style=none] (94) at (7.5, 1) {$V_\delta$};
+		\node [style=none] (95) at (8.5, 1) {$V_\epsilon$};
 		\node [style=none] (96) at (5, 5.75) {};
 		\node [style=none] (97) at (6, 5.75) {};
 		\node [style=none] (99) at (5, 4.25) {};
@@ -62,7 +62,7 @@
 		\node [style=none] (118) at (8, 7) {$C^{\phi}_{\beta,\delta}$};
 		\node [style=none] (123) at (6.5, 2.25) {$Y^{\phi \dagger}_{\beta,\delta}$};
 		\node [style=none] (124) at (6, 4.25) {};
-		\node [style=none] (129) at (5.75, 3.75) {$L_\phi$};
+		\node [style=none] (129) at (5.75, 3.75) {$V_\phi$};
 		\node [style=none] (119) at (5.5, 1.5) {};
 		\node [style=none] (120) at (5.75, 3) {};
 		\node [style=none] (121) at (7.5, 1.5) {};
@@ -83,18 +83,18 @@
 		\node [style=none] (136) at (7, 3.75) {};
 		\node [style=none] (137) at (6, 3) {};
 		\node [style=none] (164) at (9.5, 0) {$=$};
-		\node [style=none] (165) at (12.25, 0) {$L_\alpha$};
+		\node [style=none] (165) at (12.25, 0) {$V_\alpha$};
 		\node [style=dot] (166) at (13, -1.75) {};
 		\node [style=dot] (167) at (16.5, -1.75) {};
 		\node [style=dot] (168) at (16.5, 1.75) {};
 		\node [style=dot] (169) at (13, 1.75) {};
 		\node [style=crossing] (170) at (14.75, 0) {};
 		\node [style=none] (171) at (14.75, 0) {};
-		\node [style=none] (172) at (17.25, 0) {$L_\delta$};
-		\node [style=none] (173) at (15, 1) {$L_\beta$};
-		\node [style=none] (174) at (16, -0.5) {$L_\epsilon$};
-		\node [style=none] (175) at (14.75, -2.25) {$L_\gamma$};
-		\node [style=none] (176) at (14.75, 2.25) {$L_\phi$};
+		\node [style=none] (172) at (17.25, 0) {$V_\delta$};
+		\node [style=none] (173) at (15, 1) {$V_\beta$};
+		\node [style=none] (174) at (16, -0.5) {$V_\epsilon$};
+		\node [style=none] (175) at (14.75, -2.25) {$V_\gamma$};
+		\node [style=none] (176) at (14.75, 2.25) {$V_\phi$};
 		\node [style=none] (177) at (11.5, -3.25) {};
 		\node [style=none] (178) at (18, 3.25) {};
 		\node [style=none] (179) at (11.5, 3.25) {};
@@ -108,7 +108,7 @@
 		\node [style=none] (187) at (11.25, -0.75) {};
 		\node [style=none] (188) at (10, 0) {};
 		\node [style=none] (189) at (11.5, 0) {};
-		\node [style=none] (190) at (10.75, -0.75) {$L_\epsilon$};
+		\node [style=none] (190) at (10.75, -0.75) {$V_\epsilon$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=kron] (137.center)

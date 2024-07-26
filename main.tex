@@ -21,6 +21,7 @@
 
 \tableofcontents
 
+\clearpage
 \section{Introduction}
 
 There are a number of operations involving the transformation of $d\times d$ Hermitian matrices under which it is possible to keep track of the set of eigenvalues, $\lambda(X)$, of a given Hermitian matrix $X$.
@@ -133,19 +134,70 @@ together with a single non-linear constraint of the form
     \geq 0.
 \end{equation}
 The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when positive, is equal to square of the volume of the corresponding tetrahedron \cite{sitharam2018handbook}.
+\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/triangle-faces-moduli-space-example}
+        \includegraphics[width=0.48\textwidth]{figures/tetrahedron-moduli-space-example}
+    \end{center}
+    \caption{
+        Projections of admissible side-lengths $(a,b,c,d,e,f)$ for Euclidean tetrahedron along the coordinates $(a,b,d) = (5,7,6)$
+        (Left) The polyhedron of values $(c, e, f)$ satisfying the triangle inequalities for each face \cref{eq:quadruplet_triangle_constraints}.
+        (Right) The set of all values $(c,e,f)$ satisfying both \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+\end{figure}
+
+\begin{lem}[Tetrahedral shifting]
+    Let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be a given sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be given scalars and define \textit{shifted} candidate eigenvalues by the formula
+    \begin{equation}
+        \label{eq:shifted_tetrahedral_eigenvalues}
+        \begin{alignedat}{3}
+            &\alpha \coloneqq \tilde \alpha + x, \qquad
+            &&\beta \coloneqq \tilde \beta + y, \qquad
+            &&\gamma \coloneqq \tilde \gamma + x+y, \\
+            &\delta \coloneqq \tilde \delta + z, \qquad
+            &&\epsilon \coloneqq \tilde \epsilon + x + y + z, \qquad
+            &&\phi \coloneqq \tilde \phi + y + z.
+        \end{alignedat}
+    \end{equation}
+    Then the shifted eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral if and only if the unshifted eigenvalues are tetrahedral.
+    Moreover if the unshifted eigenvalues are tetrahedral and $(x,y,z)$ are sufficiently large, i.e.
+    \begin{equation}
+        x \geq \min(\tilde \alpha), \qquad
+        y \geq \min(\tilde \beta), \qquad
+        z \geq \min(\tilde \delta),
+    \end{equation}
+    then the shifted spectra are both tetrahedral and non-negative.
+\end{lem}
+
+In this paper we prove the following theorem which serves as a necessary (albeit insufficient) condition for a given collection of eigenvalues to be tetrahedral which holds for arbitrary $d$.
+\begin{thm}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be tetrahedral sextuple of non-negative eigenvalues.
+    Then the following inequality necessarily holds:
+    \begin{equation}
+        s(\gamma) + s(\phi) - s(\beta) - s(\epsilon) \geq 0,
+    \end{equation}
+    where $s(\lambda)$ is defined for non-negative $\lambda = (\lambda_1 \geq \ldots \geq \lambda_{d} \geq 0)$ by the formula
+    \begin{equation}
+        \label{eq:unnorm_shannon_intro}
+        s(\lambda) \coloneqq -\sum_{i=1}^{\ell(\lambda)} \lambda_i \log \lambda_i.
+    \end{equation}
+\end{thm}
 
 \subsection{Notational conventions}
 Throughout this paper, $d \in \mathbb N_{>0}$ will denote the size of the matrices under consideration.
 We also exclusively work with matrices with coefficients in the field of complex numbers $\mathbb C$, so for notational brevity we write $\GL(d)$ as shorthand for $\GL(d, \mathbb C)$.
 Weights for $\GL(d)$ will be denoted using Greek letters and will be identified with $d$-tuples of integers, e.g. $\alpha = (\alpha_1, \ldots, \alpha_d) \in \mathbb Z^{d}$.
 The weight lattice for $\GL(d)$ is denoted by $\weights{d} \simeq \mathbb Z^{d}$ in the usual way; a weight $\alpha \in \weights{d}$ is dominant if $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_d$ and the set of all dominant weights for $\GL(d)$ is denoted by $\domweights{d}$.
-
-Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights{d}$ are denoted by $L_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $V_{\lambda}$.
+g
+Irreducible highest weight representations of $\GL(d)$ with weight $\lambda \in \weights{d}$ are denoted by $V_{\lambda}$ and irreducible representations of $S_n$ of highest weight $\lambda \in \ydia{n}$ are denoted by $W_{\lambda}$.
 
 The set of all $d\times d$ complex Hermitian matrices will be denoted by $\herm(d)$ while the set of all possible eigenvalues of a $d\times d$ complex Hermitian matrix is denoted by $\eigs{d} \subset \mathbb R^{d}$.
 The set of $d\times d$ Hermitian matrices $X$ with eigenvalues $\eig(X) = (x_1, \ldots, x_d) = \eigs{d}$ will be denoted by $\orbit_x$. 
 
+\clearpage
 \section{Generalizations of Horn's problem}
 {\color{blue}
     This section will include a formal statement of the problem under investigation, its relation to Horn's original problem and other generalizations of Horn's problem.
@@ -435,7 +487,7 @@ A direct corollary of \cref{lem:ker_shift} is that the set of realizable spectra
     }
 \end{rem}
 
-
+\clearpage
 \section{A representation-theoretic characterization}
 {\color{blue}
     The purpose of this section is widen the bridge between representation theory and Horn-type problems.
@@ -460,13 +512,13 @@ The set $\orbit_{\lambda}$ of $d \times d$ Hermitian matrices with eigenvalues $
 \end{equation}
 or equivalently identified with a coadjoint orbit in $\mathfrak u(d)^{*}$.
 When $\lambda \in \domweights{d}$ is integer-valued, it may additionally be considered as a dominant weight for $\GL(d)$.
-In such cases, let $\pi_{\lambda} : \GL(d) \to \Aut(L_{\lambda})$\footnotemark{} denote the unique (up to isomorphism) irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $v_{\lambda} \in L_{\lambda}$ be a highest weight vector and let $[v_{\lambda}] \in \proj(L_{\lambda})$ be the associated highest weight ray.
+In such cases, let $\pi_{\lambda} : \GL(d) \to \Aut(V_{\lambda})$\footnotemark{} denote the unique (up to isomorphism) irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $v_{\lambda} \in V_{\lambda}$ be a highest weight vector and let $[v_{\lambda}] \in \proj(V_{\lambda})$ be the associated highest weight ray.
 \footnotetext{
-    The representation space $L_{\lambda}$ can be realized concretely in the sense of Borel-Weil as follows.
+    The representation space $V_{\lambda}$ can be realized concretely in the sense of Borel-Weil as follows.
     Let $B(d)$ be the Borel subgroup of upper triangular matrices in $\GL(d)$ and $F(d) = \GL(d)/B(d)$ the corresponding flag variety/manifold with $\GL(d) \to F(d)$ the principle $B(d)$-bundle over $F(d)$.
     Given a weight $\mu \in \weights{d}$, let $\chi_{\mu}$ be the one-dimensional complex representation of $B(d)$ sending the invertible diagonal $D_{t} = \diag(t_1, \ldots, t_d)$ to $\chi_{\mu}(D_{t}) = t_1^{\mu_1}\cdots t_d^{\mu_d} \in \mathbb C$.
     The representation $\chi_{\mu}$ of $B(d)$ gives rise to the associated line bundle, $\GL(d) \times_{B(d)} \mathbb C \to F(d)$.
-    With respect to this construction, the representation space $L_{\lambda}$ can be identified with the vector space of holomorphic sections of the associated line bundle given by $\chi_{-\lambda^*}$, i.e. holomorphic functions $s : \GL(d) \to \mathbb C$ satisfying $s( g b ) = s(g) \chi_{\lambda^{*}}(b)$ for all $g \in \GL(d)$ and $b \in B(r)$.
+    With respect to this construction, the representation space $V_{\lambda}$ can be identified with the vector space of holomorphic sections of the associated line bundle given by $\chi_{-\lambda^*}$, i.e. holomorphic functions $s : \GL(d) \to \mathbb C$ satisfying $s( g b ) = s(g) \chi_{\lambda^{*}}(b)$ for all $g \in \GL(d)$ and $b \in B(r)$.
     \textcolor{red}{TODO: Check to signs in this footnote to make sure they are correct.}
 }%
 One important consequence of $v_{\lambda}$ being a highest weight vector is simply that the $B(d)$-orbit of $v_{\lambda}$, $B(d) \cdot v_{\lambda} = \{ \pi_{\lambda}(b) v_{\lambda} \}$, is contained within the ray $[v_{\lambda}]$.
@@ -475,36 +527,36 @@ Moreover, there is a well-defined $\U(d)$-equivariant diffeomorphism
 \begin{equation}
     \varphi : \orbit_{\lambda} \to \U(d) \cdot [v_{\lambda}]
 \end{equation}
-sending $u\cdot D_{\lambda} \in \orbit_{\lambda}$ to $u \cdot [v_{\lambda}] = [v_{\lambda}^{u}] \in \U(d)\cdot [v_{\lambda}] \subseteq \proj(L_{\lambda})$\footnote{This map is well-defined because the $\U(d)$-stablizers of $D_{\lambda}$ and of $v_{\lambda}$ are equivalent.} where 
+sending $u\cdot D_{\lambda} \in \orbit_{\lambda}$ to $u \cdot [v_{\lambda}] = [v_{\lambda}^{u}] \in \U(d)\cdot [v_{\lambda}] \subseteq \proj(V_{\lambda})$\footnote{This map is well-defined because the $\U(d)$-stablizers of $D_{\lambda}$ and of $v_{\lambda}$ are equivalent.} where 
 \begin{equation}
     \varphi(u \cdot D_{\lambda}) \coloneqq v_{\lambda}^{u} \coloneqq \pi_{\lambda}(u) v_{\lambda}.
 \end{equation}
-Furthermore, if $X \in \mathfrak{gl}(d)$ is a $d\times d$ matrix, then it can be shown that $\Tr(X D_{\lambda}) = \braket{v_{\lambda}, \Pi_{\lambda}(X) v_{\lambda}}$ where $\Pi_{\lambda}$ is the induced representation of $\mathfrak{gl}(d)$ on $L_{\lambda}$, $\braket{\cdot,\cdot}$ is a $\U(d)$-invariant inner product on $L_{\lambda}$ and $v_{\lambda}$ is a highest weight vector of unit norm in $L_{\lambda}$.
+Furthermore, if $X \in \mathfrak{gl}(d)$ is a $d\times d$ matrix, then it can be shown that $\Tr(X D_{\lambda}) = \braket{v_{\lambda}, \Pi_{\lambda}(X) v_{\lambda}}$ where $\Pi_{\lambda}$ is the induced representation of $\mathfrak{gl}(d)$ on $V_{\lambda}$, $\braket{\cdot,\cdot}$ is a $\U(d)$-invariant inner product on $V_{\lambda}$ and $v_{\lambda}$ is a highest weight vector of unit norm in $V_{\lambda}$.
 Using the aforementioned diffeomorphism, one can also show that for all $d\times d$ matrices $X \in \mathfrak{gl}(d)$,
 \begin{equation}
     \Tr(X (u\cdot D_{\lambda})) = \braket{v_{\lambda}^{u}, \Pi_{\lambda}(X) v_{\lambda}^{u}}.
 \end{equation}
 
 \begin{rem}[Highest and lowest weights]
-    Let $\lambda = (\lambda_1, \ldots, \lambda_d)$ be a dominant weight for $\GL(d)$, and $L_{\lambda}$ the unique up to isomorphism finite dimensional irreducible representation of $\GL(d)$ with highest weight $\lambda$ and unique (up to phase) highest weight vector $v_{\lambda} \in L_{\lambda}$.
-    There exists a unique $\U(d)$-invariant inner product $\braket{\cdot,\cdot}$ on $L_{\lambda}$ which enables one to identify elements, $f : L_{\lambda} \to \mathbb C$, in the dual vector space, $L_{\lambda}^{*}$, with elements $w \in L_{\lambda}$ with the original vector space such that $f(v) = \braket{w, v}$ holds for all $v \in L_{\lambda}$. Moreover, the dual representation of $\GL(d)$ satisfies
+    Let $\lambda = (\lambda_1, \ldots, \lambda_d)$ be a dominant weight for $\GL(d)$, and $V_{\lambda}$ the unique up to isomorphism finite dimensional irreducible representation of $\GL(d)$ with highest weight $\lambda$ and unique (up to phase) highest weight vector $v_{\lambda} \in V_{\lambda}$.
+    There exists a unique $\U(d)$-invariant inner product $\braket{\cdot,\cdot}$ on $V_{\lambda}$ which enables one to identify elements, $f : V_{\lambda} \to \mathbb C$, in the dual vector space, $V_{\lambda}^{*}$, with elements $w \in V_{\lambda}$ with the original vector space such that $f(v) = \braket{w, v}$ holds for all $v \in V_{\lambda}$. Moreover, the dual representation of $\GL(d)$ satisfies
     \begin{equation}
         [\pi^{*}_{\lambda}(g) f](v) = \braket{w, \pi_{\lambda}(g^{-1})v}.
     \end{equation}
-    The highest weight appearing in the dual representation, $L_{\lambda}^{*}$, is the dominant weight
+    The highest weight appearing in the dual representation, $V_{\lambda}^{*}$, is the dominant weight
     \begin{equation}
         \lambda^{*} = (-\lambda_d, \ldots, -\lambda_1).
     \end{equation}
-    Consequently, there exists an $\GL(d)$-equivariant isomorphism $L_{\lambda^{*}} \simeq L_{\lambda}^{*}$, justifying the abuse of notation.
-    Under this isomorphism, the vector $\braket{v_{\lambda}, \cdot} \in L_{\lambda}^{*}$ dual to $v_{\lambda} \in L_{\lambda}$ is a vector of \textit{lowest} weight in $L_{\lambda^{*}}$.
-    To obtain the vector $v_{\lambda^{*}}$ of \textit{highest} weight in $L_{\lambda^{*}}$, one must dualize the vector $v_{w_0(\lambda)} \coloneqq \pi_{\lambda}(w_0) v_{\lambda}$ of \textit{lowest} weight in $L_{\lambda}$, i.e., 
+    Consequently, there exists an $\GL(d)$-equivariant isomorphism $V_{\lambda^{*}} \simeq V_{\lambda}^{*}$, justifying the abuse of notation.
+    Under this isomorphism, the vector $\braket{v_{\lambda}, \cdot} \in V_{\lambda}^{*}$ dual to $v_{\lambda} \in V_{\lambda}$ is a vector of \textit{lowest} weight in $V_{\lambda^{*}}$.
+    To obtain the vector $v_{\lambda^{*}}$ of \textit{highest} weight in $V_{\lambda^{*}}$, one must dualize the vector $v_{w_0(\lambda)} \coloneqq \pi_{\lambda}(w_0) v_{\lambda}$ of \textit{lowest} weight in $V_{\lambda}$, i.e., 
     \begin{equation}
         v_{\lambda^{*}} \simeq \braket{\pi_{\lambda}(w_0) v_{\lambda},\cdot}
     \end{equation}
     where $w_0 \in S_d$ is the permutation matrix which reverses the order of elements sending $(\lambda_1, \ldots, \lambda_d)$ to $(\lambda_d, \ldots, \lambda_1)$.
 
     This notational convention is consistent with the diffeomorphism $\varphi : \orbit_{\lambda} \to \U(d) \cdot [v_{\lambda}]$ defined above in the following sense; if $X = u \cdot D_{\lambda} = uD_{\lambda}u^{-1}$ is a Hermitian matrix with eigenvalues equal to the dominant weight $\lambda$, then $-X = (uw_0)\cdot D_{\lambda^{*}}$ is a Hermitian matrix with eigenvalues equal to the dominant weight $\lambda^{*} = - w_0(\lambda)$.
-    Moreover the dual of $\varphi(X) = \pi_{\lambda}(u) v_{\lambda}$ under the inner product on $L_{\lambda}$ becomes (under the $L_{\lambda^*} \simeq L_{\lambda}^{*}$ isomorphism)
+    Moreover the dual of $\varphi(X) = \pi_{\lambda}(u) v_{\lambda}$ under the inner product on $V_{\lambda}$ becomes (under the $V_{\lambda^*} \simeq V_{\lambda}^{*}$ isomorphism)
     \begin{equation}
         \varphi(-X) 
         = \pi_{\lambda^{*}}(uw_0) v_{\lambda^{*}}
@@ -517,14 +569,14 @@ Using the aforementioned diffeomorphism, one can also show that for all $d\times
 Throughout this section, the following result serves a the basis for establishing a number of asymptotic results for large $k$.
 \begin{lem}
     \label{lem:kth_tensor_power}
-    Let $\lambda \in \domweights{d}$ be a dominant weight for $\GL(d)$, let $L_{\lambda}$ be the irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $k \in \mathbb N_{> 0}$ be a positive integer.
-    Then $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})) = 1$.
+    Let $\lambda \in \domweights{d}$ be a dominant weight for $\GL(d)$, let $V_{\lambda}$ be the irreducible representation of $\GL(d)$ with highest weight $\lambda$ and let $k \in \mathbb N_{> 0}$ be a positive integer.
+    Then $\dim(\Hom_{\GL(d)}(V_{k\lambda}, V_{\lambda}^{\ot k})) = 1$.
     Let 
     \begin{equation}
-        \iota_{\lambda}^{k} : L_{k\lambda} \to L_{\lambda}^{\ot k}
+        \iota_{\lambda}^{k} : V_{k\lambda} \to V_{\lambda}^{\ot k}
     \end{equation}
-    be a $\GL(d)$-intertwining isometry in $\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})$.
-    If $v_{\lambda} \in L_{\lambda}$ is a highest weight vector, then there exists a highest weight vector $v_{k \lambda} \in L_{k\lambda}$ satisfying
+    be a $\GL(d)$-intertwining isometry in $\Hom_{\GL(d)}(V_{k\lambda}, V_{\lambda}^{\ot k})$.
+    If $v_{\lambda} \in V_{\lambda}$ is a highest weight vector, then there exists a highest weight vector $v_{k \lambda} \in V_{k\lambda}$ satisfying
     \begin{equation}
         \iota_{\lambda}^{k} v_{k\lambda} = v_{\lambda}^{\ot k}.
     \end{equation}
@@ -535,9 +587,9 @@ Throughout this section, the following result serves a the basis for establishin
 \end{lem}
 \begin{proof}
     \textcolor{red}{TODO: The following proof only makes sense for $\SL(d)$ because I'm implicitly assuming the labelling dominant weights are taken to be Young diagrams. Fix the proof so that it holds for $\GL(d)$.}
-    That $\dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k})) = 1$ follows from
+    That $\dim(\Hom_{\GL(d)}(V_{k\lambda}, V_{\lambda}^{\ot k})) = 1$ follows from
     \begin{equation}
-        c^{k\lambda}_{\lambda, (k-1)\lambda} = \dim(\Hom_{\GL(d)}(L_{k\lambda}, L_{\lambda}^{\ot k}))
+        c^{k\lambda}_{\lambda, (k-1)\lambda} = \dim(\Hom_{\GL(d)}(V_{k\lambda}, V_{\lambda}^{\ot k}))
     \end{equation}
     and the Littlewood-Richardson rule applied to $c^{k\lambda}_{\lambda, (k-1)\lambda}$; the skew shape $k\lambda/(k-1)\lambda$ has $\lambda_j$ boxes appearing in row $j$ and consequently there is only one skew semistandard tableaux of shape $k\lambda/(k-1)\lambda$ with weight $\lambda$ (and moreover this tableaux is indeed a Littlewood-Richardson tableaux so $c^{k\lambda}_{\lambda, (k-1)\lambda} = 1$).
     The existence of $v_{k\lambda}$ follows from the fact that $v_{\lambda}^{\otimes k}$ is already a highest weight vector of weight $k \lambda$ and therefore necessarily lives in image of $\iota_{\lambda}^{k}$.
@@ -569,10 +621,10 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
 
 \begin{defn}[Littlewood-Richarson coefficients]
     \label{defn:lr_coeffs}
-    Let $\alpha, \beta, \gamma \in \domweights{d}$ be a triple of dominant weights for $\GL(d)$ and let $L_{\alpha},L_{\beta},L_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
-    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha} \ot L_{\beta}$:
+    Let $\alpha, \beta, \gamma \in \domweights{d}$ be a triple of dominant weights for $\GL(d)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(d)$ with corresponding highest weights.
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(d)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \ot V_{\beta}$:
     \begin{equation}
-        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Inv_{\GL(d)}(L_{\gamma^*} \ot L_{\alpha} \ot L_{\beta}).
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(d)}(V_{\gamma}, V_{\alpha}\ot V_{\beta}) \simeq \Inv_{\GL(d)}(V_{\gamma^*} \ot V_{\alpha} \ot V_{\beta}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
     \begin{equation}
@@ -580,10 +632,10 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
     \end{equation}
 \end{defn}
 \begin{defn}[Clebsch-Gordon isometries]
-    Given $\alpha,\beta,\gamma$ as in \cref{defn:lr_coeffs}, a \textit{Clebsch-Gordon isometry} is a $\GL(d)$-equivariant isometric linear map sending $f \ot v \in C_{\alpha,\beta}^{\gamma} \ot L_{\gamma}$ to $f(v) \in L_{\alpha}\ot L_{\beta}$\footnote{If $C_{\alpha,\beta}^{\gamma} = 0$, then $Y_{\alpha,\beta}^{\gamma}$ is identified with the origin in $L_{\alpha}\otimes L_{\beta}$.}.
+    Given $\alpha,\beta,\gamma$ as in \cref{defn:lr_coeffs}, a \textit{Clebsch-Gordon isometry} is a $\GL(d)$-equivariant isometric linear map sending $f \ot v \in C_{\alpha,\beta}^{\gamma} \ot V_{\gamma}$ to $f(v) \in V_{\alpha}\ot V_{\beta}$\footnote{If $C_{\alpha,\beta}^{\gamma} = 0$, then $Y_{\alpha,\beta}^{\gamma}$ is identified with the origin in $V_{\alpha}\otimes V_{\beta}$.}.
     Let
     \begin{equation}
-        Y_{\alpha,\beta}^{\gamma} : C_{\alpha,\beta}^{\gamma} \ot L_{\gamma} \to L_{\alpha} \ot L_{\beta},
+        Y_{\alpha,\beta}^{\gamma} : C_{\alpha,\beta}^{\gamma} \ot V_{\gamma} \to V_{\alpha} \ot V_{\beta},
     \end{equation}
     be a Clebsch-Gordon isometry and depict it diagrammatically by
     \begin{equation}
@@ -591,7 +643,7 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
     \end{equation}
     The conjugate transpose of the Clebsch-Gordon isometry is 
     \begin{equation}
-        Y_{\alpha,\beta}^{\gamma \dagger} : L_{\alpha} \ot L_{\beta} \to C_{\alpha,\beta}^{\gamma} \ot L_{\gamma},
+        Y_{\alpha,\beta}^{\gamma \dagger} : V_{\alpha} \ot V_{\beta} \to C_{\alpha,\beta}^{\gamma} \ot V_{\gamma},
     \end{equation}
     will be depicted diagrammatically by
     \begin{equation}
@@ -622,13 +674,13 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
         \abcdefsymbol 
         \coloneqq
         \frac{
-            \Tr_{L_{\epsilon}}[
+            \Tr_{V_{\epsilon}}[
             Y_{\alpha,\phi}^{\epsilon\dagger}
-            (\id_{L_{\alpha}}\ot Y_{\beta,\delta}^{\phi\dagger})
-            (Y_{\alpha,\beta}^{\gamma}\ot\id_{L_{\delta}})
+            (\id_{V_{\alpha}}\ot Y_{\beta,\delta}^{\phi\dagger})
+            (Y_{\alpha,\beta}^{\gamma}\ot\id_{V_{\delta}})
             Y_{\gamma,\delta}^{\epsilon}
             ]
-        }{\dim(L_{\epsilon})},
+        }{\dim(V_{\epsilon})},
     \end{equation}
     which is depicted diagrammatically by
     \begin{equation}
@@ -636,7 +688,7 @@ and thus vanishes precisely when the cycle condition, \cref{eq:cycle_cond}, is s
     \end{equation}
 \end{defn}
 {\color{red}
-    WARNING: The convention I am using for the curly braces seems to differ from many of the uses of the curly braces to define the Wigner 6j coefficient which differs in that I think the Wigner 6j coefficient does not include the additional factor of $\dim(L_{\epsilon})$.
+    WARNING: The convention I am using for the curly braces seems to differ from many of the uses of the curly braces to define the Wigner 6j coefficient which differs in that I think the Wigner 6j coefficient does not include the additional factor of $\dim(V_{\epsilon})$.
 }
 
 Subsequent sections will primarily be interested in the square of the Hilbert-Schmidt norm of the recoupling operator in \cref{defn:ud_recoupling_operator}.
@@ -649,7 +701,7 @@ The following lemma provides a formula for the square of the Hilbert-Schmidt nor
     \begin{equation}
         \label{eq:character_formula}
         R^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq
-        \dim(L_{\epsilon})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
+        \dim(V_{\epsilon})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
         = \int_{\SU(d)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4).
     \end{equation}
     where
@@ -663,7 +715,7 @@ Note that when $d = 2$, \cref{eq:character_formula} recovers the well-known form
     \begin{equation}
         \tikzfig{tikz/character-duality},
     \end{equation}
-    and (ii) the integral formula for the projection operator $\Pi_{\alpha,\beta}^{\gamma}$ onto the subspace of invariant vectors in $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}^{*}$:
+    and (ii) the integral formula for the projection operator $\Pi_{\alpha,\beta}^{\gamma}$ onto the subspace of invariant vectors in $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}^{*}$:
     \begin{equation}
         \tikzfig{tikz/triple-invariant-proj}.
     \end{equation}
@@ -677,7 +729,7 @@ Note that when $d = 2$, \cref{eq:character_formula} recovers the well-known form
 \begin{rem}
     With the integral character formula $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cite{mcswiggen2021harish}:
     \begin{equation}
-        K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim L_{\lambda}^{d} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
+        K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim V_{\lambda}^{d} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
     \end{equation}
     where the sum is over all dominant integral weights $\lambda$ for $G$ and $\rho$ the associated Weyl vector.
     It is conceivable that ther might be a method for expressing $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
@@ -726,7 +778,7 @@ Recall that $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are said to be \te
     \begin{equation}
         w_{A,B,C} \coloneqq \varphi(A) \ot \varphi(B) \ot \varphi(C) = v_\alpha^{u_A} \ot v_\beta^{u_B} \ot v_\gamma^{u_C}
     \end{equation}
-    be the associated coherent state of unit norm in $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}$.
+    be the associated coherent state of unit norm in $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}$.
     Define the capacity of $(A,B,C)$ as
     \begin{align}
         \capacity(A,B,C) 
@@ -749,7 +801,7 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     \begin{equation}
         \cst_{k}(A,B,C) = \norm{\Gamma_{\alpha,\beta,\gamma}^{k} w_{A,B,C}^{\otimes k}}^{\frac{2}{k}},
     \end{equation}
-    where $\Gamma_{\alpha,\beta,\gamma}^{k}$ is the projection operator onto the subspace of $\GL(d)$-invariant vectors in $(L_{\alpha}\ot L_{\beta} \ot L_{\gamma})^{\ot k}$.
+    where $\Gamma_{\alpha,\beta,\gamma}^{k}$ is the projection operator onto the subspace of $\GL(d)$-invariant vectors in $(V_{\alpha}\ot V_{\beta} \ot V_{\gamma})^{\ot k}$.
     Then
     \begin{equation}
         \label{eq:strong_duality}
@@ -763,16 +815,16 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     where $s = \dim \U(d) - \dim \U(d)_{[w_{A,B,C}]}$.
 \end{thm}
 \begin{cor}
-    Consider the quantity $\tilde c_{\alpha,\beta,\gamma}$ which measures the fraction of vectors $L_{\alpha} \ot L_{\beta} \ot L_{\gamma}$ which are $\GL(d)$-invariant:
+    Consider the quantity $\tilde c_{\alpha,\beta,\gamma}$ which measures the fraction of vectors $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}$ which are $\GL(d)$-invariant:
     \begin{align}
         \tilde c_{\alpha, \beta, \gamma} 
-        &= \frac{\dim[(L_{\alpha} \ot L_{\beta} \ot L_{\gamma})^{\GL(d)}]}{\dim(L_{\alpha} \ot L_{\beta} \ot L_{\gamma})}.
+        &= \frac{\dim[(V_{\alpha} \ot V_{\beta} \ot V_{\gamma})^{\GL(d)}]}{\dim(V_{\alpha} \ot V_{\beta} \ot V_{\gamma})}.
     \end{align}
     If there exists $(A,B,C)\in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C=0$, then there exists an integer $K > 0$ such that $c_{K\alpha,K\beta,K\gamma} \geq 1$\footnote{In fact the proof of the saturation conjecture implies $K = 1$ always suffices.}, and therefore for all integers $M > 0$
     \begin{equation}
-        \tilde c_{MK\alpha, MK\beta, MK\gamma} \geq \frac{1}{\dim(L_{MK\alpha} \ot L_{MK\beta} \ot L_{MK\gamma})}.
+        \tilde c_{MK\alpha, MK\beta, MK\gamma} \geq \frac{1}{\dim(V_{MK\alpha} \ot V_{MK\beta} \ot V_{MK\gamma})}.
     \end{equation}
-    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\alpha, k\beta, k\gamma}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(L_{k\lambda})$ combined with the exponential upper bound on $\tilde c_{k\alpha,k\beta,k\gamma}$ actually implies $c_{\alpha,\beta,\gamma} = 0$ whenever $A+B+C=0$.}
+    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\alpha, k\beta, k\gamma}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(V_{k\lambda})$ combined with the exponential upper bound on $\tilde c_{k\alpha,k\beta,k\gamma}$ actually implies $c_{\alpha,\beta,\gamma} = 0$ whenever $A+B+C=0$.}
     \begin{equation}
         \tilde c_{k\alpha, k\beta, k\gamma} \leq \max_{A,B,C} \capacity(A,B,C)^{k}.
     \end{equation}
@@ -781,12 +833,12 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     The lower-bound follows from the operator inequality
      \begin{equation}
          \label{eq:inclusivity}
-         \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}} \leq \id_{L_{\lambda}},
+         \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}} \leq \id_{V_{\lambda}},
     \end{equation}
-    for all unit vectors $v_{\lambda}^{u} \in L_{\lambda}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(d)$:
+    for all unit vectors $v_{\lambda}^{u} \in V_{\lambda}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(d)$:
     \begin{equation}
         \label{eq:resolution}
-        \id_{L_{\lambda}} = \dim(L_{\lambda}) \int_{u\in\U(d)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}}.
+        \id_{V_{\lambda}} = \dim(V_{\lambda}) \int_{u\in\U(d)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}}.
     \end{equation}
     %{v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma^{u_C}}
     Applying \cref{eq:resolution} three times to the definition of $\tilde c_{k\alpha,k\beta,k\gamma}$ yields
@@ -794,16 +846,16 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
         \label{eq:tilde_c_k_integral}
         \begin{split}
             \tilde c_{k\alpha, k\beta, k\gamma} 
-            &= \frac{\dim[(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})^{\GL(d)}]}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})} \\
+            &= \frac{\dim[(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})^{\GL(d)}]}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})} \\
             &= \int \diff u_A \diff u_B \diff u_C \braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}.
         \end{split}
     \end{align}
-    While the operator $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(d)$-invariant vectors in $L_{k\alpha}\ot L_{k\beta} \ot L_{k\gamma}$, the operator $\Gamma_{\alpha,\beta,\gamma}^{k}$ projects onto the subspace of $\GL(d)$-invariant vectors in $(L_{\alpha}\otimes L_{\beta} \otimes L_{\gamma})^{\ot k}$.
-    By \cref{lem:kth_tensor_power}, $L_{k\alpha}\ot L_{k\beta} \ot L_{k\gamma}$ is a subspace of $(L_{\alpha}\otimes L_{\beta} \otimes L_{\gamma})^{\ot k}$ with respect to a $\GL(d)$-equivariant isometry and therefore the projection operators satisfy
+    While the operator $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(d)$-invariant vectors in $V_{k\alpha}\ot V_{k\beta} \ot V_{k\gamma}$, the operator $\Gamma_{\alpha,\beta,\gamma}^{k}$ projects onto the subspace of $\GL(d)$-invariant vectors in $(V_{\alpha}\otimes V_{\beta} \otimes V_{\gamma})^{\ot k}$.
+    By \cref{lem:kth_tensor_power}, $V_{k\alpha}\ot V_{k\beta} \ot V_{k\gamma}$ is a subspace of $(V_{\alpha}\otimes V_{\beta} \otimes V_{\gamma})^{\ot k}$ with respect to a $\GL(d)$-equivariant isometry and therefore the projection operators satisfy
     \begin{equation}
         \Gamma_{k\alpha,k\beta,k\gamma}^{1} = (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k})^{\dagger} \Gamma_{\alpha,\beta,\gamma}^{k} (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k}).
     \end{equation}
-    Moreover, using the $\GL(d)$-equivariance of $\Gamma_{\alpha,\beta,\gamma}^{k}$ and the inequality $\Gamma_{\alpha,\beta,\gamma}^{k} \leq (\id_{L_{\alpha}\ot L_{\beta} \ot L_{\gamma}})^{\otimes k}$ yields, for all $g \in \GL(d)$, an upper bound on the integrand in \cref{eq:tilde_c_k_integral}:    \begin{align}
+    Moreover, using the $\GL(d)$-equivariance of $\Gamma_{\alpha,\beta,\gamma}^{k}$ and the inequality $\Gamma_{\alpha,\beta,\gamma}^{k} \leq (\id_{V_{\alpha}\ot V_{\beta} \ot V_{\gamma}})^{\otimes k}$ yields, for all $g \in \GL(d)$, an upper bound on the integrand in \cref{eq:tilde_c_k_integral}:    \begin{align}
         &\braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}\\
         &\qquad=\braket{(v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}}, \\
         &\qquad=\braket{(v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}}, \\
@@ -826,10 +878,10 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
         \label{eq:tilde_c_k_inclusivity}
         \begin{split}
             \tilde c_{k\alpha, k\beta, k\gamma} 
-            &= \frac{\dim[(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})^{\GL(d)}]}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})} \\
-            &\geq \frac{\braket{(v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'})}}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}, \\
-            &= \frac{\braket{(v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}}}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}, \\
-            &= \frac{\cst_{k}(A,B,C)}{\dim(L_{k\alpha} \ot L_{k\beta} \ot L_{k\gamma})}.
+            &= \frac{\dim[(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})^{\GL(d)}]}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})} \\
+            &\geq \frac{\braket{(v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'})}}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}, \\
+            &= \frac{\braket{(v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}}}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}, \\
+            &= \frac{\cst_{k}(A,B,C)}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}.
         \end{split}
     \end{align}
     Now \cref{eq:occasionality} implies there exists positive integers $m,s > 0$ such that for sufficiently large $k$, $(mk)^{s} \cst_{mk}(A,B,C) > 0$ which implies $c_{mk\alpha, mk\beta, mk\gamma} \neq 0$ and thus $c_{mk\alpha, mk\beta, mk\gamma} \geq 1$. 
@@ -844,7 +896,7 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
 \begin{rem}
     Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(d)$:
     \begin{equation}
-        \s L = \s L^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq L_{\alpha}\ot L_{\alpha^*} \ot L_{\beta} \ot L_{\beta^*} \ot L_{\gamma} \ot L_{\gamma^*} \ot L_{\delta} \ot L_{\delta^*} \ot L_{\epsilon} \ot L_{\epsilon^*} \ot L_{\phi} \ot L_{\phi^*}.
+        \s L = \s L^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq V_{\alpha}\ot V_{\alpha^*} \ot V_{\beta} \ot V_{\beta^*} \ot V_{\gamma} \ot V_{\gamma^*} \ot V_{\delta} \ot V_{\delta^*} \ot V_{\epsilon} \ot V_{\epsilon^*} \ot V_{\phi} \ot V_{\phi^*}.
     \end{equation}
     along with an associated symplectic manifold
     \begin{equation}
@@ -871,16 +923,16 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     At this stage, it is worth noticing that $\sigma_1$ is the representation of $\GL(d)$ which is obtained by restricting $\sigma_4$ (respectively $\sigma_6$) to the diagonal subgroup $\GL(d) \subseteq \GL(d)^{\times 4}$ (respectively $\GL(d) \subseteq \GL(d)^{\times 6}$).
     Now consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(d)^{\times 4}$ (via $\sigma_4$), i.e.,
     \begin{equation}
-        \s L_{4} \coloneqq (\s L)^{\GL(d)^{\times 4}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4 \in \GL(d) : \sigma_{4}(g_1, g_2, g_3, g_4) w = w \}.
+        \s V_{4} \coloneqq (\s L)^{\GL(d)^{\times 4}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4 \in \GL(d) : \sigma_{4}(g_1, g_2, g_3, g_4) w = w \}.
     \end{equation}
-    Whenever it happens to be that $\s L_{4} \neq 0$, then one may conclude
+    Whenever it happens to be that $\s V_{4} \neq 0$, then one may conclude
     \begin{align}
         \begin{split}
             \label{eq:face_inv}
-            (L_{\alpha} \ot L_{\gamma}^{*} \ot L_{\beta})^{\GL(d)} &\neq 0, \\
-            (L_{\beta}^{*}  \ot L_{\phi} \ot L_{\delta}^{*})^{\GL(d)} &\neq 0, \\
-            (L_{\delta} \ot L_{\gamma} \ot L_{\epsilon^{*}})^{\GL(d)} &\neq 0, \\
-            (L_{\epsilon} \ot L_{\phi}^{*}  \ot L_{\alpha}^{*})^{\GL(d)} &\neq 0,
+            (V_{\alpha} \ot V_{\gamma}^{*} \ot V_{\beta})^{\GL(d)} &\neq 0, \\
+            (V_{\beta}^{*}  \ot V_{\phi} \ot V_{\delta}^{*})^{\GL(d)} &\neq 0, \\
+            (V_{\delta} \ot V_{\gamma} \ot V_{\epsilon^{*}})^{\GL(d)} &\neq 0, \\
+            (V_{\epsilon} \ot V_{\phi}^{*}  \ot V_{\alpha}^{*})^{\GL(d)} &\neq 0,
         \end{split}
     \end{align}
     which, by \cref{prop:LR_pos_implies_herm}, implies the existence of Hermitian operators in $\s M$
@@ -912,14 +964,14 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
 \begin{rem}
     To address the insufficiency of \cref{eq:face_inv}, consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(d)^{\times 6}$ (via $\sigma_6$), i.e.,
     \begin{equation}
-        \s L_{6} \coloneqq (\s L)^{\GL(d)^{\times 6}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4,g_5,g_6 \in \GL(d) : \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6) w = w \}.
+        \s V_{6} \coloneqq (\s L)^{\GL(d)^{\times 6}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4,g_5,g_6 \in \GL(d) : \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6) w = w \}.
     \end{equation}
     For all dominant weights $\lambda$, Schur's lemma implies
     \begin{equation}
-        (L_{\lambda} \ot L_{\lambda}^{*})^{\GL(d)} \simeq \Hom_{\GL(d)}(L_{\lambda}, L_{\lambda}) \simeq \mathbb C \id_{L_\lambda},
+        (V_{\lambda} \ot V_{\lambda}^{*})^{\GL(d)} \simeq \Hom_{\GL(d)}(V_{\lambda}, V_{\lambda}) \simeq \mathbb C \id_{V_\lambda},
     \end{equation}
-    which in turn implies the subspace of $\GL(d)^{\times 6}$-invariant vectors in $\s L$ is always one-dimensional, $\dim (\s L_{6}) = 1$.
-    In any case, if there exists a vector which is \textit{both} $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$, i.e., $w \in \s L_{6} \cap \s L_{4} \neq 0$, then it can be shown (by similar arguments to the proof of \cref{prop:LR_pos_implies_herm}\footnote{Specifically, one begins with a generic twelve-fold coherent product vector $v_0 \in \s L$ and iteratively flowing along gradients to minimize the norm of $\sigma_{6}(g'_i)\sigma_{4}(g_j)v_{n-1} \in \s L$ with respect to $g'_i$ and $g_j$ to obtain $v_{n} \in \s L$. The resulting sequence of points exhibits a limit point $\tilde v$ which is (i) non-zero (because $\braket{w, \tilde v} = \braket{w, v_n} = \braket{w, v_0} \neq 0$), and (ii) minimal in norm with respect to both orbits, i.e. both moment maps vanish: $\mu_4([\tilde v]) = 0$ and $\mu_{6}([\tilde v]) = 0$. \textcolor{blue}{Thanks to Harold for sketching out this argument for me.}}) that there exists Hermitian operators
+    which in turn implies the subspace of $\GL(d)^{\times 6}$-invariant vectors in $\s L$ is always one-dimensional, $\dim (\s V_{6}) = 1$.
+    In any case, if there exists a vector which is \textit{both} $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$, i.e., $w \in \s V_{6} \cap \s V_{4} \neq 0$, then it can be shown (by similar arguments to the proof of \cref{prop:LR_pos_implies_herm}\footnote{Specifically, one begins with a generic twelve-fold coherent product vector $v_0 \in \s L$ and iteratively flowing along gradients to minimize the norm of $\sigma_{6}(g'_i)\sigma_{4}(g_j)v_{n-1} \in \s L$ with respect to $g'_i$ and $g_j$ to obtain $v_{n} \in \s L$. The resulting sequence of points exhibits a limit point $\tilde v$ which is (i) non-zero (because $\braket{w, \tilde v} = \braket{w, v_n} = \braket{w, v_0} \neq 0$), and (ii) minimal in norm with respect to both orbits, i.e. both moment maps vanish: $\mu_4([\tilde v]) = 0$ and $\mu_{6}([\tilde v]) = 0$. \textcolor{blue}{Thanks to Harold for sketching out this argument for me.}}) that there exists Hermitian operators
     \begin{equation}
         A \in \orbit_{\alpha}, \quad
         B \in \orbit_{\beta}, \quad
@@ -937,7 +989,7 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     \end{equation}
     which are readily seen to be equivalent to tetrahedral constraints in \cref{eq:tetrahedral_linear_constraints}.
     In other words, the existence of a $\GL(d)^{\times 4}$ and $\GL(d)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
-    However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s L_{4} \cap \s L_{6} = 0$.
+    However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s V_{4} \cap \s V_{6} = 0$.
 \end{rem}
 
 \begin{rem}
@@ -1013,27 +1065,27 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
 
 \subsection{The asymptotics of irrep dimensions}
 
-It will be useful for what follows to better understand how the dimension, $\dim(L_{\lambda}^{d})$, of the irreducible representation $L_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
-\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(L_{\lambda}^{d})$ \cite{itzykson1966unitary}.
+It will be useful for what follows to better understand how the dimension, $\dim(V_{\lambda}^{d})$, of the irreducible representation $V_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
+\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\lambda}^{d})$ \cite{itzykson1966unitary}.
 \begin{lem}
     \label{lem:in_estimate}
     Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $d \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(d)$.
     The following approximation holds when $d \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
     \begin{equation}
         \label{eq:in_estimate}
-        \dim(L_{\lambda}^{d}) = \dim(L_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{d}\right)\right).
+        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{d}\right)\right).
     \end{equation}
 \end{lem}
 \begin{proof}
-    Weyl's character formula can be used to derive the following formula for $\dim(L_{\lambda}^{d})$ in terms of the Young diagram $\lambda$ and the dimension $d$ \cite{itzykson1966unitary}:
+    Weyl's character formula can be used to derive the following formula for $\dim(V_{\lambda}^{d})$ in terms of the Young diagram $\lambda$ and the dimension $d$ \cite{itzykson1966unitary}:
     \begin{equation}
-        \dim(L_{\lambda}^{d}) = \frac{\Delta(\lambda + \rho^d)}{\Delta(\rho^d)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
+        \dim(V_{\lambda}^{d}) = \frac{\Delta(\lambda + \rho^d)}{\Delta(\rho^d)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
     \end{equation}
     where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
     Isolating the terms above which depend on $d$ from those that do not yields
     \begin{equation}
         \label{eq:dim_separation_large_d}
-        \dim(L_{\lambda}^{d}) = \dim(L_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}.
+        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}.
     \end{equation}
     Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
     \begin{align}
@@ -1058,14 +1110,14 @@ It will be useful for what follows to better understand how the dimension, $\dim
     \end{align}
     which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
 \end{proof}
-Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(L_{\lambda}^{d})$ generally grows polynomially in $d$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
+Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(V_{\lambda}^{d})$ generally grows polynomially in $d$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
 The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $d$.
 \textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\lambda}, \abs{\lambda}/d\} \leq \epsilon$.}
 \begin{lem}
     \label{lem:double_asymptotics}
     Let everything be as in \cref{lem:in_estimate}. Then
     \begin{equation}
-        \log \dim (L_{\lambda}^{d}) = \abs{\lambda} + \abs{\lambda}\log(d) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{d}\right)
+        \log \dim (V_{\lambda}^{d}) = \abs{\lambda} + \abs{\lambda}\log(d) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{d}\right)
     \end{equation}
     where $s(\lambda)$ is defined by
     \begin{equation}
@@ -1075,12 +1127,12 @@ The objective of the following lemma is to characterize the asymptotics of this 
 \end{lem}
 \begin{proof}
     The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
-    First, we upper bound the dimension $\dim(L_{\lambda}^{\ell})$; for indices $i<j\leq \ell$, one has $(\lambda_i-i)-(\lambda_j-j) \leq \abs{\lambda} + 1$ as well as $j-i \geq 1$ which implies
+    First, we upper bound the dimension $\dim(V_{\lambda}^{\ell})$; for indices $i<j\leq \ell$, one has $(\lambda_i-i)-(\lambda_j-j) \leq \abs{\lambda} + 1$ as well as $j-i \geq 1$ which implies
     \begin{equation}
         \label{eq:dim_lambda_ell_bound}
-        \dim(L_{\lambda}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i} \leq (\abs{\lambda}+1)^{\ell(\ell-1)/2},
+        \dim(V_{\lambda}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i} \leq (\abs{\lambda}+1)^{\ell(\ell-1)/2},
     \end{equation}
-    and thus $\log \dim(L_{\lambda}^{\ell}) = O(\ell^2 \log \abs{\lambda})$.
+    and thus $\log \dim(V_{\lambda}^{\ell}) = O(\ell^2 \log \abs{\lambda})$.
 
     Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\lambda_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \lambda_{i}$),
     \begin{align}
@@ -1106,12 +1158,12 @@ The objective of the following lemma is to characterize the asymptotics of this 
 \end{rem}
 
 {\color{red}
-TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}^{d})$ to $\dim(V_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
+TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}^{d})$ to $\dim(W_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
 }
 \begin{lem}
     Let $\lambda$ be a Young diagram with at most $d$ parts. Then
     \begin{equation}
-        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(L_{\lambda}^{d})}{\dim(V_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{d}\right)
+        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(V_{\lambda}^{d})}{\dim(W_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{d}\right)
     \end{equation}
 \end{lem}
 
@@ -1125,7 +1177,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
     Then
     \begin{equation}
         \norm{\abcdefsymbol}_{\text{HS}}^{2}
-        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(L_{\gamma}) \dim(L_{\phi})}{\dim(L_{\beta}) \dim(L_{\epsilon})}
+        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(V_{\gamma}) \dim(V_{\phi})}{\dim(V_{\beta}) \dim(V_{\epsilon})}
     \end{equation}
 \end{thm}
 \begin{proof}
@@ -1146,7 +1198,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(L_{\lambda}
     Let $\ell \coloneqq \max\{\ell(\gamma), \ell(\phi), \ell(\beta), \ell(\epsilon) \}$ and let $d$ be a positive integer such that $d \geq \ell$.
     Then
     \begin{equation}
-        \log\left(\frac{\dim(L_{\gamma}^d) \dim(L_{\phi}^d)}{\dim(L_{\beta}^d) \dim(L_{\epsilon}^d)}\right)
+        \log\left(\frac{\dim(V_{\gamma}^d) \dim(V_{\phi}^d)}{\dim(V_{\beta}^d) \dim(V_{\epsilon}^d)}\right)
         = I(\gamma,\phi;\beta,\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
         \label{eq:asymptotic_dimension_ratio}
     \end{equation}
@@ -1231,7 +1283,7 @@ The primary difference between $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi
 %    Then
 %    \begin{equation}
 %        \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2}
-%        \leq \left(g_{\alpha,\beta}^{\mu}g_{\beta,\gamma}^{\nu}g_{\mu,\gamma}^{\lambda}g_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\nu}) \dim(V_{\mu})}{\dim(V_{\lambda}) \dim(V_{\beta})}
+%        \leq \left(g_{\alpha,\beta}^{\mu}g_{\beta,\gamma}^{\nu}g_{\mu,\gamma}^{\lambda}g_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(W_{\nu}) \dim(W_{\mu})}{\dim(W_{\lambda}) \dim(W_{\beta})}
 %    \end{equation}
 %\end{lem}
 %\begin{proof}
@@ -1244,7 +1296,7 @@ The primary difference between $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi
 %    Then
 %    \begin{equation}
 %        \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\text{HS}}^{2}
-%        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(V_{\yaug{\nu}{d}}) \dim(V_{\yaug{\mu}{d}})}{\dim(V_{\yaug{\lambda}{d}}) \dim(V_{\yaug{\beta}{d}})}
+%        \leq \left(c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda}\right)^{\frac{1}{2}} \frac{\dim(W_{\yaug{\nu}{d}}) \dim(W_{\yaug{\mu}{d}})}{\dim(W_{\yaug{\lambda}{d}}) \dim(W_{\yaug{\beta}{d}})}
 %    \end{equation}
 %\end{cor}
 %
@@ -1253,18 +1305,18 @@ The primary difference between $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi
 %    \begin{equation}
 %        S_{p}^{a,b,c}(\mu) + S_{p}^{a,b,c}(\nu) - S_{p}^{a,b,c}(\beta) - S_{p}^{a,b,c}(\lambda)
 %    \end{equation}
-%    \textcolor{red}{TODO: Figure out how to take the limit of $\dim(V_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
+%    \textcolor{red}{TODO: Figure out how to take the limit of $\dim(W_{\lambda})$ when $\lambda \vdash pn$ as $n \to \infty$; the exact form of the entropic inequality is sensitive to how this is done.}
 %\end{thm}
 %\begin{proof}
 %    Let $n \mapsto \lambda(n)$ be a sequence of Young diagrams satisfying $\lim_{n\to\infty} \frac{\lambda(n)}{\abs{\lambda(n)}} = r$ and $\lim_{n\to\infty} \frac{\abs{\lambda(n)}}{n} = p$ for some $p \in [0,1]$.
 %    Then \textcolor{red}{TODO: prove this}
 %    \begin{equation}
-%        \lim_{n\to\infty} \frac{1}{n} \log \dim V_{\lambda(n)} = p S(r).
+%        \lim_{n\to\infty} \frac{1}{n} \log \dim W_{\lambda(n)} = p S(r).
 %    \end{equation}
 %\end{proof}
 
 
-
+\clearpage
 \section{The spectral quantum marginal problem}
 {\color{blue}
     The purpose of this section will be to re-articulate the spectral embedding defined in \cite{christandl2018recoupling} and state the sense in which the tetrahedral spectra problem is an instance of the quantum marginal problem.
@@ -1446,21 +1498,21 @@ When considering the symmetric group, $S_d$, as a subgroup of the unitary group,
 \citeauthor{nishiyama2000restriction} describes the restriction of an irreducible representation of $U(d)$ to the symmetric group in terms of its decomposition into irreducible representations of $S_d$ \cite[Theorem 2.3]{nishiyama2000restriction}.
 \begin{thm}
     Let $d \in \mathbb N$ and let $\lambda \vdash d$.
-    Let $L_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $V_{\lambda}$ the irrep of $S_d$.
+    Let $V_{\lambda}$ denote the irrep of $U(d)$ with highest weight $\lambda$ and $W_{\lambda}$ the irrep of $S_d$.
     Given a partition $\mu$ with length $\ell(\mu) \leq d$, let $\Upsilon_{\mu}$ denote the Young subgroup $\Upsilon_{\mu} = S_{\mu_1} \times \cdots \times S_{\mu_{\ell(\mu)}} \subseteq S_d$ and let $\partitiondegen{\mu}$ denote the (not necessarily sorted) partition of $\ell(\mu)$ corresponding to the multiplicies of $\mu$.
     Alternatively, $\partitiondegen{\mu}$ can be characterised in terms of the normaliser of $\Upsilon_\mu$ inside $S_d$ via the formula
     \begin{equation}
         N_{S_d}(\Upsilon_\mu) = \Upsilon_{\partitiondegen{\mu}} \ltimes \Upsilon_{\mu}
     \end{equation}
-    Then the restriction of the irrep $L_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
+    Then the restriction of the irrep $V_{\lambda}$ of $\U(d)$ to the symmetric group $S_d$ decomposes as follows:
     \begin{equation}
         \label{eq:nishiyama-decomp}
-        \Res^{\U(d)}_{S_d} L_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \ot V_\lambda^{\Upsilon_{\mu}})
+        \Res^{\U(d)}_{S_d} V_{\lambda} \simeq \bigoplus_{\mu \vdash_d \abs{\lambda}} \Ind_{S_{d-\ell(\mu)} \times \Upsilon_{\partitiondegen{\mu}}}^{S_d}(1 \ot W_\lambda^{\Upsilon_{\mu}})
     \end{equation}
-    where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $V_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $V_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
+    where $1$ denotes the trivial representation of $S_{d-\ell(\mu)}$ and $W_\lambda^{\Upsilon_{\mu}}$ is the $\Upsilon_{\mu}$-invariant subspace of $W_{\lambda}$ supporting a representation of $\Upsilon_{\partitiondegen{\mu}}$.
 \end{thm}
 
-Among the irreducible representations of $S_d$ appearing with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} L_{\lambda}$, those labelled by Young diagrams with the largest possible first part are of particular interest \cite{christandl2018recoupling}.
+Among the irreducible representations of $S_d$ appearing with non-zero multiplicity in the decomposition of $\Res^{\U(d)}_{S_d} V_{\lambda}$, those labelled by Young diagrams with the largest possible first part are of particular interest \cite{christandl2018recoupling}.
 \begin{defn}
     Let $\lambda = (\lambda_1, \lambda_2, \ldots, \lambda_{\ell(\lambda)})$ be a Young diagram of size $\abs{\lambda}$.
     Let $d \geq \lambda_1 + \abs{\lambda}$ and define the \textit{(size $d$) augmentation} of $\lambda$ as
@@ -1475,10 +1527,10 @@ The following is \cite[Lemma 13]{christandl2018recoupling}:
 \begin{lem}
     \label{lem:largest_first_rows}
     Let $\lambda$ be a positive integer partition and let $d \in \mathbb N$ be given.
-    Let $L_{\lambda}$ be the irrep of $\U(d)$ with highest weight $\lambda$ and let $\mu \vdash d$ be an arbitrary Young diagram of size $d$.
+    Let $V_{\lambda}$ be the irrep of $\U(d)$ with highest weight $\lambda$ and let $\mu \vdash d$ be an arbitrary Young diagram of size $d$.
     Define $M^{\lambda}_{\mu}$ as the multiplicity space
     \begin{equation}
-        M^{\lambda}_{\mu} \coloneqq \Hom_{S_d}(V_{\mu}, \Res^{\U(d)}_{S_d} L_{\lambda}).
+        M^{\lambda}_{\mu} \coloneqq \Hom_{S_d}(W_{\mu}, \Res^{\U(d)}_{S_d} V_{\lambda}).
     \end{equation}
     If $M^{\lambda}_{\mu}$ is non-zero, then the first row of $\mu$ cannot be smaller than $d - \lambda$:
     \begin{equation}
@@ -1493,34 +1545,34 @@ The following is \cite[Lemma 13]{christandl2018recoupling}:
 
 At this stage, we note that the Littlewood-Richardson coefficients for $\U(d)$,
 \begin{equation}
-    c^{\gamma}_{\alpha, \beta} = \dim \Hom (L_{\gamma}, L_{\alpha} \ot L_{\beta}),
+    c^{\gamma}_{\alpha, \beta} = \dim \Hom (V_{\gamma}, V_{\alpha} \ot V_{\beta}),
 \end{equation}
 are known to be independent of $d$ (whenever $d \geq \max\{\ell(\alpha), \ell(\beta), \ell(\gamma) \}$),
 while the Kroncecker coefficients
 \begin{equation}
-    g^{\lambda}_{\mu, \nu} = \dim \Hom (V_{\lambda}, V_{\mu} \ot V_{\nu})
+    g^{\lambda}_{\mu, \nu} = \dim \Hom (W_{\lambda}, W_{\mu} \ot W_{\nu})
 \end{equation}
 are implicitly dependent on $d$ because $d = \abs{\mu} = \abs{\nu} = \abs{\lambda}$.
 
 As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method (originally suggest by \citeauthor{murnaghan1955analysis} \cite{murnaghan1955analysis} and later formalized by \citeauthor{littlewood1958products} \cite{littlewood1958products}) for viewing Littlewood-Richardson coefficients as a special types of Kronecker coefficients by appropriately augmenting the Young diagrams involved:
 \begin{cor}
     Let $\alpha, \beta, \gamma$ be Young diagrams and let $d$ be sufficiently large such that $\yaug{\alpha}{d}, \yaug{\beta}{d}$ and $\yaug{\gamma}{d}$ are all well-defined.
-    Then the multiplicity space of $S_d$-intertwiners from $V_{\yaug{\gamma}{d}}$ to $V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $L_{\gamma}$ to $L_{\alpha}\ot L_{\beta}$ by restriction from $\U(d)$ to $S_d$:
+    Then the multiplicity space of $S_d$-intertwiners from $W_{\yaug{\gamma}{d}}$ to $W_{\yaug{\alpha}{d}} \ot W_{\yaug{\beta}{d}}$ is obtained from the multiplicity space of $\U(d)$-intertwiners from $V_{\gamma}$ to $V_{\alpha}\ot V_{\beta}$ by restriction from $\U(d)$ to $S_d$:
     \begin{equation}
-        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(L_{\gamma}, L_{\alpha}\ot L_{\beta}) \simeq \Hom_{S_d}(V_{\yaug{\gamma}{d}}, V_{\yaug{\alpha}{d}} \ot V_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
+        C^{\gamma}_{\alpha,\beta} = \Hom_{\U(d)}(V_{\gamma}, V_{\alpha}\ot V_{\beta}) \simeq \Hom_{S_d}(W_{\yaug{\gamma}{d}}, W_{\yaug{\alpha}{d}} \ot W_{\yaug{\beta}{d}}) = G^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}.
     \end{equation}
     In particular, their dimensions are equal: $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
 \end{cor}
 \begin{proof}
     The following two representations of $S_d$ are isomorphic (because restriction is a monoidal functor):
     \begin{equation}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) \simeq \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}).
+        \Res^{\U(d)}_{S_d}(V_{\alpha}\ot V_{\beta}) \simeq \Res^{\U(d)}_{S_d}(V_{\alpha})\ot \Res^{\U(d)}_{S_d}(V_{\beta}).
         \label{eq:res_monoidal}
     \end{equation}
     Applying \cref{lem:largest_first_rows} (noting $d$ is sufficiently large), yields
     \begin{align}
-        \Res^{\U(d)}_{S_d}(L_{\alpha}\ot L_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(L_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} V_{\yaug{\gamma}{d}} \oplus \cdots, \\
-        \Res^{\U(d)}_{S_d}(L_{\alpha})\ot \Res^{\U(d)}_{S_d}(L_{\beta}) &= \left( V_{\yaug{\alpha}{d}} \oplus \cdots \right)\ot \left( V_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} V_{\yaug{\gamma}{d}} \oplus \cdots.
+        \Res^{\U(d)}_{S_d}(V_{\alpha}\ot V_{\beta}) &= \bigoplus_{\abs{\gamma} = \abs{\alpha}+\abs{\beta}} c^{\gamma}_{\alpha,\beta} \Res^{\U(d)}_{S_d}(V_{\gamma}) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}} c^{\gamma}_{\alpha,\beta} W_{\yaug{\gamma}{d}} \oplus \cdots, \\
+        \Res^{\U(d)}_{S_d}(V_{\alpha})\ot \Res^{\U(d)}_{S_d}(V_{\beta}) &= \left( W_{\yaug{\alpha}{d}} \oplus \cdots \right)\ot \left( W_{\yaug{\beta}{d}} \oplus \cdots \right) = \bigoplus_{\substack{\abs{\gamma} = \abs{\alpha}+\abs{\beta}\\d-\abs{\gamma}\geq \gamma_1}}g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}} W_{\yaug{\gamma}{d}} \oplus \cdots.
     \end{align}
     In both formulas above, the ``$\cdots$'' refers to a direct sum of irreps of $S_d$ labelled by $\lambda \vdash d$ whose first part, $\lambda_1$, is larger than the first part, $d-\abs{\gamma}$, of $\yaug{\gamma}{d}$.
     By \cref{eq:res_monoidal}, one concludes their exists an isomorphism between all multiplicity spaces, and in particular, $c^{\gamma}_{\alpha, \beta} = g^{\yaug{\gamma}{d}}_{\yaug{\alpha}{d}, \yaug{\beta}{d}}$.
@@ -1543,7 +1595,6 @@ As an immediate corollary of \cref{lem:largest_first_rows}, one obtains a method
     \end{equation}
 \end{cor}
 
-\section{Discussion}
 
 \clearpage
 \section*{[Proposed outline as of May 30 2024, for drafting]}
@@ -1593,7 +1644,7 @@ It will be ideal to illustrate with figures.
     \item \Citeauthor{coquereaux2018orbital} explictly outline the link between the orbital measures (i.e. the induced distributions in the sense of Klyachko's random walk approach) and the magnitude of the stretched Littlewood-Richardson coefficients \cite{coquereaux2018orbital}. See also the papers \cite{coquereaux2020horn,coquereaux2019revisiting,zuber2018horn}.
     \item A recent article by \citeauthor{mcswiggen2021harish} is an excellent introduction to the Harish-Chandra integral \cite{mcswiggen2021harish}. The proof of the Harish-Chandra formula provide by \citeauthor{mcswiggen2021harish} using the heat equation methods from \citeauthor{fegan1978heat}'s 1978 paper \cite{fegan1978heat} seems very promising for deriving a connection to the character formula for the norm of the recoupling operator!
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
-    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
+    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $\U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
     \item \citeauthor{keppeler2024wigner} recently calculated $\SU(d)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(d)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
     \item \citeauthor{boalch2007regge} \cite{boalch2007regge}
     \item \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
@@ -1640,6 +1691,7 @@ It will be ideal to illustrate with figures.
 
 \appendix
 
+\clearpage
 \section{Proof of symmetric group recoupling operator upper bound}
 \label{sec:sk_recouple_bound_proof}
 
@@ -1675,7 +1727,7 @@ As a shorthand for this equation, we simply write:
     \tikzfig{tikz/recoupling-trees-shorthand}.
 \end{equation}
 
-The next result is a consequence of an application of Schur's lemma to the identity on $V_{\alpha}$:
+The next result is a consequence of an application of Schur's lemma to the identity on $W_{\alpha}$:
 \begin{equation}
     \tikzfig{tikz/offset-schur-lemma-untwist}.
 \end{equation}
@@ -1692,7 +1744,7 @@ Combining two instances of the above result yields:
 \end{proof}
 
 %\begin{proof}
-%    The proof follows by noting that the $S_k$ recoupling operator can be written as the contraction of two smaller tensors across $V_{\nu}\ot V_{\gamma} \ot V_{\mu} \ot V_{\alpha}$ (annotated below):
+%    The proof follows by noting that the $S_k$ recoupling operator can be written as the contraction of two smaller tensors across $W_{\nu}\ot W_{\gamma} \ot W_{\mu} \ot W_{\alpha}$ (annotated below):
 %    \begin{equation}
 %        \tikzfig{tikz/yrb1}
 %    \end{equation}
@@ -1704,7 +1756,7 @@ Combining two instances of the above result yields:
 %    \begin{equation}
 %        \tikzfig{tikz/yrb2}
 %    \end{equation}
-%    holds because of Schur's lemma \textcolor{red}{FALSE!! Cannot apply Schur's lemma here.} (applied to $V_{\lambda}$) and that $Y_{\mu\gamma}^{\lambda}$ and $Y_{\alpha\nu}^{\lambda}$ are also isometries, yields the following upper bound:
+%    holds because of Schur's lemma \textcolor{red}{FALSE!! Cannot apply Schur's lemma here.} (applied to $W_{\lambda}$) and that $Y_{\mu\gamma}^{\lambda}$ and $Y_{\alpha\nu}^{\lambda}$ are also isometries, yields the following upper bound:
 %    \begin{equation}
 %        (d_{\alpha} d_{\beta} d_{\gamma})^2 \norm{\begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}}_{\text{HS}}^{2} \leq \left[\left(d_{\alpha}d_{\beta}d_{\gamma}\right)^2\left(\frac{d_{\nu} d_{\gamma} d_{\mu} d_{\alpha}}{d_{\lambda}}\right)^{2}  c_{\alpha,\beta}^{\mu}c_{\beta,\gamma}^{\nu}c_{\mu,\gamma}^{\lambda}c_{\alpha,\nu}^{\lambda} \right]^{\frac{1}{2}},
 %    \end{equation}
@@ -1712,6 +1764,7 @@ Combining two instances of the above result yields:
 %\end{proof}
 
 
+\clearpage
 \section{Proof of recoupling operator norm equivalences}
 \label{sec:recouple_norms}
 
@@ -1729,16 +1782,16 @@ Combining two instances of the above result yields:
         :
         C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma},
     \end{equation}
-    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(V_{\alpha}\ot V_{\beta}, V_{\mu})$ defined as
+    between the multiplicity spaces $C^{\mu}_{\alpha,\beta} \coloneqq \Hom_{S_a\times S_b}(W_{\alpha}\ot W_{\beta}, W_{\mu})$ defined as
     \begin{equation}
         \begin{bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}
         \coloneqq
         \frac{
-            \Tr_{V_{\alpha}\ot V_{\beta}\ot V_{\gamma}}[(\id_{V_{\alpha}}\ot Y_{\beta\gamma}^{\nu;\dagger})
+            \Tr_{W_{\alpha}\ot W_{\beta}\ot W_{\gamma}}[(\id_{W_{\alpha}}\ot Y_{\beta\gamma}^{\nu;\dagger})
             Y_{\alpha\nu}^{\lambda;\dagger}
             Y_{\mu\gamma}^{\lambda}
-            (Y_{\alpha\beta}^{\mu}\ot\id_{V_{\gamma}})]
-        }{\dim(V_{\alpha}\ot V_{\beta}\ot V_{\gamma})}
+            (Y_{\alpha\beta}^{\mu}\ot\id_{W_{\gamma}})]
+        }{\dim(W_{\alpha}\ot W_{\beta}\ot W_{\gamma})}
     \end{equation}
     \begin{equation}
         \tikzfig{tikz/young-subgroup-recouple-defn}.
@@ -1760,8 +1813,8 @@ Combining two instances of the above result yields:
     \begin{align}
         \label{eq:recoupling_prod_proj_iso}
         \Pi_{\nu}\Pi_{\mu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda} 
-        &= \iota_{II} \left(\id_{L_{\lambda}} \ot \id_{V_{\alpha}} \ot \id_{V_{\beta}} \ot \id_{V_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger}, \\
-        &= \iota_{III} \left(\id_{L_{\lambda}} \ot \id_{V_{\alpha}} \ot \id_{V_{\beta}} \ot \id_{V_{\gamma}} \ot \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}\right) \iota_{IV}^{\dagger}.
+        &= \iota_{II} \left(\id_{V_{\lambda}} \ot \id_{W_{\alpha}} \ot \id_{W_{\beta}} \ot \id_{W_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger}, \\
+        &= \iota_{III} \left(\id_{V_{\lambda}} \ot \id_{W_{\alpha}} \ot \id_{W_{\beta}} \ot \id_{W_{\gamma}} \ot \begin{bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{bmatrix}\right) \iota_{IV}^{\dagger}.
     \end{align}
     The first two isometries, $\iota_{I}$ and $\iota_{II}$, involve decompositions of tensor products of irreps of the symmetric group:
     \begin{equation}
@@ -1773,6 +1826,7 @@ Combining two instances of the above result yields:
     \end{equation}
 \end{proof}
 
+\clearpage
 \section{[Calculations from previous draft]}
 \subsection{From states to recoupling}
 
@@ -1951,7 +2005,7 @@ This bound takes the form
 Furthermore, one can show by a detailed diagrammatic calculation that there exists appropriate isometries $\iota_{I}$ and $\iota_{II}$ such that
 \begin{equation}
     \label{eq:ud_recoupling_prod_proj_iso}
-    \iota_{II} \left(I_{U^{d}_{\lambda}} \ot I_{V_{\alpha}} \ot I_{V_{\beta}} \ot I_{V_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger} = \Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}
+    \iota_{II} \left(I_{U^{d}_{\lambda}} \ot I_{W_{\alpha}} \ot I_{W_{\beta}} \ot I_{W_{\gamma}} \ot \begin{Bmatrix} \alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \iota_{I}^{\dagger} = \Pi_{\mu}\Pi_{\nu}\Pi_{\alpha}\Pi_{\beta}\Pi_{\gamma}\Pi_{\lambda}
 \end{equation}
 which in turn implies an equality of operator norms
 \begin{equation}
@@ -2027,7 +2081,7 @@ with coefficient $R_{\alpha \beta \gamma}$ given by a ratio of dimensions
     R_{\alpha \beta \gamma} 
     =
     \frac{1}{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})} 
-    \frac{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})}{\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})}.
+    \frac{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})}{\dim(W_\alpha)\dim(W_{\beta})\dim(W_{\gamma})}.
 \end{equation}
 Consequently, $\mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right]$ commutes with the projection operators $\Pi_{\mu}, \Pi_{\nu}$ and $\Pi_{\lambda}$ and thus also $\Pi_{\alpha\beta\gamma\lambda}^{\mu}$ and $\Pi_{\alpha\beta\gamma\lambda}^{\nu}$.
 In fact the following holds
@@ -2052,7 +2106,7 @@ Using the decomposition provided by \cref{eq:recoupling_prod_proj_iso}, together
 \begin{align}
     \norm{\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}}_{\mathrm{HS}}^2
     &= \Tr\left(\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}^{\dagger}\begin{Bmatrix}\alpha & \beta & \mu \\ \gamma & \lambda & \nu \end{Bmatrix}\right) \\
-    &= \frac{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}{\dim(U^{d}_{\lambda})\dim(V_\alpha)\dim(V_{\beta})\dim(V_{\gamma})} \\
+    &= \frac{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}{\dim(U^{d}_{\lambda})\dim(W_\alpha)\dim(W_{\beta})\dim(W_{\gamma})} \\
     &= Q_{\alpha\beta\gamma\lambda}\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu} \mathbb E\left[\Omega_{\sigma_1,\sigma_2,\sigma_3}^{k_1, k_2, k_3}\right] \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)  \\
     &\leq \sup_{\rho_1 \rho_2 \rho_3} Q_{\alpha\beta\gamma\lambda}\abs{\Tr\left(\Pi_{\alpha\beta\gamma\lambda}^{\mu}\Omega_{\rho_1,\rho_2,\rho_3}^{k_1, k_2, k_3} \Pi_{\alpha\beta\gamma\lambda}^{\nu}\right)}  \\
     &\leq Q_{\alpha\beta\gamma\lambda} \exp( - k_6 \inf_{\rho_1\rho_2\rho_3} I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda} + O(\log(k_6)))
@@ -2061,7 +2115,7 @@ where the infimum is taken over all density matrices $\rho_1, \rho_2, \rho_3$ wi
 Also the scalar $Q_{\alpha\beta\gamma\lambda}$ is
 \begin{align}
     Q_{\alpha\beta\gamma\lambda} 
-    &\coloneq \frac{1}{ R_{\alpha\beta\gamma} \dim(U^{d}_{\lambda}) \dim(V_\alpha) \dim(V_{\beta}) \dim(V_{\gamma})} \\
+    &\coloneq \frac{1}{ R_{\alpha\beta\gamma} \dim(U^{d}_{\lambda}) \dim(W_\alpha) \dim(W_{\beta}) \dim(W_{\gamma})} \\
     &= \frac{\dim(U^{d^2}_{(k_1)})\dim(U^{d^2}_{(k_2)})\dim(U^{d^2}_{(k_3)})}{\dim(U^d_\alpha)\dim(U^d_{\beta})\dim(U^d_{\gamma})\dim(U^d_{\lambda})}
 \end{align}
 As we have seen prior, the rate function $I_{r_1, r_2, r_3, r_4, r_5, r_6}^{\alpha, \beta, \gamma, \mu, \nu, \lambda}$ only vanishes if all of the spectra match exactly.

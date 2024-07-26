@@ -14,17 +14,17 @@
 		\node [style=none] (79) at (3.25, -1.75) {};
 		\node [style=none] (80) at (3.25, 1.75) {};
 		\node [style=none] (81) at (2.25, 1.75) {};
-		\node [style=none] (82) at (1.75, 1.5) {$L_\alpha$};
-		\node [style=none] (83) at (3.75, 1.5) {$L_\beta$};
-		\node [style=none] (84) at (3.75, -1.5) {$L_\gamma$};
+		\node [style=none] (82) at (1.75, 1.5) {$V_\alpha$};
+		\node [style=none] (83) at (3.75, 1.5) {$V_\beta$};
+		\node [style=none] (84) at (3.75, -1.5) {$V_\gamma$};
 		\node [style=none] (89) at (-2.5, -1.75) {};
 		\node [style=none] (90) at (-3.25, -1.5) {$C^{\gamma}_{\alpha,\beta}$};
 		\node [style=none] (96) at (-1.5, -1.75) {};
 		\node [style=none] (97) at (-1.5, 1.75) {};
 		\node [style=none] (98) at (-2.5, 1.75) {};
-		\node [style=none] (99) at (-3, 1.5) {$L_\alpha$};
-		\node [style=none] (100) at (-1, 1.5) {$L_\beta$};
-		\node [style=none] (101) at (-1, -1.5) {$L_\gamma$};
+		\node [style=none] (99) at (-3, 1.5) {$V_\alpha$};
+		\node [style=none] (100) at (-1, 1.5) {$V_\beta$};
+		\node [style=none] (101) at (-1, -1.5) {$V_\gamma$};
 		\node [style=dot] (102) at (-2, 0) {};
 		\node [style=none] (103) at (0, 0) {$=$};
 	\end{pgfonlayer}
