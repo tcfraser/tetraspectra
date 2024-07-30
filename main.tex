@@ -206,13 +206,34 @@ In this paper we prove the following theorem which serves as a necessary (albeit
     \begin{align}
         \label{eq:SSA_like_d_two}
         \begin{split}
-            &-(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
-            &-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
-            &+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
-            &+(2b)\log(2b) \geq 0
+            F(a,b,c,d,e,f)
+            &\coloneqq
+            -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
+            &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
+            &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
+            &\quad+(2b)\log(2b) \geq 0
         \end{split}
     \end{align}
     See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
+    There are a handful of interesting edge cases to consider:
+    \begin{enumerate}[(i)]
+        \item (Align-Antialign) If $c = a+b$, $f = \abs{b-d}$, and $e = \abs{c-d}$, then 
+            \begin{equation}
+                F(a,b,a+b,d,\abs{a+b-d},\abs{b-d}) = 0.
+            \end{equation}
+        \item (Antialign-Align) If $c = \abs{b-a}$, $f = b+d$, and $e = \abs{f-a}$, then 
+            \begin{equation}
+                F(a,b,\abs{b-a},d,\abs{b+d-a},b+d) = 0.
+            \end{equation}
+        \item (Align-Align) If $c=a+b$, $f=b+d$, then $e = a+b+d$ and $F(a,b,c,d,e,f)$ is generally non-zero (e.g., $F(1,1,2,1,3,2) = \log\frac{3^6}{2^8} \approx 1.046$):
+            \begin{align}
+                \begin{split}
+                    F(a,b,a+b,d,a+b+d,b+d) 
+                    &= 2 (a+b+d) \log (2 (a+b+d))+2 b \log (2 b)\\
+                    &\qquad-2 (a+b) \log (2 (a+b))-2 (b+d) \log (2 (b+d)).
+                \end{split}
+            \end{align}
+    \end{enumerate}
 \end{rem}
 
 \begin{figure}
@@ -290,25 +311,48 @@ In this paper we prove the following theorem which serves as a necessary (albeit
     In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tetrahedral_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
     
     {\color{blue}
-        TODO: Based upon numerics, TC conjectures that \cref{eq:SSA_like_ineq} is always strictly stronger than \cref{eq:SSA_like_CSW}.
-        Further analysis in combination with the trace equalities reveals
+        Led by numerics in the $d=2$ case, TC conjectured that $q_r \geq q_0$ holds for all $r > 0$, i.e. that \cref{eq:SSA_like_ineq} is always strictly stronger than \cref{eq:SSA_like_CSW} (at least in the regime where the trace equalities hold).
+        We begin by showing that $q_{r} - q_{0} \geq 0$ holds for sufficiently small $r$.
+        Using the trace equalities, we have
+        \begin{align}
+            \begin{split}
+                q_{r}-q_{0}
+                &= r^{-1}(1-r\abs{\beta})\log(1-r\abs{\beta})+r^{-1}(1-r\abs{\epsilon})\log(1-r\abs{\epsilon})\\
+                &\qquad\qquad-r^{-1}(1-r\abs{\gamma})\log(1-r\abs{\gamma})-r^{-1}(1-r\abs{\phi})\log(1-r\abs{\phi}).
+            \end{split}
+        \end{align}
+        We approximate $-(1-x)\log(1-x)$ by a Taylor series for $x \approx 0$:
         \begin{equation}
-            x\in[0,1] \implies -(1-x)\log(1-x) - (x-x^2) \in [0,0.161903\ldots],
+            -(1-x)\log(1-x) = x - \frac{x^2}{2} + O(x^3).
         \end{equation}
-        which in turn implies 
+        Therefore, 
         \begin{equation}
-            q_{r} - q_{0} = r \abs{\alpha} \abs{\delta} + O(r^2)
+            q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
         \end{equation}
         which implies $q_{r} > q_0$ and least for sufficiently small $r$.
-        With the knowledge that $(x,y,x+y,z,x+y+z,y+z)$ are tetrahedral, \cref{thm:SSA} for $d=1$ implies the following non-trivial inequality for $x,y,z \geq 0$:
+        To prove $q_{r} > q_0$ holds for all $r$, by continuity, it suffices to show that the only critical point of difference $q_{r} - q_{0}$ is at $r = 0$:
         \begin{align}
-            -(x+y)\log(x+y)
-            -(y+z)\log(y+z)
-            +(x+y+z)\log(x+y+z)
-            +(y)\log(y)
-            \geq 0.
+            \begin{split}
+                \partial_{r} (q_{r}-q_{0})
+                &= \frac{1}{r^2} \left(\log(1-r\abs{\gamma})+\log(1-r\abs{\phi})-\log(1-r\abs{\beta})-\log(1-r\abs{\epsilon}) \right)\\
+                &= \frac{1}{r^2} \log\left(\frac{(1-r\abs{\gamma})(1-r\abs{\phi})}{(1-r\abs{\beta})(1-r\abs{\epsilon})} \right).
+            \end{split}
         \end{align}
-        I strongly suspect that the difference $r(q_r-q_0)$ can be written in the above form using something like $x=1-r\abs{\alpha}$, $y=1-r\abs{\beta}$ and $z=1-r\abs{\delta}$ thus proving that $q_r \geq q_0$ always. More work is needed!
+        Therefore $\partial_{r} (q_{r}-q_{0})=0$ if and only if $r = 0$ because
+        \begin{equation}
+            (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta} = 0.
+        \end{equation}
+        (Note that we are implicitly assuming that the Hermitian operators are all non-zero such that $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$.)
+
+        %With the knowledge that $(x,y,x+y,z,x+y+z,y+z)$ are tetrahedral, \cref{thm:SSA} for $d=1$ implies the following non-trivial inequality for $x,y,z \geq 0$:
+        %\begin{align}
+        %    -(x+y)\log(x+y)
+        %    -(y+z)\log(y+z)
+        %    +(x+y+z)\log(x+y+z)
+        %    +(y)\log(y)
+        %    \geq 0.
+        %\end{align}
+        %I strongly suspect that the difference $r(q_r-q_0)$ can be written in the above form using something like $x=1-r\abs{\alpha}$, $y=1-r\abs{\beta}$ and $z=1-r\abs{\delta}$ thus proving that $q_r \geq q_0$ always. More work is needed!
     }
 \end{rem}
 
@@ -1973,10 +2017,8 @@ It will be ideal to illustrate with figures.
 \appendix
 
 \clearpage
-\section{Proof of symmetric group recoupling operator upper bound}
-\label{sec:sk_recouple_bound_proof}
-
-The purpose of this section is to prove \cref{lem:sk_recouple_bound}.
+\section{[Detailed proof of recoupling operator upper bound]}
+\label{sec:recouple_bound_proof}
 
 \textcolor{red}{TODO: Make the notation and diagrammatic conventions used here match the rest of the document, also resolve ambiguities introduced by the the ``dot'' notation.}
 
@@ -2017,7 +2059,7 @@ Combining two instances of the above result yields:
     \tikzfig{tikz/schur-lemma-ratio}.
 \end{equation}
 
-\begin{proof}[Proof of \cref{lem:sk_recouple_bound}]
+\begin{proof}[Proof of ???]
     Applying the Cauchy-Schwarz inequality along a particular edge-cut indicated below, and applying Schur's lemma multiple times yields
     \begin{equation}
         \tikzfig{tikz/SSA-dimension-upper-bound-sk}
