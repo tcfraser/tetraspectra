@@ -330,7 +330,7 @@ In this paper we prove the following theorem which serves as a necessary (albeit
             q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
         \end{equation}
         which implies $q_{r} > q_0$ and least for sufficiently small $r$.
-        To prove $q_{r} > q_0$ holds for all $r$, by continuity, it suffices to show that the only critical point of difference $q_{r} - q_{0}$ is at $r = 0$:
+        To prove $q_{r} > q_0$ holds for all $r$, by continuity, it therefore suffices to show that the gradient of $q_{r} - q_{0}$ with respect to $r$ never changes sign for $r > 0$.
         \begin{align}
             \begin{split}
                 \partial_{r} (q_{r}-q_{0})
@@ -338,11 +338,11 @@ In this paper we prove the following theorem which serves as a necessary (albeit
                 &= \frac{1}{r^2} \log\left(\frac{(1-r\abs{\gamma})(1-r\abs{\phi})}{(1-r\abs{\beta})(1-r\abs{\epsilon})} \right).
             \end{split}
         \end{align}
-        Therefore $\partial_{r} (q_{r}-q_{0})=0$ if and only if $r = 0$ because
+        Therefore the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only when the argument of the above logarithm is one, or equivalently when
         \begin{equation}
-            (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta} = 0.
+            0 = (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta}.
         \end{equation}
-        (Note that we are implicitly assuming that the Hermitian operators are all non-zero such that $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$.)
+        As we implicitly assume that the Hermitian operators are all non-zero such that $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
 
         %With the knowledge that $(x,y,x+y,z,x+y+z,y+z)$ are tetrahedral, \cref{thm:SSA} for $d=1$ implies the following non-trivial inequality for $x,y,z \geq 0$:
         %\begin{align}
@@ -2012,6 +2012,19 @@ It will be ideal to illustrate with figures.
     \item Prakash Belkale has contributed greatly to the theory surrounding Horn-type problems: for example, in \cite{belkale2004invariant}, Belkale provides a \textit{geometric} proof of the equivalence between (i) the structure coefficients of the representation theory of $\GL(d)$ (i.e. the LR-coefficients $c_{\mu\nu}^{\lambda}$), and (ii) the structure coefficients of the cohomology ring of the Grassmannian $\mathrm{Gr}(d, n)$ of $d$-dimensional subspaces in $\mathbb C^{d}$. 
         This proof is now complementary to the previously known algebraic proofs which rely on knowledge of the algebra of symmetric functions.
         This geometric approach taken by Belkale, which emphasizes the tangent spaces of the involved Schubert varieties, is later used by Belkale to provide a geometric proof of the saturation conjecture \cite{belkale2002geometric}.
+    \item A reference which contains the formula for the quantum dimension of a representation of $U_{q}(\mathfrak{sl}(d))$ labelled by $\lambda$, thanks Rinat! \cite{aiston1997skein}. See also \cite{aiston1998idempotents} which clarifies the relation between various parameters. Apparently, the $x,v,s$ parameters are apparently natural parameters to consider in the context of invariants of knots and links. The substitution mentioned in \cite{aiston1998idempotents} is the following
+        \begin{equation*}
+            s = e^{h/2}, \qquad
+            v = e^{-dh/2} = s^{-d}, \qquad
+            x = e^{-h/2d} = s^{-\frac{1}{d}}, \qquad
+            q = e^{h} = s^2.
+        \end{equation*}
+    This is consistent with \cite{reshetikhin1987quantized} in the sense that
+    \begin{equation}
+        [k] \coloneqq \frac{s^{+k} - s^{-k}}{s^{+1} - s^{-1}} = \frac{q^{+k/2} - q^{-k/2}}{q^{+1/2} - q^{-1/2}}.
+    \end{equation}
+    \item \citeauthor{reshetikhin1987quantized} develops the diagrammatics of the category of representations of $U_{q}(\mathfrak g)$ motivated by connections to the developing theory of polynomial invariants of knots and links \cite{reshetikhin1987quantized}.
+    \item \citeauthor{moak1984q} investigates a $q$-Stirling's formula for the logarithm of the $q$-factorial \cite{moak1984q}.
 \end{itemize}
 
 \appendix
