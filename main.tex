@@ -37,7 +37,7 @@
 \section{Non-linear inequalities}
 
 \begin{lem}
-    Let $A,B,C \geq 0$ be positive semidefinite, then
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
     \begin{equation}
         \sum_{j}\lambda_j(A+B)^2 + \sum_{j}\lambda_j(B+C)^2 \leq \sum_{j}\lambda_j(B)^2 + \sum_{j}\lambda_j(A+B+C)^2.
     \end{equation}
@@ -57,6 +57,14 @@
     \end{align}
     Since $A,C\geq 0$ are both positive semidefinite, we also have $\Tr[AC] \geq 0$ which proves the claim.
 \end{proof}
+
+\begin{thm}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
+    \begin{align}
+        &\sum_{j}\lambda_j(A+B)\log \lambda_j(A+B)+ \sum_{j}\lambda_j(B+C)\log \lambda_j(B+C) \\
+        &\qquad\leq \sum_{j}\lambda_j(B)\log\lambda_j(B) + \sum_{j}\lambda_j(A+B+C)\log\lambda_j(A+B+C).
+    \end{align}
+\end{thm}
 
 \subsection{Proof via spectral embedding}
 
@@ -163,7 +171,7 @@
     \item \citeauthor{moak1984q} investigates a $q$-Stirling's formula for the logarithm of the $q$-factorial \cite{moak1984q}.
 \end{itemize}
 
-\subsection{Trace inequalities}
+\subsection{Eigenvalue inequalities}
 \begin{itemize}
     \item The general subject of multivariate trace inequalities involving exponentials of sums of Hermitian and products of their exponentials is, of course, intimately related. See for instance the paper by \citeauthor{sutter2017multivariate} \cite{sutter2017multivariate}.
     \item Also the article \cite{forrester2014golden} by \citeauthor{forrester2014golden} which describes the connection between Thompson's inequality and hyperbolic geometry quite explicitly.
@@ -171,6 +179,7 @@
         \begin{equation}
             \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \geq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
         \end{equation}
+    \item \citeauthor{audenaert2010strongly} consider a similar form of ``strongly subadditive'' functions \cite{audenaert2010strongly}
     \item For multivariate inequalities based on idempotents of the symmetric group algebra see \citeauthor{huber2020positive}'s paper \cite{huber2020positive}.
     \item For spectral inequalities derived using semidefinite programming, see \citeauthor{huber2022refuting}'s paper \cite{huber2022refuting}.
 \end{itemize}
