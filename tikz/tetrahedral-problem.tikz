@@ -1,34 +1,23 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=blackdot] (0) at (-2.5, -1) {};
-		\node [style=blackdot] (1) at (3, 0.5) {};
-		\node [style=blackdot] (2) at (0, 3) {};
-		\node [style=blackdot] (3) at (2, -2) {};
-		\node [style=none] (25) at (6.5, 0.75) {$A+F=E$};
-		\node [style=none] (26) at (6.5, 0) {$B+D=F$};
-		\node [style=none] (27) at (6.5, -0.75) {$C+D=E$};
-		\node [style=none] (28) at (6.5, 1.5) {$A+B=C$};
-		\node [style=blackdot] (29) at (9, -1) {};
-		\node [style=blackdot] (30) at (14.25, 0) {};
-		\node [style=blackdot] (31) at (12, 3) {};
-		\node [style=blackdot] (32) at (13, -2) {};
-		\node [style=none] (33) at (11, -2) {$C$};
-		\node [style=none] (34) at (12, 1) {$B$};
-		\node [style=none] (35) at (10.25, 1.5) {$A$};
-		\node [style=none] (36) at (14.25, -0.875) {$D$};
-		\node [style=none] (37) at (11.75, -0.875) {$E$};
-		\node [style=none] (38) at (13.75, 1.5) {$F$};
-		\node [style=none] (39) at (6.5, -2.75) {\textcolor{red}{TODO: slopped or vertical edge labels?}};
+		\node [style=none] (25) at (0, 0.5) {$A+F=E$};
+		\node [style=none] (26) at (0, -0.25) {$B+D=F$};
+		\node [style=none] (27) at (0, -1) {$C+D=E$};
+		\node [style=none] (28) at (0, 1.25) {$A+B=C$};
+		\node [style=blackdot] (29) at (2.5, -1.25) {};
+		\node [style=blackdot] (30) at (7.75, -0.25) {};
+		\node [style=blackdot] (31) at (5.5, 2.75) {};
+		\node [style=blackdot] (32) at (6.5, -2.25) {};
+		\node [style=none] (33) at (4.5, -2.25) {$C$};
+		\node [style=none] (34) at (5.5, 0.75) {$B$};
+		\node [style=none] (35) at (3.75, 1.25) {$A$};
+		\node [style=none] (36) at (7.75, -1.125) {$D$};
+		\node [style=none] (37) at (5.25, -1.125) {$E$};
+		\node [style=none] (38) at (7.25, 1.25) {$F$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=mid-route] (29) to (30);
 		\draw [style=over-route] (31) to (32);
-		\draw [style=mid-route] (0) to node [midway, below, sloped] {$E$} (1);
-		\draw [style=over-route] (2) to node [midway, above, sloped] {$B$} (3);
-		\draw [style=mid-route] (0) to node [midway, above, sloped] {$A$} (2);
-		\draw [style=mid-route] (0) to node [midway, below, sloped] {$C$} (3);
-		\draw [style=mid-route] (3) to node [midway, below, sloped] {$D$} (1);
-		\draw [style=mid-route] (2) to node [midway, above, sloped] {$F$} (1);
 		\draw [style=mid-route] (29) to (31);
 		\draw [style=mid-route] (29) to (32);
 		\draw [style=mid-route] (31) to (30);

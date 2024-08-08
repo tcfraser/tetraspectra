@@ -29,10 +29,253 @@
 \section{Tetrahedra \& Hermitian matrices}
 
 \subsection{Definition}
+\begin{prob}[Tetrahedral eigenvalues]
+    \label{prob:tetrahedral_problem}
+    A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
+    \begin{equation}
+        \label{eq:tetrahedral_linear_constraints}
+        A + B = C, \quad
+        B + D = F, \quad
+        D + C = E, \quad
+        A + F = E,
+    \end{equation}
+    and (ii) the six eigenvalue constraints
+    \begin{equation}
+        \label{eq:tetrahedral_eigenvalue_constraints}
+        \lambda(A) = \alpha, \quad
+        \lambda(B) = \beta, \quad
+        \lambda(C) = \gamma, \quad
+        \lambda(D) = \delta, \quad
+        \lambda(E) = \epsilon, \quad
+        \lambda(F) = \phi.
+    \end{equation}
+\end{prob}
+\begin{center}
+    \begin{figure}
+        \ctikzfig{tikz/tetrahedral-problem}
+        \caption{The six Hermitian operators appearing in the tetrahedral eigenvalue constraint problem (\cref{prob:tetrahedral_problem}), and denoted by $(A,B,C,D,E,F)$ above, are subject to four linear constraints corresponding to the four faces of the tetrahedron with coefficients determined by the edge orientations depicted here.}
+        \label{fig:tetrahedron_labelling_scheme}
+    \end{figure}
+\end{center}
 
 \subsection{Symmetries}
+\begin{lem}[Shifting]
+     Let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be a given sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be given scalars and define \textit{shifted} candidate eigenvalues by the formula
+    \begin{equation}
+        \label{eq:shifted_tetrahedral_eigenvalues}
+        \begin{alignedat}{3}
+            &\alpha \coloneqq \tilde \alpha + x, \qquad
+            &&\beta \coloneqq \tilde \beta + y, \qquad
+            &&\gamma \coloneqq \tilde \gamma + x+y, \\
+            &\delta \coloneqq \tilde \delta + z, \qquad
+            &&\epsilon \coloneqq \tilde \epsilon + x + y + z, \qquad
+            &&\phi \coloneqq \tilde \phi + y + z.
+        \end{alignedat}
+    \end{equation}
+    Then the shifted eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral if and only if the unshifted eigenvalues are tetrahedral.
+    Moreover if the unshifted eigenvalues are tetrahedral and $(x,y,z)$ are sufficiently large, i.e.
+    \begin{equation}
+        x \geq \min(\tilde \alpha), \qquad
+        y \geq \min(\tilde \beta), \qquad
+        z \geq \min(\tilde \delta),
+    \end{equation}
+    then the shifted spectra are both tetrahedral and non-negative.
+\end{lem}
 
-\subsection{Special cases}
+\subsection{The \texorpdfstring{$\boldsymbol{d=2}$}{d=2} case}
+In the context of the $d=2$ tetrahedral eigenvalue problem, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
+\begin{equation}
+    X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
+\end{equation}
+The eigenvalues of $X$ are then determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
+\begin{equation}
+    \lambda(X) = \lambda\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+\end{equation}
+%\begin{equation}
+%    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
+%    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
+%    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+%\end{equation}
+%it becomes possible to identify the space of traceless $2\times 2$ Hermitian matrices, $i\mathfrak{su}(2)$, with $\mathbb R^{3}$ via the standard parameterization associating $(x_1, x_2, x_3) \in \mathbb R^{3}$ to
+Now, for the special case of the tetrahedral eigenvalue constraint problem, one can assume the sextuple of eigenvalues are determined by a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that
+\begin{equation}
+    \label{eq:traceless_two_dim_tetra}
+    \alpha = (a, -a), \quad
+    \beta = (b, -b), \quad
+    \gamma = (c, -c), \quad
+    \delta = (d, -d), \quad
+    \epsilon = (e, -e), \quad
+    \phi = (f, -f).
+\end{equation}
+Using this parameterization, it can be shown that the constraints imposed in \cref{prob:tetrahedral_problem} precisely describe the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a genuine Euclidean tetrahedron in $\mathbb R^{3}$ \cite{richardson1902trigonometry}; namely, the conjunction of a quadruplet of triangle-inequalities,
+\begin{equation}
+    \label{eq:quadruplet_triangle_constraints}
+    \abs{a-b} \leq c \leq a+b, \qquad
+    \abs{b-d} \leq f \leq b+d, \qquad
+    \abs{d-c} \leq e \leq d+c, \qquad
+    \abs{a-f} \leq e \leq a+f,
+\end{equation}
+together with a single non-linear constraint of the form
+\begin{equation}
+    \label{eq:volume_positive_constraint}
+    D(a,b,c,d,e,f) = \frac{1}{288}\det 
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 & 1 \\ 
+        1 & 0 & a^2 & e^2 & c^2 \\ 
+        1 & a^2 & 0 & f^2 & b^2 \\ 
+        1 & e^2 & f^2 & 0 & d^2 \\ 
+        1 & c^2 & b^2 & d^2 & 0
+    \end{pmatrix}
+    \geq 0.
+\end{equation}
+The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when positive, is equal to square of the volume of the corresponding tetrahedron \cite{sitharam2018handbook}.
+\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/triangle-faces-moduli-space-example}
+        \includegraphics[width=0.48\textwidth]{figures/tetrahedron-moduli-space-example}
+    \end{center}
+    \caption{
+        Projections of admissible side-lengths $(a,b,c,d,e,f)$ for Euclidean tetrahedron along the coordinates $(a,b,d) = (5,7,6)$
+        (Left) The polyhedron of values $(c, e, f)$ satisfying the triangle inequalities for each face \cref{eq:quadruplet_triangle_constraints}.
+        (Right) The set of all values $(c,e,f)$ satisfying both \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+\end{figure}
+
+\begin{rem}
+    For $2\times 2$ Hermitian matrices it is possible to visualize the set of eigenvalues (in the same $(a,b,c,d,e,f)$ coordinates used above) which are known to be non-tetrahedral on the basis that they violate \cref{eq:SSA_like_ineq}.
+    Specifically, consider the \textit{minimal} shifting of the traceless eigenvalues in \cref{eq:traceless_two_dim_tetra}, i.e.,
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\alpha = (2a, 0), \quad
+            &&\beta = (2b, 0), \quad
+            &&\gamma = (a+b+c, a+b-c), \quad \\
+            &\delta = (2d, 0), \quad
+            &&\epsilon = (a+b+d+e, a+b+d-e), \quad
+            &&\phi = (b+d+f, b+d-f).
+        \end{alignedat}
+    \end{equation}
+    With respect to these coordinates, \cref{eq:SSA_like_ineq} becomes 
+    \begin{align}
+        \label{eq:SSA_like_d_two}
+        \begin{split}
+            F(a,b,c,d,e,f)
+            &\coloneqq
+            -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
+            &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
+            &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
+            &\quad+(2b)\log(2b) \geq 0
+        \end{split}
+    \end{align}
+    See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
+\end{rem}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-compare}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-extra}
+    \end{center}
+    \caption{
+        (Left) The region for which $(c, e, f)$ violates \cref{eq:SSA_like_d_two} with $(a,b,c) = (5,7,6)$.
+        (Middle) Comparing the region of tetrahedral $(c,e,f)$ with those which violate \cref{eq:SSA_like_d_two}.
+        (Right) The values of $(c,e,f)$ satisfying \cref{eq:quadruplet_triangle_constraints} but violating \cref{eq:SSA_like_d_two}.
+    }
+    \label{fig:ssa_extra_mileage}
+\end{figure}
+
+\subsection{Comparison with the C\c{S}W inequality}
+At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ which are non-negative and sufficiently small in the sense that $\lambda_1 + \abs{\lambda} \leq 1$:
+\begin{equation}
+    \label{eq:SSA_like_CSW}
+    h(\abs{\gamma}) 
+    + \abs{\gamma} S(\bar \gamma)
+    +h(\abs{\phi}) 
+    + \abs{\phi} S(\bar \phi)  
+    -h(\abs{\beta}) 
+    - \abs{\beta} S(\bar \beta)  
+    -h(\abs{\epsilon}) 
+    - \abs{\epsilon} S(\bar \epsilon)  
+    \geq 0.
+\end{equation}
+The inequality appearing in \cref{eq:SSA_like_ineq} is equivalent to the following by \cref{eq:little_s_relation}:
+\begin{equation}
+    \label{eq:SSA_like_ineq_equiv}
+    -\abs{\gamma}\log\abs{\gamma}
+    + \abs{\gamma} S(\bar \gamma)
+    -\abs{\phi}\log\abs{\phi}
+    + \abs{\phi} S(\bar \phi)  
+    +\abs{\beta}\log\abs{\beta}
+    - \abs{\beta} S(\bar \beta)  
+    +\abs{\epsilon}\log\abs{\epsilon}
+    - \abs{\epsilon} S(\bar \epsilon)  
+    \geq 0.
+\end{equation}
+The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\lambda})$ with the expression $-\abs{\lambda}\log \abs{\lambda}$.
+We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_ineq_equiv} by a downscaling argument.
+Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
+\begin{equation}
+    \label{eq:tetrahedral_scaling}
+    (\alpha,\beta,\gamma,\delta,\epsilon,\phi) \mapsto (r\alpha,r\beta,r\gamma,r\delta,r\epsilon,r\phi),
+\end{equation}
+the form and positivity of \cref{eq:SSA_like_CSW} is \textit{not} invariant under scaling by $r$.
+Define $q_{r}$ by the formula
+\begin{equation}
+    q_{r} \coloneqq r^{-1}\left(
+        h(\abs{r\gamma}) 
+        +h(\abs{r\phi}) 
+        -h(\abs{r\beta}) 
+        -h(\abs{r\epsilon}) 
+    \right).
+\end{equation}
+Letting $r \in (0,1)$ be positive and small, we see that
+\begin{equation}
+    r^{-1}h(\abs{r\lambda}) = \abs{\lambda}(1-\log r) - \abs{\lambda} \log \abs{\lambda} + O(r^2)
+\end{equation}
+which implies the following limit holds when $\abs{\gamma} + \abs{\phi} = \abs{\beta} + \abs{\epsilon}$:
+\begin{equation}
+    q_0 \coloneqq 
+    \lim_{r \to 0} q_{r}  
+    =
+    -\abs{\gamma}\log\abs{\gamma}
+    -\abs{\phi}\log\abs{\phi}
+    +\abs{\beta}\log\abs{\beta}
+    +\abs{\epsilon}\log\abs{\epsilon}.
+\end{equation}
+In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tetrahedral_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
+Moreover, it can be shown that $q_{r} \geq q_{0}$ for all $r$ and thus \cref{eq:SSA_like_ineq_equiv} is strictly stronger than \cref{eq:SSA_like_CSW}.
+To prove this, we see that the trace equalities imply
+\begin{align}
+    \begin{split}
+        q_{r}-q_{0}
+        &= r^{-1}(1-r\abs{\beta})\log(1-r\abs{\beta})+r^{-1}(1-r\abs{\epsilon})\log(1-r\abs{\epsilon})\\
+        &\qquad\qquad-r^{-1}(1-r\abs{\gamma})\log(1-r\abs{\gamma})-r^{-1}(1-r\abs{\phi})\log(1-r\abs{\phi}).
+    \end{split}
+\end{align}
+Approximating $-(1-x)\log(1-x)$ by a Taylor series for $x \approx 0$,
+\begin{equation}
+    -(1-x)\log(1-x) = x - \frac{x^2}{2} + O(x^3),
+\end{equation}
+produes
+\begin{equation}
+    q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
+\end{equation}
+which implies $q_{r} > q_0$ and least for sufficiently small $r$.
+To prove $q_{r} > q_0$ holds for all $r$, by continuity, it therefore suffices to show that the gradient of $q_{r} - q_{0}$ with respect to $r$ never changes sign for $r > 0$.
+\begin{align}
+    \begin{split}
+        \partial_{r} (q_{r}-q_{0})
+        &= \frac{1}{r^2} \left(\log(1-r\abs{\gamma})+\log(1-r\abs{\phi})-\log(1-r\abs{\beta})-\log(1-r\abs{\epsilon}) \right)\\
+        &= \frac{1}{r^2} \log\left(\frac{(1-r\abs{\gamma})(1-r\abs{\phi})}{(1-r\abs{\beta})(1-r\abs{\epsilon})} \right).
+    \end{split}
+\end{align}
+Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of the above logarithm is one, or equivalently when
+\begin{equation}
+    0 = (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta}.
+\end{equation}
+As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
 
 \section{Non-linear inequalities}
 
@@ -61,19 +304,764 @@
 \begin{thm}
     Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
     \begin{align}
+        \label{eq:SSA_like_ineq}
         &\sum_{j}\lambda_j(A+B)\log \lambda_j(A+B)+ \sum_{j}\lambda_j(B+C)\log \lambda_j(B+C) \\
         &\qquad\leq \sum_{j}\lambda_j(B)\log\lambda_j(B) + \sum_{j}\lambda_j(A+B+C)\log\lambda_j(A+B+C).
     \end{align}
 \end{thm}
 
+
 \subsection{Proof via spectral embedding}
 
-\subsection{Proof via representation theory}
+\clearpage
+\section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
+
+{\color{blue}
+The purpose of this section is to derive some upper and lower bounds on generalized $6j$ symbol for $\SU(d)$ in relation to the existence or non-existence of Hermitian operators satisfying the tetrahedral relations \cref{eq:tetrahedral_linear_constraints}.
+This section essentially constitutes a generalization of the proof techniques in the ``quantum-information-theoretic'' approach taken in \cite{christandl2008quantum}.
+Specifically, the results of this section are derived from considering a type of pseudo-commutative binomial expansion of tensor powers of sums of Hermitian operators and applying spectrum estimation to the resulting terms.
+}
+
+\subsection{Schur-Weyl decomposition \& spectrum estimation}
+
+Throughout this section, we make use of the following decomposition of a tensor-power of a $d$-dimensional complex vector space.
+\begin{prop}[Schur-Weyl decomposition]
+    Let $n$ and $d$ be positive integers.
+    Then the decomposition of $(\mathbb C^{d})^{\ot n}$ into irreducible representations of $S_n \times \SU(d)$, known as the \textit{Schur-Weyl} decomposition is given by
+    \begin{equation}
+        \label{eq:schur_weyl_decomp}
+        (\mathbb C^{d})^{\otimes n} \cong \bigoplus_{\lambda \vdash_{d} n} W_{\lambda} \otimes V_{\lambda}^{d}
+    \end{equation}
+    where the direcy sum is indexed by Young diagrams $\lambda$ with $n$ boxes and at most $d-1$ rows.
+\end{prop}
+The following result constrains the associated Schur-Weyl decomposition of the $n$-th tensor power, $X^{\otimes n}$, of a positive semidefinite Hermitian matrix $X$ \cite{christandl2008quantum,keyl2001estimating}.
+\begin{prop}[Spectrum estimation]
+    \label{prop:spec_est}
+    Let $P_{\lambda}$ denote the Hermitian projection operator associated to the isotypic subspace indexed by $\lambda \vdash_{d} n$ in \cref{eq:schur_weyl_decomp} and let $X$ be a positive semidefinite matrix with eigenvalues $\chi$.
+    Then
+    \begin{equation}
+        \Tr(P_{\lambda} X^{\otimes n}) \leq \abs{\chi}^{n} \dim(V_{\lambda}^{d}) \exp(-n \kl{\bar \lambda}{\bar \chi}),
+    \end{equation}
+    where $\kl{\bar \lambda}{\bar \chi}$ denotes the Kullbeck-Leibler divergence of $\bar \lambda$ from $\bar \chi$.
+\end{prop}
+\begin{proof}
+    See \cite{keyl2001estimating} for a proof (noting that the $\abs{\chi}^{n}$ term simply accounts for the possibility that $\Tr(X) \neq 1$ because $\Tr(X) = \abs{\chi}$).
+\end{proof}
+
+\subsection{Schur-Weyl presentation of the \texorpdfstring{$\boldsymbol{6j}$}{6j}-operator}
+
+
+\begin{lem}
+    \label{lem:schur_weyl_presentation}
+    Let $x,y,z$ arbitrary positive integers and let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be Young diagrams of the following sizes:
+    \begin{equation}
+        \label{eq:xyz_sized_young_diagrams}
+        \begin{alignedat}{3}
+             &\alpha \vdash_{d} x, \qquad 
+            &&\beta \vdash_{d} y, \qquad
+            &&\gamma \vdash_{d} x+y, \qquad\\
+             &\delta \vdash_{d} z, \qquad
+            &&\epsilon \vdash_{d} x+y+z, \qquad
+            &&\phi \vdash_{d} y+z,
+        \end{alignedat}
+    \end{equation}
+    and define corresponding projection operators acting on $(\mathbb C^{d})^{\otimes x+y+z}$ by
+    \begin{equation}
+        \label{eq:extended_projs}
+        \begin{alignedat}{3}
+            &\Pi_{\alpha} \coloneqq P_{\alpha} \ot \id^{\ot y} \ot \id^{\ot z}, \qquad 
+            &&\Pi_{\beta} \coloneqq \id^{\ot x} \ot P_{\beta} \ot \id^{\ot z}, \qquad
+            &&\Pi_{\gamma} \coloneqq P_{\gamma} \ot \id^{\ot z}, \qquad\\
+             &\Pi_{\delta} \coloneqq \id^{\ot x} \ot \id^{\ot y} \ot P_{\delta}, \qquad
+            &&\Pi_{\epsilon} \coloneqq P_{\epsilon}, \qquad
+            &&\Pi_{\phi} \coloneqq \id^{\ot x} \ot P_{\phi}.
+        \end{alignedat}
+    \end{equation}
+    Then every pair of projection operators in the set $\{\Pi_{\alpha}, \Pi_{\beta}, \Pi_{\gamma}, \Pi_{\delta}, \Pi_{\epsilon}, \Pi_{\phi}\}$ is commuting with only possible exception being $\Pi_{\gamma}$ and $\Pi_{\phi}$.
+    Then $\Pi^{\gamma}_{\alpha\beta\delta\epsilon}$ and $\Pi^{\phi}_{\alpha\beta\delta\epsilon}$, defined by
+    \begin{align}
+        \label{eq:commuting_extended_projs}
+        \begin{split}
+            \Pi^{\gamma}_{\alpha\beta\delta\epsilon} &= \Pi_{\gamma}\Pi_{\alpha}\Pi_{\beta}\Pi_{\delta}\Pi_{\epsilon},\\
+            \Pi^{\phi}_{\alpha\beta\delta\epsilon} &= \Pi_{\phi}\Pi_{\alpha}\Pi_{\beta}\Pi_{\delta}\Pi_{\epsilon}.
+        \end{split}
+    \end{align}
+    are projection operators.
+    Moreover, then $6j$-operator $\abcdefsymbol$ has operator norm satisfying
+    \begin{equation}
+        \label{eq:ud_sixj_prod_proj_operator_norm}
+        \norm{\abcdefsymbol}_{\infty} = \norm{\Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon}}_{\infty}.
+    \end{equation}
+    and Hilbert-Schmidt norm satisfying
+    \begin{equation}
+        \label{eq:ud_sixj_prod_proj_hs_norm}
+        \norm{\abcdefsymbol}_{\mathrm{HS}}^2 = \frac{\Tr(\Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon})}{\dim(V_{\epsilon}^{d})\dim(W_{\alpha})\dim(W_{\beta})\dim(W_{\delta})}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    That all projection operators except the pair $(\Pi_{\gamma}, \Pi_{\phi})$ commute follows from elementary applications of Schur's lemma; 
+    the obtruction for the pair $(\Pi_{\gamma}, \Pi_{\phi})$ is simply that $\Pi_{\gamma}$ is not necessarily $\SU(d)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot y+z}$ and likewise $\Pi_{\phi}$ is not necessarily $\SU(d)$-equivariant with respect to the diagonal on $\mathbb C^{\ot x+y}$.
+    To prove both \cref{eq:ud_sixj_prod_proj_operator_norm} and \cref{eq:ud_sixj_prod_proj_hs_norm}, it suffices to show there exists appropriately-typed isometries $\iota_{I}$ and $\iota_{II}$ such that
+    \begin{equation}
+        \label{eq:ud_sixj_prod_proj_iso}
+        \Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon}
+        =
+        \iota_{II} \left(\id_{V_{\epsilon}^{d}} \ot \id_{W_{\alpha}} \ot \id_{W_{\beta}} \ot \id_{W_{\delta}} \ot \abcdefsymbol \right) \iota_{I}^{\dagger} 
+    \end{equation}
+    This follows from the follow diagrammatic calculation \textcolor{red}{TODO: Explain this.}:
+    \begin{equation}
+        \scalebox{0.8}{\tikzfig{tikz/ud_sixj_iso}}.
+    \end{equation}
+\end{proof}
+
+\begin{defn}
+    \label{defn:Q_quantity}
+    Let $(A,B,C,D,E,F)$ be a tetrahedral sextuple of non-zero positive semidefinite $d\times d$ Hermitian matrices with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$
+    Let $x,y,z$ be arbitrary positive integers and define
+    \begin{equation}
+        \Omega \coloneqq \frac{A^{\ot x}\ot B^{\ot y} \ot D^{\ot z}}{\abs{\alpha}^{x} \abs{\beta}^{y} \abs{\delta}^{z}}.
+    \end{equation}
+    Let $(\alpha', \beta', \gamma', \delta', \epsilon', \phi')$ be Young diagrams with sizes determined by \cref{eq:xyz_sized_young_diagrams}, and let $\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'}$ and $\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}$ be defined accordining to \cref{eq:commuting_extended_projs}.
+    Define $Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'} \in \mathbb C$ by
+    \begin{equation}
+        Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}
+        \coloneqq 
+        \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} \Omega \Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'}).
+    \end{equation}
+
+\end{defn}
+\begin{prop}
+    Let everything be as in \cref{defn:Q_quantity}.
+    Then
+    \begin{equation}
+        \label{eq:Q_alt}
+        Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'} 
+        = 
+        \Tr(\Pi_{\alpha'}\Pi_{\beta'}\Pi_{\gamma'}\Pi_{\delta'} \Pi_{\epsilon'}\Pi_{\phi'}\Omega),
+    \end{equation}
+    and therefore
+    \begin{equation}
+        \label{eq:completeness_relation}
+        1 = \Tr(\Omega) = 
+        \sum_{\alpha'\vdash_d x} 
+        \sum_{\beta'\vdash_d y} 
+        \sum_{\gamma'\vdash_d x+y} 
+        \sum_{\delta'\vdash_d z} 
+        \sum_{\epsilon'\vdash_d y+z} 
+        \sum_{\phi'\vdash_d x+y+z} 
+        Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}
+    \end{equation}
+    Moreover, the magnitude of $Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}$ can be upper bounded by either
+    \begin{equation}
+        \label{eq:Q_pre_upper_bound}
+        \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}}
+        \leq \left(\Tr(\Pi_{\alpha'}\Omega)\Tr(\Pi_{\beta'} \Omega)\Tr(\Pi_{\gamma'}\Omega)\Tr(\Pi_{\delta'}\Omega)\Tr(\Pi_{\epsilon'}\Omega)\Tr(\Pi_{\phi'}\Omega)\right)^{\frac{1}{6}}.
+    \end{equation}
+    or
+    \begin{equation}
+        \label{eq:Q_sixj_upper_bound}
+        \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}} \leq \norm{\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'}}_{\infty}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The proof of \cref{eq:Q_alt} and \cref{eq:completeness_relation} follows from elementary properties of the projection operators defined in \cref{lem:schur_weyl_presentation}.
+    Moreover, \cref{eq:Q_sixj_upper_bound} follows because $\Omega$ is positive semidefinite and trace one.
+    To prove \cref{eq:Q_pre_upper_bound}, consider an application of the Cauchy-Schwarz inequality to the Hilbert-Schmidt inner product, $\braket{X,Y} = \Tr(X^{\dagger} Y)$, whenever $X = \Omega^{\frac{1}{2}}\Pi_1$ and $Y = \Omega^{\frac{1}{2}}\Pi_2$ (where $\Pi_1$ and $\Pi_2$ are generic Hermitian projectors and $\Omega$ is positive semidefinite):
+    \begin{align}
+        \label{eq:biproj_ineq}
+        \begin{split}
+            &\abs{\Tr(\Pi_1 \Omega \Pi_2)}^2 
+            = \abs{\Tr((\Omega^{\frac{1}{2}}\Pi_1)^{\dagger}(\Omega^{\frac{1}{2}}\Pi_2))}^2
+            = \abs{\braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_2}}^{2}\\
+            &\qquad\leq \braket{\Omega^{\frac{1}{2}}\Pi_1, \Omega^{\frac{1}{2}}\Pi_1}\braket{\Omega^{\frac{1}{2}}\Pi_2, \Omega^{\frac{1}{2}}\Pi_2}
+            = \Tr(\Pi_1 \Omega)\Tr(\Pi_2 \Omega)
+        \end{split}
+    \end{align}
+    Letting $\Pi_1 = \Pi_{\phi'}\Pi_{\alpha'}\Pi_{\beta'}$ and $\Pi_2 = \Pi_{\gamma'} \Pi_{\delta'} \Pi_{\epsilon'}$ and applying \cref{eq:biproj_ineq} yields 
+    \begin{align}
+        \begin{split}
+            \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}}^{6} 
+            &=\abs{\Tr[(\Pi_{\phi'}\Pi_{\alpha'}\Pi_{\beta'}) \Omega (\Pi_{\gamma'} \Pi_{\delta'} \Pi_{\epsilon'})]}^6\\
+            &\leq 
+            \Tr(\Pi_{\phi'}\Pi_{\alpha'}\Pi_{\beta'} \Omega)^3
+            \Tr(\Pi_{\gamma'}\Pi_{\delta'}\Pi_{\epsilon'} \Omega)^3\\
+            &\leq 
+            \Tr(\Pi_{\phi'}\Omega)\Tr(\Pi_{\alpha'}\Omega)\Tr(\Pi_{\beta'} \Omega)
+            \Tr(\Pi_{\gamma'}\Omega)\Tr(\Pi_{\delta'}\Omega)\Tr(\Pi_{\epsilon'} \Omega).
+        \end{split}
+    \end{align}
+\end{proof}
+
+\begin{thm}
+    \label{thm:Q_upper_bound}
+    Let everything be as in \cref{defn:Q_quantity} except fix $x,y,z$ to be
+    \begin{equation}
+        x \coloneqq \ceil{n \abs{\alpha}},
+        \qquad
+        y \coloneqq \ceil{n \abs{\beta}},
+        \qquad
+        z \coloneqq \ceil{n \abs{\delta}},
+    \end{equation}
+    where $n$ is a sufficiently large positive integer ensuring that $x,y$ and $z$ are non-zero.
+    Then
+    \begin{equation}
+        \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}} \leq p(n) \exp(-n I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}/6).
+        \label{eq:Q_upper_bound}
+    \end{equation}
+    where $p(n)$ is a polynomial in $n$ and where
+    \begin{equation}
+        I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}
+        =\abs{\alpha} \kl{\bar \alpha'}{\bar \alpha}
+        +\abs{\beta} \kl{\bar \beta'}{\bar \beta}
+        +\abs{\gamma} \kl{\bar \gamma'}{\bar \gamma}
+        +\abs{\delta} \kl{\bar \delta'}{\bar \delta}
+        +\abs{\epsilon} \kl{\bar \epsilon'}{\bar \epsilon}
+        +\abs{\phi} \kl{\bar \phi'}{\bar \phi}.
+    \end{equation}
+    \textcolor{red}{TODO: Is this relative entropy deviation measure conceptually useful or is it best to relax the deviation measure to its geometric analogue using Pinsker's inequality?}
+\end{thm}
+\begin{proof}
+    To begin the proof, we consider $x,y$ and $z$ to be arbitrary positive integers.
+    For each $\lambda' \in \{\alpha', \beta', \gamma', \delta', \epsilon', \phi'\}$, it is possible to upper-bound $\Tr(\Pi_{\lambda'} \Omega)$ using the spectrum estimation technique \cref{prop:spec_est}.
+    For a detailed example, we will consider the bound on $\Tr(\Pi_{\gamma'} \Omega)$.
+    \begin{align}
+        \Tr(\Pi_{\gamma'} \Omega)
+        = \frac{\Tr[(P_{\gamma'} \ot \id^{\ot z})(A^{\ot x}\ot B^{\ot y} \ot D^{\ot z})]}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}
+        = \frac{\Tr[P_{\gamma'}(A^{\ot x}\ot B^{\ot y})]\abs{\delta}^{z}}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}.
+    \end{align}
+    Using the assumption that $C = A+B$, we have $C^{\otimes x+y} = (A+B)^{\otimes x+y}$ which implies
+    \begin{equation}
+        \Tr(P_{\gamma'} C^{\otimes x+y}) = \sum_{k=0}^{x+y} \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\otimes k} \otimes B^{\otimes x+y-k}).
+    \end{equation}
+    Here we have used the $S_{x+y}$-equivariance of $P_{\gamma'}$.
+    Since each of the summands above are non-negative, we conclude for all $0 \leq k \leq x+y$ that
+    \begin{equation}
+        \Tr(P_{\gamma'} C^{\otimes x+y}) \geq \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\otimes k} \otimes B^{\otimes x+y-k}).
+    \end{equation}
+    Letting $k = x$ and rearranging yields
+    \begin{equation}
+        \Tr(P_{\gamma'} (A^{\otimes x} \otimes B^{\otimes y}) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\gamma'} C^{\otimes x+y}).
+    \end{equation}
+    Furthermore, spectrum estimation (\cref{prop:spec_est}) yields
+    \begin{align}
+        \Tr(\Pi_{\gamma'} \Omega)
+        &\leq \frac{1}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\Tr[P_{\gamma'}C^{\otimes x+y}], \qquad \\
+        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{d})\exp(-(x+y)\kl{\bar \gamma'}{\bar \gamma}).
+    \end{align}
+    Analogous calculations for $\lambda' \in \{\alpha', \beta', \gamma', \delta', \epsilon', \phi'\}$ produce the following set of upper bounds:
+    \begin{align}
+        \Tr(\Pi_{\alpha'} \Omega)
+        &\leq \dim(V_{\alpha'}^{d}) \exp(- x \kl{\bar \alpha'}{\bar \alpha}), \\
+        \Tr(\Pi_{\beta'} \Omega)
+        &\leq \dim(V_{\beta'}^{d}) \exp(- y \kl{\bar \beta'}{\bar \beta}), \\
+        \Tr(\Pi_{\gamma'} \Omega)
+        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{d}) \exp(- (x+y) \kl{\bar \gamma'}{\bar \gamma}), \\
+        \Tr(\Pi_{\delta'} \Omega)
+        &\leq \dim(V_{\delta'}^{d}) \exp(- z \kl{\bar \delta'}{\bar \delta}), \\
+        \Tr(\Pi_{\epsilon'} \Omega)
+        &\leq \frac{(\abs{\alpha}+\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}\frac{x!y!z!}{(x+y+z)!}\dim(V_{\epsilon'}^{d}) \exp(- (x+y+z) \kl{\bar \epsilon'}{\bar \epsilon}), \\
+        \Tr(\Pi_{\phi'} \Omega)
+        &\leq \frac{(\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\beta}^{y}\abs{\delta}^{z}}\frac{y!z!}{(y+z)!} \dim(V_{\phi'}^{d}) \exp(- (y+z) \kl{\bar \phi'}{\bar \phi}).
+    \end{align}
+    Our objective now will be to use the given values for $x,y,z$ to prove the multinomial prefactors appearing in the bounds for $\gamma'$, $\epsilon'$, and $\phi'$ reasonably small compared to $n$. 
+    An application of \cref{lem:multinomial_dist_lower_bound} (when $k=2$) implies the following bound
+    \begin{equation}
+        \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}
+        \leq e^{4}\left(n (\abs{\alpha} + \abs{\beta})+3\right)^2.
+    \end{equation}
+    Moreover, using \cite[Equation 7]{christandl2006spectra}, we have
+    \begin{equation}
+        \dim(V_{\gamma'}^{d}) \leq (\abs{\gamma'}+1)^{d(d-1)/2} = (x+y+1)^{d(d-1)/2} < (n (\abs{\alpha}+\abs{\beta}) + 3)^{d(d-1)/2}.
+    \end{equation}
+    Altogether, we can relax the bound on $\Tr(\Pi_{\gamma'} \Omega)$ to obtain
+    \begin{equation}
+        \Tr(\Pi_{\gamma'} \Omega) \leq
+        e^{4}(n\abs{\epsilon}+3)^{\frac{d(d-1)}{2}+2}\exp\left(-n\abs{\gamma}\kl{\bar \gamma'}{\bar \gamma}\right).
+    \end{equation}
+    Similar calculations for $\Tr(\Pi_{\epsilon'} \Omega)$ yields (noting that $k=3$ when applying \cref{lem:multinomial_dist_lower_bound}):
+    \begin{equation}
+        \Tr(\Pi_{\epsilon'} \Omega) \leq e^{16}(n\abs{\epsilon}+4)^{\frac{d(d-1)}{2}+3}\exp\left(-n\abs{\epsilon}\kl{\bar \epsilon'}{\bar \epsilon}\right).
+    \end{equation}
+    It is also not too difficult to see that the polynomial in $n$ term associated to the upper bound on $\Tr(\Pi_{\epsilon'} \Omega)$ above is the largest such subexponential term and thus \cref{eq:Q_upper_bound} indeed holds if we take $p(n)$ to be
+    \begin{equation}
+        p(n) = e^{16}(n\abs{\epsilon}+4)^{\frac{d(d-1)}{2}+3}.
+    \end{equation}
+\end{proof}
+
+\begin{cor}
+    \label{cor:seq_ud_recoupling_norm_lower_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$.
+    Then there exists a sextuple of sequences of Young diagrams $(\alpha'_n, \beta'_n, \gamma'_n, \delta'_n, \epsilon'_n, \phi'_n)$ of sizes 
+    \begin{equation}
+        \label{eq:ceiling_sized_young_diagrams}
+        \begin{alignedat}{3}
+            &\alpha'_n \vdash_{d} \ceil{n\abs{\alpha}}, \qquad 
+            &&\beta'_n \vdash_{d} \ceil{n\abs{\beta}}, \qquad
+            &&\gamma'_n \vdash_{d} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}, \qquad\\
+             &\delta'_n \vdash_{d} \ceil{n\abs{\delta}}, \qquad
+            &&\epsilon'_n \vdash_{d} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}+\ceil{n\abs{\delta}}, \qquad
+            &&\phi'_n \vdash_{d} \ceil{n\abs{\beta}}+\ceil{n\abs{\delta}},
+        \end{alignedat}
+    \end{equation}
+    satisfying (i) the convergence conditions
+    \begin{equation}
+        \label{eq:sextuple_convergence}
+        \begin{alignedat}{3}
+            &\lim_{n\to\infty} \bar \alpha'_n = \bar \alpha, \qquad
+            &&\lim_{n\to\infty} \bar \beta'_n = \bar \beta, \qquad
+            &&\lim_{n\to\infty} \bar \gamma'_n = \bar \gamma, \\
+            &\lim_{n\to\infty} \bar \delta'_n = \bar \delta, \qquad
+            &&\lim_{n\to\infty} \bar \epsilon'_n = \bar \epsilon, \qquad
+            &&\lim_{n\to\infty} \bar \phi'_n = \bar \phi,
+        \end{alignedat}
+    \end{equation}
+    and (ii)
+    \begin{equation}
+        \label{eq:seq_ud_sixj_lower_bound}
+        \norm{\tightsixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\infty}
+        \geq \frac{1}{(n \abs{\epsilon}+4)^{6(d-1)}}.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    For each $n$, it suffices to pick $(\alpha'_n, \beta'_n, \gamma'_n, \delta'_n, \epsilon'_n, \phi'_n)$ be the sextuple which maximizes the value of $\abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}}$.
+    Such a choice will necessarily satisfy a lower bound due to the completeness relation \cref{eq:completeness_relation}.
+    Specifically,
+    \begin{equation}
+        \label{eq:Q_lower_bound}
+        \abs{Q_{A,B,C,D,E,F}^{\alpha'_n\beta'_n\gamma'_n\delta'_n\epsilon'_n\phi'_n}} \geq \frac{1}{q(n)}
+    \end{equation}
+    where $q(n)$ is any upper bound on the number of possible summands in \cref{eq:completeness_relation} viewed as a function of $n$.
+    As there are at most $(k+1)^{d-1}$ Young diagrams with $d-1$ rows and size at most $k$, letting
+    \begin{equation}
+        q(n) = (n \abs{\epsilon}+4)^{6(d-1)}
+    \end{equation}
+    ensures \cref{eq:Q_lower_bound} holds because the size of $\epsilon'_n$ is at most $k=n\abs{\epsilon} + 3$.
+    Moreover, applying \cref{eq:Q_upper_bound} yields
+    \begin{equation}
+        I^{\alpha'_n\beta'_n\gamma'_n\delta'_n\epsilon'_n\phi'_n}_{\alpha\beta\gamma\delta\epsilon\phi}
+        \leq \frac{6}{n}\left(\log q(n) + \log p(n)\right) \stackrel{n\to\infty}{\longrightarrow} 0
+    \end{equation}
+    and thus \cref{eq:sextuple_convergence} holds because $\kl{\bar \lambda'}{\bar \lambda} \geq 0$ with equality if and only if $\bar \lambda' = \bar \lambda$.
+    Then \cref{eq:seq_ud_sixj_lower_bound} follows from \cref{eq:Q_lower_bound} combined with \cref{eq:Q_sixj_upper_bound} and \cref{eq:ud_sixj_prod_proj_operator_norm}.
+\end{proof}
+
+\begin{thm}
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be non-negative non-zero eigenvalues which are not tetrahedral. 
+    Then for all sequences of Young diagrams $(\alpha'_n, \beta'_n, \gamma'_n, \delta'_n, \epsilon'_n, \phi'_n)$ satisfying \cref{eq:ceiling_sized_young_diagrams} and \cref{eq:sextuple_convergence}, we have
+    \begin{equation}
+        \label{eq:seq_ud_sixj_upper_bound}
+        \norm{\tightsixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\mathrm{HS}}^{2}
+        \leq \exp(-n I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} /6 + O(\log n)).
+    \end{equation}
+    where $I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ quantifies the deviation of $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ from being tetrahedral:
+    \begin{equation}
+        I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} = \min_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}}}I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi}.
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Let $\diff X$ be the normalized Hilbert-Schmidt measure over $d\times d$ density matrices and let $k$ be a positive integer.
+    Then define an operator $\Gamma_{k}$ on $(\mathbb C^{d})^{\ot k}$ by
+    \begin{equation}
+        \Gamma_{k} \coloneqq \int \diff X X^{\ot k}.
+    \end{equation}
+    As $\Gamma_{k}$ is known to be both $S_k$ and $\SU(d)$ equivariant, by Schur's lemma, $\Gamma_{k}$ can be expressed as 
+    \begin{equation}
+        \Gamma_{k} = \sum_{\lambda' \vdash_d k} r_{\lambda'} P_{\lambda'}
+    \end{equation}
+    with coefficients $r_{\lambda'}$ that can be computed \cite{zyczkowski2001induced,walter2014multipartite} to obtain
+    \begin{equation}
+        r_{\lambda'} = \frac{\dim(V_{\lambda'}^{d})}{\dim(W_{\lambda'})\dim(V_{(k)}^{d^2})}.
+    \end{equation}
+    Now let $(\alpha', \beta', \gamma', \delta', \epsilon', \phi')$ be arbitary Young diagrams with respective sizes $(x,y,x+y,z,x+y+z,y+z)$ where $x,y,z$ are determined by a positive integer $n$ as in \cref{thm:Q_upper_bound}.
+    Using \cref{eq:ud_sixj_prod_proj_hs_norm}, we obtain the formula
+    \begin{align}
+        \norm{\tightsixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
+        &=\frac{\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})}{\dim(V_{\epsilon'}^{d})\dim(W_{\alpha'})\dim(W_{\beta'})\dim(W_{\delta'})} \\
+        &=R_{\alpha',\beta',\delta';\epsilon'}\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (\Gamma_{x}\ot \Gamma_{y} \ot \Gamma_{z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
+    \end{align}
+    where the cooefficient $R_{\alpha',\beta',\delta';\epsilon'}$ is a ratio of dimensions:
+    \begin{equation}
+        R_{\alpha',\beta',\delta';\epsilon'} \coloneqq \frac{\dim(V_{(x)}^{d^2})\dim(V_{(y)}^{d^2})\dim(V_{(z)}^{d^2})}{\dim(V_{\epsilon'}^{d})\dim(V^{d}_{\alpha'})\dim(V^{d}_{\beta'})\dim(V^{d}_{\delta'})}.
+    \end{equation}
+    Moreover, by the definition of $\Gamma_k$, we have
+    \begin{align}
+        &\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (\Gamma_{x}\ot \Gamma_{y} \ot \Gamma_{z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})\\
+        &\qquad=
+        \int \diff X \int \diff Y \int \diff Z \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (X^{\ot x} \ot Y^{\ot y} \ot Z^{\ot z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'}),
+    \end{align}
+    where the integral is taken over a triple of $d\times d$ \textit{density matrices} $X,Y,Z$.
+    For each integrand, define a tetrahedral sextuple $(\tilde A,\tilde B,\tilde C,\tilde D,\tilde E,\tilde F)$ as follows
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\tilde A \coloneqq \abs{\alpha}X, \qquad 
+            &&\tilde B \coloneqq \abs{\beta}Y, \qquad 
+            &&\tilde C \coloneqq \abs{\alpha}X+\abs{\beta}Y, \qquad \\
+            &\tilde D \coloneqq \abs{\delta}Z, \qquad 
+            &&\tilde E \coloneqq \abs{\alpha}X+\abs{\beta}Y+\abs{\gamma}Z, \qquad 
+            &&\tilde F \coloneqq \abs{\beta}Y + \abs{\delta}Z.
+        \end{alignedat}
+    \end{equation} 
+    Furthermore, let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be the eigenvalues of $(\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F)$.
+    In this notation, the integrand above is equal to
+    \begin{equation}
+        Q_{\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi} = \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (X^{\ot x} \ot Y^{\ot y} \ot Z^{\ot z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
+    \end{equation}
+    Moreover, by \cref{eq:Q_sixj_upper_bound} we have
+    \begin{equation}
+        \abs{Q_{\tilde A,\tilde B,\tilde C,\tilde D,\tilde E,\tilde F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}} \leq p(n) \exp(-n I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}/6).
+    \end{equation}
+    Under the assumption that $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are not tetrahedral, we conclude that
+    \begin{equation}
+        (\alpha, \beta, \gamma, \delta, \epsilon, \phi) \neq (\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)
+    \end{equation}
+    and therefore $I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$.
+    \textcolor{red}{TODO: Figure out how to describe the convergence, is there a triangle inequality for relative entropies? Maybe we need to relax the rate function $I$ to its geometric analogue using Pinsker's inequality, then everything works.}
+\end{proof}
+
+\subsection{The asymptotics of irrep dimensions}
+
+It will be useful for what follows to better understand how the dimension, $\dim(V_{\lambda}^{d})$, of the irreducible representation $V_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
+\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\lambda}^{d})$ \cite{itzykson1966unitary}.
+\begin{lem}
+    \label{lem:in_estimate}
+    Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $d \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(d)$.
+    The following approximation holds when $d \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
+    \begin{equation}
+        \label{eq:in_estimate}
+        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{d}\right)\right).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Weyl's character formula can be used to derive the following formula for $\dim(V_{\lambda}^{d})$ in terms of the Young diagram $\lambda$ and the dimension $d$ \cite{itzykson1966unitary}:
+    \begin{equation}
+        \dim(V_{\lambda}^{d}) = \frac{\Delta(\lambda + \rho^d)}{\Delta(\rho^d)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
+    \end{equation}
+    where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
+    Isolating the terms above which depend on $d$ from those that do not yields
+    \begin{equation}
+        \label{eq:dim_separation_large_d}
+        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}.
+    \end{equation}
+    Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
+    \begin{align}
+        \begin{split}
+            &\log\left(\frac{(a+b)!}{b!}\right) 
+            = \log \prod_{j=1}^{a} (b+j)
+            = \sum_{j=1}^{a} \log (b+j) \\
+            &\quad= a \log b + \sum_{j=1}^{a} \log \left(1+\frac{j}{b}\right)
+            = a \log b + O\left(\frac{a^2}{b}\right).
+        \end{split}
+    \end{align}
+    The assumption that $d \gg \abs{\lambda}^2$ and $i \leq \ell \ll \lambda_{\ell} \leq \abs{\lambda}$ also implies $d - i = \rho^{d}_i \gg \lambda_i^2$.
+    Therefore,
+    \begin{align}
+        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
+        &= \lambda_i\log\rho^{d}_i + O\left(\frac{\lambda_i^2}{\rho^{d}_i}\right).
+    \end{align}
+    The assumptions also imply the following simplification
+    \begin{align}
+        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
+        &= \lambda_i\log d + O\left(\frac{\abs{\lambda}^2}{d}\right)
+    \end{align}
+    which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
+\end{proof}
+Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(V_{\lambda}^{d})$ generally grows polynomially in $d$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
+The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $d$.
+\textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\lambda}, \abs{\lambda}/d\} \leq \epsilon$.}
+\begin{lem}
+    \label{lem:double_asymptotics}
+    Let everything be as in \cref{lem:in_estimate}. Then
+    \begin{equation}
+        \log \dim (V_{\lambda}^{d}) = \abs{\lambda} + \abs{\lambda}\log(d) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{d}\right)
+    \end{equation}
+    where $s(\lambda)$ is defined by
+    \begin{equation}
+        \label{eq:unnorm_shannon}
+        s(\lambda) \coloneqq -\sum_{i=1}^{\ell(\lambda)} \lambda_i \log \lambda_i.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
+    First, we upper bound the dimension $\dim(V_{\lambda}^{\ell})$; for indices $i<j\leq \ell$, one has $(\lambda_i-i)-(\lambda_j-j) \leq \abs{\lambda} + 1$ as well as $j-i \geq 1$ which implies
+    \begin{equation}
+        \label{eq:dim_lambda_ell_bound}
+        \dim(V_{\lambda}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i} \leq (\abs{\lambda}+1)^{\ell(\ell-1)/2},
+    \end{equation}
+    and thus $\log \dim(V_{\lambda}^{\ell}) = O(\ell^2 \log \abs{\lambda})$.
+
+    Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\lambda_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \lambda_{i}$),
+    \begin{align}
+        \log\left(\prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}\right) 
+        &= \sum_{i=1}^{\ell}\log \rho^{\ell}_i! - \sum_{i=1}^{\ell} \log (\lambda_i + \rho^{\ell}_i)!, \\
+        &= \abs{\lambda} + \sum_{i=1}^{\ell} \left(\rho^{\ell}_i\log \rho^{\ell}_i - (\lambda_i + \rho^{\ell}_i)\log (\lambda_i + \rho^{\ell}_i)+ O(\log \lambda_i )\right), \\
+        &= \abs{\lambda} - \sum_{i=1}^{\ell} \lambda_i\log \lambda_i + O( \ell \log \abs{\lambda} ), \\
+        \label{eq:unnorm_shannon_term}
+    \end{align}
+    Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
+\end{proof}
+\begin{rem}
+    Note that the quantity $s(\lambda)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon entropy,
+    \begin{equation}
+        S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
+    \end{equation}
+    of a probability distribution $p = (p_1, \ldots, p_\ell)$.
+    Indeed, $s(\lambda)$ is related to the Shannon entropy of the \textit{normalization} of $\lambda$ by the formula
+    \begin{equation}
+        \label{eq:little_s_relation}
+        s(\lambda) = \abs{\lambda} S\left(\frac{\lambda}{\abs{\lambda}}\right) - \abs{\lambda} \log \abs{\lambda}.
+    \end{equation}
+\end{rem}
+
+{\color{red}
+TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}^{d})$ to $\dim(W_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
+}
+\begin{lem}
+    Let $\lambda$ be a Young diagram with at most $d$ parts. Then
+    \begin{equation}
+        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(V_{\lambda}^{d})}{\dim(W_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{d}\right)
+    \end{equation}
+\end{lem}
+
+
+
+\subsection{An entropic inequality for tetrahedral spectra}
+
+\begin{thm}
+    \label{thm:ud_recouple_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{d}$ be a sextuple of dominant weights for $\GL(d)$ and let $\abcdefsymbol$ be the corresponding $\GL(d)$-recoupling operator. 
+    Then
+    \begin{equation}
+        \norm{\abcdefsymbol}_{\text{HS}}^{2}
+        \leq \left(c_{\alpha,\phi}^{\epsilon}c_{\beta,\delta}^{\phi}c_{\alpha,\beta}^{\gamma}c_{\gamma,\delta}^{\epsilon}\right)^{\frac{1}{2}} \frac{\dim(V_{\gamma}) \dim(V_{\phi})}{\dim(V_{\beta}) \dim(V_{\epsilon})}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    \textcolor{red}{TODO: Explain what this all means carefully.}
+    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
+    \begin{equation}
+        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
+    \end{equation}
+\end{proof}
+\begin{lem}
+    \label{lem:asymptotic_dimension_ratio}
+    Let $\gamma,\phi,\beta,\epsilon$ be a quadruple of Young diagrams such that 
+    \begin{equation}
+        \label{eq:balanced_sizes}
+        \abs{\gamma}+\abs{\phi} = \abs{\beta}+\abs{\epsilon}
+    \end{equation}
+    and that $\abs{\epsilon} = \max\{\abs{\gamma}, \abs{\phi}, \abs{\beta}, \abs{\epsilon}\}$.
+    Let $\ell \coloneqq \max\{\ell(\gamma), \ell(\phi), \ell(\beta), \ell(\epsilon) \}$ and let $d$ be a positive integer such that $d \geq \ell$.
+    Then
+    \begin{equation}
+        \log\left(\frac{\dim(V_{\gamma}^d) \dim(V_{\phi}^d)}{\dim(V_{\beta}^d) \dim(V_{\epsilon}^d)}\right)
+        = I(\gamma,\phi;\beta,\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
+        \label{eq:asymptotic_dimension_ratio}
+    \end{equation}
+    where $I(\gamma,\phi;\beta,\epsilon)$ is the function
+    \begin{equation}
+        I(\gamma,\phi;\beta,\epsilon) \coloneqq s(\gamma) + s(\phi) - s(\beta) - s(\epsilon).
+    \end{equation}
+    Moreover, $I(k\gamma,k\phi;k\beta,k\epsilon) = k I(\gamma,\phi;\beta,\epsilon)$ for any $k > 0$.
+\end{lem}
+\begin{proof}
+    The proof follows from four applications of \cref{lem:double_asymptotics}.
+    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(d)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
+    
+    Four applications of \cref{eq:little_s_relation} yields
+    \begin{align}
+        \begin{split}
+            I(\gamma,\phi;\beta,\epsilon)
+            &= s(\gamma) + s(\phi) - s(\beta) - s(\epsilon) \\
+            &= \left\{\abs{\gamma}S(\bar \gamma) + \abs{\phi} S(\bar \phi) - \abs{\beta} S(\bar \beta) - \abs{\epsilon} S(\bar \epsilon)\right\} + \cdots \\
+            &\quad\cdots- \left\{\abs{\gamma}\log \abs{\gamma} + \abs{\phi}\log \abs{\phi} - \abs{\beta}\log \abs{\beta} - \abs{\epsilon}\log \abs{\epsilon}\right\}.
+        \end{split}
+    \end{align}
+    Under scaling $\lambda \mapsto k \lambda$ for any $k>0$, observe that $\overline{k\lambda} = \bar \lambda$ and $\abs{k\lambda} = k \abs{\lambda}$.
+    Therefore the above expression implies
+    \begin{equation}
+        \label{eq:pseudo_ssa_scaling}
+        I(k\gamma,k\phi;k\beta,k\epsilon) = kI(\gamma,\phi;\beta,\epsilon) + (\abs{\gamma}+\abs{\phi}-\abs{\beta}-\abs{\epsilon}) k\log k.
+    \end{equation}
+    Since \cref{eq:balanced_sizes} is assumed to hold, the coefficient in front of the $k\log k$ term appearing in \cref{eq:pseudo_ssa_scaling} vanishes and therefore $I(k\gamma,k\phi;k\beta,k\epsilon) = k I(\gamma,\phi;\beta,\epsilon)$ as claimed.
+\end{proof}
+
+\begin{thm}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_linear_constraints}.
+    Then necessarily $\abs{\beta}+\abs{\epsilon} = \abs{\gamma}+\abs{\phi}$ and furthermore
+    \begin{equation}
+        I(\gamma, \phi; \beta, \epsilon) \geq 0.
+    \end{equation} 
+\end{thm}
+\begin{proof}
+    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $d \to \infty$, the upper bound provided by \cref{thm:ud_recouple_bound}, and the lower bound provided by \cref{cor:seq_ud_recoupling_norm_lower_bound}.
+    \textcolor{red}{TODO: Finish this}
+\end{proof}
 
 \section{Conclusion}
 
 \clearpage
 \printbibliography
+
+\clearpage
+\appendix
+\section{Entropic identities \& inequalities}
+
+In this section, we recall a handful of identities and inequalities concerning multinomial coefficients and the multinomial distribution in the context of Sanov's theorem \cite[Chapter 2]{dembo2010large}.
+Let $q = (q_1,\ldots, q_k)$ be a probability distribution such that for all $i \in \{1, \ldots, k\}$, $n q_i$ is an integer. 
+Let $M_{n}(q)$ denote the following multinomial coefficient:
+\begin{equation}
+    \label{eq:multinomial_coefficient}
+    M_{n}(q) \coloneqq \binom{n}{nq_1, \ldots, nq_k} = \frac{n!}{(nq_1)!\cdots (nq_k)!},
+\end{equation}
+which can be bounded (see \cite[Lemma 2.1.8]{dembo2010large}) in terms of $\ent{q}$ by ,
+\begin{equation}
+    \label{eq:multinomial_coefficient_bound}
+    (n+1)^{-k} e^{n \ent{q}} \leq M_{n}(q) \leq e^{n \ent{q}},
+\end{equation}
+where $\ent{q} = - \sum_{i=1}^{k} q_i \log q_i$ is the Shannon entropy of $q$.
+Additionally, we have for any probability distribution $p = (p_1, \ldots, p_k)$,
+\begin{equation}
+    \label{eq:multinomial_probability}
+    p_1^{nq_1} \cdots p_k^{nq_k} = e^{-n \left(\ent{q} + \kl{q}{p}\right)}
+\end{equation}
+where $\kl{q}{p} = \sum_{i=1}^{k} q_i \log q_i/p_i$ denotes the Kullbeck-Leibler divergence or relative entropy of $q$ from $p$ with the convention that $\kl{q}{p} = \infty$ if $q_i > 0$ whenever $p_i=0$.
+Note that $\kl{q}{p} = 0$ if and only if $p=q$.
+Combining \cref{eq:multinomial_coefficient_bound} with \cref{eq:multinomial_probability} places bounds on the multinomial distribution
+\begin{equation}
+    (n+1)^{-k} e^{-n \kl{q}{p}} \leq \binom{n}{nq_1, \ldots, nq_k} p_1^{nq_1} \cdots p_k^{nq_k} \leq e^{-n \kl{q}{p}}
+\end{equation}
+If needed, it is possible to relax these bounds further using Pinsker's inequality for $\kl{q}{p}$ in conjunction with its reverse (which only holds for $\kl{q}{p} < \infty$) \cite{gotze2019higher}:
+\begin{equation}
+    2 d_{\mathrm{TV}}^2(p,q) \leq \kl{q}{p} \leq \frac{4}{p_{\min}}d_{\mathrm{TV}}^2(p,q) 
+\end{equation}
+where
+\begin{equation}
+    \label{eq:pinskers}
+    d_{\mathrm{TV}}(p,q) = \max_{1\leq j\leq k}\abs{p_j - q_j} = \frac{1}{2} \sum_{j=1}^{k}\abs{p_j - q_j}
+\end{equation}
+is known as the \textit{total variation distance} between $p$ and $q$.
+Now for any distributon $p = (p_1, \ldots, p_k)$ and any positive integer $n$, it is possible to find another distribution $p' = (p'_1, \ldots, p'_k)$ such that (i) $np'_i$ is an integer for all $i \in \{1,\ldots, k\}$, (ii) $\kl{p'}{p} < \infty$ is finite, and (iii) $p'$ approximates $p$ in the sense that for some constant $C \geq 0$,
+\begin{equation}
+    \label{eq:tv_approx}
+    d_{\mathrm{TV}}(p,p') \leq \frac{C}{n}.
+\end{equation}
+Concretely, one can choose $p'$ such that
+\begin{equation}
+    \label{eq:nint_approx}
+    np'_j \coloneqq \mathrm{nint}\left(n \sum_{i=1}^{j} p_j \right) - \mathrm{nint}\left(n \sum_{i=1}^{j-1} p_j \right)
+\end{equation}
+where $\mathrm{nint} : \mathbb R \to \mathbb Z$ is the function which rounds each real number to the nearest integer (with half integers always rounded up).
+Using this approximation, we have $\abs{np_j-np'_j} \leq 1$ because each rounding operation in \cref{eq:nint_approx} introduces an error of at most $1/2$ and thus \cref{eq:tv_approx} holds with $C = 1$.
+In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{eq:pinskers} reveals $\kl{p'}{p} \leq \frac{4C}{p_{\min}n^2}$ which yields a useful, albeit crude, lower bound for the multinomial distribution:
+\begin{equation}
+    \binom{n}{np'_1, \ldots, np'_k} p_1^{np'_1} \cdots p_k^{np'_k} \geq \exp\left(-\frac{4C^2}{p_{\min}n} - k \log (n+1) \right).
+\end{equation}
+
+\begin{lem}
+    \label{lem:multinomial_dist_lower_bound}
+    Let $k\geq 2$ and let $(w_1, \ldots, w_k) \in \mathbb R_{> 0}^{k}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_k\} > 0$ and let $n$ be a positive integer satisfying $n \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_k) \in \mathbb N_{>0}^{k}$ by the equation
+    \begin{equation}
+        z_{i} \coloneqq \ceil{nw_{i}}.
+    \end{equation}
+    Let $Z = z_1+\cdots+z_k$ and $W = w_1 + \cdots + w_k$ and defined probability distributions $\bar z$ and $\bar w$ by
+    \begin{align}
+        \bar z_i = \frac{z_i}{Z}, 
+        \quad \text{and} \quad 
+        \bar w_i = \frac{w_i}{W},
+    \end{align}
+    for all $i \in \{1,\ldots, k\}$.
+    Then
+    \begin{equation}
+        \label{eq:multinomial_dist_lower_bound}
+        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} \geq e^{-4(k-1)^2}(nW+k+1)^{-k}
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Let $\delta_{j} \coloneqq z_j - n w_j$ denote the rounding surplus such that $0\leq \delta_j < 1$.
+    Note that for $n \gg k$, we have $Z \approx nW$ because
+    \begin{equation}
+        nW \leq Z < nW + k.
+    \end{equation}
+    In this regime, we wish to show that $\bar z_i \approx \bar w_i$.
+    \begin{align}
+        \abs{\bar z_i - \bar w_i}
+        =\abs{\frac{z_i}{Z} - \frac{w_i}{W}} 
+        = \frac{\abs{Wz_i - Zw_i}}{ZW}.
+    \end{align}
+    The numerator above can be bounded independently of $n$ by,
+    \begin{align}
+        &\abs{Wz_i - Zw_i}\\
+        &\qquad= \abs{(nw_i + \delta_i)(w_1+\cdots+w_k) - w_i(\delta_1 + n w_1+ \cdots + \delta_k + n w_k)}, \\
+        &\qquad= \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_k) - w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_k)}, \\
+        &\qquad\leq \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_k)} + \abs{w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_k)}, \\
+        &\qquad\leq (w_1+\cdots+\hat w_i+\cdots+w_k) + (k-1)(w_i), \\
+        &\qquad\leq (k-1)(w_1+\cdots+w_k), \\
+        &\qquad= (k-1)W.
+    \end{align}
+    Consequently,
+    \begin{equation}
+        d_{\mathrm{TV}}(\bar z, \bar w) = \max_{1 \leq i \leq k} \abs{\bar z_i - \bar w_i} \leq \frac{k-1}{Z}
+    \end{equation}
+    and therefore
+    \begin{align}
+        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} 
+        &\geq (Z+1)^{-k} \exp(-Z\kl{\bar z}{\bar w}), \\
+        &\geq (Z+1)^{-k} \exp\left[-\frac{4ZW}{w_{\min}} \left(\frac{k-1}{Z}\right)^2\right], \\
+        &\geq (nW+k+1)^{-k} \exp\left[-\frac{4(k-1)^2}{n w_{\min}}\right], \\
+        &\geq (nW+k+1)^{-k} \exp(-4(k-1)^2).
+    \end{align}
+\end{proof}
+
+\textcolor{red}{TODO: Figure out the best lower bound on the multinomial distribution to use here.}
+\begin{lem}
+    \label{lem:multinomial_dist_lower_bound_alt}
+    Let everything be as in \cref{lem:multinomial_dist_lower_bound}.
+    Then
+    \begin{equation}
+        \label{eq:multinomial_dist_lower_bound_alt}
+        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} \geq \left(\frac{1}{20}\right)^{k}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}}\frac{1}{n^{\frac{3k-1}{2}}}
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The proof follows from a version of Stirling's approximation due to \citeauthor{robbins1955remark} \cite{robbins1955remark} which states
+    \begin{equation}
+        n! = \sqrt{2\pi} n^{n+\frac{1}{2}} e^{-n} e^{r_n}, 
+        \qquad
+        \text{where}
+        \qquad
+        \frac{1}{12n+1}\leq r_n \leq \frac{1}{12n}.
+    \end{equation}
+    Therefore,
+    \begin{align}
+        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}}
+        &=\frac{Z!}{W^{Z}}\frac{w_1^{z_{1}}}{z_1!}\cdots \frac{w_k^{z_{k}}}{z_k!} \\
+        &=\left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}}  \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \left(\frac{w_1}{z_1}\right)^{z_1+\frac{1}{2}} \cdots \left(\frac{w_k}{z_k}\right)^{z_k+\frac{1}{2}} \exp\left(r_{Z} - \sum_{i} r_{z_i}\right).
+    \end{align}
+    In this setting, we have assumed $n w_i \geq 1$ which implies
+    \begin{equation}
+        nw_i \leq z_i < nw_i + 1 \leq 2nw_i,
+        \qquad \text{and} \qquad
+        nW \leq Z < nW+k < 2nW.
+    \end{equation}
+    Consequently\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+\frac{3}{2}} \geq 2^{-5/2}$},
+    \begin{equation}
+        \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \geq n^{nW + \frac{1}{2}}, \qquad
+        \left(\frac{w_i}{z_i}\right)^{z_i +\frac{1}{2}} \geq \left(\frac{w_i}{nw_i + 1}\right)^{nw_i + \frac{3}{2}} \geq \frac{2^{-\frac{5}{2}}}{n^{nw_i+\frac{3}{2}}}.
+    \end{equation}
+    and the remainder term satisfies
+    \begin{equation}
+        r_{Z} - \sum_{i} r_{z_i} \geq \frac{1}{12Z + 1} - \sum_{i}\frac{1}{12z_i} \geq - \frac{k}{12}.
+    \end{equation}
+    Altogether, we have
+    \begin{align}
+        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}}
+        &=\left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}} \frac{2^{-\frac{5k}{2}}}{n^{\frac{3k-1}{2}}} \exp\left(-\frac{k}{12}\right).
+    \end{align}
+    Moreover,
+    \begin{equation}
+        \left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}2^{-\frac{5k}{2}} \exp\left(-\frac{k}{12}\right) \geq \left(\frac{1}{20}\right)^{k}
+    \end{equation}
+\end{proof}
 
 \clearpage
 \section{[Research Notes]}
@@ -111,7 +1099,7 @@
     \item \Citeauthor{thompson1973eigenvalues} \cite{thompson1973eigenvalues} present a number of interesting counter-examples to the question of whether the inequalities pertaining to the spectra of general matrices can be deduced from looking at the spectra of diagonal matrices (both in the additive and multiplicative cases).
 \end{itemize}
 
-\subsection{\texorpdfstring{$6j$}{6j} symbols}
+\subsection{\texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
 \begin{itemize}
     \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
     \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
