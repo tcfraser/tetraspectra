@@ -277,9 +277,10 @@ Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of 
 \end{equation}
 As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
 
-\section{Non-linear inequalities}
+\section{Some submodular and supermodular inequalities}
 
 \begin{lem}
+    \label{lem:quadratic_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
     \begin{equation}
         \sum_{j}\lambda_j(A+B)^2 + \sum_{j}\lambda_j(B+C)^2 \leq \sum_{j}\lambda_j(B)^2 + \sum_{j}\lambda_j(A+B+C)^2.
@@ -301,7 +302,75 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
     Since $A,C\geq 0$ are both positive semidefinite, we also have $\Tr[AC] \geq 0$ which proves the claim.
 \end{proof}
 
+\Citeauthor{bouhtou2008optimization} claim to prove the following family of inequalities \cite[Lemma 5.3]{bouhtou2008optimization}.
+\begin{lem}
+    \label{lem:bouhtou_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \in [0,1]$.
+    Then
+    \begin{equation}
+        \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \geq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
+    \end{equation}
+\end{lem}
+
+The following rather large family of polynomial inequalities was proven by \citeauthor{paksoy2014inequalities} \cite{paksoy2014inequalities}.
+In relies on the notion of a generalized matrix function due to \citeauthor{marcus1965generalized} \cite{marcus1965generalized}.
+\begin{defn}[Generalized matrix function]
+    Let $H$ be a subgroup of $S_n$ and let $\chi$ be an irreducible character of $H$.
+    The \defnsty{generalized matrix function} for the character $\chi$ of $H$ is
+    \begin{equation}
+        d_{\chi}^{H}(X) = \sum_{\sigma \in H} \chi(\sigma) \prod_{i} X_{i,\sigma(i)}
+    \end{equation}
+\end{defn}
+The notion of a \textit{generalized matrix function} generalizes the notion of an \textit{immanant} (when $H = S_n$) which, in turn, contains as special cases the notion of a permanent and determinant \cite{huber2021matrix}.
+
 \begin{thm}
+    \label{thm:ptz_ineqs}
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices and let $H$ be a subgroup of $S_n$ with irreducible character $\chi$.
+    Then
+    \begin{equation}
+        d_{\chi}^{H}(A+B+C) + d_{\chi}^{H}(B) \geq d_{\chi}^{H}(A+B) + d_{\chi}^{H}(B+C).
+    \end{equation}
+\end{thm}
+\begin{proof}
+    See \cite{paksoy2014inequalities}.
+\end{proof}
+As a corollary of \cref{thm:ptz_ineqs}, we obtain the following determinant and permanent inequalities.
+\begin{cor}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices.
+    Then
+    \begin{align}
+        \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C), \\
+        \mathrm{per}(A+B+C) + \mathrm{per}(B) \geq \mathrm{per}(A+B) + \mathrm{per}(B+C).
+    \end{align}
+\end{cor}
+
+The following operator inequality can be used to prove a number of inequalities \cite[Lemma 2.2]{tie2011rearrangement}.
+\begin{lem}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
+    Then
+    \begin{equation}
+        (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
+    \end{equation}
+\end{lem}
+
+One also has another determinant inequality which is non-linear in determinants \cite[Lemma 2.3]{tie2011rearrangement}.
+\begin{lem}
+    \label{lem:det_prod_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices.
+    Then
+    \begin{align}
+        \det(A+B+C)\det(B) \leq \det(A+B)\det(B+C).
+    \end{align}
+\end{lem}
+Note that \cref{lem:det_prod_ineq} can be seen as a special of \cref{lem:bouhtou_ineq} in the limit as $p\to 0$; the derivative of \cref{lem:bouhtou_ineq} in $p$ at $p=0$ yields
+\begin{equation}
+    \label{eq:bouhtou_ineq_p_zero}
+    \sum_{j}\log \lambda_j(A+B) + \sum_{j}\log\lambda_j(B+C) \geq \sum_{j}\log\lambda_j(B) + \sum_{j}\log \lambda_j(A+B+C),
+\end{equation}
+which is equivalent to \cref{lem:det_prod_ineq}.
+
+\begin{thm}
+    \label{thm:ssa_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
     \begin{align}
         \label{eq:SSA_like_ineq}
@@ -310,8 +379,14 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
     \end{align}
 \end{thm}
 
-
-\subsection{Proof via spectral embedding}
+\textcolor{red}{TODO: Prove the following conjecture due to Anton (or find the values of $p$ for which it holds).}
+\begin{conj}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \geq 1$.
+    Then
+    \begin{equation}
+        \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \leq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
+    \end{equation}
+\end{conj}
 
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
@@ -1170,6 +1245,7 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item \citeauthor{audenaert2010strongly} consider a similar form of ``strongly subadditive'' functions \cite{audenaert2010strongly}
     \item For multivariate inequalities based on idempotents of the symmetric group algebra see \citeauthor{huber2020positive}'s paper \cite{huber2020positive}.
     \item For spectral inequalities derived using semidefinite programming, see \citeauthor{huber2022refuting}'s paper \cite{huber2022refuting}.
+    \item \citeauthor{paksoy2014inequalities} produce a large family of polynomial inequalities for positive semidefinite $A,B,C \geq 0$ using the notion of a ``generalized matrix function'' \cite{paksoy2014inequalities} (see also \cite{huber2021matrix,marcus1965generalized})
 \end{itemize}
 
 \subsection{Uncategorized}
