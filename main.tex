@@ -277,7 +277,7 @@ Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of 
 \end{equation}
 As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
 
-\section{Some submodular and supermodular inequalities}
+\section{Submodular and supermodular inequalities on positive semidefinite matrices}
 
 \begin{lem}
     \label{lem:quadratic_ineq}
@@ -312,8 +312,30 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
     \end{equation}
 \end{lem}
 
-The following rather large family of polynomial inequalities was proven by \citeauthor{paksoy2014inequalities} \cite{paksoy2014inequalities}.
-In relies on the notion of a generalized matrix function due to \citeauthor{marcus1965generalized} \cite{marcus1965generalized}.
+The following operator inequality can be used to prove a number of inequalities \cite[Lemma 2.2]{tie2011rearrangement}.
+\begin{lem}
+    \label{lem:mne_operator_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
+    Then
+    \begin{equation}
+        (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The result is obtained from applying a non-commutative multinomial expansion and noting that every summand on the right-hand-side above also appears on the left-hand-side above.
+\end{proof}
+To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, and $A+B+C$, one can simply pair the positive semidefinite operator in \cref{lem:mne_operator_ineq} with an $\SU(d)$-equivariant and positive semidefinite operator:
+\begin{cor}
+    \label{cor:isotypic_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $\lambda \vdash k$ be a Young diagram with $k$ boxes.
+    Then
+    \begin{equation}
+        \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k} \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
+    \end{equation}
+\end{cor}
+
+\citeauthor{paksoy2014inequalities} proved a family of polynomial inequalities which are generally not functions of just the eigenvalues \cite{paksoy2014inequalities}.
+These inequalities are in terms a so-called generalized matrix function first defined by \citeauthor{marcus1965generalized} \cite{marcus1965generalized}.
 \begin{defn}[Generalized matrix function]
     Let $H$ be a subgroup of $S_n$ and let $\chi$ be an irreducible character of $H$.
     The \defnsty{generalized matrix function} for the character $\chi$ of $H$ is
@@ -322,7 +344,6 @@ In relies on the notion of a generalized matrix function due to \citeauthor{marc
     \end{equation}
 \end{defn}
 The notion of a \textit{generalized matrix function} generalizes the notion of an \textit{immanant} (when $H = S_n$) which, in turn, contains as special cases the notion of a permanent and determinant \cite{huber2021matrix}.
-
 \begin{thm}
     \label{thm:ptz_ineqs}
     Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices and let $H$ be a subgroup of $S_n$ with irreducible character $\chi$.
@@ -343,15 +364,7 @@ As a corollary of \cref{thm:ptz_ineqs}, we obtain the following determinant and 
         \mathrm{per}(A+B+C) + \mathrm{per}(B) \geq \mathrm{per}(A+B) + \mathrm{per}(B+C).
     \end{align}
 \end{cor}
-
-The following operator inequality can be used to prove a number of inequalities \cite[Lemma 2.2]{tie2011rearrangement}.
-\begin{lem}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
-    Then
-    \begin{equation}
-        (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
-    \end{equation}
-\end{lem}
+Note that with the exception of the above determinant inequality, the inequalities provied by \cref{thm:ptz_ineqs} are generally not equivalent to inequalities involving only eigenvalues.
 
 One also has another determinant inequality which is non-linear in determinants \cite[Lemma 2.3]{tie2011rearrangement}.
 \begin{lem}
@@ -379,14 +392,43 @@ which is equivalent to \cref{lem:det_prod_ineq}.
     \end{align}
 \end{thm}
 
-\textcolor{red}{TODO: Prove the following conjecture due to Anton (or find the values of $p$ for which it holds).}
-\begin{conj}
-    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \geq 1$.
+The most comprehensive result concerning the eigenvalues of partial sums of Hermitian matrices we have encountered thus far is \cite[Proposition 2.3]{sagnol2013approximation} which provides the following result.
+\begin{thm}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ such that the derivative of $f$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
+    Then the following inequality holds
+    \begin{equation}
+        \Tr f(A+B+C) 
+        +
+        \Tr f(B)
+        \geq
+        \Tr f(A+B)
+        +
+        \Tr f(B+C),
+    \end{equation}
+    or equivalently, 
+    \begin{equation}
+        \sum_{j} f(\lambda_j(A+B+C))
+        +
+        \sum_{j} f(\lambda_j(B))
+        \geq
+        \sum_{j} f(\lambda_j(A+B))
+        +
+        \sum_{j} f(\lambda_j(B+C))
+    \end{equation}
+\end{thm}
+\begin{proof}
+    The proof can be found in \cite[Section 2.1]{sagnol2013approximation}
+\end{proof}
+
+As corollaries one obtains some of the previously mentioned inequalities for various functions $f$ satisfying the conditions of the theorem; for example, choosing $f(x) = x \log x$ yields \cref{thm:ssa_ineq}, while choosing $f(x) = -x^p$ for $p\in(0,1]$ yields \cref{lem:bouhtou_ineq}, and choosing $f(x) = x^p$ for $p \in (0, 2]$ yields the following.
+
+\begin{cor}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \in (0,2]$.
     Then
     \begin{equation}
         \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \leq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
     \end{equation}
-\end{conj}
+\end{cor}
 
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
