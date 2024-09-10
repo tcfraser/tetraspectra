@@ -394,36 +394,44 @@ which is equivalent to \cref{lem:det_prod_ineq}.
 
 The most comprehensive result concerning the eigenvalues of partial sums of Hermitian matrices we have encountered thus far is \cite[Proposition 2.3]{sagnol2013approximation} which provides the following result.
 \begin{thm}
+    \label{thm:sagnol_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ such that the derivative of $f$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
     Then the following inequality holds
     \begin{equation}
+        \label{eq:sagnol_ineq}
         \Tr f(A+B+C) 
         +
         \Tr f(B)
         \geq
         \Tr f(A+B)
         +
-        \Tr f(B+C),
-    \end{equation}
-    or equivalently, 
-    \begin{equation}
-        \sum_{j} f(\lambda_j(A+B+C))
-        +
-        \sum_{j} f(\lambda_j(B))
-        \geq
-        \sum_{j} f(\lambda_j(A+B))
-        +
-        \sum_{j} f(\lambda_j(B+C))
+        \Tr f(B+C).
     \end{equation}
 \end{thm}
 \begin{proof}
-    The proof can be found in \cite[Section 2.1]{sagnol2013approximation}
+    The following proof is a rough summary of the proof found in \cite[Section 2.1]{sagnol2013approximation}.
+    Let $X,Y$ be positive semidefinite and consider following difference:
+    \begin{equation}
+        F(Y|X) \coloneqq \Tr f (X+Y) - \Tr f(Y).
+    \end{equation}
+    The inequality in \cref{eq:sagnol_ineq} is thus equivalent to $F(C|B) \leq F(A+C|B)$.
+    To prove \cref{eq:sagnol_ineq} it suffices to prove that the value of $F(Y|X)$ is a nondecreasing function under $Y \mapsto Y+Z$ for arbitrary positive semidefinite $X,Y$, and $Z$.
+    To establish the claim, let $\epsilon > 0$ be small and let $Z = \epsilon W$ for non-zero positive semidefinite $W$.
+    It can be shown\footnote{The statement follows, without loss of generality, by assuming that all the matrices involved are positive \textit{definite}. This assumption is permitted because $f$ is assumed continuous and the eigenvalues of a matrix are also continuous functions (see \cite{sagnol2013approximation} for a detailed explanation).} that
+    \begin{align}
+        (\partial_{Y}F(Y|X))(W)
+        &\coloneqq\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( F(Y+\epsilon W|X) - F(Y|X) \right) \\
+        &= \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( \Tr f(X+Y+\epsilon W) - \Tr f(Y+\epsilon W) - \Tr f(X+Y) + \Tr f(Y) \right) \\
+        &= \Tr\left[\left( f'(X+Y)-f'(Y)\right) W\right].
+    \end{align}
+    Using the assumption that $f'$ is an operator monotone together with $X+Y \geq Y$ (because $X \geq 0$), we have $f'(X+Y) \geq f'(Y)$ and thus $f'(X+Y)-f'(Y) \geq 0$.
+    Therefore $(\partial_{Y}F(Y|X))(W) \geq 0$ for all $W$ and thus $F(Y|X)$ is nondecreasing with respect to $Y \mapsto Y+Z$ as desired.
 \end{proof}
 
-As corollaries one obtains some of the previously mentioned inequalities for various functions $f$ satisfying the conditions of the theorem; for example, choosing $f(x) = x \log x$ yields \cref{thm:ssa_ineq}, while choosing $f(x) = -x^p$ for $p\in(0,1]$ yields \cref{lem:bouhtou_ineq}, and choosing $f(x) = x^p$ for $p \in (0, 2]$ yields the following.
+As corollaries one obtains some of the previously mentioned inequalities for various functions $f$ satisfying the conditions of the theorem; for example, choosing $f(x) = x \log x$ yields \cref{thm:ssa_ineq}, while choosing $f(x) = -x^p$ for $p\in(0,1]$ yields \cref{lem:bouhtou_ineq}, and choosing $f(x) = x^p$ for $p \in (1, 2]$ yields the following.
 
 \begin{cor}
-    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \in (0,2]$.
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices and let $p \in (1,2]$.
     Then
     \begin{equation}
         \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \leq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
@@ -657,7 +665,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \end{equation}
     Letting $k = x$ and rearranging yields
     \begin{equation}
-        \Tr(P_{\gamma'} (A^{\otimes x} \otimes B^{\otimes y}) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\gamma'} C^{\otimes x+y}).
+        \Tr(P_{\gamma'} (A^{\otimes x} \otimes B^{\otimes y})) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\gamma'} C^{\otimes x+y}).
     \end{equation}
     Furthermore, spectrum estimation (\cref{prop:spec_est}) yields
     \begin{align}
@@ -732,7 +740,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
             &&\lim_{n\to\infty} \bar \phi'_n = \bar \phi,
         \end{alignedat}
     \end{equation}
-    and (ii)
+    and (ii) the lower bound 
     \begin{equation}
         \label{eq:seq_ud_sixj_lower_bound}
         \norm{\tightsixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\infty}
