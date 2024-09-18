@@ -438,6 +438,8 @@ As corollaries one obtains some of the previously mentioned inequalities for var
     \end{equation}
 \end{cor}
 
+\textcolor{blue}{TC: On Sept. 18th, I came across an interesting discussion on \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality} which appears deeply related to the topic of submodular inequalities. In that post the following result is stated without explicit proof and is based on the theory of so-called ``hyperbolic polynomials'' $p$ and their real roots $\lambda_i$. There are a handful of conjectured inequalities on the page.} 
+
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
 
@@ -1029,6 +1031,117 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
 
 \clearpage
 \appendix
+
+\section{Obstructions to the concept of an additive entropy cone}
+
+One of the motivations for studying inequalities between von Neumann entropies of subsytems of multipartite quantum states is because the closure $\bar {\mathcal A_n}$ of the set of possible \textit{allocations of von Neumann entropies},
+\begin{equation}
+    \mathcal A_{n} \coloneqq \{ (H(\Tr_{[n]\setminus S}(\rho_{12\cdots n})))_{\emptyset \neq S\subseteq [n]} \mid \rho_{12\cdots n} \in \mathcal D(\mathcal H_1 \otimes \cdots \otimes \mathcal H_n) \},
+\end{equation}
+was shown by \citeauthor{pippenger2003inequalities} to be a convex cone and thus it suffices to restrict ones attention to linear inequalities of von Neumann entropies \cite{pippenger2003inequalities}.
+
+One might also be interested in set of possible allocations of some other function $f$ of marginals of quantum states, or in our case, the possible allocations of some other function when evaluated over all \textit{partial sums} of a tuple of positive semidefinite Hermitian matrices.
+To this end, we consider the following set
+\begin{equation}
+    \mathcal S_{f,n} \coloneqq \{ \left(f(\sum_{i\in S}X_i)\right)_{\emptyset \neq S\subseteq [n]} \mid X_1, \ldots, X_n \geq 0\}.
+\end{equation}
+\textbf{Question:} \textit{Does there exist a function $f$ such that $\bar {\mathcal S}_{f,n}$ forms a convex cone?}
+
+Following the argument due to \citeauthor{pippenger2003inequalities}, the closure $\bar {\mathcal S}_{f,n}$ would form a convex cone if an only if $\mathcal S_{f,n}$ was both \textit{additive} and \textit{approximately dilutable}.
+Ignoring the condition of approximate dilutability altogether, what would it take to prove that $\mathcal S_{f,n}$ was additive?
+A constructive proof would be the following: given two $n$-tuples $X = (X_1, \ldots, X_n)$ and $Y = (Y_1, \ldots, Y_n)$ with allocations $\mathcal S_{f,n}(X)$ and $\mathcal S_{f,n}(Y)$, compute a new $n$-tuple $Z = (Z_1, \ldots, Z_n)$ with allocation $\mathcal S_{f,n}(Z)$ such that
+\begin{equation}
+    \mathcal S_{f,n}(Z) = \mathcal S_{f,n}(X) +  \mathcal S_{f,n}(Y),
+\end{equation}
+or in other words,
+\begin{equation}
+    \label{eq:addivity_partial_sums}
+    \forall S \subseteq [n] \quad : \quad 
+    f\left(\sum_{i\in S}Z_i\right)
+    = 
+    f\left(\sum_{i\in S}X_i\right) +
+    f\left(\sum_{i\in S}Y_i\right).
+\end{equation}
+In \cite{pippenger2003inequalities}, \citeauthor{pippenger2003inequalities} used two properties of von Neumann entropies to prove additivity of $\mathcal A_n$: (i) they are additive across tensor products, i.e. $H(\rho \otimes \sigma) = H(\rho) + H(\sigma)$, and (ii) they interact well with partial tracing over subsystems.
+In our context, suppose a similar argument worked; let $\oslash$ be some binary operation on Hermitian matrices such that $f$ was additive with respect to this operation:
+\begin{equation}
+    \forall X, Y : f(X \oslash Y) = f(X) + f(Y).
+\end{equation}
+There are numerous pairs $(f, \oslash)$ of functions and binary operations which satisfy the above equation: e.g., entropies and tensor products $(H, \otimes)$, traces and direct sums $(\Tr, \oplus)$, log traces/determinants and tensor products $(\log \Tr, \otimes)$, $(\log \det, \otimes)$, etc.
+
+The difficulty arises when trying to find a function/operation pair which additionally satisfies \cref{eq:addivity_partial_sums}.
+If $f$ is additive across some $\oslash$ and \cref{eq:addivity_partial_sums} holds, then we could conclude that $\mathcal S_{f,n}$ was additive. 
+Exploring this possibilty further, to prove additivity of $\mathcal S_{f,n}$, it suffices to find an $n$-tuple $Z = (Z_1, \ldots, Z_n)$ satisfying the equations
+\begin{equation}
+    \label{eq:proposed_constraint}
+    \forall S \subseteq [n] \quad : \quad 
+    \sum_{k\in S}Z_k
+    = 
+    \left(\sum_{i\in S}X_i\right) \oslash
+    \left(\sum_{j \in S}Y_j\right).
+\end{equation}
+In other words, the new $n$-tuple $Z = (Z_1, \ldots, Z_n)$ is determined by the binary operation $\oslash$ because $Z_k = X_k \oslash Y_k$.
+Therefore, the binary operation $\oslash$ would need to satisfy
+\begin{equation}
+    \forall S \subseteq [n] \quad : \quad 
+    \sum_{k\in S} \left(X_k \oslash Y_k\right)
+    = 
+    \left(\sum_{i\in S}X_i\right) \oslash
+    \left(\sum_{i\in S}Y_i\right).
+\end{equation}
+This above equation is the ``additive analogue'' of the fact that tensor products and partial traces are compatible meaning
+\begin{equation}
+    \forall S \subseteq [n] \quad : \quad 
+    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n} \otimes \rho^{Y}_{1 2 \cdots n}\right)
+    = 
+    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n}\right) \otimes \Tr_{S}\left(\rho^{Y}_{1 2 \cdots n}\right).
+\end{equation}
+{\color{blue}
+    TC: At the moment, there is not a single non-trivial binary operation I can think of which satisfies the above equation or even the equation corresponding to $\abs{S} = 2$:
+    \begin{equation}
+        (X_1 \oslash Y_1) + (X_2 \oslash Y_2) = (X_1+X_2)\oslash (Y_1+Y_2).
+    \end{equation}
+    Assuming no such binary operation exists, then I conclude that the only remaining way to find an $f$ such that $\bar{\mathcal S}_{f,n}$ forms a convex cone would be to find a new approach which is different from \citeauthor{pippenger2003inequalities}'s approach.
+
+    One option would be to relax \cref{eq:proposed_constraint} further and only assume $Z = (Z_1, \ldots, Z_n)$ satisfies
+    \begin{equation}
+        \forall S \subseteq [n] \quad : \quad 
+        \sum_{k\in S}Z_k
+        = 
+        g_{S}\left[\left(\sum_{i\in S}X_i\right) \oslash
+        \left(\sum_{j \in S}Y_j\right)\right],
+    \end{equation}
+    where $g_{S}$ is some function acting on Hermitian matrices potentially depending on the subset $S \subseteq [n]$ that satisfies $f = f \circ g_{S}$ (i.e., all relevant matrix equations only need to hold up to the value of $f$) (or equivalently, the binary operation could be $S$-dependent).
+    In this way, $\oslash$ would only need to satisfy
+    \begin{equation}
+        g_1[X_1 \oslash Y_1] + g_2[X_2 \oslash Y_2] = g_{\{1,2\}}[(X_1+X_2)\oslash (Y_1+Y_2)].
+    \end{equation}
+    However, this seems a bit too challenging without further assumptions.
+}
+
+\clearpage
+\section{Embedding partial sums into quantum states}
+
+\textcolor{blue}{See previous drafts for details regarding properties of the spectral embedding.}
+
+\begin{exam}
+    Given three $d\times d$ positive semidefinite Hermitian operators $A, B, C \geq 0$, let $\Gamma$ be a $(d+1)^{3}\times (d+1)^{3}$ matrix with non-zero coefficients given for all $i,j \in \{1, \ldots, d\}$ by the formulas:
+    \begin{align}
+        \begin{split}
+            \braket{000|\Gamma|000} &= 1-\Tr(A+B+C), \\
+            \braket{i00|\Gamma|j00} &= \braket{i|A|j}, \\
+            \braket{0i0|\Gamma|0j0} &= \braket{i|B|j}, \\
+            \braket{00i|\Gamma|00j} &= \braket{i|C|j}, \\
+            \braket{i00|\Gamma|0j0} &= \braket{i|A^{\frac{1}{2}}B^{\frac{1}{2}}|j}, \\
+            \braket{0i0|\Gamma|j00} &= \braket{i|B^{\frac{1}{2}}C^{\frac{1}{2}}|j}, \\
+            \braket{i00|\Gamma|00j} &= \braket{i|A^{\frac{1}{2}}C^{\frac{1}{2}}|j}, \\
+            \braket{0i0|\Gamma|j00} &= \braket{i|B^{\frac{1}{2}}A^{\frac{1}{2}}|j}, \\
+            \braket{00i|\Gamma|j00} &= \braket{i|C^{\frac{1}{2}}A^{\frac{1}{2}}|j}, \\
+            \braket{00i|\Gamma|0j0} &= \braket{i|C^{\frac{1}{2}}B^{\frac{1}{2}}|j}.
+        \end{split}
+    \end{align}
+\end{exam}
+
 \section{Entropic identities \& inequalities}
 
 In this section, we recall a handful of identities and inequalities concerning multinomial coefficients and the multinomial distribution in the context of Sanov's theorem \cite[Chapter 2]{dembo2010large}.
