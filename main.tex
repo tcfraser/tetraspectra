@@ -451,7 +451,7 @@ As corollaries one obtains some of the previously mentioned inequalities for var
 
 One of the motivations for studying inequalities between von Neumann entropies of subsytems of multipartite quantum states is because the closure $\bar {\mathcal M_n}$ of the set of possible \textit{allocations of von Neumann entropies},
 \begin{equation}
-    \mathcal M_{n} \coloneqq \{ (H_{\mathrm{vN}}(\Tr_{[n]\setminus S}(\rho_{12\cdots n})))_{\emptyset \neq S\subseteq [n]} \mid \rho_{12\cdots n} \in \mathcal D(\mathcal H_1 \otimes \cdots \otimes \mathcal H_n) \},
+    \mathcal M_{n} \coloneqq \{ (H_{\mathrm{vN}}(\Tr_{[n]\setminus S}(\rho_{12\cdots n})))_{\emptyset \neq S\subseteq [n]} \mid \rho_{12\cdots n} \in \mathcal D(\mathcal H_1 \ot \cdots \ot \mathcal H_n) \},
 \end{equation}
 was shown by \citeauthor{pippenger2003inequalities} to be a convex cone and thus it suffices to restrict ones attention to linear inequalities of von Neumann entropies \cite{pippenger2003inequalities}.
 
@@ -477,12 +477,12 @@ or in other words,
     f\left(\sum_{i\in S}X_i\right) +
     f\left(\sum_{i\in S}Y_i\right).
 \end{equation}
-In \cite{pippenger2003inequalities}, \citeauthor{pippenger2003inequalities} used two properties of von Neumann entropies to prove additivity of $\mathcal A_n$: (i) they are additive across tensor products, i.e. $H(\rho \otimes \sigma) = H(\rho) + H(\sigma)$, and (ii) they interact well with partial tracing over subsystems.
+In \cite{pippenger2003inequalities}, \citeauthor{pippenger2003inequalities} used two properties of von Neumann entropies to prove additivity of $\mathcal A_n$: (i) they are additive across tensor products, i.e. $H(\rho \ot \sigma) = H(\rho) + H(\sigma)$, and (ii) they interact well with partial tracing over subsystems.
 In our context, suppose a similar argument worked; let $\oslash$ be some binary operation on Hermitian matrices such that $f$ was additive with respect to this operation:
 \begin{equation}
     \forall X, Y : f(X \oslash Y) = f(X) + f(Y).
 \end{equation}
-There are numerous pairs $(f, \oslash)$ of functions and binary operations which satisfy the above equation: e.g., entropies and tensor products $(H, \otimes)$, traces and direct sums $(\Tr, \oplus)$, log traces/determinants and tensor products $(\log \Tr, \otimes)$, $(\log \det, \otimes)$, etc.
+There are numerous pairs $(f, \oslash)$ of functions and binary operations which satisfy the above equation: e.g., entropies and tensor products $(H, \ot)$, traces and direct sums $(\Tr, \oplus)$, log traces/determinants and tensor products $(\log \Tr, \ot)$, $(\log \det, \ot)$, etc.
 
 A potential difficulty arises when trying to find a function/operation pair which additionally satisfies \cref{eq:addivity_partial_sums}.
 If $f$ is additive across some $\oslash$ and \cref{eq:addivity_partial_sums} holds, then we could conclude that $\mathcal M_{f,n}$ was additive. 
@@ -507,9 +507,9 @@ Therefore, the binary operation $\oslash$ would need to satisfy
 This above equation is the ``additive analogue'' of the fact that tensor products and partial traces are compatible meaning
 \begin{equation}
     \forall S \subseteq [n] \quad : \quad 
-    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n} \otimes \rho^{Y}_{1 2 \cdots n}\right)
+    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n} \ot \rho^{Y}_{1 2 \cdots n}\right)
     = 
-    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n}\right) \otimes \Tr_{S}\left(\rho^{Y}_{1 2 \cdots n}\right).
+    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n}\right) \ot \Tr_{S}\left(\rho^{Y}_{1 2 \cdots n}\right).
 \end{equation}
 To determine which binary operation $\oslash$ is needed, consider an instance of \cref{eq:proposed_constraint} corresponding to subset $S$ such that $\abs{S} = 2$:
 \begin{equation}
@@ -667,7 +667,7 @@ The following lemma lists some basic properties of the function $H_{\beta}$.
 
 It is important to note that $H_{\beta}(X)$ is not a homogeneous function in $X$ meaning in general
 \begin{equation}
-    H_{\beta}(X) \neq H_{\beta}(\gamma).
+    H_{\beta}(X) \neq H_{\beta}(\gamma X).
 \end{equation}
 Nevertheless, there is a sense it which it is homogeneous up to a modification to the value of $\beta$ which depends on the scaling parameter $\gamma$.
 \begin{lem}
@@ -800,7 +800,7 @@ In this notation, the concavity of von Neumann entropy is equivalent to
 \begin{equation}
     g(\sigma_X + \sigma_Y) \geq g(\sigma_X) + g(\sigma_Y).
 \end{equation}
-\textcolor{blue}{TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity or not, but its probably worth finding out.}
+\textcolor{blue}{TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity or not, but it is probably worth finding out.}
 
 \subsubsection{The additive unnormalized entropy cone}
 
@@ -906,39 +906,87 @@ Given that each of the convex cones associated to allocations of unnormalized en
 \subsubsection{Connection to the multiplicative quantum entropy cone}
 
 The purpose of this section is to compare the \textit{additive} quantum entropy cone, $\bar {\mathcal A}_{0,n}$, to the \textit{(multiplicative)} quantum entropy cone, $\bar {\mathcal M}_{n}$, previously studied by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
+Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal A}_{0,n}$, lies inside the multiplicative quantum entropy cone, $\bar {\mathcal M}_{n}$, by following a particular family of quantum states.
 
-To begin we prove that the additive quantum entropy cone, $\bar {\mathcal A}_{0,n}$, lies inside the multiplicative quantum entropy cone, $\bar {\mathcal M}_{n}$, by following a particular family of quantum states which we now define.
+\begin{defn}
+    Let $n, d$ be positive integers and consider the complex vector space $(\mathbb C^{d+1})^{\ot n}$.
+    For each $p \in [n]$, let $\{ \ket {0}_p, \ket {1}_p, \ldots, \ket {d}_p \}$ be a basis for $\mathbb C^{d+1}$ (noting that $\ket{i}_{p}$ need not equal $\ket{i}_{q}$ for $p \neq q$).
+    For each $k \in \{0, 1, \ldots, n\}$, we define the \textbf{weight-$\boldsymbol{k}$ subspace}, $W_k \subset (\mathbb C^{d+1})^{\ot n}$, to be the span of those vectors in $(\mathbb C^{d+1})^{\ot n}$ of the form 
+    \begin{equation}
+        \ket{i_{1}}_{1} \ot \cdots \ot \ket{i_{n}}_{n}
+    \end{equation}
+    such that exactly $k$ elements of the tuple $(i_{1}, \ldots, i_{p}) \in [d+1]^{n}$ are non-zero.
+\end{defn}
+\begin{rem}
+    For example, the weight zero subspace, $W_0$, is one-dimension and is spanned by the vector
+    \begin{equation}
+        \label{eq:weight_zero}
+        \kett{\emptyset} = \ket{0}_{1}\ot \cdots \ket{0}_{n}.
+    \end{equation}
+    The weight one subspace, $W_1$, is $dn$-dimensional and is spanned by the vectors $\kett{i_p}$ where 
+    \begin{equation}
+        \label{eq:weight_one}
+        \kett{i_p} = \ket{0}_1 \ot \cdots \ot \ket{0}_{p-1} \ot \ket{i} \ot \ket{0}_{p+1} \ot \ket{0}_{n}.
+    \end{equation}
+    and where $i \in [d]$, $p \in [n]$.
+    The weight two subspace, $W_2$, is $d^2 \binom{n}{2}$-dimensional and is spanned by vectors $\kett{i_p, j_q}$ where
+    \begin{equation}
+        \label{eq:weight_two}
+        \kett{i_p, j_q} = \ket{0}_1 \ot \cdots \ot \ket{0}_{p-1} \ot \ket{i} \ot \ket{0}_{p+1} \ot \cdots \ot \ket{0}_{q-1} \ot \ket{j}_{q} \ot \ket{0}_{q+1} \ot \cdots \ot \ket{0}_{n}.
+    \end{equation}
+    and where $1 \leq p < q \leq d$ and $i,j \in [d]$.
+\end{rem}
+\begin{rem}
+    While the notion of a \textit{weight-$k$} subspace is technically basis dependent, it is only partially basis dependent.
+    In particular, it is invariant under independent local changes of basis which fix the zero-element, $\ket{0}_p$ of each party $p$.
+    In other words, the weight $k$-subspace is invariant under the group $G = (U(1) \times U(d))^{\times n}$
+    where $U(1) \times U(d) \subset U(d+1)$ refers to the subgroup of the unitary group which preserves the subspace spanned by $\ket{0}_p$.
+    In particular, a weight space decomposition of $(\mathbb C^{d+1})^{\ot n}$ depends only on a fixed product vector $\ket{\emptyset} \coloneqq \ket{\phi}_1 \ot \cdots \ket{\phi}_n$.
+\end{rem}
+%\begin{defn}
+%    \label{defn:spec_embed}
+%    Let $(M_1, \ldots, M_n)$ be a $n$-tuple of $k\times d$ complex matrices and
+%    define $\Gamma(M_1, \ldots, M_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
+%    \begin{equation}
+%        \label{eq:weight_zero_portion}
+%        \braa{\emptyset}\Gamma(M_1, \ldots, M_n)\kett{\emptyset} = 1 - \sum_{p=1}^{n} \Tr(M_p^{\dagger}M_p),
+%    \end{equation}
+%    and
+%    \begin{equation}
+%        \label{eq:weight_one_portion}
+%        \braa{i_p}\Gamma(M_1, \ldots, M_n)\kett{j_q} = \bra{i} M_p^\dagger M_{q} \ket{j}.
+%    \end{equation}
+%    For example, the coefficients of $\Gamma_{[n]}$ in the weight-two subspace are zero,
+%    \begin{equation}
+%        \braa{i_p, i'_{p'}}\Gamma(M_1, \ldots, M_n)\kett{j_q, j'_{q'}} = 0,
+%    \end{equation}
+%    as well as all higher weight spaces. 
+%\end{defn}
+
 
 \begin{defn}
     \label{defn:spec_embed}
-    Let $(X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD matrices.
-    Let $\{\ket 1,\ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d}$ and $\{\ket 0, \ket 1, \ldots, \ket d\}$ be an orthonormal basis for $\mathbb C^{d+1}$.
-    Fix a subset $S \subset \{1, \ldots, n\}$ of size $|S| = k$ and let $X_{S} \coloneqq \sum_{i \in S}X_i$.
-    Next define a Hermitian operator, $\Phi_{S}$, acting on $(\mathbb C^{d+1})^{\ot n}$ with coefficients with respect to the computational bases $\ket{i_1\cdots i_n}$ being given by the following formula:%
+    Let $(X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD operators and let $(\{\ket i_p\}_{i=0}^{d})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{d+1}$.
+    Let $\Gamma(X_1, \ldots, X_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
     \begin{equation}
-        \braket{i_1\cdots i_n | \Phi_{S} | j_1\cdots j_n} =
-        \begin{cases}
-            \braket{i_p | X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} | j_{q}} & \exists! i_p, j_q > 0, p, q \in S \\
-            0 & \text{otherwise}.
-        \end{cases}
+        \label{eq:weight_zero_portion}
+        \braa{\emptyset}\Gamma(X_1, \ldots, X_n)\kett{\emptyset} = 1 - \sum_{i=1}^{n} \Tr(X_n),
     \end{equation}
-    Specifically, $\braket{i_1\cdots i_k | \Phi_{S} | j_1\cdots j_n}$ is non-zero only if there exists a unique $p$ such that $i_p > 0$ and a unique $q$ such that $j_q > 0$ and also that such unique indices belong to $S$, $p,q \in S$. 
-    In this case, $\braket{i_1\cdots i_n | \Phi_{S} | j_1\cdots j_n}$ takes the value of $\braket{i_p | X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} | j_q}$, i.e., the inner product between the $i_{p}$th column of $X_{p}^{\frac{1}{2}}$ and the $j_q$th column of $X_{q}^{\frac{1}{2}}$.
-    Up to shuffling the $n$ copies of $\mathbb C^{d+1}$ in $(\mathbb C^{d+1})^{\ot n}$, the operator $\Phi_{S}$ is of the form $\tilde \Phi_{S} \ot Z_{[n]\setminus S}$ where
+    and
     \begin{equation}
-        Z_{[n]\setminus S} = \ket{0\stackrel{n-k}{\cdots} 0}\bra{0\stackrel{n-k}{\cdots} 0}.
+        \label{eq:weight_one_portion}
+        \braa{i_p}\Gamma(X_1, \ldots, X_n)\kett{j_q} = \bra{i}_pX_p^{\frac{1}{2}} X_{q}^{\frac{1}{2}} \ket{j}_q.
     \end{equation}
-    and where $\tilde \Phi_{S}$ acts merely on $(\mathbb C^{d+1})^{\ot k}$.
-    Also define the operator $\Gamma_{S}$ which is $\tilde \Phi_{S}$ shifted by $Z_{S}$ 
+    For example, the coefficients of $\Gamma_{[n]}$ in the weight-two subspace are zero,
     \begin{equation}
-        \Gamma_{S} \coloneqq  \tilde \Phi_{S} + (1-\Tr(X_{S})) Z_{S},
+        \braa{i_p, i'_{p'}}\Gamma(X_1, \ldots, X_n)\kett{j_q, j'_{q'}} = 0,
     \end{equation}
-    and in particular $\Gamma_{\emptyset} \coloneqq 1$.
+    as well as all higher weight spaces. 
 \end{defn}
 \begin{exam}
-    Given two PSD $d\times d$ matrices, $(X_1, X_2)$, the matrix $\Gamma \coloneqq \Gamma_{\{1,2\}}$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
+    Given two PSD $d\times d$ matrices, $(X_1, X_2)$, the matrix $\Gamma_{[2]} \coloneqq \Gamma(X_1, X_2)$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
     \begin{align}
-        \braket{00|\Gamma|00} &= 1-\Tr(X_{1,2}), \\
+        \braket{00|\Gamma|00} &= 1-\Tr(X_{1})-\Tr(X_{2}), \\
         \braket{i0|\Gamma|j0} &= \braket{i|X_{1}|j}, \\
         \braket{0i|\Gamma|0j} &= \braket{i|X_{2}|j}, \\
         \braket{i0|\Gamma|0j} &= \braket{i|X_{1}^{\frac{1}{2}}X_{2}^{\frac{1}{2}}|j}, \\
@@ -946,90 +994,179 @@ To begin we prove that the additive quantum entropy cone, $\bar {\mathcal A}_{0,
         \braket{ik|\Gamma|jl} &= 0.
     \end{align}
 \end{exam}
-
 \begin{exam}
-    Given three $d\times d$ PSD matrices $A, B, C \geq 0$, the operator $\Gamma \coloneqq \Gamma_{\{1,2,3\}}$ is the $(d+1)^{3}\times (d+1)^{3}$ matrix with non-zero coefficients given for all $i,j \in \{1, \ldots, d\}$ by the formulas:
+    Given three $d\times d$ PSD matrices $X_1, X_2, X_3 \geq 0$, the operator $\Gamma_{[3]} \coloneqq \Gamma(X_1, X_2, X_3)$ is the $(d+1)^{3}\times (d+1)^{3}$ matrix with non-zero coefficients given for all $i,j \in \{1, \ldots, d\}$ by the formulas:
     \begin{align}
         \begin{split}
-            \braket{000|\Gamma|000} &= 1-\Tr(A+B+C), \\
-            \braket{i00|\Gamma|j00} &= \braket{i|A|j}, \\
-            \braket{0i0|\Gamma|0j0} &= \braket{i|B|j}, \\
-            \braket{00i|\Gamma|00j} &= \braket{i|C|j}, \\
-            \braket{i00|\Gamma|0j0} &= \braket{i|A^{\frac{1}{2}}B^{\frac{1}{2}}|j}, \\
-            \braket{0i0|\Gamma|j00} &= \braket{i|B^{\frac{1}{2}}C^{\frac{1}{2}}|j}, \\
-            \braket{i00|\Gamma|00j} &= \braket{i|A^{\frac{1}{2}}C^{\frac{1}{2}}|j}, \\
-            \braket{0i0|\Gamma|j00} &= \braket{i|B^{\frac{1}{2}}A^{\frac{1}{2}}|j}, \\
-            \braket{00i|\Gamma|j00} &= \braket{i|C^{\frac{1}{2}}A^{\frac{1}{2}}|j}, \\
-            \braket{00i|\Gamma|0j0} &= \braket{i|C^{\frac{1}{2}}B^{\frac{1}{2}}|j}.
+            \braket{000|\Gamma|000} &= 1-\Tr(X_1+X_2+X_3), \\
+            \braket{i00|\Gamma|j00} &= \braket{i|X_1|j}, \\
+            \braket{0i0|\Gamma|0j0} &= \braket{i|X_2|j}, \\
+            \braket{00i|\Gamma|00j} &= \braket{i|X_3|j}, \\
+            \braket{i00|\Gamma|0j0} &= \braket{i|X_1^{\frac{1}{2}}X_2^{\frac{1}{2}}|j}, \\
+            \braket{0i0|\Gamma|00j} &= \braket{i|X_2^{\frac{1}{2}}X_3^{\frac{1}{2}}|j}, \\
+            \braket{i00|\Gamma|00j} &= \braket{i|X_1^{\frac{1}{2}}X_3^{\frac{1}{2}}|j}, \\
+            \braket{0i0|\Gamma|j00} &= \braket{i|X_2^{\frac{1}{2}}X_1^{\frac{1}{2}}|j}, \\
+            \braket{00i|\Gamma|j00} &= \braket{i|X_3^{\frac{1}{2}}X_1^{\frac{1}{2}}|j}, \\
+            \braket{00i|\Gamma|0j0} &= \braket{i|X_3^{\frac{1}{2}}X_2^{\frac{1}{2}}|j}.
         \end{split}
     \end{align}
 \end{exam}
 
 \begin{lem}
-    \label{lem:spec_embed}
-    Let everything be defined as in \cref{defn:spec_embed}.
-    The follow statements hold for all subsets $S \subseteq [n]$.
-    \begin{enumerate}[(i)]
-        \item Up to padding by zeros, the eigenvalues of $\tilde \Phi_{S}$, $\Phi_{S}$ and $X_{S}$ are all identical.
-        \begin{equation}
-            \mathrm{spec}(\tilde \Phi_{X}) \simeq \mathrm{spec}(\Phi_X) \simeq \mathrm{spec}(X_X).
-        \end{equation}
-        \item The eigenvalues of $\Gamma_{S}$ are equal to the eigenvalues of $\tilde \Phi_{S}$ plus the additional value of $1-\Tr(X_{S})$:
-        \begin{equation}
-            \mathrm{spec}(\Gamma_{S}) \simeq \mathrm{spec}(\tilde \Phi_{S}) \oplus \{1-\Tr(X_{S})\}.
-        \end{equation}
-        \item The partial trace of $\Gamma_{[n]}$ over $[n]\setminus S$ is equal to $\Gamma_{S}$:
-        \begin{equation}
-            \Tr_{[n]\setminus S} (\Gamma_{[n]}) = \Gamma_{S}.
-        \end{equation}
-    \end{enumerate}
+    \label{lem:sum_spec_embed}
+    Let $\Gamma_{[n]} \coloneqq \Gamma(X_1, \ldots, X_n)$ be defined as in \cref{defn:spec_embed}.
+    Then the eigenvalues of $\Gamma_{[n]}$ are equal to the eigenvalues of the sum, 
+    \begin{equation}
+        X_{[n]} \coloneqq \sum_{i \in 1}^{n}X_i,
+    \end{equation}
+    plus the additional value of $1-\Tr(X_{[n]})$:
+    \begin{equation}
+        \mathrm{spec}(\Gamma_{[n]}) \simeq \mathrm{spec}(X_{[n]}) \oplus \{1-\Tr(X_{[n]})\}.
+    \end{equation}
 \end{lem}
 \begin{proof}
-    (i) From the definition of $\Phi_{S}$, one observes that $\braket{i_1\cdots i_n | \Phi_{S} | i_1\cdots i_n}$ is only non-zero if there exists a unique non-zero $i_{p} \neq 0$ where $p \in S$ and thus
+    By definition, $\Gamma_{[n]}$ is block diagonal with respect to the weight decomposition.
+    As the weight-zero subspace is one-dimensional and spanned by $\kett{\emptyset} = \ket{0}\cdots \ket{0}$, we see that $\kett{\emptyset}$ is an eigenvector of $\Gamma_{[n]}$ with eigenvalue given by $\braa{\emptyset}\Gamma_{[n]}\kett{\emptyset}$ which is given by \cref{eq:weight_one_portion}, i.e.,
     \begin{equation}
-        \Tr(\Phi_{S}) = \sum_{p\in S}\sum_{j=1}^{d} \braket{j|X_{p}|j} = \sum_{p\in S} \Tr(X_{p}) = \Tr(X_{S}).
+        \Gamma_{[n]}\kett{\emptyset} = (1-\Tr(X_{[n]}) \kett{\emptyset}.
     \end{equation}
-    More generally, for any positive integer $\ell \in \mathbb N_{> 0}$, one observes that $\Tr(\Phi_{S}^{\ell}) = \Tr(X_{S}^{\ell})$.
-    (\textcolor{red}{TODO: Prove this directly.})
-    As the eigenvalues of any matrix $X$ are determined (up to padding by zeros) by the values of $\Tr(X^{\ell})$, we conclude that $\Phi_{S}$ and $X_{S}$ have the same eigenvalues (up to padding by zeros)
-    (\textcolor{red}{TODO: Is there a more direct way to prove this.})
-
-    (ii) Note that $\tilde \Phi_{S}$ and its eigenvectors are supported in the subspace of $(\mathbb C^{d+1})^{\ot k}$ spanned by $\ket{i_1 \cdots i_{k}}$ for which exactly one if the $i_p$'s is non-zero. 
-    Therefore $\ket{0\stackrel{k}{\cdots} 0}$ is orthogonal to all eigenvectors of $\tilde \Phi_{S}$ and thus $\ket{0\stackrel{k}{\cdots} 0}$ is an eigenvector of $\Gamma_{S}$ with eigenvalue $1-\Tr(X_S)$.
-
-    (iii) The partial trace of $\Phi_{[n]}$ over $[n]\setminus S$, when performed in the computational basis $\ket{i_1 \cdots i_n}$, can be divided into three portions depending on the number of non-zero entries in $(i_p \mid p \in [n]\setminus S)$; first, is where all indices $i_p$ are zero, second, where exactly one $i_p$ is non-zero, and third where more than one index $i_p$ is non-zero.
-    The respective contributions are as follows:
+    For the remaining eigenvalues of $\Gamma_{[n]}$, let $\Phi_{[n]}$ be the operator
+    $\Gamma_{[n]}$ with its weight-zero entry set to zero: 
     \begin{equation}
-        \Tr_{[n]\setminus S}(\Phi_{[n]}) = \tilde \Phi_{S} + \Tr(X_{[n] \setminus S}) Z_{S} + 0
+        \Phi_{[n]} \coloneqq \Gamma_{[n]} - (1-\Tr(X_{[n]}) \kett{\emptyset}\braa{\emptyset}.
     \end{equation}
-    Recalling the definition of $\Gamma_{S}$, one concludes
+    To prove the claim, it therefore suffices to show that the eigenvalues of $\Phi_{[n]}$ are identical to the eigenvalues of the sum $X_{[n]}$ (with multiplicitly).
+    Equivalently, it suffices to prove that the characteristic polynomials of $\Phi_{[n]}$ and $X_{[n]}$ have the same coefficients which is implied by proving that for any positive integer $\ell$, $\Tr(\Phi_{[n]}^{\ell}) = \Tr(X_{[n]}^{\ell})$.
+    For $\ell = 1$, the proof follows from performing a single sum over the weight-one subspace
+    \begin{equation}
+        \Tr(\Phi_{[n]}) = \sum_{p=1}^{n}\sum_{i=1}^{d} \braa{i_p} \Phi_{[n]} \kett{i_p} = \sum_{p=1}^{n}\sum_{i=1}^{d} \bra{i}_pX_{p}\ket{i}_p = \sum_{p = 1}^{n} \Tr(X_{p}) = \Tr(X_{[n]}).
+    \end{equation}
+    For $\ell > 1$, the proof follows from an $\ell$-fold sum over the weight-one subspace,
     \begin{align}
-        \begin{split}
-            \Tr_{[n]\setminus S} (\Gamma_{[n]})
-            &= \Tr_{[n]\setminus S}(\Phi_{[n]} + (1-\Tr(X_{[n]}))Z_{[n]}), \\
-            &= \tilde \Phi_{S} + \Tr(X_{[n]\setminus S}) Z_{S} + (1-\Tr(X_{[n]}))Z_{S}, \\
-            &= \tilde \Phi_{S} + (1-\Tr(X_{S}))Z_{S}, \\
-            &= \Gamma_{S}.
-        \end{split}
+        \Tr(\Phi_{[n]}^{\ell}) 
+        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{d} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{d} 
+        \braa{(i_1)_{p_1}} \Phi_{[n]} \kett{(i_2)_{p_2}}\cdots \braa{(i_\ell)_{p_\ell}} \Phi_{[n]} \kett{(i_1)_{p_1}}, \\
+        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{d} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{d} 
+        \bra{i_1}_{p_1} X_{p_1}^{\frac{1}{2}}X_{p_2}^{\frac{1}{2}} \ket{i_2}_{p_2}\cdots \bra{i_\ell}_{p_\ell} X_{p_\ell}^{\frac{1}{2}} X_{p_1}^{\frac{1}{2}}\ket{i_1}_{p_1}, \\
+        &= \sum_{p_1=1}^{n}\cdots \sum_{p_\ell=1}^{n} 
+        \Tr[X_{p_1}^{\frac{1}{2}}X_{p_2}^{\frac{1}{2}}\cdots X_{p_\ell}^{\frac{1}{2}} X_{p_1}^{\frac{1}{2}}], \\
+        &= \sum_{p_1=1}^{n}\cdots \sum_{p_\ell=1}^{n} 
+        \Tr[X_{p_1}X_{p_2}\cdots X_{p_\ell}], \\
+        &= \Tr\left[\left(\sum_{p_1=1}^{n}X_{p_1}\right)\cdots \left(\sum_{p_\ell=1}^{n}X_{p_\ell}\right)\right], \\
+        &= \Tr(X_{[n]}^{\ell}).
     \end{align}
+    Therefore $X_{[n]}$ and $\Phi_{[n]}$ have the same eigenvalues with multiplicity which proves the claim.
 \end{proof}
 \begin{cor}
-    By \cref{lem:spec_embed}, one has $\Tr(\Gamma_{S}) = 1$.
-    If the eigenvalues of $X_{S}$ satisfy
+    Let everything be as in \cref{lem:sum_spec_embed}.
+    Then $\Tr(\Gamma_{[n]}) = 1$.
+    If the eigenvalues of the sum $X_{[n]}$ satisfy
     \begin{equation}
-        \Tr(X_S) \leq 1,
+        \Tr(X_{[n]}) \leq 1,
     \end{equation}
-    then $\Gamma_{S}$ is positive semidefinite, and thus $\Gamma_{S}$ is a denisty matrix.
-    In such a case, assuming $X_S\neq 0$ so that $\Tr(X_S) \in (0,1]$, the von Neumann entropy of $\Gamma_{S}$ is related to the von Neumann entropy of $X_{S} / \Tr(X_S)$ by the equation
+    then $\Gamma_{[n]}$ is positive semidefinite, and thus $\Gamma_{[n]}$ is a density matrix.
+    In such cases, the von Neumann entropy of $\Gamma_{[n]}$ is related to unnormalized entropy of $X_{[n]}$ by
+    \begin{align}
+        H_{\mathrm{vN}}\left(\Gamma_{[n]}\right) 
+        &= (1-\Tr(X_{[n]}))\log(1-\Tr(X_{[n]})) + H_0(X_{[n]}), \\
+        &= h_{\mathrm{bin}}(\Tr(X_{[n]})) + \Tr(X_{[n]})H_0\left(\frac{X_{[n]}}{\Tr(X_{[n]})}\right).
+    \end{align}
+    Moreover, if the eigenvalues of $X_{[n]}$ satisfy the stronger condition
     \begin{equation}
-        H_{\mathrm{vN}}\left(\Gamma_{S}\right) = h_{\mathrm{bin}}(\Tr(X_S)) + \Tr(X_S)H_{\mathrm{vN}}\left(\frac{X_{S}}{\Tr(X_S)}\right).
+        \lambda_{1}(X_{[n]}) + \Tr(X_{[n]}) \leq 1,
     \end{equation}
-    Moreover, if the eigenvalues of $X_{S}$ satisfy the stronger condition
-    \begin{equation}
-        \lambda_{1}(X_S) + \Tr(X_S) \leq 1,
-    \end{equation}
-    then the maximum eigenvalue of $\Gamma_{S}$ is $1-\Tr(X_S)$.
+    then the maximum eigenvalue of $\Gamma_{[n]}$ is $1-\Tr(X_{[n]})$.
 \end{cor}
+
+\begin{lem}
+    \label{lem:partial_sum_embed}
+    Let $\Gamma_{[n]} \coloneqq \Gamma(X_1, \ldots, X_n)$ be defined as in \cref{defn:spec_embed}.
+    Let $S \subseteq \{1, \ldots, n\}$ be any subset and let $\Gamma_{S} \coloneqq \Gamma( (X_i)_{i \in S})$ with $\Gamma_{\emptyset} \coloneqq 1$.
+    Then the partial trace of $\Gamma_{[n]}$ over $[n]\setminus S$ is equal to $\Gamma_{S}$:
+    \begin{equation}
+        \Tr_{[n]\setminus S} (\Gamma_{[n]}) = \Gamma_{S}.
+    \end{equation}
+    In particular, letting $S = \{p\}$ yields 
+    \begin{equation}
+        \Gamma_{p} \coloneqq \Gamma(X_p) = (1-\Tr(X_p)) \oplus X_p = \Tr_{[n] \setminus \{p\}}(\Gamma_{[n]}).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    To begin, notice that for any $n$-partite weight-block-diagonal operator $X$ on $(\mathbb C^{d})^{\ot n}$, its partial trace over $S \subseteq [n]$, $\Tr_{[n]\setminus S} (X)$, will also be weight-block-diagonal as an $\card{S}$-partite operator because the weight-block-off-diagonal entries of $\Tr_{[n]\setminus S} (X)$ are sums of weight-block-off-diagonal entries of $X$.
+    Therefore, to prove the claim, it suffices to restrict focus to the weight-block-diagonal entries of $\Tr_{[n]\setminus S} (\Gamma_{[n]})$.
+
+    Let $\omega : S \to \{1, \ldots, \card{S}\}$ be the map which assigns to each $p \in S$ its position in $S$ ordered relative to the ordering on $[n]$.
+    Then the coefficients of $\Gamma_{[n]}$ in the weight-one subspace and the coefficients of $\Gamma_{S}$ in the weight-one subspace are related for all $p,q \in S$ according to,
+    \begin{equation}
+        \braa{i_p} \Gamma_{[n]} \kett{j_p} = \bra{i}X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} \ket{j} = \braa{i_{\omega(p)}} \Gamma_{S} \kett{j_{\omega(q)}}
+        \label{eq:marginal_joint_correspondence}
+    \end{equation}
+    Therefore, the coefficients of $\Tr_{[n]\setminus S}[\Gamma_{[n]}]$ in the weight-one block for all $p,q\in S$ and $i,j \in [d]$ are given by
+    \begin{align}
+        \braa{i_{\omega(p)}}\Tr_{[n]\setminus S}[\Gamma_{[n]}] \kett{j_{\omega(q)}}
+        = \braa{i_{p}}\Gamma_{[n]}\kett{j_{q}}
+        = \braa{i_{\omega(p)}} \Gamma_{S} \kett{j_{\omega(q)}}.
+    \end{align}
+    Moreover, using \cref{eq:marginal_joint_correspondence} again shows that the coefficient of $\Tr_{[n]\setminus S}[\Gamma_{[n]}]$ in the weight-zero block equals
+    \begin{align}
+        \braa{\emptyset}\Tr_{[n]\setminus S}[\Gamma_{[n]}] \kett{\emptyset}
+        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p \not \in S} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
+        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p = 1}^{n} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} - \sum_{p \in S} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
+        &= \Tr(\Gamma_{[n]}) - \sum_{p \in S} \sum_{i=1}^{d} \braa{i_{\omega(p)}} \Gamma_{S} \kett{i_{\omega(p)}} \\
+        &= \Tr(\Gamma_{[n]}) - (\Tr(\Gamma_{S}) - \braa{\emptyset}\Gamma_{S}\kett{\emptyset}) \\
+        &= \braa{\emptyset}\Gamma_{S}\kett{\emptyset}
+    \end{align}
+    because $\Tr(\Gamma_{[n]}) = \Tr(\Gamma_{S}) = 1$.
+    Therefore, $\Gamma_{S} = \Tr_{[n]\setminus S}[\Gamma_{[n]}]$ which proves the claim.
+\end{proof}
+
+It is worth emphasizing that the operators, $\Gamma_{[n]} = \Gamma(X_1, \ldots, X_n)$, obtained from an $n$-tuple $(X_1, \ldots, X_n)$ according to \cref{defn:spec_embed} do not exhaust all $n$-partite operators.
+Nevertheless, there is an elegant characterization of those $n$-partite operators which can be obtained in this way.
+This characterization generalizes \cite[Proposition 11]{christandl2018recoupling}.
+\begin{lem}
+    Let $\rho_{[n]}$ be an $n$-partite density matrix on $(\mathbb C^{d+1})^{\ot n}$ with rank at most $d+1$ such that there exists a product eigenvector, denoted by $\kett{\emptyset} = \ket{\phi}_1\ot \cdots \ot \ket{\phi}_n$, such that $\rho_{[n]}$ is weight-block-diagonal with respect to $\kett{\emptyset}$ and only supported on the weight-zero and weight-one subspaces.
+
+    Then there exists an $n$-tuple of $d\times d$ PSD matrices $(X_1, \ldots, X_n)$ such that up to a local unitary change of basis (which fixes $\kett{\emptyset}$), we have
+    \begin{equation}
+        \rho_{[n]} \simeq \Gamma(X_1, \ldots, X_n).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Since $\rho_{[n]}$ is supported only on the weight-zero and weight-one subspaces and is block-diagonal with respect to these subspaces, the eigendecomposition of $\rho_{[n]}$ has the form:
+    \begin{equation}
+        \rho_{[n]} = \lambda_1 \kett{\emptyset}\braa{\emptyset} + \sum_{k=1}^{d} \lambda_{k+1} \ket{v_{k+1}}\bra{v_{k+1}}
+    \end{equation}
+    where the eigenvector $\ket{v_{k+1}}$ belongs to the weight-one subspace and thus has the form
+    \begin{equation}
+        \ket{v_{k+1}} = \sum_{p=1}^{d} \sum_{i=1}^{d} V_{p,i,k} \kett{i_p}
+    \end{equation}
+    for some unknown $n \times d \times d$ tensor of coefficients denoted by $V_{p,i,k}$ and where $\kett{i_p}$ is given by \cref{eq:weight_one} taken with respect to some $n$-tuple of bases where $\ket{0}_p \coloneqq \ket{\phi}_p$.
+    Now, for each party $p$, let $M_p$ be the $d \times d$ matrix defined by
+    \begin{equation}
+        (M_p)_{i,k} \coloneqq \lambda_{k+1}^{\frac{1}{2}} V_{p,i,k}.
+    \end{equation}
+    With this definition, one obtains
+    \begin{equation}
+        \braa{i_p} \rho_{[n]} \kett{j_q} = \sum_{k=1}^{d} \lambda_{k+1} V_{p,i,k} V^{*}_{q,j,k} = \sum_{k=1}^{d} (M_p)_{i,k}(M_q)^{*}_{j,k} = \bra{i}_pM_{p}M_{q}^{\dagger} \ket{j}_q
+    \end{equation}
+    Now by a polar decomposition, for each party $p$, there exists a PSD $d\times d$ matrix $X_p$ and an $d \times d$ unitary $U_p$ such that
+    \begin{equation}
+        M_p = U_pX_p^{\frac{1}{2}},
+    \end{equation}
+    and therefore,
+    \begin{equation}
+        \braa{i_p} \rho_{[n]} \kett{j_q} = \bra{i}_pU_{p} X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} U_{q}^{\dagger} \ket{j}_q.
+    \end{equation}
+    Letting $\ket{i}_p' = U_{p}^{\dagger} \ket{i}_p$ be a modified basis for party $p$ and letting
+    \begin{equation}
+        \s U_{[n]} \coloneqq (1 \oplus U_1) \ot (1 \oplus U_2) \ot \cdots \ot (1 \oplus U_n),
+    \end{equation}
+    we observe
+    \begin{equation}
+        \braa{i_p}' \s U_{[n]}^{\dagger} \rho_{[n]} \s U_{[n]} \kett{j_q}' = \braa{i_p} \rho_{[n]} \kett{j_q} = \bra{i}_pU_{p} X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} U_{q}^{\dagger} \ket{j}_q = \braa{i_p}' X_{p}^{\frac{1}{2}} X_{q}^{\frac{1}{2}} \ket{j_{q}},
+    \end{equation}
+    which implies $\s U_{[n]}^{\dagger} \rho_{[n]} \s U_{[n]} = \Gamma(X_1, \ldots, X_p)$ as claimed.
+\end{proof}
 
 \begin{rem}
     In order to discover how the additive quantum entropy cone lives inside the multiplicative quantum entropy cone, it suffices to examine how the formula for the von Neumann entropy of the reduced state $\Gamma_{S}$ on subsystem $S$,
@@ -1121,17 +1258,17 @@ Throughout this section, we make use of the following decomposition of a tensor-
     Then the decomposition of $(\mathbb C^{d})^{\ot n}$ into irreducible representations of $S_n \times \SU(d)$, known as the \textit{Schur-Weyl} decomposition is given by
     \begin{equation}
         \label{eq:schur_weyl_decomp}
-        (\mathbb C^{d})^{\otimes n} \cong \bigoplus_{\lambda \vdash_{d} n} W_{\lambda} \otimes V_{\lambda}^{d}
+        (\mathbb C^{d})^{\ot n} \cong \bigoplus_{\lambda \vdash_{d} n} W_{\lambda} \ot V_{\lambda}^{d}
     \end{equation}
     where the direcy sum is indexed by Young diagrams $\lambda$ with $n$ boxes and at most $d-1$ rows.
 \end{prop}
-The following result constrains the associated Schur-Weyl decomposition of the $n$-th tensor power, $X^{\otimes n}$, of a positive semidefinite Hermitian matrix $X$ \cite{christandl2008quantum,keyl2001estimating}.
+The following result constrains the associated Schur-Weyl decomposition of the $n$-th tensor power, $X^{\ot n}$, of a positive semidefinite Hermitian matrix $X$ \cite{christandl2008quantum,keyl2001estimating}.
 \begin{prop}[Spectrum estimation]
     \label{prop:spec_est}
     Let $P_{\lambda}$ denote the Hermitian projection operator associated to the isotypic subspace indexed by $\lambda \vdash_{d} n$ in \cref{eq:schur_weyl_decomp} and let $X$ be a positive semidefinite matrix with eigenvalues $\chi$.
     Then
     \begin{equation}
-        \Tr(P_{\lambda} X^{\otimes n}) \leq \abs{\chi}^{n} \dim(V_{\lambda}^{d}) \exp(-n \kl{\bar \lambda}{\bar \chi}),
+        \Tr(P_{\lambda} X^{\ot n}) \leq \abs{\chi}^{n} \dim(V_{\lambda}^{d}) \exp(-n \kl{\bar \lambda}{\bar \chi}),
     \end{equation}
     where $\kl{\bar \lambda}{\bar \chi}$ denotes the Kullbeck-Leibler divergence of $\bar \lambda$ from $\bar \chi$.
 \end{prop}
@@ -1156,7 +1293,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
             &&\phi \vdash_{d} y+z,
         \end{alignedat}
     \end{equation}
-    and define corresponding projection operators acting on $(\mathbb C^{d})^{\otimes x+y+z}$ by
+    and define corresponding projection operators acting on $(\mathbb C^{d})^{\ot x+y+z}$ by
     \begin{equation}
         \label{eq:extended_projs}
         \begin{alignedat}{3}
@@ -1320,23 +1457,23 @@ The following result constrains the associated Schur-Weyl decomposition of the $
         = \frac{\Tr[(P_{\gamma'} \ot \id^{\ot z})(A^{\ot x}\ot B^{\ot y} \ot D^{\ot z})]}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}
         = \frac{\Tr[P_{\gamma'}(A^{\ot x}\ot B^{\ot y})]\abs{\delta}^{z}}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}.
     \end{align}
-    Using the assumption that $C = A+B$, we have $C^{\otimes x+y} = (A+B)^{\otimes x+y}$ which implies
+    Using the assumption that $C = A+B$, we have $C^{\ot x+y} = (A+B)^{\ot x+y}$ which implies
     \begin{equation}
-        \Tr(P_{\gamma'} C^{\otimes x+y}) = \sum_{k=0}^{x+y} \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\otimes k} \otimes B^{\otimes x+y-k}).
+        \Tr(P_{\gamma'} C^{\ot x+y}) = \sum_{k=0}^{x+y} \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\ot k} \ot B^{\ot x+y-k}).
     \end{equation}
     Here we have used the $S_{x+y}$-equivariance of $P_{\gamma'}$.
     Since each of the summands above are non-negative, we conclude for all $0 \leq k \leq x+y$ that
     \begin{equation}
-        \Tr(P_{\gamma'} C^{\otimes x+y}) \geq \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\otimes k} \otimes B^{\otimes x+y-k}).
+        \Tr(P_{\gamma'} C^{\ot x+y}) \geq \binom{x+y}{k} \Tr(P_{\gamma'} (A^{\ot k} \ot B^{\ot x+y-k}).
     \end{equation}
     Letting $k = x$ and rearranging yields
     \begin{equation}
-        \Tr(P_{\gamma'} (A^{\otimes x} \otimes B^{\otimes y})) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\gamma'} C^{\otimes x+y}).
+        \Tr(P_{\gamma'} (A^{\ot x} \ot B^{\ot y})) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\gamma'} C^{\ot x+y}).
     \end{equation}
     Furthermore, spectrum estimation (\cref{prop:spec_est}) yields
     \begin{align}
         \Tr(\Pi_{\gamma'} \Omega)
-        &\leq \frac{1}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\Tr[P_{\gamma'}C^{\otimes x+y}], \qquad \\
+        &\leq \frac{1}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\Tr[P_{\gamma'}C^{\ot x+y}], \qquad \\
         &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{d})\exp(-(x+y)\kl{\bar \gamma'}{\bar \gamma}).
     \end{align}
     Analogous calculations for $\lambda' \in \{\alpha', \beta', \gamma', \delta', \epsilon', \phi'\}$ produce the following set of upper bounds:

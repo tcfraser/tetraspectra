@@ -139,6 +139,16 @@
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 
+\newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
+\newcommand{\braa}[1]{%
+    \sbox{\mstrut}{\(#1\)}%
+    \mathinner{\left\langle\kern-0.25\ht\mstrut\left\langle{#1}\right|\mkern-2mu\right|}%
+}
+\newcommand{\kett}[1]{%
+    \sbox{\mstrut}{\(#1\)}%
+    \mathinner{\left|\mkern-2mu\left|{#1}\right\rangle\kern-0.25\ht\mstrut\right\rangle}%
+}
+
 \newcommand{\herm}{\s H}
 \newcommand{\weights}[1]{\mathbb Z^{#1}}
 \newcommand{\domweights}[1]{\mathbb Z_{\mathrm{dec}}^{#1}}
