@@ -447,177 +447,33 @@ As corollaries one obtains some of the previously mentioned inequalities for var
 \clearpage
 \section{The additive quantum entropy cone}
 
-\subsection{Discovering the direct sum quantum entropy cone}
-
-One of the motivations for studying inequalities between von Neumann entropies of subsytems of multipartite quantum states is because the closure $\bar {\mathcal M_n}$ of the set of possible \textit{allocations of von Neumann entropies},
-\begin{equation}
-    \mathcal M_{n} \coloneqq \{ (H_{\mathrm{vN}}(\Tr_{[n]\setminus S}(\rho_{12\cdots n})))_{\emptyset \neq S\subseteq [n]} \mid \rho_{12\cdots n} \in \mathcal D(\mathcal H_1 \ot \cdots \ot \mathcal H_n) \},
-\end{equation}
-was shown by \citeauthor{pippenger2003inequalities} to be a convex cone and thus it suffices to restrict ones attention to linear inequalities of von Neumann entropies \cite{pippenger2003inequalities}.
-
-One might also be interested in set of possible allocations of some other function $f$ of marginals of quantum states, or in our case, the possible allocations of some other function when evaluated over all \textit{partial sums} of a tuple of positive semidefinite Hermitian matrices.
-To this end, we consider the following set
-\begin{equation}
-    \mathcal A_{f,n} \coloneqq \{ \left(f(\sum_{i\in S}X_i)\right)_{\emptyset \neq S\subseteq [n]} \mid X_1, \ldots, X_n \geq 0\}.
-\end{equation}
-\textbf{Question:} \textit{Does there exist a function $f$ such that $\bar {\mathcal A}_{f,n}$ forms a convex cone?}
-
-Following the argument due to \citeauthor{pippenger2003inequalities}, the closure $\bar {\mathcal A}_{f,n}$ would form a convex cone if an only if $\mathcal M_{f,n}$ was both \textit{additive} and \textit{approximately dilutable}.
-Ignoring the condition of approximate dilutability altogether, what would it take to prove that $\mathcal M_{f,n}$ was additive?
-A constructive proof would be the following: given two $n$-tuples $X = (X_1, \ldots, X_n)$ and $Y = (Y_1, \ldots, Y_n)$ with allocations $\mathcal M_{f,n}(X)$ and $\mathcal M_{f,n}(Y)$, compute a new $n$-tuple $Z = (Z_1, \ldots, Z_n)$ with allocation $\mathcal M_{f,n}(Z)$ such that
-\begin{equation}
-    \mathcal M_{f,n}(Z) = \mathcal M_{f,n}(X) +  \mathcal M_{f,n}(Y),
-\end{equation}
-or in other words,
-\begin{equation}
-    \label{eq:addivity_partial_sums}
-    \forall S \subseteq [n] \quad : \quad 
-    f\left(\sum_{i\in S}Z_i\right)
-    = 
-    f\left(\sum_{i\in S}X_i\right) +
-    f\left(\sum_{i\in S}Y_i\right).
-\end{equation}
-In \cite{pippenger2003inequalities}, \citeauthor{pippenger2003inequalities} used two properties of von Neumann entropies to prove additivity of $\mathcal A_n$: (i) they are additive across tensor products, i.e. $H(\rho \ot \sigma) = H(\rho) + H(\sigma)$, and (ii) they interact well with partial tracing over subsystems.
-In our context, suppose a similar argument worked; let $\oslash$ be some binary operation on Hermitian matrices such that $f$ was additive with respect to this operation:
-\begin{equation}
-    \forall X, Y : f(X \oslash Y) = f(X) + f(Y).
-\end{equation}
-There are numerous pairs $(f, \oslash)$ of functions and binary operations which satisfy the above equation: e.g., entropies and tensor products $(H, \ot)$, traces and direct sums $(\Tr, \oplus)$, log traces/determinants and tensor products $(\log \Tr, \ot)$, $(\log \det, \ot)$, etc.
-
-A potential difficulty arises when trying to find a function/operation pair which additionally satisfies \cref{eq:addivity_partial_sums}.
-If $f$ is additive across some $\oslash$ and \cref{eq:addivity_partial_sums} holds, then we could conclude that $\mathcal M_{f,n}$ was additive. 
-Exploring this possibilty further, to prove additivity of $\mathcal M_{f,n}$, it suffices to find an $n$-tuple $Z = (Z_1, \ldots, Z_n)$ satisfying the equations
-\begin{equation}
-    \label{eq:proposed_constraint}
-    \forall S \subseteq [n] \quad : \quad 
-    \sum_{k\in S}Z_k
-    = 
-    \left(\sum_{i\in S}X_i\right) \oslash
-    \left(\sum_{j \in S}Y_j\right).
-\end{equation}
-In other words, the new $n$-tuple $Z = (Z_1, \ldots, Z_n)$ is determined by the binary operation $\oslash$ because $Z_k = X_k \oslash Y_k$.
-Therefore, the binary operation $\oslash$ would need to satisfy
-\begin{equation}
-    \forall S \subseteq [n] \quad : \quad 
-    \sum_{k\in S} \left(X_k \oslash Y_k\right)
-    = 
-    \left(\sum_{i\in S}X_i\right) \oslash
-    \left(\sum_{j\in S}Y_j\right).
-\end{equation}
-This above equation is the ``additive analogue'' of the fact that tensor products and partial traces are compatible meaning
-\begin{equation}
-    \forall S \subseteq [n] \quad : \quad 
-    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n} \ot \rho^{Y}_{1 2 \cdots n}\right)
-    = 
-    \Tr_{S} \left(\rho^{X}_{1 2 \cdots n}\right) \ot \Tr_{S}\left(\rho^{Y}_{1 2 \cdots n}\right).
-\end{equation}
-To determine which binary operation $\oslash$ is needed, consider an instance of \cref{eq:proposed_constraint} corresponding to subset $S$ such that $\abs{S} = 2$:
-\begin{equation}
-    (X_1 \oslash Y_1) + (X_2 \oslash Y_2) = (X_1+X_2)\oslash (Y_1+Y_2).
-\end{equation}
-From here it is clear that $\oslash$ can be taken to be the direct sum $\oplus$ and the function $f$ any function of Hermitian matrices which is the trace of some function of eigenvalues, i.e. $f = \Tr \circ g$.
-In this setting, the desired relation follows:
-\begin{equation}
-    f(X \oslash Y) = \Tr(g(X \oplus Y)) = \Tr(g(X) \oplus g(Y)) = \Tr(g(X)) + \Tr(g(Y)) = f(X) + f(Y).
-\end{equation}
-
-We now return to the question of approximate dilutability.
-
-\textbf{Followup question:} \textit{Does there exist a function $g$ such that $\mathcal M_{\Tr\circ g,n}$ is approximately dilutable?}
-
-In order for $\bar {\mathcal M}_{\Tr\circ g,n}$ to form a convex cone, it must be that ${\mathcal M}_{\Tr\circ g,n}$ is both additive and approximately dilutable.
-Fortunately, there exists choices for $g$ such that approximate dilutability holds. 
-
-For example, let $g(x) = -x\log x$.
-Take $\mu > 0$ and note that\footnote{The function $g(x) = -x \log x$ applied to positive semidefinite Hermitian matrices satisfies $\Tr(g(\mu X)) = \mu \Tr(g(X)) + g(\mu) \Tr(X)$.}
-\begin{align*}
-    H(\mu X) 
-    &= \Tr(g ( \mu X ))  \\
-    &= -\sum_{j} \lambda_{j}(\mu X) \log \lambda_{j}(\mu X) \\
-    &= -\mu \sum_{j} \lambda_{j}(X) \log \lambda_{j}(\mu X) \\
-    &= -\mu \sum_{j} \lambda_{j}(X) \log \lambda_{j}(X)-\mu \sum_{j} \lambda_{j}(X) \log \mu \\
-    &= \mu \Tr(g(X)) - \mu\log \mu  \Tr(X) \\
-    &= \mu H(X) - \mu\log \mu  \Tr(X).
-\end{align*}
-Therefore, for any $C>0$ and $\epsilon > 0$, one can take $\delta > 0$ sufficiently small such that $- \mu \log \mu < C \epsilon$ holds for all $\mu \leq \delta$ implying
-\begin{equation}
-    \abs{ \Tr(g ( \mu X )) - \mu \Tr(g(X)) } = \abs{- \mu\log \mu  \Tr(X)} \leq C \Tr(X) \epsilon \leq \epsilon,
-\end{equation}
-where the last inequality follows from choosing $C = \Tr(X)^{-1}$ for all partial sums $X = \sum_{i\in S}X_i$ under consideration.
-%
-For another example, let $h_{\beta}(x) = \beta x - x \log x$, then
-\begin{equation}
-    \Tr(h_{\beta}(X)) = \beta \Tr(X) + \Tr(g(X)),
-\end{equation}
-which implies for $\mu > 0$
-\begin{equation}
-    \Tr(h_{\beta}(\mu X)) = \beta \mu \Tr(X) + \Tr(g(\mu X)) = \beta \mu \Tr(X) + \mu \Tr(g(X)) - \mu\log \mu  \Tr(X) = \mu \Tr(h_{\beta}(X)) - \mu\log \mu \Tr(X).
-\end{equation}
-In other words, shifting the function $\Tr \circ g$ by any multiple of the trace also produces a set $\mathcal M_{\Tr \circ h_{\beta}, n}$ which is approximately dilutable (and also additive).
-Of course, this is not surprising given that partial sum of matrices always satisfy certain linear constraints (namely $\Tr(X_{S \sqcup T}) = \Tr(X_{S}) + \Tr(X_{T})$ for all disjoint $S,T\subseteq [n]$) and thus line in a linear subspace.
-
-\begin{rem}
-    There are two related formulations of the idea of partial sums of positive semidefinite Hermitian matrices.
-    The first formulation is the formulation presented in this section; specifically, one is interested in Hermitian matrices $X$ which are positive semidefinite $X \geq 0$ and small in the sense that $\norm{X}_{\infty} \leq 1$ and more generally $\norm{X}_{\infty} < \epsilon$ for arbitrarily small $\epsilon > 0$.
-    The second formulation aims to instead normalize all of the non-zero matrices involved by letting $X = \Tr(X) \bar X$ where $\bar X = X/\Tr(X)$.
-    The consequences of this normalisation scheme is two-fold.
-    First the function $f = \Tr \circ g$ can be reexpressed by setting $\mu = \Tr(X)^{-1}$ to obtain
-    \begin{equation}
-        \Tr(g (\bar X )) = \frac{\Tr(g(X))}{\Tr(X)} + \log\Tr(X) 
-    \end{equation}
-    or equivalently
-    \begin{equation}
-        \Tr(g(X)) = \Tr(X)\Tr(g (\bar X ))- \Tr(X)\log\Tr(X).
-    \end{equation}
-    The second consequence is that partial sums become 
-    \begin{equation}
-        \sum_{i\in S}X_i = \sum_{i\in S} \Tr(X_i) \bar X_i
-    \end{equation}
-    which implies that \textit{normalized} partial sums can be expressed as convex combinations:
-    \begin{equation}
-        \bar X_{S} = \frac{\sum_{i\in S}X_i}{\Tr\left(\sum_{i\in S}X_i\right)} = \sum_{i\in S} \frac{\Tr(X_i)}{\Tr\left(\sum_{i\in S}X_i\right)} \bar X_i = \sum_{i \in S} p_i \bar X_i
-    \end{equation}
-    where $p_i = {\Tr(X_i)}/{\Tr\left(\sum_{i\in S}X_i\right)}$.
-    The second formulation would then define allocations of entropies of ensembles $\mathcal E = \{(p_i, \rho_i)\}_{i\in[n]}$ of density matrices by setting
-    \begin{equation}
-        \alpha_{\mathcal E}(S) 
-        = H(\sum_{i \in S} p_i \rho_i)
-        = p_S H\left(\sum_{i \in S} \frac{p_i}{p_S} \rho_i\right) - p_S \log p_S
-    \end{equation}
-    where $p_S = \sum_{i\in S} p_i$ and $H(X) = -\sum_{j} \lambda_j(X) \log \lambda_j(X)$ is the von Neumann entropy function (freely extended to consider subnormalized matrices).
-\end{rem}
-
-\clearpage
-
-\subsection{The additive entropy cone}
-
 The purpose of this section is to introduce the notion of an ``additive'' quantum entropy cone which serves as a kind of analogy to the ordinary quantum entropy cone considered by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 Formally, quantum states $\rho_{ABC}$ and their reduced states ($\rho_{AB}$, etc.) are replaced by tuples of positive semidefinite operators $(X, Y, Z)$ and their partial sums ($X +Y$, etc.).
 Moreover the von Neumann entropy of each reduced state is replaced by an unnormalized entropy of each partial sum.
 Using essentially the same approach adopted by \cite{pippenger2003inequalities}, we prove that the topological closure of the set of all such ``allocations'' of unnormalized entropies of partial sums forms a convex cone, which we term the ``additive quantum entropy cone''.
 Moreover, we prove inequalities constraining the boundary of the additive quantum entropy cone which parallel the basic positivity, subaddivity and strong subadditivity inequalities which constrain the boundary of the ordinary quantum entropy cone.
 
-\subsubsection{The shifted unnormalized entropy function}
+\subsection{The shifted unnormalized entropy function}
 
 The primary quantity of interest will be a real-valued function of eigenvalues which resembles von Neumann entropies.
 \begin{defn}
-    Let $\beta \in \mathbb R$ be a constant and define a continuous function $h_{\beta} : \mathbb R_{\geq 0} \to \mathbb R$ by
+    Define a continuous function $h : \mathbb R_{\geq 0} \to \mathbb R$ by
     \begin{equation}
-        h_{\beta} (x) = 
+        h (x) = 
         \begin{cases}
-            \beta x - x \log x & x > 0, \\
+            - x \log x & x > 0, \\
             0 & x = 0,
         \end{cases}
     \end{equation}
     and let $H_{\beta}$ be the real-valued function on PSD matrices given by
     \begin{equation}
         \label{eq:shifted_unnormalized_entropy}
-        H_{\beta}(X) = \Tr(h_{\beta}(X)) = \sum_{i=1}^{d} h_{\beta}(\lambda_i(X)).
+        H_{\beta}(X) = \beta + \Tr(h(X)) = \beta + \sum_{i=1}^{d} h(\lambda_i(X)).
     \end{equation}
-    The quantity $H_{\beta}(X)$ will be called the \textbf{(shifted) unnormalized entropy} of $X$. 
+    The quantity $H_{\beta}(X)$ will be called the \textbf{($\boldsymbol{\beta}$-shifted) unnormalized entropy} of $X$. 
 \end{defn}
 \begin{rem}
-    For the ease of notation, we will henceforth adopt the convention that $0\log 0 \coloneqq 0$ so that one can write $h_{\beta}(x) = \beta x - x \log x$ without consideration for the $x = 0$ case explicitly.
+    For ease of notation, we will henceforth adopt the convention that $0\log 0 \coloneqq 0$ so that one can write $h_{\beta}(x) = - x \log x$ without consideration for the $x = 0$ case explicitly.
 \end{rem}
 
 \begin{rem}
@@ -636,7 +492,10 @@ The primary quantity of interest will be a real-valued function of eigenvalues w
     \begin{equation}
         H_0(X) = \Tr(X)H_{0}\left(\frac{X}{\Tr(X)}\right) - \Tr(X)\log \Tr(X).
     \end{equation}
-    The term $H_{\beta}(X)$ is called the \textit{shifted} or $\beta-$\textit{shifted} unnormalized entropy because $H_{\beta}(X) = H_0(X) + \beta \Tr(X)$.
+    The term $H_{\beta}(X)$ is called the \textit{shifted} or $\beta-$\textit{shifted} unnormalized entropy because $H_{\beta}(X) =\beta + H_0(X)$ and also
+    \begin{equation}
+        H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = \frac{H_{\Tr(X)\log \Tr(X)}(X)}{\Tr(X)}.
+    \end{equation}
 \end{rem}
 
 The following lemma lists some basic properties of the function $H_{\beta}$.
@@ -647,20 +506,9 @@ The following lemma lists some basic properties of the function $H_{\beta}$.
             \begin{equation}
                 H_{\beta}(X) = H_{\beta}(U X U^{\dagger}).
             \end{equation}
-        \item If $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$, then
-            \begin{align}
-                \begin{split}
-                    H_{\beta}(X) 
-                    &= \sum_{i=1}^{d} \left(\beta \lambda_i - \lambda_i \log \lambda_i\right).
-                \end{split}
-            \end{align}
-        \item Let $0_{d}$ be the $d\times d$ zero matrix. Then
+        \item Let $\gamma I_{d}$ be the $d\times d$ scalar matrix with $\gamma \geq 0$ along the diagonal. Then
             \begin{equation}
-                H_{\beta}(0_{d}) = 0
-            \end{equation}
-        \item Let $I_{d}$ be the $d\times d$ identity matrix. Then
-            \begin{equation}
-                H_{\beta}(I_{d}) = \beta d
+                H_{\beta}(\gamma I_{d}) = \beta - d\gamma\log \gamma.
             \end{equation}
     \end{itemize}
 \end{lem}
@@ -675,88 +523,88 @@ Nevertheless, there is a sense it which it is homogeneous up to a modification t
     Let $\gamma > 0$ be non-zero. Then $H_{\beta}$ is deformation-homogeneous in the sense that
     \begin{equation}
         \label{eq:deformation_homogeneous}
-        H_{\beta}(\gamma X) = \beta \gamma \Tr(X) + \gamma H_{0}(X) - \gamma \log \gamma \Tr(X) = \gamma H_{\beta - \log \gamma}(X).
+        H_{\beta}(\gamma X) = \beta + \gamma H_{0}(X) - \gamma \log \gamma \Tr(X) = \gamma H_{\beta - \Tr(X)\log \gamma }(X).
     \end{equation}
-    As a special case, letting $\beta = \log \gamma$ produces
+    As a special case, letting $\beta = \Tr(X)\log \gamma$ produces
         \begin{equation}
-            H_{0}(X) = \frac{1}{\gamma} H_{\log \gamma}(\gamma X),
+            H_{0}(X) = \frac{1}{\gamma} H_{\Tr(X) \log \gamma}(\gamma X),
         \end{equation}
     and as a further special case, letting $\gamma = \Tr(X)^{-1}$ yields
         \begin{equation}
-            H_{0}(X) = \Tr(X) H_{-\log \Tr(X)}\left(\frac{X}{\Tr(X)}\right).
+            H_{0}(X) = \Tr(X) H_{h(\Tr(X))}\left(\frac{X}{\Tr(X)}\right).
         \end{equation}
 \end{lem}
 
-\subsubsection{Inequalities for the unnormalized entropy function}
-
-The first inequality is the most basis.
-It identifies that for sufficiently small PSD matrices $X$, $H_{\beta} (X)$ is non-negative.
-\begin{lem}
-    \label{lem:beta_norm_positive}
-    Let $X$ be a PSD matrix with sufficiently small maximum eigenvalue such that
-    \begin{equation}
-        \label{eq:norm_beta_cond}
-        \norm{X}_{\infty} \leq \exp (\beta).
-    \end{equation}
-    Then,
-    \begin{equation}
-        H_{\beta}(X) \geq 0,
-    \end{equation}
-    with equality (for $X$ satisfying \cref{eq:norm_beta_cond}) holding only if $X$ has eigenvalues in the set $\{0, \exp(\beta)\}$.
-\end{lem}
-\begin{proof}
-    If $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$, then $H_{\beta}(X)$ equals
-    \begin{equation}
-        \label{eq:eigen_sum_Hbeta}
-        H_{\beta}(X) = \sum_{i=1}^{d} \lambda_i (\beta - \log \lambda_i).
-    \end{equation}
-    Under the conditions that $X \geq 0$ is PSD and satisfying \cref{eq:norm_beta_cond}, we have
-    \begin{equation}
-        \lambda_i \geq 0, \qquad \text{and} \qquad \beta - \log \lambda_i \geq 0,
-    \end{equation}
-    respectively.
-    Therefore each summand in \cref{eq:eigen_sum_Hbeta} is positive and thus $H_{\beta}(X) \geq 0$ holds.
-    To prove the claim regarding equality $H_{\beta}(X)$ we note that each summand in \cref{eq:eigen_sum_Hbeta} must be zero and thus either $\lambda_i = 0$ or $\lambda_i = \exp(\beta)$.
-\end{proof}
-
-\begin{rem}
-    \textcolor{blue}{TC: If is unclear at the moment whether it is possible for $X$ to satisfy $H_{\beta}(X) = 0$ while having eigenvalues different from $\{0,\exp(\beta)\}$ if one allows for $\norm{X}_{\infty} > \exp(\beta)$.}
-\end{rem}
+\subsection{Inequalities for the unnormalized entropy function}
+%
+%The first inequality is the most basic.
+%It identifies that for sufficiently large values of $\beta$, the quantity $H_{\beta} (X)$ is non-negative.
+%\begin{lem}
+%    \label{lem:beta_norm_positive}
+%    Let $X$ be a PSD matrix with sufficiently small maximum eigenvalue such that
+%    \begin{equation}
+%        \label{eq:norm_beta_cond}
+%        \norm{X}_{\infty} \leq \exp (\beta).
+%    \end{equation}
+%    Then,
+%    \begin{equation}
+%        H_{\beta}(X) \geq 0,
+%    \end{equation}
+%    with equality (for $X$ satisfying \cref{eq:norm_beta_cond}) holding only if $X$ has eigenvalues in the set $\{0, \exp(\beta)\}$.
+%\end{lem}
+%\begin{proof}
+%    If $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$, then $H_{\beta}(X)$ equals
+%    \begin{equation}
+%        \label{eq:eigen_sum_Hbeta}
+%        H_{\beta}(X) = \sum_{i=1}^{d} \lambda_i (\beta - \log \lambda_i).
+%    \end{equation}
+%    Under the conditions that $X \geq 0$ is PSD and satisfying \cref{eq:norm_beta_cond}, we have
+%    \begin{equation}
+%        \lambda_i \geq 0, \qquad \text{and} \qquad \beta - \log \lambda_i \geq 0,
+%    \end{equation}
+%    respectively.
+%    Therefore each summand in \cref{eq:eigen_sum_Hbeta} is positive and thus $H_{\beta}(X) \geq 0$ holds.
+%    To prove the claim regarding equality $H_{\beta}(X)$ we note that each summand in \cref{eq:eigen_sum_Hbeta} must be zero and thus either $\lambda_i = 0$ or $\lambda_i = \exp(\beta)$.
+%\end{proof}
+%
+%\begin{rem}
+%    \textcolor{blue}{TC: If is unclear at the moment whether it is possible for $X$ to satisfy $H_{\beta}(X) = 0$ while having eigenvalues different from $\{0,\exp(\beta)\}$ if one allows for $\norm{X}_{\infty} > \exp(\beta)$.}
+%\end{rem}
 
 \begin{thm}
     \label{thm:unnormalized_entropy_ssa}
-    Let $\beta \in \mathbb R$ be arbitary and let $X, Y, Z \geq 0$ be PSD matrices. 
-    Then $H_{\beta}$ is both subadditive
+    Let $X, Y, Z \geq 0$ be PSD matrices.
+    Then $H_{0}$ is both subadditive
     \begin{equation}
         \label{eq:subadditive_Hbeta}
-        H_{\beta}(X+Y) \leq H_{\beta}(X) + H_{\beta}(Y),
+        H_{0}(X+Y) \leq H_{0}(X) + H_{0}(Y),
     \end{equation}
     and also strongly subadditive in the sense that
     \begin{equation}
         \label{eq:strong_subadditive_Hbeta}
-        H_{\beta}(X+Y+Z) + H_{\beta}(Y) \leq H_{\beta}(X+Y) + H_{\beta}(Y+Z).
+        H_{0}(X+Y+Z) + H_{0}(Y) \leq H_{0}(X+Y) + H_{0}(Y+Z).
     \end{equation}
 \end{thm}
 \begin{proof}
-    We begin by noting that subadditivity (\cref{eq:subadditive_Hbeta}) is a special case of strong subadditivty (\cref{eq:strong_subadditive_Hbeta}) under the substitution $(X,Y,Z) \mapsto (X, 0, Y)$ because $H_{\beta}(0) = 0$ for any value of $\beta$.
+    We begin by noting that subadditivity (\cref{eq:subadditive_Hbeta}) is a special case of strong subadditivty (\cref{eq:strong_subadditive_Hbeta}) under the substitution $(X,Y,Z) \mapsto (X, 0, Y)$ because $H_{0}(0) = 0$.
     Therefore it suffices to just prove strong subadditivity (\cref{eq:strong_subadditive_Hbeta}).
-    Furthermore, it sufficies to prove just the $\beta = 0$ case of \cref{eq:strong_subadditive_Hbeta} because $H_{\beta}(X) = \beta \Tr(X) + H_0(X)$ and 
+    %Furthermore, it sufficies to prove just the $\beta = 0$ case of \cref{eq:strong_subadditive_Hbeta} because $H_{\beta}(X) = \beta \Tr(X) + H_0(X)$ and 
+    %\begin{equation}
+    %    \label{eq:balanced}
+    %    \Tr(X+Y+Z) + \Tr(Y) = \Tr(X+Y) + \Tr(Y+Z).
+    %\end{equation}
+    The strong subaddivity of $H_{0}$ holds as an special case of \cref{thm:sagnol_ineq} where the function $f$ is taken to be the function 
     \begin{equation}
-        \label{eq:balanced}
-        \Tr(X+Y+Z) + \Tr(Y) = \Tr(X+Y) + \Tr(Y+Z).
+        f(x) \coloneqq -h(x) = x \log x.
     \end{equation}
-    In any case, strong subaddivity of $H_{\beta}$ or arbitary $\beta$ holds as an special case of \cref{thm:sagnol_ineq} where the function $f$ is taken to be the function 
+    The derivative of $-h$ is
     \begin{equation}
-        f(x) \coloneqq -h_{\beta}(x) = -\beta x + x \log x.
-    \end{equation}
-    The derivative of $-h_{\beta}$ is
-    \begin{equation}
-        (-h_{\beta})'(x) = 1-\beta + \log x
+        (-h)'(x) = \log x + 1
     \end{equation}
     which is known to be operator monotone \cite{chansangiam2013operator} on $\mathbb R_>0$ as required.
 \end{proof}
 
-\subsubsection{Comparison to concavity of von Neumann entropy}
+\subsection{Comparison to concavity of von Neumann entropy}
 At this stage it is worth comparing how the inequalities in \cref{thm:unnormalized_entropy_ssa} compare to known inequalities concerning von Neumann entropy.
 Suppose $\rho_X$ and $\rho_Y$ are two density matrices and $\lambda \in [0,1]$ is a convex parameter.
 Then it is known that the von Neumann entropy satisfies \textit{concavity}:
@@ -803,172 +651,104 @@ In this notation, the concavity of von Neumann entropy is equivalent to
 \end{equation}
 \textcolor{blue}{TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity or not, but it is probably worth finding out.}
 
-\subsubsection{The additive unnormalized entropy cone}
+\subsection{The additive unnormalized entropy cone}
 
 We are now in a position to actually define allocations of unnormalized entropies of partial sums.
 \begin{defn}
-    Let $\boldsymbol{X} \coloneqq (X_1, \ldots, X_n)$ be an $n$-tuple of PSD matrices.
-    Define the \textbf{allocation of unnormalized entropies} of $\boldsymbol{X}$ to be the element of $\mathbb R^{2^n - 1}$ given by
+    Let $\tuple{X} \coloneqq (X_1, \ldots, X_n)$ be an $n$-tuple of PSD matrices,
+    and let $\tuple{\beta} \coloneqq (\beta_1, \ldots, \beta_n)$ be an $n$-tuple of non-negative real numbers in $\mathbb R_{\geq 0}^{n}$.
+    Define the \textbf{allocation of unnormalized entropies} of $\tuple{X}$ shifted by $\tuple{\beta}$ be the element of $\mathbb R^{2^n - 1}$ given by
     \begin{equation}
-        \alpha_{\beta, n}(\boldsymbol{X}) = \left( H_{\beta}(X_S)\right)_{S \subset [n] \setminus \emptyset},
+        \alpha_{n}(\tuple{X}| \tuple{\beta}) \coloneqq \left(H_{\beta_{S}}(X_S)\right)_{S \subset [n] \setminus \emptyset},
     \end{equation}
-    where $X_S$ always denotes the partial sum
-    \begin{equation}
-        X_S \coloneqq \sum_{i\in S}X_i.
-    \end{equation}
+    where $X_S$ and $\beta_{S}$ respectively denote partial sums over the subset $S$:
+    \begin{align}
+        X_S &\coloneqq \sum_{i\in S}X_i, \\
+        \beta_{S} &\coloneqq \sum_{i\in S}\beta_i.
+    \end{align}
 \end{defn}
 \begin{exam}
-    For example, when $n=3$, the allocation of unnormalized entropies for $\boldsymbol{X} = (X,Y,Z)$ is
+    For example, when $n=3$, the allocation of unnormalized entropies for $\tuple{X} = (X,Y,Z)$ when $\tuple{\beta} = (0,0,0)$ is
     \begin{equation}
-        \alpha_{\beta, 3}(X, Y, Z) = \left(H_{\beta}(X), H_{\beta}(Y), H_{\beta}(Z), H_{\beta}(Y+Z), H_{\beta}(X+Z), H_{\beta}(X+Y), H_{\beta}(X+Y+Z) \right).
+        \alpha_{3}(X, Y, Z|0,0,0) = \left(H_{0}(X), H_{0}(Y), H_{0}(Z), H_{0}(Y+Z), H_{0}(X+Z), H_{0}(X+Y), H_{0}(X+Y+Z) \right).
     \end{equation}
 \end{exam}
-Note that if the eigenvalues of a PSD matrix $X$ are sufficiently large, specifically if $\lambda_{i}(X) > \exp(\beta)$, then it becomes possible for entries of the allocation $\alpha_{\beta,n}(\boldsymbol{X})$ to be negative. 
+Note that if the eigenvalues of a PSD matrix $X$ are larger than one, then it becomes possible for the unnormalized entropy $H_0(X)$ to become negative. 
 In what follows, it will desirable to consider allocations of unnormalized entropies which lie inside the positive cone $\mathbb R_{\geq 0}^{2^n-1} \subset \mathbb R^{2^n}$.
-To ensure positivity, \cref{lem:beta_norm_positive} suggests bounding the eigenvalues of $X_S$ for all subsets $S\subset [n]$.
+To ensure positivity, we place explicit restrictions on the value of the permitted $\beta$-shifts.
 \begin{defn}
-    Let $\beta \in \mathbb R$ be arbitary.
-    The collection of allocations of $\beta$-shifted unnormalized entropies of $n$-tuples of PSD matrices with eigenvalues of partial sums smaller than $\exp(\beta)$ will be denoted by
+    The collection of allocations of unnormalized entropies of $n$-tuples of PSD matrices is defined by
     \begin{equation}
-        \mathcal A_{\beta, n} \coloneqq
-        \left\{ \alpha_{\beta, n} ( \boldsymbol{X} ) \middle| \Lambda(\boldsymbol{X}) \leq \exp(\beta) \right\} \subseteq \mathbb R^{2^n}_{\geq 0}.
-    \end{equation}
-    where $\Lambda(\boldsymbol{X}) \geq 0$ is defined by
-    \begin{equation}
-        \Lambda(\boldsymbol{X}) \coloneqq \max_{S \subseteq [n]} \norm{X_S}_{\infty}.
+        \s A_{n} \coloneqq
+        \left\{ \alpha_{n} ( \tuple{X} | \tuple{\beta}) \middle| \forall S \subseteq [n], H_{\beta_S}(X_S) \geq 0 \right\} \subseteq \mathbb R^{2^n}_{\geq 0}.
     \end{equation}
 \end{defn}
 
-Our goal will be to prove that the closure, $\bar {\mathcal A}_{\beta, n}$, of the set of possible allocations of unnormalized entropies is a convex cone.
-Following \cite{pippenger2003inequalities}, the closure $\bar {\mathcal A}_{\beta, n}$ is a convex cone if and only if $\mathcal A_{\beta, n}$ is both \textit{additive} and \textit{approximately dilutable}.
-To begin we show that $\mathcal A_{\beta, n}$ additive (closed under addition).
-
+Our goal will be to prove that the set, $\mathcal A_n$, of the set of possible allocations of shifted unnormalized entropies forms a convex cone.
+To prove that $\s A_n$ forms a convex cone, it suffices to show that it is both closed under scaling by positive constants $\gamma > 0$ and closed under addition.
+\begin{lem}
+    \label{lem:scalable}
+    Let $\gamma > 0$ and let $\alpha_{n}(\tuple{X} | \tuple{\beta}) \in \s A_{n}$.
+    Then,
+    \begin{equation}
+        \gamma \alpha_{n}(\tuple{X}|\tuple{\beta}) = \alpha_{n}(\gamma \tuple{X} | \gamma \tuple\beta + \log \gamma \tau (\tuple X)) \in \s A_{n},
+    \end{equation}
+    where $\tau(\tuple X) = (\Tr(X_1), \ldots, \Tr(X_n))$.
+    Moreover, as the origin belongs to $\s A_{n}$, the set $\s A_{n}$ is closed under scaling by non-negative $\gamma \geq 0$.
+\end{lem}
+\begin{proof}
+    Let $\gamma \tuple{X} = (\gamma X_1, \ldots, \gamma X_n)$ be the $n$-tuple obtained from $\tuple{X}$ by entry-wise multiplication by the same factor $\gamma$ and likewise $\gamma \tuple \beta = (\gamma \beta_1, \ldots, \gamma \beta_n)$.
+    If $\gamma = 0$, then the claim holds trivially because the origin belongs to $\s A_{n}$.
+    For $\gamma > 0$, the deformation-homogeneous property of shifted unnormalized entropies (\cref{eq:deformation_homogeneous}) implies for any $\tuple \beta'$,
+    \begin{equation}
+        \alpha_{n}(\gamma \tuple{X}|\tuple{\beta}') = \gamma \alpha_{n}(\tuple{X}|\tuple{\beta}' - \log \gamma \tau(\tuple X)).
+    \end{equation}
+    Letting $\tuple \beta' = \tuple \beta + \log \gamma \tau (\tuple X)$ yields 
+    \begin{equation}
+        \gamma \alpha_{n}(\tuple{X}|\tuple{\beta}) = \alpha_{n}(\gamma \tuple{X}|\tuple{\beta} + \log \gamma \tau(\tuple X)).
+    \end{equation}
+    The additional claim that $\gamma \alpha_{n}(\gamma \tuple{X}|\tuple{\beta}) \in \s A_n$ follows because $H_{\gamma \beta_S+\Tr(X_S)\log \gamma}(\gamma X_S) = \gamma H_{\beta_S}(X_S) \geq 0$ where the last inequality follows from positivity of $\gamma$ and the assumption that $\alpha_{n}(\tuple{X}|\tuple{\beta}) \in \s A_n$.
+\end{proof}
+Next we show that $\s A_{n}$ is closed under addition.
 \begin{lem}
     \label{lem:additive}
-    If $\boldsymbol{X}=(X_1, \ldots, X_n)$ and $\boldsymbol{X'}=(X'_1, \ldots, X'_n)$ are $n$-tuples of PSD matrices with allocations $\alpha_{\beta, n}(\boldsymbol{X})$ and $\alpha_{\beta, n}(\boldsymbol{X'})$,
-    then the $n$-tuple
+    Let $\tuple{X}=(X_1, \ldots, X_n)$ and $\tuple{X'}=(X'_1, \ldots, X'_n)$ be non-zero $n$-tuples of PSD matrices and let $\tuple \beta, \tuple \beta' \in \mathbb R^n$.
+    Let $\tuple{X}\oplus \tuple{X'}$ be the $n$-tuple
     \begin{equation}
-        \boldsymbol{X}\oplus \boldsymbol{X'} \coloneqq (X_1 \oplus X'_1, \ldots, X_n \oplus X'_n),
+        \tuple{X}\oplus \tuple{X'} \coloneqq (X_1 \oplus X'_1, \ldots, X_n \oplus X'_n).
     \end{equation}
-    has allocation given by
+    Then
     \begin{equation}
-        \alpha_{\beta, n}(\boldsymbol{X}\oplus\boldsymbol{X'}) = \alpha_{\beta, n}(\boldsymbol{X}) + \alpha_{\beta, n}(\boldsymbol{X'}).
+        \alpha_{n}(\tuple{X}\oplus\tuple{X'}, \tuple \beta + \tuple \beta') = \alpha_{n}(\tuple{X}|\tuple \beta) + \alpha_{n}(\tuple{X'} | \tuple \beta').
+        \label{eq:additive_with_shifts}
     \end{equation}
+    Consequently, the set $\mathcal A_{\beta, n}$ is closed under addition.
 \end{lem}
 \begin{proof}
-    This follows directly from the fact that $H_{\beta}$ is additive across direct sums,
+    First note that $H_{0}$ is additive across direct sums,
     \begin{equation}
-        H_{\beta}(X \oplus X') = H_{\beta}(X) + H_{\beta}(X'),
+        H_{0}(X \oplus X') = H_{0}(X) + H_{0}(X'),
     \end{equation}
-    and the fact that the direct sum is distributive across sums so that
+    and thus for any $\beta, \beta' \in \mathbb R$,
     \begin{equation}
-        \sum_{i\in S} X_i \oplus X'_i = \left(\sum_{j\in S} X_j\right) \oplus \left(\sum_{k\in S} X'_k\right).
+        H_{\beta + \beta'}(X \oplus X') = H_{\beta}(X) + H_{\beta'}(X').
     \end{equation}
+    Then, note that direct sums are distributive across sums so that
+    \begin{equation}
+        \sum_{i\in S} X_i \oplus X'_i = \left(\sum_{j\in S} X_j\right) \oplus \left(\sum_{k\in S} X'_k\right),
+    \end{equation}
+    which directly implies \cref{eq:additive_with_shifts}.
+    The proof that $\s A_{n}$ is closed under addition follows by noting that the positivity condition is maintained under taking direct sums.
 \end{proof}
-\begin{cor}
-    \label{cor:additive_with_bounds}
-    The set $\mathcal A_{\beta, n}$ is closed under addition.
-\end{cor}
-\begin{proof}
-    The proof follows from \cref{lem:additive} together with the observation that the condition $\Lambda(X) \leq \exp(\beta)$ is maintained under taking direct sums:
-    \begin{equation}
-        \Lambda(\boldsymbol{X}) \leq \exp(\beta) \quad \text{and} \quad \Lambda(\boldsymbol{X'}) \leq \exp(\beta) \implies \Lambda(\boldsymbol{X} \oplus \boldsymbol{X'}) \leq \exp(\beta).
-    \end{equation}
-\end{proof}
-
-Next we show that $\mathcal A_{\beta, n}$ is approximately dilutable.
-\begin{lem}
-    \label{lem:approx_dilute}
-    The $\mathcal A_{\beta, n}$ is approximately dilutable.
-\end{lem}
-\begin{proof}
-    Take $\mu \in (0, 1]$ and compare the unnormalized entropy of $X \geq 0$ with the unnormalized entropy of $\mu X \geq 0$.
-    \begin{align}
-        H_{\beta}(\mu X) 
-        &= \beta \Tr(\mu X) + H_{0}(\mu X), \\
-        &= \beta \mu \Tr(X) + \mu H_{0}(X) - \Tr(X) \mu \log \mu, \\
-        &= \mu H_{\beta}(X) - \mu\log \mu  \Tr(X).
-    \end{align}
-    For any constants $C>0$ and $\epsilon > 0$, one can find a sufficiently small $\delta > 0$ such that $- \mu \log \mu < C \epsilon$ holds for all $\mu \leq \delta$.
-    When $\mu \leq \delta$, one therefore has
-    \begin{equation}
-        \abs{ H_{\beta}(\mu X) - \mu H_{\beta}(X) } = \abs{- \mu\log \mu  \Tr(X)} \leq C\epsilon \Tr(X) .
-    \end{equation}
-    Therefore, the distance between the allocations of $\mu \boldsymbol{X}$ and $\boldsymbol{X}$ is bounded by
-    \begin{equation}
-        \norm{\alpha_{\beta,n}(\mu \boldsymbol{X}) - \mu \alpha_{\beta,n}(\boldsymbol{X})}_{\infty} \leq C \epsilon \Tr\left(\sum_{i=1}^{n} X_i \right) = C \epsilon \Tr(X_{[n]}).
-    \end{equation}
-    Let $C = \Tr(X_{[n]})^{-1}$.
-    Then for all $\epsilon > 0$ the following holds for all sufficiently small $\mu$,
-    \begin{equation}
-        \norm{\alpha_{\beta,n}(\mu \boldsymbol{X}) - \mu \alpha_{\beta,n}(\boldsymbol{X})}_{\infty} \leq \epsilon.
-    \end{equation}
-    Now assume $\Lambda(\boldsymbol{X}) \leq \exp(\beta)$ such that $\alpha_{\beta,n}(\boldsymbol{X}) \in \s A_{\beta, n}$.
-    Since $\Lambda(\boldsymbol{X}) \leq \exp(\beta)$ implies $\Lambda(\mu\boldsymbol{X}) \leq \mu\exp(\beta) \leq \exp(\beta)$ (as $\mu \leq 1$), $\alpha_{\beta,n}(\mu \boldsymbol{X}) \in \s A_{\beta, n}$ and therefore the claim holds.
-\end{proof}
-
 \begin{thm}
-    The closure, $\bar {\mathcal A}_{\beta, n} \subseteq \mathbb R_{\geq 0}^{2^n-1}$, of the set of all possible allocations of (shifted) unnormalized entropies is a convex cone.
+    The set $\s A_{n} \subseteq \mathbb R_{\geq 0}^{2^n-1}$ of all possible allocations of (shifted) unnormalized entropies is a convex cone in $\mathbb R_{\geq 0}^{2^n-1}$.
+    We refer to $\s A_{n}$ as the \textbf{additive quantum entropy cone}.
 \end{thm}
 \begin{proof}
-    This follows \cite[Theorem 2.2]{pippenger2003inequalities}, \cref{cor:additive_with_bounds}, and \cref{lem:approx_dilute}.
+    This follows from \cref{lem:additive,lem:scalable}.
 \end{proof}
 
-It appears that the structure of the cones $\bar {\mathcal A}_{\beta, n}$ do not depend on the value of $\beta$ in any meaningful way and they are all related by an appropriate re-scaling.
-\begin{cor}
-    Let $\beta_1, \beta_2 \in \mathbb R$. The closures of $\s A_{\beta_1, n}$ and $\s A_{\beta_2, n}$ are identical:
-    \begin{equation}
-        \bar {\s A}_{\beta_1, n} = \bar {\s A}_{\beta_2, n}.
-    \end{equation}
-\end{cor}
-\begin{proof}
-    The deformation-homogeneous property of $H_{\beta}$ (\cref{eq:deformation_homogeneous}) implies for any $\gamma > 0$,
-    \begin{equation}
-        \alpha_{\beta,n}(\gamma \boldsymbol{X}) = \gamma \alpha_{\beta - \log \gamma, n}(\boldsymbol{X}).
-    \end{equation}
-    Therefore, defining $\gamma \coloneqq \exp(\beta_2 - \beta_1)$ implies
-    \begin{equation}
-        \label{eq:beta_1_beta_2_deform}
-        \alpha_{\beta_2,n}(\gamma \boldsymbol{X}) = \gamma \alpha_{\beta_1,n}(\boldsymbol{X}).
-    \end{equation}
-    Let $\boldsymbol{X} = (X_1, \ldots, X_n)$ be such that $\alpha_{\beta_1, n}(\boldsymbol{X}) \in \mathcal A_{\beta_1, n}$ (meaning $\Lambda(\boldsymbol{X}) \leq \exp(\beta_1)$). 
-    Then the $n$-tuple $\gamma \boldsymbol{X} = (\gamma X_1, \ldots, \gamma X_n)$ obtained by entry-wise multiplication by the same factor $\gamma$ satisfies
-    \begin{equation}
-        \Lambda(\gamma \boldsymbol{X}) \leq \gamma \exp(\beta_1) = \exp(\beta_2 - \beta_1) \exp(\beta_1) = \exp(\beta_2).
-    \end{equation}
-    Hence $\alpha_{\beta_2, n}(\gamma \boldsymbol{X}) \in \s A_{\beta_2, n}$, and thus by \cref{eq:beta_1_beta_2_deform}
-    \begin{equation}
-        \gamma \alpha_{\beta_1, n}(\boldsymbol{X}) \in \s A_{\beta_2, n}.
-    \end{equation}
-    Now because $\bar {\s A}_{\beta_1, n}$ is a cone, every element $v \in \bar {\s A}_{\beta_1, n}$ can be written as $v = \gamma \tilde v$ for $\tilde v = \gamma^{-1} v \in \bar {\s A}_{\beta_1, n}$.
-    Since $\tilde v$ is arbitarily close to elements in $\s A_{\beta_1, n}$, let $\epsilon > 0$ be arbitrary and take $\boldsymbol{X}$ such that 
-    \begin{equation}
-        \norm{\tilde v - \alpha_{\beta_1, n}(\boldsymbol{X})}_{\infty} \leq \gamma^{-1}\epsilon
-    \end{equation}
-    for some $\alpha_{\beta_1, n}(\boldsymbol{X}) \in \s A_{\beta_1, n}$.
-    Multiplying by $\gamma$ yields
-    \begin{equation}
-        \norm{v - \alpha_{\beta_2, n}(\gamma \boldsymbol{X})}_{\infty} = \norm{\gamma \tilde v - \gamma \alpha_{\beta_1, n}(\boldsymbol{X})}_{\infty} \leq \epsilon,
-    \end{equation}
-    which implies $v \in \bar {\s A}_{\beta_2, n}$ also and thus
-    \begin{equation}
-        \bar {\s A}_{\beta_1, n} \subseteq \bar {\s A}_{\beta_2, n}.
-    \end{equation}
-    Finally, as the above argument holds for any $\beta_1$ and $\beta_2$, it holds for swapping $\beta_1$ with $\beta_2$ and thus $\bar {\s A}_{\beta_1, n} = \bar {\s A}_{\beta_2, n}$ as claimed.
-\end{proof}
-
-Given that each of the convex cones associated to allocations of unnormalized entropies are essentially the same, we may take the \textit{additive entropy cone} as the closure of $\s A_{\beta, n}$ for any $\beta \in \mathbb R$.
-For the sake of concreteness, we make the following definition:
-\begin{defn}
-    Let $n$ be a positive integer.
-    The \defnsty{additive entropy cone} is the set $\s A_{n} \subseteq \mathbb R_{\geq 0}^{2^n-1}$ given by
-    \begin{equation}
-        \bar {\s A}_{n} \coloneqq \bar {\s A}_{0, n},
-    \end{equation}
-    noting that $\bar {\s A}_{n} = \bar {\s A}_{\beta, n}$ for any $\beta \in \mathbb R$.
-\end{defn}
-
-\subsubsection{Connection to the multiplicative quantum entropy cone}
+\subsection{Connection to the multiplicative quantum entropy cone}
 
 The purpose of this section is to compare the \textit{additive} quantum entropy cone, $\bar {\mathcal A}_{n}$, to the \textit{(multiplicative)} quantum entropy cone, $\bar {\mathcal M}_{n}$, previously studied by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal A}_{n}$, lies inside the multiplicative quantum entropy cone, $\bar {\mathcal M}_{n}$, by following a particular family of quantum states.
@@ -1031,8 +811,8 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
 
 \begin{defn}
     \label{defn:spec_embed}
-    Let $\boldsymbol{X} = (X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD operators and let $(\{\ket i_p\}_{i=0}^{d})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{d+1}$.
-    Let $\Gamma(\boldsymbol{X}) = \Gamma(X_1, \ldots, X_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD operators and let $(\{\ket i_p\}_{i=0}^{d})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{d+1}$.
+    Let $\Gamma(\tuple{X}) = \Gamma(X_1, \ldots, X_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
     \begin{equation}
         \label{eq:weight_zero_portion}
         \braa{\emptyset}\Gamma(X_1, \ldots, X_n)\kett{\emptyset} = 1 - \sum_{i=1}^{n} \Tr(X_n),
@@ -1235,139 +1015,61 @@ This characterization generalizes \cite[Proposition 11]{christandl2018recoupling
 
 \begin{thm}
     \label{thm:almost_subcone}
-    Let $\boldsymbol{X} = (X_1, \ldots, X_n)$ be an arbitrary $n$-tuple of PSD matrices.
-    Then for any $\epsilon > 0$, there exists a sufficiently large $\beta \in \mathbb R$, and $\mu_n \in \mathbb R_{\geq 0}^{2^n-1}$ belonging to the ordinary quantum entropy cone such that
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be an arbitrary $n$-tuple of PSD matrices and let $\Gamma(\tuple {X})$ denote the corresponding $n$-partite quantum state.
+    Then for all sufficiently small $\gamma > 0$,
     \begin{equation}
-        \norm{ \alpha_{\beta, n}(\boldsymbol{X}) - \mu_n}_{\infty} \leq \epsilon.
+        \norm{ \alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})) }_{\infty} \leq \gamma \Tr(X_{[n]})^2
     \end{equation}
 \end{thm}
 \begin{proof}
-    Let $\gamma > 0$ be chosen sufficiently small such that the following two properties hold.
-    First, for all subsets $S \subseteq [n]$, we demand
+    By \cref{lem:partial_sum_embed}, it is known that the von Neumann entropy of the reduced state of $\Gamma(\tuple {X})$ (whenever $\Tr(X[n])\leq 1$ so that $\Gamma(\tuple {X})$ is a density matrix) over $S \subseteq [n]$ is given by
     \begin{equation}
-        \gamma \Tr(X_S) \leq 1.
+        H_{\mathrm{vN}}(\Gamma(\tuple {X})_S) = H_0(X_S) - (1-\Tr(X_S)) \log(1-\Tr(X_S)).
     \end{equation}
-    This condition ensures that $\norm{X_S}_{\infty} \leq \gamma^{-1} \leq e\gamma^{-1}$ which implies $\Lambda(X) \leq \exp(1-\log \gamma)$.
-    Second, for all subsets $S \subseteq [n]$, we demand
+    Then, mapping $\tuple{X}$ to $\gamma \tuple{X}$ and multiplying by $\gamma^{-1}$ yields
     \begin{equation}
-        \gamma \Tr(X_S)^{2} \leq \epsilon.
+        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}H_0(\gamma X_S) - \gamma^{-1}(1-\gamma\Tr(X_S)) \log(1-\gamma\Tr(X_S)).
     \end{equation}
-    This ensures, for $\Tr(X_S) > 0$, that $\Tr(X_S)f(\gamma \Tr(X_S)) \leq \epsilon$ where $f(x) \coloneqq 1 + x^{-1} (1-x)\log(1-x) \leq x$ holds for all $x \in [0,1]$.
-    Let $\beta = 1- \log \gamma$ (noting that $\beta$ depends on both $\boldsymbol{X}$ and $\epsilon$).
-    Now consider the allocation of $\beta$-shifted unnormalized entropy of $\boldsymbol{X}$ given by $\alpha_{\beta, n}(\boldsymbol{X})$.
-    The choice of $\gamma$ ensures $\Lambda(X) \leq e/\gamma = \exp(\beta)$, and therefore,
+    Define $f(x)$ over $x \in [0,1]$ as
     \begin{equation}
-        \alpha_{\beta, n}(\boldsymbol{X}) \in {\s A}_{\beta, n}.
+        f(x) \coloneqq 1 + x^{-1} (1-x)\log(1-x).
     \end{equation}
-    A direct calculation produces 
+    with $f(0) = 0$ and $f(1) = 1$ noting that $f(x) \leq x$ for all $x \in [0,1]$.
+    Now take $\gamma \geq 0$ sufficiently small such that $\gamma \Tr(X_S) \in [0,1]$ holds for all $S \subseteq [n]$ and thus $\Gamma(\gamma \tuple X)$ is a well-defined density matrix,
+    Then,
     \begin{equation}
-        \alpha_{\beta, n}(\boldsymbol{X})_S = \alpha_{1-\log \gamma, n}(\boldsymbol{X})_S = \gamma^{-1} \mu_n(\Gamma(\gamma \boldsymbol{X}))_S + \Tr(X_S)f(\gamma \Tr(X_S)).
+        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}H_0(\gamma X_S) + \Tr(X_S) - \Tr(X_S)f(\gamma \Tr(X_S)),
     \end{equation}
-    As $\gamma$ is taken to be sufficiently small, $\Tr(X_S)f(\gamma \Tr(X_S)) \leq \epsilon$ and therefore, 
+    Since $\gamma^{-1}H_0(\gamma X_S) + \Tr(X_S) = H_{\Tr(X_S)(1-\log \gamma)}(X_S)$, we conclude that
     \begin{equation}
-        \norm{\alpha_{\beta, n}(\boldsymbol{X}) - \gamma^{-1} \mu_n(\Gamma(\gamma \boldsymbol{X})))}_{\infty} \leq \epsilon.
+        H_{\Tr(X_S)(1-\log \gamma)}(X_S) - \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \Tr(X_S) f(\gamma \Tr(X_S)) \leq \gamma \Tr(X_S)^2
     \end{equation}
-    In other words, the allocation $\alpha_{1-\log \gamma, n}(\boldsymbol{X})$ which belongs to the additive entropy cone $\bar {\s A}_{n}$ is within $\epsilon$ of $\gamma^{-1} \mu(\Gamma(\gamma \boldsymbol{X})))_S$ which manifestly belongs to the ordinary quantum entropy cone.
 \end{proof}
-
-\begin{rem}
-    Note that \cref{thm:almost_subcone} does not directly prove that the additive quantum entropy cone is a subcone of the ordinary quantum entropy cone.
-    By definition of the additive entropy cone, for any allocation $\alpha_{n}^{*} \in \bar {\s A}_{n}$ in the additive quantum entropy cone, any $\epsilon'$ and any $\beta \in \mathbb R$, there exists an $n$-tuple $\boldsymbol{X}^{(\beta)} = (X_1^{(\beta)}, \ldots, X_n^{(\beta)})$ of PSD matrices (possibly depending on $\beta$), such that
+\begin{cor}
+    Let $f : \mathbb R^{2^n-1}_{\geq 0} \to \mathbb R$ be a balanced linear functional which is positive on the ordinary quantum entropy cone.
+    Then $f$ is also positive on the additive quantum entropy cone.
+\end{cor}
+\begin{proof}
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be an arbitrary $n$-tuple of PSD matrices.
+    That $f$ is balanced implies the value of $f(\alpha_n(\tuple{X}|\tuple{\beta}))$ is independent of shifting by $\tuple{\beta}$, meaning for $\gamma$ taken from \cref{thm:almost_subcone},
     \begin{equation}
-        \norm{\alpha_{n}^{*} - \alpha_{\beta, n}(\boldsymbol{X}^{(\beta)})}_{\infty} \leq \epsilon'.
+        f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) = f(\alpha_n(\tuple{X}|\tuple{\beta})) = f(\alpha_n(\tuple{X}|\tuple{0})),
     \end{equation}
-    Combining this result naively with \cref{thm:almost_subcone} might seem to suggest that $\alpha_{n}^{*}$ is also within $\epsilon$ of the ordinary quantum entropy cone.
-    Unfortunately, here the PSD matrices $\boldsymbol{X}^{(\beta)}$ depend on the value of $\beta$ whereas in \cref{thm:almost_subcone}, the value of $\beta$ depended on $\boldsymbol{X}$.
-\end{rem}
-\begin{rem}
-    Examining the proof of \cref{thm:almost_subcone},
-    one see that for all $\gamma$ where $\gamma\Tr(X_S) \leq 1$,
+    is independent of $\gamma$ and $\beta$.
+    That $f$ is linear and positive on the ordinary quantum entropy cone implies
     \begin{equation}
-        \gamma^{-1} \mu_n(\Gamma(\gamma \boldsymbol{X}))_S = \alpha_{1-\log \gamma - f(\gamma \Tr(X_S)),n}(\boldsymbol{X}) \in \bar {\s A}_{n}.
+        f(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X}))) = \gamma^{-1}f(\mu_n(\Gamma(\gamma\tuple{ X}))) \geq 0.
     \end{equation}
-    In other words, every element of the ordinary quantum entropy cone which is some upscaling of an allocation of von Neumann entropies of a quantum state in the image of the map $\Gamma$ belongs to the additive quantum entropy cone.
-    But this could be shown already for any $\boldsymbol{X}$ satisfying $\Tr(X_S) \leq 1$:
-    \begin{equation}
-        \mu_n(\Gamma(\boldsymbol{X})) = \alpha_{1 - f(\Tr(X_S)),n}(\boldsymbol{X}) \in \bar {\s A}_{n}.
-    \end{equation}
-    The challenge here is simply that for any fixed value of $\beta$, generally
-    \begin{equation}
-        \mu_n(\Gamma(\boldsymbol{X})) + \mu_n(\Gamma(\boldsymbol{Y})) = \mu_n(\Gamma(\boldsymbol{X})\otimes \Gamma(\boldsymbol{Y})) \neq \alpha_{\beta,n}(\boldsymbol{X}\oplus \boldsymbol{Y}) = \alpha_{\beta, n}(\boldsymbol{X}) + \alpha_{\beta,n}(\boldsymbol{Y}).
-    \end{equation}
-\end{rem}
-
-%\begin{rem}
-%    In order to discover how the additive quantum entropy cone lives inside the multiplicative quantum entropy cone, it suffices to examine how the formula for the von Neumann entropy of the reduced state $\Gamma_{S}$ on subsystem $S$,
-%    \begin{equation}
-%        H_{\mathrm{vN}}\left(\Gamma_{S}\right) = \Tr(X_S)H_{\mathrm{vN}}\left(\frac{X_{S}}{\Tr(X_S)}\right) - \Tr(X_S)\log \Tr(X_S) - (1-\Tr(X_S))\log (1-\Tr(X_S)),
-%    \end{equation}
-%    compares to the formula for the unnormalized entropy of the partial sum $X_S = \sum_{i\in S} X_i$,
-%    \begin{equation}
-%        H_0(X_S) = \Tr(X_S)H_{\mathrm{vN}}\left(\frac{X_S}{\Tr(X_S)}\right) - \Tr(X_S)\log \Tr(X_S).
-%    \end{equation}
-%    The only term that is different is the additional $(1-\Tr(X_S))\log (1-\Tr(X_S))$ term appearing in $H_{\mathrm{vN}}\left(\Gamma_{S}\right)$:
-%    \begin{equation}
-%        H_0(X_S) = H_{\mathrm{vN}}\left(\Gamma_{S}\right) + (1-\Tr(X_S))\log (1-\Tr(X_S)).
-%    \end{equation}
-%    In the limit of very small PSD matrices appearing in the $n$-tuple $(X_1, \ldots, X_n)$, this additional term contributes approximately zero to the value of $H_{\mathrm{vN}}\left(\Gamma_{S}\right)$.
-%    This can be formalized as follows.
-%    If $\Gamma_{S}$ is the reduced state obtained via \cref{defn:spec_embed} for the $n$-tuple $\boldsymbol{X} = (X_1, \ldots, X_n)$, then let $\Gamma_{S}^{\mu}$ be the reduced state obtained via \cref{defn:spec_embed} for the $n$-tuple $\mu \boldsymbol{X} = (\mu X_1, \ldots, \mu X_n)$.
-%    \begin{align}
-%        H_{\mathrm{vN}}\left(\Gamma_{S}^{\mu}\right)
-%        &= \mu H_{\mathrm{vN}}\left(\Gamma_{S}\right) - \Tr(X_S) \mu \log \mu - (1-\mu \Tr(X_S))\log (1-\mu \Tr(X_S)), \\
-%        H_{0}(\mu X_S)
-%        &= \mu H_{0}(X_S) - \Tr(X_S) \mu \log \mu.
-%    \end{align}
-%    Now assume that $\mu > 0$ is taken to be small.
-%    Now let $\alpha = (\alpha_{S})_{S \subseteq n} \in \bar {\mathcal A}_n$ be an element of the additive quantum entropy cone.
-%    \textcolor{red}{TODO: Figure out if/how the additive entropy cone lies inside the multiplicative entropy cone.}
-%    %Therefore, for all $\epsilon > 0$ there exists an $n$-tuple $(X_1, \ldots, X_n)$ of PSD matrices such that $\alpha_{S} \approx H_0(X_S)$:
-%    %\begin{equation}
-%    %    \abs{\alpha_{S}-H_0(X_S)} \leq \epsilon.
-%    %\end{equation}
-%    %Consequently, $\mu \alpha_{S} \approx H_0(\mu X_S)$
-%    %\begin{equation}
-%    %    \abs{\mu \alpha_{S}-H_0(\mu X_S)} \leq \abs{\mu \alpha_{S}-\mu H_0(X_S)} + \abs{\mu H_0(X_S)-H_0(\mu X_S)} \leq \mu \epsilon + \Tr(X_S) \mu \log \mu,
-%    %\end{equation}
-%    %and also $H_0(\mu X_S) \approx H_{\mathrm{vN}}\left(\Gamma_{S}^{\mu}\right)$
-%    %\begin{equation}
-%    %    \abs{ H_0(\mu X_S) - H_{\mathrm{vN}}\left(\Gamma_{S}^{\mu}\right) } = (1-\mu \Tr(X_S))\log (1-\mu \Tr(X_S))
-%    %\end{equation}
-%\end{rem}
-%
-
-%\subsection{Known entropic inequalities}
-%
-%It is well known that von Neumann entropy of a convex combination admits of the following lower bound (concavity) and upper bound:
-%\begin{equation}
-%    \sum_{i\in [n]} p_i H\left(\rho_i \right) \leq H\left(\sum_{i\in [n]} p_i \rho_i \right) \leq \sum_{i\in [n]} p_i H\left(\rho_i \right) - \sum_{i\in [n]} p_i \log p_i
-%\end{equation}
-%Restricting to $S \subset [n]$, these bounds become
-%\begin{equation}
-%    \sum_{i\in S} \frac{p_i}{p_S} H\left(\rho_i \right) \leq H\left(\sum_{i\in S} \frac{p_i}{p_S} \rho_i \right) \leq \sum_{i\in S} \frac{p_i}{p_S} H\left(\rho_i \right) - \sum_{i\in S} \frac{p_i}{p_S} \log \frac{p_i}{p_S},
-%\end{equation}
-%or equivalently (after multiplying by $p_S$),
-%\begin{equation}
-%    \sum_{i\in S} p_i H\left(\rho_i \right) \leq p_{S} H\left(\sum_{i\in S} \frac{p_i}{p_S} \rho_i \right) = H\left(\sum_{i\in S} p_i \rho_i \right) + p_S \log p_S \leq \sum_{i\in S} p_i H\left(\rho_i \right) - \sum_{i\in S} p_i \log p_i + p_S \log p_S
-%\end{equation}
-%The upper bound above is expressible entirely in terms of von Neumann entropies of (unweighted sums of) subnormalized $\sigma_i = p_i \rho_i$:
-%\begin{equation}
-%    H\left(\sum_{i\in S} p_i \rho_i \right) \leq \sum_{i\in S} p_i H\left(\rho_i \right) - \sum_{i\in S} p_i \log p_i = \sum_{i \in S} H\left(p_i \rho_i \right)
-%\end{equation}
-%This reformulation of the upper bound above is especially interesting in terms of $\alpha(S) \coloneqq \alpha_{\mathcal E}(S)$ because it can be expressed as
-%\begin{equation}
-%    \alpha(S) \leq \sum_{i \in S} \alpha(\{i\})
-%\end{equation}
-%or more abstractly for any $A,B \subseteq [n]$ disjoint
-%\begin{equation}
-%    \alpha(A\sqcup B) \leq \alpha(A) + \alpha(B).
-%\end{equation}
-%
-%In \cite{sagnol2013approximation}, the following bound is indirectly proven for arbitrary disjoint subsets $A,B,C \subset [n]$:
-%\begin{equation}
-%    \alpha(A\sqcup B) + \alpha(B\sqcup C) \geq \alpha(B) + \alpha(A\sqcup B \sqcup C).
-%\end{equation}
-
+    Furthermore, by \cref{thm:almost_subcone}, the value of $f(\alpha_n(\tuple{X}|\tuple{\beta}))$ is also positive because
+    \begin{align}
+        f(\alpha_n(\tuple{X}|\tuple{\beta})) 
+        &= f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) \\
+        &= f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X}))) + f(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})))\\
+        &\geq f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})))\\
+        &\geq-\gamma \Tr(X_{[n]})^2 \norm{f}_1 \\
+        &\stackrel{\gamma \to 0}{\longrightarrow} 0
+    \end{align}
+\end{proof}
 
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
