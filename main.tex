@@ -214,7 +214,7 @@ The inequality appearing in \cref{eq:SSA_like_ineq} is equivalent to the followi
     \geq 0.
 \end{equation}
 The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\lambda})$ with the expression $-\abs{\lambda}\log \abs{\lambda}$.
-We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a downscaling argument.
+We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a down-scaling argument.
 Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
 \begin{equation}
     \label{eq:tetrahedral_scaling}
@@ -258,7 +258,7 @@ Approximating $-(1-x)\log(1-x)$ by a Taylor series for $x \approx 0$,
 \begin{equation}
     -(1-x)\log(1-x) = x - \frac{x^2}{2} + O(x^3),
 \end{equation}
-produes
+produces
 \begin{equation}
     q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
 \end{equation}
@@ -302,6 +302,16 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
     Since $A,C\geq 0$ are both positive semidefinite, we also have $\Tr[AC] \geq 0$ which proves the claim.
 \end{proof}
 
+\begin{lem}
+    \label{lem:quadratic_ineq_dual}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
+    \begin{equation}
+        \Tr[A+B]^2 - \Tr[(A+B)^2] + \Tr[B+C]^2 - \Tr[(B+C)^2] \leq \Tr[B]^2 - \Tr[B^2] + \Tr[A+B+C]^2 - \Tr[(A+B+C)^2].
+    \end{equation}
+\end{lem}
+\begin{proof}
+    This result is a special case of \cref{cor:isotypic_ineq} below when $\lambda = (1,1)$.
+\end{proof}
 \Citeauthor{bouhtou2008optimization} claim to prove the following family of inequalities \cite[Lemma 5.3]{bouhtou2008optimization}.
 \begin{lem}
     \label{lem:bouhtou_ineq}
@@ -330,7 +340,7 @@ To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, 
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $\lambda \vdash k$ be a Young diagram with $k$ boxes.
     Then
     \begin{equation}
-        \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k} \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
+        \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k}] \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
     \end{equation}
 \end{cor}
 
@@ -364,7 +374,7 @@ As a corollary of \cref{thm:ptz_ineqs}, we obtain the following determinant and 
         \mathrm{per}(A+B+C) + \mathrm{per}(B) \geq \mathrm{per}(A+B) + \mathrm{per}(B+C).
     \end{align}
 \end{cor}
-Note that with the exception of the above determinant inequality, the inequalities provied by \cref{thm:ptz_ineqs} are generally not equivalent to inequalities involving only eigenvalues.
+Note that with the exception of the above determinant inequality, the inequalities provided by \cref{thm:ptz_ineqs} are generally not equivalent to inequalities involving only eigenvalues.
 
 One also has another determinant inequality which is non-linear in determinants \cite[Lemma 2.3]{tie2011rearrangement}.
 \begin{lem}
@@ -415,7 +425,7 @@ The most comprehensive result concerning the eigenvalues of partial sums of Herm
         F(Y|X) \coloneqq \Tr f (X+Y) - \Tr f(Y).
     \end{equation}
     The inequality in \cref{eq:sagnol_ineq} is thus equivalent to $F(C|B) \leq F(A+C|B)$.
-    To prove \cref{eq:sagnol_ineq} it suffices to prove that the value of $F(Y|X)$ is a nondecreasing function under $Y \mapsto Y+Z$ for arbitrary positive semidefinite $X,Y$, and $Z$.
+    To prove \cref{eq:sagnol_ineq} it suffices to prove that the value of $F(Y|X)$ is a non-decreasing function under $Y \mapsto Y+Z$ for arbitrary positive semidefinite $X,Y$, and $Z$.
     To establish the claim, let $\epsilon > 0$ be small and let $Z = \epsilon W$ for non-zero positive semidefinite $W$.
     It can be shown\footnote{The statement follows, without loss of generality, by assuming that all the matrices involved are positive \textit{definite}. This assumption is permitted because $f$ is assumed continuous and the eigenvalues of a matrix are also continuous functions (see \cite{sagnol2013approximation} for a detailed explanation).} that
     \begin{align}
@@ -425,7 +435,7 @@ The most comprehensive result concerning the eigenvalues of partial sums of Herm
         &= \Tr\left[\left( f'(X+Y)-f'(Y)\right) W\right].
     \end{align}
     Using the assumption that $f'$ is an operator monotone together with $X+Y \geq Y$ (because $X \geq 0$), we have $f'(X+Y) \geq f'(Y)$ and thus $f'(X+Y)-f'(Y) \geq 0$.
-    Therefore $(\partial_{Y}F(Y|X))(W) \geq 0$ for all $W$ and thus $F(Y|X)$ is nondecreasing with respect to $Y \mapsto Y+Z$ as desired.
+    Therefore $(\partial_{Y}F(Y|X))(W) \geq 0$ for all $W$ and thus $F(Y|X)$ is non-decreasing with respect to $Y \mapsto Y+Z$ as desired.
 \end{proof}
 
 As corollaries one obtains some of the previously mentioned inequalities for various functions $f$ satisfying the conditions of the theorem; for example, choosing $f(x) = x \log x$ yields \cref{thm:ssa_ineq}, while choosing $f(x) = -x^p$ for $p\in(0,1]$ yields \cref{lem:bouhtou_ineq}, and choosing $f(x) = x^p$ for $p \in (1, 2]$ yields the following.
@@ -438,7 +448,15 @@ As corollaries one obtains some of the previously mentioned inequalities for var
     \end{equation}
 \end{cor}
 
-\textcolor{blue}{TC: On Sept. 18th, I came across an interesting discussion on \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality} which appears deeply related to the topic of submodular inequalities. In that post the following result is stated without explicit proof and is based on the theory of so-called ``hyperbolic polynomials'' $p$ and their real roots $\lambda_i$. There are a handful of conjectured inequalities on the page.} 
+{\color{blue}
+TC: On Sept. 18th, I came across an interesting discussion on \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality} which appears deeply related to the topic of submodular inequalities. In that post the following result is stated without explicit proof and is based on the theory of so-called ``hyperbolic polynomials'' $p$ and their real roots $\lambda_i$. There are a handful of conjectured inequalities on the page.
+For example, it seems to prove
+\begin{equation}
+    E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
+\end{equation}
+where $E_k(X) = e_{k}(\lambda(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
+}
+
 
 \begin{rem}
     There is also the paper by \citeauthor{lami2017log} which investigates submodular inequalities of functions of blocks of positive matrices \cite{lami2017log}.
@@ -450,206 +468,309 @@ As corollaries one obtains some of the previously mentioned inequalities for var
 The purpose of this section is to introduce the notion of an ``additive'' quantum entropy cone which serves as a kind of analogy to the ordinary quantum entropy cone considered by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 Formally, quantum states $\rho_{ABC}$ and their reduced states ($\rho_{AB}$, etc.) are replaced by tuples of positive semidefinite operators $(X, Y, Z)$ and their partial sums ($X +Y$, etc.).
 Moreover the von Neumann entropy of each reduced state is replaced by an unnormalized entropy of each partial sum.
-Using essentially the same approach adopted by \cite{pippenger2003inequalities}, we prove that the topological closure of the set of all such ``allocations'' of unnormalized entropies of partial sums forms a convex cone, which we term the ``additive quantum entropy cone''.
-Moreover, we prove inequalities constraining the boundary of the additive quantum entropy cone which parallel the basic positivity, subaddivity and strong subadditivity inequalities which constrain the boundary of the ordinary quantum entropy cone.
+We prove that the set of all such ``allocations'' of unnormalized entropies of partial sums forms a convex cone, which we term the ``additive quantum entropy cone'' or simply ``additive entropy cone''.
+Moreover, we prove that all balanced inequalities which are non-negative over the ordinary quantum entropy cone, such as subaddivity and strong subadditivity, are also non-negative over the additive quantum entropy cone.
 
 \subsection{The shifted unnormalized entropy function}
 
 The primary quantity of interest will be a real-valued function of eigenvalues which resembles von Neumann entropies.
 \begin{defn}
-    Define a continuous function $h : \mathbb R_{\geq 0} \to \mathbb R$ by
+    Let $\eta : \mathbb R_{\geq 0} \to \mathbb R$ be defined by
     \begin{equation}
-        h (x) = 
+        \eta (x) = 
         \begin{cases}
             - x \log x & x > 0, \\
-            0 & x = 0,
+            0 & x = 0.
         \end{cases}
     \end{equation}
-    and let $H_{\beta}$ be the real-valued function on PSD matrices given by
-    \begin{equation}
-        \label{eq:shifted_unnormalized_entropy}
-        H_{\beta}(X) = \beta + \Tr(h(X)) = \beta + \sum_{i=1}^{d} h(\lambda_i(X)).
-    \end{equation}
-    The quantity $H_{\beta}(X)$ will be called the \textbf{($\boldsymbol{\beta}$-shifted) unnormalized entropy} of $X$. 
 \end{defn}
 \begin{rem}
-    For ease of notation, we will henceforth adopt the convention that $0\log 0 \coloneqq 0$ so that one can write $h_{\beta}(x) = - x \log x$ without consideration for the $x = 0$ case explicitly.
+    For ease of notation, we will henceforth adopt the convention that $0\log 0 \coloneqq 0$ so that one can write $\eta(x) = - x \log x$ without consideration for the $x = 0$ case explicitly.
 \end{rem}
+\begin{rem}
+    Note that $\eta$ is a continuous function with maximum at $x = e^{-1}$ of value $\eta(e^{-1}) = e^{-1}$.
+    Also, $\eta$ is strictly positive on the interval $x \in (0,1)$ and strictly negative for $x \in (1, \infty)$.
+\end{rem}
+\begin{lem}
+    The function $\eta : \mathbb R_{\geq 0} \to \mathbb R$ is subadditive meaning for all $x,y \geq 0$,
+    \begin{equation}
+        \eta(x+y)\leq \eta(x) + \eta(y),
+    \end{equation}
+    and more generally strongly subadditive meaning for all $x,y,z\geq0$,
+    \begin{equation}
+        \eta(x+y+z)+\eta(y)\leq \eta(x+y) + \eta(y+z).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    This claim is a special case ($d=1$) of a later theorem (\cref{thm:ssa_ineq}) which does not depend on this result.
+\end{proof}
+\begin{defn}
+    Given $\beta \in \mathbb R$, let $\unent_{\beta}$ be the real-valued function on PSD matrices given by
+    \begin{equation}
+        \label{eq:shifted_unnormalized_entropy}
+        \unent_{\beta}(X) = \beta + \Tr(\eta(X)) = \beta + \sum_{i=1}^{d} \eta(\lambda_i(X)).
+    \end{equation}
+    The quantity $\unent_{\beta}(X)$ will be called the \textbf{($\boldsymbol{\beta}$-shifted) unnormalized entropy} of $X$. 
+\end{defn}
 
 \begin{rem}
-    It is worth remarking why $H_{\beta}$ is termed the (shifted) unnormalized entropy.
+    It is worth remarking why $\unent_{\beta}$ is termed the (shifted) unnormalized entropy.
     Suppose $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$.
     When $\beta = 0$, we have the following 
     \begin{equation}
-        H_{0}(X) = - \sum_{i=1}^{d} \lambda_i \log \lambda_i.
+        \unent_{0}(X) = - \sum_{i=1}^{d} \lambda_i \log \lambda_i.
     \end{equation}
-    We elect to call $H_0(X)$ the \textit{unnormalized} entropy of $X$ because it coincides with the von Neumann entropy when restricted inputs where $\Tr(X) = 1$ (i.e. when $X$ is a density matrix).
-    In general, $H_{0}(X)$ is related to the von Neumann entropy of the \textit{normalization} of $X$ according to the formula
+    We elect to call $\unent_0(X)$ the \textit{unnormalized} entropy of $X$ because it coincides with the von Neumann entropy when restricted to inputs $X$ where $\Tr(X) = 1$ (i.e., when $X$ is a density matrix).
+    In general, $\unent_{0}(X)$ is related to the von Neumann entropy of the \textit{normalization} of $X$ according to the formula
     \begin{equation}
-        H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = H_{0}\left(\frac{X}{\Tr(X)}\right) = \frac{1}{\Tr(X)} H_0(X) + \log \Tr(X),
+        H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = \unent_{0}\left(\frac{X}{\Tr(X)}\right) = \frac{1}{\Tr(X)} \unent_0(X) + \log \Tr(X),
     \end{equation}
     or equivalently,
     \begin{equation}
-        H_0(X) = \Tr(X)H_{0}\left(\frac{X}{\Tr(X)}\right) - \Tr(X)\log \Tr(X).
+        \unent_0(X) = \Tr(X)\unent_{0}\left(\frac{X}{\Tr(X)}\right) + \eta(\Tr(X)).
     \end{equation}
-    The term $H_{\beta}(X)$ is called the \textit{shifted} or $\beta-$\textit{shifted} unnormalized entropy because $H_{\beta}(X) =\beta + H_0(X)$ and also
+    or equivalently,
     \begin{equation}
-        H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = \frac{H_{\Tr(X)\log \Tr(X)}(X)}{\Tr(X)}.
+        H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = \frac{\unent_{-\eta(\Tr(X))}(X)}{\Tr(X)}.
     \end{equation}
+    The term $\unent_{\beta}(X)$ is called the $\beta$-shifted unnormalized entropy because $\unent_{\beta}(X) =\beta + \unent_0(X)$.
 \end{rem}
 
-The following lemma lists some basic properties of the function $H_{\beta}$.
-\begin{lem}
-    Let $\beta \in \mathbb R$, let $H_{\beta}$ be as defined by \cref{eq:shifted_unnormalized_entropy} and let $X$ be a PSD matrix.
+The following proposition lists some basic properties of the function $\unent_{\beta}$.
+\begin{prop}
+    Let $\beta \in \mathbb R$, let $\unent_{\beta}$ be as defined by \cref{eq:shifted_unnormalized_entropy} and let $X$ be a PSD matrix.
     \begin{itemize}
-        \item $H_{\beta}$ is a spectral function: for all unitary matrices $U$,
+        \item $\unent_{\beta}$ is a spectral function: for all unitary matrices $U$,
             \begin{equation}
-                H_{\beta}(X) = H_{\beta}(U X U^{\dagger}).
+                \unent_{\beta}(X) = \unent_{\beta}(U X U^{\dagger}).
+            \end{equation}
+        \item the value of $\unent_{0}(X)$ is lower bounded by
+            \begin{equation}
+                \unent_{0}(X) \geq \eta(\Tr(X))
             \end{equation}
         \item Let $\gamma I_{d}$ be the $d\times d$ scalar matrix with $\gamma \geq 0$ along the diagonal. Then
             \begin{equation}
-                H_{\beta}(\gamma I_{d}) = \beta - d\gamma\log \gamma.
+                \unent_{\beta}(\gamma I_{d}) = \beta + d\eta(\gamma).
+            \end{equation}
+        \item Let $\beta' \in \mathbb R$ and $X' \geq 0$ a PSD matrix. Then,
+            \begin{equation}
+                \unent_{\beta + \beta'}(X\oplus X') = \unent_{\beta}(X) + \unent_{\beta'}(X').
             \end{equation}
     \end{itemize}
-\end{lem}
+\end{prop}
 
-It is important to note that $H_{\beta}(X)$ is not a homogeneous function in $X$ meaning in general
+It is important to note that $\unent_{\beta}(X)$ is not a homogeneous function in $X$ meaning in general
 \begin{equation}
-    H_{\beta}(X) \neq H_{\beta}(\gamma X).
+    \unent_{\beta}(X) \neq \unent_{\beta}(\gamma X).
 \end{equation}
 Nevertheless, there is a sense it which it is homogeneous up to a modification to the value of $\beta$ which depends on the scaling parameter $\gamma$.
 \begin{lem}
     \label{lem:deformation_homogeneous}
-    Let $\gamma > 0$ be non-zero. Then $H_{\beta}$ is deformation-homogeneous in the sense that
+    Let $\gamma > 0$ be non-zero. Then $\unent_{\beta}$ is deformation-homogeneous in the sense that
     \begin{equation}
         \label{eq:deformation_homogeneous}
-        H_{\beta}(\gamma X) = \beta + \gamma H_{0}(X) - \gamma \log \gamma \Tr(X) = \gamma H_{\beta - \Tr(X)\log \gamma }(X).
+        \unent_{\beta}(\gamma X) = \beta + \gamma \unent_{0}(X) - \gamma \log \gamma \Tr(X) = \gamma \unent_{\beta - \Tr(X)\log \gamma }(X).
     \end{equation}
     As a special case, letting $\beta = \Tr(X)\log \gamma$ produces
         \begin{equation}
-            H_{0}(X) = \frac{1}{\gamma} H_{\Tr(X) \log \gamma}(\gamma X),
+            \unent_{0}(X) = \frac{1}{\gamma} \unent_{\Tr(X) \log \gamma}(\gamma X),
         \end{equation}
     and as a further special case, letting $\gamma = \Tr(X)^{-1}$ yields
         \begin{equation}
-            H_{0}(X) = \Tr(X) H_{h(\Tr(X))}\left(\frac{X}{\Tr(X)}\right).
+            \unent_{0}(X) = \Tr(X) \unent_{\eta(\Tr(X))}\left(\frac{X}{\Tr(X)}\right).
         \end{equation}
 \end{lem}
+It is also possible to conceptualize the shifts themselves as unnormalized entropies of scalar matrices.
+\begin{lem}
+    Let $\beta \in \mathbb R$. 
+    Then there exists a sufficiently large integer $d \in \mathbb N_{> 0}$ and a $\gamma \geq 0$ such that
+    \begin{equation}
+        \label{eq:shift_as_entropy}
+        \unent_0(\gamma I_d) = \beta.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    For any $\gamma \geq 0$ and integer $d \in \mathbb N_{> 0}$,
+    \begin{equation}
+        \unent_0(\gamma I_d) = - d \gamma \log \gamma.
+    \end{equation}
+    By varying $\gamma \in [0,\infty)$, the image under $\gamma \mapsto \unent_0(\gamma I_d)$ is $(-\infty, d/e]$.
+    Therefore, if $\beta \leq 0$, then for all $d \in \mathbb N_{>0}$, there exists a $\gamma$ such that $\unent_0(\gamma I_d) = \beta$.
+    Otherwise, if $\beta > 0$, then let $d = \ceil{e \beta}$. 
+    This choice for $d$ places $\beta$ in the range of the map $\gamma \mapsto \unent_0(\gamma I_d)$.
+    Then there exists a $\gamma$ such that $\gamma^{\gamma} = \exp(-\frac{\ceil{e \beta}}{e})$ which satisfies \cref{eq:shift_as_entropy}.
+\end{proof}
 
 \subsection{Inequalities for the unnormalized entropy function}
-%
-%The first inequality is the most basic.
-%It identifies that for sufficiently large values of $\beta$, the quantity $H_{\beta} (X)$ is non-negative.
-%\begin{lem}
-%    \label{lem:beta_norm_positive}
-%    Let $X$ be a PSD matrix with sufficiently small maximum eigenvalue such that
-%    \begin{equation}
-%        \label{eq:norm_beta_cond}
-%        \norm{X}_{\infty} \leq \exp (\beta).
-%    \end{equation}
-%    Then,
-%    \begin{equation}
-%        H_{\beta}(X) \geq 0,
-%    \end{equation}
-%    with equality (for $X$ satisfying \cref{eq:norm_beta_cond}) holding only if $X$ has eigenvalues in the set $\{0, \exp(\beta)\}$.
-%\end{lem}
-%\begin{proof}
-%    If $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$, then $H_{\beta}(X)$ equals
-%    \begin{equation}
-%        \label{eq:eigen_sum_Hbeta}
-%        H_{\beta}(X) = \sum_{i=1}^{d} \lambda_i (\beta - \log \lambda_i).
-%    \end{equation}
-%    Under the conditions that $X \geq 0$ is PSD and satisfying \cref{eq:norm_beta_cond}, we have
-%    \begin{equation}
-%        \lambda_i \geq 0, \qquad \text{and} \qquad \beta - \log \lambda_i \geq 0,
-%    \end{equation}
-%    respectively.
-%    Therefore each summand in \cref{eq:eigen_sum_Hbeta} is positive and thus $H_{\beta}(X) \geq 0$ holds.
-%    To prove the claim regarding equality $H_{\beta}(X)$ we note that each summand in \cref{eq:eigen_sum_Hbeta} must be zero and thus either $\lambda_i = 0$ or $\lambda_i = \exp(\beta)$.
-%\end{proof}
-%
-%\begin{rem}
-%    \textcolor{blue}{TC: If is unclear at the moment whether it is possible for $X$ to satisfy $H_{\beta}(X) = 0$ while having eigenvalues different from $\{0,\exp(\beta)\}$ if one allows for $\norm{X}_{\infty} > \exp(\beta)$.}
-%\end{rem}
 
 \begin{thm}
     \label{thm:unnormalized_entropy_ssa}
     Let $X, Y, Z \geq 0$ be PSD matrices.
-    Then $H_{0}$ is both subadditive
+    Then $\unent_{0}$ is both subadditive
     \begin{equation}
         \label{eq:subadditive_Hbeta}
-        H_{0}(X+Y) \leq H_{0}(X) + H_{0}(Y),
+        \unent_{0}(X+Y) \leq \unent_{0}(X) + \unent_{0}(Y),
     \end{equation}
     and also strongly subadditive in the sense that
     \begin{equation}
-        \label{eq:strong_subadditive_Hbeta}
-        H_{0}(X+Y+Z) + H_{0}(Y) \leq H_{0}(X+Y) + H_{0}(Y+Z).
+        \label{eq:ssa_unnorm_ent}
+        \unent_{0}(X+Y+Z) + \unent_{0}(Y) \leq \unent_{0}(X+Y) + \unent_{0}(Y+Z).
     \end{equation}
 \end{thm}
 \begin{proof}
-    We begin by noting that subadditivity (\cref{eq:subadditive_Hbeta}) is a special case of strong subadditivty (\cref{eq:strong_subadditive_Hbeta}) under the substitution $(X,Y,Z) \mapsto (X, 0, Y)$ because $H_{0}(0) = 0$.
-    Therefore it suffices to just prove strong subadditivity (\cref{eq:strong_subadditive_Hbeta}).
-    %Furthermore, it sufficies to prove just the $\beta = 0$ case of \cref{eq:strong_subadditive_Hbeta} because $H_{\beta}(X) = \beta \Tr(X) + H_0(X)$ and 
+    We begin by noting that subadditivity (\cref{eq:subadditive_Hbeta}) is a special case of strong subadditivty (\cref{eq:ssa_unnorm_ent}) under the substitution $(X,Y,Z) \mapsto (X, 0, Y)$ because $\unent_{0}(0) = 0$.
+    Therefore it suffices to just prove strong subadditivity (\cref{eq:ssa_unnorm_ent}).
+    %Furthermore, it sufficies to prove just the $\beta = 0$ case of \cref{eq:ssa_unnorm_ent} because $\unent_{\beta}(X) = \beta \Tr(X) + \unent_0(X)$ and 
     %\begin{equation}
     %    \label{eq:balanced}
     %    \Tr(X+Y+Z) + \Tr(Y) = \Tr(X+Y) + \Tr(Y+Z).
     %\end{equation}
-    The strong subaddivity of $H_{0}$ holds as an special case of \cref{thm:sagnol_ineq} where the function $f$ is taken to be the function 
+    The strong subaddivity of $\unent_{0}$ holds as an special case of \cref{thm:sagnol_ineq} where the function $f$ is taken to be the function 
     \begin{equation}
-        f(x) \coloneqq -h(x) = x \log x.
+        f(x) \coloneqq -\eta(x) = x \log x.
     \end{equation}
-    The derivative of $-h$ is
+    The derivative of $-\eta$ is
     \begin{equation}
-        (-h)'(x) = \log x + 1
+        (-\eta)'(x) = \log x + 1
     \end{equation}
     which is known to be operator monotone \cite{chansangiam2013operator} on $\mathbb R_>0$ as required.
 \end{proof}
 
-\subsection{Comparison to concavity of von Neumann entropy}
+\subsection{Comparison with concavity of von Neumann entropy}
 At this stage it is worth comparing how the inequalities in \cref{thm:unnormalized_entropy_ssa} compare to known inequalities concerning von Neumann entropy.
 Suppose $\rho_X$ and $\rho_Y$ are two density matrices and $\lambda \in [0,1]$ is a convex parameter.
 Then it is known that the von Neumann entropy satisfies \textit{concavity}:
 \begin{equation}
-    \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_X) \leq  H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y),
+    \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) \leq  H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y),
 \end{equation}
 but also an associated upper bound:
 \begin{equation}
-    H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y) \leq \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_X) + h_{\mathrm{bin}}(\lambda)
+    H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y) \leq \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) + h_{\mathrm{bin}}(\lambda)
 \end{equation}
 where $h_{\mathrm{bin}}(\lambda)$ is the binary entropy function:
 \begin{equation}
     h_{\mathrm{bin}}(\lambda) = -\lambda \log \lambda - (1-\lambda) \log \lambda.
 \end{equation}
 
-\textbf{(Upper bound):}
-We first show that this upper bound is related to subadditvity of $H_0$.
+\subsubsection{Concavity upper bound}
+We first show that this upper bound is related to subadditvity of $\unent_0$.
 If we let $p_X, p_Y \geq 0$ be weights such that
 \begin{equation}
+    \label{eq:binary_weights}
     \lambda = \frac{p_{X}}{p_{X} + p_{Y}}, \qquad 1-\lambda = \frac{p_{Y}}{p_{X} + p_{Y}},
 \end{equation}
-then the upper bound above can be equivalently written in terms of the unnormalized entropy $H_0$ of
+then the concavity upper bound above can be equivalently written in terms of the unnormalized entropy $\unent_0$ as
 \begin{equation}
-    \sigma_X \coloneqq p_X \rho_X, \qquad \sigma_Y = p_Y \rho_Y,
+    \unent_{0}(\sigma_X + \sigma_Y) \leq \unent_0(\sigma_X) + \unent_0(\sigma_Y),
 \end{equation}
-as follows 
+where
 \begin{equation}
-    H_{0}(\sigma_X + \sigma_Y) \leq H_0(\sigma_X) + H_0(\sigma_Y).
+    \label{eq:normalization_scheme}
+    \sigma_X \coloneqq p_X \rho_X, \qquad \sigma_Y = p_Y \rho_Y.
 \end{equation}
-We note that this expression is equivalent to the subadditivity of $H_0$ (\cref{eq:subadditive_Hbeta} from \cref{thm:unnormalized_entropy_ssa}).
+We note that this expression is equivalent to the subadditivity of $\unent_0$ (\cref{eq:subadditive_Hbeta} from \cref{thm:unnormalized_entropy_ssa}).
 This is because every non-zero PSD matrix $\sigma_X$ can be equivalently expressed in terms of a positive weight $p_X$ and a density matrix $\rho_X$ according to the formula:
 \begin{equation}
     (p_X, \rho_X) \coloneqq \left(\Tr(\sigma_X), \frac{\sigma_X}{\Tr(\sigma_X)}\right).
 \end{equation}
 
-\textbf{(Lower bound/concavity):}
+\subsubsection{Concavity lower bound}
 It is also possible to express the concavity of von Neumann entropy as a kind of superadditivity of a different function, namely the function 
 \begin{equation}
-    g(X) = \Tr(X) H_{\mathrm{vN}}\left(\frac{X}{\Tr(X)}\right) = H_0(X) + \Tr(X) \log \Tr(X).
+    g(\sigma) = \Tr(\sigma) H_{\mathrm{vN}}\left(\frac{\sigma}{\Tr(\sigma)}\right) = \unent_0(\sigma) - \eta(\Tr(\sigma)),
 \end{equation}
+for PSD $\sigma$.
+The non-negativity of $g(\sigma)$ follows because von Neumann entropy is non-negative, or equivalently the non-negativity of $g(\sigma)$ follows from the subadditivity of $\eta$: ($N_0(\sigma) \geq \eta(\Tr(\sigma))$ and thus $g(\sigma) \geq 0$).
 In this notation, the concavity of von Neumann entropy is equivalent to
 \begin{equation}
-    g(\sigma_X + \sigma_Y) \geq g(\sigma_X) + g(\sigma_Y).
+    g(\sigma_X + \sigma_Y) \geq g(\sigma_X) + g(\sigma_Y),
 \end{equation}
-\textcolor{blue}{TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity or not, but it is probably worth finding out.}
+because \cref{eq:normalization_scheme} and \cref{eq:binary_weights} implies
+\begin{align}
+    \frac{g(\sigma_X + \sigma_Y)}{\Tr(\sigma_X + \sigma_Y)} &= H_{\mathrm{vN}}\left(\frac{\sigma_X + \sigma_Y}{\Tr(\sigma_X + \sigma_Y)}\right) = H_{\mathrm{vN}}(\lambda \rho_X + (1-\lambda)\rho_Y), \\
+    \frac{g(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_X}{\Tr(\sigma_X)}\right) = \lambda H_{\mathrm{vN}}(\rho_X), \\
+    \frac{g(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_Y}{\Tr(\sigma_Y)}\right) = (1-\lambda) H_{\mathrm{vN}}(\rho_Y).
+\end{align}
+
+{\color{blue}
+TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity, i.e.,
+\begin{equation}
+    g(\sigma_X + \sigma_Y) + g(\sigma_Y + \sigma_Z) \stackrel{?}{\leq} g(\sigma_Y) + g(\sigma_{X} + \sigma_{Y} + \sigma_{Z})
+\end{equation}
+or not, but it is probably worth finding out.
+The strong superadditivity of $g$ is equivalent to the following upper bound:
+\begin{align}
+    0 &\leq \unent_{0}(X+Y) + \unent_{0}(Y+Z) - \unent_{0}(X+Y+Z) - \unent_{0}(Y),\\
+    &\stackrel{?}{\leq} \eta(\Tr(X+Y)) + \eta(\Tr(Y+Z)) - \eta(\Tr(X+Y+Z)) - \eta(\Tr(Y)).
+\end{align}
+This inequality (or something very close) may or may not hold.
+
+Belong are some more calculations which may prove useful.
+Let $\sigma_{AY_1Y_2Y_3}$ be an $4$-party state defined by PSD $X_1,X_2,X_3$ as follows:
+\begin{align}
+    \begin{split}
+        \sigma_{AY_1Y_2Y_3} = \frac{1}{\Tr(X_1+X_2+X_3)}\bigg(
+            &X_1 \ot \ket1\!\bra1 \ot \ket0\!\bra0 \ot \ket0\!\bra0 +\\
+            &X_2 \ot \ket0\!\bra0 \ot \ket1\!\bra1 \ot \ket0\!\bra0 +\\
+            &X_3 \ot \ket0\!\bra0 \ot \ket0\!\bra0 \ot \ket1\!\bra1
+        \bigg).
+    \end{split}
+\end{align}
+For each subset $S \subseteq [n]$, let $X_S = \sum_{i\in S}X_i$ denote the partial sum.
+Then
+\begin{align}
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{A}) &= g(X_{123}) \\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{Y_1}) &= \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))\\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1}) &= g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123})) \\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}) &= g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))\\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2Y_3}) &= \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}).
+\end{align}
+\textbf{(i)} 
+Subadditivity between $A$ and $Y_1$ yields
+\begin{equation}
+    H_{\mathrm{vN}}(\sigma_{AY_1}) \leq H_{\mathrm{vN}}(\sigma_{A}) + H_{\mathrm{vN}}(\sigma_{Y_1}).
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to concavity:
+\begin{equation}
+    g(X_1) + g(X_{23}) \leq g(X_{123}).
+\end{equation}
+\textbf{(ii)} 
+Strong subadditivity implies
+\begin{equation}
+    I_{Y_1,Y_3|A} = H_{\mathrm{vN}}(\sigma_{AY_1}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{A}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to
+\begin{align}
+    \begin{split}
+        &[g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
+        &\qquad\geq [g(X_{123})] 
+        +[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
+    \end{split}
+\end{align}
+which is equivalent to
+\begin{equation}
+     N_0(X_{12}) + N_0(X_{23}) \geq N_0(X_{2}) + N_0(X_{123}).
+\end{equation}
+\textbf{(iii)} 
+Strong subadditivity implies
+\begin{equation}
+    I_{Y_1,A|Y_3} = H_{\mathrm{vN}}(\sigma_{Y_1Y_3}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{Y_3}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to
+\begin{align}
+    \begin{split}
+        &[\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
+        &\qquad\geq [\eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
+    \end{split}
+\end{align}
+which is equivalent to concavity again
+\begin{equation}
+    g(X_{12}) \geq g(X_{1})+ g(X_{2})
+\end{equation}
+}
 
 \subsection{The additive unnormalized entropy cone}
 
@@ -659,7 +780,7 @@ We are now in a position to actually define allocations of unnormalized entropie
     and let $\tuple{\beta} \coloneqq (\beta_1, \ldots, \beta_n)$ be an $n$-tuple of non-negative real numbers in $\mathbb R_{\geq 0}^{n}$.
     Define the \textbf{allocation of unnormalized entropies} of $\tuple{X}$ shifted by $\tuple{\beta}$ be the element of $\mathbb R^{2^n - 1}$ given by
     \begin{equation}
-        \alpha_{n}(\tuple{X}| \tuple{\beta}) \coloneqq \left(H_{\beta_{S}}(X_S)\right)_{S \subset [n] \setminus \emptyset},
+        \alpha_{n}(\tuple{X}| \tuple{\beta}) \coloneqq \left(\unent_{\beta_{S}}(X_S)\right)_{S \subset [n] \setminus \emptyset},
     \end{equation}
     where $X_S$ and $\beta_{S}$ respectively denote partial sums over the subset $S$:
     \begin{align}
@@ -670,17 +791,24 @@ We are now in a position to actually define allocations of unnormalized entropie
 \begin{exam}
     For example, when $n=3$, the allocation of unnormalized entropies for $\tuple{X} = (X,Y,Z)$ when $\tuple{\beta} = (0,0,0)$ is
     \begin{equation}
-        \alpha_{3}(X, Y, Z|0,0,0) = \left(H_{0}(X), H_{0}(Y), H_{0}(Z), H_{0}(Y+Z), H_{0}(X+Z), H_{0}(X+Y), H_{0}(X+Y+Z) \right).
+        \alpha_{3}(X, Y, Z|0,0,0) = \left(\unent_{0}(X), \unent_{0}(Y), \unent_{0}(Z), \unent_{0}(Y+Z), \unent_{0}(X+Z), \unent_{0}(X+Y), \unent_{0}(X+Y+Z) \right).
     \end{equation}
 \end{exam}
-Note that if the eigenvalues of a PSD matrix $X$ are larger than one, then it becomes possible for the unnormalized entropy $H_0(X)$ to become negative. 
+\begin{rem}
+    The shifted unnormalized entropy can always be decomposed as $\unent_{\beta}(X) = \beta + \unent_0(X)$.
+    Therefore, the allocation $\alpha_n(\tuple X | \tuple \beta)$ can also be decomposed as
+    \begin{equation}
+        \alpha_n(\tuple X | \tuple \beta) = \alpha_n(\tuple 0 | \tuple \beta) + \alpha_n(\tuple X | \tuple 0).
+    \end{equation}
+\end{rem}
+Note that if the eigenvalues of a PSD matrix $X$ are larger than one, then it becomes possible for the unnormalized entropy $\unent_0(X)$ to become negative. 
 In what follows, it will desirable to consider allocations of unnormalized entropies which lie inside the positive cone $\mathbb R_{\geq 0}^{2^n-1} \subset \mathbb R^{2^n}$.
 To ensure positivity, we place explicit restrictions on the value of the permitted $\beta$-shifts.
 \begin{defn}
     The collection of allocations of unnormalized entropies of $n$-tuples of PSD matrices is defined by
     \begin{equation}
         \s A_{n} \coloneqq
-        \left\{ \alpha_{n} ( \tuple{X} | \tuple{\beta}) \middle| \forall S \subseteq [n], H_{\beta_S}(X_S) \geq 0 \right\} \subseteq \mathbb R^{2^n}_{\geq 0}.
+        \left\{ \alpha_{n} ( \tuple{X} | \tuple{\beta}) \middle| \forall S \subseteq [n], \unent_{\beta_S}(X_S) \geq 0 \right\} \subseteq \mathbb R^{2^n}_{\geq 0}.
     \end{equation}
 \end{defn}
 
@@ -707,7 +835,7 @@ To prove that $\s A_n$ forms a convex cone, it suffices to show that it is both 
     \begin{equation}
         \gamma \alpha_{n}(\tuple{X}|\tuple{\beta}) = \alpha_{n}(\gamma \tuple{X}|\tuple{\beta} + \log \gamma \tau(\tuple X)).
     \end{equation}
-    The additional claim that $\gamma \alpha_{n}(\gamma \tuple{X}|\tuple{\beta}) \in \s A_n$ follows because $H_{\gamma \beta_S+\Tr(X_S)\log \gamma}(\gamma X_S) = \gamma H_{\beta_S}(X_S) \geq 0$ where the last inequality follows from positivity of $\gamma$ and the assumption that $\alpha_{n}(\tuple{X}|\tuple{\beta}) \in \s A_n$.
+    The additional claim that $\gamma \alpha_{n}(\gamma \tuple{X}|\tuple{\beta}) \in \s A_n$ follows because $\unent_{\gamma \beta_S+\Tr(X_S)\log \gamma}(\gamma X_S) = \gamma \unent_{\beta_S}(X_S) \geq 0$ where the last inequality follows from positivity of $\gamma$ and the assumption that $\alpha_{n}(\tuple{X}|\tuple{\beta}) \in \s A_n$.
 \end{proof}
 Next we show that $\s A_{n}$ is closed under addition.
 \begin{lem}
@@ -725,13 +853,13 @@ Next we show that $\s A_{n}$ is closed under addition.
     Consequently, the set $\mathcal A_{\beta, n}$ is closed under addition.
 \end{lem}
 \begin{proof}
-    First note that $H_{0}$ is additive across direct sums,
+    First note that $\unent_{0}$ is additive across direct sums,
     \begin{equation}
-        H_{0}(X \oplus X') = H_{0}(X) + H_{0}(X'),
+        \unent_{0}(X \oplus X') = \unent_{0}(X) + \unent_{0}(X'),
     \end{equation}
     and thus for any $\beta, \beta' \in \mathbb R$,
     \begin{equation}
-        H_{\beta + \beta'}(X \oplus X') = H_{\beta}(X) + H_{\beta'}(X').
+        \unent_{\beta + \beta'}(X \oplus X') = \unent_{\beta}(X) + \unent_{\beta'}(X').
     \end{equation}
     Then, note that direct sums are distributive across sums so that
     \begin{equation}
@@ -750,9 +878,9 @@ Next we show that $\s A_{n}$ is closed under addition.
 
 \subsection{Connection to the multiplicative quantum entropy cone}
 
-The purpose of this section is to compare the \textit{additive} quantum entropy cone, $\bar {\mathcal A}_{n}$, to the \textit{(multiplicative)} quantum entropy cone, $\bar {\mathcal M}_{n}$, previously studied by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
-Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal A}_{n}$, lies inside the multiplicative quantum entropy cone, $\bar {\mathcal M}_{n}$, by following a particular family of quantum states.
+The purpose of this section is to compare the \textit{additive} quantum entropy cone, $\mathcal A_{n}$, to the \textit{(multiplicative)} quantum entropy cone previously studied by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 
+\subsubsection{Embedding \texorpdfstring{$n$}{n} PSD matrices into \texorpdfstring{$n$}{n}-partite quantum states}
 \begin{defn}
     Let $n, d$ be positive integers and consider the complex vector space $(\mathbb C^{d+1})^{\ot n}$.
     For each $p \in [n]$, let $\{ \ket {0}_p, \ket {1}_p, \ldots, \ket {d}_p \}$ be a basis for $\mathbb C^{d+1}$ (noting that $\ket{i}_{p}$ need not equal $\ket{i}_{q}$ for $p \neq q$).
@@ -788,27 +916,6 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
     where $U(1) \times U(d) \subset U(d+1)$ refers to the subgroup of the unitary group which preserves the subspace spanned by $\ket{0}_p$.
     In particular, a weight space decomposition of $(\mathbb C^{d+1})^{\ot n}$ depends only on a fixed product vector $\ket{\emptyset} \coloneqq \ket{\phi}_1 \ot \cdots \ket{\phi}_n$.
 \end{rem}
-%\begin{defn}
-%    \label{defn:spec_embed}
-%    Let $(M_1, \ldots, M_n)$ be a $n$-tuple of $k\times d$ complex matrices and
-%    define $\Gamma(M_1, \ldots, M_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
-%    \begin{equation}
-%        \label{eq:weight_zero_portion}
-%        \braa{\emptyset}\Gamma(M_1, \ldots, M_n)\kett{\emptyset} = 1 - \sum_{p=1}^{n} \Tr(M_p^{\dagger}M_p),
-%    \end{equation}
-%    and
-%    \begin{equation}
-%        \label{eq:weight_one_portion}
-%        \braa{i_p}\Gamma(M_1, \ldots, M_n)\kett{j_q} = \bra{i} M_p^\dagger M_{q} \ket{j}.
-%    \end{equation}
-%    For example, the coefficients of $\Gamma_{[n]}$ in the weight-two subspace are zero,
-%    \begin{equation}
-%        \braa{i_p, i'_{p'}}\Gamma(M_1, \ldots, M_n)\kett{j_q, j'_{q'}} = 0,
-%    \end{equation}
-%    as well as all higher weight spaces. 
-%\end{defn}
-
-
 \begin{defn}
     \label{defn:spec_embed}
     Let $\tuple{X} = (X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD operators and let $(\{\ket i_p\}_{i=0}^{d})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{d+1}$.
@@ -903,6 +1010,7 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
     Therefore $X_{[n]}$ and $\Phi_{[n]}$ have the same eigenvalues with multiplicity which proves the claim.
 \end{proof}
 \begin{cor}
+    \label{cor:spec_of_embed}
     Let everything be as in \cref{lem:sum_spec_embed}.
     Then $\Tr(\Gamma_{[n]}) = 1$.
     If the eigenvalues of the sum $X_{[n]}$ satisfy
@@ -913,8 +1021,8 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
     In such cases, the von Neumann entropy of $\Gamma_{[n]}$ is related to unnormalized entropy of $X_{[n]}$ by
     \begin{align}
         H_{\mathrm{vN}}\left(\Gamma_{[n]}\right) 
-        &= (1-\Tr(X_{[n]}))\log(1-\Tr(X_{[n]})) + H_0(X_{[n]}), \\
-        &= h_{\mathrm{bin}}(\Tr(X_{[n]})) + \Tr(X_{[n]})H_0\left(\frac{X_{[n]}}{\Tr(X_{[n]})}\right).
+        &= (1-\Tr(X_{[n]}))\log(1-\Tr(X_{[n]})) + \unent_0(X_{[n]}), \\
+        &= h_{\mathrm{bin}}(\Tr(X_{[n]})) + \Tr(X_{[n]})\unent_0\left(\frac{X_{[n]}}{\Tr(X_{[n]})}\right).
     \end{align}
     Moreover, if the eigenvalues of $X_{[n]}$ satisfy the stronger condition
     \begin{equation}
@@ -922,7 +1030,6 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
     \end{equation}
     then the maximum eigenvalue of $\Gamma_{[n]}$ is $1-\Tr(X_{[n]})$.
 \end{cor}
-
 \begin{lem}
     \label{lem:partial_sum_embed}
     Let $\Gamma_{[n]} \coloneqq \Gamma(X_1, \ldots, X_n)$ be defined as in \cref{defn:spec_embed}.
@@ -964,7 +1071,6 @@ Our goal will be to prove how the additive quantum entropy cone, $\bar {\mathcal
     because $\Tr(\Gamma_{[n]}) = \Tr(\Gamma_{S}) = 1$.
     Therefore, $\Gamma_{S} = \Tr_{[n]\setminus S}[\Gamma_{[n]}]$ which proves the claim.
 \end{proof}
-
 It is worth emphasizing that the operators, $\Gamma_{[n]} = \Gamma(X_1, \ldots, X_n)$, obtained from an $n$-tuple $(X_1, \ldots, X_n)$ according to \cref{defn:spec_embed} do not exhaust all $n$-partite operators.
 Nevertheless, there is an elegant characterization of those $n$-partite operators which can be obtained in this way.
 This characterization generalizes \cite[Proposition 11]{christandl2018recoupling}.
@@ -1013,9 +1119,26 @@ This characterization generalizes \cite[Proposition 11]{christandl2018recoupling
     which implies $\s U_{[n]}^{\dagger} \rho_{[n]} \s U_{[n]} = \Gamma(X_1, \ldots, X_p)$ as claimed.
 \end{proof}
 
+\subsubsection{Comparing allocations of entropy}
+
+As a direct consequence of \cref{cor:spec_of_embed} and \cref{lem:partial_sum_embed} we can compare allocations of unnormalized entropies against allocations of von Neumann entropies.
+\begin{cor}
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be an $n$-tuple of PSD matrices such that $\Tr(X_{[n]}) \leq 1$ and let $\Gamma(\tuple {X})$ denote the corresponding $n$-partite quantum state.
+    Then the allocation $\alpha_n(\tuple X|\tuple 0)$ of unnormalized entropies of $\tuple{X}$ is related to the allocation $\mu_n(\Gamma(\tuple{X}))$ of von Neumann entropies of $\Gamma(\tuple{X})$ according to the formula
+    \begin{equation}
+          \mu_n(\Gamma(\tuple{X}))_S = \alpha_n(\tuple X|\tuple 0)_S - (1-\Tr(X_S))\log(1-\Tr(X_S))
+    \end{equation}
+    where $S \subseteq [n]$ and where
+    \begin{align}
+        \mu_n(\Gamma(\tuple{X}))_S &= H_{\mathrm{vN}}(\Tr_{[n]\setminus S}(\Gamma(\tuple{X}))),\\
+        \alpha_n(\tuple X|\tuple 0)_S &= \unent_0(X_S).
+    \end{align}
+\end{cor}
+
+
 \begin{thm}
     \label{thm:almost_subcone}
-    Let $\tuple{X} = (X_1, \ldots, X_n)$ be an arbitrary $n$-tuple of PSD matrices and let $\Gamma(\tuple {X})$ denote the corresponding $n$-partite quantum state.
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be an $n$-tuple of PSD matrices and let $\Gamma(\tuple {X})$ denote the $n$-partite density matrix given by \cref{defn:spec_embed}.
     Then for all sufficiently small $\gamma > 0$,
     \begin{equation}
         \norm{ \alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})) }_{\infty} \leq \gamma \Tr(X_{[n]})^2
@@ -1024,52 +1147,73 @@ This characterization generalizes \cite[Proposition 11]{christandl2018recoupling
 \begin{proof}
     By \cref{lem:partial_sum_embed}, it is known that the von Neumann entropy of the reduced state of $\Gamma(\tuple {X})$ (whenever $\Tr(X[n])\leq 1$ so that $\Gamma(\tuple {X})$ is a density matrix) over $S \subseteq [n]$ is given by
     \begin{equation}
-        H_{\mathrm{vN}}(\Gamma(\tuple {X})_S) = H_0(X_S) - (1-\Tr(X_S)) \log(1-\Tr(X_S)).
+        H_{\mathrm{vN}}(\Gamma(\tuple {X})_S) = \unent_0(X_S) - (1-\Tr(X_S)) \log(1-\Tr(X_S)).
     \end{equation}
     Then, mapping $\tuple{X}$ to $\gamma \tuple{X}$ and multiplying by $\gamma^{-1}$ yields
     \begin{equation}
-        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}H_0(\gamma X_S) - \gamma^{-1}(1-\gamma\Tr(X_S)) \log(1-\gamma\Tr(X_S)).
+        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}\unent_0(\gamma X_S) - \gamma^{-1}(1-\gamma\Tr(X_S)) \log(1-\gamma\Tr(X_S)).
     \end{equation}
     Define $f(x)$ over $x \in [0,1]$ as
     \begin{equation}
         f(x) \coloneqq 1 + x^{-1} (1-x)\log(1-x).
     \end{equation}
-    with $f(0) = 0$ and $f(1) = 1$ noting that $f(x) \leq x$ for all $x \in [0,1]$.
+    with $f(0) = 0$ and $f(1) = 1$ noting that $f(x) \leq x$ holds for all $x \in [0,1]$.
     Now take $\gamma \geq 0$ sufficiently small such that $\gamma \Tr(X_S) \in [0,1]$ holds for all $S \subseteq [n]$ and thus $\Gamma(\gamma \tuple X)$ is a well-defined density matrix,
     Then,
     \begin{equation}
-        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}H_0(\gamma X_S) + \Tr(X_S) - \Tr(X_S)f(\gamma \Tr(X_S)),
+        \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \gamma^{-1}\unent_0(\gamma X_S) + \Tr(X_S) - \Tr(X_S)f(\gamma \Tr(X_S)),
     \end{equation}
-    Since $\gamma^{-1}H_0(\gamma X_S) + \Tr(X_S) = H_{\Tr(X_S)(1-\log \gamma)}(X_S)$, we conclude that
+    Since $\gamma^{-1}\unent_0(\gamma X_S) + \Tr(X_S) = \unent_{\Tr(X_S)(1-\log \gamma)}(X_S)$, we conclude that
     \begin{equation}
-        H_{\Tr(X_S)(1-\log \gamma)}(X_S) - \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \Tr(X_S) f(\gamma \Tr(X_S)) \leq \gamma \Tr(X_S)^2
+        \unent_{\Tr(X_S)(1-\log \gamma)}(X_S) - \gamma^{-1}H_{\mathrm{vN}}(\Gamma(\gamma \tuple {X})_S) = \Tr(X_S) f(\gamma \Tr(X_S)) \leq \gamma \Tr(X_S)^2
     \end{equation}
 \end{proof}
 \begin{cor}
-    Let $f : \mathbb R^{2^n-1}_{\geq 0} \to \mathbb R$ be a balanced linear functional which is positive on the ordinary quantum entropy cone.
-    Then $f$ is also positive on the additive quantum entropy cone.
+    \label{cor:balanced_ineqs}
+    Let $I : \mathbb R^{2^n-1}_{\geq 0} \to \mathbb R$ be a balanced linear functional which is non-negative on the ordinary quantum entropy cone.
+    Then $I$ is also non-negative on the additive quantum entropy cone.
 \end{cor}
 \begin{proof}
     Let $\tuple{X} = (X_1, \ldots, X_n)$ be an arbitrary $n$-tuple of PSD matrices.
-    That $f$ is balanced implies the value of $f(\alpha_n(\tuple{X}|\tuple{\beta}))$ is independent of shifting by $\tuple{\beta}$, meaning for $\gamma$ taken from \cref{thm:almost_subcone},
+    That $I$ is balanced is equivalent to the claim that $I(\alpha_n(\tuple{X}|\tuple{\beta}))$ is independent of shifting by $\tuple{\beta}$, meaning for any $\beta \in \mathbb R$ and thus any $\gamma$ taken from \cref{thm:almost_subcone},
     \begin{equation}
-        f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) = f(\alpha_n(\tuple{X}|\tuple{\beta})) = f(\alpha_n(\tuple{X}|\tuple{0})),
+        I(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) = I(\alpha_n(\tuple{X}|\tuple{\beta})) = I(\alpha_n(\tuple{X}|\tuple{0})).
     \end{equation}
-    is independent of $\gamma$ and $\beta$.
-    That $f$ is linear and positive on the ordinary quantum entropy cone implies
+    That $I$ is linear and positive on the ordinary quantum entropy cone implies
     \begin{equation}
-        f(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X}))) = \gamma^{-1}f(\mu_n(\Gamma(\gamma\tuple{ X}))) \geq 0.
+        I(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X}))) = \gamma^{-1}I(\mu_n(\Gamma(\gamma\tuple{ X}))) \geq 0.
     \end{equation}
-    Furthermore, by \cref{thm:almost_subcone}, the value of $f(\alpha_n(\tuple{X}|\tuple{\beta}))$ is also positive because
+    Furthermore, by \cref{thm:almost_subcone}, the value of $I(\alpha_n(\tuple{X}|\tuple{\beta}))$ is also positive because
     \begin{align}
-        f(\alpha_n(\tuple{X}|\tuple{\beta})) 
-        &= f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) \\
-        &= f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X}))) + f(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})))\\
-        &\geq f(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})))\\
-        &\geq-\gamma \Tr(X_{[n]})^2 \norm{f}_1 \\
-        &\stackrel{\gamma \to 0}{\longrightarrow} 0
+        I(\alpha_n(\tuple{X}|\tuple{\beta})) 
+        &= I(\alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma))) \\
+        &= I(\omega(\gamma,\tuple{X})) + I(\gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})))\\
+        &\geq I(\omega(\gamma,\tuple{X})),
     \end{align}
+    where $\omega(\gamma, \tuple{X}) \in \mathbb R^{2^n-1}$ is the vector given by:
+    \begin{equation}
+        \omega \coloneqq \alpha_n(\tuple{X}|\tau(\tuple{X})(1-\log \gamma)) - \gamma^{-1}\mu_n(\Gamma(\gamma\tuple{ X})).
+    \end{equation}
+    However, $\alpha_n(\tuple{X}|\tuple{\beta})$ is independent of $\gamma$ so we also have
+    \begin{equation}
+        I(\alpha_n(\tuple{X}|\tuple{\beta}))
+        \geq \lim_{\gamma \to 0} I(\omega(\gamma,\tuple{X}))
+        = I( \lim_{\gamma \to 0}\omega(\gamma,\tuple{X})).
+    \end{equation}
+    By the proof of \cref{thm:almost_subcone}, we know the coefficients of $\omega(\gamma,\tuple{X})$ are non-negative and bounded above by $\gamma \Tr(X_{[n]})^2$. Therefore, $\lim_{\gamma \to 0}\omega(\gamma,\tuple{X}) = 0$ and therefore, $I(\alpha_n(\tuple{X}|\tuple{\beta})) \geq I(0) = 0$ as claimed.
 \end{proof}
+\begin{rem}
+    \Cref{cor:balanced_ineqs} serves as an alternative proof of that unnormalized entropies satisfy strong subadditivity \cref{eq:ssa_unnorm_ent}.
+    Specifically, let $S, T \subseteq [n]$ be subsets and consider the functional $I_{S,T} : \mathbb R^{2^n-1} \to \mathbb R$ defined for $v \in \mathbb R^{2^n-1}$ by
+    \begin{equation}
+        I_{S,T}(v) \coloneqq v_{S} + v_{T} - v_{S \cup T} - v_{S \cap T}
+    \end{equation}
+    where $v_{\emptyset} \coloneqq 0$.
+    This functional is balanced and linear.
+    When evaluated on allocations of von Neumann entropies of $n$-partite quantum states, it corresponds to the conditional mutual information of between subsystems $A = S \setminus T$ and $B = T \setminus S$ given $C = T \cap S$.
+    Therefore $I_{S,T}$ is non-negative on the ordinary quantum entropy cone because of strong subadditivity of von Neumann entropy.
+    Therefore, by \cref{cor:balanced_ineqs}, we conclude that $I_{S,T}$ it is also non-negative on the additive entropy cone which is equivalent to \cref{eq:ssa_unnorm_ent}.
+\end{rem}
 
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
