@@ -302,16 +302,6 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
     Since $A,C\geq 0$ are both positive semidefinite, we also have $\Tr[AC] \geq 0$ which proves the claim.
 \end{proof}
 
-\begin{lem}
-    \label{lem:quadratic_ineq_dual}
-    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
-    \begin{equation}
-        \Tr[A+B]^2 - \Tr[(A+B)^2] + \Tr[B+C]^2 - \Tr[(B+C)^2] \leq \Tr[B]^2 - \Tr[B^2] + \Tr[A+B+C]^2 - \Tr[(A+B+C)^2].
-    \end{equation}
-\end{lem}
-\begin{proof}
-    This result is a special case of \cref{cor:isotypic_ineq} below when $\lambda = (1,1)$.
-\end{proof}
 \Citeauthor{bouhtou2008optimization} claim to prove the following family of inequalities \cite[Lemma 5.3]{bouhtou2008optimization}.
 \begin{lem}
     \label{lem:bouhtou_ineq}
@@ -343,6 +333,20 @@ To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, 
         \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k}] \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
     \end{equation}
 \end{cor}
+As a special case of the previous corollary, we obtain an inequality which complements \cref{lem:quadratic_ineq}.
+\begin{cor}
+    \label{lem:quadratic_ineq_dual}
+    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
+    \begin{equation}
+        \Tr[A+B]^2 - \Tr[(A+B)^2] + \Tr[B+C]^2 - \Tr[(B+C)^2] \leq \Tr[B]^2 - \Tr[B^2] + \Tr[A+B+C]^2 - \Tr[(A+B+C)^2].
+    \end{equation}
+\end{cor}
+\begin{proof}
+    This result is a special case of \cref{cor:isotypic_ineq} below when $\lambda = (1,1)$ because
+    \begin{equation}
+        \Tr[P_{(1,1)} X^{\ot 2}] = \frac{1}{2}\left( \Tr(X)^2  - \Tr(X^2) \right).
+    \end{equation}
+\end{proof}
 
 \citeauthor{paksoy2014inequalities} proved a family of polynomial inequalities which are generally not functions of just the eigenvalues \cite{paksoy2014inequalities}.
 These inequalities are in terms a so-called generalized matrix function first defined by \citeauthor{marcus1965generalized} \cite{marcus1965generalized}.
@@ -465,13 +469,20 @@ where $E_k(X) = e_{k}(\lambda(X))$ where $E_k$ is the $k$th elementary symmetric
 \clearpage
 \section{The additive quantum entropy cone}
 
-The purpose of this section is to introduce the notion of an ``additive'' quantum entropy cone which serves as a kind of analogy to the ordinary quantum entropy cone considered by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
+The purpose of this section is to introduce the notion of an ``additive'' quantum entropy cone which may be viewed as an analogue to the ordinary quantum entropy cone considered by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 Formally, quantum states $\rho_{ABC}$ and their reduced states ($\rho_{AB}$, etc.) are replaced by tuples of positive semidefinite operators $(X, Y, Z)$ and their partial sums ($X +Y$, etc.).
 Moreover the von Neumann entropy of each reduced state is replaced by an unnormalized entropy of each partial sum.
 We prove that the set of all such ``allocations'' of unnormalized entropies of partial sums forms a convex cone, which we term the ``additive quantum entropy cone'' or simply ``additive entropy cone''.
 Moreover, we prove that all balanced inequalities which are non-negative over the ordinary quantum entropy cone, such as subaddivity and strong subadditivity, are also non-negative over the additive quantum entropy cone.
 
+In \cref{sec:unent} we introduce our notion of an unnormalized entropy function of PSD matrices and delinate its properties.
+In \cref{sec:unent_ineq}, we state our main theorem (\cref{thm:unnormalized_entropy_ssa}) which states that the unnormalized entropy function is strongly subadditive.
+Then, in \cref{sec:unent_cone} consider the set of possible unnormalized entropies of partial sums and prove it forms a convex cone.
+In \cref{sec:qec}, relate the additive entropy cone to the ordinary quantum entropy cone and prove that positive and balanced functionals for the oridinary cone are also positive and balanced functionals for the additive cone, thus providing an alternative proof of \cref{thm:unnormalized_entropy_ssa}.
+In \cref{sec:unent_concavity}, we explore how these inequalities related to the concavity of von Neumann entropy upper bound.
+
 \subsection{The shifted unnormalized entropy function}
+\label{sec:unent}
 
 The primary quantity of interest will be a real-valued function of eigenvalues which resembles von Neumann entropies.
 \begin{defn}
@@ -581,14 +592,14 @@ Nevertheless, there is a sense it which it is homogeneous up to a modification t
         \end{equation}
 \end{lem}
 It is also possible to conceptualize the shifts themselves as unnormalized entropies of scalar matrices.
-\begin{lem}
+\begin{prop}
     Let $\beta \in \mathbb R$. 
     Then there exists a sufficiently large integer $d \in \mathbb N_{> 0}$ and a $\gamma \geq 0$ such that
     \begin{equation}
         \label{eq:shift_as_entropy}
         \unent_0(\gamma I_d) = \beta.
     \end{equation}
-\end{lem}
+\end{prop}
 \begin{proof}
     For any $\gamma \geq 0$ and integer $d \in \mathbb N_{> 0}$,
     \begin{equation}
@@ -602,7 +613,7 @@ It is also possible to conceptualize the shifts themselves as unnormalized entro
 \end{proof}
 
 \subsection{Inequalities for the unnormalized entropy function}
-
+\label{sec:unent_ineq}
 \begin{thm}
     \label{thm:unnormalized_entropy_ssa}
     Let $X, Y, Z \geq 0$ be PSD matrices.
@@ -636,143 +647,8 @@ It is also possible to conceptualize the shifts themselves as unnormalized entro
     which is known to be operator monotone \cite{chansangiam2013operator} on $\mathbb R_>0$ as required.
 \end{proof}
 
-\subsection{Comparison with concavity of von Neumann entropy}
-At this stage it is worth comparing how the inequalities in \cref{thm:unnormalized_entropy_ssa} compare to known inequalities concerning von Neumann entropy.
-Suppose $\rho_X$ and $\rho_Y$ are two density matrices and $\lambda \in [0,1]$ is a convex parameter.
-Then it is known that the von Neumann entropy satisfies \textit{concavity}:
-\begin{equation}
-    \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) \leq  H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y),
-\end{equation}
-but also an associated upper bound:
-\begin{equation}
-    H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y) \leq \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) + h_{\mathrm{bin}}(\lambda)
-\end{equation}
-where $h_{\mathrm{bin}}(\lambda)$ is the binary entropy function:
-\begin{equation}
-    h_{\mathrm{bin}}(\lambda) = -\lambda \log \lambda - (1-\lambda) \log \lambda.
-\end{equation}
-
-\subsubsection{Concavity upper bound}
-We first show that this upper bound is related to subadditvity of $\unent_0$.
-If we let $p_X, p_Y \geq 0$ be weights such that
-\begin{equation}
-    \label{eq:binary_weights}
-    \lambda = \frac{p_{X}}{p_{X} + p_{Y}}, \qquad 1-\lambda = \frac{p_{Y}}{p_{X} + p_{Y}},
-\end{equation}
-then the concavity upper bound above can be equivalently written in terms of the unnormalized entropy $\unent_0$ as
-\begin{equation}
-    \unent_{0}(\sigma_X + \sigma_Y) \leq \unent_0(\sigma_X) + \unent_0(\sigma_Y),
-\end{equation}
-where
-\begin{equation}
-    \label{eq:normalization_scheme}
-    \sigma_X \coloneqq p_X \rho_X, \qquad \sigma_Y = p_Y \rho_Y.
-\end{equation}
-We note that this expression is equivalent to the subadditivity of $\unent_0$ (\cref{eq:subadditive_Hbeta} from \cref{thm:unnormalized_entropy_ssa}).
-This is because every non-zero PSD matrix $\sigma_X$ can be equivalently expressed in terms of a positive weight $p_X$ and a density matrix $\rho_X$ according to the formula:
-\begin{equation}
-    (p_X, \rho_X) \coloneqq \left(\Tr(\sigma_X), \frac{\sigma_X}{\Tr(\sigma_X)}\right).
-\end{equation}
-
-\subsubsection{Concavity lower bound}
-It is also possible to express the concavity of von Neumann entropy as a kind of superadditivity of a different function, namely the function 
-\begin{equation}
-    g(\sigma) = \Tr(\sigma) H_{\mathrm{vN}}\left(\frac{\sigma}{\Tr(\sigma)}\right) = \unent_0(\sigma) - \eta(\Tr(\sigma)),
-\end{equation}
-for PSD $\sigma$.
-The non-negativity of $g(\sigma)$ follows because von Neumann entropy is non-negative, or equivalently the non-negativity of $g(\sigma)$ follows from the subadditivity of $\eta$: ($N_0(\sigma) \geq \eta(\Tr(\sigma))$ and thus $g(\sigma) \geq 0$).
-In this notation, the concavity of von Neumann entropy is equivalent to
-\begin{equation}
-    g(\sigma_X + \sigma_Y) \geq g(\sigma_X) + g(\sigma_Y),
-\end{equation}
-because \cref{eq:normalization_scheme} and \cref{eq:binary_weights} implies
-\begin{align}
-    \frac{g(\sigma_X + \sigma_Y)}{\Tr(\sigma_X + \sigma_Y)} &= H_{\mathrm{vN}}\left(\frac{\sigma_X + \sigma_Y}{\Tr(\sigma_X + \sigma_Y)}\right) = H_{\mathrm{vN}}(\lambda \rho_X + (1-\lambda)\rho_Y), \\
-    \frac{g(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_X}{\Tr(\sigma_X)}\right) = \lambda H_{\mathrm{vN}}(\rho_X), \\
-    \frac{g(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_Y}{\Tr(\sigma_Y)}\right) = (1-\lambda) H_{\mathrm{vN}}(\rho_Y).
-\end{align}
-
-{\color{blue}
-TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity, i.e.,
-\begin{equation}
-    g(\sigma_X + \sigma_Y) + g(\sigma_Y + \sigma_Z) \stackrel{?}{\leq} g(\sigma_Y) + g(\sigma_{X} + \sigma_{Y} + \sigma_{Z})
-\end{equation}
-or not, but it is probably worth finding out.
-The strong superadditivity of $g$ is equivalent to the following upper bound:
-\begin{align}
-    0 &\leq \unent_{0}(X+Y) + \unent_{0}(Y+Z) - \unent_{0}(X+Y+Z) - \unent_{0}(Y),\\
-    &\stackrel{?}{\leq} \eta(\Tr(X+Y)) + \eta(\Tr(Y+Z)) - \eta(\Tr(X+Y+Z)) - \eta(\Tr(Y)).
-\end{align}
-This inequality (or something very close) may or may not hold.
-
-Belong are some more calculations which may prove useful.
-Let $\sigma_{AY_1Y_2Y_3}$ be an $4$-party state defined by PSD $X_1,X_2,X_3$ as follows:
-\begin{align}
-    \begin{split}
-        \sigma_{AY_1Y_2Y_3} = \frac{1}{\Tr(X_1+X_2+X_3)}\bigg(
-            &X_1 \ot \ket1\!\bra1 \ot \ket0\!\bra0 \ot \ket0\!\bra0 +\\
-            &X_2 \ot \ket0\!\bra0 \ot \ket1\!\bra1 \ot \ket0\!\bra0 +\\
-            &X_3 \ot \ket0\!\bra0 \ot \ket0\!\bra0 \ot \ket1\!\bra1
-        \bigg).
-    \end{split}
-\end{align}
-For each subset $S \subseteq [n]$, let $X_S = \sum_{i\in S}X_i$ denote the partial sum.
-Then
-\begin{align}
-    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{A}) &= g(X_{123}) \\
-    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{Y_1}) &= \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))\\
-    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1}) &= g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123})) \\
-    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}) &= g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))\\
-    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2Y_3}) &= \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}).
-\end{align}
-\textbf{(i)} 
-Subadditivity between $A$ and $Y_1$ yields
-\begin{equation}
-    H_{\mathrm{vN}}(\sigma_{AY_1}) \leq H_{\mathrm{vN}}(\sigma_{A}) + H_{\mathrm{vN}}(\sigma_{Y_1}).
-\end{equation}
-In terms of $X_1,X_2,X_3$, this is equivalent to concavity:
-\begin{equation}
-    g(X_1) + g(X_{23}) \leq g(X_{123}).
-\end{equation}
-\textbf{(ii)} 
-Strong subadditivity implies
-\begin{equation}
-    I_{Y_1,Y_3|A} = H_{\mathrm{vN}}(\sigma_{AY_1}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{A}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
-\end{equation}
-In terms of $X_1,X_2,X_3$, this is equivalent to
-\begin{align}
-    \begin{split}
-        &[g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))] \\
-        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
-        &\qquad\geq [g(X_{123})] 
-        +[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
-    \end{split}
-\end{align}
-which is equivalent to
-\begin{equation}
-     N_0(X_{12}) + N_0(X_{23}) \geq N_0(X_{2}) + N_0(X_{123}).
-\end{equation}
-\textbf{(iii)} 
-Strong subadditivity implies
-\begin{equation}
-    I_{Y_1,A|Y_3} = H_{\mathrm{vN}}(\sigma_{Y_1Y_3}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{Y_3}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
-\end{equation}
-In terms of $X_1,X_2,X_3$, this is equivalent to
-\begin{align}
-    \begin{split}
-        &[\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))] \\
-        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
-        &\qquad\geq [\eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))] \\
-        &\quad+[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
-    \end{split}
-\end{align}
-which is equivalent to concavity again
-\begin{equation}
-    g(X_{12}) \geq g(X_{1})+ g(X_{2})
-\end{equation}
-}
-
 \subsection{The additive unnormalized entropy cone}
+\label{sec:unent_cone}
 
 We are now in a position to actually define allocations of unnormalized entropies of partial sums.
 \begin{defn}
@@ -876,7 +752,8 @@ Next we show that $\s A_{n}$ is closed under addition.
     This follows from \cref{lem:additive,lem:scalable}.
 \end{proof}
 
-\subsection{Connection to the multiplicative quantum entropy cone}
+\subsection{Connection to the oridinary quantum entropy cone}
+\label{sec:qec}
 
 The purpose of this section is to compare the \textit{additive} quantum entropy cone, $\mathcal A_{n}$, to the \textit{(multiplicative)} quantum entropy cone previously studied by \citeauthor{pippenger2003inequalities} \cite{pippenger2003inequalities}.
 
@@ -1215,6 +1092,142 @@ As a direct consequence of \cref{cor:spec_of_embed} and \cref{lem:partial_sum_em
     Therefore, by \cref{cor:balanced_ineqs}, we conclude that $I_{S,T}$ it is also non-negative on the additive entropy cone which is equivalent to \cref{eq:ssa_unnorm_ent}.
 \end{rem}
 
+\subsection{Comparison with concavity of von Neumann entropy}
+\label{sec:unent_concavity}
+At this stage it is worth comparing how the inequalities in \cref{thm:unnormalized_entropy_ssa} compare to known inequalities concerning von Neumann entropy.
+Suppose $\rho_X$ and $\rho_Y$ are two density matrices and $\lambda \in [0,1]$ is a convex parameter.
+Then it is known that the von Neumann entropy satisfies \textit{concavity}:
+\begin{equation}
+    \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) \leq  H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y),
+\end{equation}
+but also an associated upper bound:
+\begin{equation}
+    H_{\mathrm{vN}}(\lambda\rho_X + (1-\lambda) \rho_Y) \leq \lambda H_{\mathrm{vN}}(\rho_X) + (1-\lambda) H_{\mathrm{vN}}(\rho_Y) + h_{\mathrm{bin}}(\lambda)
+\end{equation}
+where $h_{\mathrm{bin}}(\lambda)$ is the binary entropy function:
+\begin{equation}
+    h_{\mathrm{bin}}(\lambda) = -\lambda \log \lambda - (1-\lambda) \log \lambda.
+\end{equation}
+
+\subsubsection{Concavity upper bound}
+We first show that this upper bound is related to subadditvity of $\unent_0$.
+If we let $p_X, p_Y \geq 0$ be weights such that
+\begin{equation}
+    \label{eq:binary_weights}
+    \lambda = \frac{p_{X}}{p_{X} + p_{Y}}, \qquad 1-\lambda = \frac{p_{Y}}{p_{X} + p_{Y}},
+\end{equation}
+then the concavity upper bound above can be equivalently written in terms of the unnormalized entropy $\unent_0$ as
+\begin{equation}
+    \unent_{0}(\sigma_X + \sigma_Y) \leq \unent_0(\sigma_X) + \unent_0(\sigma_Y),
+\end{equation}
+where
+\begin{equation}
+    \label{eq:normalization_scheme}
+    \sigma_X \coloneqq p_X \rho_X, \qquad \sigma_Y = p_Y \rho_Y.
+\end{equation}
+We note that this expression is equivalent to the subadditivity of $\unent_0$ (\cref{eq:subadditive_Hbeta} from \cref{thm:unnormalized_entropy_ssa}).
+This is because every non-zero PSD matrix $\sigma_X$ can be equivalently expressed in terms of a positive weight $p_X$ and a density matrix $\rho_X$ according to the formula:
+\begin{equation}
+    (p_X, \rho_X) \coloneqq \left(\Tr(\sigma_X), \frac{\sigma_X}{\Tr(\sigma_X)}\right).
+\end{equation}
+
+\subsubsection{Concavity lower bound}
+It is also possible to express the concavity of von Neumann entropy as a kind of superadditivity of a different function, namely the function 
+\begin{equation}
+    g(\sigma) = \Tr(\sigma) H_{\mathrm{vN}}\left(\frac{\sigma}{\Tr(\sigma)}\right) = \unent_0(\sigma) - \eta(\Tr(\sigma)),
+\end{equation}
+for PSD $\sigma$.
+The non-negativity of $g(\sigma)$ follows because von Neumann entropy is non-negative, or equivalently the non-negativity of $g(\sigma)$ follows from the subadditivity of $\eta$: ($N_0(\sigma) \geq \eta(\Tr(\sigma))$ and thus $g(\sigma) \geq 0$).
+In this notation, the concavity of von Neumann entropy is equivalent to
+\begin{equation}
+    g(\sigma_X + \sigma_Y) \geq g(\sigma_X) + g(\sigma_Y),
+\end{equation}
+because \cref{eq:normalization_scheme} and \cref{eq:binary_weights} implies
+\begin{align}
+    \frac{g(\sigma_X + \sigma_Y)}{\Tr(\sigma_X + \sigma_Y)} &= H_{\mathrm{vN}}\left(\frac{\sigma_X + \sigma_Y}{\Tr(\sigma_X + \sigma_Y)}\right) = H_{\mathrm{vN}}(\lambda \rho_X + (1-\lambda)\rho_Y), \\
+    \frac{g(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_X)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_X}{\Tr(\sigma_X)}\right) = \lambda H_{\mathrm{vN}}(\rho_X), \\
+    \frac{g(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)} &= \frac{\Tr(\sigma_Y)}{\Tr(\sigma_X+\sigma_Y)}H_{\mathrm{vN}}\left(\frac{\sigma_Y}{\Tr(\sigma_Y)}\right) = (1-\lambda) H_{\mathrm{vN}}(\rho_Y).
+\end{align}
+
+{\color{blue}
+TC: At the moment it is unclear if the function $g$ satisfies a kind of strong superadditivity, i.e.,
+\begin{equation}
+    g(\sigma_X + \sigma_Y) + g(\sigma_Y + \sigma_Z) \stackrel{?}{\leq} g(\sigma_Y) + g(\sigma_{X} + \sigma_{Y} + \sigma_{Z})
+\end{equation}
+or not, but it is probably worth finding out.
+The strong superadditivity of $g$ is equivalent to the following upper bound:
+\begin{align}
+    0 &\leq \unent_{0}(X+Y) + \unent_{0}(Y+Z) - \unent_{0}(X+Y+Z) - \unent_{0}(Y),\\
+    &\stackrel{?}{\leq} \eta(\Tr(X+Y)) + \eta(\Tr(Y+Z)) - \eta(\Tr(X+Y+Z)) - \eta(\Tr(Y)).
+\end{align}
+This inequality (or something very close) may or may not hold.
+
+Belong are some more calculations which may prove useful.
+Let $\sigma_{AY_1Y_2Y_3}$ be an $4$-party state defined by PSD $X_1,X_2,X_3$ as follows:
+\begin{align}
+    \begin{split}
+        \sigma_{AY_1Y_2Y_3} = \frac{1}{\Tr(X_1+X_2+X_3)}\bigg(
+            &X_1 \ot \ket1\!\bra1 \ot \ket0\!\bra0 \ot \ket0\!\bra0 +\\
+            &X_2 \ot \ket0\!\bra0 \ot \ket1\!\bra1 \ot \ket0\!\bra0 +\\
+            &X_3 \ot \ket0\!\bra0 \ot \ket0\!\bra0 \ot \ket1\!\bra1
+        \bigg).
+    \end{split}
+\end{align}
+For each subset $S \subseteq [n]$, let $X_S = \sum_{i\in S}X_i$ denote the partial sum.
+Then
+\begin{align}
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{A}) &= g(X_{123}) \\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{Y_1}) &= \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))\\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1}) &= g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123})) \\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}) &= g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))\\
+    \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2Y_3}) &= \Tr(X_{123})H_{\mathrm{vN}}(\sigma_{AY_1Y_2}).
+\end{align}
+\textbf{(i)} 
+Subadditivity between $A$ and $Y_1$ yields
+\begin{equation}
+    H_{\mathrm{vN}}(\sigma_{AY_1}) \leq H_{\mathrm{vN}}(\sigma_{A}) + H_{\mathrm{vN}}(\sigma_{Y_1}).
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to concavity:
+\begin{equation}
+    g(X_1) + g(X_{23}) \leq g(X_{123}).
+\end{equation}
+\textbf{(ii)} 
+Strong subadditivity implies
+\begin{equation}
+    I_{Y_1,Y_3|A} = H_{\mathrm{vN}}(\sigma_{AY_1}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{A}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to
+\begin{align}
+    \begin{split}
+        &[g(X_{1}) + g(X_{23}) + \eta(\Tr(X_1)) + \eta(\Tr(X_{23})) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
+        &\qquad\geq [g(X_{123})] 
+        +[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
+    \end{split}
+\end{align}
+which is equivalent to
+\begin{equation}
+     N_0(X_{12}) + N_0(X_{23}) \geq N_0(X_{2}) + N_0(X_{123}).
+\end{equation}
+\textbf{(iii)} 
+Strong subadditivity implies
+\begin{equation}
+    I_{Y_1,A|Y_3} = H_{\mathrm{vN}}(\sigma_{Y_1Y_3}) + H_{\mathrm{vN}}(\sigma_{AY_3}) - H_{\mathrm{vN}}(\sigma_{Y_3}) - H_{\mathrm{vN}}(\sigma_{AY_1Y_3}) \geq 0.
+\end{equation}
+In terms of $X_1,X_2,X_3$, this is equivalent to
+\begin{align}
+    \begin{split}
+        &[\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{12}) + g(X_{3}) + \eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))]\\
+        &\qquad\geq [\eta(\Tr(X_{12})) + \eta(\Tr(X_{3})) - \eta(\Tr(X_{123}))] \\
+        &\quad+[g(X_{1})+ g(X_{2})+ g(X_{3})+\eta(\Tr(X_1)) + \eta(\Tr(X_2)) + \eta(\Tr(X_3)) - \eta(\Tr(X_{123}))]
+    \end{split}
+\end{align}
+which is equivalent to concavity again
+\begin{equation}
+    g(X_{12}) \geq g(X_{1})+ g(X_{2})
+\end{equation}
+}
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
 
