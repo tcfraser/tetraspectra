@@ -7,7 +7,7 @@
 \affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 \affil[2]{\small{Department of Mathematics, Universtiy of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
 
-\title{Tetrahedral sums of Hermitian matrices}
+\title{Eigenvalues of Tetrahedral sums of Hermitian matrices}
 
 \date{\today}
 
@@ -16,19 +16,59 @@
 \maketitle
 
 \begin{abstract}
-    \textcolor{red}{TODO: write an abstract}
+    \textcolor{red}{TODO}.
 \end{abstract}
 
-\section{Introduction}
-
 {\color{blue}
-    This is the main document for this project.
+    TC: This is the main document for the ``tetraspectra''.
     Previous drafts are located in the folder titled ``old'' and will not necessarily compile properly.
 }
+\section{Introduction}
 
-\section{Tetrahedra \& Hermitian matrices}
+There are a number of operations involving the transformation of Hermitian matrices under which it is possible to track the effect had of the corresponding sets of eigenvalues.
+For example, the eigenvalues, $\lambda(X)$, of a Hermitian matrix, $X$, are invariant under conjugation by unitary matrices, $\lambda(X) = \lambda(UXU^{\dagger})$, covariant under taking positive powers $\lambda(X^p) = \lambda(X)^p$, covariant under multiplication by real numbers, $\lambda(r X) = r \lambda(X)$, and covariant under the addition of scalar matrices, $\lambda(X+rI) = \lambda(X) + (r,\ldots,r)$.
+The operation of adding together Hermitian matrices is not an operation of this type.
+Specifically, the eigenvalues $\gamma = \lambda(A+B)$ of the sum of two matrices cannot be determined from the eigenvalues $\alpha = \lambda(A)$ and $\beta = \lambda(B)$ of the summands \textit{alone}.
+Stated differently, to determine the eigenvalues involved, additional knowledge about the eigenvectors involved is typically required.
+Nevertheless, there are numerous mathematical situations wherein knowledge about the eigenvectors involved is lacking, yet it remains desirable to determine the set of admissible eigenvalues of a sum given the eigenvalues of the summands.
 
-\subsection{Definition}
+The problem of determining the set $(\alpha,\beta,\gamma)$ of admissible eigenvalues has been investigated for over a century yet has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
+These inequalities, now known as the \textit{Horn inequalities} describe a polytope of admissible values for $(\alpha,\beta,\gamma)$ \cite{horn1962eigenvalues}.
+In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
+
+For applications of Horn's problem to quantum information theory and Nielsen's theorem \cite{nielsen1999conditions}, see the article due to \citeauthor{daftuar2005quantum} \cite{daftuar2005quantum}.
+
+In parallel to Horn's problem, numerous variations and extensions of Horn's problem have been explored by various authors.
+For example, numerous authors have considered the admissible eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
+In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random}.
+This correspondence between the singular values of a product and the eigenvalues of sum has been generalized substantially by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization}.
+For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues}.
+
+Recent developments surrounding Horn's problem not covered by the aforementioned reviews include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues of the sum given random matrices with fixed spectra in a series of papers by \citeauthor{coquereaux2018orbital} \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
+\begin{center}%
+    \begin{figure}%
+        \ctikzfig{tikz/triangle-tetrahedral-problem}%
+        \caption{(Left) The \textit{triangular} Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn's problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahederon in the vector space of Hermitian matrices.}%
+        \label{fig:tetrahedron_labelling_scheme}%
+    \end{figure}%
+\end{center}%
+In this paper, we consider a generalization of Horn's problem previously considered only briefly in a paper due to \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
+While Horn's problem aims to characterize the eigenvalues $(\alpha, \beta, \gamma)$ of a triple of $d\times d$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization consider here aims to characterize the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of a \textit{sextuple} of $d\times d$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+These constraints arise naturally from building a kind of tetrahedral arrangement of Hermitian matrices inside the vector space of Hermitian matrices according to \cref{fig:tetrahedron_labelling_scheme}.
+Consequently, throughout the paper, we refer to this generalization of Horn's problem as the \textit{tetrahedral Horn's problem} and, by constrast, Horn's original problem, involving the sum of just two Hermitian matrices, as the \textit{triangular Horn's problem}.
+
+Beyond the superficial connection between the imposed constraints and the resuling shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
+It is well-known that the space of admissible eigenvalues for a triangular arrangment of $2\times 2$ traceless\footnote{One can always assume, without loss of generality, that the Hermitian matrices involved are traceless due to a simple shifting symmetry which is described in \cref{sec:symmetries}.} Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
+As we shall see in \cref{sec:d_2}, this correspondence generalizes in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
+While this latter result is straightforward to prove and also well-known, indeed it forms the basis of the semiclassical asymptotics of the $\SU(2)$ Wigner $6j$ symbols \cite{roberts1999classical}, it leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices.
+In \cref{sec:d_2}, we will see that the moduli space of Eulidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinant \cite{sitharam2018handbook}.
+
+Although we are ultimately interested in tackling the tetrahedral Horn's problem for $d\times d$ Hermitian matrices with $d > 2$, the $d=2$ case already demonstrates a strong qualitative difference between the triangular and tetrahedral variants of Horn's problem.
+In particular, while the triangular Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is in general \textit{not a polytope}.
+
+\section{Tetrahedral sums Hermitian matrices}
+
+\subsection{Definitions}
 \begin{prob}[Tetrahedral eigenvalues]
     \label{prob:tetrahedral_problem}
     A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
@@ -50,15 +90,8 @@
         \lambda(F) = \phi.
     \end{equation}
 \end{prob}
-\begin{center}
-    \begin{figure}
-        \ctikzfig{tikz/tetrahedral-problem}
-        \caption{The six Hermitian operators appearing in the tetrahedral eigenvalue constraint problem (\cref{prob:tetrahedral_problem}), and denoted by $(A,B,C,D,E,F)$ above, are subject to four linear constraints corresponding to the four faces of the tetrahedron with coefficients determined by the edge orientations depicted here.}
-        \label{fig:tetrahedron_labelling_scheme}
-    \end{figure}
-\end{center}
-
 \subsection{Symmetries}
+\label{sec:symmetries}
 \begin{lem}[Shifting]
      Let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be a given sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be given scalars and define \textit{shifted} candidate eigenvalues by the formula
     \begin{equation}
@@ -82,7 +115,8 @@
     then the shifted spectra are both tetrahedral and non-negative.
 \end{lem}
 
-\subsection{The \texorpdfstring{$\boldsymbol{d=2}$}{d=2} case}
+\subsection{The case of \texorpdfstring{$\boldsymbol{2\times 2}$}{2x2} Hermitian matrices}
+\label{sec:d_2}
 In the context of the $d=2$ tetrahedral eigenvalue problem, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
 \begin{equation}
     X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
@@ -2010,7 +2044,7 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item \citeauthor{alekseev2007ginzburg} \cite{alekseev2007ginzburg}
     \item Deforming the symplectic volume by the $s$ paramater \citeauthor{alekseev2018concentration} \cite{alekseev2018concentration}
     \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Therianos titled ``On the singular values of matrix products'' I, II, and III from 1973}
-    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Freede titled ``On the eigenvalues of sums of Hermitian matrices'' I, II, and III from 1973}
+    \item \textcolor{red}{TODO: track down pdfs for the original triple of papers by Thompson and Freede titled ``On the eigenvalues of sums of Hermitian matrices'' III from 1973 (I and II have been found)}
     \item \textcolor{red}{TODO: track down a pdf for Thompson's 1988 ``Matrix Spectral Inequalities'' referenced by Klyachko}
     \item \Citeauthor{thompson1973eigenvalues} \cite{thompson1973eigenvalues} present a number of interesting counter-examples to the question of whether the inequalities pertaining to the spectra of general matrices can be deduced from looking at the spectra of diagonal matrices (both in the additive and multiplicative cases).
 \end{itemize}

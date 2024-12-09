@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (25) at (2.5, 0.5) {$A+F=E$};
+		\node [style=none] (26) at (2.5, -0.5) {$B+D=F$};
+		\node [style=none] (27) at (2.5, -1.5) {$C+D=E$};
+		\node [style=none] (28) at (2.5, 1.5) {$A+B=C$};
+		\node [style=blackdot] (29) at (5, -1.25) {};
+		\node [style=blackdot] (30) at (10.25, -0.25) {};
+		\node [style=blackdot] (31) at (8, 2.75) {};
+		\node [style=blackdot] (32) at (9, -2.25) {};
+		\node [style=none] (33) at (7, -2.25) {$C$};
+		\node [style=none] (34) at (8, 0.75) {$B$};
+		\node [style=none] (35) at (6.25, 1.25) {$A$};
+		\node [style=none] (36) at (10.25, -1.125) {$D$};
+		\node [style=none] (37) at (7.75, -1.125) {$E$};
+		\node [style=none] (38) at (9.75, 1.25) {$F$};
+		\node [style=none] (42) at (-7.75, 0) {$A+B=C$};
+		\node [style=blackdot] (43) at (-5.5, -2) {};
+		\node [style=blackdot] (45) at (-3.25, 2) {};
+		\node [style=blackdot] (46) at (-1, -2) {};
+		\node [style=none] (47) at (-3.5, -2.5) {$C$};
+		\node [style=none] (48) at (-1.75, 0.25) {$B$};
+		\node [style=none] (49) at (-4.75, 0.25) {$A$};
+		\node [style=none] (50) at (0, -3) {};
+		\node [style=none] (51) at (0, 3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route] (29) to (30);
+		\draw [style=over-route] (31) to (32);
+		\draw [style=mid-route] (29) to (31);
+		\draw [style=mid-route] (29) to (32);
+		\draw [style=mid-route] (31) to (30);
+		\draw [style=mid-route] (32) to (30);
+		\draw [style=over-route] (45) to (46);
+		\draw [style=mid-route] (43) to (45);
+		\draw [style=mid-route] (43) to (46);
+		\draw [style=dashedannotate] (51.center) to (50.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
