@@ -68,10 +68,10 @@
 \newtheorem{conj}[thm]{Conjecture}
 \newtheorem{prop}[thm]{Proposition}
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}%[section]
-\newtheorem{prob}{Problem}%[section]
-\newtheorem{exam}{Example}%[section]
-\newtheorem{rem}{Remark}%[section]
+\newtheorem{defn}[thm]{Definition}%[section]
+\newtheorem{prob}[thm]{Problem}%[section]
+\newtheorem{exam}[thm]{Example}%[section]
+\newtheorem{rem}[thm]{Remark}%[section]
 
 % https://tex.stackexchange.com/questions/126020/cleveref-doesnt-use-correct-capitalized-name-if-used-with-amsthm
 \makeatletter
@@ -140,6 +140,7 @@
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
 \newcommand{\tuple}[1]{\boldsymbol{#1}}
 \newcommand{\unent}{N} % unnormalized entropy
+\newcommand{\vN}{H} % von Neumann entropy 
 
 \newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
 \newcommand{\braa}[1]{%
