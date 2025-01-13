@@ -1940,6 +1940,124 @@ which is equivalent to concavity again
     g(X_{12}) \geq g(X_{1})+ g(X_{2})
 \end{equation}
 }
+
+\subsection{Entropies of ensembles \& coarse-grained ensembles}
+
+Let $(X_1, \ldots, X_n)$ be an $n$-tuple of PSD matrices or equivalently, let 
+\begin{equation}
+    \label{eq:n_ensemble_states}
+    \mathcal E = \{ (p_1, \rho_1), \ldots, (p_n, \rho_n) \} 
+\end{equation}
+be an ensemble of density matrices (where $\rho_i \geq 0$, $p_i \geq 0$, $\Tr(\rho_i) = 1$ and $\sum_i p_i = 1$).
+
+The \textit{Holevo information}, denoted by $\chi(\mathcal E)$, of such an ensemble is the quantity
+\begin{equation}
+    \chi(\mathcal E) \coloneqq H(\sum_{i=1}^{n} p_i \rho_i) - \sum_{i=1}^{n} p_i H(\rho_i).
+\end{equation}
+A straight-forward calculation reveals that $\chi(\mathcal E)$ is equal to the mutual information of a classical-quantum (CQ) state of the form
+\begin{equation}
+    \Gamma_{CQ} = \sum_{i=1}^{n} p_i \ket i \! \bra i \otimes \rho_i \cong \bigoplus_{i=1}^{n} p_i \rho_i
+\end{equation}
+The mutual information between the classical register $C$ supporting the disjoint states $\{\ket 1 \! \bra 1, \ldots, \ket n \! \bra n\}$ and the quantum register $Q$ supporting the states $\{\rho_1, \ldots, \rho_n\}$ for the state $\Gamma_{CQ}$ can be shown to be equal to 
+\begin{align}
+    I_{C,Q}(\Gamma_{CQ}) 
+    &\coloneqq H(\Tr_{Q}(\Gamma_{CQ})) + H(\Tr_{C}(\Gamma_{CQ})) - H(\Gamma_{CQ}) \\
+    &= H\left(\sum_{i=1}^{n} p_i \ket i \! \bra i\right) + H\left(\sum_{i=1}^{n} p_i\rho_i\right) - H\left(\sum_{i=1}^{n} p_i \ket i \! \bra i \otimes \rho_i\right) \\
+    &= \chi(\mathcal E).
+\end{align}
+because the von Neumann entropy of a CQ state associated to the ensemble $\mathcal E$ satisfies
+\begin{equation}
+    \mu(\mathcal E) \coloneqq H(\Gamma_{CQ}) = H\left(\sum_{i=1}^{n} p_i \ket i \! \bra i \otimes \rho_i\right) = H\left(\sum_{i=1}^{n} p_i \ket i \! \bra i\right) + \sum_{i=1}^{n} p_iH\left(\rho_i\right).
+\end{equation}
+
+In what follows, we will be interested in how such information can be \textit{distributed} across multiple classical registers.
+In particular, for an ensemble $\mathcal E$ of $n$ states as in \cref{eq:n_ensemble_states}, we consider $n$ classical registers $C_1, \ldots, C_n$ along with the CQ state
+\begin{equation}
+    \Gamma_{C_1\ldots C_n Q} = \sum_{i=1}^{n} p_i \Delta_{i} \otimes \rho_i
+\end{equation}
+where $\Delta_i$ is an indicator state of the form
+\begin{equation}
+    \Delta_i = \ket 0 \! \bra 0^{\otimes i-1} \otimes \ket 1 \! \bra 1 \otimes \ket 0 \! \bra 0^{\otimes n - i}.
+\end{equation}
+Now, given a subset $S \subseteq \{1,\ldots, n\}$ and subset of classical registers $C_S \coloneqq \{ C_j \mid j \in S\}$, the reduced state on $C_S \cup Q$ is given by
+\begin{align}
+    \Gamma_{C_S Q} 
+    &= \Tr_{C_{\neg S}} (\Gamma_{C_1\ldots C_n Q}) \\
+    &= \sum_{i=1}^{n} p_i \Tr_{C_{\neg S}} (\Delta_{i}) \otimes \rho_i \\
+    &= \sum_{i\in S} p_i \Tr_{C_{\neg S}} (\Delta_{i}) \otimes \rho_i + \sum_{i\not \in S} p_i \Tr_{C_{\neg S}} (\Delta_{i}) \otimes \rho_i\\
+    &= \sum_{i\in S} p_i \Delta_{i}' \otimes \rho_i +  \ket 0 \! \bra 0^{\otimes |S|}\otimes \sum_{i\not \in S} p_i \rho_i.
+\end{align}
+Note that $\Gamma_{C_S Q}$ is therefore a CQ state for the coarse-grained ensemble $\mathcal E_S$ where
+\begin{equation}
+    \label{eq:S_coarse_grained}
+    \mathcal E_S \coloneqq \{ (p_j, \rho_j) \}_{j \in S} \cup \{ (p_{\neg S}, \rho_{\neg S}) \}, \qquad \text{where} \qquad p_{\neg S} \coloneqq \sum_{j\not \in S}p_j, \quad \rho_{\neg S} \coloneqq \frac{1}{p_{\neg S}}\sum_{j\not \in S}p_j\rho_j.
+\end{equation}
+Therefore, the von Neumann entropy of the reduced state $\Gamma_{C_S Q}$ is given by
+\begin{align}
+    \mu(\mathcal E_{S}) 
+    &= H(\Gamma_{C_S Q}) \\
+    &=H\left(\sum_{i\in S} p_i \Delta_i' + p_{\neg S} \ket 0 \! \bra 0^{\otimes |S|} \right) + \sum_{i\in S} p_i H\left(\rho_i\right) + p_{\neg S}H(\rho_{\neg S}), \\
+    &= \sum_{i\in S} \eta(p_i) + \eta(p_{\neg S}) + \sum_{i\in S} p_i H\left(\rho_i\right) + p_{\neg S}H(\rho_{\neg S}), \\
+    &= \sum_{i\in S} N_{\mathcal E}(\{ i \}) + N_{\mathcal E}(\neg S),
+\end{align}
+where $N_{\mathcal E}(S) \coloneqq \eta(p_{S}) + p_{S}H(\rho_{S})$.
+Moreover, the mutual information between $C_S$ and $Q$ is equal to
+\begin{align}
+    I_{C_S, Q}(\Gamma_{C_SQ}) 
+    &= H(\Tr_{Q}(\Gamma_{C_SQ})) + H(\Tr_{C_S}(\Gamma_{C_SQ})) - H(\Gamma_{C_SQ}), \\
+    &= \sum_{i\in S} \eta(p_i) + \eta(p_{\neg S}) + H(\sum_{i=1}^{n} p_i \rho_i) - \sum_{i\in S} \eta(p_i) - \eta(p_{\neg S}) - \sum_{i\in S} p_i H\left(\rho_i\right) - p_{\neg S}H(\rho_{\neg S}), \\
+    &= H(\sum_{i=1}^{n} p_i \rho_i) - \sum_{i\in S} p_i H\left(\rho_i\right) - p_{\neg S}H(\rho_{\neg S}), \\
+    &= \chi(\mathcal E_S).
+\end{align}
+\begin{thm}
+    Let $\mathcal E = \{(p_1, \rho_1), \ldots, (\rho_n, \rho_n) \}$ be an $n$-ensemble and for each subset $S \subseteq \{1, \ldots, n\}$ let $\mathcal E_{S}$ be the coarse-grained ensemble.
+    Then for every pair of subsets $S,T \subseteq \{1, \ldots, n\}$,
+    \begin{equation}
+        \mu(\mathcal E_{S}) + \mu(\mathcal E_{T}) - \mu(\mathcal E_{S\cup T}) - \mu(\mathcal E_{S\cap T}) \geq 0.
+        \label{eq:mu_SSA}
+    \end{equation}
+    Moreover, one has
+    \begin{equation}
+         N_{\mathcal E}(S) + N_{\mathcal E}(T) - N_{\mathcal E}(S\cup T) - N_{\mathcal E}(S\cap T) \geq 0.
+         \label{eq:N_SSA}
+    \end{equation}
+    where $N_{\mathcal E}(S) \coloneqq \eta(p_{S}) + p_{S}H(\rho_{S})$.
+\end{thm}
+\begin{proof}
+    By strong subadditivity of von Neumann entropy applied to $\Gamma_{C_1 \ldots C_n Q}$ we have for every pair of subsets $S,T \subseteq \{1,\ldots, n\}$,
+    \begin{equation}
+        I_{C_S, C_T | Q}(\Gamma_{C_1 \ldots C_n Q}) \coloneqq H(\Gamma_{C_S Q}) + H(\Gamma_{C_T Q})
+        -H(\Gamma_{C_{S\cup T} Q}) - H(\Gamma_{C_{S \cap T} Q}) \geq 0,
+    \end{equation}
+    which is equivalent to \cref{eq:mu_SSA} because $\mu(\mathcal E_S) = H(\Gamma_{C_S Q})$.
+    Now to prove \cref{eq:N_SSA}, note that $\mu(\mathcal E_S)$ can also be written as
+    \begin{align}
+        \mu(\mathcal E_S) 
+        &= \sum_{i\in S} \left(\eta(p_i) + p_i H(\rho_i)\right) + \left(\eta(p_{\neg S}) + \sum_{p_{\neg S}} H(\rho_{\neg S})\right), \\
+        &= \sum_{i\in S} N_{\mathcal E}(\{i\}) + N_{\mathcal E}(\neg S).
+    \end{align}
+    Which implies for any subsets $S,T \subseteq \{1,\ldots, n\}$
+    \begin{align}
+        0&\leq \mu(\mathcal E_{S}) + \mu(\mathcal E_{T}) - \mu(\mathcal E_{S\cup T}) - \mu(\mathcal E_{S\cap T}) \\
+        \begin{split}
+            &= \left(\sum_{i\in S} N_{\mathcal E}(\{i\}) + \sum_{i\in T} N_{\mathcal E}(\{i\}) - \sum_{i\in S \cup T} N_{\mathcal E}(\{i\}) - \sum_{i\in S \cap T} N_{\mathcal E}(\{i\})\right) + \cdots \\ &\qquad \cdots + \left(N_{\mathcal E}(\neg S) + N_{\mathcal E}(\neg T) - N_{\mathcal E}(\neg (S\cup T)) - N_{\mathcal E}(\neg(S\cap T))\right),
+        \end{split}\\
+        &= N_{\mathcal E}(\neg S) + N_{\mathcal E}(\neg T) - N_{\mathcal E}(\neg (S\cup T)) - N_{\mathcal E}(\neg(S\cap T)), \\
+        &= N_{\mathcal E}(\neg S) + N_{\mathcal E}(\neg T) - N_{\mathcal E}(\neg S\cap \neg T)) - N_{\mathcal E}(\neg S\cup \neg T)).
+    \end{align}
+    Since the above inequality holds for any subsets $S,T$, it also holds for $S' = \neg S$ and $T' = \neg T$.
+    Therefore, we conclude \cref{eq:N_SSA} holds also.
+\end{proof}
+
+{\color{blue}
+    TC : We have as a corollary of the previous theorem \cref{cor:balanced_ineqs} itself without needed to employ some sort of limiting argument.
+    Namely, any balanaced inequality of von Neumann entropies of subsystems of multipartite quantum states is also a valid inequality of both $\mu$ and $N_{\mathcal E}$ quantities of subsets of ensembles of PSD matrices.
+    This is already a large improvement on the previous proof of \cref{cor:balanced_ineqs}.
+    What remains is to find a similarly elegant treatment of the notion of the additive entropy cone.
+    I suspect it will involve some sort of downscaling of ensemble probabilities followed by an extension by a ``marked'' element so as to preserve normalization.
+    This is work TODO!
+}
+
 \section{Conclusion}
 
 
