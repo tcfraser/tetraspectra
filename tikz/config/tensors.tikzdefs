@@ -4,7 +4,7 @@
 \usepackage{amssymb}
 
 % Custom spaced ABCDEF 6j recoupling symbol
-\newcommand{\tightsixj}[1]{
+\newcommand{\tightcurlysixj}[1]{
 \begingroup
 \arraycolsep=2pt
 \renewcommand{\arraystretch}{0.75}
@@ -13,7 +13,16 @@
 \end{array}\right\}
 \endgroup
 }
-\newcommand{\abcdefsymbol}{\tightsixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
+\newcommand{\tightparensixj}[1]{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.75}
+\left(\begin{array}{ccc}
+    #1
+\end{array}\right)
+\endgroup
+}
+\newcommand{\abcdefsymbol}{\tightcurlysixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
 
 \usepackage{mathtools}
 \usepackage[vcentermath]{youngtab}

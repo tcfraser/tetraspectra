@@ -49,9 +49,9 @@
 \section{Introduction}
 
 There are a number of operations involving the transformation of Hermitian matrices under which it is possible to track the effect had of the corresponding sets of eigenvalues.
-For example, the eigenvalues, $\lambda(X)$, of a Hermitian matrix, $X$, are invariant under conjugation by unitary matrices, $\lambda(X) = \lambda(UXU^{\dagger})$, covariant under taking positive powers $\lambda(X^p) = \lambda(X)^p$, covariant under multiplication by real numbers, $\lambda(r X) = r \lambda(X)$, and covariant under the addition of scalar matrices, $\lambda(X+rI) = \lambda(X) + (r,\ldots,r)$.
+For example, the eigenvalues, $\eig(X)$, of a Hermitian matrix, $X$, are invariant under conjugation by unitary matrices, $\eig(X) = \eig(UXU^{\dagger})$, covariant under taking positive powers $\eig(X^p) = \eig(X)^p$, covariant under multiplication by real numbers, $\eig(r X) = r \eig(X)$, and covariant under the addition of scalar matrices, $\eig(X+rI) = \eig(X) + (r,\ldots,r)$.
 The operation of adding together Hermitian matrices is not an operation of this type.
-Specifically, the eigenvalues $\gamma = \lambda(A+B)$ of the sum of two matrices cannot be determined from the eigenvalues $\alpha = \lambda(A)$ and $\beta = \lambda(B)$ of the summands \textit{alone}.
+Specifically, the eigenvalues $\gamma = \eig(A+B)$ of the sum of two matrices cannot be determined from the eigenvalues $\alpha = \eig(A)$ and $\beta = \eig(B)$ of the summands \textit{alone}.
 Stated differently, to determine the eigenvalues involved, additional knowledge about the eigenvectors involved is typically required.
 Nevertheless, there are numerous mathematical situations wherein knowledge about the eigenvectors involved is lacking, yet it remains desirable to determine the set of admissible eigenvalues of a sum given the eigenvalues of the summands.
 
@@ -101,56 +101,210 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{itemize}
 }
 
-\section{Tetrahedral sums Hermitian matrices}
+\clearpage
+\section{Tetrahedra of Hermitian matrices}
 
 \subsection{Definitions}
 \begin{prob}[Tetrahedral eigenvalues]
-    \label{prob:tetrahedral_problem}
+    \label{prob:tet_problem}
     A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
     \begin{equation}
-        \label{eq:tetrahedral_linear_constraints}
+        \label{eq:tet_linear_constraints}
         A + B = C, \quad
         B + D = F, \quad
-        D + C = E, \quad
+        C + D = E, \quad
         A + F = E,
     \end{equation}
     and (ii) the six eigenvalue constraints
     \begin{equation}
-        \label{eq:tetrahedral_eigenvalue_constraints}
-        \lambda(A) = \alpha, \quad
-        \lambda(B) = \beta, \quad
-        \lambda(C) = \gamma, \quad
-        \lambda(D) = \delta, \quad
-        \lambda(E) = \epsilon, \quad
-        \lambda(F) = \phi.
+        \label{eq:tet_eigenvalue_constraints}
+        \eig(A) = \alpha, \quad
+        \eig(B) = \beta, \quad
+        \eig(C) = \gamma, \quad
+        \eig(D) = \delta, \quad
+        \eig(E) = \epsilon, \quad
+        \eig(F) = \phi.
     \end{equation}
 \end{prob}
+
+\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$d=1$}{d=1}]
+    \label{exam:one_dim_soln}
+    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $d=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
+    In this case, the tetrahedral Horn's problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
+    \begin{equation}
+        \label{eq:one_dim_tet_conds}
+        a + b = c, \quad
+        b + d = f, \quad
+        d + c = e, \quad
+        a + f = e,
+    \end{equation}
+    or equivalently,
+    \begin{equation}
+        \begin{pmatrix}
+            a \\ b \\ c \\ d \\ e \\ f
+        \end{pmatrix}
+        \in \ker
+        \begin{pmatrix} 
+            1 & 1 & 0 & -1 & 0 & 0 \\
+            0 & 1 & 1 & 0 & -1 & 0 \\
+            0 & 0 & 1 & 1 & 0 & -1 \\
+            1 & 0 & 0 & 0 & 1 & -1
+        \end{pmatrix}.
+    \end{equation}
+    It can be shown that the above coefficient matrix has a three dimensional kernel and, in particular, one can parameterize the solution space by $(x,y,z) \in \mathbb R^{3}$ according to the formula
+    \begin{equation}
+        \label{eq:one_dim_soln}
+        (a,b,c,d,e,f) = (x, y, x+y, z, x+y+z, y+z).
+    \end{equation}
+\end{exam}
+
+\begin{rem}[Traces are tetrahedral]
+    In the original, trigonal version of Horn's problem, the eigenvalues $(\alpha, \beta, \gamma)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ necessarily must satisfy a basic equality condition known as the \textit{trace condition}:
+    \begin{equation}
+        \label{eq:tri_trace_cond}
+        \abs{\alpha}+\abs{\beta}=\abs{\gamma},
+    \end{equation}
+    where $\abs{\lambda} \coloneqq \sum_{i} \lambda_i$ is shorthand for the sum of the eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$.
+    This condition must hold because $A+B=C$ implies $\Tr(C) = \Tr(A+B) = \Tr(A)+\Tr(B)$ and $\Tr(X) = \abs{\lambda}$ for any Hermitian matrix $X$ with eigenvalues $\lambda$.
+    For the tetrahedral Horn's problem, a set of tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ necessarily satisfy four \textit{trace conditions}:
+    \begin{equation}
+        \label{eq:tet_trace_conds}
+        \abs{\alpha} + \abs{\beta} = \abs{\gamma}, \quad
+        \abs{\beta} + \abs{\delta} = \abs{\phi}, \quad
+        \abs{\delta} + \abs{\gamma} = \abs{\epsilon}, \quad
+        \abs{\alpha} + \abs{\phi} = \abs{\epsilon}.
+    \end{equation}
+    Comparing the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) with the $d=1$ case of the tetrahedral Horn's problem (\cref{eq:tet_linear_constraints}), we see that a sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ can only be tetrahedral if their traces, $(\abs \alpha, \abs \beta, \abs \gamma, \abs \delta, \abs \epsilon, \abs \phi)$, are tetrahedral.
+\end{rem}
+
+\clearpage
 \subsection{Symmetries}
 \label{sec:symmetries}
-\begin{lem}[Shifting]
-     Let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be a given sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be given scalars and define \textit{shifted} candidate eigenvalues by the formula
+
+There are numerous types of symmetries present in the statement of \cref{prob:tet_problem}.
+The purpose of this section is to describe the scaling, inversion, tetrahedral, and shifting symmetries of the problem.
+These symmetries can, in many cases, be used to simplify the problem by selecting a canonical representative of the corresponding equivalence class; in other cases, it will be useful to leave \cref{prob:tet_problem} as stated.
+Later we will comment on the possibility of additional hidden symmetries not previously mentioned.
+
+\begin{prop}[Scaling symmetry]
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and let $s \in (0, \infty)$ be a positive real number.
+    Then the scaled eigenvalues, $(s\alpha, s\beta, s\gamma, s\delta, s\epsilon, s\phi)$, are tetrahedral if and only if the original, unscaled eigenvalues $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_linear_constraints} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$; for example, we have $sA+sB-sC=0$ if and only if $s(A+B-C)=0$ if and only if $A+B-C=0$.
+\end{proof}
+
+One may wonder with or not it is possible to extend the the scaling symmetry to consider scaling by negative $s < 0$.
+Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrices both negates and reverses the order of its eigenvalues.
+\begin{prop}[Inversion symmetry]
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues. 
+    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{*}$ denote the inverted list of resorted and negated eigenvalues: $\lambda^{*} = (-\lambda_d \geq \cdots \geq - \lambda_1)$.
+    Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if $(\alpha^{*}, \beta^{*}, \gamma^{*}, \delta^{*}, \epsilon^{*}, \phi^{*})$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    The statement holds because (i) $(A,B,C,D,E,F)$ satisfy \cref{eq:tet_linear_constraints} if and only if $(A',B',C',D',E',F') \coloneqq (-A,-B,-C,-D,-E,-F)$ satisfy \cref{eq:tet_linear_constraints}, and (ii) $\eig(X) = \lambda$ if and only if $\eig(-X) = \lambda^{*}$.
+\end{proof}
+
+\begin{prop}[Tetrahedral symmetry]
+    \textcolor{red}{TODO} 
+\end{prop}
+\begin{proof}
+    For example if $(A',B',C',D',E',F') = (D,-E,-C,A,-B,-F)$, then
+    \begin{align}
+        A'+B'-C' &= D - E + C = 0  \\
+        B'+D'-F' &= - E + A + F = 0 \\
+        C'+D'-E' &= - C + A + B = 0 \\
+        A'+F'-E' &= D - F + B = 0 \\
+    \end{align}
     \begin{equation}
-        \label{eq:shifted_tetrahedral_eigenvalues}
+        \tightparensixj{A & B & C \\ D & E & F}
+    \end{equation}
+\end{proof}
+
+\begin{prop}[Shifting symmetry]
+    \label{prop:shifting}
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
+    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda + x \coloneqq (\lambda_1 + x \geq \cdots \geq \lambda_d + x)$.
+    Then define shifted eigenvalues by the formula
+    \begin{equation}
+        \label{eq:shifted_tet_eigenvalues}
         \begin{alignedat}{3}
-            &\alpha \coloneqq \tilde \alpha + x, \qquad
-            &&\beta \coloneqq \tilde \beta + y, \qquad
-            &&\gamma \coloneqq \tilde \gamma + x+y, \\
-            &\delta \coloneqq \tilde \delta + z, \qquad
-            &&\epsilon \coloneqq \tilde \epsilon + x + y + z, \qquad
-            &&\phi \coloneqq \tilde \phi + y + z.
+             &\tilde \alpha     \coloneqq \alpha + x, \qquad
+            &&\tilde \beta      \coloneqq \beta + y, \qquad
+            &&\tilde \gamma     \coloneqq \gamma + x + y, \\
+             &\tilde \delta     \coloneqq \delta + z, \qquad
+            &&\tilde \epsilon   \coloneqq \epsilon + x + y + z, \qquad
+            &&\tilde \phi       \coloneqq \phi + y + z.
         \end{alignedat}
     \end{equation}
-    Then the shifted eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral if and only if the unshifted eigenvalues are tetrahedral.
-    Moreover if the unshifted eigenvalues are tetrahedral and $(x,y,z)$ are sufficiently large, i.e.
+    The shifted eigenvalues $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon,\tilde \phi)$ are tetrahedral if and only if the unshifted eigenvalues $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    Given a Hermitian matrix $X$ with eigenvalues $\eig(X) = \lambda$ and a constant $x \in \mathbb R$, the eigenvalues of $X+xI$ (where $I$ is the identity matrix) are
     \begin{equation}
-        x \geq \min(\tilde \alpha), \qquad
-        y \geq \min(\tilde \beta), \qquad
-        z \geq \min(\tilde \delta),
+        \eig(X+xI) = \lambda + x = (\lambda_1 + x \geq \cdots \geq \lambda_d + x).
     \end{equation}
-    then the shifted spectra are both tetrahedral and non-negative.
-\end{lem}
+    The statement then follows from \cref{exam:one_dim_soln} because 
+    \begin{equation}
+        (A+xI,B+yI,C+(x+y)I,D+zI, E+(x+y+z)I, F+(y+z)I)
+    \end{equation}
+    satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints}
+\end{proof}
+As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn's problem, in a certain sense, it suffices to solve the tetrahedral Horn's problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
+\begin{cor}[Traceless]
+    \label{cor:traceless}
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and for any list of $d$ eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{0} \coloneqq \lambda - \abs{\lambda}/d$ denote the traceless list of eigenvalues obtained by shifting $\lambda$ by $-\abs{\lambda}/d$.
+    Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if (i) their traces $(\abs{\alpha}, \abs{\beta}, \abs{\gamma}, \abs{\delta}, \abs{\epsilon}, \abs{\phi})$ are tetrahedral (they satisfy \cref{eq:tet_trace_conds}) and (ii) $(\alpha^0, \beta^0, \gamma^0, \delta^0, \epsilon^0, \phi^0)$ are tetrahedral.
+\end{cor}
+\begin{proof}
+    This ``only if'' portion of the statement follows from both the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) and applications of the shifting symmetry \cref{prop:shifting} with $(x,y,z)$ values
+    \begin{equation}
+        x = - d^{-1}\Tr(A), \qquad
+        y = - d^{-1}\Tr(B) \qquad
+        z = - d^{-1}\Tr(D).
+    \end{equation}
+    The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
+\end{proof}
+The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn's problem it suffices to solve the tetrahedral Horn's problem for positive definite spectra only.
+Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
+The following corrolary establishes, in a certain sense, the minimum shifting required to ensure strictly positive eigenvalues for all six Hermitian matrices (assuming some other basic inequalities hold).
+Note that in subsequent sections we will often explicitly assume the candidate eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\delta)$ are either non-negative or positive for the sake of technical convenience or sometimes to establish a connection with density matrices from quantum theory (which are positive semidefinite Hermitian matrices with unit trace).
+\begin{cor}[Positive definite]
+    \label{cor:psd}
+    If $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are a tetrahedral sextuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
+    \begin{equation}
+        \label{eq:min_eig_ineqs}
+        \gamma_d \geq \alpha_d + \beta_d, \qquad \phi_d \geq \beta_d + \delta_d, \qquad \epsilon_d \geq \delta_d + \gamma_d, \qquad \epsilon_d \geq \alpha_d + \phi_d.
+    \end{equation}
+    Moreover, if $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are a sextuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
+    \begin{equation}
+        \label{eq:positive_shift}
+        x > -\alpha_d, \qquad
+        y > -\beta_d, \qquad
+        z > -\delta_d,
+    \end{equation}
+    the resulting shifted eigenvalues $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all positive.
+\end{cor}
+\begin{proof}
+    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\gamma_d \geq \alpha_d + \beta_d$ for the trigonal Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
+    As a reminder, the smallest eigenvalue $\lambda_d$ of a matrix $X$ is characterized by a minimization: $\lambda_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
+    \begin{equation}
+        \gamma_d = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \alpha_d + \beta_d.
+    \end{equation}
+    Four applications of this inequality produces \cref{eq:min_eig_ineqs}.
+    Now if $(x,y,z)$ satisfy \cref{eq:positive_shift}, we have for all $j$
+    \begin{equation}
+        \alpha_j + x \geq \alpha_d + x > 0,
+    \end{equation}
+    meaning $\alpha+x = (\alpha_1 + x \geq \cdots \geq \lambda_d + x)$ is strictly positive.
+    Similar statements hold for $\beta,\gamma,\delta, \epsilon$ and $\phi$; for instance, for all $j$,
+    \begin{equation}
+        \epsilon_j + x + y + z \geq \epsilon_d + x + y + z > \epsilon_d - \alpha_d - \beta_d - \delta_d \geq 0,
+    \end{equation}
+    meaning $\epsilon+x+y+z$ is strictly positive also.
+\end{proof}
 
-\textcolor{red}{TODO: Describe scaling symmetries, shifting symmetries, tetrahedral symmetries, and conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
+\textcolor{red}{TODO: Describe tetrahedral symmetries, and conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
 
 \subsection{The case of \texorpdfstring{$\boldsymbol{2\times 2}$}{2x2} Hermitian matrices}
 \label{sec:d_2}
@@ -160,7 +314,7 @@ In the context of the $d=2$ tetrahedral eigenvalue problem, each traceless $2 \t
 \end{equation}
 The eigenvalues of $X$ are then determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
 \begin{equation}
-    \lambda(X) = \lambda\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+    \eig(X) = \lambda\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
 \end{equation}
 %\begin{equation}
 %    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
@@ -178,7 +332,7 @@ Now, for the special case of the tetrahedral eigenvalue constraint problem, one 
     \epsilon = (e, -e), \quad
     \phi = (f, -f).
 \end{equation}
-Using this parameterization, it can be shown that the constraints imposed in \cref{prob:tetrahedral_problem} precisely describe the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a genuine Euclidean tetrahedron in $\mathbb R^{3}$ \cite{richardson1902trigonometry}; namely, the conjunction of a quadruplet of triangle-inequalities,
+Using this parameterization, it can be shown that the constraints imposed in \cref{prob:tet_problem} precisely describe the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a genuine Euclidean tetrahedron in $\mathbb R^{3}$ \cite{richardson1902trigonometry}; namely, the conjunction of a quadruplet of triangle-inequalities,
 \begin{equation}
     \label{eq:quadruplet_triangle_constraints}
     \abs{a-b} \leq c \leq a+b, \qquad
@@ -288,7 +442,7 @@ The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} 
 We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a down-scaling argument.
 Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
 \begin{equation}
-    \label{eq:tetrahedral_scaling}
+    \label{eq:tet_scaling}
     (\alpha,\beta,\gamma,\delta,\epsilon,\phi) \mapsto (r\alpha,r\beta,r\gamma,r\delta,r\epsilon,r\phi),
 \end{equation}
 the form and positivity of \cref{eq:SSA_like_CSW} is \textit{not} invariant under scaling by $r$.
@@ -315,7 +469,7 @@ which implies the following limit holds when $\abs{\gamma} + \abs{\phi} = \abs{\
     +\abs{\beta}\log\abs{\beta}
     +\abs{\epsilon}\log\abs{\epsilon}.
 \end{equation}
-In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tetrahedral_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
+In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tet_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
 Moreover, it can be shown that $q_{r} \geq q_{0}$ for all $r$ and thus \cref{eq:SSA_like_ineq_equiv} is strictly stronger than \cref{eq:SSA_like_CSW}.
 To prove this, we see that the trace equalities imply
 \begin{align}
@@ -529,7 +683,7 @@ For example, it seems to prove
 \begin{equation}
     E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
 \end{equation}
-where $E_k(X) = e_{k}(\lambda(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
+where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
 }
 
 
@@ -542,7 +696,7 @@ where $E_k(X) = e_{k}(\lambda(X))$ where $E_k$ is the $k$th elementary symmetric
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
 
 {\color{blue}
-The purpose of this section is to derive some upper and lower bounds on generalized $6j$ symbol for $\SU(d)$ in relation to the existence or non-existence of Hermitian operators satisfying the tetrahedral relations \cref{eq:tetrahedral_linear_constraints}.
+The purpose of this section is to derive some upper and lower bounds on generalized $6j$ symbol for $\SU(d)$ in relation to the existence or non-existence of Hermitian operators satisfying the tetrahedral relations \cref{eq:tet_linear_constraints}.
 This section essentially constitutes a generalization of the proof techniques in the ``quantum-information-theoretic'' approach taken in \cite{christandl2008quantum}.
 Specifically, the results of this section are derived from considering a type of pseudo-commutative binomial expansion of tensor powers of sums of Hermitian operators and applying spectrum estimation to the resulting terms.
 }
@@ -843,7 +997,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     and (ii) the lower bound 
     \begin{equation}
         \label{eq:seq_ud_sixj_lower_bound}
-        \norm{\tightsixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\infty}
+        \norm{\tightcurlysixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\infty}
         \geq \frac{1}{(n \abs{\epsilon}+4)^{6(d-1)}}.
     \end{equation}
 \end{cor}
@@ -875,7 +1029,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     Then for all sequences of Young diagrams $(\alpha'_n, \beta'_n, \gamma'_n, \delta'_n, \epsilon'_n, \phi'_n)$ satisfying \cref{eq:ceiling_sized_young_diagrams} and \cref{eq:sextuple_convergence}, we have
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
-        \norm{\tightsixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\mathrm{HS}}^{2}
+        \norm{\tightcurlysixj{ \alpha'_n & \beta'_n & \gamma'_n \\ \delta'_n &  \epsilon'_n &  \phi'_n}}_{\mathrm{HS}}^{2}
         \leq \exp(-n I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} /6 + O(\log n)).
     \end{equation}
     where $I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ quantifies the deviation of $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ from being tetrahedral:
@@ -900,7 +1054,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     Now let $(\alpha', \beta', \gamma', \delta', \epsilon', \phi')$ be arbitary Young diagrams with respective sizes $(x,y,x+y,z,x+y+z,y+z)$ where $x,y,z$ are determined by a positive integer $n$ as in \cref{thm:Q_upper_bound}.
     Using \cref{eq:ud_sixj_prod_proj_hs_norm}, we obtain the formula
     \begin{align}
-        \norm{\tightsixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
+        \norm{\tightcurlysixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
         &=\frac{\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})}{\dim(V_{\epsilon'}^{d})\dim(W_{\alpha'})\dim(W_{\beta'})\dim(W_{\delta'})} \\
         &=R_{\alpha',\beta',\delta';\epsilon'}\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (\Gamma_{x}\ot \Gamma_{y} \ot \Gamma_{z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
     \end{align}
@@ -1111,7 +1265,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
 \end{proof}
 
 \begin{thm}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tetrahedral_linear_constraints}.
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
     Then necessarily $\abs{\beta}+\abs{\epsilon} = \abs{\gamma}+\abs{\phi}$ and furthermore
     \begin{equation}
         I(\gamma, \phi; \beta, \epsilon) \geq 0.
@@ -2050,13 +2204,48 @@ Moreover, the mutual information between $C_S$ and $Q$ is equal to
 \end{proof}
 
 {\color{blue}
-    TC : We have as a corollary of the previous theorem \cref{cor:balanced_ineqs} itself without needed to employ some sort of limiting argument.
-    Namely, any balanaced inequality of von Neumann entropies of subsystems of multipartite quantum states is also a valid inequality of both $\mu$ and $N_{\mathcal E}$ quantities of subsets of ensembles of PSD matrices.
+    TC : We have, as a corollary of the previous theorem, \cref{cor:balanced_ineqs} itself without needing to employ some sort of limiting argument.
+    Namely, any balanced inequality of von Neumann entropies of subsystems of multipartite quantum states is also a valid inequality of both $\mu$ and $N_{\mathcal E}$ quantities of subsets of ensembles of PSD matrices.
     This is already a large improvement on the previous proof of \cref{cor:balanced_ineqs}.
     What remains is to find a similarly elegant treatment of the notion of the additive entropy cone.
     I suspect it will involve some sort of downscaling of ensemble probabilities followed by an extension by a ``marked'' element so as to preserve normalization.
-    This is work TODO!
 }
+
+Given an $n$-ensemble $\mathcal E = \{(p_1, \rho_1), \ldots, (p_n, \rho_n)\}$ of $d\times d$ density matrices, and $\epsilon \in (0,1)$, we define an $\epsilon$-extended $n$-ensemble of $d+1 \times d+1$ density matrices by
+\begin{equation}
+    \mathcal E^{\epsilon} \coloneqq \{ (p_1, (1-\epsilon) \oplus \epsilon \rho_1), \ldots, (p_n, (1-\epsilon) \oplus \epsilon\rho_n) \}.
+\end{equation}
+
+Then, for any subset $S \subseteq \{1,\ldots, n\}$, if $\rho_{S}$ is the normalized mixture over $S$ for the original ensemble,
+\begin{equation}
+    \rho_{S} = \frac{\sum_{i\in S} p_i \rho_i}{\sum_{i\in S} p_i},
+\end{equation}
+then the normalized mixture over $S$ for the $\epsilon$-extended ensemble satisfies
+\begin{equation}
+    \rho_{S}^{\epsilon} = \frac{\sum_{i\in S} p_i [(1-\epsilon) \oplus \epsilon \rho_i]}{\sum_{i\in S} p_i} = (1-\epsilon) \oplus \epsilon \rho_{S}.
+\end{equation}
+The von Neumann entropy of $\rho_{S}$ is related to the von Neumann entropy of $\rho_{S}$ by
+\begin{equation}
+    H(\rho_{S}^{\epsilon}) = h(\epsilon) + \epsilon H(\rho_{S}).
+\end{equation}
+Moreover, as the weights in the $\epsilon$-extended ensemble are the same as the weights in the original ensemble, we also have
+\begin{equation}
+    N_{\mathcal E^{\epsilon}}(S) = \eta(p_S) + p_S H(\rho_S^{\epsilon}) = \eta(p_S) + p_S h(\epsilon) + p_S \epsilon H(\rho_S)
+\end{equation}
+\begin{equation}
+    \mu(\mathcal E_S) = \sum_{i\in S} N_{\mathcal E}(\{ i \}) + N_{\mathcal E}(\neg S)
+\end{equation}
+\begin{equation}
+    \mu(\mathcal E_S^{\epsilon}) = \sum_{i\in S} N_{\mathcal E^{\epsilon}}(\{ i \}) + N_{\mathcal E^{\epsilon}}(\neg S)
+\end{equation}
+
+\begin{equation}
+    \Gamma_{C_1\ldots C_n Q}^{\epsilon} = \sum_{i=1}^{n} p_i \Delta_{i}^{\epsilon} \otimes \rho_i
+\end{equation}
+
+\begin{equation}
+    \Delta_{i}^{\epsilon} = (1-\epsilon) \ket{\omega}\!\bra{\omega}^{\otimes n} + \epsilon \Delta_i.
+\end{equation}
 
 \section{Conclusion}
 
