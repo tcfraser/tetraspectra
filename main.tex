@@ -138,17 +138,14 @@ In particular, while the triangular Horn's problem is completely characterized b
         d + c = e, \quad
         a + f = e,
     \end{equation}
-    or equivalently,
+    or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients appearing in \cref{eq:one_dim_tet_conds}:
     \begin{equation}
-        \begin{pmatrix}
-            a \\ b \\ c \\ d \\ e \\ f
-        \end{pmatrix}
-        \in \ker
+        \Gamma \coloneqq
         \begin{pmatrix} 
-            1 & 1 & 0 & -1 & 0 & 0 \\
-            0 & 1 & 1 & 0 & -1 & 0 \\
-            0 & 0 & 1 & 1 & 0 & -1 \\
-            1 & 0 & 0 & 0 & 1 & -1
+            1 & 1 & -1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 1 & 0 & -1 \\
+            0 & 0 & 1 & 1 & -1 & 0 \\
+            1 & 0 & 0 & 0 & -1 & 1 
         \end{pmatrix}.
     \end{equation}
     It can be shown that the above coefficient matrix has a three dimensional kernel and, in particular, one can parameterize the solution space by $(x,y,z) \in \mathbb R^{3}$ according to the formula
@@ -197,6 +194,7 @@ Later we will comment on the possibility of additional hidden symmetries not pre
 One may wonder with or not it is possible to extend the the scaling symmetry to consider scaling by negative $s < 0$.
 Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrices both negates and reverses the order of its eigenvalues.
 \begin{prop}[Inversion symmetry]
+    \label{prop:inversion}
     Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues. 
     Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{*}$ denote the inverted list of resorted and negated eigenvalues: $\lambda^{*} = (-\lambda_d \geq \cdots \geq - \lambda_1)$.
     Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if $(\alpha^{*}, \beta^{*}, \gamma^{*}, \delta^{*}, \epsilon^{*}, \phi^{*})$ are tetrahedral.
@@ -205,16 +203,37 @@ Indeed, this can be accomplished, provided one accounts for the fact that negati
     The statement holds because (i) $(A,B,C,D,E,F)$ satisfy \cref{eq:tet_linear_constraints} if and only if $(A',B',C',D',E',F') \coloneqq (-A,-B,-C,-D,-E,-F)$ satisfy \cref{eq:tet_linear_constraints}, and (ii) $\eig(X) = \lambda$ if and only if $\eig(-X) = \lambda^{*}$.
 \end{proof}
 
-\begin{prop}[Tetrahedral symmetry]
-    \textcolor{red}{TODO} 
-\end{prop}
+The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\lambda \rightarrow \lambda^{*}$, or permutations of elements in the sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$.
+\begin{thm}[Tetrahedral symmetry]
+    The sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of eigenvalues are tetrahedral if and only if any (and thus all) of the following sextuples of eigenvalues are tetrahedral:
+    \begin{equation}
+        \left(
+        \begin{array}{cccccc}
+         \delta  & \beta  & \phi  & \alpha  & \epsilon  & \gamma  \\
+         \alpha^*  & \gamma  & \beta  & \delta  & \phi  & \epsilon  \\
+         \beta^*  & \alpha^*  & \gamma^*  & \epsilon  & \delta  & \phi 
+        \end{array}
+        \right).
+    \end{equation}
+    Moreover, these three symmetries generate a finite group of order $48$.
+    Furthermore, this finite group full subgroup of all $6! \times 2^6 = 46,080$ possible ``signed'' permutations.
+\end{thm}
 \begin{proof}
-    For example if $(A',B',C',D',E',F') = (D,-E,-C,A,-B,-F)$, then
+    \begin{equation}
+        \left(
+        \begin{array}{cccccc}
+         {D} & {B} & {F} & {A} & {E} & {C} \\
+         -{A} & {C} & {B} & {D} & {F} & {E} \\
+         -{B} & -{A} & -{C} & {E} & {D} & {F} \\
+        \end{array}
+        \right)
+    \end{equation}
+    For example if $(A',B',C',D',E',F') = (-A,C,B,D,F,E)$, then
     \begin{align}
-        A'+B'-C' &= D - E + C = 0  \\
-        B'+D'-F' &= - E + A + F = 0 \\
-        C'+D'-E' &= - C + A + B = 0 \\
-        A'+F'-E' &= D - F + B = 0 \\
+        A'+B'-C' &= -A + C - B = 0  \\
+        B'+D'-F' &= C + D - E = 0 \\
+        C'+D'-E' &= B + D - F = 0 \\
+        A'+F'-E' &= -A + E - F = 0 \\
     \end{align}
     \begin{equation}
         \tightparensixj{A & B & C \\ D & E & F}
