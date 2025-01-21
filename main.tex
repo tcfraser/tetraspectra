@@ -140,6 +140,7 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{equation}
     or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients appearing in \cref{eq:one_dim_tet_conds}:
     \begin{equation}
+        \label{eq:tet_coeff_matrix}
         \Gamma \coloneqq
         \begin{pmatrix} 
             1 & 1 & -1 & 0 & 0 & 0 \\
@@ -204,41 +205,173 @@ Indeed, this can be accomplished, provided one accounts for the fact that negati
 \end{proof}
 
 The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\lambda \rightarrow \lambda^{*}$, or permutations of elements in the sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$.
-\begin{thm}[Tetrahedral symmetry]
+\newcommand{\tightsextuple}[1]{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{1}
+\begin{array}{cccccc}#1\end{array}
+\endgroup
+}
+\begin{prop}[Tetrahedral symmetry]
+    \label{prop:tet_symmetry}
     The sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of eigenvalues are tetrahedral if and only if any (and thus all) of the following sextuples of eigenvalues are tetrahedral:
     \begin{equation}
-        \left(
-        \begin{array}{cccccc}
-         \delta  & \beta  & \phi  & \alpha  & \epsilon  & \gamma  \\
-         \alpha^*  & \gamma  & \beta  & \delta  & \phi  & \epsilon  \\
-         \beta^*  & \alpha^*  & \gamma^*  & \epsilon  & \delta  & \phi 
-        \end{array}
-        \right).
+        \label{eq:gens_of_tet_sym}
+        \tightsextuple{(
+            \alpha & \phi  & \epsilon  & \delta^{*}  & \gamma  & \beta
+         )}
+        \qquad
+        \tightsextuple{(
+            \gamma  & \epsilon^*  & \delta^{*}  & \phi  & \beta  & \alpha^*
+        )}
     \end{equation}
-    Moreover, these three symmetries generate a finite group of order $48$.
-    Furthermore, this finite group full subgroup of all $6! \times 2^6 = 46,080$ possible ``signed'' permutations.
-\end{thm}
+    Moreover, these two operations generate a finite group of order $48$ whose action, grouped by conjugacy classes, produces:
+    \begin{equation}
+        \label{eq:all_of_tet_sym}
+        \tightsextuple{
+            (\alpha  & \beta  & \gamma  & \delta  & \epsilon  & \phi )\\[1em]
+            (\delta  & \beta  & \phi  & \alpha  & \epsilon  & \gamma )\\
+            (\delta^* & \epsilon  & \gamma  & \alpha^* & \beta  & \phi )\\
+            (\alpha  & \epsilon^* & \phi^* & \delta  & \beta^* & \gamma^*)\\[1em]
+            (\beta  & \phi^* & \delta^* & \epsilon  & \gamma  & \alpha )\\
+            (\gamma  & \alpha^* & \beta  & \phi^* & \delta^* & \epsilon^*)\\
+            (\epsilon  & \gamma^* & \delta  & \beta  & \phi  & \alpha^*)\\
+            (\phi  & \alpha  & \epsilon  & \gamma^* & \delta  & \beta^*)\\
+            (\phi^* & \delta  & \beta^* & \gamma  & \alpha  & \epsilon )\\
+            (\epsilon^* & \phi  & \alpha^* & \beta^* & \gamma^* & \delta )\\
+            (\gamma^* & \delta^* & \epsilon^* & \phi  & \alpha^* & \beta )\\
+            (\beta^* & \gamma  & \alpha  & \epsilon^* & \phi^* & \delta^*)\\
+        }
+        \quad
+        \tightsextuple{
+            (\alpha ^* & \gamma  & \beta  & \delta  & \phi  & \epsilon )\\
+            (\beta ^* & \alpha ^* & \gamma ^* & \epsilon  & \delta  & \phi )\\
+            (\phi ^* & \beta  & \delta ^* & \gamma ^* & \epsilon ^* & \alpha ^*)\\
+            (\epsilon  & \delta ^* & \gamma  & \beta ^* & \alpha  & \phi ^*)\\
+            (\gamma  & \beta ^* & \alpha  & \phi  & \epsilon  & \delta )\\
+            (\alpha  & \phi  & \epsilon  & \delta ^* & \gamma  & \beta )\\[2em]
+            (\beta  & \delta  & \phi  & \epsilon^* & \alpha^* & \gamma^*)\\
+            (\delta  & \phi^* & \beta^* & \alpha^* & \gamma^* & \epsilon^*)\\
+            (\phi  & \epsilon^* & \alpha^* & \gamma  & \beta  & \delta^*)\\
+            (\epsilon^* & \alpha  & \phi^* & \beta  & \delta^* & \gamma )\\
+            (\delta^* & \gamma^* & \epsilon^* & \alpha  & \phi^* & \beta^*)\\
+            (\gamma^* & \epsilon  & \delta  & \phi^* & \beta^* & \alpha )\\
+        }
+        \quad
+        \tightsextuple{
+            (\alpha  & \gamma ^* & \beta ^* & \delta ^* & \phi ^* & \epsilon ^*)\\
+            (\beta  & \alpha  & \gamma  & \epsilon ^* & \delta ^* & \phi ^*)\\
+            (\phi  & \beta ^* & \delta  & \gamma  & \epsilon  & \alpha )\\
+            (\epsilon ^* & \delta  & \gamma ^* & \beta  & \alpha ^* & \phi )\\
+            (\gamma ^* & \beta  & \alpha ^* & \phi ^* & \epsilon ^* & \delta ^*)\\
+            (\alpha ^* & \phi ^* & \epsilon ^* & \delta  & \gamma ^* & \beta ^*)\\[2em]
+            (\beta^* & \delta^* & \phi^* & \epsilon  & \alpha  & \gamma )\\
+            (\delta^* & \phi  & \beta  & \alpha  & \gamma  & \epsilon )\\
+            (\phi^* & \epsilon  & \alpha  & \gamma^* & \beta^* & \delta )\\
+            (\epsilon  & \alpha^* & \phi  & \beta^* & \delta  & \gamma^*)\\
+            (\delta  & \gamma  & \epsilon  & \alpha^* & \phi  & \beta )\\
+            (\gamma  & \epsilon^* & \delta^* & \phi  & \beta  & \alpha^*)\\
+        }
+        \quad
+        \tightsextuple{
+            (\alpha^* & \beta^* & \gamma^* & \delta^* & \epsilon^* & \phi^*)\\[1em]
+            (\delta^* & \beta^* & \phi^* & \alpha^* & \epsilon^* & \gamma^*)\\
+            (\delta  & \epsilon^* & \gamma^* & \alpha  & \beta^* & \phi^*)\\
+            (\alpha^* & \epsilon  & \phi  & \delta^* & \beta  & \gamma )\\[1em]
+            (\beta^* & \phi  & \delta  & \epsilon^* & \gamma^* & \alpha^*)\\
+            (\gamma^* & \alpha  & \beta^* & \phi  & \delta  & \epsilon )\\
+            (\epsilon^* & \gamma  & \delta^* & \beta^* & \phi^* & \alpha )\\
+            (\phi^* & \alpha^* & \epsilon^* & \gamma  & \delta^* & \beta )\\
+            (\phi  & \delta^* & \beta  & \gamma^* & \alpha^* & \epsilon^*)\\
+            (\epsilon  & \phi^* & \alpha  & \beta  & \gamma  & \delta^*)\\
+            (\gamma  & \delta  & \epsilon  & \phi^* & \alpha  & \beta^*)\\
+            (\beta  & \gamma^* & \alpha^* & \epsilon  & \phi  & \delta )\\
+        }  
+    \end{equation}
+%    \begin{equation}
+%        \label{eq:all_of_tet_sym}
+%        \tightsextuple{
+%            ( \alpha & \beta & \gamma & \delta & \epsilon & \phi) \\
+%            ( \alpha  & \phi  & \epsilon  & \delta^* & \gamma  & \beta  ) \\
+%            ( \alpha  & \epsilon^* & \phi^* & \delta  & \beta^* & \gamma^* ) \\
+%            ( \alpha  & \gamma^* & \beta^* & \delta^* & \phi^* & \epsilon^* ) \\
+%            ( \beta  & \alpha  & \gamma  & \epsilon^* & \delta^* & \phi^* ) \\
+%            ( \beta  & \delta  & \phi  & \epsilon^* & \alpha^* & \gamma^* ) \\
+%            ( \beta  & \phi^* & \delta^* & \epsilon  & \gamma  & \alpha  ) \\
+%            ( \beta  & \gamma^* & \alpha^* & \epsilon  & \phi  & \delta  ) \\
+%            ( \gamma  & \delta  & \epsilon  & \phi^* & \alpha  & \beta^* ) \\
+%            ( \gamma  & \epsilon^* & \delta^* & \phi  & \beta  & \alpha^* ) \\
+%            ( \gamma  & \beta^* & \alpha  & \phi  & \epsilon  & \delta  ) \\
+%            ( \gamma  & \alpha^* & \beta  & \phi^* & \delta^* & \epsilon^* ) \\
+%        }
+%        \quad
+%        \tightsextuple{
+%            ( \delta  & \beta  & \phi  & \alpha  & \epsilon  & \gamma  ) \\
+%            ( \delta  & \gamma  & \epsilon  & \alpha^* & \phi  & \beta  ) \\
+%            ( \delta  & \phi^* & \beta^* & \alpha^* & \gamma^* & \epsilon^* ) \\
+%            ( \delta  & \epsilon^* & \gamma^* & \alpha  & \beta^* & \phi^* ) \\
+%            ( \epsilon  & \phi^* & \alpha  & \beta  & \gamma  & \delta^* ) \\
+%            ( \epsilon  & \delta^* & \gamma  & \beta^* & \alpha  & \phi^* ) \\
+%            ( \epsilon  & \gamma^* & \delta  & \beta  & \phi  & \alpha^* ) \\
+%            ( \epsilon  & \alpha^* & \phi  & \beta^* & \delta  & \gamma^* ) \\
+%            ( \phi  & \alpha  & \epsilon  & \gamma^* & \delta  & \beta^* ) \\
+%            ( \phi  & \epsilon^* & \alpha^* & \gamma  & \beta  & \delta^* ) \\
+%            ( \phi  & \delta^* & \beta  & \gamma^* & \alpha^* & \epsilon^* ) \\
+%            ( \phi  & \beta^* & \delta  & \gamma  & \epsilon  & \alpha  ) \\
+%        }
+%        \quad
+%        \tightsextuple{
+%            ( \phi^* & \beta  & \delta^* & \gamma^* & \epsilon^* & \alpha^* ) \\
+%            ( \phi^* & \delta  & \beta^* & \gamma  & \alpha  & \epsilon  ) \\
+%            ( \phi^* & \epsilon  & \alpha  & \gamma^* & \beta^* & \delta  ) \\
+%            ( \phi^* & \alpha^* & \epsilon^* & \gamma  & \delta^* & \beta  ) \\
+%            ( \epsilon^* & \alpha  & \phi^* & \beta  & \delta^* & \gamma  ) \\
+%            ( \epsilon^* & \gamma  & \delta^* & \beta^* & \phi^* & \alpha  ) \\
+%            ( \epsilon^* & \delta  & \gamma^* & \beta  & \alpha^* & \phi  ) \\
+%            ( \epsilon^* & \phi  & \alpha^* & \beta^* & \gamma^* & \delta  ) \\
+%            ( \delta^* & \epsilon  & \gamma  & \alpha^* & \beta  & \phi  ) \\
+%            ( \delta^* & \phi  & \beta  & \alpha  & \gamma  & \epsilon  ) \\
+%            ( \delta^* & \gamma^* & \epsilon^* & \alpha  & \phi^* & \beta^* ) \\
+%            ( \delta^* & \beta^* & \phi^* & \alpha^* & \epsilon^* & \gamma^* ) \\
+%        } 
+%        \quad
+%        \tightsextuple{
+%            ( \gamma^* & \alpha  & \beta^* & \phi  & \delta  & \epsilon  ) \\
+%            ( \gamma^* & \beta  & \alpha^* & \phi^* & \epsilon^* & \delta^* ) \\
+%            ( \gamma^* & \epsilon  & \delta  & \phi^* & \beta^* & \alpha  ) \\
+%            ( \gamma^* & \delta^* & \epsilon^* & \phi  & \alpha^* & \beta  ) \\
+%            ( \beta^* & \gamma  & \alpha  & \epsilon^* & \phi^* & \delta^* ) \\
+%            ( \beta^* & \phi  & \delta  & \epsilon^* & \gamma^* & \alpha^* ) \\
+%            ( \beta^* & \delta^* & \phi^* & \epsilon  & \alpha  & \gamma  ) \\
+%            ( \beta^* & \alpha^* & \gamma^* & \epsilon  & \delta  & \phi  ) \\
+%            ( \alpha^* & \gamma  & \beta  & \delta  & \phi  & \epsilon  ) \\
+%            ( \alpha^* & \epsilon  & \phi  & \delta^* & \beta  & \gamma  ) \\
+%            ( \alpha^* & \phi^* & \epsilon^* & \delta  & \gamma^* & \beta^* ) \\
+%            ( \alpha^* & \beta^* & \gamma^* & \delta^* & \epsilon^* & \phi^* ) \\
+%        } 
+%    \end{equation}
+\end{prop}
 \begin{proof}
-    \begin{equation}
-        \left(
-        \begin{array}{cccccc}
-         {D} & {B} & {F} & {A} & {E} & {C} \\
-         -{A} & {C} & {B} & {D} & {F} & {E} \\
-         -{B} & -{A} & -{C} & {E} & {D} & {F} \\
-        \end{array}
-        \right)
-    \end{equation}
-    For example if $(A',B',C',D',E',F') = (-A,C,B,D,F,E)$, then
+    To begin, notice that each of the operations on $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
+    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software \textcolor{red}{TODO: Supply mathematica code used for this.}.
+    Now suppose $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
+    Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\alpha, \phi, \epsilon, \delta^{*}, \gamma, \beta)$) is also tetrahedral because
     \begin{align}
-        A'+B'-C' &= -A + C - B = 0  \\
-        B'+D'-F' &= C + D - E = 0 \\
-        C'+D'-E' &= B + D - F = 0 \\
-        A'+F'-E' &= -A + E - F = 0 \\
+        \label{eq:signed_perm_rows}
+        \begin{split}
+            A'+B'-C' &= (A+F-E) = 0,  \\
+            B'+D'-F' &= -(B+D-F) = 0, \\
+            C'+D'-E' &= -(C+D-E) = 0, \\
+            A'+F'-E' &= (A+B-C) = 0.
+        \end{split}
     \end{align}
-    \begin{equation}
-        \tightparensixj{A & B & C \\ D & E & F}
-    \end{equation}
+    Moreover, as the operation mapping $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to $(\alpha^*, \gamma, \beta, \delta, \phi, \epsilon)$ is invertible, one also has that if $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ is not tetrahedral, then neither is $(\alpha^*, \gamma, \beta, \delta, \phi, \epsilon)$.
+    An analogous argument holds for the operation mapping $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to $(\gamma, \epsilon^*, \delta^{*}, \phi, \beta, \alpha^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
 \end{proof}
+\begin{rem}
+    The group of order $48$ appearing in \cref{prop:tet_symmetry} may be viewed as a subgroup of the group of all $6! \times 2^6 = 46,080$ possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$.
+    Moreover, this subgroup is maximal in the sense that it is the maximal subgroup of permutations and negations of the columns of coefficient matrix $\Gamma$ (appearing in \cref{eq:tet_coeff_matrix}) which is equivalent to a permutation and negation of the rows of $\Gamma$ (as in \cref{eq:signed_perm_rows}).
+\end{rem}
 
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
@@ -323,7 +456,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     meaning $\epsilon+x+y+z$ is strictly positive also.
 \end{proof}
 
-\textcolor{red}{TODO: Describe tetrahedral symmetries, and conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
+\textcolor{red}{TODO: Describe conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
 
 \subsection{The case of \texorpdfstring{$\boldsymbol{2\times 2}$}{2x2} Hermitian matrices}
 \label{sec:d_2}
