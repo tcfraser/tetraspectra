@@ -25,12 +25,12 @@
     Furthermore, unlike the solution to Horn's problem, we show that the space of admissible sextuples of eigenvalues is neither convex nor a polytope.
     We demonstrate this qualitative difference by solving the tetrahedral Horn's problem for $2\times 2$ matrices explicitly.
 
-    For the general case of $d\times d$ Hermitian matrices, we collect a handful of previously known matrix inequalities for sums of positive semidefinite Hermitian matrices and reinterpret them as necessary conditions for the tetrahedral Horn's problem.
-    For a complete characterization, we provide a direct proof, using spectrum estimation techniques from quantum information theory, that the admissibility of a given sextuple of eigenvalues is encoded in the semiclassical asymptotics of the norm of the generalized Wigner $6j$ operator for the unitary group $U(d)$.
-    Our result generalizes the well-known correspondence between admissible eigenvalues for Horn's problem and Littlewood-Richardson coefficents, and partially generalizes the well-known semiclassical analysis of J. Roberts for the case of $d=2$.
+    For the general case of $n\times n$ Hermitian matrices, we collect a handful of previously known matrix inequalities for sums of positive semidefinite Hermitian matrices and reinterpret them as necessary conditions for the tetrahedral Horn's problem.
+    For a complete characterization, we provide a direct proof, using spectrum estimation techniques from quantum information theory, that the admissibility of a given sextuple of eigenvalues is encoded in the semiclassical asymptotics of the norm of the generalized Wigner $6j$ operator for the unitary group $U(n)$.
+    Our result generalizes the well-known correspondence between admissible eigenvalues for Horn's problem and Littlewood-Richardson coefficents, and partially generalizes the well-known semiclassical analysis of J. Roberts for the case of $n=2$.
     
     Moreover, we provide a new elementary proof of an upper bound on the Hilbert-Schmidt norms of $6j$ operators using the Cauchy-Schwarz inequality.
-    Combining this upper bound with estimates coming from the large $d\to\infty$ asymptotic limit, we obtain a new proof of a previously known submodular inequality involving unnormalized entropies of sums of positive semidefinite matrices.
+    Combining this upper bound with estimates coming from the large $n\to\infty$ asymptotic limit, we obtain a new proof of a previously known submodular inequality involving unnormalized entropies of sums of positive semidefinite matrices.
     
     Finally, we show how it is posssible to embed positive semidefinite Hermitian matrices and their sums into multipartite density matrices such that further generalizations of the tetrahedral Horn's problem can be viewed as a special case of the spectral quantum marginals problem.
     From this perspective, we obtain an alternative new proof of the aforementioned submodular unnormalized entropy inequality.
@@ -76,7 +76,7 @@ Recent developments surrounding Horn's problem not covered by the aforementioned
     \end{figure}%
 \end{center}%
 In this paper, we consider a generalization of Horn's problem previously considered only briefly in a paper due to \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
-While Horn's problem aims to characterize the eigenvalues $(\alpha, \beta, \gamma)$ of a triple of $d\times d$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization consider here aims to characterize the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of a \textit{sextuple} of $d\times d$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+While Horn's problem aims to characterize the eigenvalues $(\alpha, \beta, \gamma)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization consider here aims to characterize the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
 These constraints arise naturally from building a kind of tetrahedral arrangement of Hermitian matrices inside the vector space of Hermitian matrices according to \cref{fig:tetrahedron_labelling_scheme}.
 Consequently, throughout the paper, we refer to this generalization of Horn's problem as the \textit{tetrahedral Horn's problem} and, by constrast, Horn's original problem, involving the sum of just two Hermitian matrices, as the \textit{triangular Horn's problem}.
 
@@ -86,7 +86,7 @@ As we shall see in \cref{sec:d_2}, this correspondence generalizes in the sense 
 While this latter result is straightforward to prove and also well-known, indeed it forms the basis of the semiclassical asymptotics of the $\SU(2)$ Wigner $6j$ symbols \cite{roberts1999classical}, it leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices.
 In \cref{sec:d_2}, we will see that the moduli space of Eulidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinant \cite{sitharam2018handbook}.
 
-Although we are ultimately interested in tackling the tetrahedral Horn's problem for $d\times d$ Hermitian matrices with $d > 2$, the $d=2$ case already demonstrates a strong qualitative difference between the triangular and tetrahedral variants of Horn's problem.
+Although we are ultimately interested in tackling the tetrahedral Horn's problem for $n\times n$ Hermitian matrices with $n > 2$, the $n=2$ case already demonstrates a strong qualitative difference between the triangular and tetrahedral variants of Horn's problem.
 In particular, while the triangular Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is in general \textit{not a polytope}.
 
 {\color{red}
@@ -107,7 +107,7 @@ In particular, while the triangular Horn's problem is completely characterized b
 \subsection{Definitions}
 \begin{prob}[Tetrahedral eigenvalues]
     \label{prob:tet_problem}
-    A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
+    A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{n})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $n\times n$ Hermitian matrices satisfying (i) the four linear constraints
     \begin{equation}
         \label{eq:tet_linear_constraints}
         A + B = C, \quad
@@ -127,9 +127,9 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{equation}
 \end{prob}
 
-\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$d=1$}{d=1}]
+\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$n=1$}{n=1}]
     \label{exam:one_dim_soln}
-    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $d=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
+    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $n=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
     In this case, the tetrahedral Horn's problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
     \begin{equation}
         \label{eq:one_dim_tet_conds}
@@ -162,7 +162,7 @@ In particular, while the triangular Horn's problem is completely characterized b
         \label{eq:tri_trace_cond}
         \abs{\alpha}+\abs{\beta}=\abs{\gamma},
     \end{equation}
-    where $\abs{\lambda} \coloneqq \sum_{i} \lambda_i$ is shorthand for the sum of the eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$.
+    where $\abs{\lambda} \coloneqq \sum_{i} \lambda_i$ is shorthand for the sum of the eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$.
     This condition must hold because $A+B=C$ implies $\Tr(C) = \Tr(A+B) = \Tr(A)+\Tr(B)$ and $\Tr(X) = \abs{\lambda}$ for any Hermitian matrix $X$ with eigenvalues $\lambda$.
     For the tetrahedral Horn's problem, a set of tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ necessarily satisfy four \textit{trace conditions}:
     \begin{equation}
@@ -172,8 +172,10 @@ In particular, while the triangular Horn's problem is completely characterized b
         \abs{\delta} + \abs{\gamma} = \abs{\epsilon}, \quad
         \abs{\alpha} + \abs{\phi} = \abs{\epsilon}.
     \end{equation}
-    Comparing the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) with the $d=1$ case of the tetrahedral Horn's problem (\cref{eq:tet_linear_constraints}), we see that a sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ can only be tetrahedral if their traces, $(\abs \alpha, \abs \beta, \abs \gamma, \abs \delta, \abs \epsilon, \abs \phi)$, are tetrahedral.
+    Comparing the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) with the $n=1$ case of the tetrahedral Horn's problem (\cref{eq:tet_linear_constraints}), we see that a sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ can only be tetrahedral if their traces, $(\abs \alpha, \abs \beta, \abs \gamma, \abs \delta, \abs \epsilon, \abs \phi)$, are tetrahedral.
 \end{rem}
+
+
 
 \clearpage
 \subsection{Symmetries}
@@ -197,7 +199,7 @@ Indeed, this can be accomplished, provided one accounts for the fact that negati
 \begin{prop}[Inversion symmetry]
     \label{prop:inversion}
     Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues. 
-    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{*}$ denote the inverted list of resorted and negated eigenvalues: $\lambda^{*} = (-\lambda_d \geq \cdots \geq - \lambda_1)$.
+    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda^{*}$ denote the inverted list of resorted and negated eigenvalues: $\lambda^{*} = (-\lambda_d \geq \cdots \geq - \lambda_1)$.
     Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if $(\alpha^{*}, \beta^{*}, \gamma^{*}, \delta^{*}, \epsilon^{*}, \phi^{*})$ are tetrahedral.
 \end{prop}
 \begin{proof}
@@ -376,7 +378,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
     Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
-    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda + x \coloneqq (\lambda_1 + x \geq \cdots \geq \lambda_d + x)$.
+    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda + x \coloneqq (\lambda_1 + x \geq \cdots \geq \lambda_d + x)$.
     Then define shifted eigenvalues by the formula
     \begin{equation}
         \label{eq:shifted_tet_eigenvalues}
@@ -405,15 +407,15 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn's problem, in a certain sense, it suffices to solve the tetrahedral Horn's problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
 \begin{cor}[Traceless]
     \label{cor:traceless}
-    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and for any list of $d$ eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{0} \coloneqq \lambda - \abs{\lambda}/d$ denote the traceless list of eigenvalues obtained by shifting $\lambda$ by $-\abs{\lambda}/d$.
+    Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda^{0} \coloneqq \lambda - \abs{\lambda}/n$ denote the traceless list of eigenvalues obtained by shifting $\lambda$ by $-\abs{\lambda}/n$.
     Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if (i) their traces $(\abs{\alpha}, \abs{\beta}, \abs{\gamma}, \abs{\delta}, \abs{\epsilon}, \abs{\phi})$ are tetrahedral (they satisfy \cref{eq:tet_trace_conds}) and (ii) $(\alpha^0, \beta^0, \gamma^0, \delta^0, \epsilon^0, \phi^0)$ are tetrahedral.
 \end{cor}
 \begin{proof}
     This ``only if'' portion of the statement follows from both the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) and applications of the shifting symmetry \cref{prop:shifting} with $(x,y,z)$ values
     \begin{equation}
-        x = - d^{-1}\Tr(A), \qquad
-        y = - d^{-1}\Tr(B) \qquad
-        z = - d^{-1}\Tr(D).
+        x = - n^{-1}\Tr(A), \qquad
+        y = - n^{-1}\Tr(B) \qquad
+        z = - n^{-1}\Tr(D).
     \end{equation}
     The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
 \end{proof}
@@ -438,8 +440,8 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     the resulting shifted eigenvalues $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all positive.
 \end{cor}
 \begin{proof}
-    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\gamma_d \geq \alpha_d + \beta_d$ for the trigonal Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
-    As a reminder, the smallest eigenvalue $\lambda_d$ of a matrix $X$ is characterized by a minimization: $\lambda_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
+    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\gamma_d \geq \alpha_d + \beta_n$ for the trigonal Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
+    As a reminder, the smallest eigenvalue $\lambda_n$ of a matrix $X$ is characterized by a minimization: $\lambda_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
     \begin{equation}
         \gamma_d = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \alpha_d + \beta_d.
     \end{equation}
@@ -458,9 +460,11 @@ Note that in subsequent sections we will often explicitly assume the candidate e
 
 \textcolor{red}{TODO: Describe conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
 
+
+
 \subsection{The case of \texorpdfstring{$\boldsymbol{2\times 2}$}{2x2} Hermitian matrices}
 \label{sec:d_2}
-In the context of the $d=2$ tetrahedral eigenvalue problem, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
+In the context of the $n=2$ tetrahedral eigenvalue problem, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
 \begin{equation}
     X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
 \end{equation}
@@ -562,6 +566,228 @@ The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when 
     }
     \label{fig:ssa_extra_mileage}
 \end{figure}
+
+\subsection{Eigenvalues of blocks of positive semidefinite matrices}
+\label{sec:blocks_of_psd_matrices}
+
+The purpose of this section is to reformulate both the trigonal and tetrahedral Horn's problem as a instance of a slightly more general kind of eigenvalue problem involving positive semidefinite matrices.
+Throughout this section, we will restrict our focus to the case of positive semidefinite Hermitian matrices and their eigenvalues.
+As a reminder we note that this can be done without loss of generality due to \cref{cor:psd}.
+
+Given a positive semidefinite Hermitian matrix, $X$, with eigenvalues $\eig(X) = \chi = (\chi_1 \geq \cdots \geq \chi_n \geq 0)$ and eigendecomposition $X = {\sum}_{i=1}^{n} \chi_i \Pi_i$, one can define $X^{\frac{1}{2}}$ by $X^{\frac{1}{2}} \coloneqq {\sum}_{i=1}^{n} \chi_i^{\frac{1}{2}} \Pi_i$.
+Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtian the following fundamental lemma relating the eigenvaleus $\gamma$ of a sum $C=A+B$ of $n\times n$ Hermitian matrices to the eigenvalues of a larger $2n\times 2n$ matrix $M$ built from $A$ and $B$.
+\begin{lem}
+    \label{lem:trigonal_block}
+    Let $(A, B, C)$ be a triple of $n \times n$ Hermitian matrices with eigenvalues $(\alpha, \beta, \gamma)$ such that $C=A+B$.
+    Let $\Sigma_{A,B}$ be the $2n \times 2n$ Hermitian matrix
+    \begin{equation}
+        \Sigma_{A,B} = \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
+        \end{bmatrix}.
+    \end{equation}
+    Then $\Sigma_{A,B} \geq 0$ is positive semidefinite, has rank at most $n$ and has eigenvalues given by $\gamma$
+    \begin{equation}
+        \eig(\Sigma_{A,B}) \simeq \eig(A+B) = \eig(C) = \gamma.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    That $\Sigma_{A,B}$ is positive semidefinite and has rank at most $n$ follows because $\Sigma_{A,B}$ can be decomposed as $\Sigma_{A,B} = T^{*} T$ where $T$ is the $n \times 2n$ block matrix
+    \begin{equation}
+        T = \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}.
+    \end{equation}
+    That $\Sigma_{A,B}$ and $A+B$ share the same eigenvalues (up to padding by $n$ zeros) follows because for any rectangular matrix $T$, the eigenvalues of $T^{*}T$ and $TT^{*}$ are equal (up to padding by zeros) and in this instance
+    \begin{equation}
+        T^{*}T = 
+        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
+        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
+        =
+        \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
+        \end{bmatrix}
+        = \Sigma_{A,B}
+        \qquad
+        TT^{*} = 
+        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
+        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
+        = A + B.
+    \end{equation}
+\end{proof}
+From the perspective of \cref{lem:trigonal_block}, one can view the trigonal Horn problem involving the eigenvalues $(\alpha,\beta,\gamma)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
+\begin{equation}
+    \label{eq:block_ABX}
+    \Sigma = \begin{bmatrix}
+        A & X \\
+        X^{*} & B
+    \end{bmatrix},
+\end{equation}
+and the eigenvalues of its two $n\times n$ diagonal blocks $A$ and $B$.
+It is known, by \cite[Theorem 7.7.9]{horn2012matrix} or more generally \cite[Theorem 5.11]{moslehian2019positivity} that if $\Sigma$ is a $2\times 2$ block matrix such that $A,B \geq 0$, then $\Sigma \geq 0$ if and only if the off-diagonal block $X$ is of the form
+\begin{equation}
+    X = A^{\frac{1}{2}} K B^{\frac{1}{2}}
+\end{equation}
+for some contraction matrix $K$ (largest eigenvalue of $(K^{*}K)^{\frac{1}{2}}$ is at most unity).
+Additionally, when $X = A^{\frac{1}{2}} K B^{\frac{1}{2}}$, one has the decomposition
+\begin{equation}
+    \Sigma = \begin{bmatrix}
+        A & X \\
+        X^{*} & B
+    \end{bmatrix} 
+    =
+    \begin{bmatrix}
+        A^{\frac{1}{2}} & 0 \\
+        0 & B^{\frac{1}{2}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        I & K \\
+        K^{*} & I
+    \end{bmatrix}
+    \begin{bmatrix}
+        A^{\frac{1}{2}} & 0 \\
+        0 & B^{\frac{1}{2}}
+    \end{bmatrix},
+\end{equation}
+noting that $K$ is a contraction if and only if the middle block matrix above is positive semidefinite \cite[Lemma 5.10]{moslehian2019positivity}.
+
+Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A^{\frac{1}{2}} K B^{\frac{1}{2}} = A^{\frac{1}{2}} B^{\frac{1}{2}}$).
+A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $\Sigma$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
+Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $\Sigma$ and $A+B$ in terms of properties of $X$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
+Nevertheless, when the rank of $\Sigma$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of the trigonal Horn problem.
+\begin{thm}
+    \label{thm:trigonal_block}
+    Let $(\alpha,\beta,\gamma)$ be a triple of positive semidefinite eigenvalues of length at most $n$.
+    The following are equivalent:
+    \begin{enumerate}[(i)]
+        \item there exists a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\alpha,\beta,\gamma)$ satisfying $A+B=C$,
+        \item there exists an $2n \times 2n$ Hermitian matrix,
+            \begin{equation}
+                \Sigma = \begin{bmatrix}
+                    A' & X \\
+                    X^{*} & B'
+                \end{bmatrix},
+            \end{equation}
+            such that $\eig(A') = \alpha$, $\eig(B') = \beta$, and $\eig(\Sigma) = \gamma$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Since we explicitly assume all of the eigenvalues in the triple $(\alpha,\beta,\gamma)$ are non-negative, the Hermitian matrices $A,B,C$, and $\Sigma,A',B'$ involved in the statements above are necessarily positive semidefinite.
+    The claim (i) $\implies$ (ii) follows from \cref{lem:trigonal_block} by setting $(\Sigma, A', B') = (\Sigma_{A,B}, A, B)$.
+    That (ii) $\implies$ (i) follows by noticing that if $\Sigma$ has eigenvalues $\gamma$, then it has rank at most $n$.
+    Therefore, as $\Sigma \geq 0$, there exists a $n\times 2n$ block matrix $T$ of the form
+    \begin{equation}
+        T = \begin{bmatrix} T_{A} & T_{B} \end{bmatrix} 
+    \end{equation}
+    such that $\Sigma = T^{*} T$. 
+    The diagonal blocks of $\Sigma$ are therefore $A' = T_{A}^*T_{A}$, and $B' = T_{B}^{*}T_{B}$.
+    As in the proof of \cref{lem:trigonal_block}, we note that $T^{*}T$ and $TT^{*}$ have the same eigenvalues up to padding by zeros.
+    Therefore, by letting $A = T_{A} T_{A}^{*}$ and $B = T_{B} T_{B}^*$ we see that 
+    \begin{align}
+        \begin{split}
+            \eig(A) = \eig(T_{A} T_{A}^{*}) &\simeq \eig(T_{A}^{*} T_{A}) = \eig(A') = \alpha, \\
+            \eig(B) = \eig(T_{B} T_{B}^{*}) &\simeq \eig(T_{B}^{*} T_{B}) = \eig(B') = \beta,
+        \end{split}
+    \end{align}
+    while the eigenvalues of $C = A+B = T_{A} T_{A}^{*} + T_{B} T_{B}^*$ match the eigenvalues of $\gamma$ because
+    \begin{equation}
+        \eig(C) = \eig(A+B) =\eig(T_{A} T_{A}^{*} + T_{B} T_{B}^*) = \eig(T T^{*}) \simeq \eig(T^{*}T) = \eig(\Sigma) = \gamma.
+    \end{equation}
+\end{proof}
+
+As a corrollary of this correspondence between the trigonal Horn problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
+
+\begin{cor}
+    \label{cor:tetrahedral_block}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be a sextuple of positive semidefinite eigenvalues of length at most $n$.
+    Then $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral if and only if there exists a $3n \times 3n$ matrix $\Sigma$ of the form
+    \begin{equation}
+        \label{eq:block_3by3}
+        \Sigma =
+        \begin{bmatrix}
+            A' & Z & Y \\
+            Z^{*} & B' & X\\
+            Y^{*} & X^{*} & D'
+        \end{bmatrix},
+    \end{equation}
+    such that
+    \begin{equation}
+        \label{eq:block_eigenvalue_tet}
+        \eig(A') = \alpha, \quad
+        \eig(B') = \beta, \quad
+        \eig\begin{pmatrix}
+            A' & Z \\
+            Z^{*} & B'\\
+        \end{pmatrix} = \gamma, \quad
+        \eig(D') = \delta, \quad
+        \eig(\Sigma) = \epsilon, \quad
+        \eig
+        \begin{pmatrix}
+            B' & X \\
+            X^{*} & D'
+        \end{pmatrix} = \phi.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    The proof is analogous to the proofs of \cref{lem:trigonal_block} and \cref{thm:trigonal_block}.
+    First we prove the ``only if'' portion of the claim which is a corollary of \cref{lem:trigonal_block}.
+    Suppose $(A,B,C,D,E,F)$ is a tetrahedral sextuple of Hermitian matrices with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\gamma)$.
+    Let $\Sigma = \Sigma_{A,B,D}$ be given by
+    \begin{equation}
+        \Sigma_{A,B,D} =
+        \begin{bmatrix}
+            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
+        \end{bmatrix}^{*}
+        \begin{bmatrix}
+            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} & A^{\frac{1}{2}}D^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B & B^{\frac{1}{2}}D^{\frac{1}{2}} \\
+            D^{\frac{1}{2}}A^{\frac{1}{2}} & D^{\frac{1}{2}}B^{\frac{1}{2}} & D
+        \end{bmatrix}
+    \end{equation}
+    Then the eigenvalues of the corresponding principal submatrices of $\Sigma$ satisfy \cref{eq:block_eigenvalue_tet} by \cref{lem:trigonal_block}.
+    Now we prove the ``if'' portion of the claim which is a corollary of \cref{thm:trigonal_block}.
+    If $\Sigma$ is a matrix of form given by \cref{eq:block_3by3} with eigenvalues $\epsilon$ with length at most $n$, then $\Sigma$ is positive semidefinite with rank at most $n$.
+    Therefore, there exists an $n\times 3n$ block matrix
+    \begin{equation}
+        T = \begin{bmatrix} T_{A} & T_{B} & T_{D} \end{bmatrix} 
+    \end{equation}
+    such that $\Sigma = T^{*}T$ and thus
+    \begin{equation}
+        \begin{alignedat}{6}
+            &A' &&= T_{A}^{*}T_{A}, \qquad
+            &&B' &&= T_{B}^{*}T_{B}, \qquad
+            &&D' &&= T_{D}^{*}T_{D}, \\
+            &X &&= T_{B}^{*}T_{D}, \qquad
+            &&Y &&= T_{A}^{*}T_{D}, \qquad
+            &&Z &&= T_{A}^{*}T_{B}.
+        \end{alignedat}
+    \end{equation}
+    Now let $(A,B,C,D,E,F)$ be given by 
+    \begin{equation}
+        \begin{alignedat}{6}
+            &A &&= T_{A}T_{A}^{*}, \qquad
+            &&B &&= T_{B}T_{B}^{*}, \qquad
+            &&C &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*}, \\
+            &D &&= T_{D}T_{D}^{*}, \qquad
+            &&E &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*} + T_{D}T_{D}^{*}, \qquad
+            &&F &&= T_{B}T_{B}^{*} + T_{D}T_{D}^{*}.
+        \end{alignedat}
+    \end{equation}
+    From here, one may directly verify that these $n\times n$ Hermitian matrices satisfy \cref{eq:tet_linear_constraints}
+    and have eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ (using a similar argument presented in the proof of \cref{thm:trigonal_block}); i.e., one concludes that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral.
+\end{proof}
+
+\begin{rem}
+    The correspondence between the tetrahedral Horn problem and the eigenvalues of principal submatrices of $3\times 3$ matrices provided by \cref{cor:tetrahedral_block} enables us to import a myriad of known results concerning the eigenvalues of principal submatrices.
+    Specifically, the results due to \citeauthor{audenaert2010strongly} \cite{audenaert2010strongly}, \citeauthor{lami2017log} \cite{lami2017log}, \citeauthor{niculescu2025old} \cite{niculescu2025old}, \citeauthor{paksoy2014inequalities} \cite{paksoy2014inequalities}, \citeauthor{lewin2014family} \cite{lewin2014family}.
+
+    Many of the results concerning the eigenvalues of principal submatrices are born out of the correspondence between PSD matrices and covariance matrices of Gaussian multivariate random variables \cite{lami2017log}.
+    From this perspective, the Guassian entropy region has been partially characterized by \citeauthor{shadbakht2011entropy} \cite{shadbakht2011entropy}.
+    From this perspective, one may view Horn problems are kinds of ``spectral'' classical marginal problems for blocks of Guassian random variables.
+\end{rem}
 
 \subsection{Comparison with the C\c{S}W inequality}
 At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ which are non-negative and sufficiently small in the sense that $\lambda_1 + \abs{\lambda} \leq 1$:
@@ -701,7 +927,7 @@ The following operator inequality can be used to prove a number of inequalities 
 \begin{proof}
     The result is obtained from applying a non-commutative multinomial expansion and noting that every summand on the right-hand-side above also appears on the left-hand-side above.
 \end{proof}
-To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, and $A+B+C$, one can simply pair the positive semidefinite operator in \cref{lem:mne_operator_ineq} with an $\SU(d)$-equivariant and positive semidefinite operator:
+To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, and $A+B+C$, one can simply pair the positive semidefinite operator in \cref{lem:mne_operator_ineq} with an $\SU(n)$-equivariant and positive semidefinite operator:
 \begin{cor}
     \label{cor:isotypic_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $\lambda \vdash k$ be a Young diagram with $k$ boxes.
@@ -845,42 +1071,319 @@ where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric po
 
 
 \clearpage
-\section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(d)}$ $\boldsymbol{6j}$}{SU(d) 6j} operators}
+\section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(n)}$ $\boldsymbol{6j}$}{SU(n) 6j} operators}
+
 
 {\color{blue}
-The purpose of this section is to derive some upper and lower bounds on generalized $6j$ symbol for $\SU(d)$ in relation to the existence or non-existence of Hermitian operators satisfying the tetrahedral relations \cref{eq:tet_linear_constraints}.
+The purpose of this section is to derive some upper and lower bounds on generalized $6j$ symbol for $\SU(n)$ in relation to the existence or non-existence of Hermitian operators satisfying the tetrahedral relations \cref{eq:tet_linear_constraints}.
 This section essentially constitutes a generalization of the proof techniques in the ``quantum-information-theoretic'' approach taken in \cite{christandl2008quantum}.
 Specifically, the results of this section are derived from considering a type of pseudo-commutative binomial expansion of tensor powers of sums of Hermitian operators and applying spectrum estimation to the resulting terms.
 }
 
+{\color{red}
+    TC: TODO: There is a lot of work left to do to clean up this section.
+    In particular, it would be very useful to present a brief pedagogical account of the connection between the Littlewood-Richardson coefficients and the trigonal Horn problem and then use that intuition as a basis for extrapolating to the case of the tetrahedral Horn problem and the need for a representation-theory object which captures the additional consistency constraints imposed by the tetrahedral Horn problem.
+}
+
 \subsection{Schur-Weyl decomposition \& spectrum estimation}
 
-Throughout this section, we make use of the following decomposition of a tensor-power of a $d$-dimensional complex vector space.
+Throughout this section, we make use of the following decomposition of a tensor-power of a $n$-dimensional complex vector space.
 \begin{prop}[Schur-Weyl decomposition]
-    Let $n$ and $d$ be positive integers.
-    Then the decomposition of $(\mathbb C^{d})^{\ot n}$ into irreducible representations of $S_n \times \SU(d)$, known as the \textit{Schur-Weyl} decomposition is given by
+    Let $k$ and $n$ be positive integers.
+    Then the decomposition of $(\mathbb C^{n})^{\ot k}$ into irreducible representations of $S_k \times \SU(n)$, known as the \textit{Schur-Weyl} decomposition is given by
     \begin{equation}
         \label{eq:schur_weyl_decomp}
-        (\mathbb C^{d})^{\ot n} \cong \bigoplus_{\lambda \vdash_{d} n} W_{\lambda} \ot V_{\lambda}^{d}
+        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\lambda \vdash_{n} k} W_{\lambda} \ot V_{\lambda}^{n}
     \end{equation}
-    where the direcy sum is indexed by Young diagrams $\lambda$ with $n$ boxes and at most $d-1$ rows.
+    where the direct summands are indexed by Young diagrams $\lambda$ with $k$ boxes and at most $n-1$ rows.
 \end{prop}
-The following result constrains the associated Schur-Weyl decomposition of the $n$-th tensor power, $X^{\ot n}$, of a positive semidefinite Hermitian matrix $X$ \cite{christandl2008quantum,keyl2001estimating}.
+The following result constrains the associated Schur-Weyl decomposition of the $k$-th tensor power, $X^{\ot k}$, of a positive semidefinite Hermitian matrix $X$ \cite{christandl2008quantum,keyl2001estimating}.
 \begin{prop}[Spectrum estimation]
     \label{prop:spec_est}
-    Let $P_{\lambda}$ denote the Hermitian projection operator associated to the isotypic subspace indexed by $\lambda \vdash_{d} n$ in \cref{eq:schur_weyl_decomp} and let $X$ be a positive semidefinite matrix with eigenvalues $\chi$.
+    Let $P_{\lambda}$ denote the Hermitian projection operator associated to the isotypic subspace indexed by $\lambda \vdash_{n} k$ in \cref{eq:schur_weyl_decomp} and let $X$ be a positive semidefinite matrix with eigenvalues $\chi$.
     Then
     \begin{equation}
-        \Tr(P_{\lambda} X^{\ot n}) \leq \abs{\chi}^{n} \dim(V_{\lambda}^{d}) \exp(-n \kl{\bar \lambda}{\bar \chi}),
+        \Tr(P_{\lambda} X^{\ot k}) \leq \abs{\chi}^{k} \dim(V_{\lambda}^{n}) \exp(-k \kl{\bar \lambda}{\bar \chi}),
     \end{equation}
     where $\kl{\bar \lambda}{\bar \chi}$ denotes the Kullbeck-Leibler divergence of $\bar \lambda$ from $\bar \chi$.
 \end{prop}
 \begin{proof}
-    See \cite{keyl2001estimating} for a proof (noting that the $\abs{\chi}^{n}$ term simply accounts for the possibility that $\Tr(X) \neq 1$ because $\Tr(X) = \abs{\chi}$).
+    See \cite{keyl2001estimating} for a proof (noting that the $\abs{\chi}^{k}$ term simply accounts for the possibility that $\Tr(X) \neq 1$ because $\Tr(X) = \abs{\chi}$).
 \end{proof}
 
-\subsection{Schur-Weyl presentation of the \texorpdfstring{$\boldsymbol{6j}$}{6j}-operator}
+\subsection{Littlewood-Richardson coefficients \& recoupling operators}
 
+\begin{defn}[Littlewood-Richarson coefficients]
+    \label{defn:lr_coeffs}
+    Let $\alpha, \beta, \gamma \in \domweights{n}$ be a triple of dominant weights for $\GL(n)$ and let $V_{\alpha},V_{\beta},V_{\gamma}$ be the triple of irreducible representations of $\GL(n)$ with corresponding highest weights.
+    Let $C_{\alpha, \beta}^{\gamma}$ denote the multiplicity space of $\GL(n)$-intertwiners from $V_{\gamma}$ to $V_{\alpha} \ot V_{\beta}$:
+    \begin{equation}
+        C_{\alpha, \beta}^{\gamma} \coloneqq \Hom_{\GL(n)}(V_{\gamma}, V_{\alpha}\ot V_{\beta}) \simeq \Inv_{\GL(n)}(V_{\gamma^*} \ot V_{\alpha} \ot V_{\beta}).
+    \end{equation}
+    The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
+    \begin{equation}
+        c_{\alpha,\beta}^{\gamma} \coloneqq \dim(C_{\alpha, \beta}^{\gamma}).
+    \end{equation}
+\end{defn}
+\begin{defn}[Clebsch-Gordon isometries]
+    Given $\alpha,\beta,\gamma$ as in \cref{defn:lr_coeffs}, a \textit{Clebsch-Gordon isometry} is a $\GL(n)$-equivariant isometric linear map sending $f \ot v \in C_{\alpha,\beta}^{\gamma} \ot V_{\gamma}$ to $f(v) \in V_{\alpha}\ot V_{\beta}$\footnote{If $C_{\alpha,\beta}^{\gamma} = 0$, then $Y_{\alpha,\beta}^{\gamma}$ is identified with the origin in $V_{\alpha}\otimes V_{\beta}$.}.
+    Let
+    \begin{equation}
+        Y_{\alpha,\beta}^{\gamma} : C_{\alpha,\beta}^{\gamma} \ot V_{\gamma} \to V_{\alpha} \ot V_{\beta},
+    \end{equation}
+    be a Clebsch-Gordon isometry and depict it diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-eval-operator}.
+    \end{equation}
+    The conjugate transpose of the Clebsch-Gordon isometry is 
+    \begin{equation}
+        Y_{\alpha,\beta}^{\gamma \dagger} : V_{\alpha} \ot V_{\beta} \to C_{\alpha,\beta}^{\gamma} \ot V_{\gamma},
+    \end{equation}
+    will be depicted diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-transpose-eval-operator}.
+    \end{equation}
+\end{defn}
+
+\begin{defn}[Recoupling operators]
+    \label{defn:ud_recoupling_operator}
+    Let $x,y,z$ and $n$ be positive integers and let 
+    \begin{align}
+            \alpha \in \ydia[n]{x},
+            \delta \in \ydia[n]{z},
+            \beta \in \ydia[n]{y},
+            \epsilon \in \ydia[n]{x+y+z},
+            \gamma \in \ydia[n]{x+y},
+            \quad \phi \in \ydia[n]{y+z}.
+    \end{align}
+    The \defnsty{$\U(n)$-recoupling operator} is the operator
+    \begin{equation}
+        \abcdefsymbol
+        :
+        C^{\gamma}_{\alpha,\beta} \ot C^{\epsilon}_{\delta,\gamma} \to C^{\epsilon}_{\alpha, \phi} \ot C^{\phi}_{\beta,\delta},
+    \end{equation}
+    defined by
+    \begin{equation}
+        \abcdefsymbol 
+        \coloneqq
+        \frac{
+            \Tr_{V_{\epsilon}}[
+            Y_{\alpha,\phi}^{\epsilon\dagger}
+            (\id_{V_{\alpha}}\ot Y_{\beta,\delta}^{\phi\dagger})
+            (Y_{\alpha,\beta}^{\gamma}\ot\id_{V_{\delta}})
+            Y_{\gamma,\delta}^{\epsilon}
+            ]
+        }{\dim(V_{\epsilon})},
+    \end{equation}
+    which is depicted diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/ud-recoupling-defn-explicit}.
+    \end{equation}
+\end{defn}
+{\color{red}
+    WARNING: The convention I am using for the curly braces seems to differ from many of the uses of the curly braces to define the Wigner 6j coefficient which differs in that I think the Wigner 6j coefficient does not include the additional factor of $\dim(V_{\epsilon}^{n})$.
+    This lack of common convention seems to be echoed by \citeauthor{coquereaux2023integer} \cite{coquereaux2023integer}.
+}
+
+Subsequent sections will primarily be interested in the square of the Hilbert-Schmidt norm of the recoupling operator in \cref{defn:ud_recoupling_operator}.
+While the individual coefficients of the recoupling operator are dependent on a choice of basis for each of the multiplicity spaces, its Hilbert-Schmidt and operator norms are not dependent on such a choice of basis.
+The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over $\SU(n)^{\times 4}$.
+\begin{lem}[Character formula]
+    \label{lem:character_formula}
+    Let $\abcdefsymbol : C^{\mu}_{\alpha,\beta} \ot C^{\lambda}_{\mu,\gamma} \to C^{\lambda}_{\alpha, \nu} \ot C^{\nu}_{\beta,\gamma}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
+    Then
+    \begin{equation}
+        \label{eq:character_formula}
+        R^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq
+        \dim(V_{\epsilon})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
+        = \int_{\SU(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4).
+    \end{equation}
+    where
+    \begin{equation}
+        X^{\alpha,\beta,\gamma}_{\delta,\epsilon,\phi}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\alpha}(u_1^{-1}u_2)\chi_{\beta}(u_4^{-1}u_2)\chi_{\gamma}(u_2^{-1}u_3)\chi_{\delta}(u_4^{-1}u_3)\chi_{\epsilon}(u_3^{-1}u_1)\chi_{\phi}(u_1^{-1}u_4)
+    \end{equation}
+\end{lem}
+Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(n)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
+\begin{proof}[Proof of \cref{lem:character_formula}]
+    The proof follows from (i) the following identities concerning the character $\chi_{\lambda}(u) = \Tr(\pi_{\lambda}(u))$ and duality $\pi_{\lambda}^{*}(u) = (\pi_{\lambda}(u^{-1}))^{T}$ relations
+    \begin{equation}
+        \tikzfig{tikz/character-duality},
+    \end{equation}
+    and (ii) the integral formula for the projection operator $\Pi_{\alpha,\beta}^{\gamma}$ onto the subspace of invariant vectors in $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}^{*}$:
+    \begin{equation}
+        \tikzfig{tikz/triple-invariant-proj}.
+    \end{equation}
+    Applied four times, we obtain
+    \begin{equation}
+        \tikzfig{tikz/ud-recoupling-character-formula}.
+    \end{equation}
+\end{proof}
+
+{\color{blue}
+\begin{rem}
+    With the integral character formula $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cite{mcswiggen2021harish}:
+    \begin{equation}
+        K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim V_{\lambda}^{d} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
+    \end{equation}
+    where the sum is over all dominant integral weights $\lambda$ for $G$ and $\rho$ the associated Weyl vector.
+    It is conceivable that ther might be a method for expressing $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
+\end{rem}
+}
+
+\subsection{Trigonal \& polygonal spectra}
+\label{sec:trigonal_spectra}
+
+Our first result can be viewed as a simple condition which is sufficient to conclude that a given triple of integer eigenvalues are trigonal.
+\begin{lem}
+    If $c_{\alpha,\beta}^{\gamma} > 0$, then there exists Hermitian matrices $A \in \orbit_{\alpha}$, $B \in \orbit_{\beta}$, and $C \in \orbit_{\gamma}$, satisfying $A + B - C = 0$.
+\end{lem}
+\begin{proof}
+    Our proof proceeds in the style of \cite[Proposition 2.3]{berline2018horn}.
+    Given any dominant weight $\lambda \in \domweights{d}$, let $P_{\lambda}$ denote the Hermitian projection operator onto the invariant
+\end{proof}
+
+Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
+Recall that $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(n)$ satisfying (i) $A+B+C=0$ and (ii)
+\begin{equation}
+    (\eig(A), \eig(B), \eig(C)) = (\alpha,\beta,\gamma).
+\end{equation}
+
+\begin{thm}
+    If $c_{\alpha,\beta,\gamma} > 0$ for some $\alpha, \beta, \gamma \in \domweights{d}$, then $(\alpha,\beta,\gamma)$ are trigonal.
+\end{thm}
+
+\begin{thm}
+    If $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ are triangular, then there exists a graded sequence
+    $(\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)) \in (\domweights{d})^{\times 3}$ such that (i) for all $n \in \mathbb N_{>0}$,
+    \begin{equation}
+        c_{\tilde \alpha(n), \tilde \beta(n), \tilde \gamma(n)} > 0,
+    \end{equation}
+    and (ii)
+    \begin{align}
+        \lim_{n\to\infty} \frac{\tilde \alpha(n)}{n} = \alpha, \qquad
+        \lim_{n\to\infty} \frac{\tilde \beta(n)}{n} = \beta, \qquad
+        \lim_{n\to\infty} \frac{\tilde \gamma(n)}{n} = \gamma.
+    \end{align}
+\end{thm}
+
+\begin{prop}[Kempf-Ness]
+    \label{prop:kempf-ness-abc}
+    Let $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ be a triple of $d\times d$ Hermitian matrices with integer-valued eigenvalues and let
+    \begin{equation}
+        w_{A,B,C} \coloneqq \varphi(A) \ot \varphi(B) \ot \varphi(C) = v_\alpha^{u_A} \ot v_\beta^{u_B} \ot v_\gamma^{u_C}
+    \end{equation}
+    be the associated coherent state of unit norm in $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}$.
+    Define the capacity of $(A,B,C)$ as
+    \begin{align}
+        \capacity(A,B,C) 
+        &\coloneqq \inf_{g \in \GL(n)} \norm{[\pi_{\alpha}(g)\ot\pi_{\beta}(g)\ot\pi_{\gamma}(g)] w_{A,B,C}}^{2}, \\
+        &= \inf_{g \in \GL(n)} \norm{v_\alpha^{gu_A} \ot v_\beta^{gu_B} \ot v_\gamma^{gu_C}}^{2}.
+    \end{align}
+    Then $\capacity(A,B,C) \in [0,1]$ with 
+    \begin{equation}
+        \capacity(A,B,C) = 1 \iff \mu(A,B,C) = A+B+C = 0.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite[Proposition 2.3]{berline2018horn}.} 
+\end{proof}
+
+The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} (using the convention where capacities and constant portions are defined in terms of squared norms instead of norms directly).
+\begin{thm}[Strong-duality \& Occasionality]
+    Let everything be as in \cref{prop:kempf-ness-abc} and let $k$ be a positive integer.
+    Define the constant portion of $A,B,C$ of degree $k$ to be
+    \begin{equation}
+        \cst_{k}(A,B,C) = \norm{\Gamma_{\alpha,\beta,\gamma}^{k} w_{A,B,C}^{\otimes k}}^{\frac{2}{k}},
+    \end{equation}
+    where $\Gamma_{\alpha,\beta,\gamma}^{k}$ is the projection operator onto the subspace of $\GL(n)$-invariant vectors in $(V_{\alpha}\ot V_{\beta} \ot V_{\gamma})^{\ot k}$.
+    Then
+    \begin{equation}
+        \label{eq:strong_duality}
+        \capacity(A,B,C) = \sup_{k} \cst_{k}(A,B,C)
+    \end{equation}
+    Moreover, when $\capacity(A,B,C) = 1$ and $\mu(A,B,C) = 0$, there exists an integer $m > 0$ such that
+    \begin{equation}
+        \label{eq:occasionality}
+        \lim_{k\to\infty} (mk)^{s}\cst_{mk}(A,B,C) > 0
+    \end{equation}
+    where $s = \dim \U(n) - \dim \U(n)_{[w_{A,B,C}]}$.
+\end{thm}
+\begin{cor}
+    Consider the quantity $\tilde c_{\alpha,\beta,\gamma}$ which measures the fraction of vectors $V_{\alpha} \ot V_{\beta} \ot V_{\gamma}$ which are $\GL(n)$-invariant:
+    \begin{align}
+        \tilde c_{\alpha, \beta, \gamma} 
+        &= \frac{\dim[(V_{\alpha} \ot V_{\beta} \ot V_{\gamma})^{\GL(n)}]}{\dim(V_{\alpha} \ot V_{\beta} \ot V_{\gamma})}.
+    \end{align}
+    If there exists $(A,B,C)\in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C=0$, then there exists an integer $K > 0$ such that $c_{K\alpha,K\beta,K\gamma} \geq 1$\footnote{In fact the proof of the saturation conjecture implies $K = 1$ always suffices.}, and therefore for all integers $M > 0$
+    \begin{equation}
+        \tilde c_{MK\alpha, MK\beta, MK\gamma} \geq \frac{1}{\dim(V_{MK\alpha} \ot V_{MK\beta} \ot V_{MK\gamma})}.
+    \end{equation}
+    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\alpha} \times \orbit_{\beta} \times \orbit_{\gamma}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\alpha, k\beta, k\gamma}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(V_{k\lambda})$ combined with the exponential upper bound on $\tilde c_{k\alpha,k\beta,k\gamma}$ actually implies $c_{\alpha,\beta,\gamma} = 0$ whenever $A+B+C=0$.}
+    \begin{equation}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \max_{A,B,C} \capacity(A,B,C)^{k}.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    The lower-bound follows from the operator inequality
+     \begin{equation}
+         \label{eq:inclusivity}
+         \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}} \leq \id_{V_{\lambda}},
+    \end{equation}
+    for all unit vectors $v_{\lambda}^{u} \in V_{\lambda}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(n)$:
+    \begin{equation}
+        \label{eq:resolution}
+        \id_{V_{\lambda}} = \dim(V_{\lambda}) \int_{u\in\U(n)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}}.
+    \end{equation}
+    %{v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma^{u_C}}
+    Applying \cref{eq:resolution} three times to the definition of $\tilde c_{k\alpha,k\beta,k\gamma}$ yields
+    \begin{align}
+        \label{eq:tilde_c_k_integral}
+        \begin{split}
+            \tilde c_{k\alpha, k\beta, k\gamma} 
+            &= \frac{\dim[(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})^{\GL(n)}]}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})} \\
+            &= \int \diff u_A \diff u_B \diff u_C \braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}.
+        \end{split}
+    \end{align}
+    While the operator $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(n)$-invariant vectors in $V_{k\alpha}\ot V_{k\beta} \ot V_{k\gamma}$, the operator $\Gamma_{\alpha,\beta,\gamma}^{k}$ projects onto the subspace of $\GL(n)$-invariant vectors in $(V_{\alpha}\otimes V_{\beta} \otimes V_{\gamma})^{\ot k}$.
+    Since $V_{k\lambda}$ always embeds isometrically and equivariantly into $V_{\lambda}^{\ot k}$ for any $\lambda$, we have that$V_{k\alpha}\ot V_{k\beta} \ot V_{k\gamma}$ is a subspace of $(V_{\alpha}\otimes V_{\beta} \otimes V_{\gamma})^{\ot k}$ with respect to a $\GL(n)$-equivariant isometry and therefore the projection operators satisfy
+    \begin{equation}
+        \Gamma_{k\alpha,k\beta,k\gamma}^{1} = (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k})^{\dagger} \Gamma_{\alpha,\beta,\gamma}^{k} (\iota_{\alpha}^{k}\ot\iota_{\beta}^{k}\ot\iota_{\gamma}^{k}).
+    \end{equation}
+    Moreover, using the $\GL(n)$-equivariance of $\Gamma_{\alpha,\beta,\gamma}^{k}$ and the inequality $\Gamma_{\alpha,\beta,\gamma}^{k} \leq (\id_{V_{\alpha}\ot V_{\beta} \ot V_{\gamma}})^{\otimes k}$ yields, for all $g \in \GL(n)$, an upper bound on the integrand in \cref{eq:tilde_c_k_integral}:    \begin{align}
+        &\braket{(v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A} \ot v_{k\beta}^{u_B} \ot v_{k\gamma}^{u_C})}\\
+        &\qquad=\braket{(v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A} \ot v_{\beta}^{u_B} \ot v_{\gamma}^{u_C})^{\ot k}}, \\
+        &\qquad=\braket{(v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}}, \\
+        &\qquad\leq\braket{(v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}, (v_{\alpha}^{gu_A} \ot v_{\beta}^{gu_B} \ot v_{\gamma}^{gu_C})^{\ot k}}, \\
+        &\qquad= \norm{v_\alpha^{gu_A} \ot v_\beta^{gu_B} \ot v_\gamma^{gu_C}}^{2k}.
+    \end{align}
+    Finally, let $(u_{A}',u_{B}',u_{C}')$ be unitaries which achieve the maximum of the integrand appearing in \cref{eq:tilde_c_k_integral} (continuity of the integrand and compactness of $\U(n)$ gaurantees existence) such that $\tilde c_{k\alpha,k\beta,k\gamma}$ admits the bound
+    \begin{equation}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \norm{v_\alpha^{gu_A'} \ot v_\beta^{gu_B'} \ot v_\gamma^{gu_C'}}^{2k}.
+    \end{equation}
+    Since $g \in \GL(n)$ is arbitrary and $(u_{A}',u_{B}',u_{C}')$ is independent of $g$ by definition one obtains
+    \begin{equation}
+        \tilde c_{k\alpha, k\beta, k\gamma} \leq \inf_{g \in \GL(n)} \norm{v_\alpha^{gu_A'} \ot v_\beta^{gu_B'} \ot v_\gamma^{gu_C'}}^{2k} = \capacity(A',B',C')^{k} \leq \max_{A,B,C}\capacity(A,B,C)^{k}.
+    \end{equation}
+    \textcolor{red}{TODO: Prove that the capacity is attained by some Hermitian matrices $A,B,C$ (maybe using the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
+    This establishes the claimed upper bound.
+    To prove the claimed lower bound, let $v_{\alpha}^{u_{A}'} \ot v_{\beta}^{u_{B}'} \ot v_{\gamma}^{u_{C}'}$ be the coherent state associated with the Hermitian matrices $(A,B,C)$ satisfying $A+B+C=0$.
+    Then using \cref{eq:inclusivity} and the positive demidefiniteness of $\Gamma_{k\alpha,k\beta,k\gamma}^{1}$ we obtain,
+    \begin{align}
+        \label{eq:tilde_c_k_inclusivity}
+        \begin{split}
+            \tilde c_{k\alpha, k\beta, k\gamma} 
+            &= \frac{\dim[(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})^{\GL(n)}]}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})} \\
+            &\geq \frac{\braket{(v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'}), \Gamma_{k\alpha,k\beta,k\gamma}^{1} (v_{k\alpha}^{u_A'} \ot v_{k\beta}^{u_B'} \ot v_{k\gamma}^{u_C'})}}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}, \\
+            &= \frac{\braket{(v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}, \Gamma_{\alpha,\beta,\gamma}^{k} (v_{\alpha}^{u_A'} \ot v_{\beta}^{u_B'} \ot v_{\gamma}^{u_C'})^{\ot k}}}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}, \\
+            &= \frac{\cst_{k}(A,B,C)}{\dim(V_{k\alpha} \ot V_{k\beta} \ot V_{k\gamma})}.
+        \end{split}
+    \end{align}
+    Now \cref{eq:occasionality} implies there exists positive integers $m,s > 0$ such that for sufficiently large $k$, $(mk)^{s} \cst_{mk}(A,B,C) > 0$ which implies $c_{mk\alpha, mk\beta, mk\gamma} \neq 0$ and thus $c_{mk\alpha, mk\beta, mk\gamma} \geq 1$. 
+    Taking $K = mk$ for sufficiently large $k$ proves the claim. 
+\end{proof}
+
+
+\subsection{Schur-Weyl presentation of the \texorpdfstring{$\boldsymbol{6j}$}{6j}-operator}
 
 \begin{lem}
     \label{lem:schur_weyl_presentation}
@@ -888,15 +1391,15 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \begin{equation}
         \label{eq:xyz_sized_young_diagrams}
         \begin{alignedat}{3}
-             &\alpha \vdash_{d} x, \qquad 
-            &&\beta \vdash_{d} y, \qquad
-            &&\gamma \vdash_{d} x+y, \qquad\\
-             &\delta \vdash_{d} z, \qquad
-            &&\epsilon \vdash_{d} x+y+z, \qquad
-            &&\phi \vdash_{d} y+z,
+             &\alpha \vdash_{n} x, \qquad 
+            &&\beta \vdash_{n} y, \qquad
+            &&\gamma \vdash_{n} x+y, \qquad\\
+             &\delta \vdash_{n} z, \qquad
+            &&\epsilon \vdash_{n} x+y+z, \qquad
+            &&\phi \vdash_{n} y+z,
         \end{alignedat}
     \end{equation}
-    and define corresponding projection operators acting on $(\mathbb C^{d})^{\ot x+y+z}$ by
+    and define corresponding projection operators acting on $(\mathbb C^{n})^{\ot x+y+z}$ by
     \begin{equation}
         \label{eq:extended_projs}
         \begin{alignedat}{3}
@@ -926,18 +1429,18 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     and Hilbert-Schmidt norm satisfying
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_hs_norm}
-        \norm{\abcdefsymbol}_{\mathrm{HS}}^2 = \frac{\Tr(\Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon})}{\dim(V_{\epsilon}^{d})\dim(W_{\alpha})\dim(W_{\beta})\dim(W_{\delta})}.
+        \norm{\abcdefsymbol}_{\mathrm{HS}}^2 = \frac{\Tr(\Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon})}{\dim(V_{\epsilon}^{n})\dim(W_{\alpha})\dim(W_{\beta})\dim(W_{\delta})}.
     \end{equation}
 \end{lem}
 \begin{proof}
     That all projection operators except the pair $(\Pi_{\gamma}, \Pi_{\phi})$ commute follows from elementary applications of Schur's lemma; 
-    the obtruction for the pair $(\Pi_{\gamma}, \Pi_{\phi})$ is simply that $\Pi_{\gamma}$ is not necessarily $\SU(d)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot y+z}$ and likewise $\Pi_{\phi}$ is not necessarily $\SU(d)$-equivariant with respect to the diagonal on $\mathbb C^{\ot x+y}$.
+    the obtruction for the pair $(\Pi_{\gamma}, \Pi_{\phi})$ is simply that $\Pi_{\gamma}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot y+z}$ and likewise $\Pi_{\phi}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal on $\mathbb C^{\ot x+y}$.
     To prove both \cref{eq:ud_sixj_prod_proj_operator_norm} and \cref{eq:ud_sixj_prod_proj_hs_norm}, it suffices to show there exists appropriately-typed isometries $\iota_{I}$ and $\iota_{II}$ such that
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_iso}
         \Pi^{\phi}_{\alpha\beta\delta\epsilon}\Pi^{\gamma}_{\alpha\beta\delta\epsilon}
         =
-        \iota_{II} \left(\id_{V_{\epsilon}^{d}} \ot \id_{W_{\alpha}} \ot \id_{W_{\beta}} \ot \id_{W_{\delta}} \ot \abcdefsymbol \right) \iota_{I}^{\dagger} 
+        \iota_{II} \left(\id_{V_{\epsilon}^{n}} \ot \id_{W_{\alpha}} \ot \id_{W_{\beta}} \ot \id_{W_{\delta}} \ot \abcdefsymbol \right) \iota_{I}^{\dagger} 
     \end{equation}
     This follows from the follow diagrammatic calculation \textcolor{red}{TODO: Explain this.}:
     \begin{equation}
@@ -947,7 +1450,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
 
 \begin{defn}
     \label{defn:Q_quantity}
-    Let $(A,B,C,D,E,F)$ be a tetrahedral sextuple of non-zero positive semidefinite $d\times d$ Hermitian matrices with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$
+    Let $(A,B,C,D,E,F)$ be a tetrahedral sextuple of non-zero positive semidefinite $n\times n$ Hermitian matrices with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$
     Let $x,y,z$ be arbitrary positive integers and define
     \begin{equation}
         \Omega \coloneqq \frac{A^{\ot x}\ot B^{\ot y} \ot D^{\ot z}}{\abs{\alpha}^{x} \abs{\beta}^{y} \abs{\delta}^{z}}.
@@ -1027,19 +1530,19 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \label{thm:Q_upper_bound}
     Let everything be as in \cref{defn:Q_quantity} except fix $x,y,z$ to be
     \begin{equation}
-        x \coloneqq \ceil{n \abs{\alpha}},
+        x \coloneqq \ceil{k \abs{\alpha}},
         \qquad
-        y \coloneqq \ceil{n \abs{\beta}},
+        y \coloneqq \ceil{k \abs{\beta}},
         \qquad
-        z \coloneqq \ceil{n \abs{\delta}},
+        z \coloneqq \ceil{k \abs{\delta}},
     \end{equation}
-    where $n$ is a sufficiently large positive integer ensuring that $x,y$ and $z$ are non-zero.
+    where $k$ is a sufficiently large positive integer ensuring that $x,y$ and $z$ are non-zero.
     Then
     \begin{equation}
-        \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}} \leq p(n) \exp(-n I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}/6).
+        \abs{Q_{A,B,C,D,E,F}^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}} \leq p(k) \exp(-k I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}/6).
         \label{eq:Q_upper_bound}
     \end{equation}
-    where $p(n)$ is a polynomial in $n$ and where
+    where $p(k)$ is a polynomial in $k$ and where
     \begin{equation}
         I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}
         =\abs{\alpha} \kl{\bar \alpha'}{\bar \alpha}
@@ -1077,22 +1580,22 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \begin{align}
         \Tr(\Pi_{\gamma'} \Omega)
         &\leq \frac{1}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\Tr[P_{\gamma'}C^{\ot x+y}], \qquad \\
-        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{d})\exp(-(x+y)\kl{\bar \gamma'}{\bar \gamma}).
+        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{n})\exp(-(x+y)\kl{\bar \gamma'}{\bar \gamma}).
     \end{align}
     Analogous calculations for $\lambda' \in \{\alpha', \beta', \gamma', \delta', \epsilon', \phi'\}$ produce the following set of upper bounds:
     \begin{align}
         \Tr(\Pi_{\alpha'} \Omega)
-        &\leq \dim(V_{\alpha'}^{d}) \exp(- x \kl{\bar \alpha'}{\bar \alpha}), \\
+        &\leq \dim(V_{\alpha'}^{n}) \exp(- x \kl{\bar \alpha'}{\bar \alpha}), \\
         \Tr(\Pi_{\beta'} \Omega)
-        &\leq \dim(V_{\beta'}^{d}) \exp(- y \kl{\bar \beta'}{\bar \beta}), \\
+        &\leq \dim(V_{\beta'}^{n}) \exp(- y \kl{\bar \beta'}{\bar \beta}), \\
         \Tr(\Pi_{\gamma'} \Omega)
-        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{d}) \exp(- (x+y) \kl{\bar \gamma'}{\bar \gamma}), \\
+        &\leq \frac{(\abs{\alpha}+\abs{\beta})^{x+y}}{\abs{\alpha}^{x}\abs{\beta}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\gamma'}^{n}) \exp(- (x+y) \kl{\bar \gamma'}{\bar \gamma}), \\
         \Tr(\Pi_{\delta'} \Omega)
-        &\leq \dim(V_{\delta'}^{d}) \exp(- z \kl{\bar \delta'}{\bar \delta}), \\
+        &\leq \dim(V_{\delta'}^{n}) \exp(- z \kl{\bar \delta'}{\bar \delta}), \\
         \Tr(\Pi_{\epsilon'} \Omega)
-        &\leq \frac{(\abs{\alpha}+\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}\frac{x!y!z!}{(x+y+z)!}\dim(V_{\epsilon'}^{d}) \exp(- (x+y+z) \kl{\bar \epsilon'}{\bar \epsilon}), \\
+        &\leq \frac{(\abs{\alpha}+\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}\frac{x!y!z!}{(x+y+z)!}\dim(V_{\epsilon'}^{n}) \exp(- (x+y+z) \kl{\bar \epsilon'}{\bar \epsilon}), \\
         \Tr(\Pi_{\phi'} \Omega)
-        &\leq \frac{(\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\beta}^{y}\abs{\delta}^{z}}\frac{y!z!}{(y+z)!} \dim(V_{\phi'}^{d}) \exp(- (y+z) \kl{\bar \phi'}{\bar \phi}).
+        &\leq \frac{(\abs{\beta}+\abs{\delta})^{x+y+z}}{\abs{\beta}^{y}\abs{\delta}^{z}}\frac{y!z!}{(y+z)!} \dim(V_{\phi'}^{n}) \exp(- (y+z) \kl{\bar \phi'}{\bar \phi}).
     \end{align}
     Our objective now will be to use the given values for $x,y,z$ to prove the multinomial prefactors appearing in the bounds for $\gamma'$, $\epsilon'$, and $\phi'$ reasonably small compared to $n$. 
     An application of \cref{lem:multinomial_dist_lower_bound} (when $k=2$) implies the following bound
@@ -1102,20 +1605,20 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \end{equation}
     Moreover, using \cite[Equation 7]{christandl2006spectra}, we have
     \begin{equation}
-        \dim(V_{\gamma'}^{d}) \leq (\abs{\gamma'}+1)^{d(d-1)/2} = (x+y+1)^{d(d-1)/2} < (n (\abs{\alpha}+\abs{\beta}) + 3)^{d(d-1)/2}.
+        \dim(V_{\gamma'}^{n}) \leq (\abs{\gamma'}+1)^{n(n-1)/2} = (x+y+1)^{n(n-1)/2} < (n (\abs{\alpha}+\abs{\beta}) + 3)^{n(n-1)/2}.
     \end{equation}
     Altogether, we can relax the bound on $\Tr(\Pi_{\gamma'} \Omega)$ to obtain
     \begin{equation}
         \Tr(\Pi_{\gamma'} \Omega) \leq
-        e^{4}(n\abs{\epsilon}+3)^{\frac{d(d-1)}{2}+2}\exp\left(-n\abs{\gamma}\kl{\bar \gamma'}{\bar \gamma}\right).
+        e^{4}(n\abs{\epsilon}+3)^{\frac{n(n-1)}{2}+2}\exp\left(-n\abs{\gamma}\kl{\bar \gamma'}{\bar \gamma}\right).
     \end{equation}
     Similar calculations for $\Tr(\Pi_{\epsilon'} \Omega)$ yields (noting that $k=3$ when applying \cref{lem:multinomial_dist_lower_bound}):
     \begin{equation}
-        \Tr(\Pi_{\epsilon'} \Omega) \leq e^{16}(n\abs{\epsilon}+4)^{\frac{d(d-1)}{2}+3}\exp\left(-n\abs{\epsilon}\kl{\bar \epsilon'}{\bar \epsilon}\right).
+        \Tr(\Pi_{\epsilon'} \Omega) \leq e^{16}(n\abs{\epsilon}+4)^{\frac{n(n-1)}{2}+3}\exp\left(-n\abs{\epsilon}\kl{\bar \epsilon'}{\bar \epsilon}\right).
     \end{equation}
     It is also not too difficult to see that the polynomial in $n$ term associated to the upper bound on $\Tr(\Pi_{\epsilon'} \Omega)$ above is the largest such subexponential term and thus \cref{eq:Q_upper_bound} indeed holds if we take $p(n)$ to be
     \begin{equation}
-        p(n) = e^{16}(n\abs{\epsilon}+4)^{\frac{d(d-1)}{2}+3}.
+        p(n) = e^{16}(n\abs{\epsilon}+4)^{\frac{n(n-1)}{2}+3}.
     \end{equation}
 \end{proof}
 
@@ -1126,12 +1629,12 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \begin{equation}
         \label{eq:ceiling_sized_young_diagrams}
         \begin{alignedat}{3}
-            &\alpha'_n \vdash_{d} \ceil{n\abs{\alpha}}, \qquad 
-            &&\beta'_n \vdash_{d} \ceil{n\abs{\beta}}, \qquad
-            &&\gamma'_n \vdash_{d} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}, \qquad\\
-             &\delta'_n \vdash_{d} \ceil{n\abs{\delta}}, \qquad
-            &&\epsilon'_n \vdash_{d} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}+\ceil{n\abs{\delta}}, \qquad
-            &&\phi'_n \vdash_{d} \ceil{n\abs{\beta}}+\ceil{n\abs{\delta}},
+            &\alpha'_n \vdash_{n} \ceil{n\abs{\alpha}}, \qquad 
+            &&\beta'_n \vdash_{n} \ceil{n\abs{\beta}}, \qquad
+            &&\gamma'_n \vdash_{n} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}, \qquad\\
+             &\delta'_n \vdash_{n} \ceil{n\abs{\delta}}, \qquad
+            &&\epsilon'_n \vdash_{n} \ceil{n\abs{\alpha}}+\ceil{n\abs{\beta}}+\ceil{n\abs{\delta}}, \qquad
+            &&\phi'_n \vdash_{n} \ceil{n\abs{\beta}}+\ceil{n\abs{\delta}},
         \end{alignedat}
     \end{equation}
     satisfying (i) the convergence conditions
@@ -1162,7 +1665,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
         \abs{Q_{A,B,C,D,E,F}^{\alpha'_n\beta'_n\gamma'_n\delta'_n\epsilon'_n\phi'_n}} \geq \frac{1}{q(n)}
     \end{equation}
     where $q(n)$ is any upper bound on the number of possible summands in \cref{eq:completeness_relation} viewed as a function of $n$.
-    As there are at most $(k+1)^{d-1}$ Young diagrams with $d-1$ rows and size at most $k$, letting
+    As there are at most $(k+1)^{d-1}$ Young diagrams with $n-1$ rows and size at most $k$, letting
     \begin{equation}
         q(n) = (n \abs{\epsilon}+4)^{6(d-1)}
     \end{equation}
@@ -1190,29 +1693,29 @@ The following result constrains the associated Schur-Weyl decomposition of the $
     \end{equation}
 \end{thm}
 \begin{proof}
-    Let $\diff X$ be the normalized Hilbert-Schmidt measure over $d\times d$ density matrices and let $k$ be a positive integer.
-    Then define an operator $\Gamma_{k}$ on $(\mathbb C^{d})^{\ot k}$ by
+    Let $\diff X$ be the normalized Hilbert-Schmidt measure over $n\times n$ density matrices and let $k$ be a positive integer.
+    Then define an operator $\Gamma_{k}$ on $(\mathbb C^{n})^{\ot k}$ by
     \begin{equation}
         \Gamma_{k} \coloneqq \int \diff X X^{\ot k}.
     \end{equation}
-    As $\Gamma_{k}$ is known to be both $S_k$ and $\SU(d)$ equivariant, by Schur's lemma, $\Gamma_{k}$ can be expressed as 
+    As $\Gamma_{k}$ is known to be both $S_k$ and $\SU(n)$ equivariant, by Schur's lemma, $\Gamma_{k}$ can be expressed as 
     \begin{equation}
         \Gamma_{k} = \sum_{\lambda' \vdash_d k} r_{\lambda'} P_{\lambda'}
     \end{equation}
     with coefficients $r_{\lambda'}$ that can be computed \cite{zyczkowski2001induced,walter2014multipartite} to obtain
     \begin{equation}
-        r_{\lambda'} = \frac{\dim(V_{\lambda'}^{d})}{\dim(W_{\lambda'})\dim(V_{(k)}^{d^2})}.
+        r_{\lambda'} = \frac{\dim(V_{\lambda'}^{n})}{\dim(W_{\lambda'})\dim(V_{(k)}^{d^2})}.
     \end{equation}
     Now let $(\alpha', \beta', \gamma', \delta', \epsilon', \phi')$ be arbitary Young diagrams with respective sizes $(x,y,x+y,z,x+y+z,y+z)$ where $x,y,z$ are determined by a positive integer $n$ as in \cref{thm:Q_upper_bound}.
     Using \cref{eq:ud_sixj_prod_proj_hs_norm}, we obtain the formula
     \begin{align}
         \norm{\tightcurlysixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
-        &=\frac{\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})}{\dim(V_{\epsilon'}^{d})\dim(W_{\alpha'})\dim(W_{\beta'})\dim(W_{\delta'})} \\
+        &=\frac{\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})}{\dim(V_{\epsilon'}^{n})\dim(W_{\alpha'})\dim(W_{\beta'})\dim(W_{\delta'})} \\
         &=R_{\alpha',\beta',\delta';\epsilon'}\Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (\Gamma_{x}\ot \Gamma_{y} \ot \Gamma_{z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
     \end{align}
     where the cooefficient $R_{\alpha',\beta',\delta';\epsilon'}$ is a ratio of dimensions:
     \begin{equation}
-        R_{\alpha',\beta',\delta';\epsilon'} \coloneqq \frac{\dim(V_{(x)}^{d^2})\dim(V_{(y)}^{d^2})\dim(V_{(z)}^{d^2})}{\dim(V_{\epsilon'}^{d})\dim(V^{d}_{\alpha'})\dim(V^{d}_{\beta'})\dim(V^{d}_{\delta'})}.
+        R_{\alpha',\beta',\delta';\epsilon'} \coloneqq \frac{\dim(V_{(x)}^{d^2})\dim(V_{(y)}^{d^2})\dim(V_{(z)}^{d^2})}{\dim(V_{\epsilon'}^{n})\dim(V^{n}_{\alpha'})\dim(V^{n}_{\beta'})\dim(V^{n}_{\delta'})}.
     \end{equation}
     Moreover, by the definition of $\Gamma_k$, we have
     \begin{align}
@@ -1220,7 +1723,7 @@ The following result constrains the associated Schur-Weyl decomposition of the $
         &\qquad=
         \int \diff X \int \diff Y \int \diff Z \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'} (X^{\ot x} \ot Y^{\ot y} \ot Z^{\ot z})\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'}),
     \end{align}
-    where the integral is taken over a triple of $d\times d$ \textit{density matrices} $X,Y,Z$.
+    where the integral is taken over a triple of $n\times n$ \textit{density matrices} $X,Y,Z$.
     For each integrand, define a tetrahedral sextuple $(\tilde A,\tilde B,\tilde C,\tilde D,\tilde E,\tilde F)$ as follows
     \begin{equation}
         \begin{alignedat}{3}
@@ -1251,27 +1754,27 @@ The following result constrains the associated Schur-Weyl decomposition of the $
 
 \subsection{The asymptotics of irrep dimensions}
 
-It will be useful for what follows to better understand how the dimension, $\dim(V_{\lambda}^{d})$, of the irreducible representation $V_{\lambda}^{d}$ of $\SL(d)$ grows as $d$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
-\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\lambda}^{d})$ \cite{itzykson1966unitary}.
+It will be useful for what follows to better understand how the dimension, $\dim(V_{\lambda}^{n})$, of the irreducible representation $V_{\lambda}^{n}$ of $\SL(n)$ grows as $n$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
+\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\lambda}^{n})$ \cite{itzykson1966unitary}.
 \begin{lem}
     \label{lem:in_estimate}
-    Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $d \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(d)$.
-    The following approximation holds when $d \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
+    Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $n \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(n)$.
+    The following approximation holds when $n \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
     \begin{equation}
         \label{eq:in_estimate}
-        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{d}\right)\right).
+        \dim(V_{\lambda}^{n}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{n}\right)\right).
     \end{equation}
 \end{lem}
 \begin{proof}
-    Weyl's character formula can be used to derive the following formula for $\dim(V_{\lambda}^{d})$ in terms of the Young diagram $\lambda$ and the dimension $d$ \cite{itzykson1966unitary}:
+    Weyl's character formula can be used to derive the following formula for $\dim(V_{\lambda}^{n})$ in terms of the Young diagram $\lambda$ and the dimension $n$ \cite{itzykson1966unitary}:
     \begin{equation}
-        \dim(V_{\lambda}^{d}) = \frac{\Delta(\lambda + \rho^d)}{\Delta(\rho^d)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
+        \dim(V_{\lambda}^{n}) = \frac{\Delta(\lambda + \rho^n)}{\Delta(\rho^n)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
     \end{equation}
     where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
-    Isolating the terms above which depend on $d$ from those that do not yields
+    Isolating the terms above which depend on $n$ from those that do not yields
     \begin{equation}
         \label{eq:dim_separation_large_d}
-        \dim(V_{\lambda}^{d}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}.
+        \dim(V_{\lambda}^{n}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}.
     \end{equation}
     Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
     \begin{align}
@@ -1283,27 +1786,27 @@ It will be useful for what follows to better understand how the dimension, $\dim
             = a \log b + O\left(\frac{a^2}{b}\right).
         \end{split}
     \end{align}
-    The assumption that $d \gg \abs{\lambda}^2$ and $i \leq \ell \ll \lambda_{\ell} \leq \abs{\lambda}$ also implies $d - i = \rho^{d}_i \gg \lambda_i^2$.
+    The assumption that $n \gg \abs{\lambda}^2$ and $i \leq \ell \ll \lambda_{\ell} \leq \abs{\lambda}$ also implies $n - i = \rho^{n}_i \gg \lambda_i^2$.
     Therefore,
     \begin{align}
-        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
-        &= \lambda_i\log\rho^{d}_i + O\left(\frac{\lambda_i^2}{\rho^{d}_i}\right).
+        \log\left(\frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
+        &= \lambda_i\log\rho^{n}_i + O\left(\frac{\lambda_i^2}{\rho^{n}_i}\right).
     \end{align}
     The assumptions also imply the following simplification
     \begin{align}
-        \log\left(\frac{(\lambda_i+\rho^{d}_i)!}{\rho^{d}_i!}\right) 
-        &= \lambda_i\log d + O\left(\frac{\abs{\lambda}^2}{d}\right)
+        \log\left(\frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
+        &= \lambda_i\log n + O\left(\frac{\abs{\lambda}^2}{n}\right)
     \end{align}
     which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
 \end{proof}
-Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(V_{\lambda}^{d})$ generally grows polynomially in $d$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
-The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $d$.
+Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(V_{\lambda}^{n})$ generally grows polynomially in $n$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
+The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $n$.
 \textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\lambda}, \abs{\lambda}/d\} \leq \epsilon$.}
 \begin{lem}
     \label{lem:double_asymptotics}
     Let everything be as in \cref{lem:in_estimate}. Then
     \begin{equation}
-        \log \dim (V_{\lambda}^{d}) = \abs{\lambda} + \abs{\lambda}\log(d) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{d}\right)
+        \log \dim (V_{\lambda}^{n}) = \abs{\lambda} + \abs{\lambda}\log(n) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{n}\right)
     \end{equation}
     where $s(\lambda)$ is defined by
     \begin{equation}
@@ -1344,12 +1847,12 @@ The objective of the following lemma is to characterize the asymptotics of this 
 \end{rem}
 
 {\color{red}
-TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}^{d})$ to $\dim(W_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
+TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}^{n})$ to $\dim(W_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
 }
 \begin{lem}
-    Let $\lambda$ be a Young diagram with at most $d$ parts. Then
+    Let $\lambda$ be a Young diagram with at most $n$ parts. Then
     \begin{equation}
-        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(V_{\lambda}^{d})}{\dim(W_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{d}\right)
+        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(V_{\lambda}^{n})}{\dim(W_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{n}\right)
     \end{equation}
 \end{lem}
 
@@ -1359,7 +1862,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
 
 \begin{thm}
     \label{thm:ud_recouple_bound}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{d}$ be a sextuple of dominant weights for $\GL(d)$ and let $\abcdefsymbol$ be the corresponding $\GL(d)$-recoupling operator. 
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in \domweights{n}$ be a sextuple of dominant weights for $\GL(n)$ and let $\abcdefsymbol$ be the corresponding $\GL(n)$-recoupling operator. 
     Then
     \begin{equation}
         \norm{\abcdefsymbol}_{\text{HS}}^{2}
@@ -1381,11 +1884,11 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
         \abs{\gamma}+\abs{\phi} = \abs{\beta}+\abs{\epsilon}
     \end{equation}
     and that $\abs{\epsilon} = \max\{\abs{\gamma}, \abs{\phi}, \abs{\beta}, \abs{\epsilon}\}$.
-    Let $\ell \coloneqq \max\{\ell(\gamma), \ell(\phi), \ell(\beta), \ell(\epsilon) \}$ and let $d$ be a positive integer such that $d \geq \ell$.
+    Let $\ell \coloneqq \max\{\ell(\gamma), \ell(\phi), \ell(\beta), \ell(\epsilon) \}$ and let $n$ be a positive integer such that $n \geq \ell$.
     Then
     \begin{equation}
-        \log\left(\frac{\dim(V_{\gamma}^d) \dim(V_{\phi}^d)}{\dim(V_{\beta}^d) \dim(V_{\epsilon}^d)}\right)
-        = I(\gamma,\phi;\beta,\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{d}\right)
+        \log\left(\frac{\dim(V_{\gamma}^n) \dim(V_{\phi}^n)}{\dim(V_{\beta}^n) \dim(V_{\epsilon}^n)}\right)
+        = I(\gamma,\phi;\beta,\epsilon) + O(\ell^2 \log \abs{\epsilon}) + O\left(\frac{\abs{\epsilon}^2}{n}\right)
         \label{eq:asymptotic_dimension_ratio}
     \end{equation}
     where $I(\gamma,\phi;\beta,\epsilon)$ is the function
@@ -1396,7 +1899,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
 \end{lem}
 \begin{proof}
     The proof follows from four applications of \cref{lem:double_asymptotics}.
-    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(d)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
+    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(n)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
     
     Four applications of \cref{eq:little_s_relation} yields
     \begin{align}
@@ -1424,7 +1927,7 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}
     \end{equation} 
 \end{thm}
 \begin{proof}
-    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $d \to \infty$, the upper bound provided by \cref{thm:ud_recouple_bound}, and the lower bound provided by \cref{cor:seq_ud_recoupling_norm_lower_bound}.
+    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $n \to \infty$, the upper bound provided by \cref{thm:ud_recouple_bound}, and the lower bound provided by \cref{cor:seq_ud_recoupling_norm_lower_bound}.
     \textcolor{red}{TODO: Finish this}
 \end{proof}
 
@@ -1476,13 +1979,13 @@ The primary quantity of interest will be a real-valued function of eigenvalues w
     \end{equation}
 \end{lem}
 \begin{proof}
-    This claim is a special case ($d=1$) of a \cref{thm:ssa_ineq} which does not depend on this result.
+    This claim is a special case ($n=1$) of a \cref{thm:ssa_ineq} which does not depend on this result.
 \end{proof}
 \begin{defn}
     Given $\beta \in \mathbb R$, let $\unent_{\beta}$ be the real-valued function on PSD matrices given by
     \begin{equation}
         \label{eq:shifted_unnormalized_entropy}
-        \unent_{\beta}(X) = \beta + \Tr(\eta(X)) = \beta + \sum_{i=1}^{d} \eta(\lambda_i(X)),
+        \unent_{\beta}(X) = \beta + \Tr(\eta(X)) = \beta + \sum_{i=1}^{n} \eta(\lambda_i(X)),
     \end{equation}
     where $\lambda_i(X)$ denotes the $i$-th eigenvalue of $X$.
     The quantity $\unent_{\beta}(X)$ will be called the \textbf{($\boldsymbol{\beta}$-shifted) unnormalized entropy} of $X$. 
@@ -1490,10 +1993,10 @@ The primary quantity of interest will be a real-valued function of eigenvalues w
 
 \begin{rem}
     It is worth remarking why $\unent_{\beta}$ is termed the (shifted) unnormalized entropy.
-    Suppose $(\lambda_1, \ldots, \lambda_d)$ are the eigenvalues of $X$.
+    Suppose $(\lambda_1, \ldots, \lambda_n)$ are the eigenvalues of $X$.
     When $\beta = 0$, we have the following 
     \begin{equation}
-        \unent_{0}(X) = - \sum_{i=1}^{d} \lambda_i \log \lambda_i.
+        \unent_{0}(X) = - \sum_{i=1}^{n} \lambda_i \log \lambda_i.
     \end{equation}
     We elect to call $\unent_0(X)$ the \textit{unnormalized} entropy of $X$ because it coincides with the von Neumann entropy when restricted to inputs $X$ where $\Tr(X) = 1$ (i.e., when $X$ is a density matrix):
     \begin{equation}
@@ -1526,9 +2029,9 @@ The following proposition lists some basic properties of the function $\unent_{\
             \begin{equation}
                 \eta(\Tr(X)) \leq \unent_{0}(X)
             \end{equation}
-        \item Let $\gamma I_{d}$ be the $d\times d$ scalar matrix with $\gamma \geq 0$ along the diagonal. Then
+        \item Let $\gamma I_{n}$ be the $n\times n$ scalar matrix with $\gamma \geq 0$ along the diagonal. Then
             \begin{equation}
-                \unent_{\beta}(\gamma I_{d}) = \beta + d\eta(\gamma).
+                \unent_{\beta}(\gamma I_{n}) = \beta + d\eta(\gamma).
             \end{equation}
         \item Let $\beta' \in \mathbb R$ and $X' \geq 0$ a PSD matrix. Then,
             \begin{equation}
@@ -1564,11 +2067,11 @@ Nevertheless, there is a sense it which it is homogeneous up to a modification t
     \begin{align}
         \begin{split}
             \unent_0(\gamma X) 
-            &= \sum_{i=1}^{d} \eta(\lambda_i(\gamma X)) \\
-            &= \sum_{i=1}^{d} \eta(\gamma \lambda_i(X)) \\
-            &= -\sum_{i=1}^{d} \gamma \lambda_i(X) \log (\gamma \lambda_i(X)) \\
-            &= -\gamma \sum_{i=1}^{d} \lambda_i(X) (\log \gamma + \log \lambda_i(X)) \\
-            &= -(\gamma \log \gamma)\Tr(X) - \gamma \sum_{i=1}^{d} \lambda_i(X) \log \lambda_i(X) \\
+            &= \sum_{i=1}^{n} \eta(\lambda_i(\gamma X)) \\
+            &= \sum_{i=1}^{n} \eta(\gamma \lambda_i(X)) \\
+            &= -\sum_{i=1}^{n} \gamma \lambda_i(X) \log (\gamma \lambda_i(X)) \\
+            &= -\gamma \sum_{i=1}^{n} \lambda_i(X) (\log \gamma + \log \lambda_i(X)) \\
+            &= -(\gamma \log \gamma)\Tr(X) - \gamma \sum_{i=1}^{n} \lambda_i(X) \log \lambda_i(X) \\
             &= \eta(\gamma) \Tr(X) + \gamma \unent_0(X).
         \end{split}
     \end{align}
@@ -1576,21 +2079,21 @@ Nevertheless, there is a sense it which it is homogeneous up to a modification t
 It is also possible to conceptualize the shifts themselves as unnormalized entropies of scalar matrices.
 \begin{prop}
     Let $\beta \in \mathbb R$. 
-    Then there exists a sufficiently large integer $d \in \mathbb N_{> 0}$ and a $\gamma \geq 0$ such that
+    Then there exists a sufficiently large integer $n \in \mathbb N_{> 0}$ and a $\gamma \geq 0$ such that
     \begin{equation}
         \label{eq:shift_as_entropy}
-        \unent_0(\gamma I_d) = \beta.
+        \unent_0(\gamma I_n) = \beta.
     \end{equation}
 \end{prop}
 \begin{proof}
-    For any $\gamma \geq 0$ and integer $d \in \mathbb N_{> 0}$,
+    For any $\gamma \geq 0$ and integer $n \in \mathbb N_{> 0}$,
     \begin{equation}
-        \unent_0(\gamma I_d) = - d \gamma \log \gamma.
+        \unent_0(\gamma I_n) = - n \gamma \log \gamma.
     \end{equation}
-    By varying $\gamma \in [0,\infty)$, the image under $\gamma \mapsto \unent_0(\gamma I_d)$ is $(-\infty, d/e]$.
-    Therefore, if $\beta \leq 0$, then for all $d \in \mathbb N_{>0}$, there exists a $\gamma$ such that $\unent_0(\gamma I_d) = \beta$.
-    Otherwise, if $\beta > 0$, then let $d = \ceil{e \beta}$. 
-    This choice for $d$ places $\beta$ in the range of the map $\gamma \mapsto \unent_0(\gamma I_d)$.
+    By varying $\gamma \in [0,\infty)$, the image under $\gamma \mapsto \unent_0(\gamma I_n)$ is $(-\infty, d/e]$.
+    Therefore, if $\beta \leq 0$, then for all $n \in \mathbb N_{>0}$, there exists a $\gamma$ such that $\unent_0(\gamma I_n) = \beta$.
+    Otherwise, if $\beta > 0$, then let $n = \ceil{e \beta}$. 
+    This choice for $n$ places $\beta$ in the range of the map $\gamma \mapsto \unent_0(\gamma I_n)$.
     Then there exists a $\gamma$ such that $\gamma^{\gamma} = \exp(-\frac{\ceil{e \beta}}{e})$ which satisfies \cref{eq:shift_as_entropy}.
 \end{proof}
 
@@ -1741,13 +2244,13 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
 
 \subsubsection{Embedding \texorpdfstring{$n$}{n} PSD matrices into \texorpdfstring{$n$}{n}-partite quantum states}
 \begin{defn}
-    Let $n, d$ be positive integers and consider the complex vector space $(\mathbb C^{d+1})^{\ot n}$.
-    For each $p \in [n]$, let $\{ \ket {0}_p, \ket {1}_p, \ldots, \ket {d}_p \}$ be a basis for $\mathbb C^{d+1}$ (noting that $\ket{i}_{p}$ need not equal $\ket{i}_{q}$ for $p \neq q$).
-    For each $k \in \{0, 1, \ldots, n\}$, we define the \textbf{weight-$\boldsymbol{k}$ subspace}, $W_k \subset (\mathbb C^{d+1})^{\ot n}$, to be the span of those vectors in $(\mathbb C^{d+1})^{\ot n}$ of the form 
+    Let $n, n$ be positive integers and consider the complex vector space $(\mathbb C^{n+1})^{\ot n}$.
+    For each $p \in [n]$, let $\{ \ket {0}_p, \ket {1}_p, \ldots, \ket {n}_p \}$ be a basis for $\mathbb C^{n+1}$ (noting that $\ket{i}_{p}$ need not equal $\ket{i}_{q}$ for $p \neq q$).
+    For each $k \in \{0, 1, \ldots, n\}$, we define the \textbf{weight-$\boldsymbol{k}$ subspace}, $W_k \subset (\mathbb C^{n+1})^{\ot n}$, to be the span of those vectors in $(\mathbb C^{n+1})^{\ot n}$ of the form 
     \begin{equation}
         \ket{i_{1}}_{1} \ot \cdots \ot \ket{i_{n}}_{n}
     \end{equation}
-    such that exactly $k$ elements of the tuple $(i_{1}, \ldots, i_{p}) \in [d+1]^{n}$ are non-zero.
+    such that exactly $k$ elements of the tuple $(i_{1}, \ldots, i_{p}) \in [n+1]^{n}$ are non-zero.
 \end{defn}
 \begin{rem}
     For example, the weight zero subspace, $W_0$, is one-dimension and is spanned by the vector
@@ -1755,30 +2258,30 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
         \label{eq:weight_zero}
         \kett{\emptyset} = \ket{0}_{1}\ot \cdots \ket{0}_{n}.
     \end{equation}
-    The weight one subspace, $W_1$, is $dn$-dimensional and is spanned by the vectors $\kett{i_p}$ where 
+    The weight one subspace, $W_1$, is $nn$-dimensional and is spanned by the vectors $\kett{i_p}$ where 
     \begin{equation}
         \label{eq:weight_one}
         \kett{i_p} = \ket{0}_1 \ot \cdots \ot \ket{0}_{p-1} \ot \ket{i} \ot \ket{0}_{p+1} \ot \ket{0}_{n}.
     \end{equation}
     and where $i \in [d]$, $p \in [n]$.
-    The weight two subspace, $W_2$, is $d^2 \binom{n}{2}$-dimensional and is spanned by vectors $\kett{i_p, j_q}$ where
+    The weight two subspace, $W_2$, is $n^2 \binom{n}{2}$-dimensional and is spanned by vectors $\kett{i_p, j_q}$ where
     \begin{equation}
         \label{eq:weight_two}
         \kett{i_p, j_q} = \ket{0}_1 \ot \cdots \ot \ket{0}_{p-1} \ot \ket{i} \ot \ket{0}_{p+1} \ot \cdots \ot \ket{0}_{q-1} \ot \ket{j}_{q} \ot \ket{0}_{q+1} \ot \cdots \ot \ket{0}_{n}.
     \end{equation}
-    and where $1 \leq p < q \leq d$ and $i,j \in [d]$.
+    and where $1 \leq p < q \leq n$ and $i,j \in [d]$.
 \end{rem}
 \begin{rem}
     While the notion of a \textit{weight-$k$} subspace is technically basis dependent, it is only partially basis dependent.
     In particular, it is invariant under independent local changes of basis which fix the zero-element, $\ket{0}_p$ of each party $p$.
-    In other words, the weight $k$-subspace is invariant under the group $G = (U(1) \times U(d))^{\times n}$
-    where $U(1) \times U(d) \subset U(d+1)$ refers to the subgroup of the unitary group which preserves the subspace spanned by $\ket{0}_p$.
-    In particular, a weight space decomposition of $(\mathbb C^{d+1})^{\ot n}$ depends only on a fixed product vector $\ket{\emptyset} \coloneqq \ket{\phi}_1 \ot \cdots \ket{\phi}_n$.
+    In other words, the weight $k$-subspace is invariant under the group $G = (U(1) \times U(n))^{\times n}$
+    where $U(1) \times U(n) \subset U(n+1)$ refers to the subgroup of the unitary group which preserves the subspace spanned by $\ket{0}_p$.
+    In particular, a weight space decomposition of $(\mathbb C^{n+1})^{\ot n}$ depends only on a fixed product vector $\ket{\emptyset} \coloneqq \ket{\phi}_1 \ot \cdots \ket{\phi}_n$.
 \end{rem}
 \begin{defn}
     \label{defn:spec_embed}
-    Let $\tuple{X} = (X_1, \ldots, X_n)$ be a $n$-tuple of $d\times d$ PSD operators and let $(\{\ket i_p\}_{i=0}^{d})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{d+1}$.
-    Let $\Gamma(\tuple{X}) = \Gamma(X_1, \ldots, X_n)$ be the Hermitian operator on $(\mathbb C^{d+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{d+1})^{\ot n}$ with non-zero entries given by
+    Let $\tuple{X} = (X_1, \ldots, X_n)$ be a $n$-tuple of $n\times n$ PSD operators and let $(\{\ket i_p\}_{i=0}^{n})_{p\in[n]}$ be an $n$-tuple of bases for $\mathbb C^{n+1}$.
+    Let $\Gamma(\tuple{X}) = \Gamma(X_1, \ldots, X_n)$ be the Hermitian operator on $(\mathbb C^{n+1})^{\ot n}$ which is block-diagonal with respect to the weight decomposition of $(\mathbb C^{n+1})^{\ot n}$ with non-zero entries given by
     \begin{equation}
         \label{eq:weight_zero_portion}
         \braa{\emptyset}\Gamma(X_1, \ldots, X_n)\kett{\emptyset} = 1 - \sum_{i=1}^{n} \Tr(X_n),
@@ -1795,7 +2298,7 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
     as well as all higher weight spaces. 
 \end{defn}
 \begin{exam}
-    Given two PSD $d\times d$ matrices, $(X_1, X_2)$, the matrix $\Gamma_{[2]} \coloneqq \Gamma(X_1, X_2)$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
+    Given two PSD $n\times n$ matrices, $(X_1, X_2)$, the matrix $\Gamma_{[2]} \coloneqq \Gamma(X_1, X_2)$ has the following coefficients for all $i,j,k,l \in \{1, \ldots, d\}$.
     \begin{align}
         \braket{00|\Gamma|00} &= 1-\Tr(X_{1})-\Tr(X_{2}), \\
         \braket{i0|\Gamma|j0} &= \braket{i|X_{1}|j}, \\
@@ -1806,7 +2309,7 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
     \end{align}
 \end{exam}
 \begin{exam}
-    Given three $d\times d$ PSD matrices $X_1, X_2, X_3 \geq 0$, the operator $\Gamma_{[3]} \coloneqq \Gamma(X_1, X_2, X_3)$ is the $(d+1)^{3}\times (d+1)^{3}$ matrix with non-zero coefficients given for all $i,j \in \{1, \ldots, d\}$ by the formulas:
+    Given three $n\times n$ PSD matrices $X_1, X_2, X_3 \geq 0$, the operator $\Gamma_{[3]} \coloneqq \Gamma(X_1, X_2, X_3)$ is the $(n+1)^{3}\times (n+1)^{3}$ matrix with non-zero coefficients given for all $i,j \in \{1, \ldots, d\}$ by the formulas:
     \begin{align}
         \begin{split}
             \braket{000|\Gamma|000} &= 1-\Tr(X_1+X_2+X_3), \\
@@ -1850,14 +2353,14 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
     Equivalently, it suffices to prove that the characteristic polynomials of $\Phi_{[n]}$ and $X_{[n]}$ have the same coefficients which is implied by proving that for any positive integer $\ell$, $\Tr(\Phi_{[n]}^{\ell}) = \Tr(X_{[n]}^{\ell})$.
     For $\ell = 1$, the proof follows from performing a single sum over the weight-one subspace
     \begin{equation}
-        \Tr(\Phi_{[n]}) = \sum_{p=1}^{n}\sum_{i=1}^{d} \braa{i_p} \Phi_{[n]} \kett{i_p} = \sum_{p=1}^{n}\sum_{i=1}^{d} \bra{i}_pX_{p}\ket{i}_p = \sum_{p = 1}^{n} \Tr(X_{p}) = \Tr(X_{[n]}).
+        \Tr(\Phi_{[n]}) = \sum_{p=1}^{n}\sum_{i=1}^{n} \braa{i_p} \Phi_{[n]} \kett{i_p} = \sum_{p=1}^{n}\sum_{i=1}^{n} \bra{i}_pX_{p}\ket{i}_p = \sum_{p = 1}^{n} \Tr(X_{p}) = \Tr(X_{[n]}).
     \end{equation}
     For $\ell > 1$, the proof follows from an $\ell$-fold sum over the weight-one subspace,
     \begin{align}
         \Tr(\Phi_{[n]}^{\ell}) 
-        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{d} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{d} 
+        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{n} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{n} 
         \braa{(i_1)_{p_1}} \Phi_{[n]} \kett{(i_2)_{p_2}}\cdots \braa{(i_\ell)_{p_\ell}} \Phi_{[n]} \kett{(i_1)_{p_1}}, \\
-        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{d} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{d} 
+        &= \sum_{p_1=1}^{n}\sum_{i_1=1}^{n} \cdots \sum_{p_\ell=1}^{n}\sum_{i_\ell=1}^{n} 
         \bra{i_1}_{p_1} X_{p_1}^{\frac{1}{2}}X_{p_2}^{\frac{1}{2}} \ket{i_2}_{p_2}\cdots \bra{i_\ell}_{p_\ell} X_{p_\ell}^{\frac{1}{2}} X_{p_1}^{\frac{1}{2}}\ket{i_1}_{p_1}, \\
         &= \sum_{p_1=1}^{n}\cdots \sum_{p_\ell=1}^{n} 
         \Tr[X_{p_1}^{\frac{1}{2}}X_{p_2}^{\frac{1}{2}}\cdots X_{p_\ell}^{\frac{1}{2}} X_{p_1}^{\frac{1}{2}}], \\
@@ -1903,7 +2406,7 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
     \end{equation}
 \end{lem}
 \begin{proof}
-    To begin, notice that for any $n$-partite weight-block-diagonal operator $X$ on $(\mathbb C^{d})^{\ot n}$, its partial trace over $S \subseteq [n]$, $\Tr_{[n]\setminus S} (X)$, will also be weight-block-diagonal as an $\card{S}$-partite operator because the weight-block-off-diagonal entries of $\Tr_{[n]\setminus S} (X)$ are sums of weight-block-off-diagonal entries of $X$.
+    To begin, notice that for any $n$-partite weight-block-diagonal operator $X$ on $(\mathbb C^{n})^{\ot n}$, its partial trace over $S \subseteq [n]$, $\Tr_{[n]\setminus S} (X)$, will also be weight-block-diagonal as an $\card{S}$-partite operator because the weight-block-off-diagonal entries of $\Tr_{[n]\setminus S} (X)$ are sums of weight-block-off-diagonal entries of $X$.
     Therefore, to prove the claim, it suffices to restrict focus to the weight-block-diagonal entries of $\Tr_{[n]\setminus S} (\Gamma_{[n]})$.
 
     Let $\omega : S \to \{1, \ldots, \card{S}\}$ be the map which assigns to each $p \in S$ its position in $S$ ordered relative to the ordering on $[n]$.
@@ -1921,9 +2424,9 @@ The purpose of this section is to compare the \textit{additive} quantum entropy 
     Moreover, using \cref{eq:marginal_joint_correspondence} again shows that the coefficient of $\Tr_{[n]\setminus S}[\Gamma_{[n]}]$ in the weight-zero block equals
     \begin{align}
         \braa{\emptyset}\Tr_{[n]\setminus S}[\Gamma_{[n]}] \kett{\emptyset}
-        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p \not \in S} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
-        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p = 1}^{n} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} - \sum_{p \in S} \sum_{i=1}^{d} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
-        &= \Tr(\Gamma_{[n]}) - \sum_{p \in S} \sum_{i=1}^{d} \braa{i_{\omega(p)}} \Gamma_{S} \kett{i_{\omega(p)}} \\
+        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p \not \in S} \sum_{i=1}^{n} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
+        &= \braa{\emptyset}\Gamma_{[n]}\kett{\emptyset} + \sum_{p = 1}^{n} \sum_{i=1}^{n} \braa{i_p} \Gamma_{[n]} \kett{i_p} - \sum_{p \in S} \sum_{i=1}^{n} \braa{i_p} \Gamma_{[n]} \kett{i_p} \\
+        &= \Tr(\Gamma_{[n]}) - \sum_{p \in S} \sum_{i=1}^{n} \braa{i_{\omega(p)}} \Gamma_{S} \kett{i_{\omega(p)}} \\
         &= \Tr(\Gamma_{[n]}) - (\Tr(\Gamma_{S}) - \braa{\emptyset}\Gamma_{S}\kett{\emptyset}) \\
         &= \braa{\emptyset}\Gamma_{S}\kett{\emptyset}
     \end{align}
@@ -1934,9 +2437,9 @@ It is worth emphasizing that the operators, $\Gamma_{[n]} = \Gamma(X_1, \ldots, 
 Nevertheless, there is an elegant characterization of those $n$-partite operators which can be obtained in this way.
 This characterization generalizes \cite[Proposition 11]{christandl2018recoupling}.
 \begin{lem}
-    Let $\rho_{[n]}$ be an $n$-partite density matrix on $(\mathbb C^{d+1})^{\ot n}$ with rank at most $d+1$ such that there exists a product eigenvector, denoted by $\kett{\emptyset} = \ket{\phi}_1\ot \cdots \ot \ket{\phi}_n$, such that $\rho_{[n]}$ is weight-block-diagonal with respect to $\kett{\emptyset}$ and only supported on the weight-zero and weight-one subspaces.
+    Let $\rho_{[n]}$ be an $n$-partite density matrix on $(\mathbb C^{n+1})^{\ot n}$ with rank at most $n+1$ such that there exists a product eigenvector, denoted by $\kett{\emptyset} = \ket{\phi}_1\ot \cdots \ot \ket{\phi}_n$, such that $\rho_{[n]}$ is weight-block-diagonal with respect to $\kett{\emptyset}$ and only supported on the weight-zero and weight-one subspaces.
 
-    Then there exists an $n$-tuple of $d\times d$ PSD matrices $(X_1, \ldots, X_n)$ such that up to a local unitary change of basis (which fixes $\kett{\emptyset}$), we have
+    Then there exists an $n$-tuple of $n\times n$ PSD matrices $(X_1, \ldots, X_n)$ such that up to a local unitary change of basis (which fixes $\kett{\emptyset}$), we have
     \begin{equation}
         \rho_{[n]} \simeq \Gamma(X_1, \ldots, X_n).
     \end{equation}
@@ -1944,22 +2447,22 @@ This characterization generalizes \cite[Proposition 11]{christandl2018recoupling
 \begin{proof}
     Since $\rho_{[n]}$ is supported only on the weight-zero and weight-one subspaces and is block-diagonal with respect to these subspaces, the eigendecomposition of $\rho_{[n]}$ has the form:
     \begin{equation}
-        \rho_{[n]} = \lambda_1 \kett{\emptyset}\braa{\emptyset} + \sum_{k=1}^{d} \lambda_{k+1} \ket{v_{k+1}}\bra{v_{k+1}}
+        \rho_{[n]} = \lambda_1 \kett{\emptyset}\braa{\emptyset} + \sum_{k=1}^{n} \lambda_{k+1} \ket{v_{k+1}}\bra{v_{k+1}}
     \end{equation}
     where the eigenvector $\ket{v_{k+1}}$ belongs to the weight-one subspace and thus has the form
     \begin{equation}
-        \ket{v_{k+1}} = \sum_{p=1}^{d} \sum_{i=1}^{d} V_{p,i,k} \kett{i_p}
+        \ket{v_{k+1}} = \sum_{p=1}^{n} \sum_{i=1}^{n} V_{p,i,k} \kett{i_p}
     \end{equation}
-    for some unknown $n \times d \times d$ tensor of coefficients denoted by $V_{p,i,k}$ and where $\kett{i_p}$ is given by \cref{eq:weight_one} taken with respect to some $n$-tuple of bases where $\ket{0}_p \coloneqq \ket{\phi}_p$.
-    Now, for each party $p$, let $M_p$ be the $d \times d$ matrix defined by
+    for some unknown $n \times n \times n$ tensor of coefficients denoted by $V_{p,i,k}$ and where $\kett{i_p}$ is given by \cref{eq:weight_one} taken with respect to some $n$-tuple of bases where $\ket{0}_p \coloneqq \ket{\phi}_p$.
+    Now, for each party $p$, let $M_p$ be the $n \times n$ matrix defined by
     \begin{equation}
         (M_p)_{i,k} \coloneqq \lambda_{k+1}^{\frac{1}{2}} V_{p,i,k}.
     \end{equation}
     With this definition, one obtains
     \begin{equation}
-        \braa{i_p} \rho_{[n]} \kett{j_q} = \sum_{k=1}^{d} \lambda_{k+1} V_{p,i,k} V^{*}_{q,j,k} = \sum_{k=1}^{d} (M_p)_{i,k}(M_q)^{*}_{j,k} = \bra{i}_pM_{p}M_{q}^{\dagger} \ket{j}_q
+        \braa{i_p} \rho_{[n]} \kett{j_q} = \sum_{k=1}^{n} \lambda_{k+1} V_{p,i,k} V^{*}_{q,j,k} = \sum_{k=1}^{n} (M_p)_{i,k}(M_q)^{*}_{j,k} = \bra{i}_pM_{p}M_{q}^{\dagger} \ket{j}_q
     \end{equation}
-    Now by a polar decomposition, for each party $p$, there exists a PSD $d\times d$ matrix $X_p$ and an $d \times d$ unitary $U_p$ such that
+    Now by a polar decomposition, for each party $p$, there exists a PSD $n\times n$ matrix $X_p$ and an $n \times n$ unitary $U_p$ such that
     \begin{equation}
         M_p = U_pX_p^{\frac{1}{2}},
     \end{equation}
@@ -2363,7 +2866,7 @@ Moreover, the mutual information between $C_S$ and $Q$ is equal to
     I suspect it will involve some sort of downscaling of ensemble probabilities followed by an extension by a ``marked'' element so as to preserve normalization.
 }
 
-Given an $n$-ensemble $\mathcal E = \{(p_1, \rho_1), \ldots, (p_n, \rho_n)\}$ of $d\times d$ density matrices, and $\epsilon \in (0,1)$, we define an $\epsilon$-extended $n$-ensemble of $d+1 \times d+1$ density matrices by
+Given an $n$-ensemble $\mathcal E = \{(p_1, \rho_1), \ldots, (p_n, \rho_n)\}$ of $n\times n$ density matrices, and $\epsilon \in (0,1)$, we define an $\epsilon$-extended $n$-ensemble of $n+1 \times n+1$ density matrices by
 \begin{equation}
     \mathcal E^{\epsilon} \coloneqq \{ (p_1, (1-\epsilon) \oplus \epsilon \rho_1), \ldots, (p_n, (1-\epsilon) \oplus \epsilon\rho_n) \}.
 \end{equation}
@@ -2408,28 +2911,28 @@ Moreover, as the weights in the $\epsilon$-extended ensemble are the same as the
 \section{Multinomial distribution inequalities}
 
 In this section, we recall a handful of identities and inequalities concerning multinomial coefficients and the multinomial distribution in the context of Sanov's theorem \cite[Chapter 2]{dembo2010large}.
-Let $q = (q_1,\ldots, q_k)$ be a probability distribution such that for all $i \in \{1, \ldots, k\}$, $n q_i$ is an integer. 
-Let $M_{n}(q)$ denote the following multinomial coefficient:
+Let $q = (q_1,\ldots, q_n)$ be a probability distribution such that for all $i \in \{1, \ldots, n\}$, $k q_i$ is an integer. 
+Let $M_{k}(q)$ denote the following multinomial coefficient:
 \begin{equation}
     \label{eq:multinomial_coefficient}
-    M_{n}(q) \coloneqq \binom{n}{nq_1, \ldots, nq_k} = \frac{n!}{(nq_1)!\cdots (nq_k)!},
+    M_{k}(q) \coloneqq \binom{k}{kq_1, \ldots, kq_k} = \frac{k!}{(kq_1)!\cdots (kq_k)!},
 \end{equation}
 which can be bounded (see \cite[Lemma 2.1.8]{dembo2010large}) in terms of $\ent{q}$ by ,
 \begin{equation}
     \label{eq:multinomial_coefficient_bound}
-    (n+1)^{-k} e^{n \ent{q}} \leq M_{n}(q) \leq e^{n \ent{q}},
+    (k+1)^{-n} e^{k \ent{q}} \leq M_{k}(q) \leq e^{k \ent{q}},
 \end{equation}
-where $\ent{q} = - \sum_{i=1}^{k} q_i \log q_i$ is the Shannon entropy of $q$.
-Additionally, we have for any probability distribution $p = (p_1, \ldots, p_k)$,
+where $\ent{q} = - \sum_{i=1}^{n} q_i \log q_i$ is the Shannon entropy of $q$.
+Additionally, we have for any probability distribution $p = (p_1, \ldots, p_n)$,
 \begin{equation}
     \label{eq:multinomial_probability}
-    p_1^{nq_1} \cdots p_k^{nq_k} = e^{-n \left(\ent{q} + \kl{q}{p}\right)}
+    p_1^{kq_1} \cdots p_n^{kq_n} = e^{-k \left(\ent{q} + \kl{q}{p}\right)}
 \end{equation}
-where $\kl{q}{p} = \sum_{i=1}^{k} q_i \log q_i/p_i$ denotes the Kullbeck-Leibler divergence or relative entropy of $q$ from $p$ with the convention that $\kl{q}{p} = \infty$ if $q_i > 0$ whenever $p_i=0$.
+where $\kl{q}{p} = \sum_{i=1}^{n} q_i \log q_i/p_i$ denotes the Kullbeck-Leibler divergence or relative entropy of $q$ from $p$ with the convention that $\kl{q}{p} = \infty$ if $q_i > 0$ whenever $p_i=0$.
 Note that $\kl{q}{p} = 0$ if and only if $p=q$.
 Combining \cref{eq:multinomial_coefficient_bound} with \cref{eq:multinomial_probability} places bounds on the multinomial distribution
 \begin{equation}
-    (n+1)^{-k} e^{-n \kl{q}{p}} \leq \binom{n}{nq_1, \ldots, nq_k} p_1^{nq_1} \cdots p_k^{nq_k} \leq e^{-n \kl{q}{p}}
+    (k+1)^{-n} e^{-k \kl{q}{p}} \leq \binom{k}{kq_1, \ldots, kq_n} p_1^{kq_1} \cdots p_n^{kq_n} \leq e^{-k \kl{q}{p}}
 \end{equation}
 If needed, it is possible to relax these bounds further using Pinsker's inequality for $\kl{q}{p}$ in conjunction with its reverse (which only holds for $\kl{q}{p} < \infty$) \cite{gotze2019higher}:
 \begin{equation}
@@ -2438,50 +2941,50 @@ If needed, it is possible to relax these bounds further using Pinsker's inequali
 where
 \begin{equation}
     \label{eq:pinskers}
-    d_{\mathrm{TV}}(p,q) = \max_{1\leq j\leq k}\abs{p_j - q_j} = \frac{1}{2} \sum_{j=1}^{k}\abs{p_j - q_j}
+    d_{\mathrm{TV}}(p,q) = \max_{1\leq j\leq n}\abs{p_j - q_j} = \frac{1}{2} \sum_{j=1}^{n}\abs{p_j - q_j}
 \end{equation}
 is known as the \textit{total variation distance} between $p$ and $q$.
-Now for any distributon $p = (p_1, \ldots, p_k)$ and any positive integer $n$, it is possible to find another distribution $p' = (p'_1, \ldots, p'_k)$ such that (i) $np'_i$ is an integer for all $i \in \{1,\ldots, k\}$, (ii) $\kl{p'}{p} < \infty$ is finite, and (iii) $p'$ approximates $p$ in the sense that for some constant $C \geq 0$,
+Now for any distributon $p = (p_1, \ldots, p_n)$ and any positive integer $k$, it is possible to find another distribution $p' = (p'_1, \ldots, p'_n)$ such that (i) $kp'_i$ is an integer for all $i \in \{1,\ldots, n\}$, (ii) $\kl{p'}{p} < \infty$ is finite, and (iii) $p'$ approximates $p$ in the sense that for some constant $C \geq 0$,
 \begin{equation}
     \label{eq:tv_approx}
-    d_{\mathrm{TV}}(p,p') \leq \frac{C}{n}.
+    d_{\mathrm{TV}}(p,p') \leq \frac{C}{k}.
 \end{equation}
 Concretely, one can choose $p'$ such that
 \begin{equation}
     \label{eq:nint_approx}
-    np'_j \coloneqq \mathrm{nint}\left(n \sum_{i=1}^{j} p_j \right) - \mathrm{nint}\left(n \sum_{i=1}^{j-1} p_j \right)
+    kp'_j \coloneqq \mathrm{nint}\left(k \sum_{i=1}^{j} p_j \right) - \mathrm{nint}\left(k \sum_{i=1}^{j-1} p_j \right)
 \end{equation}
 where $\mathrm{nint} : \mathbb R \to \mathbb Z$ is the function which rounds each real number to the nearest integer (with half integers always rounded up).
-Using this approximation, we have $\abs{np_j-np'_j} \leq 1$ because each rounding operation in \cref{eq:nint_approx} introduces an error of at most $1/2$ and thus \cref{eq:tv_approx} holds with $C = 1$.
-In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{eq:pinskers} reveals $\kl{p'}{p} \leq \frac{4C}{p_{\min}n^2}$ which yields a useful, albeit crude, lower bound for the multinomial distribution:
+Using this approximation, we have $\abs{kp_j-kp'_j} \leq 1$ because each rounding operation in \cref{eq:nint_approx} introduces an error of at most $1/2$ and thus \cref{eq:tv_approx} holds with $C = 1$.
+In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{eq:pinskers} reveals $\kl{p'}{p} \leq \frac{4C}{p_{\min}k^2}$ which yields a useful, albeit crude, lower bound for the multinomial distribution:
 \begin{equation}
-    \binom{n}{np'_1, \ldots, np'_k} p_1^{np'_1} \cdots p_k^{np'_k} \geq \exp\left(-\frac{4C^2}{p_{\min}n} - k \log (n+1) \right).
+    \binom{k}{kp'_1, \ldots, kp'_n} p_1^{kp'_1} \cdots p_n^{kp'_n} \geq \exp\left(-\frac{4C^2}{p_{\min}k} - n \log (k+1) \right).
 \end{equation}
 
 \begin{lem}
     \label{lem:multinomial_dist_lower_bound}
-    Let $k\geq 2$ and let $(w_1, \ldots, w_k) \in \mathbb R_{> 0}^{k}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_k\} > 0$ and let $n$ be a positive integer satisfying $n \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_k) \in \mathbb N_{>0}^{k}$ by the equation
+    Let $n\geq 2$ and let $(w_1, \ldots, w_n) \in \mathbb R_{> 0}^{n}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_n\} > 0$ and let $k$ be a positive integer satisfying $k \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_n) \in \mathbb N_{>0}^{n}$ by the equation
     \begin{equation}
-        z_{i} \coloneqq \ceil{nw_{i}}.
+        z_{i} \coloneqq \ceil{kw_{i}}.
     \end{equation}
-    Let $Z = z_1+\cdots+z_k$ and $W = w_1 + \cdots + w_k$ and defined probability distributions $\bar z$ and $\bar w$ by
+    Let $Z = z_1+\cdots+z_n$ and $W = w_1 + \cdots + w_n$ and defined probability distributions $\bar z$ and $\bar w$ by
     \begin{align}
         \bar z_i = \frac{z_i}{Z}, 
         \quad \text{and} \quad 
         \bar w_i = \frac{w_i}{W},
     \end{align}
-    for all $i \in \{1,\ldots, k\}$.
+    for all $i \in \{1,\ldots, n\}$.
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound}
-        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} \geq e^{-4(k-1)^2}(nW+k+1)^{-k}
+        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} \geq e^{-4(n-1)^2}(kW+n+1)^{-n}
     \end{equation}
 \end{lem}
 \begin{proof}
-    Let $\delta_{j} \coloneqq z_j - n w_j$ denote the rounding surplus such that $0\leq \delta_j < 1$.
-    Note that for $n \gg k$, we have $Z \approx nW$ because
+    Let $\delta_{j} \coloneqq z_j - k w_j$ denote the rounding surplus such that $0\leq \delta_j < 1$.
+    Note that for $k \gg n$, we have $Z \approx kW$ because
     \begin{equation}
-        nW \leq Z < nW + k.
+        kW \leq Z < kW + n.
     \end{equation}
     In this regime, we wish to show that $\bar z_i \approx \bar w_i$.
     \begin{align}
@@ -2489,85 +2992,637 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
         =\abs{\frac{z_i}{Z} - \frac{w_i}{W}} 
         = \frac{\abs{Wz_i - Zw_i}}{ZW}.
     \end{align}
-    The numerator above can be bounded independently of $n$ by,
+    The numerator above can be bounded independently of $k$ by,
     \begin{align}
         &\abs{Wz_i - Zw_i}\\
-        &\qquad= \abs{(nw_i + \delta_i)(w_1+\cdots+w_k) - w_i(\delta_1 + n w_1+ \cdots + \delta_k + n w_k)}, \\
-        &\qquad= \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_k) - w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_k)}, \\
-        &\qquad\leq \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_k)} + \abs{w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_k)}, \\
-        &\qquad\leq (w_1+\cdots+\hat w_i+\cdots+w_k) + (k-1)(w_i), \\
-        &\qquad\leq (k-1)(w_1+\cdots+w_k), \\
-        &\qquad= (k-1)W.
+        &\qquad= \abs{(kw_i + \delta_i)(w_1+\cdots+w_n) - w_i(\delta_1 + k w_1+ \cdots + \delta_n + k w_n)}, \\
+        &\qquad= \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_n) - w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_n)}, \\
+        &\qquad\leq \abs{\delta_i(w_1+\cdots+\hat w_i+\cdots+w_n)} + \abs{w_i(\delta_1 + \cdots+\hat \delta_i+\cdots + \delta_n)}, \\
+        &\qquad\leq (w_1+\cdots+\hat w_i+\cdots+w_n) + (n-1)(w_i), \\
+        &\qquad\leq (n-1)(w_1+\cdots+w_n), \\
+        &\qquad= (n-1)W.
     \end{align}
     Consequently,
     \begin{equation}
-        d_{\mathrm{TV}}(\bar z, \bar w) = \max_{1 \leq i \leq k} \abs{\bar z_i - \bar w_i} \leq \frac{k-1}{Z}
+        d_{\mathrm{TV}}(\bar z, \bar w) = \max_{1 \leq i \leq n} \abs{\bar z_i - \bar w_i} \leq \frac{n-1}{Z}
     \end{equation}
     and therefore
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} 
-        &\geq (Z+1)^{-k} \exp(-Z\kl{\bar z}{\bar w}), \\
-        &\geq (Z+1)^{-k} \exp\left[-\frac{4ZW}{w_{\min}} \left(\frac{k-1}{Z}\right)^2\right], \\
-        &\geq (nW+k+1)^{-k} \exp\left[-\frac{4(k-1)^2}{n w_{\min}}\right], \\
-        &\geq (nW+k+1)^{-k} \exp(-4(k-1)^2).
+        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} 
+        &\geq (Z+1)^{-n} \exp(-Z\kl{\bar z}{\bar w}), \\
+        &\geq (Z+1)^{-n} \exp\left[-\frac{4ZW}{w_{\min}} \left(\frac{n-1}{Z}\right)^2\right], \\
+        &\geq (kW+n+1)^{-n} \exp\left[-\frac{4(n-1)^2}{k w_{\min}}\right], \\
+        &\geq (kW+n+1)^{-n} \exp(-4(n-1)^2).
     \end{align}
 \end{proof}
 
-\textcolor{red}{TODO: Figure out the best lower bound on the multinomial distribution to use here.}
+\textcolor{red}{The following is an alternative lower bound on the multinomial distribution based on the Stirling approximation which would work just as well in the main text. TODO: Figure out the best lower bound on the multinomial distribution to use here.}
 \begin{lem}
     \label{lem:multinomial_dist_lower_bound_alt}
     Let everything be as in \cref{lem:multinomial_dist_lower_bound}.
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound_alt}
-        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}} \geq \left(\frac{1}{20}\right)^{k}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}}\frac{1}{n^{\frac{3k-1}{2}}}
+        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} \geq \left(\frac{1}{20}\right)^{n}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}}\frac{1}{k^{\frac{3n-1}{2}}}
     \end{equation}
 \end{lem}
 \begin{proof}
     The proof follows from a version of Stirling's approximation due to \citeauthor{robbins1955remark} \cite{robbins1955remark} which states
     \begin{equation}
-        n! = \sqrt{2\pi} n^{n+\frac{1}{2}} e^{-n} e^{r_n}, 
+        k! = \sqrt{2\pi} k^{k+\frac{1}{2}} e^{-k} e^{r_k}, 
         \qquad
         \text{where}
         \qquad
-        \frac{1}{12n+1}\leq r_n \leq \frac{1}{12n}.
+        \frac{1}{12k+1}\leq r_k \leq \frac{1}{12k}.
     \end{equation}
     Therefore,
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}}
-        &=\frac{Z!}{W^{Z}}\frac{w_1^{z_{1}}}{z_1!}\cdots \frac{w_k^{z_{k}}}{z_k!} \\
-        &=\left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}}  \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \left(\frac{w_1}{z_1}\right)^{z_1+\frac{1}{2}} \cdots \left(\frac{w_k}{z_k}\right)^{z_k+\frac{1}{2}} \exp\left(r_{Z} - \sum_{i} r_{z_i}\right).
+        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}}
+        &=\frac{Z!}{W^{Z}}\frac{w_1^{z_{1}}}{z_1!}\cdots \frac{w_n^{z_{n}}}{z_n!} \\
+        &=\left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}}  \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \left(\frac{w_1}{z_1}\right)^{z_1+\frac{1}{2}} \cdots \left(\frac{w_n}{z_n}\right)^{z_n+\frac{1}{2}} \exp\left(r_{Z} - \sum_{i} r_{z_i}\right).
     \end{align}
-    In this setting, we have assumed $n w_i \geq 1$ which implies
+    In this setting, we have assumed $k w_i \geq 1$ which implies
     \begin{equation}
-        nw_i \leq z_i < nw_i + 1 \leq 2nw_i,
+        kw_i \leq z_i < kw_i + 1 \leq 2kw_i,
         \qquad \text{and} \qquad
-        nW \leq Z < nW+k < 2nW.
+        kW \leq Z < kW+n < 2kW.
     \end{equation}
     Consequently\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+\frac{3}{2}} \geq 2^{-5/2}$},
     \begin{equation}
-        \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \geq n^{nW + \frac{1}{2}}, \qquad
-        \left(\frac{w_i}{z_i}\right)^{z_i +\frac{1}{2}} \geq \left(\frac{w_i}{nw_i + 1}\right)^{nw_i + \frac{3}{2}} \geq \frac{2^{-\frac{5}{2}}}{n^{nw_i+\frac{3}{2}}}.
+        \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \geq k^{kW + \frac{1}{2}}, \qquad
+        \left(\frac{w_i}{z_i}\right)^{z_i +\frac{1}{2}} \geq \left(\frac{w_i}{kw_i + 1}\right)^{kw_i + \frac{3}{2}} \geq \frac{2^{-\frac{5}{2}}}{k^{kw_i+\frac{3}{2}}}.
     \end{equation}
     and the remainder term satisfies
     \begin{equation}
-        r_{Z} - \sum_{i} r_{z_i} \geq \frac{1}{12Z + 1} - \sum_{i}\frac{1}{12z_i} \geq - \frac{k}{12}.
+        r_{Z} - \sum_{i} r_{z_i} \geq \frac{1}{12Z + 1} - \sum_{i}\frac{1}{12z_i} \geq - \frac{n}{12}.
     \end{equation}
     Altogether, we have
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_k!}\frac{w_1^{z_{1}}\cdots w_{k}^{z_{k}}}{W^{Z}}
-        &=\left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}\left(\frac{W}{w_1\cdots w_k}\right)^{\frac{1}{2}} \frac{2^{-\frac{5k}{2}}}{n^{\frac{3k-1}{2}}} \exp\left(-\frac{k}{12}\right).
+        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}}
+        &=\left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}} \frac{2^{-\frac{5n}{2}}}{k^{\frac{3n-1}{2}}} \exp\left(-\frac{n}{12}\right).
     \end{align}
     Moreover,
     \begin{equation}
-        \left(\frac{1}{2\pi}\right)^{\frac{k-1}{2}}2^{-\frac{5k}{2}} \exp\left(-\frac{k}{12}\right) \geq \left(\frac{1}{20}\right)^{k}
+        \left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}2^{-\frac{5n}{2}} \exp\left(-\frac{n}{12}\right) \geq \left(\frac{1}{20}\right)^{n}
     \end{equation}
 \end{proof}
+
+\clearpage
+\section{Thompson's conjecture for \texorpdfstring{$\boldsymbol{2\times 2}$}{2 by 2} matrices}
+\label{sec:2by2case_intuitively}
+
+The purpose of this section is to sketch how to prove Thompson's conjecture for the case of $2\times 2$ matrices.
+Given $\lambda \geq 0$, let $\mathcal O_{\lambda}$ denotes the set of $2\times 2$ traceless Hermitian operators with eigenvalues $\pm \lambda$ and $\mathcal C_{\exp(\lambda)}$ denote the set of $2\times 2$ unit determinant Hermitian operators with singular-values $\exp(\pm \lambda)$.
+Note that the matrix exponential $\exp : \mathcal O_{\lambda} \to \mathcal C_{\exp(\lambda)}$ here is a bijective map with inverse $\log : \mathcal C_{\exp(\lambda)} \to \mathcal O_{\lambda}$.
+
+The central idea is to show that exists a diffeomorphism on $\orbit_{\alpha} \times \orbit_{\beta}$, sending each pair of matrices $(A,B)$ with eigenvalues $(\pm \alpha, \pm \beta)$ to another pair of matrices
+\begin{equation}
+    (A,B) \mapsto (\tilde A, \tilde B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}
+\end{equation}
+with the same eigenvalues as $(A, B)$ but with the additional property:
+\begin{equation}
+    A + B \in \mathcal O_{\gamma} \iff \exp(\tilde A)\exp(\tilde B) \in \mathcal C_{\exp(\gamma)}.
+\end{equation}
+From the existence of this map one can therefore prove Thompson's conjecture: there exists $(A,B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ satisfying $A+B\in\mathcal O_{\gamma}$ if and only if there exists $(X,Y) \in \mathcal C_{\exp(\alpha)} \times \mathcal C_{\exp(\beta)}$ satisfying $XY \in \mathcal C_{\exp(\gamma)}$.
+For the only if portion of the proof, simply take $(X,Y)$ to be $(\exp(\tilde A), \exp(\tilde B))$.
+For the if portion of the proof, define $(\tilde A, \tilde B)$ to equal $(\log X, \log Y)$ and then apply the inverse of the above diffeomorphism to obtain the desired $(A, B)$ from $(\tilde A, \tilde B)$.
+
+\subsection{Euclidean triangles and eigenvalues}
+
+Letting $\sigma_1$, $\sigma_2$ and $\sigma_3$ be the $2 \times 2$ Pauli matrices,
+\begin{equation}
+    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
+    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
+    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+\end{equation}
+it becomes possible to identify the space of traceless $2\times 2$ Hermitian matrices, $i\mathfrak{su}(2)$, with $\mathbb R^{3}$ via the standard parameterization associating $(x_1, x_2, x_3) \in \mathbb R^{3}$ to
+\begin{equation}
+    X = x \cdot \sigma = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
+\end{equation}
+The spectrum of $X$ obtained in this way is simply $(+\chi, -\chi)$ where $\chi = \norm{x}$ and $\norm{x}$ the Euclidean norm of the vector $x \in \mathbb R^3$
+\begin{equation}
+    \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+\end{equation}
+From this point of view, it is possible to characterize the set of possible spectra, $(\alpha, \beta, \gamma) \in \mathbb R^{3}$, for the set of two Hermitian operators,
+\begin{equation}
+    A = a_1 \sigma_1 + a_2 \sigma_2 + a_3 \sigma_3, \qquad B = b_1 \sigma_1 + b_2 \sigma_2 + b_3 \sigma_3
+\end{equation}
+with spectra $(\alpha, \beta) = (\norm{a}, \norm{b})$ and there sum $A+B$
+\begin{equation}
+    A+B = (a_1+b_1) \sigma_1 + (a_2+b_2) \sigma_2 + (a_3+b_3) \sigma_3,
+\end{equation}
+with spectrum $\gamma = \norm{a+b}$ where
+\begin{equation}
+    \norm{a+b}^2 = \norm{a}^2 + \norm{b}^{2} + 2 \norm{a} \norm{b} \cos \theta, \qquad \cos \theta = \frac{a \cdot b}{\norm{a} \norm{b}}.
+\end{equation}
+As the only parameter not fixed by spectra is the angle $\theta$, it is easy to see that $(\alpha, \beta, \gamma) \in \mathbb R^3$ is precisely determined by the triangle inequalities for the Euclidean norm in $\mathbb R^3$:
+\begin{align}
+    \abs{\norm{a} - \norm{b}} &\leq \norm{a+b} \leq \norm{a} + \norm{b}, \\
+    \abs{\alpha - \beta} &\leq \gamma \leq \alpha + \beta,
+\end{align}
+where the extreme cases are characterized by anti-alignment $\cos \theta = -1$ and alignment $\cos \theta = 1$ respectively.
+
+\begin{equation}
+    \tikzfig{tikz/euclidean-triangle}.
+\end{equation}
+
+In summary, given a pair $(A,B) = (a\cdot \sigma, b\cdot \sigma)$ of traceless $2\times 2$ Hermitian operators with spectra $(\pm \alpha, \pm \beta)$ we saw that the spectrum $\pm \gamma$ of their sum, $A+B$, is given by the Euclidean cosine law with $\cos \theta = \frac{a \cdot b}{\alpha \beta}$\footnote{Note that the angle $\theta$ used here is not the interior angle typically used in the statement of cosine law, hence the difference in minus sign.}
+\begin{equation}
+    \gamma^2 = \alpha^2 + \beta^2 + 2 \alpha \beta \cos \theta.
+\end{equation}
+
+\subsection{Hyperbolic triangles and singular values}
+
+An analogous calculation can be performed to character the spectra of certain invertible matrices in $\SL(2, \mathbb C)$ (obtained by exponentiation of the traceless Hermitian matrices previously considered) and their products.
+Given the traceless Hermitian matrix $X = x \cdot \sigma$, the identity $X^2 = \norm{x}^{2} I$ yields a well-known pair of results (see \cite{forrester2014golden}):
+\begin{equation}
+    \exp(iX) = \cos \norm{x} I + i\frac{\sin \norm{x}}{\norm{x}} X, \qquad 
+    \exp(X) = \cosh \norm{x} I + \frac{\sinh \norm{x}}{\norm{x}} X.
+\end{equation}
+As before, consider traceless Hermitian matrices, $A = a \cdot \sigma$ and $B = b \cdot \sigma$ with $\alpha = \norm{a}$ and $\beta = \norm{b}$.
+Now consider their exponentials $\exp(A)$ and $\exp(B)$ and their product $\exp(A)\exp(B)$:
+\begin{align}
+    &\exp(A)\exp(B) 
+    = \left(\cosh \alpha I + \frac{\sinh \alpha}{\alpha} A\right)\left(\cosh \beta I + \frac{\sinh \beta}{\beta} B\right)
+    %\\&\quad=\cosh \alpha\cosh\beta I + \frac{\cosh \alpha \sinh \beta}{\beta}B +\frac{\sinh \alpha \cosh \beta}{\alpha}A+ \frac{\sinh \alpha\sinh \beta}{\alpha\beta} AB 
+\end{align}
+Notice the singular values of $\exp(A)$ and $\exp(B)$ are given by $\exp(\pm \alpha)$ and $\exp(\pm \beta)$.
+The singular values of their product, $\exp(A)\exp(B)$, are however equal to the positive square-root of the eigenvalues of
+\begin{align}
+    \exp(A)\exp(B)(\exp(A)\exp(B))^{\dagger} = \exp(A)\exp(B)^2\exp(A).
+\end{align}
+%\begin{align}
+%    \exp(B)^2 
+%    &= \left(\cosh \beta I + \frac{\sinh \beta}{\beta} B\right)^2 \\
+%    &= \cosh(2 \beta) I + \frac{\sinh (2\beta)}{\beta} B \\
+%\end{align}
+Using the identity $\{A,B\} = AB+BA = 2 (a \cdot b) I$ yields
+\begin{align}
+    &\exp(A)\exp(B)^2\exp(A)\\
+    % Calculation 1:
+    %c(\alpha)c(2\beta)c(\alpha)III+
+    %c(\alpha)c(2\beta)s(\alpha)IIA+
+    %c(\alpha)s(2\beta)c(\alpha)IBI+
+    %c(\alpha)s(2\beta)s(\alpha)IBA+
+    %s(\alpha)c(2\beta)c(\alpha)AII+
+    %s(\alpha)c(2\beta)s(\alpha)AIA+
+    %s(\alpha)s(2\beta)c(\alpha)ABI+
+    %s(\alpha)s(2\beta)s(\alpha)ABA
+    % Calculation 2:
+    %c(\alpha)^2c(2\beta)I+
+    %c(\alpha)c(2\beta)s(\alpha)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)c(2\beta)c(\alpha)A+
+    %s(\alpha)^2c(2\beta)I+
+    %s(\alpha)^2s(2\beta)ABA
+    % Calculation 3:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)^2s(2\beta)ABA
+    % Calculation 4:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %c(\alpha)^2s(2\beta)B+
+    %c(\alpha)s(2\beta)s(\alpha){B,A}+
+    %s(\alpha)^2s(2\beta){A,B}A
+    %-s(\alpha)^2s(2\beta)B
+    % Calculation 5:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)c(2\beta)A+
+    %s(2\beta)B+
+    %s(2\alpha)s(2\beta)cosOI+
+    %2s(\alpha)^2s(2\beta)cos0A
+    % Calculation 6:
+    %c(2\alpha)c(2\beta)I+
+    %s(2\alpha)s(2\beta)cosOI+
+    %s(2\alpha)c(2\beta)A+
+    %2s(\alpha)^2s(2\beta)cos0A
+    %s(2\beta)B+
+    %&= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\cosh^2 \alpha \sinh(2\beta)}{\beta} B\cdots\\
+    %&\cdots+\frac{\sinh (2\alpha) \sinh (2\beta)}{2\alpha \beta}\{A,B\} + \frac{\sinh^2 \alpha \sinh (2\beta)}{\alpha^2 \beta}ABA \\
+    %&= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\cosh^2 \alpha \sinh(2\beta)}{\beta} B\cdots\\
+    %&\cdots+\sinh (2\alpha) \sinh (2\beta)\cos \theta I+ 2\frac{\sinh^2 \alpha \sinh (2\beta) \cos \theta}{\alpha}A - \frac{\sinh^2 \alpha \sinh (2\beta)}{\beta}B\\
+    &= \cosh(2 \alpha) \cosh(2 \beta) I + \frac{\sinh (2\alpha) \cosh (2\beta)}{\alpha} A + \frac{\sinh(2\beta)}{\beta} B\cdots\\
+    &\cdots+\sinh (2\alpha) \sinh (2\beta)\cos \theta I+ \frac{2\sinh^2 \alpha \sinh (2\beta) \cos \theta}{\alpha}A
+\end{align}
+While there is an asymmetry in $\exp(A)\exp(B)^2\exp(A)$ with respect to $A \leftrightarrow B$, this asymmetry disappears when calculating the eigenvalues; the eigenvalues are given by $\eta\pm\delta$ where $\eta^2 - \delta^2 = 1$ and
+\begin{align}
+    \eta&=\cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \theta, \\
+    \delta&=\frac{1}{4} \bigg(8 \sinh ^2(2 \alpha ) \sinh ^2(2 \beta ) \cos (2 \theta )+8 \sinh (4 \alpha ) \sinh (4 \beta ) \cos (\theta )+\cdots\\&\cdots+3 \cosh (4 (\alpha -\beta ))+3 \cosh (4 (\alpha +\beta ))+2 \cosh (4 \alpha )+2 \cosh (4 \beta )-10\bigg)^{\frac{1}{2}}.
+\end{align}
+Alternatively, defining $\gamma' \geq 0$ such that
+\begin{equation}
+    \cosh(2 \gamma') = \eta, \qquad \sinh(2 \gamma') = \delta,
+\end{equation}
+One has that the singular values of $\exp(A)\exp(B)$ are equal to $\exp(\pm \gamma')$.
+Once again, there exists only one parameter that is not fixed by specifying the singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ of $\exp(A)$ and $\exp(B)$; specifically the angle $\theta \in [0,2\pi)$ fixes the singular values of $\exp(A)\exp(B)$ by
+\begin{equation}
+    \cosh(2 \gamma') = \cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \theta,
+\end{equation}
+which is the \textit{hyperbolic} cosine law with Gaussian curvature $-4$ (again note that the angle $\theta$ used is not interior to the hyperbolic triangle, hence the difference in minus sign).
+
+Also note the singular values $\exp(\pm \gamma')$ of $\exp(A)\exp(B)$ at the values of $\theta \in \{0, \pi\}$ are
+\begin{align}
+    \theta = 0 \implies \exp(\pm(\alpha+\beta)), \qquad \theta = \pi \implies \exp(\pm(\alpha-\beta)).
+\end{align}
+
+\subsection{Thompson's conjecture via angle modifications}
+
+Thompson's conjecture in the context of $2\times 2$ matrices corresponds to the following conjecture:
+there exists a pair $(A,B)$ of traceless $2\times 2$ Hermitian matrices with spectra $(\pm\alpha, \pm\beta)$ such that $A + B$ has spectra $\pm \gamma$ if and only if there exists a pair $(X, Y)$ of unit determinant positive-definite Hermitian matrices with singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ such that $X Y$ has singular values $\exp(\pm \gamma)$. 
+
+By the above analysis, letting $(X,Y) = (\exp A, \exp B)$ does \textit{not} prove the conjecture;
+while the singular values of $(\exp A, \exp B)$ are $(\exp (\pm \alpha), \exp(\pm \beta))$ as desired, the singular values of their product $\exp A \exp B$ are equal to $\exp(\pm \gamma')$ which, in general, are not equal to $\exp(\pm \gamma)$ (the singular values of $\exp (A + B)$).
+This difference is to be expected because in general, one has
+\begin{equation}
+    \exp(A)\exp(B) = \exp(A+B+\frac{1}{2}[A,B]+\cdots) \neq \exp(A+B),
+\end{equation}
+or alternatively
+\begin{equation}
+    \exp(A)\exp(B)^2\exp(A) \neq \exp(2(A+B)).
+\end{equation}
+Nevertheless, there is a relationship between $\gamma$ and $\gamma'$ provided by the Golden-Thompson inequality $\Tr(\exp(A'+B')) \leq \Tr(\exp(A')\exp(B'))$.
+Letting $A'=2A$ and $B'=2B$ implies
+\begin{equation}
+    \Tr(\exp(2(A+B))) \leq \Tr(\exp(2A)\exp(2B)) = \Tr(\exp(A)\exp(B)^2\exp(A)).
+\end{equation}
+Or by dividing by $2$, one obtains
+\begin{equation}
+    \cosh(2\gamma) \leq \cosh(2 \gamma') \implies \gamma \leq \gamma',
+\end{equation}
+which essentially states that the side-lengths, $\gamma'$, of hyperbolic triangles are generally longer than their Euclidean counter-parts, $\gamma$:
+\begin{equation}
+    \tikzfig{tikz/hyperbolic-triangle}.
+\end{equation}
+Therefore, in order to prove Thompson's conjecture in the context of $2\times 2$ matrices, one needs to pick the pair $(X,Y)$ to be something other than $(\exp(A), \exp(B))$ but with the \textit{same} singular values.
+The solution comes from choosing a different pair $(\tilde A, \tilde B) = (\tilde a \cdot \sigma, \tilde b \cdot b)$ of Hermitian matrices with the \textit{same} spectra $(\pm \alpha, \pm \beta)$ as $(A,B)$ such that $\exp(\tilde A)\exp(\tilde B)$ has as singular values $\exp(\pm \gamma)$ where $(\pm \gamma)$ are the eigenvalues of $A+B$.
+
+As we have shown, the only freedom in this choice for $(\tilde A, \tilde B)$ is the angle $\tilde \theta$ between $\tilde a$ and $\tilde b$: 
+\begin{equation}
+    \cos \tilde \theta = \frac{\tilde a \cdot \tilde b}{\alpha \beta}.
+\end{equation}
+The value $\tilde \theta$ determines the value $\tilde \gamma'$, and thus the singular values of $\exp(\tilde A)\exp(\tilde B)$ by the previously derived formula:
+\begin{equation}
+    \cosh(2 \tilde \gamma') = \cosh(2 \alpha) \cosh(2 \beta) + \sinh (2\alpha) \sinh (2\beta)\cos \tilde \theta.
+\end{equation}
+Setting $\tilde \gamma' = \gamma$ and solving for $\tilde \theta$ yields
+\begin{equation}
+    \cos \tilde \theta = \cosh(2 \gamma)\csch (2\alpha) \csch (2\beta)-\tanh(2\alpha)\tanh(2\beta).
+\end{equation}
+Recalling that $\gamma$ itself is fixed by the angle $\theta$ between the original $(A,B)$, one obtains a formula for $\tilde \theta$ in terms of $(\theta, \alpha, \beta)$:
+\begin{equation}
+    \cos \tilde \theta = \cosh(2 \sqrt{\alpha^2+\beta^2+2\alpha\beta\cos \theta})\csch (2\alpha) \csch (2\beta)-\tanh(2\alpha)\tanh(2\beta).
+\end{equation}
+In summary, when the spectra $\alpha, \beta,$ and $\gamma$ are fixed and there exists a pair of Hermitian matrices $(A,B)$ with spectra $(\pm \alpha, \pm \beta)$ whose sum $A+B$ has spectra $\pm \gamma$ (thus there exists a value for $\theta$), the above formula describes precisely how to reduce the angle $\theta$ between $A$ and $B$ to the value $\tilde \theta$ obtaining another pair of Hermitian matrices $(\tilde A, \tilde B)$ such that $(\exp(\tilde A), \exp(\tilde B))$ have singular values $(\exp(\pm \alpha), \exp(\pm \beta))$ and their product $\exp(\tilde A)\exp(\tilde B)$ has singular values $\exp(\pm \gamma)$.
+
+\begin{equation}
+    \tikzfig{tikz/hyperbolic-deformation-triangle}
+\end{equation}
+
+Of course, this only proves one half of Thompson's conjecture in this setting, one also needs to prove the reverse: given positive definite $(X,Y, XY)$ with singular values $\exp(\pm\alpha),\exp(\pm\beta)$ and $\exp(\pm\gamma)$, find the corresponding Hermitian matrices $(A,B)$.
+This can be done simply by defining $(\tilde A, \tilde B) = (\log X, \log Y)$ with separated by angle $\tilde \theta$ and then modifying this angle to obtain $(A, B)$.
+
+\subsection{Scaling hyperbolic curvature}
+
+In the previous section, it was noted that in general $\exp(A)\exp(B) \neq \exp(A+B)$ because of the Baker-Campbell-Hausdorff term:
+\begin{equation}
+    \exp(A)\exp(B) = \exp(A+B+\frac{1}{2}[A,B]+\cdots) \neq \exp(A+B).
+\end{equation}
+If $(A, B) \in \mathcal O_{\alpha} \times \mathcal O_{\beta}$ is replaced with $(sA, sB) \in \mathcal O_{s\alpha} \times \mathcal O_{s \beta}$ above for some $s \geq 0$, then one obtains
+\begin{equation}
+    \exp(sA)\exp(sB) = \exp(sA+sB+\frac{s^2}{2}[A,B]+\cdots) \neq \exp(s(A+B)).
+\end{equation}
+Consequently, one still should expect the singular values of $\exp(sA)\exp(sB)$ to be different from the singular values, $\exp(\pm s \gamma)$, of $\exp(s(A+B))$.
+Nevertheless, for small $s \approx 0$, one might expect an approximation of the form
+\begin{equation}
+    \exp(sA)\exp(sB) \approx \exp(s(A+B)).
+\end{equation}
+and thus the singular values of $\exp(sA)\exp(sB)$ might approximate $\exp(\pm s \gamma)$ in a suitable sense.
+This intuition is also encoded in the hyperbolic geometry; rescaling $(\alpha,\beta)\mapsto (s\alpha, s\beta)$ amounts to changing the singular values $\exp(\pm \gamma')$ of $\exp(A)\exp(B)$ to $\exp(\pm s \gamma_s')$ where $\gamma_s'$ is given by the formula
+\begin{equation}
+    \cosh(2 s \gamma_s') = \cosh(2 s\alpha) \cosh(2 s\beta) + \sinh (2s\alpha) \sinh (2s\beta)\cos \theta.
+\end{equation}
+This formula is the hyperbolic cosine law for triangles in hyperbolic space whose Gaussian curvature is $-4s^2$, meaning $\gamma_s'$ is the side length of a hyperbolic triangle whose opposite sides are $\alpha,\beta$ with opposite angle $\pi-\theta$ in a space with Guassian curvature $-4s^2$.
+For small $s\approx 0$, space is approximately Euclidean: $\cosh(2sx) = 1 + 2s^2x^2 + O(s^4)$ and $\sinh(2sx) = 2sx + O(s^3)$ together yield 
+\begin{equation}
+    1 + 2 s^2 (\gamma_s')^2 = 1 + 2 s^2 \alpha^2 + 2 s^2 \beta^2 + 4 s^2 \alpha \beta \cos \theta + O(s^3).
+\end{equation}
+Simplifying yields the expected result that $\gamma_s' \approx \gamma$ when $s \approx 0$:
+\begin{equation}
+    (\gamma_s')^2 = \alpha^2 + \beta^2 + 2 \alpha \beta \cos \theta + O(s) = \gamma^2 + O(s).
+\end{equation}
+
+\subsection{Admissibility of Hyperbolic tetrahedron}
+
+\textcolor{red}{TODO, TC: Type up the proof from my tablet notes ``Positive definite products of 2 by 2 matrices''}
+The space of admissible $(a,b,c,x,y,z)$ is given by triangle inequalities on $x,y$ in terms of $a,b,c$ as well as the following constraint on $z$ in terms of $x,y,a,b,c$:
+\begin{equation}
+    \begin{split}
+        &+2 \cosh (2 s (a-b-c-z))+2 \cosh (2 s (a+b-c-z))+2 \cosh (2 s (a-b+c-z))\\
+        &+2 \cosh (2 s (a+b+c-z))+2 \cosh (2 s (a-b-c+z))+2 \cosh (2 s (a+b-c+z))\\
+        &+2 \cosh (2 s (a-b+c+z))+2 \cosh (2 s (a+b+c+z))+2 \cosh (2 s (a-c-x-y))\\
+        &+2 \cosh (2 s (a+c-x-y))+2 \cosh (2 s (a-c+x-y))+2 \cosh (2 s (a+c+x-y))\\
+        &+2 \cosh (2 s (a-c-x+y))+2 \cosh (2 s (a+c-x+y))+2 \cosh (2 s (a-c+x+y))\\
+        &+2 \cosh (2 s (a+c+x+y))+2 \cosh (2 s (b-x-y-z))+2 \cosh (2 s (b+x-y-z))\\
+        &+2 \cosh (2 s (b-x+y-z))+2 \cosh (2 s (b+x+y-z))+2 \cosh (2 s (b-x-y+z))\\
+        &+2 \cosh (2 s (b+x-y+z))+2 \cosh (2 s (b-x+y+z))+2 \cosh (2 s (b+x+y+z))\\
+        &+2 \cosh (4 a s)+2 \cosh (4 b s)+2 \cosh (4 c s)+2 \cosh (4 s x)+2 \cosh (4 s y)+2 \cosh (4 s z)+10\\
+        &\geq\\
+        &+4 \cosh (2 s (a-b-x))+4 \cosh (2 s (a+b-x))+4 \cosh (2 s (a-b+x))\\
+        &+4 \cosh (2 s (a+b+x))+4 \cosh (2 s (a-y-z))+4 \cosh (2 s (a+y-z))\\
+        &+4 \cosh (2 s (a-y+z))+4 \cosh (2 s (a+y+z))+4 \cosh (2 s (b-c-y))\\
+        &+4 \cosh (2 s (b+c-y))+4 \cosh (2 s (b-c+y))+4 \cosh (2 s (b+c+y))\\
+        &+4 \cosh (2 s (c-x-z))+4 \cosh (2 s (c+x-z))+4 \cosh (2 s (c-x+z))\\
+        &+4 \cosh (2 s (c+x+z))\\
+        &+\cosh (4 s (x-y))+\cosh (4 s (x+y))+\cosh (4 s (a-c))\\
+        &+\cosh (4 s (a+c))+\cosh (4 s (b-z))+\cosh (4 s (b+z))
+    \end{split}
+\end{equation}
+
+\subsection{Joint statistics for partial sums of traceless \texorpdfstring{$2\times 2$}{2 by 2} matrices}
+
+In this section we consider a three-step random walk in the symmetric space $\mathfrak{su}(2) \simeq \mathbb E^{3}$ starting at the origin $O = (0,0,0)$ and terminating at $C$ with intermediate steps $A,B$.
+\begin{equation}
+    \tikzfig{tikz/random-walk-tetra}
+\end{equation}
+Supposing the step sizes $(a,b,c) \in \mathbb R_{\geq 0}^{3}$ are fixed, we are interested in the induced correlations between the interval sizes $(x,y,z) \in \mathbb R_{\geq 0}^{3}$ when the angles planar angles $(\phi, \psi) \in [0,\pi]$ and dihedral angle $\eta \in [0,\pi]$ are sampled independently according to the measures $\frac{1}{2}\sin \phi \diff \phi$, $\frac{1}{2}\sin \psi \diff \psi$ and $\pi^{-1}\diff \eta$ respectively (note it is a non-trivial observation that sampling the vectors $A, B,$ and $C$ uniformly from spheres of radii $a,b,$ and $c$ induces the same correlations between $x,y,$ and $z$ as the correlations induced by the random angles $\phi, \psi$ and $\eta$).
+
+Begin by noting that $x$ and $y$ are fixed by $\phi$ and $\psi$ respectively by the law of cosines:
+\begin{align}
+    x^2 &= a^2 + b^2 - 2ab \cos \phi, \\
+    y^2 &= b^2 + c^2 - 2bc \cos \psi.
+\end{align}
+As $x$ is functionally (and thus satistically) independent of $\phi$ and $\eta$ and $y$ is independent of $\psi$ and $\eta$, one can expect $x$ and $y$ to be independent of each other and thus the support of the marginal distribution over $x$ and $y$ is a rectangle:
+\begin{equation}
+    (x,y) \in [\abs{a-b}, a+b] \times [\abs{b-c}, b+c]
+\end{equation}
+Comparatively less obvious is the relationship between $z$ and the variables $a,b,c,x,y$.
+To process, we begin by introducing two more planar angles, $\omega$ and $\zeta$, at the vertex $A$:
+\begin{equation}
+    \tikzfig{tikz/random-walk-tetra-more-angles}
+\end{equation}
+The cosine laws for the planar angles incident to $A$ are
+\begin{align}
+    \cos \phi = \frac{a^2 + b^2 - z^2}{2ab}, \qquad
+    \cos \omega = \frac{b^2 + y^2 - c^2}{2by}, \qquad
+    \cos \zeta = \frac{a^2 + y^2 - z^2}{2ay}.
+\end{align}
+To make progress, one needs to use a relationship holding between the dihedral angle $\eta$ and the other specified variables.
+For instance \cite{richardson1902trigonometry},
+\begin{equation}
+    \cos \eta = \frac{\cos\zeta - \cos\phi \cos \omega}{\sin \phi \sin \omega}.
+\end{equation}
+Combining the above identities, one obtains
+\begin{align}
+    z^2 &= a^2 + y^2 - 2 a y\cos \zeta, \\
+    \cos \zeta &= \cos \eta \sin \phi \sin \omega + \cos \phi \cos \omega, \\
+    \cos \omega &= \frac{b - c \cos \psi}{\sqrt{b^2 + c^2 - 2bc \cos \psi}}, \\
+    \sin \omega &= \frac{c \sin\psi}{\sqrt{b^2 + c^2 - 2bc \cos \psi}}.
+\end{align}
+Thus, one can determine $z$ as a function of the side lengths $a,b,c$ and the angles $\eta,\phi,\psi$:
+\begin{align}
+    z^2 
+    &= a^2 + y^2 - 2 a y\cos \zeta, \\
+    &= a^2 + y^2 - 2 a y\cos \eta \sin \phi \sin \omega - 2 a y \cos \phi \cos \omega, \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 a\cos \eta \sin \phi (c \sin \psi) - 2 a \cos \phi (b-c\cos\psi), \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ac\cos \eta \sin \phi \sin \psi + 2 a c \cos \phi \cos\psi- 2 ab \cos \phi, \\
+    &= a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ab \cos \phi - 2 ac(\cos \eta \sin \phi \sin \psi -\cos \phi \cos\psi),
+\end{align}
+or alternatively as function of $a,b,c$ and $x,y,\eta$:
+\begin{align}
+    \begin{split}
+        z^2
+        &= x^2 + y^2 - b^2 + \frac{(a^2+b^2-x^2)(b^2+c^2-y^2)}{2b^2} + \cdots \\
+        &\qquad \cdots - \cos \eta \frac{\sqrt{4a^2b^2-(a^2+b^2-x^2)^2}\sqrt{4b^2c^2-(b^2+c^2-y^2)^2}}{2b^2}
+    \end{split}
+\end{align}
+Consequently, the admissible values of $z$ (found by varying $\cos \eta \in [-1, +1]$) depend upon $x,y$ according to $Z_{-}(x,y) \leq z \leq Z_{+}(x,y)$ where
+\begin{align}
+    \begin{split}
+        Z_{\pm}(x,y) 
+        &= \bigg(x^2 + y^2 - b^2 + \frac{(a^2+b^2-x^2)(b^2+c^2-y^2)}{2b^2} +\cdots\\&\qquad\cdots\pm \frac{\sqrt{4a^2b^2-(a^2+b^2-x^2)^2}\sqrt{4b^2c^2-(b^2+c^2-y^2)^2}}{2b^2}\bigg)^{\frac{1}{2}}
+    \end{split}
+\end{align}
+
+The change of variables from $(\phi,\psi,\eta)$ to $(x,y,z)$ (for constant $a,b,c$) is
+\begin{equation}
+    \begin{pmatrix}
+        x^2 \\ y^2 \\ z^2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a^2 + b^2 - 2ab \\ 
+        b^2 + c^2 - 2bc \\ 
+        a^2 + b^2 + c^2 - 2bc \cos \psi - 2 ab \cos \phi - 2 ac(\cos \eta \sin \phi \sin \psi -\cos \phi \cos\psi)
+    \end{pmatrix}.
+\end{equation}
+After taking square-roots, it has a Jacobian determinant equal to
+\begin{equation}
+    \det J(\phi, \psi, \eta) = \frac{a^2b^2c^2 \sin \eta \sin^2 \phi \sin^2 \psi}{xyz}
+\end{equation}
+If $(\phi, \psi, \eta)$ is sampled according to the measure 
+\begin{equation}
+    \frac{1}{4 \pi}\sin \phi \sin \psi \diff \phi \diff \psi \diff \eta,
+\end{equation}
+then the joint probability density for $(x,y,z)$ can be shown to be equal to
+\begin{align}
+    p(x,y,z|a,b,c) 
+    &= \left(\frac{1}{4\pi}\sin \phi \sin \psi\right) \left(\det J(\phi, \psi, \eta)\right)^{-1}, \\
+    &= \frac{1}{4\pi} \frac{xyz}{a^2b^2c^2 \sin \eta \sin \phi \sin \psi}, \\
+    &= \frac{xyz}{2 \pi abc}\frac{1}{\sqrt{Q(a,b,c,x,y,z)}}
+\end{align}
+where $Q(a,b,c,x,y,z)$ is the following homogeneous degree $6$ polynomial:
+\begin{align}
+    Q(a,b,c,x,y,z) 
+    &\coloneqq
+    -a^4 c^2+a^2 b^2 c^2-a^2 b^2 x^2+a^2 b^2 z^2-a^2c^4+a^2 c^2 x^2\\&\qquad+a^2 c^2 y^2+a^2 c^2 z^2+a^2 x^2 y^2-a^2 y^2 z^2-b^4 z^2-b^2 c^2 y^2\\&\qquad+b^2 c^2 z^2+b^2 x^2 y^2 +b^2 x^2 z^2+b^2 y^2 z^2-b^2 z^4\\&\qquad+c^2 x^2 y^2-c^2 x^2 z^2-x^4 y^2-x^2 y^4+x^2 y^2 z^2
+\end{align}
+Further analysis \cite{richardson1902trigonometry} (being careful to note the notational convention in \cite{richardson1902trigonometry} in incompatible with the one used here $(a,b,c,x,y,z)\leftrightarrow (a,x,z,c,y,b)$) reveals that $Q(a,b,c,x,y,z)$ is equal to $114$ times the volume squared of the tetrahedron with side lengths $a,b,c,x,y,z$, i.e.
+\begin{align}
+    Q(a,b,c,x,y,z) 
+    &= 144 \mathrm{Vol}(a,b,c,x,y,z)^2, \\
+    &= \frac{1}{2}\det
+    \left(
+    \begin{array}{ccc}
+     2 a^2 & a^2+b^2-x^2 & a^2+y^2-z^2 \\
+     a^2+b^2-x^2 & 2 b^2 & b^2-c^2+y^2 \\
+     a^2+y^2-z^2 & b^2-c^2+y^2 & 2 y^2 \\
+    \end{array}
+    \right)
+\end{align}
+Therefore, the resulting probability density is simply
+\begin{equation}
+    p(x,y,z|a,b,c) = \frac{xyz}{24 \pi abc \mathrm{Vol}(a,b,c,x,y,z)}
+\end{equation}
+
+\begin{center}
+    \begin{figure}
+        \includegraphics[width=0.48\textwidth]{figures/analytic-test-ab-bc-abc.pdf}
+        \includegraphics[width=0.5\textwidth]{figures/numerical-test-ab-bc-abc.pdf}
+        \caption{Admissible eigenvalues of partial sums ($A+B$, $B+C$ and $A+B+C$) of traceless $2 \times 2$ matrices ($A,B,C$) with spectra $(\alpha,\beta,\gamma)=(a,b,c)=(0.5,0.6,0.7)$. Left is a density plot of the analytic formula $p(x,y,z|a,b,c)$ restricted to the admissble region. Right is a numerical sample with admissible region boundary plotted in green.}
+    \end{figure}
+\end{center}
+
+\subsection{Challenges in generalizing the scaling approach}
+
+{\color{blue} TC:
+    The purpose of this section is to outline some of the challenges I faced when attempting to generalize the approach adopted by \citeauthor{roberts1999classical} in proving the Ponzano-Regge asymptotic formula in \cite{roberts1999classical}.
+    Roughly speaking, the stationary phase approach relies heavily on a rigourous understanding of the critical and their isolation from each other.
+    In the case of $\SU(2)$, this understanding is given essentially for free and without rigour -- afterall, it is geometrically intuitive that given candidate edge lengths of a Euclidean tetrahedra, there can only exist zero, one or two such tetrahedron corresponding to a tetrahedron and its mirror image.
+}
+
+\textcolor{red}{TODO: Show how to generalize the construction due to \citeauthor{roberts1999classical} \cite{roberts1999classical} by taking the Cartesian product of these manifolds over all cycles and then imposing additional group actions and moment-map conditions to stitch everything together.}
+
+\begin{rem}
+    Consider the following vector space which is twelve-fold tensor product of irreducible representations of $\GL(n)$:
+    \begin{equation}
+        \s L = \s L^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq V_{\alpha}\ot V_{\alpha^*} \ot V_{\beta} \ot V_{\beta^*} \ot V_{\gamma} \ot V_{\gamma^*} \ot V_{\delta} \ot V_{\delta^*} \ot V_{\epsilon} \ot V_{\epsilon^*} \ot V_{\phi} \ot V_{\phi^*}.
+    \end{equation}
+    along with an associated symplectic manifold
+    \begin{equation}
+        \s M = \s M^{\alpha\beta\gamma}_{\delta\epsilon\phi} \coloneqq \orbit_{\alpha} \times \orbit_{\alpha^*} \times \orbit_{\beta} \times \orbit_{\beta^*} \times \orbit_{\gamma} \times \orbit_{\gamma^*} \times \orbit_{\delta} \times \orbit_{\delta^*} \times \orbit_{\epsilon} \times \orbit_{\epsilon^*} \times \orbit_{\phi} \times \orbit_{\phi^*}.
+    \end{equation}
+    While the vector space $\s L$ naturally supports a representation of $\GL(n)^{\times 12}$, for the purposes of the tetrahedral Horn problem, there are three additional representations acting on $\s L$ that will be of interest; $\sigma_6 : \GL(n)^{\times 6} \to \GL(\s L)$, $\sigma_4 : \GL(n)^{\times 4} \to \GL(\s L)$ and $\sigma_1 : \GL(n) \to \GL(\s L)$:
+    \begin{align}
+        \begin{split}
+            \label{eq:six_fold_action}
+            \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6)
+            &= \pi_{\alpha}(g_1) \ot \pi_{\alpha^*}(g_1) \ot \pi_{\beta}(g_2) \ot \pi_{\beta^*}(g_2) \ot \pi_{\gamma}(g_3) \ot \pi_{\gamma^*}(g_3) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g_4) \ot \pi_{\delta^*}(g_4) \ot \pi_{\epsilon}(g_5) \ot \pi_{\epsilon^*}(g_5) \ot \pi_{\phi}(g_6) \ot \pi_{\phi^*}(g_6)
+        \end{split}\\
+        \begin{split}
+            \label{eq:four_fold_action}
+            \sigma_{4}(g_1, g_2, g_3, g_4) 
+            &= \pi_{\alpha}(g_1) \ot \pi_{\alpha^*}(g_4) \ot \pi_{\beta}(g_1) \ot \pi_{\beta^*}(g_2) \ot \pi_{\gamma}(g_3) \ot \pi_{\gamma^*}(g_1) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g_3) \ot \pi_{\delta^*}(g_2) \ot \pi_{\epsilon}(g_4) \ot \pi_{\epsilon^*}(g_3) \ot \pi_{\phi}(g_2) \ot \pi_{\phi^*}(g_4)
+        \end{split}\\
+        \begin{split}
+            \label{eq:one_fold_action}
+            \sigma_{1}(g)
+            &= \pi_{\alpha}(g) \ot \pi_{\alpha^*}(g) \ot \pi_{\beta}(g) \ot \pi_{\beta^*}(g) \ot \pi_{\gamma}(g) \ot \pi_{\gamma^*}(g) \ot \cdots \\ &\quad\cdots\ot\pi_{\delta}(g) \ot \pi_{\delta^*}(g) \ot \pi_{\epsilon}(g) \ot \pi_{\epsilon^*}(g) \ot \pi_{\phi}(g) \ot \pi_{\phi^*}(g)
+        \end{split}
+    \end{align}
+    At this stage, it is worth noticing that $\sigma_1$ is the representation of $\GL(n)$ which is obtained by restricting $\sigma_4$ (respectively $\sigma_6$) to the diagonal subgroup $\GL(n) \subseteq \GL(n)^{\times 4}$ (respectively $\GL(n) \subseteq \GL(n)^{\times 6}$).
+    Now consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(n)^{\times 4}$ (via $\sigma_4$), i.e.,
+    \begin{equation}
+        \s V_{4} \coloneqq (\s L)^{\GL(n)^{\times 4}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4 \in \GL(n) : \sigma_{4}(g_1, g_2, g_3, g_4) w = w \}.
+    \end{equation}
+    Whenever it happens to be that $\s V_{4} \neq 0$, then one may conclude
+    \begin{align}
+        \begin{split}
+            \label{eq:face_inv}
+            (V_{\alpha} \ot V_{\gamma}^{*} \ot V_{\beta})^{\GL(n)} &\neq 0, \\
+            (V_{\beta}^{*}  \ot V_{\phi} \ot V_{\delta}^{*})^{\GL(n)} &\neq 0, \\
+            (V_{\delta} \ot V_{\gamma} \ot V_{\epsilon^{*}})^{\GL(n)} &\neq 0, \\
+            (V_{\epsilon} \ot V_{\phi}^{*}  \ot V_{\alpha}^{*})^{\GL(n)} &\neq 0,
+        \end{split}
+    \end{align}
+    which, by \cref{prop:LR_pos_implies_herm}, implies the existence of Hermitian operators in $\s M$
+    \begin{equation}
+        \label{eq:prime_unprime}
+        A, A' \in \orbit_{\alpha}, \quad
+        B, B' \in \orbit_{\beta}, \quad
+        C, C' \in \orbit_{\gamma}, \quad
+        D, D' \in \orbit_{\delta}, \quad
+        E, E' \in \orbit_{\epsilon}, \quad
+        F, F' \in \orbit_{\phi},
+    \end{equation}
+    satisfying the following four conditions
+    \begin{equation}
+        A - C' + B = 0, \quad
+        - B' + F - D' = 0, \quad
+        D + C - E' = 0, \quad
+        E - F' - A' = 0.
+    \end{equation}
+    From this perspective, it becomes clear that the existence of non-zero $\GL(n)^{\times 4}$-invariant vectors in $\s L$ is a necessary condition for $\alpha,\beta, \gamma, \delta, \epsilon$, and $\phi$ to be tetrahedral spectra.
+\end{rem}
+\begin{rem}
+    To address the insufficiency of \cref{eq:face_inv}, consider the subspace of $\s L$ consisting of vectors invariant under the action of $\GL(n)^{\times 6}$ (via $\sigma_6$), i.e.,
+    \begin{equation}
+        \s V_{6} \coloneqq (\s L)^{\GL(n)^{\times 6}} = \{ w \in \s L \mid \forall g_1, g_2, g_3, g_4,g_5,g_6 \in \GL(n) : \sigma_{6}(g_1, g_2, g_3, g_4, g_5, g_6) w = w \}.
+    \end{equation}
+    For all dominant weights $\lambda$, Schur's lemma implies
+    \begin{equation}
+        (V_{\lambda} \ot V_{\lambda}^{*})^{\GL(n)} \simeq \Hom_{\GL(n)}(V_{\lambda}, V_{\lambda}) \simeq \mathbb C \id_{V_\lambda},
+    \end{equation}
+    which in turn implies the subspace of $\GL(n)^{\times 6}$-invariant vectors in $\s L$ is always one-dimensional, $\dim (\s V_{6}) = 1$.
+    In any case, if there exists a vector which is \textit{both} $\GL(n)^{\times 4}$ and $\GL(n)^{\times 6}$, i.e., $w \in \s V_{6} \cap \s V_{4} \neq 0$, then it can be shown (by similar arguments to the proof of \cref{prop:LR_pos_implies_herm}\footnote{Specifically, one begins with a generic twelve-fold coherent product vector $v_0 \in \s L$ and iteratively flowing along gradients to minimize the norm of $\sigma_{6}(g'_i)\sigma_{4}(g_j)v_{n-1} \in \s L$ with respect to $g'_i$ and $g_j$ to obtain $v_{n} \in \s L$. The resulting sequence of points exhibits a limit point $\tilde v$ which is (i) non-zero (because $\braket{w, \tilde v} = \braket{w, v_n} = \braket{w, v_0} \neq 0$), and (ii) minimal in norm with respect to both orbits, i.e. both moment maps vanish: $\mu_4([\tilde v]) = 0$ and $\mu_{6}([\tilde v]) = 0$. \textcolor{blue}{Thanks to Harold for sketching out this argument for me.}}) that there exists Hermitian operators
+    \begin{equation}
+        A \in \orbit_{\alpha}, \quad
+        B \in \orbit_{\beta}, \quad
+        C \in \orbit_{\gamma}, \quad
+        D \in \orbit_{\delta}, \quad
+        E \in \orbit_{\epsilon}, \quad
+        F \in \orbit_{\phi},
+    \end{equation}
+    satisfying the following four conditions
+    \begin{equation}
+        A - C + B = 0, \quad
+        - B + F - D = 0, \quad
+        D + C - E = 0, \quad
+        E - F - A = 0,
+    \end{equation}
+    which are readily seen to be equivalent to tetrahedral constraints in \cref{eq:tet_linear_constraints}.
+    In other words, the existence of a $\GL(n)^{\times 4}$ and $\GL(n)^{\times 6}$ invariant vector in $\s L$ is sufficient to conclude that the sextuple $(\alpha,\beta,\gamma, \delta, \epsilon, \phi)$ are tetrahedral spectra.
+    However, using the results of \cite{roberts1999classical}, it can be concluded for most tetrahedral $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ that no \textit{``doubly-invariant''} vectors exist in $\s L$, i.e. $\s V_{4} \cap \s V_{6} = 0$.
+\end{rem}
+
+\begin{rem}
+    In \cite{roberts1999classical}, \citeauthor{roberts1999classical} originally used the stationary phase  method to prove the \citeauthor{ponzano1968semiclassical} semiclassical formula \cite{ponzano1968semiclassical} for the $6j$ coefficients (i.e., the $d=2$ recoupling symbol).
+    In order to apply the technique of stationary phases, it must be the case that exponent in the integrand has \textit{isolated} critical points.
+    For the case of the $6j$ symbol (with generic values for the six $j$s), there were two isolated critical points corresponding to (i) the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with fixed side lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
+    
+    {\color{blue}
+        TC: For the more general case of $n \geq 3$, it is unclear to me if the analogous critical points (whose union is identified with all Hermitian matrix-valued solutions to the tetrahedral equations) correspond to a finite number of disjoint coadjoint orbits under the subgroup $\GL(n)$ (as in the $n=2$ case). 
+        As a result, at the moment, it is unclear to me how to establish an asymptotic formula $\abcdefsymbol$ in the ``scaling $\lambda \mapsto k \lambda$'' regime.
+        Instead, it seems the next best thing is to use the ``completeness-type'' relations between various recoupling symbols to prove the existence of a convergent sequence of weights such that the corresponding sequence of recoupling symbols admits of a power-law type lower bound.
+    
+        Even if we were to stipulate/conjecture/assume that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are such that $(\mu_{E}^{-1}(0) \cap \mu_{V}^{-1}(0))/\GL(n)$ consists of a finite number of isolated fixed points (as in the $n = 2$, non-degenerate case considered by \citeauthor{roberts1999classical}, it would be a great deal of work to compute the Hessians and phases at each of the critical points in order to formally check that the phases are \textit{NOT} ``misaligned'' in the sense that the complex contributions destructively interfere leading to a trivial lower-bound on the norm of $\abcdefsymbol$ of zero.
+
+        Even worse, even in the $n=2$ case, one generically expects non-isolated critical points even after integrating over a global $\GL(n)$ because of the existence of non-rigid polyhedra with fixed edge lengths (the tetrahedron is locally rigid, while a cube is \textit{not} locally rigid in this sense).
+        
+        %The issues which arise when attempting to generalize the scaling $\lambda \mapsto k \lambda$ asymptotics are very similar to the issues which arise when attempting to prove Mathieu's conjecture for $K$-finite functions $f(u) = \braket{w, \pi(u)v}$ in the non-positive-definite case, i.e., $w \neq v$ \cite{franks2020minimal}.
+    }
+\end{rem}
+
+\subsection{An alternative asymptotic characterization}
+
+There are a number of technical challenges, namely the difficulty in performing a stationary phase analysis, which prevent one from making concrete statements about the \textit{scaling} $\lambda \mapsto k\lambda$ limit of the squared norm of the $\SU(n)$ recoupling operator.
+However, there is another quantity, denoted by $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ in \cref{eq:workable-recoupling-like-quantity} below, for which it is comparatively easier to prove asymptotic bounds.
+Moreover, while the ``recoupling theory'' approach concerned with $R^{\alpha\beta\gamma}_{\delta\epsilon\phi}$ is seemingly limited by the commutativity of the projection operators involved (the aproach cannot handle more than two mutual non-commuting projection operators), the approach which produces $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ does \textit{not} share this apparent limitation. 
+
+The quantity is built from reconsidering the $\GL(n)^{\times 4}$ and $\GL(n)^{\times 6}$ fixed subspaces of $\s L = \s L^{\alpha \beta \gamma}_{\delta \epsilon \phi}$ defined above with projection operators $\Gamma_{4}$ and $\Gamma_{6}$; one can simply consider their tensor product and the associated $\GL(n)^{\times (4 + 6)}$ fixed subspace of $\s L^{\otimes 2}$ with projection operator $\Gamma_{4} \otimes \Gamma_{6}$.
+With these subspaces in mind, the quantity $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ is defined as 
+\begin{equation}
+    Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi} \coloneqq \Tr_{\s L^{\otimes 2}}[(\Gamma_{4} \otimes \Gamma_{6}) \Pi_{\mathrm{double}}]
+\end{equation}
+where $\Pi_{\mathrm{double}}$ is the projection operator onto the ``doubled'' subspace inside $\s L^{\otimes 2}$:
+\begin{equation}
+    \s L^{2\alpha, 2\beta, 2\gamma}_{2\delta, 2\epsilon, 2\phi} \subseteq \s L^{\alpha, \beta, \gamma}_{\delta, \epsilon, \phi} \ot \s L^{\alpha, \beta, \gamma}_{\delta, \epsilon, \phi}.
+\end{equation}
+Diagrammatically, the quantity $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ equals
+\begin{equation}
+    \label{eq:workable-recoupling-like-quantity}
+    \tikzfig{tikz/workable-double-like-recoupling}.
+\end{equation}
+Using the strong-duality theorem and central-limit theorem results \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal}, one can prove that if $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral, then $Q^{k\alpha,k\beta,k\gamma}_{k\delta,k\epsilon,k\varphi}$ exhibits a power-law in $k$ lower bound, otherwise they are not tetrahedral and then $Q^{k\alpha,k\beta,k\gamma}_{k\delta,k\epsilon,k\varphi}$ exhbits exponential decay in $k$.
+
+The primary difference between $Q^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ and $R^{\alpha,\beta,\gamma}_{\delta,\epsilon,\varphi}$ is diagrammatically expressed in the following figure:
+\begin{equation*}
+    \tikzfig{tikz/R-vs-Q-explanation}
+\end{equation*}
+\textcolor{blue}{TC: Developing a better understand of the relationship between these two operators would be beneficial for proving cleaner and tighter results about the recoupling operator. While the operator on the left is a quasiprojection operator onto the invariant subspace of $V_{\lambda}^{*} \ot V_{\lambda}$, the operator on the left is a non-negative operator with support containing the invariant subspace in $V_{\lambda}^{*} \ot V_{\lambda}$ (by virtue of the fact that it contains the invariant subspace in $V_{2\lambda}^{*} \ot V_{2\lambda}$). }
+
+
+
+
 
 \clearpage
 \section{[Research Notes]}
 
 \textcolor{blue}{TC: This section contains a number of notes I've collected about some of the paper's I've been researching over the course of this project. It will, of course, be removed for the final draft.}
+\textcolor{blue}{TC: At some point I made an effort to start being consistent regarding various conventions. In particular, dimensions of complex vector spaces should always be $n$, many copy asymptotics should be indexed by $k$, and the edges of the tetrahedra are always labelled according to the main figure.}
 
 \subsection{Horn's problem \& generalizations}
 \begin{itemize}
@@ -2582,8 +3637,8 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item \citeauthor{bhatia2001linear} \cite{bhatia2001linear}
     \item History account offered by \citeauthor{daftuar2005quantum} \cite{daftuar2005quantum}, and technical review article by \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues}.
     \item \citeauthor{berline2018horn} a pedagogical account of the triple role played by Horn's inequalities in characterizing the existence of invariants vectors in tensor products, the eigenvalues of sums of Hermitian matrices, and intersections of Schubert varieties \cite{berline2018horn}
-    \item \citeauthor{fulton1997young} provides a comphrensive treatment of the connection between representation theory of $\GL(d)$ and the geometry and (co)homology of the complex Grassmannians \cite{fulton1997young}
-    \item Prakash Belkale has contributed greatly to the theory surrounding Horn-type problems: for example, in \cite{belkale2004invariant}, Belkale provides a \textit{geometric} proof of the equivalence between (i) the structure coefficients of the representation theory of $\GL(d)$ (i.e. the LR-coefficients $c_{\mu\nu}^{\lambda}$), and (ii) the structure coefficients of the cohomology ring of the Grassmannian $\mathrm{Gr}(d, n)$ of $d$-dimensional subspaces in $\mathbb C^{d}$. This proof is now complementary to the previously known algebraic proofs which rely on knowledge of the algebra of symmetric functions. This geometric approach taken by Belkale, which emphasizes the tangent spaces of the involved Schubert varieties, is later used by Belkale to provide a geometric proof of the saturation conjecture \cite{belkale2002geometric}.
+    \item \citeauthor{fulton1997young} provides a comphrensive treatment of the connection between representation theory of $\GL(n)$ and the geometry and (co)homology of the complex Grassmannians \cite{fulton1997young}
+    \item Prakash Belkale has contributed greatly to the theory surrounding Horn-type problems: for example, in \cite{belkale2004invariant}, Belkale provides a \textit{geometric} proof of the equivalence between (i) the structure coefficients of the representation theory of $\GL(n)$ (i.e. the LR-coefficients $c_{\mu\nu}^{\lambda}$), and (ii) the structure coefficients of the cohomology ring of the Grassmannian $\mathrm{Gr}(d, n)$ of $n$-dimensional subspaces in $\mathbb C^{n}$. This proof is now complementary to the previously known algebraic proofs which rely on knowledge of the algebra of symmetric functions. This geometric approach taken by Belkale, which emphasizes the tangent spaces of the involved Schubert varieties, is later used by Belkale to provide a geometric proof of the saturation conjecture \cite{belkale2002geometric}.
 \end{itemize}
 
 \subsection{Thompson's conjecture}
@@ -2611,7 +3666,7 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
     \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $\U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
-    \item \citeauthor{keppeler2024wigner} recently calculated $\SU(d)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(d)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
+    \item \citeauthor{keppeler2024wigner} recently calculated $\SU(n)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(n)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
     \item Representation theoretic proof of the Regge symmetries due to \citeauthor{boalch2007regge} \cite{boalch2007regge}
     \item Asymptotics of quantum $6j$ symbols \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
     \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
@@ -2623,8 +3678,8 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item \citeauthor{bartlett2023coherent} work with so-called \textit{coherent loop states} or \textit{Bohr-Sommerfeld states} to develop some semiclassical results concerning the inner products between such states (see also the talk on Youtube) \cite{bartlett2023coherent}
     \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
     \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
-    \item \citeauthor{artamonov2023classical} derives an explicit formula for the $d=3$ case \cite{artamonov2023classical}, and later to arbitrary $d$ \cite{artamonov2024calculation}.
-    \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $d$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $d$ \cite{lanina2023tug}.
+    \item \citeauthor{artamonov2023classical} derives an explicit formula for the $n=3$ case \cite{artamonov2023classical}, and later to arbitrary $n$ \cite{artamonov2024calculation}.
+    \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $n$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $n$ \cite{lanina2023tug}.
 \end{itemize}
 
 \subsection{Minkowski's theorem and tetrahedron geometry}
@@ -2647,7 +3702,7 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \item \citeauthor{kirillov1990representations} \cite{kirillov1990representations}
     \item Octahedron Recurrence/Rule \citeauthor{robbins1986determinants} \cite{robbins1986determinants} applied to the ``Hive'' ring \citeauthor{knutson2003positive} \cite{knutson2003positive}, and also \citeauthor{henriques2006octahedron} \cite{henriques2006octahedron}
     \item \citeauthor{henriques2005crystals} \cite{henriques2005crystals}
-    \item A reference which contains the formula for the quantum dimension of a representation of $U_{q}(\mathfrak{sl}(d))$ labelled by $\lambda$, thanks Rinat! \cite{aiston1997skein}. See also \cite{aiston1998idempotents} which clarifies the relation between various parameters. Apparently, the $x,v,s$ parameters are apparently natural parameters to consider in the context of invariants of knots and links. The substitution mentioned in \cite{aiston1998idempotents} is the following
+    \item A reference which contains the formula for the quantum dimension of a representation of $U_{q}(\mathfrak{sl}(n))$ labelled by $\lambda$, thanks Rinat! \cite{aiston1997skein}. See also \cite{aiston1998idempotents} which clarifies the relation between various parameters. Apparently, the $x,v,s$ parameters are apparently natural parameters to consider in the context of invariants of knots and links. The substitution mentioned in \cite{aiston1998idempotents} is the following
         \begin{equation*}
             s = e^{h/2}, \qquad
             v = e^{-dh/2} = s^{-d}, \qquad
