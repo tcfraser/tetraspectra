@@ -82,9 +82,9 @@ Consequently, throughout the paper, we refer to this generalization of Horn's pr
 
 Beyond the superficial connection between the imposed constraints and the resuling shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
 It is well-known that the space of admissible eigenvalues for a triangular arrangment of $2\times 2$ traceless\footnote{One can always assume, without loss of generality, that the Hermitian matrices involved are traceless due to a simple shifting symmetry which is described in \cref{sec:symmetries}.} Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
-As we shall see in \cref{sec:d_2}, this correspondence generalizes in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
+As we shall see in \cref{exam:d_2}, this correspondence generalizes in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
 While this latter result is straightforward to prove and also well-known, indeed it forms the basis of the semiclassical asymptotics of the $\SU(2)$ Wigner $6j$ symbols \cite{roberts1999classical}, it leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices.
-In \cref{sec:d_2}, we will see that the moduli space of Eulidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinant \cite{sitharam2018handbook}.
+In \cref{exam:d_2}, we will see that the moduli space of Eulidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinant \cite{sitharam2018handbook}.
 
 Although we are ultimately interested in tackling the tetrahedral Horn's problem for $d\times d$ Hermitian matrices with $d > 2$, the $d=2$ case already demonstrates a strong qualitative difference between the triangular and tetrahedral variants of Horn's problem.
 In particular, while the triangular Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is in general \textit{not a polytope}.
@@ -104,8 +104,26 @@ In particular, while the triangular Horn's problem is completely characterized b
 \clearpage
 \section{Tetrahedra of Hermitian matrices}
 
-\subsection{Definitions}
-\begin{prob}[Tetrahedral eigenvalues]
+\subsection{The tetrahedral Horn problem}
+
+\begin{prob}[Trigonal Horn problem]
+    \label{prob:tri_problem}
+    A triple $(\alpha,\beta,\gamma) \in (\eigs{d})^{\times 3}$ of candidate eigenvalues are said to be \defnsty{trigonal} if there exists a corresponding triple $(A,B,C)$ of $d\times d$ Hermitian matrices satisfying (i) the linear constraint
+    \begin{equation}
+        \label{eq:tri_linear_constraints}
+        A + B = C,
+    \end{equation}
+    and (ii) the three eigenvalue constraints
+    \begin{equation}
+        \label{eq:tri_eigenvalue_constraints}
+        \eig(A) = \alpha, \quad
+        \eig(B) = \beta, \quad
+        \eig(C) = \gamma.
+    \end{equation}
+    The problem of determining the set of trigonal eigenvalues $(\alpha,\beta,\gamma)$ will be referred to as the \defnsty{trigonal Horn problem}.
+\end{prob}
+
+\begin{prob}[Tetrahedral Horn problem]
     \label{prob:tet_problem}
     A sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi) \in (\eigs{d})^{\times 6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F)$ of $d\times d$ Hermitian matrices satisfying (i) the four linear constraints
     \begin{equation}
@@ -125,12 +143,13 @@ In particular, while the triangular Horn's problem is completely characterized b
         \eig(E) = \epsilon, \quad
         \eig(F) = \phi.
     \end{equation}
+    The problem of determining the set of tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ will be referred to as the \defnsty{tetrahedral Horn problem}.
 \end{prob}
 
-\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$d=1$}{d=1}]
+\begin{exam}[The tetrahedral Horn problem for \texorpdfstring{$d=1$}{d=1}]
     \label{exam:one_dim_soln}
-    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $d=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
-    In this case, the tetrahedral Horn's problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
+    Perhaps the simplest example of the tetrahedral Horn problem occurs when $d=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
+    In this case, the tetrahedral Horn problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
     \begin{equation}
         \label{eq:one_dim_tet_conds}
         a + b = c, \quad
@@ -138,7 +157,7 @@ In particular, while the triangular Horn's problem is completely characterized b
         d + c = e, \quad
         a + f = e,
     \end{equation}
-    or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients appearing in \cref{eq:one_dim_tet_conds}:
+    or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients encoding the linear system from \cref{eq:one_dim_tet_conds}:
     \begin{equation}
         \label{eq:tet_coeff_matrix}
         \Gamma \coloneqq
@@ -175,7 +194,120 @@ In particular, while the triangular Horn's problem is completely characterized b
     Comparing the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) with the $d=1$ case of the tetrahedral Horn's problem (\cref{eq:tet_linear_constraints}), we see that a sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ can only be tetrahedral if their traces, $(\abs \alpha, \abs \beta, \abs \gamma, \abs \delta, \abs \epsilon, \abs \phi)$, are tetrahedral.
 \end{rem}
 
-\clearpage
+\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$d=2$}{d=2}]
+    \label{exam:d_2}
+    Here we articulate the solution to the tetrahedral Horn's problem for $2\times 2$ Hermitian matrices.
+    According to \cref{cor:traceless}, one can restrict their focus to the case of \textit{traceless} $2 \times 2$ Hermitian matrices without loss of generality.
+    In this context, the sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ can be identified with a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that
+    \begin{equation}
+        \label{eq:traceless_two_dim_tetra}
+        \alpha = (a, -a), \quad
+        \beta = (b, -b), \quad
+        \gamma = (c, -c), \quad
+        \delta = (d, -d), \quad
+        \epsilon = (e, -e), \quad
+        \phi = (f, -f).
+    \end{equation}
+    Moreover, each traceless $2 \times 2$ Hermitian matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis $\{\sigma_1, \sigma_2, \sigma_3\}$ according to the formula:
+    \begin{equation}
+        X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
+    \end{equation}
+    %\begin{equation}
+    %    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
+    %    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
+    %    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
+    %\end{equation}
+    With respect to this parameterization, one sees that the eigenvalues of $X$ are determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
+    \begin{equation}
+        \eig(X) = \eig\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+    \end{equation}
+    Furthermore, if $A$ is determined by the coordinates $(a_1,a_2,a_3)$ and $B$ by the coordinates $(b_1,b_2,b_3)$, then their sum $C=A+B$ is determined by the coordinates $(c_1, c_2, c_3) = (a_1 + b_1, a_2 + b_2, a_3 + b_3)$.
+    Consequently, in this setting, the tetrahedral Horn's problem reduces to problem of describing the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a Euclidean tetrahedron in $\mathbb R^{3}$. 
+    This problem admits of a well-studied solution \cite{richardson1902trigonometry,wirth2009edge}, namely, the conjunction of a quadruplet of triangle-inequalities 
+    \begin{equation}
+        \label{eq:quadruplet_triangle_constraints}
+        \abs{a-b} \leq c \leq a+b, \qquad
+        \abs{b-d} \leq f \leq b+d, \qquad
+        \abs{d-c} \leq e \leq d+c, \qquad
+        \abs{a-f} \leq e \leq a+f,
+    \end{equation}
+    (which ensure the possibility of forming a Euclidean triangle for each of the four faces),
+    together with a single non-linear inequality of the form
+    \begin{equation}
+        \label{eq:volume_positive_constraint}
+        D(a,b,c,d,e,f) = \frac{1}{288}\det 
+        \begin{pmatrix}
+            0 & 1 & 1 & 1 & 1 \\ 
+            1 & 0 & a^2 & e^2 & c^2 \\ 
+            1 & a^2 & 0 & f^2 & b^2 \\ 
+            1 & e^2 & f^2 & 0 & d^2 \\ 
+            1 & c^2 & b^2 & d^2 & 0
+        \end{pmatrix}
+        \geq 0.
+    \end{equation}
+    The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when $D(a,b,c,d,e,f)$ is positive and when the triangle inequalities above are also satisfied, $D(a,b,c,d,e,f)$ is always equal to \textit{square} of the volume of the corresponding tetrahedron \cite{sitharam2018handbook}.
+    \Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+
+    \begin{figure}
+    \begin{center}
+        \includegraphics[width=0.48\textwidth]{figures/triangle-faces-moduli-space-example}
+        \includegraphics[width=0.48\textwidth]{figures/tetrahedron-moduli-space-example}
+    \end{center}
+    \caption{
+        A slice of the set of admissible side-lengths $(a,b,c,d,e,f)$ for Euclidean tetrahedron along the coordinates $(a,b,d) = (5,7,6)$
+        (Left) The polyhedron of values $(c, e, f)$ satisfying the triangle inequalities for each face \cref{eq:quadruplet_triangle_constraints}.
+        (Right) The set of all values $(c,e,f)$ satisfying both \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+    \end{figure}
+    \begin{figure}
+        \label{fig:frustrated-tet}
+        \ctikzfig{tikz/frustrated-tetrahedron-example}
+        \caption{A example of a sextuple of edge lengths, $(a,b,c,d,e,f) = (y,y,y,x,x,x)$, which satisfies all triangle inequality constraints whenever $y \leq 2x$, but cannot be the edge lengths of any Euclidean tetrahron when $\sqrt{3} x < y$.}
+    \end{figure}
+
+\end{exam}
+
+The tetrahedral Horn problem can be viewed as a generalization of the trigonal Horn problem in a variety of ways.
+First and foremost, the trigonal Horn problem is a special case of the tetrahedral Horn problem.
+\begin{prop}
+    A triplet $(\alpha,\beta,\gamma)$ of eigenvalues is trigonal if and only if the sextuple $(\alpha,\beta,\gamma,0,\gamma,\beta)$ is tetrahedral.
+\end{prop}
+\begin{proof}
+    If $(\alpha,\beta,\gamma)$ are the eigenvalues of $(A,B,C)$ satisfying $A+B=C$, then one can see that $(A,B,C,0,C,B)$ satisfy \cref{eq:tet_linear_constraints} and have eigenvalues $(\alpha,\beta,\gamma,0,\gamma,\beta)$.
+    Conversely, if $(\alpha,\beta,\gamma,0,\gamma,\beta)$ are tetrahedral then it is straightforward to see that $(\alpha,\beta,\gamma)$ are trigonal.
+\end{proof}
+
+More generally, it is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the trigonal Horn problem subject to additional matching constraints.
+\begin{lem}
+    \label{lem:four_faces}
+    A sextuple of eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ is tetrahedral only if each of
+    \begin{equation}
+        \label{eq:four_faces}
+        (\alpha,\beta,\gamma), \qquad
+        (\beta,\delta,\phi), \qquad
+        (\gamma,\delta,\epsilon), \qquad
+        (\alpha',\phi',\epsilon'),
+    \end{equation}
+    are trigonal.
+\end{lem}
+\begin{proof}
+    The claim follows from a relaxation of the conditions defining the tetrahedral Horn prolem. 
+    In particular, there exists a sextuple $(A,B,C,D,E,F)$ of Hermitian matrices with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ satisfying \cref{eq:tet_linear_constraints} \textit{only if} there exists twelve Hermitian matrices 
+    \begin{equation}
+        \label{eq:twelve_fold}
+        (A,A',B,B',C,C',D,D',E,E',F,F')
+    \end{equation}
+    with eigenvalues $(\alpha,\alpha,\beta,\beta,\gamma,\gamma,\delta,\delta,\epsilon,\epsilon,\phi,\phi)$ satisfying
+    \begin{equation}
+        A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
+    \end{equation}
+    Now notice that each of the four linear constraints above depend on a disjoint subset of the twelve matrices in \cref{eq:twelve_fold} and therefore the respective eigenvalues are independently constrained.
+    In other words, this relaxation of the tetrehdral Horn problem is equivalent to the statement that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral eigenvalues \textit{only if} each of four triplets in \cref{eq:four_faces} are trigonal.
+\end{proof}
+
+
+
 \subsection{Symmetries}
 \label{sec:symmetries}
 
@@ -212,7 +344,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \begin{array}{cccccc}#1\end{array}
 \endgroup
 }
-\begin{prop}[Tetrahedral symmetry]
+\begin{prop}[Oriented Tetrahedral symmetry]
     \label{prop:tet_symmetry}
     The sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of eigenvalues are tetrahedral if and only if any (and thus all) of the following sextuples of eigenvalues are tetrahedral:
     \begin{equation}
@@ -288,72 +420,10 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
             (\beta  & \gamma^* & \alpha^* & \epsilon  & \phi  & \delta )\\
         }  
     \end{equation}
-%    \begin{equation}
-%        \label{eq:all_of_tet_sym}
-%        \tightsextuple{
-%            ( \alpha & \beta & \gamma & \delta & \epsilon & \phi) \\
-%            ( \alpha  & \phi  & \epsilon  & \delta^* & \gamma  & \beta  ) \\
-%            ( \alpha  & \epsilon^* & \phi^* & \delta  & \beta^* & \gamma^* ) \\
-%            ( \alpha  & \gamma^* & \beta^* & \delta^* & \phi^* & \epsilon^* ) \\
-%            ( \beta  & \alpha  & \gamma  & \epsilon^* & \delta^* & \phi^* ) \\
-%            ( \beta  & \delta  & \phi  & \epsilon^* & \alpha^* & \gamma^* ) \\
-%            ( \beta  & \phi^* & \delta^* & \epsilon  & \gamma  & \alpha  ) \\
-%            ( \beta  & \gamma^* & \alpha^* & \epsilon  & \phi  & \delta  ) \\
-%            ( \gamma  & \delta  & \epsilon  & \phi^* & \alpha  & \beta^* ) \\
-%            ( \gamma  & \epsilon^* & \delta^* & \phi  & \beta  & \alpha^* ) \\
-%            ( \gamma  & \beta^* & \alpha  & \phi  & \epsilon  & \delta  ) \\
-%            ( \gamma  & \alpha^* & \beta  & \phi^* & \delta^* & \epsilon^* ) \\
-%        }
-%        \quad
-%        \tightsextuple{
-%            ( \delta  & \beta  & \phi  & \alpha  & \epsilon  & \gamma  ) \\
-%            ( \delta  & \gamma  & \epsilon  & \alpha^* & \phi  & \beta  ) \\
-%            ( \delta  & \phi^* & \beta^* & \alpha^* & \gamma^* & \epsilon^* ) \\
-%            ( \delta  & \epsilon^* & \gamma^* & \alpha  & \beta^* & \phi^* ) \\
-%            ( \epsilon  & \phi^* & \alpha  & \beta  & \gamma  & \delta^* ) \\
-%            ( \epsilon  & \delta^* & \gamma  & \beta^* & \alpha  & \phi^* ) \\
-%            ( \epsilon  & \gamma^* & \delta  & \beta  & \phi  & \alpha^* ) \\
-%            ( \epsilon  & \alpha^* & \phi  & \beta^* & \delta  & \gamma^* ) \\
-%            ( \phi  & \alpha  & \epsilon  & \gamma^* & \delta  & \beta^* ) \\
-%            ( \phi  & \epsilon^* & \alpha^* & \gamma  & \beta  & \delta^* ) \\
-%            ( \phi  & \delta^* & \beta  & \gamma^* & \alpha^* & \epsilon^* ) \\
-%            ( \phi  & \beta^* & \delta  & \gamma  & \epsilon  & \alpha  ) \\
-%        }
-%        \quad
-%        \tightsextuple{
-%            ( \phi^* & \beta  & \delta^* & \gamma^* & \epsilon^* & \alpha^* ) \\
-%            ( \phi^* & \delta  & \beta^* & \gamma  & \alpha  & \epsilon  ) \\
-%            ( \phi^* & \epsilon  & \alpha  & \gamma^* & \beta^* & \delta  ) \\
-%            ( \phi^* & \alpha^* & \epsilon^* & \gamma  & \delta^* & \beta  ) \\
-%            ( \epsilon^* & \alpha  & \phi^* & \beta  & \delta^* & \gamma  ) \\
-%            ( \epsilon^* & \gamma  & \delta^* & \beta^* & \phi^* & \alpha  ) \\
-%            ( \epsilon^* & \delta  & \gamma^* & \beta  & \alpha^* & \phi  ) \\
-%            ( \epsilon^* & \phi  & \alpha^* & \beta^* & \gamma^* & \delta  ) \\
-%            ( \delta^* & \epsilon  & \gamma  & \alpha^* & \beta  & \phi  ) \\
-%            ( \delta^* & \phi  & \beta  & \alpha  & \gamma  & \epsilon  ) \\
-%            ( \delta^* & \gamma^* & \epsilon^* & \alpha  & \phi^* & \beta^* ) \\
-%            ( \delta^* & \beta^* & \phi^* & \alpha^* & \epsilon^* & \gamma^* ) \\
-%        } 
-%        \quad
-%        \tightsextuple{
-%            ( \gamma^* & \alpha  & \beta^* & \phi  & \delta  & \epsilon  ) \\
-%            ( \gamma^* & \beta  & \alpha^* & \phi^* & \epsilon^* & \delta^* ) \\
-%            ( \gamma^* & \epsilon  & \delta  & \phi^* & \beta^* & \alpha  ) \\
-%            ( \gamma^* & \delta^* & \epsilon^* & \phi  & \alpha^* & \beta  ) \\
-%            ( \beta^* & \gamma  & \alpha  & \epsilon^* & \phi^* & \delta^* ) \\
-%            ( \beta^* & \phi  & \delta  & \epsilon^* & \gamma^* & \alpha^* ) \\
-%            ( \beta^* & \delta^* & \phi^* & \epsilon  & \alpha  & \gamma  ) \\
-%            ( \beta^* & \alpha^* & \gamma^* & \epsilon  & \delta  & \phi  ) \\
-%            ( \alpha^* & \gamma  & \beta  & \delta  & \phi  & \epsilon  ) \\
-%            ( \alpha^* & \epsilon  & \phi  & \delta^* & \beta  & \gamma  ) \\
-%            ( \alpha^* & \phi^* & \epsilon^* & \delta  & \gamma^* & \beta^* ) \\
-%            ( \alpha^* & \beta^* & \gamma^* & \delta^* & \epsilon^* & \phi^* ) \\
-%        } 
-%    \end{equation}
 \end{prop}
 \begin{proof}
     To begin, notice that each of the operations on $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
-    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software \textcolor{red}{TODO: Supply mathematica code used for this.}.
+    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software. \textcolor{red}{TODO: Supply mathematica code used for this.}
     Now suppose $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
     Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\alpha, \phi, \epsilon, \delta^{*}, \gamma, \beta)$) is also tetrahedral because
     \begin{align}
@@ -371,6 +441,46 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \begin{rem}
     The group of order $48$ appearing in \cref{prop:tet_symmetry} may be viewed as a subgroup of the group of all $6! \times 2^6 = 46,080$ possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$.
     Moreover, this subgroup is maximal in the sense that it is the maximal subgroup of permutations and negations of the columns of coefficient matrix $\Gamma$ (appearing in \cref{eq:tet_coeff_matrix}) which is equivalent to a permutation and negation of the rows of $\Gamma$ (as in \cref{eq:signed_perm_rows}).
+    It can also be shown that this group of symmetries is isomorphic to the signed permutation group of three elements, i.e., $(\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2) \rtimes S_3$.
+    In order to see this, it is helpful to arrange the sextuple $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ into a $2\times 3$ grid using the following identification:
+    \begin{equation}
+        \left(\tightsextuple{\alpha & \beta & \gamma & \delta & \epsilon & \phi}\right)
+        \cong 
+        \left(\tightsextuple{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}\right).
+    \end{equation}
+    Then one can see that each $\mathbb Z_2$ factor in the direct product $\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
+    \begin{equation}
+        \left(\tightsextuple{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\alpha & \epsilon^* & \phi^* \\ \delta & \beta^* & \gamma^*}\right),
+        \qquad
+        \left(\tightsextuple{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\delta & \beta & \phi \\ \alpha & \epsilon & \gamma}\right),
+        \qquad
+        \left(\tightsextuple{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\delta^* & \epsilon & \gamma \\ \alpha^* & \beta & \phi}\right).
+    \end{equation}
+    The symmetric group $S_3$ of order $3! = 6$ acts instead by permuting the columns and negating a subset of the entries in the top row, producing a subgroup of order $6$ of the form:
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\left(\tightsextuple{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}\right)
+            \quad
+            &&\left(\tightsextuple{\beta & \gamma^* & \alpha^* \\ \epsilon & \phi & \delta}\right)
+            \quad
+            &&\left(\tightsextuple{\gamma^* & \alpha & \beta^*  \\ \phi & \delta & \epsilon }\right)\\[0.5em]
+            &\left(\tightsextuple{\alpha^* & \gamma & \beta \\ \delta & \phi & \epsilon}\right)
+            \quad
+            &&\left(\tightsextuple{\beta^* & \alpha^*  & \gamma^* \\ \epsilon & \delta & \phi}\right)
+            \quad
+            &&\left(\tightsextuple{\gamma & \beta^* & \alpha \\ \phi & \epsilon & \delta}\right)\\
+        \end{alignedat}
+    \end{equation}
+    Moreover, the above group of symmetries admits a finite presentation with respect to generators $g_1 \simeq (\alpha, \phi, \epsilon, \delta^{*}, \gamma, \beta)$ and $g_2 \simeq (\gamma, \epsilon^*, \delta^{*}, \phi, \beta, \alpha^*)$ as a free group over $g_1, g_2$ subject to the relations
+    \begin{equation}
+        \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
+    \end{equation}
 \end{rem}
 
 \begin{prop}[Shifting symmetry]
@@ -403,7 +513,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints}
 \end{proof}
 As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn's problem, in a certain sense, it suffices to solve the tetrahedral Horn's problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
-\begin{cor}[Traceless]
+\begin{cor}[Traceless eigenvalues]
     \label{cor:traceless}
     Let $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ be a sextuple of candidate eigenvalues and for any list of $d$ eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_d)$, let $\lambda^{0} \coloneqq \lambda - \abs{\lambda}/d$ denote the traceless list of eigenvalues obtained by shifting $\lambda$ by $-\abs{\lambda}/d$.
     Then $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are tetrahedral if and only if (i) their traces $(\abs{\alpha}, \abs{\beta}, \abs{\gamma}, \abs{\delta}, \abs{\epsilon}, \abs{\phi})$ are tetrahedral (they satisfy \cref{eq:tet_trace_conds}) and (ii) $(\alpha^0, \beta^0, \gamma^0, \delta^0, \epsilon^0, \phi^0)$ are tetrahedral.
@@ -421,7 +531,7 @@ The next corollary of the shifting symmetry proves that to solve the tetrahedral
 Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
 The following corrolary establishes, in a certain sense, the minimum shifting required to ensure strictly positive eigenvalues for all six Hermitian matrices (assuming some other basic inequalities hold).
 Note that in subsequent sections we will often explicitly assume the candidate eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\delta)$ are either non-negative or positive for the sake of technical convenience or sometimes to establish a connection with density matrices from quantum theory (which are positive semidefinite Hermitian matrices with unit trace).
-\begin{cor}[Positive definite]
+\begin{cor}[Positive eigenvalues]
     \label{cor:psd}
     If $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are a tetrahedral sextuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
     \begin{equation}
@@ -456,228 +566,148 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     meaning $\epsilon+x+y+z$ is strictly positive also.
 \end{proof}
 
-\textcolor{red}{TODO: Describe conjectured generalized Regge symmetries \cite{boalch2007regge,morozov2018new}.}
-
-\subsection{The case of \texorpdfstring{$\boldsymbol{2\times 2}$}{2x2} Hermitian matrices}
-\label{sec:d_2}
-In the context of the $d=2$ tetrahedral eigenvalue problem, each traceless $2 \times 2$ matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis:
-\begin{equation}
-    X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
-\end{equation}
-The eigenvalues of $X$ are then determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
-\begin{equation}
-    \eig(X) = \lambda\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
-\end{equation}
-%\begin{equation}
-%    \sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad
-%    \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \qquad
-%    \sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},
-%\end{equation}
-%it becomes possible to identify the space of traceless $2\times 2$ Hermitian matrices, $i\mathfrak{su}(2)$, with $\mathbb R^{3}$ via the standard parameterization associating $(x_1, x_2, x_3) \in \mathbb R^{3}$ to
-Now, for the special case of the tetrahedral eigenvalue constraint problem, one can assume the sextuple of eigenvalues are determined by a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that
-\begin{equation}
-    \label{eq:traceless_two_dim_tetra}
-    \alpha = (a, -a), \quad
-    \beta = (b, -b), \quad
-    \gamma = (c, -c), \quad
-    \delta = (d, -d), \quad
-    \epsilon = (e, -e), \quad
-    \phi = (f, -f).
-\end{equation}
-Using this parameterization, it can be shown that the constraints imposed in \cref{prob:tet_problem} precisely describe the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a genuine Euclidean tetrahedron in $\mathbb R^{3}$ \cite{richardson1902trigonometry}; namely, the conjunction of a quadruplet of triangle-inequalities,
-\begin{equation}
-    \label{eq:quadruplet_triangle_constraints}
-    \abs{a-b} \leq c \leq a+b, \qquad
-    \abs{b-d} \leq f \leq b+d, \qquad
-    \abs{d-c} \leq e \leq d+c, \qquad
-    \abs{a-f} \leq e \leq a+f,
-\end{equation}
-together with a single non-linear constraint of the form
-\begin{equation}
-    \label{eq:volume_positive_constraint}
-    D(a,b,c,d,e,f) = \frac{1}{288}\det 
-    \begin{pmatrix}
-        0 & 1 & 1 & 1 & 1 \\ 
-        1 & 0 & a^2 & e^2 & c^2 \\ 
-        1 & a^2 & 0 & f^2 & b^2 \\ 
-        1 & e^2 & f^2 & 0 & d^2 \\ 
-        1 & c^2 & b^2 & d^2 & 0
-    \end{pmatrix}
-    \geq 0.
-\end{equation}
-The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when positive, is equal to square of the volume of the corresponding tetrahedron \cite{sitharam2018handbook}.
-\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
-
-\begin{figure}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{figures/triangle-faces-moduli-space-example}
-        \includegraphics[width=0.48\textwidth]{figures/tetrahedron-moduli-space-example}
-    \end{center}
-    \caption{
-        Projections of admissible side-lengths $(a,b,c,d,e,f)$ for Euclidean tetrahedron along the coordinates $(a,b,d) = (5,7,6)$
-        (Left) The polyhedron of values $(c, e, f)$ satisfying the triangle inequalities for each face \cref{eq:quadruplet_triangle_constraints}.
-        (Right) The set of all values $(c,e,f)$ satisfying both \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
-    }
-    \label{fig:tetrahedron_moduli_space_example}
-\end{figure}
-
 \begin{rem}
-    For $2\times 2$ Hermitian matrices it is possible to visualize the set of eigenvalues (in the same $(a,b,c,d,e,f)$ coordinates used above) which are known to be non-tetrahedral on the basis that they violate \cref{eq:SSA_like_ineq}.
-    Specifically, consider the \textit{minimal} shifting of the traceless eigenvalues in \cref{eq:traceless_two_dim_tetra}, i.e.,
+    Although this section listed a handful of symmetries of the tetrahedral Horn's problem, there remains the possibility of additional symmetries which are unknown at this time.
+    For example, in the case $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,morozov2018new,boalch2007regge,ponzano1968semiclassical}.
+    If there exists a tetrahedron with edge lengths $(a,b,c,d,e,f)$, then there also exists a tetrahedron with edge lengths
     \begin{equation}
-        \begin{alignedat}{3}
-            &\alpha = (2a, 0), \quad
-            &&\beta = (2b, 0), \quad
-            &&\gamma = (a+b+c, a+b-c), \quad \\
-            &\delta = (2d, 0), \quad
-            &&\epsilon = (a+b+d+e, a+b+d-e), \quad
-            &&\phi = (b+d+f, b+d-f).
+        (s_1-a,s_1-b,c,s_1-d,s_1-e,f) \quad \text{where} \quad s_1 = \frac{a+b+d+e}{2}.
+    \end{equation}
+    Combining this symmetry with the permutational symmetries given by \cref{prop:tet_symmetry} (and noting that for the eigenvalues $\lambda$ of traceless $2 \times 2$ Hermitian matrices, $\lambda = (x, -x)$, we have $\lambda^{*} = \lambda$) one concludes the co-existence of a family of six tetrahedra with edge lengths given by \cite[Chapter 9]{varshalovich1988quantum}:
+    \begin{equation}
+        \begin{alignedat}{2}
+            &(a,b,c,d,e,f) \quad
+            &&(s_1-a,s_1-b,c,s_1-d,s_1-e,f) \\
+            &(a,s_3-b,s_3-c,d,s_3-e,s_3-f) \quad
+            &&(s_2-a,b,s_2-c,s_2-d,e,s_2-f) \\
+            &(s_2-d,s_1-e,s_3-f,s_2-a,s_1-b,s_3-c) \quad
+            &&(s_1-d,s_3-e,s_2-f,s_1-a,s_3-b,s_2-c)
         \end{alignedat}
     \end{equation}
-    With respect to these coordinates, \cref{eq:SSA_like_ineq} becomes 
-    \begin{align}
-        \label{eq:SSA_like_d_two}
-        \begin{split}
-            F(a,b,c,d,e,f)
-            &\coloneqq
-            -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
-            &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
-            &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
-            &\quad+(2b)\log(2b) \geq 0
-        \end{split}
-    \end{align}
-    See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
+    where
+    \begin{equation}
+        s_1 = \frac{a+b+d+e}{2}, \quad
+        s_2 = \frac{a+c+d+f}{2}, \quad
+        s_3 = \frac{b+c+e+f}{2}.
+    \end{equation}
+    Whether there exists analogous types of symmetries for the tetrahredral Horn's problem when $d>2$ remains an open problem.
+    \textcolor{red}{TODO: Describe how Regge symmetries emerge from $\SU(2)$ $6j$ symbol symmetries \cite{boalch2007regge}, how they can be viewed as a scissors-congruence of Euclidean tetrahedra perserving both the volume invariants and Dhen invariants \cite{akopyan2019regge}, and how higher rank Regge symmetries are connected to the eigenvalue conjecture \cite{morozov2018new}.}
 \end{rem}
 
-\begin{figure}
-    \begin{center}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-compare}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-extra}
-    \end{center}
-    \caption{
-        (Left) The region for which $(c, e, f)$ violates \cref{eq:SSA_like_d_two} with $(a,b,c) = (5,7,6)$.
-        (Middle) Comparing the region of tetrahedral $(c,e,f)$ with those which violate \cref{eq:SSA_like_d_two}.
-        (Right) The values of $(c,e,f)$ satisfying \cref{eq:quadruplet_triangle_constraints} but violating \cref{eq:SSA_like_d_two}.
-    }
-    \label{fig:ssa_extra_mileage}
-\end{figure}
+\section{Inequalities for tetrahedral eigenvalues}
 
-\subsection{Comparison with the C\c{S}W inequality}
-At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ which are non-negative and sufficiently small in the sense that $\lambda_1 + \abs{\lambda} \leq 1$:
-\begin{equation}
-    \label{eq:SSA_like_CSW}
-    h(\abs{\gamma}) 
-    + \abs{\gamma} S(\bar \gamma)
-    +h(\abs{\phi}) 
-    + \abs{\phi} S(\bar \phi)  
-    -h(\abs{\beta}) 
-    - \abs{\beta} S(\bar \beta)  
-    -h(\abs{\epsilon}) 
-    - \abs{\epsilon} S(\bar \epsilon)  
-    \geq 0.
-\end{equation}
-The inequality appearing in \cref{eq:SSA_like_ineq} is equivalent to the following by \cref{eq:little_s_relation}:
-\begin{equation}
-    \label{eq:SSA_like_ineq_equiv}
-    -\abs{\gamma}\log\abs{\gamma}
-    + \abs{\gamma} S(\bar \gamma)
-    -\abs{\phi}\log\abs{\phi}
-    + \abs{\phi} S(\bar \phi)  
-    +\abs{\beta}\log\abs{\beta}
-    - \abs{\beta} S(\bar \beta)  
-    +\abs{\epsilon}\log\abs{\epsilon}
-    - \abs{\epsilon} S(\bar \epsilon)  
-    \geq 0.
-\end{equation}
-The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\lambda})$ with the expression $-\abs{\lambda}\log \abs{\lambda}$.
-We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a down-scaling argument.
-Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
-\begin{equation}
-    \label{eq:tet_scaling}
-    (\alpha,\beta,\gamma,\delta,\epsilon,\phi) \mapsto (r\alpha,r\beta,r\gamma,r\delta,r\epsilon,r\phi),
-\end{equation}
-the form and positivity of \cref{eq:SSA_like_CSW} is \textit{not} invariant under scaling by $r$.
-Define $q_{r}$ by the formula
-\begin{equation}
-    q_{r} \coloneqq r^{-1}\left(
-        h(\abs{r\gamma}) 
-        +h(\abs{r\phi}) 
-        -h(\abs{r\beta}) 
-        -h(\abs{r\epsilon}) 
-    \right).
-\end{equation}
-Letting $r \in (0,1)$ be positive and small, we see that
-\begin{equation}
-    r^{-1}h(\abs{r\lambda}) = \abs{\lambda}(1-\log r) - \abs{\lambda} \log \abs{\lambda} + O(r^2)
-\end{equation}
-which implies the following limit holds when $\abs{\gamma} + \abs{\phi} = \abs{\beta} + \abs{\epsilon}$:
-\begin{equation}
-    q_0 \coloneqq 
-    \lim_{r \to 0} q_{r}  
-    =
-    -\abs{\gamma}\log\abs{\gamma}
-    -\abs{\phi}\log\abs{\phi}
-    +\abs{\beta}\log\abs{\beta}
-    +\abs{\epsilon}\log\abs{\epsilon}.
-\end{equation}
-In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tet_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
-Moreover, it can be shown that $q_{r} \geq q_{0}$ for all $r$ and thus \cref{eq:SSA_like_ineq_equiv} is strictly stronger than \cref{eq:SSA_like_CSW}.
-To prove this, we see that the trace equalities imply
-\begin{align}
-    \begin{split}
-        q_{r}-q_{0}
-        &= r^{-1}(1-r\abs{\beta})\log(1-r\abs{\beta})+r^{-1}(1-r\abs{\epsilon})\log(1-r\abs{\epsilon})\\
-        &\qquad\qquad-r^{-1}(1-r\abs{\gamma})\log(1-r\abs{\gamma})-r^{-1}(1-r\abs{\phi})\log(1-r\abs{\phi}).
-    \end{split}
-\end{align}
-Approximating $-(1-x)\log(1-x)$ by a Taylor series for $x \approx 0$,
-\begin{equation}
-    -(1-x)\log(1-x) = x - \frac{x^2}{2} + O(x^3),
-\end{equation}
-produces
-\begin{equation}
-    q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
-\end{equation}
-which implies $q_{r} > q_0$ and least for sufficiently small $r$.
-To prove $q_{r} > q_0$ holds for all $r$, by continuity, it therefore suffices to show that the gradient of $q_{r} - q_{0}$ with respect to $r$ never changes sign for $r > 0$.
-\begin{align}
-    \begin{split}
-        \partial_{r} (q_{r}-q_{0})
-        &= \frac{1}{r^2} \left(\log(1-r\abs{\gamma})+\log(1-r\abs{\phi})-\log(1-r\abs{\beta})-\log(1-r\abs{\epsilon}) \right)\\
-        &= \frac{1}{r^2} \log\left(\frac{(1-r\abs{\gamma})(1-r\abs{\phi})}{(1-r\abs{\beta})(1-r\abs{\epsilon})} \right).
-    \end{split}
-\end{align}
-Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of the above logarithm is one, or equivalently when
-\begin{equation}
-    0 = (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta}.
-\end{equation}
-As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
+\begin{itemize}
+    \item In \cite{ando1999norm}, \citeauthor{ando1999norm} proved a subadditivity inequality for non-negative operator monotone functions $f(t)$ on $[0, \infty)$.
+        Specifically, for any PSD $A,B \geq 0$, and an unitarily invariant norm,
+        \begin{equation}
+            \norm{f(A) + f(B)} \geq \norm{f(A+B)}.
+        \end{equation}
+    \item Later in \cite{kosem2006inequalities}, \citeauthor{kosem2006inequalities} considered a generalization of the Ando-Zhan theorem which asks if for every non-negative operator monotone function $f(t)$ and every unitarily invariant norm and $A,B,C \geq 0$ PSD whether
+        \begin{equation}
+            \norm{f(A+B) + f(B+C) - f(B)} \geq \norm{f(A+B+C)}?
+        \end{equation}
+        \citeauthor{kosem2006inequalities} showed that this statement fails to hold for $2\times 2$ PSD matrices when $f(t) = \frac{t}{t+1}$ and the norm $\norm{\cdot}$ is the Ky Fan $2$-norm (which for PSD matrices $X = (X^{\dagger} X)^{\frac{1}{2}}$ has the form $\norm{X}_{(k)} = \sum_{i=1}^{k}\eig_i(X)$).
+    \item See also the inequalities presented by \citeauthor{aujla2007eigenvalue} \cite{aujla2007eigenvalue}, namely that if $f$ is monotone concave on $[0,\infty)$ then there exists unitaries $U,V$ such that as operators
+        \begin{equation}
+            f(A+B) \leq Uf(A)U^{*} + V f(B) V^{*}.
+        \end{equation}
+    \item In \cite{audenaert2010strongly}, \citeauthor{audenaert2010strongly} investigate the set of so-called \textit{strongly subadditive functions} $f : \mathbb R^{+} \to \mathbb R$ such that
+        \begin{equation}
+            \Tr f(P_{123}XP_{123}) + \Tr f(P_{2}XP_{2}) \leq \Tr f(P_{12}XP_{12}) + \Tr f(P_{23}XP_{23}),
+        \end{equation}
+        holds for all positive operators $X$ and orthogonal projection operators $P_{1},P_{2},P_{3}$ where $P_{12} = P_{1} + P_{2}$, $P_{23} = P_{2} + P_{3}$ and $P_{123} = P_1 + P_2 + P_3$.
+    \item It seems to be that analogous results were also derived by \citeauthor{friedland2013submodular} \cite{friedland2013submodular}.
+    \item Later, in \cite{lami2017log}, \citeauthor{lami2017log} is concerned with the option $f(x) = \ln x$ which pertains to log-determinant inequalities and its connection to entropy inequalities.
+    \item \textcolor{red}{It seems probable that could be a unifying submodularity inequality (maybe related to \cite{gao2017unifying}?)}
+\end{itemize}
 
-\section{Submodular inequalities on PSD matrices}
-
-\begin{lem}
-    \label{lem:quadratic_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
+\begin{prop}
+    \label{prop:simple_quadratic}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be positive semidefinite tetrahedral eigenvalues.
+    Then
     \begin{equation}
-        \sum_{j}\lambda_j(A+B)^2 + \sum_{j}\lambda_j(B+C)^2 \leq \sum_{j}\lambda_j(B)^2 + \sum_{j}\lambda_j(A+B+C)^2.
+        {\sum}_{j}\alpha_j\delta_{d-j+1} \leq \frac{1}{2}\left({\sum}_{j}\beta_j^2 + {\sum}_{j}\epsilon_j^2 - {\sum}_{j}\gamma_j^2 -{\sum}_{j}\phi_j^2\right) \leq {\sum}_{j}\alpha_j\delta_j
     \end{equation}
-\end{lem}
+\end{prop}
 \begin{proof}
-    Note that $\sum_{j}\lambda_{j}(X)^2  = \Tr[X^2]$ for any Hermitian operator $X$. Therefore,
+    Let $(A,B,C,D,E,F)$ be positive semidefinite Hermitian matrices 
+    with eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$
+    satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
+    The following identity holds:
     \begin{align}
         \begin{split}
-            & \Tr[(B)^2] + \Tr[(A+B+C)^2] - \Tr[(A+B)^2] - \Tr[(B+C)^2] \\
+            & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
+            &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
             &\quad= 
             (\Tr[B^2])
-            +(\Tr[A^2] + \Tr[B^2] + \Tr[C^2] + 2\Tr[AB] + 2\Tr[BC] + 2 \Tr[AC])\\
+            +(\Tr[A^2] + \Tr[B^2] + \Tr[D^2] + 2\Tr[AB] + 2\Tr[BD] + 2 \Tr[AD])\\
             &\qquad\qquad-(\Tr[A^2] + \Tr[B^2] + 2\Tr[AB])
-            -(\Tr[B^2] + \Tr[C^2] + 2\Tr[BC])\\
-            &\quad= 2 \Tr[AC].
+            -(\Tr[B^2] + \Tr[D^2] + 2\Tr[BD])\\
+            &\quad= 2 \Tr[AD].
         \end{split}
     \end{align}
-    Since $A,C\geq 0$ are both positive semidefinite, we also have $\Tr[AC] \geq 0$ which proves the claim.
+    While the value of $\Tr(AD)$ is not determined the eigenvalues $\alpha = \eig(A)$ and $\delta = \eig(D)$, one has the following bounds \cite[H.1.g \& H.1.h]{marshall2010inequalities}:
+    \begin{equation}
+        {\sum}_{j} \alpha_j \delta_{d-j+1} \leq \Tr[AD] \leq {\sum}_{j} \alpha_j \delta_j,
+    \end{equation} 
+    where $\delta_{d-j+1} = \delta^{*}_j$. 
+    The claim then follows because $\Tr[X^2] = \sum_{j}\lambda_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \lambda$.
 \end{proof}
+
+\subsection{Trigonal Horn inequalities}
+
+There are a wealth of inequalities constraining the set of tetrahedral eigenvalues which may be viewed as generalization of the triangle inequalities which hold for case where $d=2$ (see \cref{eq:quadruplet_triangle_constraints}). 
+From \cref{lem:four_faces} we see that $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are tetrahedral only if each of $(\alpha,\beta,\gamma)$, $(\beta, \gamma, \phi)$, $(\gamma,\delta,\epsilon)$, and $(\alpha,\phi,\epsilon)$ are trigonal.
+Consequently, every inequality constraining trigonal eigenvalues can be lifted to four inequalities constraining tetrahedral eigenvalues.
+The purpose of this section, therefore, is to briefly summarize some known inequalities which hold for triangular eigenvalues $(\alpha,\beta,\gamma)$.
+Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
+For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues}.
+
+In addition to the aforementioned trace condition, ${\sum}_{i}\alpha_i + {\sum}_{j}\beta_j = {\sum}_{k}\gamma_k$, one always has the following pair of elementary inequalities,
+\begin{equation}
+    \alpha_1 + \beta_1 \geq \gamma_1, \quad \text{and} \quad \alpha_d + \beta_d \leq \gamma_d,
+\end{equation}
+which constrain the largest and smallest eigenvalues respectively.
+The first somewhat non-trivial inequality, derived by \citeauthor{weyl1912asymptotische} in 1912, is now known as \textit{Weyl's inequality} and states \cite{weyl1912asymptotische}
+\begin{equation}
+    \alpha_i + \beta_j \geq \gamma_{i+j-1},
+\end{equation}
+provided that $i+j-1 \leq d$.
+For $2\times 2$ matrices ($d=2$) one can see that these neccessary inequalities are also sufficient to ensure that $(\alpha,\beta,\gamma)$ are trigonal.\footnote{After shifting to traceless eigenvalues using \cref{cor:traceless}, $\alpha = (a,-a), \beta = (b, -b)$ and $\gamma = (c,-c)$, these inequalities become equivalent to the triangle inequalities $c \leq a+b$ and $c \geq \max\{b-a,a-b\}$.}
+
+In 1949, \citeauthor{fan1949theorem} derived an \textit{majorization} inequality constraining the first $r$ largest eigenvalues \cite{fan1949theorem}:
+\begin{equation}
+    {\sum}_{i=1}^{r}\alpha_i + {\sum}_{j=1}^{r}\beta_j \geq {\sum}_{k=1}^{r}\gamma_k,
+\end{equation}
+and shortly thereafter Lidskii \& Wielandt found proofs of another family of inequalities which hold for any non-empty subset $I = \{i_1, \ldots, i_r\} \subseteq \{1,\ldots, d\}$ of indices of size $r$ of the form
+\begin{align}
+    {\sum}_{j=1}^{r}\alpha_{i_j} + {\sum}_{j=1}^{r}\beta_j &\geq {\sum}_{j=1}^{r}\gamma_{i_j},
+\end{align}
+along with the inequality obtained by exchanging $\alpha$ and $\beta$.
+Finally, in 1962, \citeauthor{horn1962eigenvalues} proved that these inequalities together with
+\begin{equation}
+    \alpha_1 + \alpha_3 + \beta_1 + \beta_3 \geq \gamma_2 + \gamma_3
+\end{equation}
+are sufficient to ensure that $(\alpha,\beta,\gamma)$ are trigonal for the case where $d=3$ \cite{horn1962eigenvalues}
+Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} conjectured that in addition to the trace condition, a set of inequalities of the form
+\begin{equation}
+    {\sum}_{i\in I} \alpha_i + {\sum}_{j\in J} \beta_j \geq {\sum}_{k\in K} \gamma_{k}
+\end{equation}
+(for some inductively defined subsets $I,J,K \subset \{1,\ldots, d\}$ of equal cardinality)
+was both necessary and sufficient to ensure that $(\alpha,\beta,\gamma)$ are trigonal.
+
+\textcolor{red}{TODO: Articulate how the four sets of Horn inequalities are necessary but insufficient conditions for the tetrahedral Horn problem.}
+
+
+\subsection{Submodular inequalities}
+
+\textcolor{red}{DISCLAIMER: In this section I've switched to the $A,B,C$ convention instead of the $A,B,D$ convention. When discussing the tetrahedral Horn problem and its relation to the ordinary Horn problem or when matching the problem to the properties of the $6j$ symmbols, the $A,B,D$ convention is preferred. However when talking about submodular/strong subadditivity inequalities, the $A,B,C$ convention is preferred. Before completing the paper, it will be desirable to establish a globally consistent convention.}
+
+Throughout this section, we will be in inequalities constraining the eigenvalues of $B,A+B,B+C$, and $A+B+C$ for PSD matrices $A,B,C \geq 0$.
+Note that under this formulation, we are not interested in the eigenvalues of either $A$ or $C$.
+An equivalent formulation is to consider eigenvalues of four PSD matrices $W,X,Y,Z$ such that $X+Y=W+Z$ and $W \geq X \geq Z$ and $W \geq Y \geq Z$.
+That these two formulations are the same follows from the identification $X = B+C$, $Y = A+B$, $Z = B$ and $W = A+B+C$.
+
 
 \Citeauthor{bouhtou2008optimization} claim to prove the following family of inequalities \cite[Lemma 5.3]{bouhtou2008optimization}.
 \begin{lem}
@@ -709,8 +739,12 @@ To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, 
     \begin{equation}
         \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k}] \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
     \end{equation}
+    Moreover, as $\Tr[P_{\lambda} X^{\ot k}] \propto E_\lambda(X)$\footnote{Specifically the proportionality constant here is equalt to $\dim W_{\lambda}$ where $W_{\lambda}$ is the irreducible representation of $S_k$ labelled by $\lambda$.}, where $E_{\lambda}(X) = s_{\lambda}(\eig(X))$ is the Schur polynomial of the eigenvalues of $X$, we equivalently have
+    \begin{equation}
+        s_{\lambda}(A+B+C) + s_{\lambda}(B) \geq s_{\lambda}(A+B) + s_{\lambda}(B+C).
+    \end{equation}
 \end{cor}
-As a special case of the previous corollary, we obtain an inequality which complements \cref{lem:quadratic_ineq}.
+As a special case of the previous corollary, we obtain an inequality which complements \cref{prop:simple_quadratic}.
 \begin{cor}
     \label{lem:quadratic_ineq_dual}
     Let $A,B,C \geq 0$ be positive semidefinite Hermitian matrices, then
@@ -813,11 +847,12 @@ The most comprehensive result concerning the eigenvalues of partial sums of Herm
         (\partial_{Y}F(Y|X))(W)
         &\coloneqq\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( F(Y+\epsilon W|X) - F(Y|X) \right) \\
         &= \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( \Tr f(X+Y+\epsilon W) - \Tr f(Y+\epsilon W) - \Tr f(X+Y) + \Tr f(Y) \right) \\
-        &= \Tr\left[\left( f'(X+Y)-f'(Y)\right) W\right].
+        &= \Tr\left[(f'(X+Y)-f'(Y)) W \right].
     \end{align}
     Using the assumption that $f'$ is an operator monotone together with $X+Y \geq Y$ (because $X \geq 0$), we have $f'(X+Y) \geq f'(Y)$ and thus $f'(X+Y)-f'(Y) \geq 0$.
     Therefore $(\partial_{Y}F(Y|X))(W) \geq 0$ for all $W$ and thus $F(Y|X)$ is non-decreasing with respect to $Y \mapsto Y+Z$ as desired.
 \end{proof}
+
 
 As corollaries one obtains some of the previously mentioned inequalities for various functions $f$ satisfying the conditions of the theorem; for example, choosing $f(x) = x \log x$ yields \cref{thm:ssa_ineq}, while choosing $f(x) = -x^p$ for $p\in(0,1]$ yields \cref{lem:bouhtou_ineq}, and choosing $f(x) = x^p$ for $p \in (1, 2]$ yields the following.
 
@@ -838,10 +873,166 @@ For example, it seems to prove
 where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
 }
 
-
 \begin{rem}
-    There is also the paper by \citeauthor{lami2017log} which investigates submodular inequalities of functions of blocks of positive matrices \cite{lami2017log}.
+    For $2\times 2$ Hermitian matrices it is possible to visualize the set of eigenvalues (in the same $(a,b,c,d,e,f)$ coordinates used above) which are known to be non-tetrahedral on the basis that they violate \cref{eq:SSA_like_ineq}.
+    Specifically, consider the \textit{minimal} shifting of the traceless eigenvalues in \cref{eq:traceless_two_dim_tetra}, i.e.,
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\alpha = (2a, 0), \quad
+            &&\beta = (2b, 0), \quad
+            &&\gamma = (a+b+c, a+b-c), \quad \\
+            &\delta = (2d, 0), \quad
+            &&\epsilon = (a+b+d+e, a+b+d-e), \quad
+            &&\phi = (b+d+f, b+d-f).
+        \end{alignedat}
+    \end{equation}
+    With respect to these coordinates, \cref{eq:SSA_like_ineq} becomes 
+    \begin{align}
+        \label{eq:SSA_like_d_two}
+        \begin{split}
+            F(a,b,c,d,e,f)
+            &\coloneqq
+            -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
+            &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
+            &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
+            &\quad+(2b)\log(2b) \geq 0
+        \end{split}
+    \end{align}
+    See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
 \end{rem}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-compare}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-extra}
+    \end{center}
+    \caption{
+        (Left) The region for which $(c, e, f)$ violates \cref{eq:SSA_like_d_two} with $(a,b,c) = (5,7,6)$.
+        (Middle) Comparing the region of tetrahedral $(c,e,f)$ with those which violate \cref{eq:SSA_like_d_two}.
+        (Right) The values of $(c,e,f)$ satisfying \cref{eq:quadruplet_triangle_constraints} but violating \cref{eq:SSA_like_d_two}.
+    }
+    \label{fig:ssa_extra_mileage}
+\end{figure}
+
+{\color{red}
+    Here I attempt to generalize the derivation of Sagnol:
+    \begin{equation}
+        \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( \Tr f(X+Y+\epsilon W) - \Tr f(Y+\epsilon W) - \Tr f(X+Y) + \Tr f(Y) \right) = \Tr\left[(f'(X+Y)-f'(Y)) W \right]
+    \end{equation}
+
+    \begin{align}
+        &\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(\Tr(X+Y+\epsilon W)) - f(\Tr(Y+\epsilon W)) - f(\Tr(X+Y)) + f(\Tr (Y)) \right) \\
+        &\quad=\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(x + y + \epsilon w) - f(y + \epsilon w) - f(x+y) + f(y) \right)  \\
+        &\quad= w (f'(x + y) - f'(y)) \\
+        &\quad= \Tr(W) (f'(\Tr(X+Y)) - f'(\Tr(Y))).
+    \end{align}
+
+    If $m$ is an operator monotone, then $X \geq 0$ implies $m(X) \geq 0$. Moreover, $X \geq 0$ implies $\Tr(m(X)W)\geq0$ for all PSD $W$.
+    Under which additional conditions can we expect $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$?
+    If $X = \sum_{i} \lambda_i \Pi_i$ then $m(X) = \sum_{i} m(\lambda_i) \Pi_i$ and
+    \begin{equation}
+        \Tr(m(X)W) = \sum_{i} m(\lambda_i) \Tr(\Pi_i W) \leq \sum_{i} m(\lambda_i) \Tr(W) = \Tr(m(X))\Tr(W)
+    \end{equation}
+    If $\sum_i m(\lambda_i) \leq m(\sum_{i} \lambda_i)$ then we also conclude $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$.
+
+    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
+}
+
+
+\subsection{The C\c{S}W inequality}
+At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ which are non-negative and sufficiently small in the sense that $\lambda_1 + \abs{\lambda} \leq 1$:
+\begin{equation}
+    \label{eq:SSA_like_CSW}
+    h(\abs{\gamma}) 
+    + \abs{\gamma} S(\bar \gamma)
+    +h(\abs{\phi}) 
+    + \abs{\phi} S(\bar \phi)  
+    -h(\abs{\beta}) 
+    - \abs{\beta} S(\bar \beta)  
+    -h(\abs{\epsilon}) 
+    - \abs{\epsilon} S(\bar \epsilon)  
+    \geq 0.
+\end{equation}
+The inequality appearing in \cref{eq:SSA_like_ineq} is equivalent to the following by \cref{eq:little_s_relation}:
+\begin{equation}
+    \label{eq:SSA_like_ineq_equiv}
+    -\abs{\gamma}\log\abs{\gamma}
+    + \abs{\gamma} S(\bar \gamma)
+    -\abs{\phi}\log\abs{\phi}
+    + \abs{\phi} S(\bar \phi)  
+    +\abs{\beta}\log\abs{\beta}
+    - \abs{\beta} S(\bar \beta)  
+    +\abs{\epsilon}\log\abs{\epsilon}
+    - \abs{\epsilon} S(\bar \epsilon)  
+    \geq 0.
+\end{equation}
+The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\lambda})$ with the expression $-\abs{\lambda}\log \abs{\lambda}$.
+We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a down-scaling argument.
+Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
+\begin{equation}
+    \label{eq:tet_scaling}
+    (\alpha,\beta,\gamma,\delta,\epsilon,\phi) \mapsto (r\alpha,r\beta,r\gamma,r\delta,r\epsilon,r\phi),
+\end{equation}
+the form and positivity of \cref{eq:SSA_like_CSW} is \textit{not} invariant under scaling by $r$.
+Define $q_{r}$ by the formula
+\begin{equation}
+    q_{r} \coloneqq r^{-1}\left(
+        h(\abs{r\gamma}) 
+        +h(\abs{r\phi}) 
+        -h(\abs{r\beta}) 
+        -h(\abs{r\epsilon}) 
+    \right).
+\end{equation}
+Letting $r \in (0,1)$ be positive and small, we see that
+\begin{equation}
+    r^{-1}h(\abs{r\lambda}) = \abs{\lambda}(1-\log r) - \abs{\lambda} \log \abs{\lambda} + O(r^2)
+\end{equation}
+which implies the following limit holds when $\abs{\gamma} + \abs{\phi} = \abs{\beta} + \abs{\epsilon}$:
+\begin{equation}
+    q_0 \coloneqq 
+    \lim_{r \to 0} q_{r}  
+    =
+    -\abs{\gamma}\log\abs{\gamma}
+    -\abs{\phi}\log\abs{\phi}
+    +\abs{\beta}\log\abs{\beta}
+    +\abs{\epsilon}\log\abs{\epsilon}.
+\end{equation}
+In summary, by scaling down the eigenvalues in \cref{eq:SSA_like_CSW} by $r \in (0,1)$ according to \cref{eq:tet_scaling} and then scaling up \cref{eq:SSA_like_CSW} by multiplication by $r^{-1}$ and taking the limit as $r \to \infty$, one recovers \cref{eq:SSA_like_ineq_equiv}.
+Moreover, it can be shown that $q_{r} \geq q_{0}$ for all $r$ and thus \cref{eq:SSA_like_ineq_equiv} is strictly stronger than \cref{eq:SSA_like_CSW}.
+To prove this, we see that the trace equalities imply
+\begin{align}
+    \begin{split}
+        q_{r}-q_{0}
+        &= r^{-1}(1-r\abs{\beta})\log(1-r\abs{\beta})+r^{-1}(1-r\abs{\epsilon})\log(1-r\abs{\epsilon})\\
+        &\qquad\qquad-r^{-1}(1-r\abs{\gamma})\log(1-r\abs{\gamma})-r^{-1}(1-r\abs{\phi})\log(1-r\abs{\phi}).
+    \end{split}
+\end{align}
+Approximating $-(1-x)\log(1-x)$ by a Taylor series for $x \approx 0$,
+\begin{equation}
+    -(1-x)\log(1-x) = x - \frac{x^2}{2} + O(x^3),
+\end{equation}
+produces
+\begin{equation}
+    q_{r} - q_{0} = \frac{r}{2}(\abs{\beta}^2 + \abs{\epsilon}^{2} - \abs{\gamma}^{2} - \abs{\phi}^{2}) + O(r^2) = r \abs{\alpha} \abs{\delta} + O(r^2)
+\end{equation}
+which implies $q_{r} > q_0$ and least for sufficiently small $r$.
+To prove $q_{r} > q_0$ holds for all $r$, by continuity, it therefore suffices to show that the gradient of $q_{r} - q_{0}$ with respect to $r$ never changes sign for $r > 0$.
+\begin{align}
+    \begin{split}
+        \partial_{r} (q_{r}-q_{0})
+        &= \frac{1}{r^2} \left(\log(1-r\abs{\gamma})+\log(1-r\abs{\phi})-\log(1-r\abs{\beta})-\log(1-r\abs{\epsilon}) \right)\\
+        &= \frac{1}{r^2} \log\left(\frac{(1-r\abs{\gamma})(1-r\abs{\phi})}{(1-r\abs{\beta})(1-r\abs{\epsilon})} \right).
+    \end{split}
+\end{align}
+Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of the above logarithm is one, or equivalently when
+\begin{equation}
+    0 = (1-r\abs{\gamma})(1-r\abs{\phi})-(1-r\abs{\beta})(1-r\abs{\epsilon}) = r^2(\abs{\gamma}\abs{\phi} - \abs{\epsilon}\abs{\beta}) = r^2 \abs{\alpha}\abs{\delta}.
+\end{equation}
+As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
+
+
+
 
 
 \clearpage
