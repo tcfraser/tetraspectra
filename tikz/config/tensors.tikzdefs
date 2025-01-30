@@ -23,6 +23,7 @@
 \endgroup
 }
 \newcommand{\abcdefsymbol}{\tightcurlysixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
+\newcommand{\abcdefsymbolprimed}{\tightcurlysixj{\alpha' & \beta' & \gamma' \\ \delta' & \epsilon' & \phi'}}
 
 \usepackage{mathtools}
 \usepackage[vcentermath]{youngtab}
