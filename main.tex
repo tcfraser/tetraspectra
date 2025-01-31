@@ -922,7 +922,6 @@ was both necessary and sufficient to ensure that $(\alpha,\beta,\gamma)$ are tri
 \textcolor{red}{TODO: Articulate how the four sets of Horn inequalities are necessary but insufficient conditions for the tetrahedral Horn problem.}
 \textcolor{red}{TODO: Articulate how the Horn inequalities can be inductively defined but also defined in terms of non-vanishing LR coefficients.}
 
-
 \subsection{Submodular inequalities}
 
 \textcolor{red}{DISCLAIMER: In this section I've switched to the $A,B,C$ convention instead of the $A,B,D$ convention. When discussing the tetrahedral Horn problem and its relation to the ordinary Horn problem or when matching the problem to the properties of the $6j$ symmbols, the $A,B,D$ convention is preferred. However when talking about submodular/strong subadditivity inequalities, the $A,B,C$ convention is preferred. Before completing the paper, it will be desirable to establish a globally consistent convention.}
@@ -1009,11 +1008,36 @@ As a corollary of \cref{thm:ptz_ineqs}, we obtain the following determinant and 
     Let $A,B,C \geq 0$ be positive semidefinite matrices.
     Then
     \begin{align}
-        \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C), \\
+        \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C), \label{eq:additive_det}\\
         \mathrm{per}(A+B+C) + \mathrm{per}(B) \geq \mathrm{per}(A+B) + \mathrm{per}(B+C).
     \end{align}
 \end{cor}
-Note that with the exception of the above determinant inequality, the inequalities provided by \cref{thm:ptz_ineqs} are generally not equivalent to inequalities involving only eigenvalues.
+Note that with the exception of the above determinant inequality (\cref{eq:additive_det}), the inequalities provided by \cref{thm:ptz_ineqs} are generally not equivalent to inequalities involving only eigenvalues.
+
+The linear determinant inequality above can be seen as an extension of the well-known inequality $\det(A+B) \geq \det(A) + \det(B)$.
+One can make \cref{eq:additive_det} symmetric in $A,B,C$ by adding together three copies of \cref{eq:additive_det} to obtain
+\begin{equation}
+    3\det(A+B+C) + \det(A) + \det(B) + \det(C) \geq 2\det(A+B) + 2\det(B+C) + 2 \det(A+C).
+\end{equation}
+However, this inequality evidently no more constraining that the conjunction of the three copies of \cref{eq:additive_det} from which it is produced.
+Amazingly, \citeauthor{lin2014determinantal} has shown that one also has a Hlawka-like inequality \cite{lin2014determinantal}:
+\begin{equation}
+    \label{eq:lin_hlawka_ineq}
+    \det(A+B+C) + \det(A) + \det(B) + \det(C) \geq \det(A+B) + \det(B+C) + \det(A+C).
+\end{equation}
+More recently \citeauthor{niculescu2023functions} have shown a myriad of related inequalities and generalizations \cite{niculescu2023functions}.
+For instance
+\begin{equation}
+    e_k(A) + e_k(B) + e_k(C) + e_k(A+B+C) \geq e_k(A+B) + e_k(B+C) + e_k(A+C),
+\end{equation}
+as well as reporting other inequalities \cite[Section 6.2]{niculescu2023functions} by other authors:
+\begin{equation}
+    {\det}^{\frac12} A + {\det}^{\frac12} B + {\det}^{\frac12} C + {\det}^{\frac12}(A+B+C) \leq {\det}^{\frac12}(A+B) + {\det}^{\frac12}(B+C) + {\det}^{\frac12}(A+C),
+\end{equation}
+\begin{equation}
+    {\det}^{\frac1n} (A+B) {\det}^{\frac1n} (A+C) \geq {\det}^{\frac1n} (B) {\det}^{\frac1n} (C) + {\det}^{\frac1n} (A+B+C){\det}^{\frac1n} (A)
+\end{equation}
+\textcolor{red}{TC: Confirm the above two inequalities hold for complex Hermitian matrices, not just real symmetric ones.}
 
 One also has another determinant inequality which is non-linear in determinants \cite[Lemma 2.3]{tie2011rearrangement}.
 \begin{lem}
@@ -1638,6 +1662,18 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     Taking $K = mk$ for sufficiently large $k$ proves the claim. 
 \end{proof}
 
+\begin{rem}
+    In this section, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\alpha,\beta,\gamma)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\alpha\beta}^{\gamma}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
+    Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\gamma$ and $n\times n$ blocks $A',B'$ with eigenvalues $\alpha,\beta$.
+    One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
+    This can be accomplished by considering the branching multiplicities $m^{\alpha\beta}_{\gamma}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
+    In fact there exists a representation-theoretic analogue of \cref{thm:trigonal_block}, specifically \cite[Theorem 9.2.3]{goodman2000representations}.
+    In particular, the values of $m^{\alpha\beta}_{\gamma}$ and $c_{\alpha\beta}^{\gamma}$ coincide provided the Young diagrams $(\alpha,\beta,\gamma)$ involved have depths at most $(\min\{a,n\}, \min\{b,n\}, \min\{a+b,n\})$; this ensures that $V_{\alpha}^{a}, V_{\beta}^{b}, V_{\gamma}^{a+b}$ and $V_{\alpha}^{n}, V_{\beta}^{n}, V_{\gamma}^{n}$ are all non-zero representation spaces and therefore $m^{\alpha\beta}_{\gamma}$ and $c_{\alpha\beta}^{\gamma}$ are both meaningfully defined.
+    The distinction between $m^{\alpha\beta}_{\gamma}$ and $c_{\alpha\beta}^{\gamma}$ lies with the fact that it is possible for $c_{\alpha\beta}^{\gamma}$ to be zero while $m^{\alpha\beta}_{\gamma}$ is non-zero (this can happen when the depth of $\gamma$ is greater than $n$ but at most $a+b$ so that $V_{\gamma}^{n}$ is zero but $V_{\gamma}^{a+b}$ is non-zero).
+    This distinction also holds because, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
+\end{rem}
+
+\clearpage
 \subsection{\texorpdfstring{$\boldsymbol{SU(n)}$ $\boldsymbol{6j}$}{SU(n) 6j} symbols \& the tetrahedral Horn problem}
 \label{sec:sixj_symbols_tetrahedral}
 
@@ -1647,6 +1683,20 @@ Our approach will be to generalize the quantum information inspired proof techni
 Our starting point will be to consider an matrix $\Omega_{A,B,D}^{x,y,z}$ which depends on three positive integers $(x,y,z)$ and three $n\times n$ positive semidefinte Hermitian matrices $(A,B,D)$.
 The matrix $\Omega_{A,B,D}^{x,y,z}$ is a positive semidefinite matrix with unit trace that acts on $(\mathbb C^{n})^{\ot x+y+z}$.
 Associated to this matrix is a $\mathbb C$-valued function, denoted by $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$, acting on the set of sextuples of Young diagrams $(\alpha',\beta',\gamma',\delta',\epsilon',\phi')$ with sizes fixed by $(x,y,z)$ according to \cref{eq:xyz_sized_young_diagrams}.
+
+\begin{rem}
+    In the analysis that follows, it will be convenient to avoid edges cases pertaining to candidate sextuples of positive semidefinite eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ where one of the $\lambda \in \{\alpha,\beta,\gamma,\delta,\epsilon,\phi\}$ is totally zero.
+    In otherwords, we will often need to demand that the minimum trace,
+    \begin{equation}
+        \tau \coloneqq \min\{ \abs \alpha, \abs \beta, \abs \gamma, \abs \delta, \abs \epsilon, \abs \phi\},
+    \end{equation}
+    is strictly positive 
+    \begin{equation}
+        \tau > 0.
+    \end{equation}
+    It is also not too difficult to show in the context of the tetrahedral Horn problem, this minimum is always attained by one of $(\abs \alpha, \abs \beta, \abs \delta)$.
+\end{rem}
+
 \begin{prop}
     \label{prop:omega_and_Q}
     Let $(x,y,z)$ be arbitrary positive integers and let $(A,B,D)$ be three non-zero positive semidefinite $n \times n$ Hermitian matrices.
@@ -1742,7 +1792,6 @@ Associated to this matrix is a $\mathbb C$-valued function, denoted by $Q^{\alph
     where the last equality is \cref{eq:ud_sixj_prod_proj_operator_norm}.
 \end{proof}
 
-\subsubsection{An exponential upper bound}
 
 Our next result can be viewed as a relaxation of the $\Omega_{A,B,D}^{x,y,z}$-dependent upper bound on $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ given in \cref{eq:Q_sixj_upper_bound}.
 This relaxed upper bound on $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ takes into account the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ of $(A, B, C, D, E, F)$ where $C=A+B$, $F=B+D$ and $E=A+B+D$.
@@ -1751,16 +1800,16 @@ From this point of view, the following result may be viewed as an instance of th
 
 \begin{lem}
     \label{lem:Q_upper_bound}
-    Let everything be as in \cref{prop:omega_and_Q} except now let $k$ be a sufficiently large positive integer such that $(x,y,z)$ given by
+    Let everything be as in \cref{prop:omega_and_Q} except now $(x,y,z)$ satisfy
     \begin{equation}
         \label{eq:rounding_up}
-        x \coloneqq \ceil{k \abs{\alpha}},
+        x = \ceil{k \abs{\alpha}},
         \qquad
-        y \coloneqq \ceil{k \abs{\beta}},
+        y = \ceil{k \abs{\beta}},
         \qquad
-        z \coloneqq \ceil{k \abs{\delta}},
+        z = \ceil{k \abs{\delta}},
     \end{equation}
-    are all non-zero.
+    and $k > \tau^{-1}$ is a positive integer and $\tau = \min\{\abs \alpha, \abs \beta, \abs \delta\}$ is the minimum trace.
     Then
     \begin{equation}
         \abs{Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}} 
@@ -1851,28 +1900,98 @@ From this point of view, the following result may be viewed as an instance of th
     \end{equation}
     It is also not too difficult to see that the polynomial in $k$ prefactor in the upper bound on $\Tr(\Pi_{\epsilon'} \Omega)$ above is the largest such prefactor and thus \cref{eq:Q_upper_bound} indeed holds if we take $p(k)$ to be
     \begin{equation}
+        \label{eq:p_of_k}
         p(k) = e^{16}(k\abs{\epsilon}+4)^{\frac{n(n-1)}{2}+3}.
     \end{equation}
 \end{proof}
 
-While \cref{lem:Q_upper_bound} states that $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ concentrates in magnitude around particular Young diagrams, it is not directly applicable to the tetrahedral Horn problem simply because the form of $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ depends on more than just the eigenvalues of the matrices $A,B,D$.
-Nevertheless, from \cref{lem:Q_upper_bound} we can obtain a sufficient condition for $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to be tetrahedral by averaging $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ over all triples of matrices $A,B,D$.
+While \cref{lem:Q_upper_bound} states that $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ concentrates in magnitude around particular Young diagrams, it is not directly applicable to the tetrahedral Horn problem simply because the form of $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ depends on more than just the eigenvalues of the matrices $A,B,D$. Nevertheless, \cref{lem:Q_upper_bound} can be used to produce a necessary condition for $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to be tetrahedral.
+\begin{cor}
+    \label{cor:seq_ud_recoupling_norm_lower_bound}
+    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$ with minimum trace $\tau$.
+    Then there exists a sextuple of sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ indexed by positive integers $k > \tau^{-1}$ with sizes\footnote{The sizes of $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ are given according to \cref{eq:xyz_sized_young_diagrams} with $(x,y,z)$ fixed by $k$ according to \cref{eq:rounding_up}.}
+    \begin{equation}
+        \label{eq:ceiling_sized_young_diagrams}
+        \begin{alignedat}{3}
+            &\alpha'_k \vdash_{n} \ceil{k\abs{\alpha}}, \qquad 
+            &&\beta'_k \vdash_{n} \ceil{k\abs{\beta}}, \qquad
+            &&\gamma'_k \vdash_{n} \ceil{k\abs{\alpha}}+\ceil{k\abs{\beta}}, \qquad\\
+             &\delta'_k \vdash_{n} \ceil{k\abs{\delta}}, \qquad
+            &&\epsilon'_k \vdash_{n} \ceil{k\abs{\alpha}}+\ceil{k\abs{\beta}}+\ceil{k\abs{\delta}}, \qquad
+            &&\phi'_k \vdash_{n} \ceil{k\abs{\beta}}+\ceil{k\abs{\delta}},
+        \end{alignedat}
+    \end{equation}
+    satisfying both (i) the convergence condition
+    \begin{equation}
+        \label{eq:sextuple_convergence_rate}
+        I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\alpha\beta\gamma\delta\epsilon\phi} 
+        \leq \frac{6}{k} \log p(k) q(k) 
+        \stackrel{k\to\infty}{\longrightarrow} 0,
+    \end{equation}
+    and (ii) the lower bound 
+    \begin{equation}
+        \label{eq:seq_ud_sixj_lower_bound}
+        \norm{\tightcurlysixj{ \alpha'_k & \beta'_k & \gamma'_k \\ \delta'_k &  \epsilon'_k &  \phi'_k}}_{\infty}
+        \geq \frac{1}{q(k)},
+    \end{equation}
+    where $p(k)$ is given by \cref{eq:p_of_k} whereas $q(k)$ is given by
+    \begin{equation}
+        \label{eq:q_of_k}
+        q(k) = (k \abs{\epsilon}+4)^{6(n-1)}.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    For each $k$, it suffices to pick $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ be the sextuple which maximizes the value of $\abs{Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}}$ when $(x,y,z)$ is given by \cref{eq:rounding_up}.
+    This maximal choice will necessarily satisfy a lower bound due to the completeness relation satisfied by $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ \cref{eq:completeness_relation}.
+    Specifically, the maximum must must satisfy
+    \begin{equation}
+        \label{eq:Q_lower_bound}
+        \abs{Q^{\alpha'_k\beta'_k\gamma'_k}_{\delta'_k\epsilon'_k\phi'_k}} \geq \frac{1}{q(k)}
+    \end{equation}
+    where $q(k)$ can be any upper bound on the number of possible summands in the completeness relation \cref{eq:completeness_relation} viewed as a function of $k$.
+    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:Q_lower_bound} holds because the size of any of $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ is at most $k=n\abs{\epsilon} + 3$.
+    Moreover, applying \cref{eq:Q_upper_bound} yields
+    \begin{equation}
+        I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\alpha\beta\gamma\delta\epsilon\phi}
+        \leq \frac{6}{k}\log (q(k)p(k))
+    \end{equation}
+    and thus \cref{eq:sextuple_convergence_rate} holds because $p(k)$ and $q(k)$ are polynomials in $k$ with coefficients depending on fixed $\abs{\epsilon}$ and dimension $n$.
+    Also \cref{eq:seq_ud_sixj_lower_bound} follows from \cref{eq:Q_lower_bound} combined with the upper bound provided by \cref{eq:Q_sixj_upper_bound}.
+\end{proof}
 
+\begin{rem}
+    The convergence condition \cref{eq:sextuple_convergence_rate} above implies in particular that the primed Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ converge in normalization to the unprimed eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$:
+    \begin{equation}
+        \label{eq:sextuple_convergence}
+        \begin{alignedat}{3}
+            &\lim_{k\to\infty} \bar \alpha'_k = \bar \alpha, \qquad
+            &&\lim_{k\to\infty} \bar \beta'_k = \bar \beta, \qquad
+            &&\lim_{k\to\infty} \bar \gamma'_k = \bar \gamma, \\
+            &\lim_{k\to\infty} \bar \delta'_k = \bar \delta, \qquad
+            &&\lim_{k\to\infty} \bar \epsilon'_k = \bar \epsilon, \qquad
+            &&\lim_{k\to\infty} \bar \phi'_k = \bar \phi.
+        \end{alignedat}
+    \end{equation}
+\end{rem}
+
+While the existence of a convergent sequence $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ of primed Young diagrams is necessary for $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to be tetrahedral by \cref{cor:seq_ud_recoupling_norm_lower_bound}, our next result proves it is also sufficient.
+In other words, if $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ are not tetrahedral, then no such sequence can exist.
+This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ over all triples of matrices $A,B,D$.
 
 \begin{thm}
-    Suppose $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues.
-    Then $I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ quantifies the deviation of $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ from being tetrahedral:
-    \begin{equation}
-        I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} = \min_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}}}I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi}.
-    \end{equation}
-
-    Then for all sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ satisfying \cref{eq:ceiling_sized_young_diagrams} and \cref{eq:sextuple_convergence}, we have
+    Suppose $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues with minimum trace $\tau$.
+    Then for all sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ indexed by $k > \tau^{-1}$ with sizes given by \cref{eq:ceiling_sized_young_diagrams} and converging to $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
         \norm{\tightcurlysixj{ \alpha'_k & \beta'_k & \gamma'_k \\ \delta'_k &  \epsilon'_k &  \phi'_k}}_{\mathrm{HS}}^{2}
         \leq \exp(-k I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} /6 + O(\log k)).
     \end{equation}
-    where 
+    where $D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ is a positive constant which measures the distance from $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ to the closed set or tetrahedral eigenvalues:
+    \begin{equation}
+    D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} =
+    \min_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}\\\abs{\lambda}=\abs{\tilde \lambda}}}.
+    \end{equation}
+    \textcolor{red}{TODO:Finalize!}
 \end{thm}
 \begin{proof}
     Let $\diff X$ denote the normalized Hilbert-Schmidt measure over the set of $n\times n$ positive semidefinite matrices with trace one and let $k$ be a positive integer.
@@ -1927,11 +2046,11 @@ Nevertheless, from \cref{lem:Q_upper_bound} we can obtain a sufficient condition
     \begin{equation}
         \abs{Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi}} \leq p(k) \exp(-k I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}/6).
     \end{equation}
-    which implies
-    \begin{align}
-        \norm{\tightcurlysixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
-        &\leq R_{\alpha',\beta',\delta';\epsilon'}p(k)\exp(-k \inf_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}}} I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}/6)
-    \end{align}
+    %which implies
+    %\begin{align}
+    %    \norm{\tightcurlysixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
+    %    &\leq R_{\alpha',\beta',\delta';\epsilon'}p(k)\exp(-k \inf_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}}} I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}/6)
+    %\end{align}
     By construction, $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ are tetrahedral while by assumption, $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ are not tetrahedral.
     Thus we conclude
     \begin{equation}
@@ -1956,66 +2075,61 @@ Nevertheless, from \cref{lem:Q_upper_bound} we can obtain a sufficient condition
          \end{equation}
          eventually!
     }
-\end{proof}
+    By assumption, the Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ converge in normalization to the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ in the sense that $I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
+    Therefore, for any $\varepsilon > 0$, there exists sufficiently large finite $K$ such that for all $k \geq K$ we have
+    \begin{equation}
+        I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} \leq \varepsilon 
+    \end{equation}
+    Let $\lambda$ be a dumby variable indexing $\lambda \in \{\alpha,\beta,\gamma,\delta,\epsilon,\phi\}$.
+    By Pinsker's inequality for the relative entropy, we have
+    \begin{align}
+        I^{\alpha'\beta'\gamma'\delta'\epsilon'\phi'}_{\alpha\beta\gamma\delta\epsilon\phi}
+        = \sum_{\lambda} \abs{\lambda} \kl{\bar \lambda'}{\bar \lambda}
+        \geq \frac{1}{2}\sum_{\lambda} \abs{\lambda} \norm{\bar \lambda' - \bar \lambda}_{1}^{2}
+        %&\geq \frac{1}{2} \max_{\lambda} \abs{\lambda} \norm{\bar \lambda' - \bar \lambda}_{1}^{2}\\
+        \geq \frac{\tau}{2} \sum_{\lambda} \norm{\bar \lambda' - \bar \lambda}_{1}^{2},
+        \geq \frac{\tau}{2} \max_{\lambda} \norm{\bar \lambda' - \bar \lambda}_{1}^{2},
+    \end{align}
+    where $\tau$ is the minimum trace over the eigenvalues (the lower indices).
+    Applying this bound to $I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}$ for $k \geq K$ yields
+    \begin{equation}
+        \max_{\lambda}\norm{\bar \lambda_k' - \bar \lambda}_{1} \leq \sqrt{2 \tau^{-1} \varepsilon}
+    \end{equation}
+    whereas applying this bound to $I_{\tilde \alpha\tilde \beta \tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}$ (noting that $\tau$ is also the minimum trace of $(\tilde \alpha,\tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$) yields
+    \begin{equation}
+        \sum_{\lambda} \norm{\bar \lambda'_k - \bar {\tilde \lambda}}_{1}^2 \leq 2 \tau^{-1}I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}.
+    \end{equation}
+    Moreover, by the reverse triangle inequality we have
+    \begin{align}
+        \sum_{\lambda} \norm{\bar \lambda'_k - \bar {\tilde \lambda}}_{1}^2
+        &\geq
+        \sum_{\lambda}\left(\norm{\bar \lambda'_k - \bar \lambda}_{1}
+        -\norm{\bar \lambda - \bar {\tilde \lambda}}_{1}\right)^2 \\
+        &\geq
+        \sum_{\lambda}\norm{\bar \lambda - \bar {\tilde \lambda}}_{1}^2 -2\norm{\bar \lambda'_k - \bar \lambda}_{1}\norm{\bar \lambda - \bar {\tilde \lambda}}_{1}\\
+        &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+         -2\sum_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\norm{\bar \lambda - \bar {\tilde \lambda}}_{1}\\
+        &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+         -4\sum_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\\
+        &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+         -4\max_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\\
+        &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+        -4\sqrt{2 \tau^{-1} \varepsilon}
+    \end{align}
+    where $\norm{\bar \lambda - \bar {\tilde \lambda}}_{1} \leq 2$ because $\bar \lambda$ and $\bar {\tilde \lambda}$ are both probability distributions, and where
+    \begin{equation}
+        D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} \leq \sum_{\lambda}\norm{\bar \lambda - \bar {\tilde \lambda}}_{1}^2
+    \end{equation}
+    holds by definition of $D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}$.
+    Therefore, picking $\varepsilon$ so that 
+    \begin{equation}
+        D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}-4\sqrt{2 \tau^{-1} \varepsilon} \geq \frac{1}{2}D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+    \end{equation}
+    yields for all $k \geq K$,
+    \begin{equation}
+        I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi} \geq \frac{\tau}{4}D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0.
+    \end{equation}
 
-\subsubsection{A polynomially upper bound}
-
-Moreover, \cref{lem:Q_upper_bound} provides us with a necessary condition for $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ to be tetrahedral.
-\begin{cor}
-    \label{cor:seq_ud_recoupling_norm_lower_bound}
-    Let $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$.
-    Then there exists a sextuple of sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ indexed by $k$ whose sizes are according to \cref{eq:xyz_sized_young_diagrams} with $(x,y,z)$ fixed by $k$ according to \cref{eq:rounding_up} so that
-    \begin{equation}
-        \label{eq:ceiling_sized_young_diagrams}
-        \begin{alignedat}{3}
-            &\alpha'_k \vdash_{n} \ceil{k\abs{\alpha}}, \qquad 
-            &&\beta'_k \vdash_{n} \ceil{k\abs{\beta}}, \qquad
-            &&\gamma'_k \vdash_{n} \ceil{k\abs{\alpha}}+\ceil{k\abs{\beta}}, \qquad\\
-             &\delta'_k \vdash_{n} \ceil{k\abs{\delta}}, \qquad
-            &&\epsilon'_k \vdash_{n} \ceil{k\abs{\alpha}}+\ceil{k\abs{\beta}}+\ceil{k\abs{\delta}}, \qquad
-            &&\phi'_k \vdash_{n} \ceil{k\abs{\beta}}+\ceil{k\abs{\delta}},
-        \end{alignedat}
-    \end{equation}
-    satisfying (i) the convergence conditions
-    \begin{equation}
-        \label{eq:sextuple_convergence}
-        \begin{alignedat}{3}
-            &\lim_{k\to\infty} \bar \alpha'_k = \bar \alpha, \qquad
-            &&\lim_{k\to\infty} \bar \beta'_k = \bar \beta, \qquad
-            &&\lim_{k\to\infty} \bar \gamma'_k = \bar \gamma, \\
-            &\lim_{k\to\infty} \bar \delta'_k = \bar \delta, \qquad
-            &&\lim_{k\to\infty} \bar \epsilon'_k = \bar \epsilon, \qquad
-            &&\lim_{k\to\infty} \bar \phi'_k = \bar \phi,
-        \end{alignedat}
-    \end{equation}
-    and (ii) the lower bound 
-    \begin{equation}
-        \label{eq:seq_ud_sixj_lower_bound}
-        \norm{\tightcurlysixj{ \alpha'_k & \beta'_k & \gamma'_k \\ \delta'_k &  \epsilon'_k &  \phi'_k}}_{\infty}
-        \geq \frac{1}{(k \abs{\epsilon}+4)^{6(n-1)}}.
-    \end{equation}
-\end{cor}
-\begin{proof}
-    For each $k$, it suffices to pick $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ be the sextuple which maximizes the value of $\abs{Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}}$ when $(x,y,z)$ is given by \cref{eq:rounding_up}.
-    This maximal choice will necessarily satisfy a lower bound due to the completeness relation satisfied by $Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi'}$ \cref{eq:completeness_relation}.
-    Specifically, the maximum must must satisfy
-    \begin{equation}
-        \label{eq:Q_lower_bound}
-        \abs{Q^{\alpha'_k\beta'_k\gamma'_k}_{\delta'_k\epsilon'_k\phi'_k}} \geq \frac{1}{q(k)}
-    \end{equation}
-    where $q(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:completeness_relation} viewed as a function of $k$.
-    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting
-    \begin{equation}
-        q(k) = (k \abs{\epsilon}+3+1)^{6(n-1)}
-    \end{equation}
-    ensures \cref{eq:Q_lower_bound} holds because the size of any of $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ is at most $k=n\abs{\epsilon} + 3$.
-    Moreover, applying \cref{eq:Q_upper_bound} yields
-    \begin{equation}
-        I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\alpha\beta\gamma\delta\epsilon\phi}
-        \leq \frac{6}{k}\left(\log q(k) + \log p(k)\right) \stackrel{k\to\infty}{\longrightarrow} 0
-    \end{equation}
-    and thus \cref{eq:sextuple_convergence} holds because $\kl{\bar \lambda'}{\bar \lambda} \geq 0$ with equality if and only if $\bar \lambda' = \bar \lambda$.
-    Then \cref{eq:seq_ud_sixj_lower_bound} follows from \cref{eq:Q_lower_bound} combined with the upper bound provided by \cref{eq:Q_sixj_upper_bound}.
 \end{proof}
 
 \subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
