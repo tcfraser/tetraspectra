@@ -1121,71 +1121,30 @@ For example, it seems to prove
 where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
 }
 
-\begin{rem}
-    For $2\times 2$ Hermitian matrices it is possible to visualize the set of eigenvalues (in the same $(a,b,c,d,e,f)$ coordinates used above) which are known to be non-tetrahedral on the basis that they violate \cref{eq:SSA_like_ineq}.
-    Specifically, consider the \textit{minimal} shifting of the traceless eigenvalues in \cref{eq:traceless_two_dim_tetra}, i.e.,
-    \begin{equation}
-        \begin{alignedat}{3}
-            &\alpha = (2a, 0), \quad
-            &&\beta = (2b, 0), \quad
-            &&\gamma = (a+b+c, a+b-c), \quad \\
-            &\delta = (2d, 0), \quad
-            &&\epsilon = (a+b+d+e, a+b+d-e), \quad
-            &&\phi = (b+d+f, b+d-f).
-        \end{alignedat}
-    \end{equation}
-    With respect to these coordinates, \cref{eq:SSA_like_ineq} becomes 
-    \begin{align}
-        \label{eq:SSA_like_d_two}
-        \begin{split}
-            F(a,b,c,d,e,f)
-            &\coloneqq
-            -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
-            &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
-            &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
-            &\quad+(2b)\log(2b) \geq 0
-        \end{split}
-    \end{align}
-    See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
-\end{rem}
 
-\begin{figure}
-    \begin{center}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-compare}
-        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-extra}
-    \end{center}
-    \caption{
-        (Left) The region for which $(c, e, f)$ violates \cref{eq:SSA_like_d_two} with $(a,b,c) = (5,7,6)$.
-        (Middle) Comparing the region of tetrahedral $(c,e,f)$ with those which violate \cref{eq:SSA_like_d_two}.
-        (Right) The values of $(c,e,f)$ satisfying \cref{eq:quadruplet_triangle_constraints} but violating \cref{eq:SSA_like_d_two}.
-    }
-    \label{fig:ssa_extra_mileage}
-\end{figure}
-
-{\color{red}
-    Here I attempt to generalize the derivation of Sagnol:
-    \begin{equation}
-        \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( \Tr f(X+Y+\epsilon W) - \Tr f(Y+\epsilon W) - \Tr f(X+Y) + \Tr f(Y) \right) = \Tr\left[(f'(X+Y)-f'(Y)) W \right]
-    \end{equation}
-
-    \begin{align}
-        &\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(\Tr(X+Y+\epsilon W)) - f(\Tr(Y+\epsilon W)) - f(\Tr(X+Y)) + f(\Tr (Y)) \right) \\
-        &\quad=\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(x + y + \epsilon w) - f(y + \epsilon w) - f(x+y) + f(y) \right)  \\
-        &\quad= w (f'(x + y) - f'(y)) \\
-        &\quad= \Tr(W) (f'(\Tr(X+Y)) - f'(\Tr(Y))).
-    \end{align}
-
-    If $m$ is an operator monotone, then $X \geq 0$ implies $m(X) \geq 0$. Moreover, $X \geq 0$ implies $\Tr(m(X)W)\geq0$ for all PSD $W$.
-    Under which additional conditions can we expect $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$?
-    If $X = \sum_{i} \lambda_i \Pi_i$ then $m(X) = \sum_{i} m(\lambda_i) \Pi_i$ and
-    \begin{equation}
-        \Tr(m(X)W) = \sum_{i} m(\lambda_i) \Tr(\Pi_i W) \leq \sum_{i} m(\lambda_i) \Tr(W) = \Tr(m(X))\Tr(W)
-    \end{equation}
-    If $\sum_i m(\lambda_i) \leq m(\sum_{i} \lambda_i)$ then we also conclude $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$.
-
-    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
-}
+%{\color{red}
+%    Here I attempt to generalize the derivation of Sagnol:
+%    \begin{equation}
+%        \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( \Tr f(X+Y+\epsilon W) - \Tr f(Y+\epsilon W) - \Tr f(X+Y) + \Tr f(Y) \right) = \Tr\left[(f'(X+Y)-f'(Y)) W \right]
+%    \end{equation}
+%
+%    \begin{align}
+%        &\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(\Tr(X+Y+\epsilon W)) - f(\Tr(Y+\epsilon W)) - f(\Tr(X+Y)) + f(\Tr (Y)) \right) \\
+%        &\quad=\lim_{\epsilon \to 0} \frac{1}{\epsilon} \left( f(x + y + \epsilon w) - f(y + \epsilon w) - f(x+y) + f(y) \right)  \\
+%        &\quad= w (f'(x + y) - f'(y)) \\
+%        &\quad= \Tr(W) (f'(\Tr(X+Y)) - f'(\Tr(Y))).
+%    \end{align}
+%
+%    If $m$ is an operator monotone, then $X \geq 0$ implies $m(X) \geq 0$. Moreover, $X \geq 0$ implies $\Tr(m(X)W)\geq0$ for all PSD $W$.
+%    Under which additional conditions can we expect $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$?
+%    If $X = \sum_{i} \lambda_i \Pi_i$ then $m(X) = \sum_{i} m(\lambda_i) \Pi_i$ and
+%    \begin{equation}
+%        \Tr(m(X)W) = \sum_{i} m(\lambda_i) \Tr(\Pi_i W) \leq \sum_{i} m(\lambda_i) \Tr(W) = \Tr(m(X))\Tr(W)
+%    \end{equation}
+%    If $\sum_i m(\lambda_i) \leq m(\sum_{i} \lambda_i)$ then we also conclude $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$.
+%
+%    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
+%}
 
 
 \subsection{The C\c{S}W inequality}
@@ -3443,6 +3402,8 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
 \end{proof}
 
 \clearpage
+
+
 \section{Thompson's conjecture for \texorpdfstring{$\boldsymbol{2\times 2}$}{2 by 2} matrices}
 \label{sec:2by2case_intuitively}
 
@@ -3717,6 +3678,8 @@ The space of admissible $(a,b,c,x,y,z)$ is given by triangle inequalities on $x,
     \end{split}
 \end{equation}
 
+\section{Miscellaneous}
+
 \subsection{Joint statistics for partial sums of traceless \texorpdfstring{$2\times 2$}{2 by 2} matrices}
 
 In this section we consider a three-step random walk in the symmetric space $\mathfrak{su}(2) \simeq \mathbb E^{3}$ starting at the origin $O = (0,0,0)$ and terminating at $C$ with intermediate steps $A,B$.
@@ -3832,7 +3795,6 @@ Therefore, the resulting probability density is simply
 \begin{equation}
     p(x,y,z|a,b,c) = \frac{xyz}{24 \pi abc \mathrm{Vol}(a,b,c,x,y,z)}
 \end{equation}
-
 \begin{center}
     \begin{figure}
         \includegraphics[width=0.48\textwidth]{figures/analytic-test-ab-bc-abc.pdf}
@@ -3840,6 +3802,47 @@ Therefore, the resulting probability density is simply
         \caption{Admissible eigenvalues of partial sums ($A+B$, $B+C$ and $A+B+C$) of traceless $2 \times 2$ matrices ($A,B,C$) with spectra $(\alpha,\beta,\gamma)=(a,b,c)=(0.5,0.6,0.7)$. Left is a density plot of the analytic formula $p(x,y,z|a,b,c)$ restricted to the admissble region. Right is a numerical sample with admissible region boundary plotted in green.}
     \end{figure}
 \end{center}
+
+\subsection{Extra mileage}
+For $2\times 2$ Hermitian matrices it is possible to visualize the set of eigenvalues (in the same $(a,b,c,d,e,f)$ coordinates used above) which are known to be non-tetrahedral on the basis that they violate \cref{eq:SSA_like_ineq}.
+Specifically, consider the \textit{minimal} shifting of the traceless eigenvalues in \cref{eq:traceless_two_dim_tetra}, i.e.,
+\begin{equation}
+    \begin{alignedat}{3}
+        &\alpha = (2a, 0), \quad
+        &&\beta = (2b, 0), \quad
+        &&\gamma = (a+b+c, a+b-c), \quad \\
+        &\delta = (2d, 0), \quad
+        &&\epsilon = (a+b+d+e, a+b+d-e), \quad
+        &&\phi = (b+d+f, b+d-f).
+    \end{alignedat}
+\end{equation}
+With respect to these coordinates, \cref{eq:SSA_like_ineq} becomes 
+\begin{align}
+    \label{eq:SSA_like_d_two}
+    \begin{split}
+        F(a,b,c,d,e,f)
+        &\coloneqq
+        -(a+b+c)\log(a+b+c)-(a+b-c)\log(a+b-c) \\
+        &\quad-(b+d+f)\log(b+d+f)-(b+d-f)\log(b+d-f)\\
+        &\quad+(a+b+d+e)\log(a+b+d+e)+(a+b+d-e)\log(a+b+d-e)\\
+        &\quad+(2b)\log(2b) \geq 0
+    \end{split}
+\end{align}
+See \cref{fig:ssa_extra_mileage} for a depiction of the region violating \cref{eq:SSA_like_d_two}.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-compare}
+        \includegraphics[width=0.3\textwidth]{figures/ssa-excluded-extra}
+    \end{center}
+    \caption{
+        (Left) The region for which $(c, e, f)$ violates \cref{eq:SSA_like_d_two} with $(a,b,c) = (5,7,6)$.
+        (Middle) Comparing the region of tetrahedral $(c,e,f)$ with those which violate \cref{eq:SSA_like_d_two}.
+        (Right) The values of $(c,e,f)$ satisfying \cref{eq:quadruplet_triangle_constraints} but violating \cref{eq:SSA_like_d_two}.
+    }
+    \label{fig:ssa_extra_mileage}
+\end{figure}
 
 \subsection{Challenges in generalizing the scaling approach}
 
