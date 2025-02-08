@@ -1025,6 +1025,11 @@ Amazingly, \citeauthor{lin2014determinantal} has shown that one also has a Hlawk
     \label{eq:lin_hlawka_ineq}
     \det(A+B+C) + \det(A) + \det(B) + \det(C) \geq \det(A+B) + \det(B+C) + \det(A+C).
 \end{equation}
+The Hlawka-like inequalities also have associated operator inequalities \cite{berndt2015hlawka}:
+\begin{equation}
+    (A+B+C)^{\ot k} + A^{\ot k} + B^{\ot k} + C^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k} + (A+C)^{\ot k}.
+\end{equation}
+
 More recently \citeauthor{niculescu2023functions} have shown a myriad of related inequalities and generalizations \cite{niculescu2023functions}.
 For instance
 \begin{equation}
@@ -1241,6 +1246,58 @@ As we are implicitly assuming $\abs{\alpha} \neq 0$ and $\abs{\delta} \neq 0$, w
 
 \clearpage
 \section{Asymptotics of \texorpdfstring{$\boldsymbol{SU(n)}$ $\boldsymbol{6j}$}{SU(n) 6j} symbols}
+
+The essential quantities of this section are the following:
+
+\newcommand{\UniGamma}{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.75}
+\Gamma\!\left[
+    \begin{array}{@{}c|c@{}}
+        A & \alpha
+    \end{array}
+\right]
+\endgroup
+}
+\newcommand{\TriGamma}{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.75}
+\Gamma\!\left[
+    \begin{array}{@{}ccc|ccc@{}}
+        A & B & C & \alpha & \beta & \gamma
+    \end{array}
+\right]
+\endgroup
+}
+\newcommand{\TetGamma}{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.75}
+\Gamma\!\left[
+    \begin{array}{@{}ccc|ccc@{}}
+        A & B & C & \alpha & \beta & \gamma \\
+        D & E & F & \delta & \epsilon & \phi
+    \end{array}
+\right]
+\endgroup
+}
+
+\begin{equation}
+    \UniGamma
+    = \Tr[\bar A^{\ot \abs \alpha} P_{\alpha}]
+\end{equation}
+
+\begin{equation}
+    \TriGamma 
+    = \Tr[(\bar A^{\ot \abs \alpha} \ot \bar B^{\ot \abs \beta}) (P_{\alpha}\ot P_{\beta}) P_{\gamma}]
+\end{equation}
+
+\begin{equation}
+    \TetGamma 
+    = \Tr[(\bar A^{\ot \abs \alpha} \ot \bar B^{\ot \abs \beta} \ot \bar D^{\ot \abs \delta}) (P_{\alpha}\ot P_{\beta} \ot P_{\gamma}) (P_{\gamma}\ot \id^{\ot \abs{\delta}})(\id^{\ot \abs{\alpha}} \ot P_{\phi})P_{\epsilon}]
+\end{equation}
 
 \subsection{Littlewood-Richardson coefficients \& \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
 
@@ -1793,7 +1850,7 @@ From this point of view, the following result may be viewed as an instance of th
     For a detailed example, we will consider value of $\Tr(\Pi_{\gamma'} \Omega)$:
     \begin{align}
         \Tr(\Pi_{\gamma'} \Omega)
-        = \frac{\Tr[(P_{\gamma'} \ot \id^{\ot z})(A^{\ot x}\ot B^{\ot y} \ot D^{\ot z})]}{\abs{\alpha}^{x}\abs{\beta}^{y}}
+        = \frac{\Tr[(P_{\gamma'} \ot \id^{\ot z})(A^{\ot x}\ot B^{\ot y} \ot D^{\ot z})]}{\abs{\alpha}^{x}\abs{\beta}^{y}\abs{\delta}^{z}}
         = \frac{\Tr[P_{\gamma'}(A^{\ot x}\ot B^{\ot y})]}{\abs{\alpha}^{x}\abs{\beta}^{y}}.
     \end{align}
     Under the assumption that $C = A+B$, we have $C^{\ot x+y} = (A+B)^{\ot x+y}$ which implies
@@ -1939,18 +1996,26 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
 
 \begin{thm}
     Suppose $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues with minimum trace $\tau$.
-    Then for all sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ indexed by $k > \tau^{-1}$ with sizes given by \cref{eq:ceiling_sized_young_diagrams} and converging to $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have
+    Then for all sequences of Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ indexed by $k > \tau^{-1}$ with sizes given by \cref{eq:ceiling_sized_young_diagrams} and converging to $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have for sufficiently large $k$ the inequality
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
         \norm{\tightcurlysixj{ \alpha'_k & \beta'_k & \gamma'_k \\ \delta'_k &  \epsilon'_k &  \phi'_k}}_{\mathrm{HS}}^{2}
-        \leq \exp(-k I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} /6 + O(\log k)).
+        \leq \exp\left(- \frac{k \tau}{48} D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}\right),
     \end{equation}
-    where $D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ is a positive constant which measures the distance from $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ to the closed set or tetrahedral eigenvalues:
+    where $D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$ is a positive constant which measures the distance from $(\alpha, \beta, \gamma, \delta, \epsilon, \phi)$ to the closed set of tetrahedral eigenvalues $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ with matching traces (i.e., $\abs{\alpha}=\abs{\tilde \alpha}$, $\abs{\beta}=\abs{\tilde \beta}$, etc.):
     \begin{equation}
-    D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} =
-    \min_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}\\\abs{\lambda}=\abs{\tilde \lambda}}}.
+        D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} =
+        \min_{\substack{\tilde \alpha \tilde \beta \tilde \gamma\tilde\delta \tilde \epsilon \tilde \phi\\\mathrm{tetrahedral}\\\forall \lambda : \abs{\tilde \lambda}=\abs{\lambda}}}
+        \left( 
+        \norm{\bar \alpha - \bar {\tilde \alpha}}_{1}^{2} +
+        \norm{\bar \beta - \bar {\tilde \beta}}_{1}^{2} +
+        \norm{\bar \gamma - \bar {\tilde \gamma}}_{1}^{2} +
+        \norm{\bar \delta - \bar {\tilde \delta}}_{1}^{2} +
+        \norm{\bar \epsilon - \bar {\tilde \epsilon}}_{1}^{2} +
+        \norm{\bar \phi - \bar {\tilde \phi}}_{1}^{2}
+        \right)
+        .
     \end{equation}
-    \textcolor{red}{TODO:Finalize!}
 \end{thm}
 \begin{proof}
     Let $\diff X$ denote the normalized Hilbert-Schmidt measure over the set of $n\times n$ positive semidefinite matrices with trace one and let $k$ be a positive integer.
@@ -1960,7 +2025,7 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
     \end{equation}
     As $\Gamma_{k}$ is known to be both $S_k$ and $\SU(n)$ equivariant, by Schur's lemma, $\Gamma_{k}$ can be expressed as 
     \begin{equation}
-        \Gamma_{k} = \sum_{\lambda' \vdash_d k} r_{\lambda'} P_{\lambda'}
+        \Gamma_{k} = \sum_{\lambda' \vdash_n k} r_{\lambda'} P_{\lambda'}
     \end{equation}
     with coefficients $r_{\lambda'}$ that can be computed \cite{zyczkowski2001induced,walter2014multipartite} to obtain
     \begin{equation}
@@ -1999,7 +2064,7 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
     Furthermore, let $(\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)$ be the eigenvalues of $(\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F)$.
     In this notation, the integrand above is equal to
     \begin{equation}
-        Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi} = \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Omega_{A,B,D}^{x,y,z}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
+        Q^{\alpha'\beta'\gamma'}_{\delta'\epsilon'\phi} = \Tr(\Pi^{\phi'}_{\alpha'\beta'\delta'\epsilon'}\Omega_{\tilde A,\tilde B,\tilde D}^{x,y,z}\Pi^{\gamma'}_{\alpha'\beta'\delta'\epsilon'})
     \end{equation}
     Moreover, by \cref{eq:Q_sixj_upper_bound} we have a bound on the integrand,
     \begin{equation}
@@ -2016,24 +2081,7 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
         (\alpha, \beta, \gamma, \delta, \epsilon, \phi) \neq (\tilde \alpha, \tilde \beta, \tilde \gamma, \tilde \delta, \tilde \epsilon, \tilde \phi)
     \end{equation}
     and therefore $I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$.
-    {\color{red}
-        TC: TODO:
-        Figure out how to describe the convergence, is there a triangle inequality for relative entropies? 
-        Maybe we need to relax the rate function $I$ to its geometric analogue using Pinsker's inequality, then everything works.
-        The idea is deceptively simple as the primed Young diagrams converge in normalization to the non-tetrahedral eigenvalues we expect
-        \begin{equation}
-            I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} \stackrel{k\to\infty}{\rightarrow} 0,
-            \qquad
-            I^{\alpha\beta\gamma\delta\epsilon\phi}_{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} \stackrel{k\to\infty}{\rightarrow} 0,
-        \end{equation}
-        to occur at reasonable pace.
-        Moreover we know that $I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} \geq I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$.
-        So we hope for something like a reverse triangle inequality:
-        \begin{equation}
-            I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi} \geq \abs{I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} - I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}} > \frac{1}{2}I_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
-         \end{equation}
-         eventually!
-    }
+    Our goal now will be to show that for all sufficiently large $k$, one can also gaurantee that $I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} > 0$ holds for any sequence $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ converging to $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ as claimed. 
     By assumption, the Young diagrams $(\alpha'_k, \beta'_k, \gamma'_k, \delta'_k, \epsilon'_k, \phi'_k)$ converge in normalization to the eigenvalues $(\alpha,\beta,\gamma,\delta,\epsilon,\phi)$ in the sense that $I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
     Therefore, for any $\varepsilon > 0$, there exists sufficiently large finite $K$ such that for all $k \geq K$ we have
     \begin{equation}
@@ -2071,9 +2119,9 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
         &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
          -4\sum_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\\
         &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
-         -4\max_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\\
+         -24\max_{\lambda}\norm{\bar \lambda'_k - \bar \lambda}_{1}\\
         &\geq D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
-        -4\sqrt{2 \tau^{-1} \varepsilon}
+        -24\sqrt{2 \tau^{-1} \varepsilon}
     \end{align}
     where $\norm{\bar \lambda - \bar {\tilde \lambda}}_{1} \leq 2$ because $\bar \lambda$ and $\bar {\tilde \lambda}$ are both probability distributions, and where
     \begin{equation}
@@ -2082,13 +2130,40 @@ This result also relies on \cref{lem:Q_upper_bound} and follows from averaging $
     holds by definition of $D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}$.
     Therefore, picking $\varepsilon$ so that 
     \begin{equation}
-        D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}-4\sqrt{2 \tau^{-1} \varepsilon} \geq \frac{1}{2}D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+        D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}-24\sqrt{2 \tau^{-1} \varepsilon} \geq \frac{1}{2}D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
     \end{equation}
     yields for all $k \geq K$,
     \begin{equation}
         I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi} \geq \frac{\tau}{4}D_{*}^{\alpha\beta\gamma\delta\epsilon\phi} > 0.
     \end{equation}
-
+    Combining everything together, we obtain
+    \begin{equation}
+        \norm{\tightcurlysixj{ \alpha' & \beta' & \gamma' \\ \delta' &  \epsilon' &  \phi'}}_{\mathrm{HS}}^2 
+        \leq R_{\alpha_k',\beta'_k,\delta'_k;\epsilon'_k} p(k) \exp(-k\tau D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}/24)
+    \end{equation}
+    Moreover, $R_{\alpha_k',\beta'_k,\delta'_k;\epsilon'_k}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so for sufficiently large $k$, we have 
+    \begin{equation}
+        \log(R_{\alpha_k',\beta'_k,\delta'_k;\epsilon'_k} p(k)) \leq \frac{1}{2}\left(\frac{k\tau}{24} D_{*}^{\alpha\beta\gamma\delta\epsilon\phi}\right),
+    \end{equation}
+    which implies \cref{eq:seq_ud_sixj_upper_bound}.
+{\color{blue}
+        TC: TODO:
+        I suspect there might be a way to improve the analysis here.
+        Is there a triangle inequality for relative entropies? 
+        Intuitively, as the primed Young diagrams converge in normalization to the non-tetrahedral eigenvalues we expect
+        \begin{equation}
+            I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} \stackrel{k\to\infty}{\rightarrow} 0,
+            \qquad
+            I^{\alpha\beta\gamma\delta\epsilon\phi}_{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k} \stackrel{k\to\infty}{\rightarrow} 0,
+        \end{equation}
+        to occur at reasonable pace.
+        Moreover we know that $I_{*}^{\alpha\beta\gamma\delta\epsilon\phi} \geq I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} > 0$.
+        So we hope for something like a reverse triangle inequality:
+        \begin{equation}
+            I^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}_{\tilde \alpha \tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi} \geq \abs{I_{\tilde \alpha\tilde \beta\tilde \gamma\tilde \delta\tilde \epsilon\tilde \phi}^{\alpha\beta\gamma\delta\epsilon\phi} - I_{\alpha\beta\gamma\delta\epsilon\phi}^{\alpha'_k\beta'_k\gamma'_k\delta'_k\epsilon'_k\phi'_k}} > \frac{1}{2}I_{*}^{\alpha\beta\gamma\delta\epsilon\phi}
+         \end{equation}
+         eventually!
+    }
 \end{proof}
 
 \subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
