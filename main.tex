@@ -1245,10 +1245,23 @@ To begin, we recall the Schur-Weyl decomposition of $(\mathbb C^{n})^{\ot k}$ as
     Then the decomposition of $(\mathbb C^{n})^{\ot k}$ into irreducible subrepresentations of $S_k \times \U(n)$, known as the \textit{Schur-Weyl} decomposition, is given by
     \begin{equation}
         \label{eq:schur_weyl_decomp}
-        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\ex \vdash_{n} k} W_{\ex} \ot V_{\ex}^{n}
+        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_{\yx} \ot V_{\yx}^{n}
     \end{equation}
-    where the direct summands are indexed by Young diagrams $\ex$ with $k$ boxes and at most $n$ rows, and where $W_{\ex}$ supports the irreducible representation of $S_k$ and $V_{\ex}^{n}$ supports the irreducible representation of $\U(n)$.
+    where the direct summands are indexed by Young diagrams $\yx$ with $k$ boxes and at most $n$ rows, and where $W_{\yx}$ supports the irreducible representation of $S_k$ and $V_{\yx}^{n}$ supports the irreducible representation of $\U(n)$.
 \end{prop}
+
+The dimension of the $V_{\yx}^n$ is given by Weyl's dimension formula \cite{hall2008representations,itzykson1966unitary},
+\begin{equation}
+    \label{eq:weyl_dim}
+    \dim(V_{\yx}^{n}) = \frac{\Delta_n(\tilde \yx)}{\Delta_n(\rho)},
+\end{equation}
+whereas the dimension of $W_{\yx}$ may be given by \cite[Corollary 9.1.5]{goodman2000representations},
+\begin{equation}
+    \label{eq:frob_dim}
+    \dim(W_{\yx}) = \frac{\abs{\yx}!}{\tilde \yx_1!\tilde \yx_2! \cdots \tilde \yx_n!} \Delta_n(\tilde \yx)
+\end{equation}
+where $\tilde \yx = \yx + \rho$, where $\rho =(n-1, n-2, \ldots, 1, 0)$ and where $\Delta_n(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j)$ is the Vandermonde determinant.
+Note that $\dim(W_{\yx})$ is independent of $n$ as the right hand side of \cref{eq:frob_dim} is independent of $n$ provided $n$ is at least the depth of $\yx$ and coincides with the Hook-length formula \cite[Corollary 9.1.6]{goodman2000representations}.
 
 \begin{defn}
     Given a non-zero positive semidefinite $n \times n$ matrix $A$, a positive integer $x$, and a Young diagram $\ya \vdash_n x$, let
@@ -1262,15 +1275,15 @@ As $P_{\ya}$ is $\U(n)$-equivariant, one observes that $\UniGamma$ depends only 
 The following result, know as spectrum or eigenvalue estimation, states that the map $\ya \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\ya$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{christandl2008quantum,keyl2001estimating}.
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
-    Let $A$ be a positive semidefinite matrix with eigenvalues $\ea = \eig(A)$ and let $\ya \vdash_n x$.
+    Let $A$ be a positive semidefinite matrix with eigenvalues $\ea = \eig(A)$ and let $\ya \vdash_n a$.
     Then
     \begin{equation}
-        \UniGamma \leq \dim(V_{\ya}^{n}) \exp(-x \kl{\nya}{\nea}),
+        \UniGamma \leq \dim(V_{\ya}^{n}) \exp(-a \kl{\nya}{\nea}),
     \end{equation}
-    where $\kl{\nya}{\nea}$ denotes the Kullbeck-Leibler divergence between $\nya$ from $\nea$.
+    where $\kl{\nya}{\nea}$ denotes the Kullbeck-Leibler divergence of $\nya$ from $\nea$.
 \end{prop}
 \begin{proof}
-    See \cite{keyl2001estimating} for a proof (noting that the $\Tr(\nrm A) = 1$).
+    See \cite{keyl2001estimating} for a proof (noting that $\Tr(\nrm A) = 1$).
 \end{proof}
 
 \begin{prop}
@@ -1523,7 +1536,7 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
             &\ya \vdash a = \ceil{k\abs{\ea}}, \qquad 
             &&\yb \vdash b = \ceil{k\abs{\eb}}, \qquad
             &&\yc \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}, \qquad\\
-             &\yd \vdash d = \ceil{k\abs{\ed}}, \qquad
+            &\yd \vdash d = \ceil{k\abs{\ed}}, \qquad
             &&\ye \vdash e = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}+\ceil{k\abs{\ed}}, \qquad
             &&\yf \vdash f = \ceil{k\abs{\eb}}+\ceil{k\abs{\ed}},
         \end{alignedat}
@@ -1612,6 +1625,7 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
     Our objective now will be to use the $k$-dependent values for $(a,b,c,d,e,f)$ to upper bound the multinomial prefactors appearing in the bounds for $\yc$, $\ye$, and $\yf$ above in terms of $k$.
     From \cref{eq:ceil_yd_sizes}, we obtain the following estimates:
     \begin{equation}
+        \label{eq:size_estimates}
         \begin{alignedat}{3}
             &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad 
             &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad 
@@ -1626,10 +1640,11 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
         \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}
         \leq \exp(4)\left(k \abs{\ec}+3\right)^2.
     \end{equation}
-    Moreover, using \cite[Equation 7]{christandl2006spectra}, we have
+    Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
-        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} = (c+1)^{n(n-1)/2}.
+        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} = (c+1)^{n(n-1)/2},
     \end{equation}
+    because $(\yc_i - i)-(\yc_j - j) \leq \abs{\yc} + 1$ as well as $j-i\geq 1$.
     Altogether, we can relax the bound on $\Tr(\Pi_{\yc} \Omega)$ to obtain
     \begin{equation}
         \Tr(\Pi_{\yc} \Omega) \leq
@@ -1675,7 +1690,7 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
     To proof the claim, we construct the sequence implicitly. 
     For each $k$, it suffices to take $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ to be any sextuple of Young diagrams which maximizes the value of $\abs{\TetGamma}$ with sizes determined by \cref{eq:ceil_yd_sizes}:
     \begin{equation}
-        (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \coloneqq \argmax_{\substack{\ya\yb\yc \\ \yd\ye\yf}} \abs{\TetGamma}.
+        (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \coloneqq \underset{\ya\yb\yc\yd\ye\yf}{\argmax} \abs{\TetGamma}.
     \end{equation}
     While this maximal choice may not be unique, it will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TetGamma$ \cref{eq:tet_completeness}.
     Specifically, this maximal choice must satisfy
@@ -1695,18 +1710,19 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
 \end{proof}
 
 \begin{rem}
-    The convergence condition \cref{eq:sextuple_convergence_rate} above implies in particular that the primed Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge in normalization to the unprimed eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$:
+    The convergence condition above (\cref{eq:sextuple_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_yd_sizes} together ensure that the Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the following sense that
     \begin{equation}
         \label{eq:sextuple_convergence}
         \begin{alignedat}{3}
-            &\lim_{k\to\infty} \nya_k = \nea, \qquad
-            &&\lim_{k\to\infty} \nyb_k = \neb, \qquad
-            &&\lim_{k\to\infty} \nyc_k = \nec, \\
-            &\lim_{k\to\infty} \nyd_k = \ned, \qquad
-            &&\lim_{k\to\infty} \nye_k = \nee, \qquad
-            &&\lim_{k\to\infty} \nyf_k = \nef.
+            & \frac{\ya_k}{k} \rightarrow \ea, \qquad
+            && \frac{\yb_k}{k} \rightarrow \eb, \qquad
+            && \frac{\yc_k}{k} \rightarrow \ec, \\
+            & \frac{\yd_k}{k} \rightarrow \ed, \qquad
+            && \frac{\ye_k}{k} \rightarrow \ee, \qquad
+            && \frac{\yf_k}{k} \rightarrow \ef,
         \end{alignedat}
     \end{equation}
+    where $\frac{\yx_k}{k} \rightarrow \ex$ is shorthand for $\lim_{k\to \infty} (\yx_k)_i/k = \ex_i$ for all $i \in \{1,\ldots, n\}$.
 \end{rem}
 
 While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
@@ -1849,161 +1865,85 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
     \textcolor{red}{TODO: Explain what this all means carefully.}
 \end{proof}
 
+An immediate application of \cref{thm:sixj_ssa_bound} is to combine it with \cref{cor:tet_sixj_lower_bound}.
+If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:tet_sixj_lower_bound} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that\footnote{Here we used the well-known inequality $\norm{X}_{\infty} \leq \norm{X}_{\text{HS}}$.}
+\begin{equation}
+    \label{eq:combined_bound}
+    \frac{1}{q(k)^2} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{\text{HS}}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
+\end{equation}
+Remarkably, both $q(k)$ (given by \cref{eq:q_of_k}) and the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}, c_{\yb_k,\yd_k}^{\yf_k}, c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams, i.e., $n \geq r_{\max}$ where $r_{\max}$ is the maximum rank of any of the tetrahedral eigenvalues).
+This observation provides one with an opportunity to optimize the above bound by varying the value of $n$.
 
-It will be useful for what follows to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\SL(n)$ grows as $n$ becomes much larger $\abs{\ex}$ while $\abs{\ex}$ itself is much larger than $\ell(\ex)$.
-\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\ex}^{n})$ \cite{itzykson1966unitary}.
-\begin{lem}
-    %\label{lem:in_estimate}
-    Let $\ex$ be an positive integer partition of length $\ell \coloneqq \ell(\ex)$, let $n \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(n)$.
-    The following approximation holds when $n \gg \abs{\ex}^2$ and $\ex_{\ell} \gg \ell$:
+In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
+In general, for fixed $\yx$, the function $n \mapsto V_{\yx}^{n}$ can grow at an exponential rate with increasing $n$.
+One can find estimates for $\dim(V_{\ex}^{n})$ in the regime where $n$ is large compared to $\abs{\yx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
+Here we use an elegant presentation of this scaling, namely \cite[Lemma 2]{harrow2023approximate}, which relates the asymptotics of $\dim(V_{\ex}^{n})$ to $\dim(W_{\ex})$.
+\begin{prop}
+    \label{prop:harrow_formula}
+    Let $\yx$ be a Young diagram with depth at most $n$. Then
     \begin{equation}
-        %\label{eq:in_estimate}
-        \dim(V_{\ex}^{n}) = \dim(V_{\ex}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\ex}} \times \left(1 + O\left(\frac{\abs{\ex}^{2}}{n}\right)\right).
+        \frac{\dim(V_{\yx}^{n})}{n^{\abs{\yx}}} = \frac{\dim(W_{\yx})}{\abs{\yx}!}\prod_{(i,j) \in \yx} \left(1 + \frac{j-i}{n}\right).
     \end{equation}
-\end{lem}
+\end{prop}
 \begin{proof}
-    Weyl's character formula can be used to derive the following formula for $\dim(V_{\ex}^{n})$ in terms of the Young diagram $\ex$ and the dimension $n$ \cite{itzykson1966unitary}:
-    \begin{equation}
-        \dim(V_{\ex}^{n}) = \frac{\Delta(\ex + \rho^n)}{\Delta(\rho^n)} = \prod_{1 \leq i<j\leq d} \frac{(\ex_i+\rho^d_i)-(\ex_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\ex_i-i)-(\ex_j-j)}{j-i},
-    \end{equation}
-    where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
-    Isolating the terms above which depend on $n$ from those that do not yields
-    \begin{equation}
-        %\label{eq:dim_separation_large_d}
-        \dim(V_{\ex}^{n}) = \dim(V_{\ex}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}.
-    \end{equation}
-    Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
-    \begin{align}
-        \begin{split}
-            &\log\left(\frac{(a+b)!}{b!}\right) 
-            = \log \prod_{j=1}^{a} (b+j)
-            = \sum_{j=1}^{a} \log (b+j) \\
-            &\quad= a \log b + \sum_{j=1}^{a} \log \left(1+\frac{j}{b}\right)
-            = a \log b + O\left(\frac{a^2}{b}\right).
-        \end{split}
-    \end{align}
-    The assumption that $n \gg \abs{\ex}^2$ and $i \leq \ell \ll \ex_{\ell} \leq \abs{\ex}$ also implies $n - i = \rho^{n}_i \gg \ex_i^2$.
-    Therefore,
-    \begin{align}
-        \log\left(\frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
-        &= \ex_i\log\rho^{n}_i + O\left(\frac{\ex_i^2}{\rho^{n}_i}\right).
-    \end{align}
-    The assumptions also imply the following simplification
-    \begin{align}
-        \log\left(\frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
-        &= \ex_i\log n + O\left(\frac{\abs{\ex}^2}{n}\right)
-    \end{align}
-    which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
+    The statement follows from the dimension formulas for $\dim(V_{\yx}^{n})$ and $\dim(W_{\yx})$ in \cref{eq:weyl_dim} and \cref{eq:frob_dim}. See also \cite[Appendix A]{harrow2023approximate}.
+    %\begin{align}
+    %    \dim(V_{\ex}^{n}) = \prod_{1\leq i < j \leq n}\frac{\tilde \lambda_i - \tilde \lambda_j}{j-i},
+    %    \qquad \text{and} \qquad
+    %    \dim(W_{\ex}) = \frac{\abs{\ex}!}{\tilde \lambda_1!\cdots \tilde \lambda_n!}\prod_{1\leq i < j \leq n}(\tilde \lambda_i - \tilde \lambda_j),
+    %\end{align}
+    %where $\tilde \lambda_j \coloneqq \lambda_j+n-j$.
 \end{proof}
-Using \cref{lem:in_estimate}, in can be seen that for fixed $\ex$, $\dim(V_{\ex}^{n})$ generally grows polynomially in $n$ with leading exponent $\abs{\ex}$ and leading coefficient depending only on $\ex$.
-The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\ex}$ and even large $n$.
-\textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\ex}, \abs{\ex}/d\} \leq \ee$.}
-\begin{lem}
-    %\label{lem:double_asymptotics}
-    Let everything be as in \cref{lem:in_estimate}. Then
+From \cref{prop:harrow_formula} we obtain the following corollary.
+\begin{cor}
+    \label{cor:harrow_ssa_lim}
+    Let $\yc,\yf,\yb,\ye$ be a quadruple of Young diagrams such that 
     \begin{equation}
-        \log \dim (V_{\ex}^{n}) = \abs{\ex} + \abs{\ex}\log(n) + s(\ex) + O(\ell^2 \log \abs{\ex}) + O\left(\frac{\abs{\ex}^2}{n}\right)
+        \label{eq:balanced_sizes}
+        \abs{\yc}+\abs{\yf} = \abs{\yb}+\abs{\ye}.
     \end{equation}
-    where $s(\ex)$ is defined by
-    \begin{equation}
-        %\label{eq:unnorm_shannon}
-        s(\ex) \coloneqq -\sum_{i=1}^{\ell(\ex)} \ex_i \log \ex_i.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
-    First, we upper bound the dimension $\dim(V_{\ex}^{\ell})$; for indices $i<j\leq \ell$, one has $(\ex_i-i)-(\ex_j-j) \leq \abs{\ex} + 1$ as well as $j-i \geq 1$ which implies
-    \begin{equation}
-        %\label{eq:dim_lambda_ell_bound}
-        \dim(V_{\ex}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\ex_i-i)-(\ex_j-j)}{j-i} \leq (\abs{\ex}+1)^{\ell(\ell-1)/2},
-    \end{equation}
-    and thus $\log \dim(V_{\ex}^{\ell}) = O(\ell^2 \log \abs{\ex})$.
-
-    Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\ex_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \ex_{i}$),
-    \begin{align}
-        \log\left(\prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !}\right) 
-        &= \sum_{i=1}^{\ell}\log \rho^{\ell}_i! - \sum_{i=1}^{\ell} \log (\ex_i + \rho^{\ell}_i)!, \\
-        &= \abs{\ex} + \sum_{i=1}^{\ell} \left(\rho^{\ell}_i\log \rho^{\ell}_i - (\ex_i + \rho^{\ell}_i)\log (\ex_i + \rho^{\ell}_i)+ O(\log \ex_i )\right), \\
-        &= \abs{\ex} - \sum_{i=1}^{\ell} \ex_i\log \ex_i + O( \ell \log \abs{\ex} ), \\
-        %\label{eq:unnorm_shannon_term}
-    \end{align}
-    Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
-\end{proof}
-\begin{rem}
-    Note that the quantity $s(\ex)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon entropy,
-    \begin{equation}
-        S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
-    \end{equation}
-    of a probability distribution $p = (p_1, \ldots, p_\ell)$.
-    Indeed, $s(\ex)$ is related to the Shannon entropy of the \textit{normalization} of $\ex$ by the formula
-    \begin{equation}
-        %\label{eq:little_s_relation}
-        s(\ex) = \abs{\ex} S\left(\frac{\ex}{\abs{\ex}}\right) - \abs{\ex} \log \abs{\ex}.
-    \end{equation}
-\end{rem}
-
-{\color{red}
-TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\ex}^{n})$ to $\dim(W_{\ex})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
-}
-\begin{lem}
-    Let $\ex$ be a Young diagram with at most $n$ parts. Then
-    \begin{equation}
-        \frac{\dim(V_{\ex}^{n})}{n^{\abs{\ex}}} = \frac{\dim(W_{\ex})}{\abs{\ex}!}\prod_{(i,j) \in \ex} \left(1 + \frac{j-i}{n}\right)
-    \end{equation}
-\end{lem}
-\begin{lem}
-    %\label{lem:asymptotic_dimension_ratio}
-    Let $\ec,\ef,\eb,\ee$ be a quadruple of Young diagrams such that 
-    \begin{equation}
-        %\label{eq:balanced_sizes}
-        \abs{\ec}+\abs{\ef} = \abs{\eb}+\abs{\ee}
-    \end{equation}
-    and that $\abs{\ee} = \max\{\abs{\ec}, \abs{\ef}, \abs{\eb}, \abs{\ee}\}$.
-    Let $\ell \coloneqq \max\{\ell(\ec), \ell(\ef), \ell(\eb), \ell(\ee) \}$ and let $n$ be a positive integer such that $n \geq \ell$.
     Then
     \begin{equation}
-        \log\left(\frac{\dim(V_{\ec}^n) \dim(V_{\ef}^n)}{\dim(V_{\eb}^n) \dim(V_{\ee}^n)}\right)
-        = I(\ec,\ef;\eb,\ee) + O(\ell^2 \log \abs{\ee}) + O\left(\frac{\abs{\ee}^2}{n}\right)
-        %\label{eq:asymptotic_dimension_ratio}
+        \lim_{n\to\infty} 
+        \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)} = 
+        \frac{\abs{\yb}!\abs{\ye}!}{\abs{\yc}!\abs{\yf}!}
+        \frac{\dim(W_{\yc}) \dim(W_{\yf})}{\dim(W_{\yb}) \dim(W_{\ye})} 
     \end{equation}
-    where $I(\ec,\ef;\eb,\ee)$ is the function
-    \begin{equation}
-        I(\ec,\ef;\eb,\ee) \coloneqq s(\ec) + s(\ef) - s(\eb) - s(\ee).
-    \end{equation}
-    Moreover, $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ for any $k > 0$.
-\end{lem}
+\end{cor}
 \begin{proof}
-    The proof follows from four applications of \cref{lem:double_asymptotics}.
-    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(n)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
-    
-    Four applications of \cref{eq:little_s_relation} yields
-    \begin{align}
-        \begin{split}
-            I(\ec,\ef;\eb,\ee)
-            &= s(\ec) + s(\ef) - s(\eb) - s(\ee) \\
-            &= \left\{\abs{\ec}S(\nrm \ec) + \abs{\ef} S(\nrm \ef) - \abs{\eb} S(\nrm \eb) - \abs{\ee} S(\nrm \ee)\right\} + \cdots \\
-            &\quad\cdots- \left\{\abs{\ec}\log \abs{\ec} + \abs{\ef}\log \abs{\ef} - \abs{\eb}\log \abs{\eb} - \abs{\ee}\log \abs{\ee}\right\}.
-        \end{split}
-    \end{align}
-    Under scaling $\ex \mapsto k \ex$ for any $k>0$, observe that $\overline{k\ex} = \nrm \ex$ and $\abs{k\ex} = k \abs{\ex}$.
-    Therefore the above expression implies
+    From \cref{prop:harrow_formula} one evidently has for any Young diagram $\yx$ the limit
     \begin{equation}
-        %\label{eq:pseudo_ssa_scaling}
-        I(k\ec,k\ef;k\eb,k\ee) = kI(\ec,\ef;\eb,\ee) + (\abs{\ec}+\abs{\ef}-\abs{\eb}-\abs{\ee}) k\log k.
+        \lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{\abs{\yx}}} = \frac{\dim(W_{\yx})}{\abs{\yx}!}.
     \end{equation}
-    Since \cref{eq:balanced_sizes} is assumed to hold, the coefficient in front of the $k\log k$ term appearing in \cref{eq:pseudo_ssa_scaling} vanishes and therefore $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ as claimed.
+    The claim then follows because the missing prefactor, $\frac{n^{\abs{\yb}}n^{\abs{\ye}}}{n^{\abs{\yc}}n^{\abs{\yf}}}$, is equal to one by \cref{eq:balanced_sizes}.
 \end{proof}
-
+We are now in a position to prove the main result of this section.
 \begin{thm}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
-    Then necessarily $\abs{\eb}+\abs{\ee} = \abs{\ec}+\abs{\ef}$ and furthermore
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be tetrahedral eigenvalues.
+    Then 
     \begin{equation}
-        I(\ec, \ef; \eb, \ee) \geq 0.
+        I(\ec, \ef; \eb, \ee)  = s(\ec) + s(\ef) - s(\eb) - s(\ee) \geq 0,
     \end{equation} 
+    where 
+    \begin{equation}
+        \label{eq:little_s_defn}
+        s(\ex) \coloneqq - \sum_{i=1}^{n} \ex_i \log \ex_i.
+    \end{equation}
 \end{thm}
 \begin{proof}
-    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $n \to \infty$, the upper bound provided by \cref{thm:sixj_ssa_bound}, and the lower bound provided by \cref{cor:tet_sixj_lower_bound}.
-    \textcolor{red}{TODO: Finish this}
+    As $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral, the trace conditions (\cref{eq:tet_trace_conds}) necessarily imply that \cref{eq:balanced_sizes} holds.
+    Therefore, by \cref{cor:harrow_ssa_lim} and the discussion surrounding the bound in \cref{eq:combined_bound} we conclude that along the convergent sequence of Young diagrams satisfies
+    \begin{equation}
+        I' \coloneqq \lim_{k\to\infty} \frac{1}{k} \log \left[\frac{\abs{\yb_k}!\abs{\ye_k}!}{\abs{\yc_k}!\abs{\yf_k}!}
+        \frac{\dim(W_{\yc_k}) \dim(W_{\yf_k})}{\dim(W_{\yb_k}) \dim(W_{\ye_k})}\right] \geq 0
+    \end{equation}
+    provided the limit $I'$ exists.
+    An application of Stirling's approximation \cite{robbins1955remark} to the dimension formula for $\dim(W_{\yx_k})$ together with the approximation $\yx_k \approx k \ex$ yields
+    \begin{equation}
+        \frac{1}{k}\frac{\dim(W_{\yx_k})}{\abs{\yx}!} = s(\ex) + \abs{\ex} (1-\log k) + O(k^{-1}\log k)
+    \end{equation}
+    where $s(\ex)$ is given in \cref{eq:little_s_defn}.
+    Moreover by \cref{eq:balanced_sizes}, the $(1-\log k)$ terms cancel and therefore $I' = I(\ec, \ef; \eb, \ee) \geq 0$ as claimed above.
 \end{proof}
 
 
@@ -2042,6 +1982,17 @@ TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\ex}^{n}
         \tikzfig{tikz/ud-transpose-eval-operator}.
     \end{equation}
 \end{defn}
+
+\begin{rem}
+    In this section, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
+    Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\ec$ and $n\times n$ blocks $A',B'$ with eigenvalues $\ea,\eb$.
+    One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
+    This can be accomplished by considering the branching multiplicities $m^{\ea\eb}_{\ec}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
+    In fact there exists a representation-theoretic analogue of \cref{thm:trigonal_block}, specifically \cite[Theorem 9.2.3]{goodman2000representations}.
+    In particular, the values of $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ coincide provided the Young diagrams $(\ea,\eb,\ec)$ involved have depths at most $(\min\{a,n\}, \min\{b,n\}, \min\{a+b,n\})$; this ensures that $V_{\ea}^{a}, V_{\eb}^{b}, V_{\ec}^{a+b}$ and $V_{\ea}^{n}, V_{\eb}^{n}, V_{\ec}^{n}$ are all non-zero representation spaces and therefore $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ are both meaningfully defined.
+    The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
+    This parallels the fact that, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
+\end{rem}
 
 \begin{defn}[Recoupling operators]
     %\label{defn:ud_recoupling_operator}
@@ -2286,16 +2237,6 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     Taking $K = mk$ for sufficiently large $k$ proves the claim. 
 \end{proof}
 
-\begin{rem}
-    In this section, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
-    Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\ec$ and $n\times n$ blocks $A',B'$ with eigenvalues $\ea,\eb$.
-    One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
-    This can be accomplished by considering the branching multiplicities $m^{\ea\eb}_{\ec}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
-    In fact there exists a representation-theoretic analogue of \cref{thm:trigonal_block}, specifically \cite[Theorem 9.2.3]{goodman2000representations}.
-    In particular, the values of $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ coincide provided the Young diagrams $(\ea,\eb,\ec)$ involved have depths at most $(\min\{a,n\}, \min\{b,n\}, \min\{a+b,n\})$; this ensures that $V_{\ea}^{a}, V_{\eb}^{b}, V_{\ec}^{a+b}$ and $V_{\ea}^{n}, V_{\eb}^{n}, V_{\ec}^{n}$ are all non-zero representation spaces and therefore $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ are both meaningfully defined.
-    The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
-    This distinction also holds because, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
-\end{rem}
 
 \clearpage
 \appendix

@@ -6,8 +6,8 @@
 % Custom spaced ABCDEF 6j recoupling symbol
 \newcommand{\tightcurlysixj}[1]{
 \begingroup
-\arraycolsep=2pt
-\renewcommand{\arraystretch}{0.75}
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
 \left\{\begin{array}{ccc}
     #1
 \end{array}\right\}
@@ -15,8 +15,8 @@
 }
 \newcommand{\tightparensixj}[1]{
 \begingroup
-\arraycolsep=2pt
-\renewcommand{\arraystretch}{0.75}
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
 \left(\begin{array}{ccc}
     #1
 \end{array}\right)

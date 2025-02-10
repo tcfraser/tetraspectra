@@ -135,7 +135,7 @@
 \newcommand{\orbit}{\mathcal O}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\abs}[1]{\left|#1\right|}
-\newcommand{\kl}[2]{H\!\left(#1|#2\right)} % KL divergence
+\newcommand{\kl}[2]{D\!\left(#1|\!|#2\right)} % KL divergence
 \newcommand{\ent}[1]{H\!\left(#1\right)} % shannon entropy
 \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
@@ -209,8 +209,8 @@
 % NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
 \newcommand{\tightsextuple}[1]{
 \begingroup
-\arraycolsep=2pt
-\renewcommand{\arraystretch}{1}
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
 \begin{array}{cccccc}#1\end{array}
 \endgroup
 }
