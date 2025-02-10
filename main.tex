@@ -172,8 +172,8 @@ In particular, while the triangular Horn's problem is completely characterized b
         \label{eq:tri_trace_cond}
         \abs{\ea}+\abs{\eb}=\abs{\ec},
     \end{equation}
-    where $\abs{\lambda} \coloneqq \sum_{i} \lambda_i$ is shorthand for the sum of the eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$.
-    This condition must hold because $A+B=C$ implies $\Tr(C) = \Tr(A+B) = \Tr(A)+\Tr(B)$ and $\Tr(X) = \abs{\lambda}$ for any Hermitian matrix $X$ with eigenvalues $\lambda$.
+    where $\abs{\ex} \coloneqq \sum_{i} \ex_i$ is shorthand for the sum of the eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$.
+    This condition must hold because $A+B=C$ implies $\Tr(C) = \Tr(A+B) = \Tr(A)+\Tr(B)$ and $\Tr(X) = \abs{\ex}$ for any Hermitian matrix $X$ with eigenvalues $\ex$.
     For the tetrahedral Horn's problem, a set of tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ necessarily satisfy four \textit{trace conditions}:
     \begin{equation}
         \label{eq:tet_trace_conds}
@@ -319,14 +319,14 @@ Indeed, this can be accomplished, provided one accounts for the fact that negati
 \begin{prop}[Inversion symmetry]
     \label{prop:inversion}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues. 
-    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda^{*}$ denote the inverted list of resorted and negated eigenvalues: $\lambda^{*} = (-\lambda_d \geq \cdots \geq - \lambda_1)$.
+    Given any list of non-increasing eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{*}$ denote the inverted list of resorted and negated eigenvalues: $\ex^{*} = (-\ex_d \geq \cdots \geq - \ex_1)$.
     Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if $(\ea^{*}, \eb^{*}, \ec^{*}, \ed^{*}, \ee^{*}, \ef^{*})$ are tetrahedral.
 \end{prop}
 \begin{proof}
-    The statement holds because (i) $(A,B,C,D,E,F)$ satisfy \cref{eq:tet_linear_constraints} if and only if $(A',B',C',D',E',F') \coloneqq (-A,-B,-C,-D,-E,-F)$ satisfy \cref{eq:tet_linear_constraints}, and (ii) $\eig(X) = \lambda$ if and only if $\eig(-X) = \lambda^{*}$.
+    The statement holds because (i) $(A,B,C,D,E,F)$ satisfy \cref{eq:tet_linear_constraints} if and only if $(A',B',C',D',E',F') \coloneqq (-A,-B,-C,-D,-E,-F)$ satisfy \cref{eq:tet_linear_constraints}, and (ii) $\eig(X) = \ex$ if and only if $\eig(-X) = \ex^{*}$.
 \end{proof}
 
-The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\lambda \rightarrow \lambda^{*}$, or permutations of elements in the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
 
 \begin{prop}[Oriented Tetrahedral symmetry]
     \label{prop:tet_symmetry}
@@ -470,7 +470,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
-    Given any list of non-increasing eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda + x \coloneqq (\lambda_1 + x \geq \cdots \geq \lambda_d + x)$.
+    Given any list of non-increasing eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex + x \coloneqq (\ex_1 + x \geq \cdots \geq \ex_d + x)$.
     Then define shifted eigenvalues by the formula
     \begin{equation}
         \label{eq:shifted_tet_eigenvalues}
@@ -486,9 +486,9 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     The shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
 \end{prop}
 \begin{proof}
-    Given a Hermitian matrix $X$ with eigenvalues $\eig(X) = \lambda$ and a constant $x \in \mathbb R$, the eigenvalues of $X+xI$ (where $I$ is the identity matrix) are
+    Given a Hermitian matrix $X$ with eigenvalues $\eig(X) = \ex$ and a constant $x \in \mathbb R$, the eigenvalues of $X+xI$ (where $I$ is the identity matrix) are
     \begin{equation}
-        \eig(X+xI) = \lambda + x = (\lambda_1 + x \geq \cdots \geq \lambda_d + x).
+        \eig(X+xI) = \ex + x = (\ex_1 + x \geq \cdots \geq \ex_d + x).
     \end{equation}
     The statement then follows from \cref{exam:one_dim_soln} because 
     \begin{equation}
@@ -499,7 +499,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn's problem, in a certain sense, it suffices to solve the tetrahedral Horn's problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
 \begin{cor}[Traceless eigenvalues]
     \label{cor:traceless}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\lambda = (\lambda_1 \geq \cdots \geq \lambda_n)$, let $\lambda^{0} \coloneqq \lambda - \abs{\lambda}/n$ denote the traceless list of eigenvalues obtained by shifting $\lambda$ by $-\abs{\lambda}/n$.
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - \abs{\ex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-\abs{\ex}/n$.
     Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if (i) their traces $(\abs{\ea}, \abs{\eb}, \abs{\ec}, \abs{\ed}, \abs{\ee}, \abs{\ef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_conds}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0)$ are tetrahedral.
 \end{cor}
 \begin{proof}
@@ -533,7 +533,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
 \end{cor}
 \begin{proof}
     That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_d \geq \ea_d + \eb_n$ for the trigonal Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
-    As a reminder, the smallest eigenvalue $\lambda_n$ of a matrix $X$ is characterized by a minimization: $\lambda_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
+    As a reminder, the smallest eigenvalue $\ex_n$ of a matrix $X$ is characterized by a minimization: $\ex_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
     \begin{equation}
         \ec_d = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \ea_d + \eb_d.
     \end{equation}
@@ -542,7 +542,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     \begin{equation}
         \ea_j + x \geq \ea_d + x > 0,
     \end{equation}
-    meaning $\ea+x = (\ea_1 + x \geq \cdots \geq \lambda_d + x)$ is strictly positive.
+    meaning $\ea+x = (\ea_1 + x \geq \cdots \geq \ex_d + x)$ is strictly positive.
     Similar statements hold for $\eb,\ec,\ed, \ee$ and $\ef$; for instance, for all $j$,
     \begin{equation}
         \ee_j + x + y + z \geq \ee_d + x + y + z > \ee_d - \ea_d - \eb_d - \ed_d \geq 0,
@@ -558,7 +558,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     \begin{equation}
         (s_1-a,s_1-b,c,s_1-d,s_1-e,f) \quad \text{where} \quad s_1 = \frac{a+b+d+e}{2}.
     \end{equation}
-    Combining this symmetry with the permutational symmetries given by \cref{prop:tet_symmetry} (and noting that for the eigenvalues $\lambda$ of traceless $2 \times 2$ Hermitian matrices, $\lambda = (x, -x)$, we have $\lambda^{*} = \lambda$) one concludes the co-existence of a family of six tetrahedra with edge lengths given by \cite[Chapter 9]{varshalovich1988quantum}:
+    Combining this symmetry with the permutational symmetries given by \cref{prop:tet_symmetry} (and noting that for the eigenvalues $\ex$ of traceless $2 \times 2$ Hermitian matrices, $\ex = (x, -x)$, we have $\ex^{*} = \ex$) one concludes the co-existence of a family of six tetrahedra with edge lengths given by \cite[Chapter 9]{varshalovich1988quantum}:
     \begin{equation}
         \begin{alignedat}{2}
             &(a,b,c,d,e,f) \quad
@@ -861,7 +861,7 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
         {\sum}_{j} \ea_j \ed_{d-j+1} \leq \Tr[AD] \leq {\sum}_{j} \ea_j \ed_j,
     \end{equation} 
     where $\ed_{d-j+1} = \ed^{*}_j$. 
-    The claim then follows because $\Tr[X^2] = \sum_{j}\lambda_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \lambda$.
+    The claim then follows because $\Tr[X^2] = \sum_{j}\ex_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \ex$.
 \end{proof}
 
 \subsection{Trigonal Horn inequalities}
@@ -926,7 +926,7 @@ That these two formulations are the same follows from the identification $X = B+
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $p \in [0,1]$.
     Then
     \begin{equation}
-        \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \geq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
+        \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \geq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
     \end{equation}
 \end{lem}
 
@@ -945,14 +945,14 @@ The following operator inequality can be used to prove a number of inequalities 
 To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, and $A+B+C$, one can simply pair the positive semidefinite operator in \cref{lem:mne_operator_ineq} with an $\SU(n)$-equivariant and positive semidefinite operator:
 \begin{cor}
     \label{cor:isotypic_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $\lambda \vdash k$ be a Young diagram with $k$ boxes.
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $\ex \vdash k$ be a Young diagram with $k$ boxes.
     Then
     \begin{equation}
-        \Tr[P_{\lambda}(A+B+C)^{\ot k}] + \Tr[P_{\lambda}B^{\ot k}] \geq \Tr[P_{\lambda}(A+B)^{\ot k}] + \Tr[P_{\lambda}(B+C)^{\ot k}].
+        \Tr[P_{\ex}(A+B+C)^{\ot k}] + \Tr[P_{\ex}B^{\ot k}] \geq \Tr[P_{\ex}(A+B)^{\ot k}] + \Tr[P_{\ex}(B+C)^{\ot k}].
     \end{equation}
-    Moreover, as $\Tr[P_{\lambda} X^{\ot k}] \propto E_\lambda(X)$\footnote{Specifically the proportionality constant here is equalt to $\dim W_{\lambda}$ where $W_{\lambda}$ is the irreducible representation of $S_k$ labelled by $\lambda$.}, where $E_{\lambda}(X) = s_{\lambda}(\eig(X))$ is the Schur polynomial of the eigenvalues of $X$, we equivalently have
+    Moreover, as $\Tr[P_{\ex} X^{\ot k}] \propto E_\ex(X)$\footnote{Specifically the proportionality constant here is equalt to $\dim W_{\ex}$ where $W_{\ex}$ is the irreducible representation of $S_k$ labelled by $\ex$.}, where $E_{\ex}(X) = s_{\ex}(\eig(X))$ is the Schur polynomial of the eigenvalues of $X$, we equivalently have
     \begin{equation}
-        s_{\lambda}(A+B+C) + s_{\lambda}(B) \geq s_{\lambda}(A+B) + s_{\lambda}(B+C).
+        s_{\ex}(A+B+C) + s_{\ex}(B) \geq s_{\ex}(A+B) + s_{\ex}(B+C).
     \end{equation}
 \end{cor}
 As a special case of the previous corollary, we obtain an inequality which complements \cref{prop:simple_quadratic}.
@@ -964,7 +964,7 @@ As a special case of the previous corollary, we obtain an inequality which compl
     \end{equation}
 \end{cor}
 \begin{proof}
-    This result is a special case of \cref{cor:isotypic_ineq} below when $\lambda = (1,1)$ because
+    This result is a special case of \cref{cor:isotypic_ineq} below when $\ex = (1,1)$ because
     \begin{equation}
         \Tr[P_{(1,1)} X^{\ot 2}] = \frac{1}{2}\left( \Tr(X)^2  - \Tr(X^2) \right).
     \end{equation}
@@ -1044,7 +1044,7 @@ One also has another determinant inequality which is non-linear in determinants 
 Note that \cref{lem:det_prod_ineq} can be seen as a special of \cref{lem:bouhtou_ineq} in the limit as $p\to 0$; the derivative of \cref{lem:bouhtou_ineq} in $p$ at $p=0$ yields
 \begin{equation}
     \label{eq:bouhtou_ineq_p_zero}
-    \sum_{j}\log \lambda_j(A+B) + \sum_{j}\log\lambda_j(B+C) \geq \sum_{j}\log\lambda_j(B) + \sum_{j}\log \lambda_j(A+B+C),
+    \sum_{j}\log \ex_j(A+B) + \sum_{j}\log\ex_j(B+C) \geq \sum_{j}\log\ex_j(B) + \sum_{j}\log \ex_j(A+B+C),
 \end{equation}
 which is equivalent to \cref{lem:det_prod_ineq}.
 
@@ -1053,8 +1053,8 @@ which is equivalent to \cref{lem:det_prod_ineq}.
     Let $A,B,C \geq 0$ be positive semidefinite matrices, then
     \begin{align}
         \label{eq:SSA_like_ineq}
-        &\sum_{j}\lambda_j(A+B)\log \lambda_j(A+B)+ \sum_{j}\lambda_j(B+C)\log \lambda_j(B+C) \\
-        &\qquad\leq \sum_{j}\lambda_j(B)\log\lambda_j(B) + \sum_{j}\lambda_j(A+B+C)\log\lambda_j(A+B+C).
+        &\sum_{j}\ex_j(A+B)\log \ex_j(A+B)+ \sum_{j}\ex_j(B+C)\log \ex_j(B+C) \\
+        &\qquad\leq \sum_{j}\ex_j(B)\log\ex_j(B) + \sum_{j}\ex_j(A+B+C)\log\ex_j(A+B+C).
     \end{align}
 \end{thm}
 
@@ -1101,12 +1101,12 @@ As corollaries one obtains some of the previously mentioned inequalities for var
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $p \in (1,2]$.
     Then
     \begin{equation}
-        \sum_{j}\lambda_j(A+B)^p + \sum_{j}\lambda_j(B+C)^p \leq \sum_{j}\lambda_j(B)^p + \sum_{j}\lambda_j(A+B+C)^p.
+        \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \leq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
     \end{equation}
 \end{cor}
 
 {\color{blue}
-TC: On Sept. 18th, I came across an interesting discussion on \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality} which appears deeply related to the topic of submodular inequalities. In that post the following result is stated without explicit proof and is based on the theory of so-called ``hyperbolic polynomials'' $p$ and their real roots $\lambda_i$. There are a handful of conjectured inequalities on the page.
+TC: On Sept. 18th, I came across an interesting discussion on \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality} which appears deeply related to the topic of submodular inequalities. In that post the following result is stated without explicit proof and is based on the theory of so-called ``hyperbolic polynomials'' $p$ and their real roots $\ex_i$. There are a handful of conjectured inequalities on the page.
 For example, it seems to prove
 \begin{equation}
     E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
@@ -1130,18 +1130,18 @@ where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric po
 %
 %    If $m$ is an operator monotone, then $X \geq 0$ implies $m(X) \geq 0$. Moreover, $X \geq 0$ implies $\Tr(m(X)W)\geq0$ for all PSD $W$.
 %    Under which additional conditions can we expect $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$?
-%    If $X = \sum_{i} \lambda_i \Pi_i$ then $m(X) = \sum_{i} m(\lambda_i) \Pi_i$ and
+%    If $X = \sum_{i} \ex_i \Pi_i$ then $m(X) = \sum_{i} m(\ex_i) \Pi_i$ and
 %    \begin{equation}
-%        \Tr(m(X)W) = \sum_{i} m(\lambda_i) \Tr(\Pi_i W) \leq \sum_{i} m(\lambda_i) \Tr(W) = \Tr(m(X))\Tr(W)
+%        \Tr(m(X)W) = \sum_{i} m(\ex_i) \Tr(\Pi_i W) \leq \sum_{i} m(\ex_i) \Tr(W) = \Tr(m(X))\Tr(W)
 %    \end{equation}
-%    If $\sum_i m(\lambda_i) \leq m(\sum_{i} \lambda_i)$ then we also conclude $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$.
+%    If $\sum_i m(\ex_i) \leq m(\sum_{i} \ex_i)$ then we also conclude $\Tr(m(X)W) \leq m(\Tr(X))\Tr(W)$.
 %
 %    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
 %}
 
 
 \subsection{The C\c{S}W inequality}
-At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ which are non-negative and sufficiently small in the sense that $\lambda_1 + \abs{\lambda} \leq 1$:
+At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ which are non-negative and sufficiently small in the sense that $\ex_1 + \abs{\ex} \leq 1$:
 \begin{equation}
     \label{eq:SSA_like_CSW}
     h(\abs{\ec}) 
@@ -1167,7 +1167,7 @@ The inequality appearing in \cref{eq:SSA_like_ineq} is equivalent to the followi
     - \abs{\ee} S(\nee)  
     \geq 0.
 \end{equation}
-The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\lambda})$ with the expression $-\abs{\lambda}\log \abs{\lambda}$.
+The difference between \cref{eq:SSA_like_CSW} and \cref{eq:SSA_like_ineq_equiv} is captured by a formal substitution replacing the binary entropy $h(\abs{\ex})$ with the expression $-\abs{\ex}\log \abs{\ex}$.
 We note that it is possible to derive \cref{eq:SSA_like_ineq_equiv} from \cref{eq:SSA_like_CSW} by a down-scaling argument.
 Specifically, while the set of tetrahedral eigenvalues is closed under scaling all eigenvalues by a non-negative $r$,
 \begin{equation}
@@ -1186,7 +1186,7 @@ Define $q_{r}$ by the formula
 \end{equation}
 Letting $r \in (0,1)$ be positive and small, we see that
 \begin{equation}
-    r^{-1}h(\abs{r\lambda}) = \abs{\lambda}(1-\log r) - \abs{\lambda} \log \abs{\lambda} + O(r^2)
+    r^{-1}h(\abs{r\ex}) = \abs{\ex}(1-\log r) - \abs{\ex} \log \abs{\ex} + O(r^2)
 \end{equation}
 which implies the following limit holds when $\abs{\ec} + \abs{\ef} = \abs{\eb} + \abs{\ee}$:
 \begin{equation}
@@ -1245,18 +1245,18 @@ To begin, we recall the Schur-Weyl decomposition of $(\mathbb C^{n})^{\ot k}$ as
     Then the decomposition of $(\mathbb C^{n})^{\ot k}$ into irreducible subrepresentations of $S_k \times \U(n)$, known as the \textit{Schur-Weyl} decomposition, is given by
     \begin{equation}
         \label{eq:schur_weyl_decomp}
-        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\lambda \vdash_{n} k} W_{\lambda} \ot V_{\lambda}^{n}
+        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\ex \vdash_{n} k} W_{\ex} \ot V_{\ex}^{n}
     \end{equation}
-    where the direct summands are indexed by Young diagrams $\lambda$ with $k$ boxes and at most $n$ rows, and where $W_{\lambda}$ supports the irreducible representation of $S_k$ and $V_{\lambda}^{n}$ supports the irreducible representation of $\U(n)$.
+    where the direct summands are indexed by Young diagrams $\ex$ with $k$ boxes and at most $n$ rows, and where $W_{\ex}$ supports the irreducible representation of $S_k$ and $V_{\ex}^{n}$ supports the irreducible representation of $\U(n)$.
 \end{prop}
 
 \begin{defn}
     Given a non-zero positive semidefinite $n \times n$ matrix $A$, a positive integer $x$, and a Young diagram $\ya \vdash_n x$, let
     \begin{equation}
         \UniGamma
-        \coloneqq \Tr[\nrm A^{\ot x} P_{\ya}],
+        \coloneqq \Tr[\nrm A^{\ot a} P_{\ya}],
     \end{equation}
-    where $\nrm A = \frac{A}{\Tr(A)}$ is the normalization of $A$ and $P_{\ya}$ projects onto the isotypic component of $(\mathbb C^n)^{\ot x}$ indexed by $\ya$.
+    where $\nrm A = \frac{A}{\Tr(A)}$ is the normalization of $A$ and $P_{\ya}$ projects onto the isotypic component of $(\mathbb C^n)^{\ot a}$ indexed by $\ya$.
 \end{defn}
 As $P_{\ya}$ is $\U(n)$-equivariant, one observes that $\UniGamma$ depends only on the eigenvalues of $A$.
 The following result, know as spectrum or eigenvalue estimation, states that the map $\ya \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\ya$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{christandl2008quantum,keyl2001estimating}.
@@ -1279,28 +1279,33 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     Then
     \begin{equation}
         \label{eq:HS_mean}
-        \mathbb E_{A} [A^{\ot x}] \coloneqq \int \diff \mu (A) A^{\ot k} = \sum_{\ya \vdash_n x} r_{\ya} P_{\ya}
+        \mathbb E_{A} [A^{\ot a}] \coloneqq \int \diff \mu (A) A^{\ot k} = \sum_{\ya \vdash_n x} q_{\ya} P_{\ya}
     \end{equation}
-    where the coefficient $r_{\ya}$ equals
+    where the coefficient $q_{\ya}$ equals
     \begin{equation}
         \label{eq:HS_mean_coeff}
-        r_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(x)}^{n^2})}
+        q_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})}
     \end{equation}
 \end{prop}
 \begin{proof}
     See \cite{zyczkowski2001induced} or \cite{walter2014multipartite} for proof details.
 \end{proof}
-
-The next pair results concerns what happens to the value of $\UniGamma$ when one sums over either $A$ or $\ya$,
 \begin{prop}
-    \label{prop:uni_mean_values}
-    Let $\ya \vdash_n x$ and $A$ a positive semidefinite $n \times n$ matrix with trace one.
+    \label{prop:HS_integral_uni}
+    Let $A$ be a positive semidefinite $n \times n$ matrix such that $\Tr(A) = 1$.
     Then
     \begin{align}
-        \mathbb E_{A} \UniGamma \coloneqq \int \diff \mu(A) \UniGamma = \frac{\dim(V_{\ya}^{n})^2}{\dim(V_{(x)}^{n^2})},
-        \quad \text{and} \quad
-        \sum_{\ya \vdash_n x} \UniGamma = 1.
+        \mathbb E_{A} \UniGamma \coloneqq \int \diff \mu(A) \UniGamma = \frac{\dim(V_{\ya}^{n})^2}{\dim(V_{(a)}^{n^2})}.
     \end{align}
+\end{prop}
+\begin{prop}
+    \label{prop:completeness_rel_uni}
+    Let $A$ be positive semidefinite $n\times n$ matrix with $\Tr(A) = 1$ with eigenvalues $\alpha = \eig(A)$ and rank $r(\alpha) = \rank(A)$.
+    Then for any positive integer $a$,
+    \begin{equation}
+        \sum_{\ya \vdash_{r(\alpha)} a} \UniGamma = 1,
+    \end{equation}
+    where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\alpha)$.
 \end{prop}
 
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
@@ -1320,7 +1325,7 @@ To support this claim, we define the following quantity.
     where $\ea \vdash_{n} x$, $\eb \vdash_{n} y$, and $\ec \vdash_{n} x+y$.
     \begin{equation}
         \TriGamma
-        \coloneqq \Tr[(A^{\ot x} \ot B^{\ot y}) (P_{\ea}\ot P_{\eb}) P_{\ec}]
+        \coloneqq \Tr[(A^{\ot a} \ot B^{\ot b}) (P_{\ea}\ot P_{\eb}) P_{\ec}]
     \end{equation}
 \end{defn}
 
@@ -1328,48 +1333,66 @@ To support this claim, we define the following quantity.
 
 \begin{defn}
     \label{defn:tet_gamma}
-    Let $x,y,z$ be positive integers and let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be Young diagrams of the following sizes:
+    Given positive integers $a,b$, and $d$, let $c=a+b,f=b+d$, and $e=a+b+d$.
+    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be Young diagrams of the following sizes:
     \begin{equation}
-        \label{eq:xyz_sized_young_diagrams}
-        \begin{alignedat}{3}
-             &\ya \vdash_{n} x, \qquad 
-            &&\yb \vdash_{n} y, \qquad
-            &&\yc \vdash_{n} x+y, \qquad\\
-             &\yd \vdash_{n} z, \qquad
-            &&\ye \vdash_{n} x+y+z, \qquad
-            &&\yf \vdash_{n} y+z.
-        \end{alignedat}
+        \label{eq:yd_sizes}
+        \ya \vdash a, \qquad 
+        \yb \vdash b, \qquad
+        \yc \vdash c, \qquad
+        \yd \vdash d, \qquad
+        \ye \vdash e, \qquad
+        \yf \vdash f.
     \end{equation}
-    and define corresponding projection operators acting on $(\mathbb C^{n})^{\ot x+y+z}$ by
+    %\begin{equation}
+    %    \label{eq:xyz_sized_young_diagrams}
+    %    \begin{alignedat}{3}
+    %         &\ya \vdash_{n} x, \qquad 
+    %        &&\yb \vdash_{n} y, \qquad
+    %        &&\yc \vdash_{n} x+y, \qquad\\
+    %         &\yd \vdash_{n} z, \qquad
+    %        &&\ye \vdash_{n} x+y+z, \qquad
+    %        &&\yf \vdash_{n} y+z.
+    %    \end{alignedat}
+    %\end{equation}
+    and define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b+d}$ by
     \begin{equation}
         \label{eq:extended_projs}
         \begin{alignedat}{3}
-            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot y} \ot \id^{\ot z}, \qquad 
-            &&\Pi_{\yb} \coloneqq \id^{\ot x} \ot P_{\yb} \ot \id^{\ot z}, \qquad
-            &&\Pi_{\yc} \coloneqq P_{\yc} \ot \id^{\ot z}, \qquad\\
-             &\Pi_{\yd} \coloneqq \id^{\ot x} \ot \id^{\ot y} \ot P_{\yd}, \qquad
+            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad 
+            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb} \ot \id^{\ot d}, \qquad
+            &&\Pi_{\yc} \coloneqq P_{\yc} \ot \id^{\ot d}, \qquad\\
+             &\Pi_{\yd} \coloneqq \id^{\ot a} \ot \id^{\ot b} \ot P_{\yd}, \qquad
             &&\Pi_{\ye} \coloneqq P_{\ye}, \qquad
-            &&\Pi_{\yf} \coloneqq \id^{\ot x} \ot P_{\yf}.
+            &&\Pi_{\yf} \coloneqq \id^{\ot a} \ot P_{\yf}.
         \end{alignedat}
     \end{equation}
     Given $n\times n$ positive semidefinite matrices $A,B,D$ with $C=A+B$, $F=B+D$, and $E=A+B+D$, let
     \begin{equation}
         \TetGamma 
-        = \Tr[(\nrm A^{\ot x} \ot \nrm B^{\ot y} \ot \nrm D^{\ot z}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}].
+        = \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}].
     \end{equation}
 \end{defn}
 
 \begin{rem}
-    In the analysis that follows, it will be convenient to avoid edges cases pertaining to candidate sextuples of positive semidefinite eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ where one of the $\ex \in \{\ea,\eb,\ec,\ed,\ee,\ef\}$ is totally zero.
-    In otherwords, we will often need to demand that the minimum trace,
+    In the analysis that follows, it will be convenient to avoid certain edges cases pertaining to the candidate sextuple of positive semidefinite eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+    Specifically, let the extremal traces be denoted by
     \begin{equation}
-        \tau \coloneqq \min\{ \abs \ea, \abs \eb, \abs \ec, \abs \ed, \abs \ee, \abs \ef\},
+        \tau_{\min} \coloneqq \min\{ \abs \ea, \abs \eb, \abs \ec, \abs \ed, \abs \ee, \abs \ef\},
+        \qquad
+        \tau_{\max} \coloneqq \max\{ \abs \ea, \abs \eb, \abs \ec, \abs \ed, \abs \ee, \abs \ef\},
     \end{equation}
-    is strictly positive 
+    and the extremal ranks be denoted by
     \begin{equation}
-        \tau > 0.
+        r_{\min} \coloneqq \min\{ r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef) \},
+        \qquad
+        r_{\max} \coloneqq \max\{ r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef) \}.
     \end{equation}
-    It is also not too difficult to show in the context of the tetrahedral Horn problem, this minimum is always attained by one of $(\abs \ea, \abs \eb, \abs \ed)$.
+    In order to avoid the edge case where one of the eigenvalues $\ex \in \{\ea,\eb,\ec,\ed,\ee,\ef\}$ is totally zero, we sometimes demand that the minimum trace is strictly positive or equivalently that the minimum rank is at least one:
+    \begin{equation}
+        \tau_{\min} > 0, \qquad r_{\min} \geq 1.
+    \end{equation}
+    %In the context of the tetrahedral Horn problem for positive semidefinite eigenvalues, one necessarily has $\tau_{\min} = \min(\abs \ea, \abs \eb, \abs \ed)$.
 \end{rem}
 
 Another technical difficulty which complicates subsequent analysis is that the set of projection operators $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ defined by \cref{eq:extended_projs} is \textit{almost} pairwise mutually commuting.
@@ -1388,13 +1411,13 @@ Another technical difficulty which complicates subsequent analysis is that the s
 \end{lem}
 \begin{proof}
     That all projection operators except the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ commute follows from elementary applications of Schur's lemma. 
-    The obtruction for the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ is simply that $\Pi_{\yc}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot y+z}$ and likewise $\Pi_{\yf}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot x+y}$.
+    The obtruction for the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ is simply that $\Pi_{\yc}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot b+d}$ and likewise $\Pi_{\yf}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot a+b}$.
 \end{proof}
 
-The following proposition is the analogue of \cref{prop:uni_mean_values}.
+The following proposition is the analogue of \cref{prop:HS_integral_uni}.
 \begin{prop}
-    \label{prop:tet_mean_values}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams with sizes given by \cref{eq:xyz_sized_young_diagrams}.
+    \label{prop:HS_integral_tet}
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams with sizes given by \cref{eq:yd_sizes}.
     Then
     \begin{align}
         \label{eq:tet_mean_value}
@@ -1408,23 +1431,14 @@ The following proposition is the analogue of \cref{prop:uni_mean_values}.
     \end{align}
     where $R_{\ya\yb\yd;\ye}$ is a ratio of dimensions:
     \begin{equation}
-        R_{\ya\yb\yd;\ye} = \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(x)}^{n^2})\dim(V_{(y)}^{n^2})\dim(V_{(z)}^{n^2})}.
+        R_{\ya\yb\yd;\ye} = \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})}.
     \end{equation}
-    Moreover, one also has
-    \begin{align}
-        \label{eq:tet_completeness}
-        \sum_{\substack{\ya\vdash_n x\\\yd\vdash_n z}} 
-        \sum_{\substack{\yb\vdash_n y\\\ye\vdash_n y+z}} 
-        \sum_{\substack{\yc\vdash_n x+y\\\yf\vdash_n x+y+z}} 
-        \TetGamma = 1.
-    \end{align}
 \end{prop}
 \begin{proof}
-    To begin, note that \cref{eq:tet_completeness} follows simply because $\sum_{\yx \vdash_n x} P_{\yx} = \id_{n}^{\otimes x}$ for all positive integers $x$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
     To prove \cref{eq:tet_mean_value}, we use \cref{prop:uni_mean_values} and \cref{lem:tet_com_rels} to see that
     \begin{equation}
         \label{eq:tet_mean_step_1}
-        \mathbb E_{A,B,D}\TetGamma = r_{\ya}r_{\yb}r_{\yd} \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}).
+        \mathbb E_{A,B,D}\TetGamma = q_{\ya}q_{\yb}q_{\yd} \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}).
     \end{equation}
     We claim that the product $\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}$ is related to the generalized $6j$ operator $\abcdefsymbolprimed$ in that there exists appropriately-typed isometries $\iota_{I}$ and $\iota_{II}$ such that
     \begin{equation}
@@ -1444,12 +1458,38 @@ The following proposition is the analogue of \cref{prop:uni_mean_values}.
     \end{equation}
     Combining \cref{eq:ud_sixj_prod_proj_hs_norm} with \cref{eq:tet_mean_step_1} and \cref{eq:HS_mean_coeff} then yields \cref{eq:tet_mean_value}.
 \end{proof}
+The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
+\begin{prop}
+    \label{prop:completeness_rel_tet}
+    Let $(A,B,C,D,E,F)$ be tetrahedral positive semidefinite matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+    Then
+    \begin{align}
+        \label{eq:tet_completeness}
+        \sum_{\substack{\ya \yb \yc \\ \yd \ye \yf}}
+        \TetGamma = 1.
+    \end{align}
+    where the sum is taken over Young diagrams with the following sizes:
+    \begin{equation}
+        \label{eq:yd_sizes_rank}
+        \ya \vdash_{r(\ea)} a, \qquad 
+        \yb \vdash_{r(\eb)} b, \qquad
+        \yc \vdash_{r(\ec)} c, \qquad
+        \yd \vdash_{r(\ed)} d, \qquad
+        \ye \vdash_{r(\ee)} e, \qquad
+        \yf \vdash_{r(\ef)} f.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
+    That one can restrict to Young diagrams with depths bounded according to \cref{eq:yd_sizes} follows
+    because $\TetGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc, \yd, \ye, \yf)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef))$.\footnote{This claim actually follows from \cref{thm:abd_dep_upper_bound} and will be proven shortly. Importantly, \cref{thm:abd_dep_upper_bound} does not rely on \cref{prop:completeness_rel_tet}.}
+\end{proof}
 
 Our next goal will be to derive two upper bounds on the absolute value of $\TetGamma$.
 Our first upper bound is \textit{independent} of the given matrices and follows as a corollary of \cref{lem:tet_com_rels}.
 \begin{cor}
     \label{cor:abd_indep_upper_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:xyz_sized_young_diagrams}.
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:yd_sizes}.
     Then for all tetrahedral, non-zero positive semidefinite $(A,B,C,D,E,F)$, we have
     \begin{equation}
         \label{eq:tet_gamma_sixj_upper_bound}
@@ -1462,9 +1502,9 @@ Our first upper bound is \textit{independent} of the given matrices and follows 
     \begin{equation}
         \TetGamma
         =
-        \Tr(\Pi^{\yf}_{\ya\yb\yd\ye}(\nrm A^{\ot x} \ot \nrm B^{\ot y} \ot \nrm D^{\ot z}) \Pi^{\yc}_{\ya\yb\yd\ye}).
+        \Tr(\Pi^{\yf}_{\ya\yb\yd\ye}(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi^{\yc}_{\ya\yb\yd\ye}).
     \end{equation}
-    Moreover, as $\Omega \coloneqq \nrm A^{\ot x} \ot \nrm B^{\ot y} \ot \nrm D^{\ot z}$ is positive semidefinite trace one, 
+    Moreover, as $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$ is positive semidefinite trace one, 
     and $\Pi_1 \coloneqq \Pi^{\yf}_{\ya\yb\yd\ye}$ and $\Pi_2 \coloneqq \Pi^{\yc}_{\ya\yb\yd\ye}$ are projection operators by \cref{lem:tet_com_rels}, we have
     \begin{equation}
         \abs{\TetGamma} = \abs{\Tr(\Pi_1 \Omega \Pi_2)} \leq \abs{\braket{v, \Pi_1 \Pi_2 v}} \leq \norm{\Pi_1\Pi_2}_{\infty} = \norm{\abcdefsymbolprimed}_{\infty}.
@@ -1476,16 +1516,19 @@ Our second upper bound on the magnitude of $\TetGamma$ depends on the \textit{ei
 This result proves that in the limit of large values for $(x,y,z)$, the magnitude of $\TetGamma$ is sharply concentrated around those sextuples of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ which resemble the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of $(A,B,C,D,E,F)$.
 \begin{thm}
     \label{thm:abd_dep_upper_bound}
-    Let everything be as in \cref{defn:tet_gamma} except now suppose $(x,y,z)$ satisfy
+    Let everything be as in \cref{defn:tet_gamma} and let the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes given by
     \begin{equation}
-        \label{eq:rounding_up}
-        x = \ceil{k \abs{\ea}},
-        \qquad
-        y = \ceil{k \abs{\eb}},
-        \qquad
-        z = \ceil{k \abs{\ed}},
+        \label{eq:ceil_yd_sizes}
+        \begin{alignedat}{3}
+            &\ya \vdash a = \ceil{k\abs{\ea}}, \qquad 
+            &&\yb \vdash b = \ceil{k\abs{\eb}}, \qquad
+            &&\yc \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}, \qquad\\
+             &\yd \vdash d = \ceil{k\abs{\ed}}, \qquad
+            &&\ye \vdash e = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}+\ceil{k\abs{\ed}}, \qquad
+            &&\yf \vdash f = \ceil{k\abs{\eb}}+\ceil{k\abs{\ed}},
+        \end{alignedat}
     \end{equation}
-    for some positive integer $k > \tau^{-1}$ and $\tau = \min\{\abs \ea, \abs \eb, \abs \ed\}$ is the minimum trace.
+    for some positive integer $k > \tau_{\min}^{-1}$ where $\tau_{\min}$ is the minimum trace.
     Then
     \begin{equation}
         \abs{\TetGamma} 
@@ -1506,8 +1549,8 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
 \end{thm}
 \begin{proof}
     The first portion of the proof does not depend on the value of $k$.
-    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:xyz_sized_young_diagrams} for $x,y,z$ arbitrary positive integers.
-    As in the proof of \cref{cor:abd_indep_upper_bound}, we let $\Omega \coloneqq \nrm A^{\ot x} \ot \nrm B^{\ot y} \ot \nrm D^{\ot z}$.
+    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:yd_sizes} for $x,y,z$ arbitrary positive integers.
+    As in the proof of \cref{cor:abd_indep_upper_bound}, we let $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$.
     Using the commutation relations provided by \cref{lem:tet_com_rels} we apply the Cauchy-Schwarz inequality to $\braket{X,Y} = \Tr(X^{*} Y) \leq \Tr(X^{*}X)^{\frac{1}{2}}\Tr(Y^{*}Y)^{\frac{1}{2}}$ for $X = \Omega^{\frac{1}{2}}\Pi_{\yf}\Pi_{\ya}\Pi_{\yb}$ and $Y = \Omega^{\frac{1}{2}}\Pi_{\yc} \Pi_{\yd} \Pi_{\ye}$ to obtain
     \begin{align}
         \begin{split}
@@ -1527,94 +1570,88 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
     For a detailed example, we will consider value of $\Tr(\Pi_{\yc} \Omega)$:
     \begin{align}
         \Tr(\Pi_{\yc} \Omega)
-        = \frac{\Tr[(P_{\yc} \ot \id^{\ot z})(A^{\ot x}\ot B^{\ot y} \ot D^{\ot z})]}{\abs{\ea}^{x}\abs{\eb}^{y}\abs{\ed}^{z}}
-        = \frac{\Tr[P_{\yc}(A^{\ot x}\ot B^{\ot y})]}{\abs{\ea}^{x}\abs{\eb}^{y}}.
+        = \frac{\Tr[(P_{\yc} \ot \id^{\ot d})(A^{\ot a}\ot B^{\ot b} \ot D^{\ot d})]}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}
+        = \frac{\Tr[P_{\yc}(A^{\ot a}\ot B^{\ot b})]}{\abs{\ea}^{a}\abs{\eb}^{b}}.
     \end{align}
-    Under the assumption that $C = A+B$, we have $C^{\ot x+y} = (A+B)^{\ot x+y}$ which implies
+    Under the assumption that $C = A+B$, we have $C^{\ot c} = (A+B)^{\ot a+b}$ which implies
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot x+y}) = \sum_{j=0}^{x+y} \binom{x+y}{k} \Tr(P_{\yc} (A^{\ot k} \ot B^{\ot x+y-j}).
+        \Tr(P_{\yc} C^{\ot c}) = \sum_{k=0}^{c} \binom{c}{k} \Tr(P_{\yc} (A^{\ot k} \ot B^{\ot c-k}).
     \end{equation}
-    Here we have used the $S_{x+y}$-equivariance of $P_{\yc}$.
-    Since each of the summands above are non-negative, we conclude for all $0 \leq j \leq x+y$ that
+    Here we have used the $S_{c}$-equivariance of $P_{\yc}$.
+    Since each of the summands above are non-negative, we conclude for all $0 \leq j \leq c$ that
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot x+y}) \geq \binom{x+y}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot x+y-j}).
+        \Tr(P_{\yc} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
     \end{equation}
-    Letting $j = x$ and rearranging yields
+    Letting $j = a$ and rearranging yields
     \begin{equation}
-        \Tr(P_{\yc} (A^{\ot x} \ot B^{\ot y})) \leq \frac{x!y!}{(x+y)!}\Tr(P_{\yc} C^{\ot x+y}).
+        \Tr(P_{\yc} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\yc} C^{\ot c}).
     \end{equation}
     Combining this result with the spectrum estimation bound (\cref{prop:eig_est}) yields
     \begin{align}
         \Tr(\Pi_{\yc} \Omega)
-        %&\leq \frac{1}{\abs{\ea}^{x}\abs{\eb}^{y}}\frac{x!y!}{(x+y)!}\Tr[P_{\yc}C^{\ot x+y}],
-        \leq \frac{(\abs{\ea}+\abs{\eb})^{x+y}}{\abs{\ea}^{x}\abs{\eb}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\yc}^{n})\exp(-(x+y)\kl{\nyc}{\nec}).
+        %&\leq \frac{1}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{x!y!}{(x+y)!}\Tr[P_{\yc}C^{\ot a+y}],
+        \leq \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}\dim(V_{\yc}^{n})\exp(-c\kl{\nyc}{\nec}).
     \end{align}
-    Analogous calculations for $\lambda' \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$ produce the following set of upper bounds:
+    Analogous calculations for $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$ produce the following set of upper bounds:
     \begin{align}
-        \Tr(\Pi_{\ya} \Omega)
-        &\leq \dim(V_{\ya}^{n}) \exp(- x \kl{\nya}{\nea}), \\
-        \Tr(\Pi_{\yb} \Omega)
-        &\leq \dim(V_{\yb}^{n}) \exp(- y \kl{\nyb}{\neb}), \\
-        \Tr(\Pi_{\yc} \Omega)
-        &\leq \frac{(\abs{\ea}+\abs{\eb})^{x+y}}{\abs{\ea}^{x}\abs{\eb}^{y}}\frac{x!y!}{(x+y)!}\dim(V_{\yc}^{n}) \exp(- (x+y) \kl{\nyc}{\nec}), \\
-        \Tr(\Pi_{\yd} \Omega)
-        &\leq \dim(V_{\yd}^{n}) \exp(- z \kl{\nyd}{\ned}), \\
-        \Tr(\Pi_{\ye} \Omega)
-        &\leq \frac{(\abs{\ea}+\abs{\eb}+\abs{\ed})^{x+y+z}}{\abs{\ea}^{x}\abs{\eb}^{y}\abs{\ed}^{z}}\frac{x!y!z!}{(x+y+z)!}\dim(V_{\ye}^{n}) \exp(- (x+y+z) \kl{\nye}{\nee}), \\
-        \Tr(\Pi_{\yf} \Omega)
-        &\leq \frac{(\abs{\eb}+\abs{\ed})^{x+y+z}}{\abs{\eb}^{y}\abs{\ed}^{z}}\frac{y!z!}{(y+z)!} \dim(V_{\yf}^{n}) \exp(- (y+z) \kl{\nyf}{\nef}).
+        \begin{split}
+            \Tr(\Pi_{\ya} \Omega)
+            &\leq \dim(V_{\ya}^{n}) \exp(- a \kl{\nya}{\nea}), \\
+            \Tr(\Pi_{\yb} \Omega)
+            &\leq \dim(V_{\yb}^{n}) \exp(- b \kl{\nyb}{\neb}), \\
+            \Tr(\Pi_{\yc} \Omega)
+            &\leq \dim(V_{\yc}^{n})\frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!} \exp(- c \kl{\nyc}{\nec}), \\
+            \Tr(\Pi_{\yd} \Omega)
+            &\leq \dim(V_{\yd}^{n}) \exp(- d \kl{\nyd}{\ned}), \\
+            \Tr(\Pi_{\ye} \Omega)
+            &\leq \dim(V_{\ye}^{n})\frac{\abs{\ee}^{e}}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}\frac{a!b!d!}{e!} \exp(- e \kl{\nye}{\nee}), \\
+            \Tr(\Pi_{\yf} \Omega)
+            &\leq \dim(V_{\yf}^{n}) \frac{\abs{\ef}^{f}}{\abs{\eb}^{b}\abs{\ed}^{d}}\frac{b!d!}{f!} \exp(- f \kl{\nyf}{\nef}).
+        \end{split}
     \end{align}
-    Our objective now will be to use the given values for $(x,y,z)$ to upper bound the multinomial prefactors appearing in the bounds for $\yc$, $\ye$, and $\yf$ in terms of $k$.
+    Our objective now will be to use the $k$-dependent values for $(a,b,c,d,e,f)$ to upper bound the multinomial prefactors appearing in the bounds for $\yc$, $\ye$, and $\yf$ above in terms of $k$.
+    From \cref{eq:ceil_yd_sizes}, we obtain the following estimates:
+    \begin{equation}
+        \begin{alignedat}{3}
+            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad 
+            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad 
+            &&k \abs{\ec} \leq c < k \abs{\ec} + 2, \\
+            &k \abs{\ed} \leq d < k \abs{\ed} + 1, \qquad 
+            &&k \abs{\ee} \leq e < k \abs{\ee} + 3, \qquad 
+            &&k \abs{\ef} \leq f < k \abs{\ef} + 2.
+        \end{alignedat}
+    \end{equation}
     An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions implies the following bound
     \begin{equation}
-        \frac{(\abs{\ea}+\abs{\eb})^{x+y}}{\abs{\ea}^{x}\abs{\eb}^{y}}\frac{x!y!}{(x+y)!}
-        \leq e^{4}\left(k (\abs{\ea} + \abs{\eb})+3\right)^2.
+        \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}
+        \leq \exp(4)\left(k \abs{\ec}+3\right)^2.
     \end{equation}
     Moreover, using \cite[Equation 7]{christandl2006spectra}, we have
     \begin{equation}
-        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} = (x+y+1)^{n(n-1)/2}.
+        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} = (c+1)^{n(n-1)/2}.
     \end{equation}
-    Using \cref{eq:rounding_up}, we can further bound the integers $x,y,z$ in terms of $k$:
-    \begin{equation}
-        k \abs{\ea} \leq x < k \abs{\ea} + 1,
-        \qquad
-        k \abs{\eb} \leq y < k \abs{\eb} + 1,
-        \qquad
-        k \abs{\ed} \leq z < k \abs{\ed} + 1.
-    \end{equation}
-    Altogether, we can relax the bound on $\Tr(\Pi_{\yc} \Omega)$ to obtain (noting the trace condition $\abs{\ea}+\abs{\eb}=\abs{\ec}$)
+    Altogether, we can relax the bound on $\Tr(\Pi_{\yc} \Omega)$ to obtain
     \begin{equation}
         \Tr(\Pi_{\yc} \Omega) \leq
-        e^{4}(k\abs{\ec}+3)^{\frac{n(n-1)}{2}+2}\exp\left(-k\abs{\ec}\kl{\nyc}{\nec}\right).
+        \exp(4)(k\abs{\ec}+3)^{\frac{n(n-1)}{2}+2}\exp\left(-k\abs{\ec}\kl{\nyc}{\nec}\right).
     \end{equation}
     A similar calculations for $\Tr(\Pi_{\ye} \Omega)$ yields (noting to apply \cref{lem:multinomial_dist_lower_bound} for trinomial distributions) yields:
     \begin{equation}
-        \Tr(\Pi_{\ye} \Omega) \leq e^{16}(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+3}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
+        \Tr(\Pi_{\ye} \Omega) \leq \exp(16)(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+3}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
     \end{equation}
     It is also not too difficult to see that the polynomial in $k$ prefactor in the upper bound on $\Tr(\Pi_{\ye} \Omega)$ above is the largest such prefactor and thus \cref{eq:tet_gamma_upper_bound} indeed holds if we take $p(k)$ to be
     \begin{equation}
         \label{eq:p_of_k}
-        p(k) = e^{16}(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+3}.
+        p(k) = \exp(16)(k\tau_{\max}+4)^{\frac{n(n-1)}{2}+3}.
     \end{equation}
 \end{proof}
 
 While \cref{thm:abd_dep_upper_bound} states that $\TetGamma$ concentrates in magnitude around particular Young diagrams, it is not directly applicable to the tetrahedral Horn problem simply because its value depends on more than just the eigenvalues of the matrices $(A,B,C,D,E,F)$. 
 Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness relation (\cref{eq:tet_completeness}) yields a necessary condition for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral.
 \begin{cor}
-    \label{cor:seq_ud_recoupling_norm_lower_bound}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$ with minimum trace $\tau$.
-    Then there exists a sextuple of sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by positive integers $k > \tau^{-1}$ with sizes\footnote{The sizes of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ are given according to \cref{eq:xyz_sized_young_diagrams} with $(x,y,z)$ fixed by $k$ according to \cref{eq:rounding_up}.}
-    \begin{equation}
-        \label{eq:ceiling_sized_young_diagrams}
-        \begin{alignedat}{3}
-            &\ya_k \vdash_{n} \ceil{k\abs{\ea}}, \qquad 
-            &&\yb_k \vdash_{n} \ceil{k\abs{\eb}}, \qquad
-            &&\yc_k \vdash_{n} \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}, \qquad\\
-             &\yd_k \vdash_{n} \ceil{k\abs{\ed}}, \qquad
-            &&\ye_k \vdash_{n} \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}+\ceil{k\abs{\ed}}, \qquad
-            &&\yf_k \vdash_{n} \ceil{k\abs{\eb}}+\ceil{k\abs{\ed}},
-        \end{alignedat}
-    \end{equation}
+    \label{cor:tet_sixj_lower_bound}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$ with minimum trace $\tau_{\min}$.
+    Then there exists a sextuple of sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes}
     satisfying both (i) the convergence condition
     \begin{equation}
         \label{eq:sextuple_convergence_rate}
@@ -1631,29 +1668,29 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
     where $p(k)$ is given by \cref{eq:p_of_k} whereas $q(k)$ is given by
     \begin{equation}
         \label{eq:q_of_k}
-        q(k) = (k \abs{\ee}+4)^{6(n-1)}.
+        q(k) = (k \tau_{\max} +4)^{6(r_{\max}-1)}.
     \end{equation}
 \end{cor}
 \begin{proof}
     To proof the claim, we construct the sequence implicitly. 
-    For each $k$, it suffices to pick $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ be the sextuple of Young diagrams which maximizes the value of $\abs{\TetGamma}$ when $(x,y,z)$ are fixed by $k$ according to \cref{eq:rounding_up}.
+    For each $k$, it suffices to take $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ to be any sextuple of Young diagrams which maximizes the value of $\abs{\TetGamma}$ with sizes determined by \cref{eq:ceil_yd_sizes}:
     \begin{equation}
         (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \coloneqq \argmax_{\substack{\ya\yb\yc \\ \yd\ye\yf}} \abs{\TetGamma}.
     \end{equation}
-    This maximal choice will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TetGamma$ \cref{eq:completeness_relation}.
-    Specifically, this maximal choice must must satisfy
+    While this maximal choice may not be unique, it will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TetGamma$ \cref{eq:tet_completeness}.
+    Specifically, this maximal choice must satisfy
     \begin{equation}
         \label{eq:tet_gamma_lower_bound}
         \abs{\TetGammak} \geq \frac{1}{q(k)}
     \end{equation}
-    where $q(k)$ can be any upper bound on the number of possible summands in the completeness relation \cref{eq:completeness_relation} viewed as a function of $k$.
-    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size of any of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ is at most $k=n\abs{\ee} + 3$.
+    where $q(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:tet_completeness} viewed as a function of $k$.
+    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ is at most $n \tau_{\max} + 3$ (resp. $r_{\max}$).
     Moreover, applying \cref{eq:tet_gamma_upper_bound} yields
     \begin{equation}
         I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\ea\eb\ec\ed\ee\ef}
         \leq \frac{6}{k}\log (q(k)p(k))
     \end{equation}
-    and thus \cref{eq:sextuple_convergence_rate} holds because $p(k)$ and $q(k)$ are polynomials in $k$ with coefficients depending on fixed $\abs{\ee}$ and dimension $n$.
+    and thus \cref{eq:sextuple_convergence_rate} holds because $p(k)$ and $q(k)$ are polynomials in $k$ with coefficients depending on the maximum trace $\tau_{\max}$ and maximum rank $r_{\max}$.
     Also \cref{eq:ud_sixj_lower_bound} follows from \cref{eq:tet_gamma_lower_bound} combined with the upper bound provided by \cref{eq:tet_gamma_sixj_upper_bound}.
 \end{proof}
 
@@ -1672,21 +1709,21 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
     \end{equation}
 \end{rem}
 
-While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral by \cref{cor:seq_ud_recoupling_norm_lower_bound}, our next result proves it is also sufficient.
+While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
 In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such sequence can exist.
 
-\begin{thm}
-    Suppose $(\ea, \eb, \ec, \ed, \ee, \ef)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues with minimum trace $\tau$.
-    Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by $k > \tau^{-1}$ with sizes given by \cref{eq:ceiling_sized_young_diagrams} and converging to $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have 
+\begin{cor}
+    Suppose $(\ea, \eb, \ec, \ed, \ee, \ef)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues with minimum trace $\tau_{\min}$.
+    Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes} and converging to $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have 
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
         \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
-        \leq \exp\left(- \frac{k \tau}{12} D_{*}^{\ea\eb\ec\ed\ee\ef} + O(\log k)\right),
+        \leq \exp\left(- \frac{k \tau_{\min}}{12} D_{*}^{\ea\eb\ec\ed\ee\ef} + O(\log k)\right),
     \end{equation}
     where $D_{*}^{\ea\eb\ec\ed\ee\ef} > 0$ is a positive constant which measures the distance from $(\ea, \eb, \ec, \ed, \ee, \ef)$ to the closed set of tetrahedral eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ with matching traces (i.e., $\abs{\ea}=\abs{\tilde \ea}$, $\abs{\eb}=\abs{\tilde \eb}$, etc.):
     \begin{equation}
         D_{*}^{\ea\eb\ec\ed\ee\ef} =
-        \min_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}\\\forall \lambda : \abs{\tilde \lambda}=\abs{\lambda}}}
+        \min_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}\\\forall \ex : \abs{\tilde \ex}=\abs{\ex}}}
         \left( 
         \norm{\nea - \tilde{\nea}}_{1}^{2} +
         \norm{\neb - \tilde{\neb}}_{1}^{2} +
@@ -1697,7 +1734,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         \right)
         .
     \end{equation}
-\end{thm}
+\end{cor}
 \begin{proof}
     Using \cref{eq:tet_mean_value}, we have
     \begin{align}
@@ -1737,60 +1774,239 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     and therefore $I_{\tilde \ea\tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ea\eb\ec\ed\ee\ef} > 0$.
 
     Our goal now will be to show that for any sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converging to the non-tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, one can also gaurantee that for sufficiently large $k$, the exponent $I_{\tilde \ea\tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ above is also bounded from below by a positive constant.
-    Let $\lambda$ be a dumby variable indexing $\lambda \in \{\ea,\eb,\ec,\ed,\ee,\ef\}$.
+    Let $\ex$ be a dumby variable indexing $\ex \in \{\ea,\eb,\ec,\ed,\ee,\ef\}$.
     By Pinsker's inequality for the relative entropy, we obtain a sequence of lower bounds on $I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}$:
     \begin{align}
         I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}
-        = \sum_{\lambda} \abs{\lambda} \kl{\nrm \lambda'}{\nrm \lambda}
-        \geq \frac{1}{2}\sum_{\lambda} \abs{\lambda} \norm{\nrm \lambda' - \nrm \lambda}_{1}^{2}
-        %&\geq \frac{1}{2} \max_{\lambda} \abs{\lambda} \norm{\nrm \lambda' - \nrm \lambda}_{1}^{2}\\
-        \geq \frac{\tau}{2} \sum_{\lambda} \norm{\nrm \lambda' - \nrm \lambda}_{1}^{2}
-        \geq \frac{\tau}{2} \max_{\lambda} \norm{\nrm \lambda' - \nrm \lambda}_{1}^{2},
+        = \sum_{\ex} \abs{\ex} \kl{\nrm \yx}{\nrm \ex}
+        \geq \frac{1}{2}\sum_{\ex} \abs{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2}
+        %&\geq \frac{1}{2} \max_{\ex} \abs{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2}\\
+        \geq \frac{\tau_{\min}}{2} \sum_{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2}
+        \geq \frac{\tau_{\min}}{2} \max_{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2},
     \end{align}
-    where $\tau$ is the minimum trace over the eigenvalues (the lower indices).
+    where $\tau_{\min}$ is the minimum trace over the eigenvalues (the lower indices).
     Applying the last bound to $I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ yields
     \begin{equation}
-        \max_{\lambda}\norm{\nrm \lambda_k' - \nrm \lambda}_{1} \leq \sqrt{2 \tau^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}
+        \max_{\ex}\norm{\nrm \ex_k' - \nrm \ex}_{1} \leq \sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}
     \end{equation}
-    whereas applying the second to last bound to $I_{\tilde \ea\tilde \eb \tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ (noting that $\tau$ is also the minimum trace of $(\tilde \ea,\tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$) yields
+    whereas applying the second to last bound to $I_{\tilde \ea\tilde \eb \tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ (noting that $\tau_{\min}$ is also the minimum trace of $(\tilde \ea,\tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$) yields
     \begin{equation}
-        \sum_{\lambda} \norm{\nrm \lambda'_k - \nrm {\tilde \lambda}}_{1}^2 \leq 2 \tau^{-1}I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}.
+        \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2 \leq 2 \tau_{\min}^{-1}I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}.
     \end{equation}
     Furthermore, by the reverse triangle inequality we have
     \begin{align}
-        \sum_{\lambda} \norm{\nrm \lambda'_k - \nrm {\tilde \lambda}}_{1}^2
+        \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2
         \geq
-        \sum_{\lambda}\left(\norm{\nrm \lambda'_k - \nrm \lambda}_{1}
-        -\norm{\nrm \lambda - \nrm {\tilde \lambda}}_{1}\right)^2
+        \sum_{\ex}\left(\norm{\nrm \yx_k - \nrm \ex}_{1}
+        -\norm{\nrm \ex - \nrm {\tilde \ex}}_{1}\right)^2
         \geq
-        \sum_{\lambda}\norm{\nrm \lambda - \nrm {\tilde \lambda}}_{1}^2 -2\norm{\nrm \lambda'_k - \nrm \lambda}_{1}\norm{\nrm \lambda - \nrm {\tilde \lambda}}_{1}.
+        \sum_{\ex}\norm{\nrm \ex - \nrm {\tilde \ex}}_{1}^2 -2\norm{\nrm \yx_k - \nrm \ex}_{1}\norm{\nrm \ex - \nrm {\tilde \ex}}_{1}.
     \end{align}
     Also by the definition of $D_{*}^{\ea\eb\ec\ed\ee\ef}$ we have
     \begin{equation}
-        D_{*}^{\ea\eb\ec\ed\ee\ef} \leq \sum_{\lambda}\norm{\nrm \lambda - \nrm {\tilde \lambda}}_{1}^2.
+        D_{*}^{\ea\eb\ec\ed\ee\ef} \leq \sum_{\ex}\norm{\nrm \ex - \nrm {\tilde \ex}}_{1}^2.
     \end{equation}
-    Since $\nrm \lambda$ and $\nrm {\tilde \lambda}$ are both probability distributions we also have $\norm{\nrm \lambda - \nrm {\tilde \lambda}}_{1} \leq 2$.
-    Also, $6 \max_{\lambda}\norm{\nrm \lambda'_k - \nrm \lambda}_{1} \geq \sum_{\lambda}\norm{\nrm \lambda'_k - \nrm \lambda}_{1}$ as there are six summands.
+    Since $\nrm \ex$ and $\nrm {\tilde \ex}$ are both probability distributions we also have $\norm{\nrm \ex - \nrm {\tilde \ex}}_{1} \leq 2$.
+    Also, $6 \max_{\ex}\norm{\nrm \yx_k - \nrm \ex}_{1} \geq \sum_{\ex}\norm{\nrm \yx_k - \nrm \ex}_{1}$ as there are six summands.
     Combining all these bounds together yields
     %\begin{align}
     %    I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}
     %    \geq
-    %    \frac{\tau}{2} \sum_{\lambda} \norm{\nrm \lambda'_k - \nrm {\tilde \lambda}}_{1}^2
-    %    &\geq \frac{\tau}{2}\left(D_{*}^{\ea\eb\ec\ed\ee\ef}
-    %    -24\sqrt{2 \tau^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}\right),
+    %    \frac{\tau_{\min}}{2} \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2
+    %    &\geq \frac{\tau_{\min}}{2}\left(D_{*}^{\ea\eb\ec\ed\ee\ef}
+    %    -24\sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}\right),
     %\end{align}
     %and therefore,
     \begin{equation}
         \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd &  \ye &  \yf}}_{\mathrm{HS}}^2 
-        \leq  \exp\left(-k\left\{\frac{\tau D_{*}^{\ea\eb\ec\ed\ee\ef}}{12}
-        -2\sqrt{2 \tau I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}} - \frac{1}{k}\log(R_{\ea_k',\yb_k,\yd_k;\ye_k}^{-1} p(k))\right\}\right).
+        \leq  \exp\left(-k\left\{\frac{\tau_{\min} D_{*}^{\ea\eb\ec\ed\ee\ef}}{12}
+        -2\sqrt{2 \tau_{\min} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}} - \frac{1}{k}\log(R_{\ea_k',\yb_k,\yd_k;\ye_k}^{-1} p(k))\right\}\right).
     \end{equation}
     By assumption, the Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge in normalization to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that $I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
     Moreover, $R_{\ea_k',\yb_k,\yd_k;\ye_k}^{-1}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so \cref{eq:seq_ud_sixj_upper_bound} holds as claimed.
 \end{proof}
 
+\subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
 
-\subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit}
+The purpose of this section is to show how to use the necessary condition for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral provided by \cref{cor:tet_sixj_lower_bound} to derive inequalities satisfied by tetrahedral eigenvalues.
+Our strategy will be to prove an upper bound the generalized $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
+By combining this upper bound with the lower bound provided by \cref{cor:tet_sixj_lower_bound}, we obtain a new constraint on the convergent sequence of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$.
+
+\begin{thm}
+    \label{thm:sixj_ssa_bound}
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
+    Then
+    \begin{equation}
+        \norm{\abcdefsymbolprimed}_{\text{HS}}^{2}
+        \leq \left(c_{\ya,\yf}^{\ye}c_{\yb,\yd}^{\yf}c_{\ya,\yb}^{\yc}c_{\yc,\yd}^{\ye}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)}.
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
+    \begin{equation}
+        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
+    \end{equation}
+    \textcolor{red}{TODO: Explain what this all means carefully.}
+\end{proof}
+
+
+It will be useful for what follows to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\SL(n)$ grows as $n$ becomes much larger $\abs{\ex}$ while $\abs{\ex}$ itself is much larger than $\ell(\ex)$.
+\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\ex}^{n})$ \cite{itzykson1966unitary}.
+\begin{lem}
+    %\label{lem:in_estimate}
+    Let $\ex$ be an positive integer partition of length $\ell \coloneqq \ell(\ex)$, let $n \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(n)$.
+    The following approximation holds when $n \gg \abs{\ex}^2$ and $\ex_{\ell} \gg \ell$:
+    \begin{equation}
+        %\label{eq:in_estimate}
+        \dim(V_{\ex}^{n}) = \dim(V_{\ex}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\ex}} \times \left(1 + O\left(\frac{\abs{\ex}^{2}}{n}\right)\right).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Weyl's character formula can be used to derive the following formula for $\dim(V_{\ex}^{n})$ in terms of the Young diagram $\ex$ and the dimension $n$ \cite{itzykson1966unitary}:
+    \begin{equation}
+        \dim(V_{\ex}^{n}) = \frac{\Delta(\ex + \rho^n)}{\Delta(\rho^n)} = \prod_{1 \leq i<j\leq d} \frac{(\ex_i+\rho^d_i)-(\ex_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\ex_i-i)-(\ex_j-j)}{j-i},
+    \end{equation}
+    where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
+    Isolating the terms above which depend on $n$ from those that do not yields
+    \begin{equation}
+        %\label{eq:dim_separation_large_d}
+        \dim(V_{\ex}^{n}) = \dim(V_{\ex}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}.
+    \end{equation}
+    Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
+    \begin{align}
+        \begin{split}
+            &\log\left(\frac{(a+b)!}{b!}\right) 
+            = \log \prod_{j=1}^{a} (b+j)
+            = \sum_{j=1}^{a} \log (b+j) \\
+            &\quad= a \log b + \sum_{j=1}^{a} \log \left(1+\frac{j}{b}\right)
+            = a \log b + O\left(\frac{a^2}{b}\right).
+        \end{split}
+    \end{align}
+    The assumption that $n \gg \abs{\ex}^2$ and $i \leq \ell \ll \ex_{\ell} \leq \abs{\ex}$ also implies $n - i = \rho^{n}_i \gg \ex_i^2$.
+    Therefore,
+    \begin{align}
+        \log\left(\frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
+        &= \ex_i\log\rho^{n}_i + O\left(\frac{\ex_i^2}{\rho^{n}_i}\right).
+    \end{align}
+    The assumptions also imply the following simplification
+    \begin{align}
+        \log\left(\frac{(\ex_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
+        &= \ex_i\log n + O\left(\frac{\abs{\ex}^2}{n}\right)
+    \end{align}
+    which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
+\end{proof}
+Using \cref{lem:in_estimate}, in can be seen that for fixed $\ex$, $\dim(V_{\ex}^{n})$ generally grows polynomially in $n$ with leading exponent $\abs{\ex}$ and leading coefficient depending only on $\ex$.
+The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\ex}$ and even large $n$.
+\textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\ex}, \abs{\ex}/d\} \leq \ee$.}
+\begin{lem}
+    %\label{lem:double_asymptotics}
+    Let everything be as in \cref{lem:in_estimate}. Then
+    \begin{equation}
+        \log \dim (V_{\ex}^{n}) = \abs{\ex} + \abs{\ex}\log(n) + s(\ex) + O(\ell^2 \log \abs{\ex}) + O\left(\frac{\abs{\ex}^2}{n}\right)
+    \end{equation}
+    where $s(\ex)$ is defined by
+    \begin{equation}
+        %\label{eq:unnorm_shannon}
+        s(\ex) \coloneqq -\sum_{i=1}^{\ell(\ex)} \ex_i \log \ex_i.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
+    First, we upper bound the dimension $\dim(V_{\ex}^{\ell})$; for indices $i<j\leq \ell$, one has $(\ex_i-i)-(\ex_j-j) \leq \abs{\ex} + 1$ as well as $j-i \geq 1$ which implies
+    \begin{equation}
+        %\label{eq:dim_lambda_ell_bound}
+        \dim(V_{\ex}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\ex_i-i)-(\ex_j-j)}{j-i} \leq (\abs{\ex}+1)^{\ell(\ell-1)/2},
+    \end{equation}
+    and thus $\log \dim(V_{\ex}^{\ell}) = O(\ell^2 \log \abs{\ex})$.
+
+    Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\ex_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \ex_{i}$),
+    \begin{align}
+        \log\left(\prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\ex_i + \rho^{\ell}_{i}) !}\right) 
+        &= \sum_{i=1}^{\ell}\log \rho^{\ell}_i! - \sum_{i=1}^{\ell} \log (\ex_i + \rho^{\ell}_i)!, \\
+        &= \abs{\ex} + \sum_{i=1}^{\ell} \left(\rho^{\ell}_i\log \rho^{\ell}_i - (\ex_i + \rho^{\ell}_i)\log (\ex_i + \rho^{\ell}_i)+ O(\log \ex_i )\right), \\
+        &= \abs{\ex} - \sum_{i=1}^{\ell} \ex_i\log \ex_i + O( \ell \log \abs{\ex} ), \\
+        %\label{eq:unnorm_shannon_term}
+    \end{align}
+    Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
+\end{proof}
+\begin{rem}
+    Note that the quantity $s(\ex)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon entropy,
+    \begin{equation}
+        S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
+    \end{equation}
+    of a probability distribution $p = (p_1, \ldots, p_\ell)$.
+    Indeed, $s(\ex)$ is related to the Shannon entropy of the \textit{normalization} of $\ex$ by the formula
+    \begin{equation}
+        %\label{eq:little_s_relation}
+        s(\ex) = \abs{\ex} S\left(\frac{\ex}{\abs{\ex}}\right) - \abs{\ex} \log \abs{\ex}.
+    \end{equation}
+\end{rem}
+
+{\color{red}
+TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\ex}^{n})$ to $\dim(W_{\ex})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
+}
+\begin{lem}
+    Let $\ex$ be a Young diagram with at most $n$ parts. Then
+    \begin{equation}
+        \frac{\dim(V_{\ex}^{n})}{n^{\abs{\ex}}} = \frac{\dim(W_{\ex})}{\abs{\ex}!}\prod_{(i,j) \in \ex} \left(1 + \frac{j-i}{n}\right)
+    \end{equation}
+\end{lem}
+\begin{lem}
+    %\label{lem:asymptotic_dimension_ratio}
+    Let $\ec,\ef,\eb,\ee$ be a quadruple of Young diagrams such that 
+    \begin{equation}
+        %\label{eq:balanced_sizes}
+        \abs{\ec}+\abs{\ef} = \abs{\eb}+\abs{\ee}
+    \end{equation}
+    and that $\abs{\ee} = \max\{\abs{\ec}, \abs{\ef}, \abs{\eb}, \abs{\ee}\}$.
+    Let $\ell \coloneqq \max\{\ell(\ec), \ell(\ef), \ell(\eb), \ell(\ee) \}$ and let $n$ be a positive integer such that $n \geq \ell$.
+    Then
+    \begin{equation}
+        \log\left(\frac{\dim(V_{\ec}^n) \dim(V_{\ef}^n)}{\dim(V_{\eb}^n) \dim(V_{\ee}^n)}\right)
+        = I(\ec,\ef;\eb,\ee) + O(\ell^2 \log \abs{\ee}) + O\left(\frac{\abs{\ee}^2}{n}\right)
+        %\label{eq:asymptotic_dimension_ratio}
+    \end{equation}
+    where $I(\ec,\ef;\eb,\ee)$ is the function
+    \begin{equation}
+        I(\ec,\ef;\eb,\ee) \coloneqq s(\ec) + s(\ef) - s(\eb) - s(\ee).
+    \end{equation}
+    Moreover, $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ for any $k > 0$.
+\end{lem}
+\begin{proof}
+    The proof follows from four applications of \cref{lem:double_asymptotics}.
+    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(n)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
+    
+    Four applications of \cref{eq:little_s_relation} yields
+    \begin{align}
+        \begin{split}
+            I(\ec,\ef;\eb,\ee)
+            &= s(\ec) + s(\ef) - s(\eb) - s(\ee) \\
+            &= \left\{\abs{\ec}S(\nrm \ec) + \abs{\ef} S(\nrm \ef) - \abs{\eb} S(\nrm \eb) - \abs{\ee} S(\nrm \ee)\right\} + \cdots \\
+            &\quad\cdots- \left\{\abs{\ec}\log \abs{\ec} + \abs{\ef}\log \abs{\ef} - \abs{\eb}\log \abs{\eb} - \abs{\ee}\log \abs{\ee}\right\}.
+        \end{split}
+    \end{align}
+    Under scaling $\ex \mapsto k \ex$ for any $k>0$, observe that $\overline{k\ex} = \nrm \ex$ and $\abs{k\ex} = k \abs{\ex}$.
+    Therefore the above expression implies
+    \begin{equation}
+        %\label{eq:pseudo_ssa_scaling}
+        I(k\ec,k\ef;k\eb,k\ee) = kI(\ec,\ef;\eb,\ee) + (\abs{\ec}+\abs{\ef}-\abs{\eb}-\abs{\ee}) k\log k.
+    \end{equation}
+    Since \cref{eq:balanced_sizes} is assumed to hold, the coefficient in front of the $k\log k$ term appearing in \cref{eq:pseudo_ssa_scaling} vanishes and therefore $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ as claimed.
+\end{proof}
+
+\begin{thm}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
+    Then necessarily $\abs{\eb}+\abs{\ee} = \abs{\ec}+\abs{\ef}$ and furthermore
+    \begin{equation}
+        I(\ec, \ef; \eb, \ee) \geq 0.
+    \end{equation} 
+\end{thm}
+\begin{proof}
+    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $n \to \infty$, the upper bound provided by \cref{thm:sixj_ssa_bound}, and the lower bound provided by \cref{cor:tet_sixj_lower_bound}.
+    \textcolor{red}{TODO: Finish this}
+\end{proof}
+
+
 
 \section{OLD CONTENT}
 \subsection{Littlewood-Richardson coefficients \& \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
@@ -1829,36 +2045,25 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 
 \begin{defn}[Recoupling operators]
     %\label{defn:ud_recoupling_operator}
-    Let $x,y,z$ and $n$ be positive integers and let
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:yd_sizes}.
+    Then we define the \defnsty{$\U(n)$-$6j$ operator} to be the operator
     \begin{equation}
-        %\label{eq:xyz_sized_young_diagrams_1}
-        \begin{alignedat}{3}
-             &\ea \vdash_{n} x, \qquad 
-            &&\eb \vdash_{n} y, \qquad
-            &&\ec \vdash_{n} x+y, \qquad\\
-             &\ed \vdash_{n} z, \qquad
-            &&\ee \vdash_{n} x+y+z, \qquad
-            &&\ef \vdash_{n} y+z.
-        \end{alignedat}
-    \end{equation}
-    Then we define the \defnsty{$\SU(n)$-recoupling operator} to be the operator
-    \begin{equation}
-        \abcdefsymbol
+        \abcdefsymbolprimed
         :
-        C^{\ec}_{\ea,\eb} \ot C^{\ee}_{\ed,\ec} \to C^{\ee}_{\ea, \ef} \ot C^{\ef}_{\eb,\ed},
+        C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
     \end{equation}
     defined by
     \begin{equation}
-        \abcdefsymbol 
+        \abcdefsymbolprimed
         \coloneqq
         \frac{
-            \Tr_{V_{\ee}}[
-            Y_{\ea,\ef}^{\ee\dagger}
-            (\id_{V_{\ea}}\ot Y_{\eb,\ed}^{\ef\dagger})
-            (Y_{\ea,\eb}^{\ec}\ot\id_{V_{\ed}})
-            Y_{\ec,\ed}^{\ee}
+            \Tr_{V_{\ye}}[
+            Y_{\ya,\yf}^{\ye\dagger}
+            (\id_{V_{\ya}}\ot Y_{\yb,\yd}^{\yf\dagger})
+            (Y_{\ya,\yb}^{\yc}\ot\id_{V_{\yd}})
+            Y_{\yc,\yd}^{\ye}
             ]
-        }{\dim(V_{\ee})},
+        }{\dim(V_{\ye})},
     \end{equation}
     which is depicted diagrammatically by
     \begin{equation}
@@ -1875,7 +2080,7 @@ While the individual coefficients of the recoupling operator are dependent on a 
 The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over $\SU(n)^{\times 4}$.
 \begin{lem}[Character formula]
     %\label{lem:character_formula}
-    Let $\abcdefsymbol : C^{\mu}_{\ea,\eb} \ot C^{\lambda}_{\mu,\ec} \to C^{\lambda}_{\ea, \nu} \ot C^{\nu}_{\eb,\ec}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
+    Let $\abcdefsymbol : C^{\mu}_{\ea,\eb} \ot C^{\ex}_{\mu,\ec} \to C^{\ex}_{\ea, \nu} \ot C^{\nu}_{\eb,\ec}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
     Then
     \begin{equation}
         %\label{eq:character_formula}
@@ -1890,7 +2095,7 @@ The following lemma provides a formula for the square of the Hilbert-Schmidt nor
 \end{lem}
 Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(n)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
 \begin{proof}[Proof of \cref{lem:character_formula}]
-    The proof follows from (i) the following identities concerning the character $\chi_{\lambda}(u) = \Tr(\pi_{\lambda}(u))$ and duality $\pi_{\lambda}^{*}(u) = (\pi_{\lambda}(u^{-1}))^{T}$ relations
+    The proof follows from (i) the following identities concerning the character $\chi_{\ex}(u) = \Tr(\pi_{\ex}(u))$ and duality $\pi_{\ex}^{*}(u) = (\pi_{\ex}(u^{-1}))^{T}$ relations
     \begin{equation}
         \tikzfig{tikz/character-duality},
     \end{equation}
@@ -1908,9 +2113,9 @@ Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known form
 \begin{rem}
     With the integral character formula $R^{\ea\eb\ec}_{\ed\ee\ef}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cite{mcswiggen2021harish}:
     \begin{equation}
-        K_{G}(g_1, g_2; t) = \sum_{\lambda} \dim V_{\lambda}^{n} \chi_{\lambda}(g_1 g_2^{-1}) e^{-t(\abs{\lambda+\rho}^{2} - \abs{\rho})/2},
+        K_{G}(g_1, g_2; t) = \sum_{\ex} \dim V_{\ex}^{n} \chi_{\ex}(g_1 g_2^{-1}) e^{-t(\abs{\ex+\rho}^{2} - \abs{\rho})/2},
     \end{equation}
-    where the sum is over all dominant integral weights $\lambda$ for $G$ and $\rho$ the associated Weyl vector.
+    where the sum is over all dominant integral weights $\ex$ for $G$ and $\rho$ the associated Weyl vector.
     It is conceivable that ther might be a method for expressing $R^{\ea\eb\ec}_{\ed\ee\ef}$ as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
 \end{rem}
 }
@@ -1937,7 +2142,7 @@ Our first result can be viewed as a simple condition which is sufficient to conc
 \end{lem}
 \begin{proof}
     Our proof proceeds in the style of \cite[Proposition 2.3]{berline2018horn}.
-    Given any dominant weight $\lambda \in \domweights{n}$, let $P_{\lambda}$ denote the Hermitian projection operator onto the invariant
+    Given any dominant weight $\ex \in \domweights{n}$, let $P_{\ex}$ denote the Hermitian projection operator onto the invariant
 \end{proof}
 
 Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
@@ -2017,7 +2222,7 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     \begin{equation}
         \tilde c_{MK\ea, MK\eb, MK\ec} \geq \frac{1}{\dim(V_{MK\ea} \ot V_{MK\eb} \ot V_{MK\ec})}.
     \end{equation}
-    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\ea, k\eb, k\ec}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(V_{k\lambda})$ combined with the exponential upper bound on $\tilde c_{k\ea,k\eb,k\ec}$ actually implies $c_{\ea,\eb,\ec} = 0$ whenever $A+B+C=0$.}
+    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\ea, k\eb, k\ec}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(V_{k\ex})$ combined with the exponential upper bound on $\tilde c_{k\ea,k\eb,k\ec}$ actually implies $c_{\ea,\eb,\ec} = 0$ whenever $A+B+C=0$.}
     \begin{equation}
         \tilde c_{k\ea, k\eb, k\ec} \leq \max_{A,B,C} \capacity(A,B,C)^{k}.
     \end{equation}
@@ -2026,12 +2231,12 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     The lower-bound follows from the operator inequality
      \begin{equation}
          %\label{eq:inclusivity}
-         \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}} \leq \id_{V_{\lambda}},
+         \ket{v_{\ex}^{u}}\bra{v_{\ex}^{u}} \leq \id_{V_{\ex}},
     \end{equation}
-    for all unit vectors $v_{\lambda}^{u} \in V_{\lambda}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(n)$:
+    for all unit vectors $v_{\ex}^{u} \in V_{\ex}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(n)$:
     \begin{equation}
         %\label{eq:resolution}
-        \id_{V_{\lambda}} = \dim(V_{\lambda}) \int_{u\in\U(n)} \diff u \ket{v_{\lambda}^{u}}\bra{v_{\lambda}^{u}}.
+        \id_{V_{\ex}} = \dim(V_{\ex}) \int_{u\in\U(n)} \diff u \ket{v_{\ex}^{u}}\bra{v_{\ex}^{u}}.
     \end{equation}
     %{v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec^{u_C}}
     Applying \cref{eq:resolution} three times to the definition of $\tilde c_{k\ea,k\eb,k\ec}$ yields
@@ -2044,7 +2249,7 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
         \end{split}
     \end{align}
     While the operator $\Gamma_{k\ea,k\eb,k\ec}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(n)$-invariant vectors in $V_{k\ea}\ot V_{k\eb} \ot V_{k\ec}$, the operator $\Gamma_{\ea,\eb,\ec}^{k}$ projects onto the subspace of $\GL(n)$-invariant vectors in $(V_{\ea}\otimes V_{\eb} \otimes V_{\ec})^{\ot k}$.
-    Since $V_{k\lambda}$ always embeds isometrically and equivariantly into $V_{\lambda}^{\ot k}$ for any $\lambda$, we have that$V_{k\ea}\ot V_{k\eb} \ot V_{k\ec}$ is a subspace of $(V_{\ea}\otimes V_{\eb} \otimes V_{\ec})^{\ot k}$ with respect to a $\GL(n)$-equivariant isometry and therefore the projection operators satisfy
+    Since $V_{k\ex}$ always embeds isometrically and equivariantly into $V_{\ex}^{\ot k}$ for any $\ex$, we have that$V_{k\ea}\ot V_{k\eb} \ot V_{k\ec}$ is a subspace of $(V_{\ea}\otimes V_{\eb} \otimes V_{\ec})^{\ot k}$ with respect to a $\GL(n)$-equivariant isometry and therefore the projection operators satisfy
     \begin{equation}
         \Gamma_{k\ea,k\eb,k\ec}^{1} = (\iota_{\ea}^{k}\ot\iota_{\eb}^{k}\ot\iota_{\ec}^{k})^{\dagger} \Gamma_{\ea,\eb,\ec}^{k} (\iota_{\ea}^{k}\ot\iota_{\eb}^{k}\ot\iota_{\ec}^{k}).
     \end{equation}
@@ -2091,180 +2296,6 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
     This distinction also holds because, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
 \end{rem}
-
-\subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
-
-It will be useful for what follows to better understand how the dimension, $\dim(V_{\lambda}^{n})$, of the irreducible representation $V_{\lambda}^{n}$ of $\SL(n)$ grows as $n$ becomes much larger $\abs{\lambda}$ while $\abs{\lambda}$ itself is much larger than $\ell(\lambda)$.
-\Citeauthor{itzykson1966unitary} provide the following estimate for $\dim(V_{\lambda}^{n})$ \cite{itzykson1966unitary}.
-\begin{lem}
-    %\label{lem:in_estimate}
-    Let $\lambda$ be an positive integer partition of length $\ell \coloneqq \ell(\lambda)$, let $n \geq \ell$ be a positive integer and let $\rho^d \coloneqq (d-1, d-2, \ldots, 2, 1)$ be the Weyl-vector for $\SL(n)$.
-    The following approximation holds when $n \gg \abs{\lambda}^2$ and $\lambda_{\ell} \gg \ell$:
-    \begin{equation}
-        %\label{eq:in_estimate}
-        \dim(V_{\lambda}^{n}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}  \times d^{\abs{\lambda}} \times \left(1 + O\left(\frac{\abs{\lambda}^{2}}{n}\right)\right).
-    \end{equation}
-\end{lem}
-\begin{proof}
-    Weyl's character formula can be used to derive the following formula for $\dim(V_{\lambda}^{n})$ in terms of the Young diagram $\lambda$ and the dimension $n$ \cite{itzykson1966unitary}:
-    \begin{equation}
-        \dim(V_{\lambda}^{n}) = \frac{\Delta(\lambda + \rho^n)}{\Delta(\rho^n)} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i+\rho^d_i)-(\lambda_j+\rho^d_j)}{\rho^d_i - \rho^d_j} = \prod_{1 \leq i<j\leq d} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i},
-    \end{equation}
-    where $\Delta(x) = \prod_{i < j}(x_i-x_j)$ is the Vandermonde determinant.
-    Isolating the terms above which depend on $n$ from those that do not yields
-    \begin{equation}
-        %\label{eq:dim_separation_large_d}
-        \dim(V_{\lambda}^{n}) = \dim(V_{\lambda}^{\ell}) \times \prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !} \times \prod_{i=1}^{\ell} \frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}.
-    \end{equation}
-    Given positive integers $a$ and $b$ such that $b \gg a^2$, one obtains the following approximation:
-    \begin{align}
-        \begin{split}
-            &\log\left(\frac{(a+b)!}{b!}\right) 
-            = \log \prod_{j=1}^{a} (b+j)
-            = \sum_{j=1}^{a} \log (b+j) \\
-            &\quad= a \log b + \sum_{j=1}^{a} \log \left(1+\frac{j}{b}\right)
-            = a \log b + O\left(\frac{a^2}{b}\right).
-        \end{split}
-    \end{align}
-    The assumption that $n \gg \abs{\lambda}^2$ and $i \leq \ell \ll \lambda_{\ell} \leq \abs{\lambda}$ also implies $n - i = \rho^{n}_i \gg \lambda_i^2$.
-    Therefore,
-    \begin{align}
-        \log\left(\frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
-        &= \lambda_i\log\rho^{n}_i + O\left(\frac{\lambda_i^2}{\rho^{n}_i}\right).
-    \end{align}
-    The assumptions also imply the following simplification
-    \begin{align}
-        \log\left(\frac{(\lambda_i+\rho^{n}_i)!}{\rho^{n}_i!}\right) 
-        &= \lambda_i\log n + O\left(\frac{\abs{\lambda}^2}{n}\right)
-    \end{align}
-    which, when applied to \cref{eq:dim_separation_large_d}, proves the claim.
-\end{proof}
-Using \cref{lem:in_estimate}, in can be seen that for fixed $\lambda$, $\dim(V_{\lambda}^{n})$ generally grows polynomially in $n$ with leading exponent $\abs{\lambda}$ and leading coefficient depending only on $\lambda$.
-The objective of the following lemma is to characterize the asymptotics of this leading coefficient for large $\abs{\lambda}$ and even large $n$.
-\textcolor{red}{TODO: Figure out a elegant way to present these ``double asymptotics'', maybe just epsilonifying everything, like $\max\{\ell/\abs{\lambda}, \abs{\lambda}/d\} \leq \ee$.}
-\begin{lem}
-    %\label{lem:double_asymptotics}
-    Let everything be as in \cref{lem:in_estimate}. Then
-    \begin{equation}
-        \log \dim (V_{\lambda}^{n}) = \abs{\lambda} + \abs{\lambda}\log(n) + s(\lambda) + O(\ell^2 \log \abs{\lambda}) + O\left(\frac{\abs{\lambda}^2}{n}\right)
-    \end{equation}
-    where $s(\lambda)$ is defined by
-    \begin{equation}
-        %\label{eq:unnorm_shannon}
-        s(\lambda) \coloneqq -\sum_{i=1}^{\ell(\lambda)} \lambda_i \log \lambda_i.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    The proof proceeds by considering the multiplicands in \cref{eq:in_estimate} separately.
-    First, we upper bound the dimension $\dim(V_{\lambda}^{\ell})$; for indices $i<j\leq \ell$, one has $(\lambda_i-i)-(\lambda_j-j) \leq \abs{\lambda} + 1$ as well as $j-i \geq 1$ which implies
-    \begin{equation}
-        %\label{eq:dim_lambda_ell_bound}
-        \dim(V_{\lambda}^{\ell}) = \prod_{1 \leq i<j\leq \ell} \frac{(\lambda_i-i)-(\lambda_j-j)}{j-i} \leq (\abs{\lambda}+1)^{\ell(\ell-1)/2},
-    \end{equation}
-    and thus $\log \dim(V_{\lambda}^{\ell}) = O(\ell^2 \log \abs{\lambda})$.
-
-    Second, we apply Stirling's approximation \cite{robbins1955remark} to the second term in \cref{eq:in_estimate} under the given assumption that $\lambda_{\ell} \gg \ell$ (which implies $\rho^{\ell}_{i} \ll \lambda_{i}$),
-    \begin{align}
-        \log\left(\prod_{i=1}^{\ell}\frac{\rho^{\ell}_{i}!}{(\lambda_i + \rho^{\ell}_{i}) !}\right) 
-        &= \sum_{i=1}^{\ell}\log \rho^{\ell}_i! - \sum_{i=1}^{\ell} \log (\lambda_i + \rho^{\ell}_i)!, \\
-        &= \abs{\lambda} + \sum_{i=1}^{\ell} \left(\rho^{\ell}_i\log \rho^{\ell}_i - (\lambda_i + \rho^{\ell}_i)\log (\lambda_i + \rho^{\ell}_i)+ O(\log \lambda_i )\right), \\
-        &= \abs{\lambda} - \sum_{i=1}^{\ell} \lambda_i\log \lambda_i + O( \ell \log \abs{\lambda} ), \\
-        %\label{eq:unnorm_shannon_term}
-    \end{align}
-    Combining \cref{eq:dim_lambda_ell_bound} and \cref{eq:unnorm_shannon_term} with \cref{lem:in_estimate} proves the claim.
-\end{proof}
-\begin{rem}
-    Note that the quantity $s(\lambda)$ defined in \cref{eq:unnorm_shannon} resembles the Shannon entropy,
-    \begin{equation}
-        S(p) = -\sum_{i=1}^{\ell} p_i \log p_i
-    \end{equation}
-    of a probability distribution $p = (p_1, \ldots, p_\ell)$.
-    Indeed, $s(\lambda)$ is related to the Shannon entropy of the \textit{normalization} of $\lambda$ by the formula
-    \begin{equation}
-        %\label{eq:little_s_relation}
-        s(\lambda) = \abs{\lambda} S\left(\frac{\lambda}{\abs{\lambda}}\right) - \abs{\lambda} \log \abs{\lambda}.
-    \end{equation}
-\end{rem}
-
-{\color{red}
-TODO: Perhaps a more direct way of relating the asymptotics of $\dim(V_{\lambda}^{n})$ to $\dim(W_{\lambda})$ can be found in \citeauthor{harrow2023approximate}'s paper \cite[Lemma 2]{harrow2023approximate}:
-}
-\begin{lem}
-    Let $\lambda$ be a Young diagram with at most $n$ parts. Then
-    \begin{equation}
-        \frac{\abs{\lambda}!}{d^{\abs{\lambda}}} \frac{\dim(V_{\lambda}^{n})}{\dim(W_{\lambda})} = \prod_{(i,j) \in \lambda} \left(1 + \frac{j-i}{n}\right)
-    \end{equation}
-\end{lem}
-\begin{thm}
-    %\label{thm:ud_recouple_bound}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in \domweights{n}$ be a sextuple of dominant weights for $\GL(n)$ and let $\abcdefsymbol$ be the corresponding $\GL(n)$-recoupling operator. 
-    Then
-    \begin{equation}
-        \norm{\abcdefsymbol}_{\text{HS}}^{2}
-        \leq \left(c_{\ea,\ef}^{\ee}c_{\eb,\ed}^{\ef}c_{\ea,\eb}^{\ec}c_{\ec,\ed}^{\ee}\right)^{\frac{1}{2}} \frac{\dim(V_{\ec}) \dim(V_{\ef})}{\dim(V_{\eb}) \dim(V_{\ee})}
-    \end{equation}
-\end{thm}
-\begin{proof}
-    \textcolor{red}{TODO: Explain what this all means carefully.}
-    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
-    \begin{equation}
-        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
-    \end{equation}
-\end{proof}
-\begin{lem}
-    %\label{lem:asymptotic_dimension_ratio}
-    Let $\ec,\ef,\eb,\ee$ be a quadruple of Young diagrams such that 
-    \begin{equation}
-        %\label{eq:balanced_sizes}
-        \abs{\ec}+\abs{\ef} = \abs{\eb}+\abs{\ee}
-    \end{equation}
-    and that $\abs{\ee} = \max\{\abs{\ec}, \abs{\ef}, \abs{\eb}, \abs{\ee}\}$.
-    Let $\ell \coloneqq \max\{\ell(\ec), \ell(\ef), \ell(\eb), \ell(\ee) \}$ and let $n$ be a positive integer such that $n \geq \ell$.
-    Then
-    \begin{equation}
-        \log\left(\frac{\dim(V_{\ec}^n) \dim(V_{\ef}^n)}{\dim(V_{\eb}^n) \dim(V_{\ee}^n)}\right)
-        = I(\ec,\ef;\eb,\ee) + O(\ell^2 \log \abs{\ee}) + O\left(\frac{\abs{\ee}^2}{n}\right)
-        %\label{eq:asymptotic_dimension_ratio}
-    \end{equation}
-    where $I(\ec,\ef;\eb,\ee)$ is the function
-    \begin{equation}
-        I(\ec,\ef;\eb,\ee) \coloneqq s(\ec) + s(\ef) - s(\eb) - s(\ee).
-    \end{equation}
-    Moreover, $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ for any $k > 0$.
-\end{lem}
-\begin{proof}
-    The proof follows from four applications of \cref{lem:double_asymptotics}.
-    The assumption that the sizes of the Young diagrams are balanced in the sense of \cref{eq:balanced_sizes} implies that the $\log(n)$ terms appearing in \cref{lem:double_asymptotics} cancel each other and one obtains \cref{eq:asymptotic_dimension_ratio}.
-    
-    Four applications of \cref{eq:little_s_relation} yields
-    \begin{align}
-        \begin{split}
-            I(\ec,\ef;\eb,\ee)
-            &= s(\ec) + s(\ef) - s(\eb) - s(\ee) \\
-            &= \left\{\abs{\ec}S(\nrm \ec) + \abs{\ef} S(\nrm \ef) - \abs{\eb} S(\nrm \eb) - \abs{\ee} S(\nrm \ee)\right\} + \cdots \\
-            &\quad\cdots- \left\{\abs{\ec}\log \abs{\ec} + \abs{\ef}\log \abs{\ef} - \abs{\eb}\log \abs{\eb} - \abs{\ee}\log \abs{\ee}\right\}.
-        \end{split}
-    \end{align}
-    Under scaling $\lambda \mapsto k \lambda$ for any $k>0$, observe that $\overline{k\lambda} = \nrm \lambda$ and $\abs{k\lambda} = k \abs{\lambda}$.
-    Therefore the above expression implies
-    \begin{equation}
-        %\label{eq:pseudo_ssa_scaling}
-        I(k\ec,k\ef;k\eb,k\ee) = kI(\ec,\ef;\eb,\ee) + (\abs{\ec}+\abs{\ef}-\abs{\eb}-\abs{\ee}) k\log k.
-    \end{equation}
-    Since \cref{eq:balanced_sizes} is assumed to hold, the coefficient in front of the $k\log k$ term appearing in \cref{eq:pseudo_ssa_scaling} vanishes and therefore $I(k\ec,k\ef;k\eb,k\ee) = k I(\ec,\ef;\eb,\ee)$ as claimed.
-\end{proof}
-
-\begin{thm}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
-    Then necessarily $\abs{\eb}+\abs{\ee} = \abs{\ec}+\abs{\ef}$ and furthermore
-    \begin{equation}
-        I(\ec, \ef; \eb, \ee) \geq 0.
-    \end{equation} 
-\end{thm}
-\begin{proof}
-    The proof follows from asymptotics given by \cref{lem:asymptotic_dimension_ratio} in the limit as $n \to \infty$, the upper bound provided by \cref{thm:ud_recouple_bound}, and the lower bound provided by \cref{cor:seq_ud_recoupling_norm_lower_bound}.
-    \textcolor{red}{TODO: Finish this}
-\end{proof}
 
 \clearpage
 \appendix
