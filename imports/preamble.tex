@@ -34,7 +34,7 @@
 % authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
 \usepackage{authblk}
 
-%https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
+%%https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
 \newbibmacro{string+doiurlisbn}[1]{%
   \iffieldundef{doi}{%
     \iffieldundef{url}{%
@@ -126,6 +126,7 @@
 \DeclareMathOperator{\eig}{eig}
 %\DeclareMathOperator{\ker}{kern}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\argmax}{argmax}
 \newcommand{\card}[1]{\left|#1\right|}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\partitiondegen}[1]{\tilde #1}
@@ -166,5 +167,82 @@
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\U}{U}
+
+% Shorthands for eigenvalue labels 
+\newcommand{\ea}{\alpha}
+\newcommand{\eb}{\beta}
+\newcommand{\ec}{\gamma}
+\newcommand{\ed}{\delta}
+\newcommand{\ee}{\epsilon}
+\newcommand{\ef}{\phi}
+\newcommand{\ex}{\lambda}
+
+% Shorthands for young diagram labels
+\newcommand{\ya}{\alpha'}
+\newcommand{\yb}{\beta'}
+\newcommand{\yc}{\gamma'}
+\newcommand{\yd}{\delta'}
+\newcommand{\ye}{\epsilon'}
+\newcommand{\yf}{\phi'}
+\newcommand{\yx}{\lambda'}
+
+% Normalization of eigenvalues or young diagrams
+\newcommand{\nrm}{\underline}
+
+\newcommand{\nea}{\nrm{\alpha}}
+\newcommand{\neb}{\nrm{\beta}}
+\newcommand{\nec}{\nrm{\gamma}}
+\newcommand{\ned}{\nrm{\delta}}
+\newcommand{\nee}{\nrm{\epsilon}}
+\newcommand{\nef}{\nrm{\phi}}
+\newcommand{\nex}{\nrm{\lambda}}
+
+\newcommand{\nya}{\nrm{\alpha}'}
+\newcommand{\nyb}{\nrm{\beta}'}
+\newcommand{\nyc}{\nrm{\gamma}'}
+\newcommand{\nyd}{\nrm{\delta}'}
+\newcommand{\nye}{\nrm{\epsilon}'}
+\newcommand{\nyf}{\nrm{\phi}'}
+\newcommand{\nyx}{\nrm{\lambda}'}
+
+% --- More compact arrays below ---
+% NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
+\newcommand{\tightsextuple}[1]{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{1}
+\begin{array}{cccccc}#1\end{array}
+\endgroup
+}
+
+\newcommand{\UniGamma}[1][A & \alpha']{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.4}
+\Gamma\!\left[
+    \begin{array}{@{}c|c@{}}#1\end{array}
+\right]
+\endgroup
+}
+\newcommand{\TriGamma}[1][A & B & C & \alpha' & \beta' & \gamma']{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.4}
+\Gamma\!\left[
+    \begin{array}{@{}ccc|ccc@{}}#1\end{array}
+\right]
+\endgroup
+}
+\newcommand{\TetGamma}[1][A & B & C & \alpha' & \beta' & \gamma' \\ D & E & F & \delta' & \epsilon' & \phi']{
+\begingroup
+\arraycolsep=2pt
+\renewcommand{\arraystretch}{0.4}
+\Gamma\!\left[
+    \begin{array}{@{}ccc|ccc@{}}#1\end{array}
+\right]
+\endgroup
+}
+\newcommand{\TetGammak}{\TetGamma[A & B & C & \alpha' & \beta' & \gamma' \\ D & E & F & \delta' & \epsilon' & \phi']}
+\newcommand{\TetGammaTilde}{\TetGamma[\tilde A & \tilde B & \tilde C & \alpha' & \beta' & \gamma' \\ \tilde D & \tilde E & \tilde F & \delta' & \epsilon' & \phi']}
 
 % =====================================
