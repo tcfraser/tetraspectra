@@ -1448,7 +1448,7 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
     \end{equation}
 \end{prop}
 \begin{proof}
-    To prove \cref{eq:tet_mean_value}, we use \cref{prop:uni_mean_values} and \cref{lem:tet_com_rels} to see that
+    To prove \cref{eq:tet_mean_value}, we use \cref{prop:HS_measure} and \cref{lem:tet_com_rels} to see that
     \begin{equation}
         \label{eq:tet_mean_step_1}
         \mathbb E_{A,B,D}\TetGamma = q_{\ya}q_{\yb}q_{\yd} \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}).
@@ -1464,7 +1464,7 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
     \begin{equation}
         \scalebox{0.8}{\tikzfig{tikz/ud_sixj_iso}}.
     \end{equation}
-    From \cref{eq:ud_sixj_prod_proj_iso} we conclude both
+    From \cref{eq:ud_sixj_prod_proj_iso} we conclude
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_hs_norm}
         \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}) = \dim(V_{\ee}^{n})\dim(W_{\ea})\dim(W_{\eb})\dim(W_{\ed})\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^2,
@@ -1522,7 +1522,7 @@ Our first upper bound is \textit{independent} of the given matrices and follows 
     \begin{equation}
         \abs{\TetGamma} = \abs{\Tr(\Pi_1 \Omega \Pi_2)} \leq \abs{\braket{v, \Pi_1 \Pi_2 v}} \leq \norm{\Pi_1\Pi_2}_{\infty} = \norm{\abcdefsymbolprimed}_{\infty}.
     \end{equation}
-    where the last equality follows from the decomposition provided by \cref{eq:ud_sixj_prod_proj_operator_norm}.
+    where the last equality follows from the isometry decomposition provided by \cref{eq:ud_sixj_prod_proj_iso}.
 \end{proof}
 
 Our second upper bound on the magnitude of $\TetGamma$ depends on the \textit{eigenvalues} $(\ea,\eb,\ec,\ed,\ee,\ef)$ of the given tetrahedral matrices $(A, B, C, D, E, F)$ where $C=A+B$, $F=B+D$ and $E=A+B+D$.
@@ -1635,29 +1635,29 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
             &&k \abs{\ef} \leq f < k \abs{\ef} + 2.
         \end{alignedat}
     \end{equation}
-    An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions implies the following bound
+    An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions ($m=2$) implies the following bound
     \begin{equation}
         \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}
-        \leq \exp(4)\left(k \abs{\ec}+3\right)^2.
+        \leq 12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}.
     \end{equation}
     Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
-        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} = (c+1)^{n(n-1)/2},
+        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
     \end{equation}
     because $(\yc_i - i)-(\yc_j - j) \leq \abs{\yc} + 1$ as well as $j-i\geq 1$.
     Altogether, we can relax the bound on $\Tr(\Pi_{\yc} \Omega)$ to obtain
     \begin{equation}
         \Tr(\Pi_{\yc} \Omega) \leq
-        \exp(4)(k\abs{\ec}+3)^{\frac{n(n-1)}{2}+2}\exp\left(-k\abs{\ec}\kl{\nyc}{\nec}\right).
+        12^{2}(k\abs{\ec}+3)^{\frac{n(n-1)}{2}+\frac{1}{2}}\exp\left(-k\abs{\ec}\kl{\nyc}{\nec}\right).
     \end{equation}
-    A similar calculations for $\Tr(\Pi_{\ye} \Omega)$ yields (noting to apply \cref{lem:multinomial_dist_lower_bound} for trinomial distributions) yields:
+    A similar calculations for $\Tr(\Pi_{\ye} \Omega)$ yields (noting to apply \cref{lem:multinomial_dist_lower_bound} for trinomial distributions when $m=3$) yields:
     \begin{equation}
-        \Tr(\Pi_{\ye} \Omega) \leq \exp(16)(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+3}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
+        \Tr(\Pi_{\ye} \Omega) \leq 12^{3}(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+1}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
     \end{equation}
     It is also not too difficult to see that the polynomial in $k$ prefactor in the upper bound on $\Tr(\Pi_{\ye} \Omega)$ above is the largest such prefactor and thus \cref{eq:tet_gamma_upper_bound} indeed holds if we take $p(k)$ to be
     \begin{equation}
         \label{eq:p_of_k}
-        p(k) = \exp(16)(k\tau_{\max}+4)^{\frac{n(n-1)}{2}+3}.
+        p(k) = 12^{3}(k\tau_{\max}+4)^{\frac{n(n-1)}{2}+1}.
     \end{equation}
 \end{proof}
 
@@ -1858,11 +1858,15 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
     \end{equation}
 \end{thm}
 \begin{proof}
-    Applying both the Cauchy-Schwarz inequality with respect to the contraction annotated below, and Schur's lemma multiple times yields the following inequality:
+    Here we provide a diagrammatic proof of the claimed inequality.
+    For the sake of clarity, we abbreaviate the irreducible representation labels, $V_{\yx}^{n}$, and omit the multiplicity space labels on the intermediate steps.
     \begin{equation}
-        \tikzfig{tikz/SSA-dimension-upper-bound-abcdef}
+        \tikzfig{tikz/final/sixj_upper}
     \end{equation}
-    \textcolor{red}{TODO: Explain what this all means carefully.}
+    The first equality follows from substituting \cref{eq:sixj_operator}.
+    The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
+    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}^{n}$ to itself on the left and $V_{\ye}^{n}$ to itself on the right.
+    Note that the factors of $\dim(V_{\ye}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
 \end{proof}
 
 An immediate application of \cref{thm:sixj_ssa_bound} is to combine it with \cref{cor:tet_sixj_lower_bound}.
@@ -2005,6 +2009,7 @@ We are now in a position to prove the main result of this section.
     \end{equation}
     defined by
     \begin{equation}
+        \label{eq:sixj_operator}
         \abcdefsymbolprimed
         \coloneqq
         \frac{
@@ -2243,120 +2248,18 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
 
 \section{Multinomial distribution inequalities}
 
-In this section, we recall a handful of identities and inequalities concerning multinomial coefficients and the multinomial distribution in the context of Sanov's theorem \cite[Chapter 2]{dembo2010large}.
-Let $q = (q_1,\ldots, q_n)$ be a probability distribution such that for all $i \in \{1, \ldots, n\}$, $k q_i$ is an integer. 
-Let $M_{k}(q)$ denote the following multinomial coefficient:
-\begin{equation}
-    \label{eq:multinomial_coefficient}
-    M_{k}(q) \coloneqq \binom{k}{kq_1, \ldots, kq_k} = \frac{k!}{(kq_1)!\cdots (kq_k)!},
-\end{equation}
-which can be bounded (see \cite[Lemma 2.1.8]{dembo2010large}) in terms of $\ent{q}$ by ,
-\begin{equation}
-    \label{eq:multinomial_coefficient_bound}
-    (k+1)^{-n} e^{k \ent{q}} \leq M_{k}(q) \leq e^{k \ent{q}},
-\end{equation}
-where $\ent{q} = - \sum_{i=1}^{n} q_i \log q_i$ is the Shannon entropy of $q$.
-Additionally, we have for any probability distribution $p = (p_1, \ldots, p_n)$,
-\begin{equation}
-    \label{eq:multinomial_probability}
-    p_1^{kq_1} \cdots p_n^{kq_n} = e^{-k \left(\ent{q} + \kl{q}{p}\right)}
-\end{equation}
-where $\kl{q}{p} = \sum_{i=1}^{n} q_i \log q_i/p_i$ denotes the Kullbeck-Leibler divergence or relative entropy of $q$ from $p$ with the convention that $\kl{q}{p} = \infty$ if $q_i > 0$ whenever $p_i=0$.
-Note that $\kl{q}{p} = 0$ if and only if $p=q$.
-Combining \cref{eq:multinomial_coefficient_bound} with \cref{eq:multinomial_probability} places bounds on the multinomial distribution
-\begin{equation}
-    (k+1)^{-n} e^{-k \kl{q}{p}} \leq \binom{k}{kq_1, \ldots, kq_n} p_1^{kq_1} \cdots p_n^{kq_n} \leq e^{-k \kl{q}{p}}
-\end{equation}
-If needed, it is possible to relax these bounds further using Pinsker's inequality for $\kl{q}{p}$ in conjunction with its reverse (which only holds for $\kl{q}{p} < \infty$) \cite{gotze2019higher}:
-\begin{equation}
-    2 d_{\mathrm{TV}}^2(p,q) \leq \kl{q}{p} \leq \frac{4}{p_{\min}}d_{\mathrm{TV}}^2(p,q) 
-\end{equation}
-where
-\begin{equation}
-    \label{eq:pinskers}
-    d_{\mathrm{TV}}(p,q) = \max_{1\leq j\leq n}\abs{p_j - q_j} = \frac{1}{2} \sum_{j=1}^{n}\abs{p_j - q_j}
-\end{equation}
-is known as the \textit{total variation distance} between $p$ and $q$.
-Now for any distributon $p = (p_1, \ldots, p_n)$ and any positive integer $k$, it is possible to find another distribution $p' = (p'_1, \ldots, p'_n)$ such that (i) $kp'_i$ is an integer for all $i \in \{1,\ldots, n\}$, (ii) $\kl{p'}{p} < \infty$ is finite, and (iii) $p'$ approximates $p$ in the sense that for some constant $C \geq 0$,
-\begin{equation}
-    \label{eq:tv_approx}
-    d_{\mathrm{TV}}(p,p') \leq \frac{C}{k}.
-\end{equation}
-Concretely, one can choose $p'$ such that
-\begin{equation}
-    \label{eq:nint_approx}
-    kp'_j \coloneqq \mathrm{nint}\left(k \sum_{i=1}^{j} p_j \right) - \mathrm{nint}\left(k \sum_{i=1}^{j-1} p_j \right)
-\end{equation}
-where $\mathrm{nint} : \mathbb R \to \mathbb Z$ is the function which rounds each real number to the nearest integer (with half integers always rounded up).
-Using this approximation, we have $\abs{kp_j-kp'_j} \leq 1$ because each rounding operation in \cref{eq:nint_approx} introduces an error of at most $1/2$ and thus \cref{eq:tv_approx} holds with $C = 1$.
-In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{eq:pinskers} reveals $\kl{p'}{p} \leq \frac{4C}{p_{\min}k^2}$ which yields a useful, albeit crude, lower bound for the multinomial distribution:
-\begin{equation}
-    \binom{k}{kp'_1, \ldots, kp'_n} p_1^{kp'_1} \cdots p_n^{kp'_n} \geq \exp\left(-\frac{4C^2}{p_{\min}k} - n \log (k+1) \right).
-\end{equation}
-
 \begin{lem}
     \label{lem:multinomial_dist_lower_bound}
-    Let $n\geq 2$ and let $(w_1, \ldots, w_n) \in \mathbb R_{> 0}^{n}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_n\} > 0$ and let $k$ be a positive integer satisfying $k \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_n) \in \mathbb N_{>0}^{n}$ by the equation
+    Fix $m\geq 2$ and let $(w_1, \ldots, w_m) \in \mathbb R_{> 0}^{m}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_m\} > 0$.
+    Let $k$ be a positive integer satisfying $k \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_m) \in \mathbb N_{>0}^{m}$ by the equation
     \begin{equation}
         z_{i} \coloneqq \ceil{kw_{i}}.
     \end{equation}
-    Let $Z = z_1+\cdots+z_n$ and $W = w_1 + \cdots + w_n$ and defined probability distributions $\nrm z$ and $\nrm w$ by
-    \begin{align}
-        \nrm z_i = \frac{z_i}{Z}, 
-        \quad \text{and} \quad 
-        \nrm w_i = \frac{w_i}{W},
-    \end{align}
-    for all $i \in \{1,\ldots, n\}$.
+    Let $Z = z_1+\cdots+z_m$ and $W = w_1 + \cdots + w_m$.
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound}
-        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} \geq e^{-4(n-1)^2}(kW+n+1)^{-n}
-    \end{equation}
-\end{lem}
-\begin{proof}
-    Let $\ed_{j} \coloneqq z_j - k w_j$ denote the rounding surplus such that $0\leq \ed_j < 1$.
-    Note that for $k \gg n$, we have $Z \approx kW$ because
-    \begin{equation}
-        kW \leq Z < kW + n.
-    \end{equation}
-    In this regime, we wish to show that $\nrm z_i \approx \nrm w_i$.
-    \begin{align}
-        \abs{\nrm z_i - \nrm w_i}
-        =\abs{\frac{z_i}{Z} - \frac{w_i}{W}} 
-        = \frac{\abs{Wz_i - Zw_i}}{ZW}.
-    \end{align}
-    The numerator above can be bounded independently of $k$ by,
-    \begin{align}
-        &\abs{Wz_i - Zw_i}\\
-        &\qquad= \abs{(kw_i + \ed_i)(w_1+\cdots+w_n) - w_i(\ed_1 + k w_1+ \cdots + \ed_n + k w_n)}, \\
-        &\qquad= \abs{\ed_i(w_1+\cdots+\hat w_i+\cdots+w_n) - w_i(\ed_1 + \cdots+\hat \ed_i+\cdots + \ed_n)}, \\
-        &\qquad\leq \abs{\ed_i(w_1+\cdots+\hat w_i+\cdots+w_n)} + \abs{w_i(\ed_1 + \cdots+\hat \ed_i+\cdots + \ed_n)}, \\
-        &\qquad\leq (w_1+\cdots+\hat w_i+\cdots+w_n) + (n-1)(w_i), \\
-        &\qquad\leq (n-1)(w_1+\cdots+w_n), \\
-        &\qquad= (n-1)W.
-    \end{align}
-    Consequently,
-    \begin{equation}
-        d_{\mathrm{TV}}(\nrm z, \nrm w) = \max_{1 \leq i \leq n} \abs{\nrm z_i - \nrm w_i} \leq \frac{n-1}{Z}
-    \end{equation}
-    and therefore
-    \begin{align}
-        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} 
-        &\geq (Z+1)^{-n} \exp(-Z\kl{\nrm z}{\nrm w}), \\
-        &\geq (Z+1)^{-n} \exp\left[-\frac{4ZW}{w_{\min}} \left(\frac{n-1}{Z}\right)^2\right], \\
-        &\geq (kW+n+1)^{-n} \exp\left[-\frac{4(n-1)^2}{k w_{\min}}\right], \\
-        &\geq (kW+n+1)^{-n} \exp(-4(n-1)^2).
-    \end{align}
-\end{proof}
-
-\textcolor{red}{The following is an alternative lower bound on the multinomial distribution based on the Stirling approximation which would work just as well in the main text. TODO: Figure out the best lower bound on the multinomial distribution to use here.}
-\begin{lem}
-    \label{lem:multinomial_dist_lower_bound_alt}
-    Let everything be as in \cref{lem:multinomial_dist_lower_bound}.
-    Then
-    \begin{equation}
-        \label{eq:multinomial_dist_lower_bound_alt}
-        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}} \geq \left(\frac{1}{20}\right)^{n}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}}\frac{1}{k^{\frac{3n-1}{2}}}
+        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{m-1}{2}}
     \end{equation}
 \end{lem}
 \begin{proof}
@@ -2370,34 +2273,30 @@ In any case, when \cref{eq:tv_approx} holds for some constant $C\geq 0$, \cref{e
     \end{equation}
     Therefore,
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}}
-        &=\frac{Z!}{W^{Z}}\frac{w_1^{z_{1}}}{z_1!}\cdots \frac{w_n^{z_{n}}}{z_n!} \\
-        &=\left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}}  \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \left(\frac{w_1}{z_1}\right)^{z_1+\frac{1}{2}} \cdots \left(\frac{w_n}{z_n}\right)^{z_n+\frac{1}{2}} \exp\left(r_{Z} - \sum_{i} r_{z_i}\right).
+        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
+        &=\left(\frac{1}{2\pi Z}\right)^{\frac{m-1}{2}}\prod_{i=1}^{m}\left(\frac{Z}{z_i}\right)^{\frac{1}{2}}\left(\frac{Zw_i}{z_iW}\right)^{z_i}\exp\left(r_{Z} - \sum_{i=1}^{m} r_{z_i}\right).
     \end{align}
-    In this setting, we have assumed $k w_i \geq 1$ which implies
+    In this setting, we have let $z_i = \ceil{k w_i}$ which implies
     \begin{equation}
-        kw_i \leq z_i < kw_i + 1 \leq 2kw_i,
+        kw_i \leq z_i < kw_i + 1,
         \qquad \text{and} \qquad
-        kW \leq Z < kW+n < 2kW.
+        kW \leq Z < kW+m.
     \end{equation}
-    Consequently\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+\frac{3}{2}} \geq 2^{-5/2}$},
+    Consequently\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+1} \geq \frac{1}{4}$.},
     \begin{equation}
-        \left(\frac{Z}{W}\right)^{Z+\frac{1}{2}} \geq k^{kW + \frac{1}{2}}, \qquad
-        \left(\frac{w_i}{z_i}\right)^{z_i +\frac{1}{2}} \geq \left(\frac{w_i}{kw_i + 1}\right)^{kw_i + \frac{3}{2}} \geq \frac{2^{-\frac{5}{2}}}{k^{kw_i+\frac{3}{2}}}.
+        \left(\frac{Zw_i}{z_iW}\right)^{z_i}
+        \geq \left(\frac{kw_i}{kw_i+1}\right)^{kw_i+1} \geq \frac{1}{4}.
     \end{equation}
-    and the remainder term satisfies
+    The remainder term satisfies
     \begin{equation}
-        r_{Z} - \sum_{i} r_{z_i} \geq \frac{1}{12Z + 1} - \sum_{i}\frac{1}{12z_i} \geq - \frac{n}{12}.
+        r_{Z} - \sum_{i} r_{z_i} \geq \frac{1}{12Z + 1} - \sum_{i}\frac{1}{12z_i} \geq - \frac{m}{12}.
     \end{equation}
-    Altogether, we have
+    Also $Z \geq z_i$ so altogether, we have
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_n!}\frac{w_1^{z_{1}}\cdots w_{n}^{z_{n}}}{W^{Z}}
-        &=\left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}\left(\frac{W}{w_1\cdots w_n}\right)^{\frac{1}{2}} \frac{2^{-\frac{5n}{2}}}{k^{\frac{3n-1}{2}}} \exp\left(-\frac{n}{12}\right).
+        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
+        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{m-1}{2}},
     \end{align}
-    Moreover,
-    \begin{equation}
-        \left(\frac{1}{2\pi}\right)^{\frac{n-1}{2}}2^{-\frac{5n}{2}} \exp\left(-\frac{n}{12}\right) \geq \left(\frac{1}{20}\right)^{n}
-    \end{equation}
+    as claimed because $\sqrt{2\pi} > 1$ and $\frac{1}{12} < \frac{e^{-\frac{1}{12}}}{4\sqrt{2\pi}} = 0.09176\cdots$.
 \end{proof}
 
 \clearpage
