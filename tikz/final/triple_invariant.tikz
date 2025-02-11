@@ -1,0 +1,119 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (355) at (-2.5, 0) {$C^{\gamma}_{\alpha,\beta}$};
+		\node [style=dot] (356) at (-3.5, -0.75) {};
+		\node [style=dot] (357) at (-3.5, 0.75) {};
+		\node [style=none] (358) at (-4.5, 1.75) {};
+		\node [style=none] (359) at (-3.5, 1.75) {};
+		\node [style=none] (360) at (-2.5, 1.75) {};
+		\node [style=none] (361) at (-4.5, -1.75) {};
+		\node [style=none] (362) at (-3.5, -1.75) {};
+		\node [style=none] (363) at (-2.5, -1.75) {};
+		\node [style=none] (364) at (-4, -1.75) {$\alpha$};
+		\node [style=none] (365) at (-3, -1.75) {$\beta$};
+		\node [style=none] (366) at (-2, -1.75) {$\gamma$};
+		\node [style=none] (367) at (-4, 1.75) {$\alpha$};
+		\node [style=none] (368) at (-3, 1.75) {$\beta$};
+		\node [style=none] (369) at (-2, 1.75) {$\gamma$};
+		\node [style=none] (373) at (-8.5, 1.75) {};
+		\node [style=none] (374) at (-7.5, 1.75) {};
+		\node [style=none] (375) at (-6.5, 1.75) {};
+		\node [style=none] (376) at (-8.5, 0.75) {};
+		\node [style=none] (377) at (-7.5, 0.75) {};
+		\node [style=none] (378) at (-6.5, 0.75) {};
+		\node [style=none] (379) at (-8, -1.75) {$\alpha$};
+		\node [style=none] (380) at (-7, -1.75) {$\beta$};
+		\node [style=none] (381) at (-6, -1.75) {$\gamma$};
+		\node [style=none] (382) at (-8, 1.75) {$\alpha$};
+		\node [style=none] (383) at (-7, 1.75) {$\beta$};
+		\node [style=none] (384) at (-6, 1.75) {$\gamma$};
+		\node [style=none] (385) at (-9, 0.75) {};
+		\node [style=none] (386) at (-9, -0.75) {};
+		\node [style=none] (387) at (-6, -0.75) {};
+		\node [style=none] (388) at (-6, 0.75) {};
+		\node [style=none] (389) at (-7.5, 0) {$\Pi_{\alpha,\beta}^{\gamma}$};
+		\node [style=none] (390) at (-8.5, -0.75) {};
+		\node [style=none] (391) at (-7.5, -0.75) {};
+		\node [style=none] (392) at (-6.5, -0.75) {};
+		\node [style=none] (393) at (-8.5, -1.75) {};
+		\node [style=none] (394) at (-7.5, -1.75) {};
+		\node [style=none] (395) at (-6.5, -1.75) {};
+		\node [style=none] (396) at (-5, 0) {$=$};
+		\node [style=none] (397) at (-0.75, 0) {$=$};
+		\node [style=none] (416) at (3, -1.75) {$\alpha$};
+		\node [style=none] (417) at (5.25, -1.75) {$\beta$};
+		\node [style=none] (418) at (7.5, -1.75) {$\gamma$};
+		\node [style=none] (422) at (2.5, -1.75) {};
+		\node [style=none] (423) at (4.75, -1.75) {};
+		\node [style=none] (424) at (7, -1.75) {};
+		\node [style=none] (425) at (3, 1.75) {$\alpha$};
+		\node [style=none] (426) at (5.25, 1.75) {$\beta$};
+		\node [style=none] (427) at (7.5, 1.75) {$\gamma$};
+		\node [style=none] (428) at (2.5, 1.75) {};
+		\node [style=none] (429) at (4.75, 1.75) {};
+		\node [style=none] (430) at (7, 1.75) {};
+		\node [style=none] (431) at (1.5, 0.5) {};
+		\node [style=none] (432) at (1.5, -0.5) {};
+		\node [style=none] (433) at (3.5, -0.5) {};
+		\node [style=none] (434) at (3.5, 0.5) {};
+		\node [style=none] (435) at (2.5, 0) {$\pi_{\alpha}(u)$};
+		\node [style=none] (436) at (3.75, 0.5) {};
+		\node [style=none] (437) at (3.75, -0.5) {};
+		\node [style=none] (438) at (5.75, -0.5) {};
+		\node [style=none] (439) at (5.75, 0.5) {};
+		\node [style=none] (440) at (4.75, 0) {$\pi_{\beta}(u)$};
+		\node [style=none] (441) at (6, 0.5) {};
+		\node [style=none] (442) at (6, -0.5) {};
+		\node [style=none] (443) at (8, -0.5) {};
+		\node [style=none] (444) at (8, 0.5) {};
+		\node [style=none] (445) at (7, 0) {$\pi_{\gamma}^{*}(u)$};
+		\node [style=none] (446) at (2.5, 0.5) {};
+		\node [style=none] (447) at (2.5, -0.5) {};
+		\node [style=none] (448) at (4.75, 0.5) {};
+		\node [style=none] (449) at (4.75, -0.5) {};
+		\node [style=none] (450) at (7, -0.5) {};
+		\node [style=none] (451) at (7, 0.5) {};
+		\node [style=none] (452) at (0.5, 0) {$\int \mathrm{d} u$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=over-route] (357) to (359.center);
+		\draw [style=kron] (356) to (357);
+		\draw [style=mid-route, bend left=45] (357) to (358.center);
+		\draw [style=mid-route, bend left=45] (360.center) to (357);
+		\draw [style=over-route] (362.center) to (356);
+		\draw [style=mid-route, bend left=45] (361.center) to (356);
+		\draw [style=mid-route, bend left=45] (356) to (363.center);
+		\draw [style=mid-route] (376.center) to (373.center);
+		\draw [style=mid-route] (377.center) to (374.center);
+		\draw [style=mid-route] (375.center) to (378.center);
+		\draw [style=box] (385.center)
+			 to (386.center)
+			 to (387.center)
+			 to (388.center)
+			 to cycle;
+		\draw [style=mid-route] (393.center) to (390.center);
+		\draw [style=mid-route] (394.center) to (391.center);
+		\draw [style=mid-route] (392.center) to (395.center);
+		\draw [style=box] (432.center)
+			 to (433.center)
+			 to (434.center)
+			 to (431.center)
+			 to cycle;
+		\draw [style=box] (437.center)
+			 to (438.center)
+			 to (439.center)
+			 to (436.center)
+			 to cycle;
+		\draw [style=box] (442.center)
+			 to (443.center)
+			 to (444.center)
+			 to (441.center)
+			 to cycle;
+		\draw [style=mid-route] (446.center) to (428.center);
+		\draw [style=mid-route] (422.center) to (447.center);
+		\draw [style=mid-route] (423.center) to (449.center);
+		\draw [style=mid-route] (448.center) to (429.center);
+		\draw [style=mid-route] (430.center) to (451.center);
+		\draw [style=mid-route] (450.center) to (424.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

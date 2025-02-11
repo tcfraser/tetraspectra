@@ -34,7 +34,7 @@
     Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 \end{abstract}
 
-\clearpage
+%\clearpage
 \tableofcontents
 
 \section{Introduction}
@@ -92,7 +92,7 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{itemize}
 }
 
-\clearpage
+%\clearpage
 \section{Tetrahedral eigenvalues \& the tetrahedral Horn problem}
 
 %\subsection{The tetrahedral Horn problem}
@@ -297,7 +297,7 @@ More generally, it is possible to view the tetrahedral Horn problem as the conju
     In other words, this relaxation of the tetrehdral Horn problem is equivalent to the statement that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues \textit{only if} each of four triplets in \cref{eq:four_faces} are trigonal.
 \end{proof}
 
-\clearpage
+%\clearpage
 \section{Symmetries of tetrahedral eigenvalues}
 \label{sec:symmetries}
 
@@ -579,7 +579,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     \textcolor{red}{TODO: Describe how Regge symmetries emerge from $\SU(2)$ $6j$ symbol symmetries \cite{boalch2007regge}, how they can be viewed as a scissors-congruence of Euclidean tetrahedra perserving both the volume invariants and Dhen invariants \cite{akopyan2019regge}, and how higher rank Regge symmetries are connected to the eigenvalue conjecture \cite{morozov2018new}.}
 \end{rem}
 
-\clearpage
+%\clearpage
 \section{Eigenvalues of blocks of positive semidefinite matrices}
 \label{sec:blocks_of_psd_matrices}
 
@@ -803,7 +803,7 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
     From this perspective, one may view Horn problems are kinds of ``spectral'' classical marginal problems for blocks of Guassian random variables.
 \end{rem}
 
-\clearpage
+%\clearpage
 \section{Inequalities for tetrahedral eigenvalues}
 
 \begin{itemize}
@@ -1232,7 +1232,7 @@ Thus the gradient $\partial_{r} (q_{r}-q_{0})$ vanishes only if the argument of 
 As we are implicitly assuming $\abs{\ea} \neq 0$ and $\abs{\ed} \neq 0$, we see that the gradient of $q_{r} - q_{0}$ never changes when $r>0$ and thus $q_{r}-q_{0}$ is increasing with increasing $r > 0$.
 
 
-\clearpage
+%\clearpage
 \section{Representation theory \& eigenvalue estimation}
 
 \subsection{Schur-Weyl duality \& eigenvalue estimation}
@@ -1260,8 +1260,9 @@ whereas the dimension of $W_{\yx}$ may be given by \cite[Corollary 9.1.5]{goodma
     \label{eq:frob_dim}
     \dim(W_{\yx}) = \frac{\abs{\yx}!}{\tilde \yx_1!\tilde \yx_2! \cdots \tilde \yx_n!} \Delta_n(\tilde \yx)
 \end{equation}
-where $\tilde \yx = \yx + \rho$, where $\rho =(n-1, n-2, \ldots, 1, 0)$ and where $\Delta_n(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j)$ is the Vandermonde determinant.
-Note that $\dim(W_{\yx})$ is independent of $n$ as the right hand side of \cref{eq:frob_dim} is independent of $n$ provided $n$ is at least the depth of $\yx$ and coincides with the Hook-length formula \cite[Corollary 9.1.6]{goodman2000representations}.
+where $\tilde \yx = \yx + \rho$, where $\rho =(n-1, n-2, \ldots, 1, 0)$ is known as the Weyl vector and where $\Delta_n(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j)$ is the Vandermonde determinant.
+Note that the representation $W_{\yx}$ of $S_{k}$ is independent of $n$;
+indeed, the right hand side of \cref{eq:frob_dim} does not depend on $n$ and coincides with the Hook-length formula \cite[Corollary 9.1.6]{goodman2000representations} (any value of $n$ which is at least the depth of $\yx$ suffices).
 
 \begin{defn}
     Given a non-zero positive semidefinite $n \times n$ matrix $A$, a positive integer $x$, and a Young diagram $\ya \vdash_n x$, let
@@ -1272,7 +1273,7 @@ Note that $\dim(W_{\yx})$ is independent of $n$ as the right hand side of \cref{
     where $\nrm A = \frac{A}{\Tr(A)}$ is the normalization of $A$ and $P_{\ya}$ projects onto the isotypic component of $(\mathbb C^n)^{\ot a}$ indexed by $\ya$.
 \end{defn}
 As $P_{\ya}$ is $\U(n)$-equivariant, one observes that $\UniGamma$ depends only on the eigenvalues of $A$.
-The following result, know as spectrum or eigenvalue estimation, states that the map $\ya \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\ya$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{christandl2008quantum,keyl2001estimating}.
+The following result, know as spectrum or eigenvalue estimation, states that the map $\ya \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\ya$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
     Let $A$ be a positive semidefinite matrix with eigenvalues $\ea = \eig(A)$ and let $\ya \vdash_n a$.
@@ -1322,6 +1323,7 @@ The following result, know as spectrum or eigenvalue estimation, states that the
 \end{prop}
 
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
+\label{sec:lr_tri}
 
 The purpose of this section is to reveal how eigenvalue estimation can be used to prove a kind of correspondence between trigonal eigenvalue $(\ea,\eb,\ec)$ and Littlewood-Richardon coefficients $c_{\ya\yb}^{\yc}$.
 Given a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, by eigenvalue estimation we see that each of
@@ -1334,22 +1336,71 @@ are respectively concentrated around Young diagrams $(\ya,\yb,\yc)$ whose normal
 As a result of this concentration, one can detect whether there exists Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ by examining if whether there exists an intersection of subspaces onto which $P_{\ya}$, $P_{\yb}$ and $P_{\yc}$ project.
 To support this claim, we define the following quantity. 
 \begin{defn}
-    Given positive semidefinite Hermitian matrices $A,B$ and $C=A+B$ and positive integers $x,y$
-    where $\ea \vdash_{n} x$, $\eb \vdash_{n} y$, and $\ec \vdash_{n} x+y$.
+    Given positive integers $a$ and $b$, let $c=a+b$.
+    Let $(\ya, \yb, \yc)$ be a triple of Young diagrams with sizes:
+    \begin{equation}
+        \label{eq:three_yd_sizes}
+        \ya \vdash a, \qquad 
+        \yb \vdash b, \qquad
+        \yc \vdash c,
+    \end{equation}
+    Define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b}$ by
+    \begin{equation}
+        \label{eq:tri_extended_projs}
+        \begin{alignedat}{3}
+            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b}, \qquad 
+            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb}, \qquad
+            &&\Pi_{\yc} \coloneqq P_{\yc}.
+        \end{alignedat}
+    \end{equation}
+    Given $n\times n$ positive semidefinite matrices $A,B$ and $C=A+B$, let
     \begin{equation}
         \TriGamma
-        \coloneqq \Tr[(A^{\ot a} \ot B^{\ot b}) (P_{\ea}\ot P_{\eb}) P_{\ec}]
+        \coloneqq \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ea}\ot P_{\eb}) P_{\ec}]
     \end{equation}
 \end{defn}
 
+\begin{defn}[Littlewood-Richarson coefficients]
+    \label{defn:lr_coeffs}
+    Let $(\ya, \yb, \yc)$ be a triple of Young diagrams with sizes $(a,b,c)$ where $c=a+b$ and let $V_{\ya}^n,V_{\yb}^n,V_{\yc}^n$ be a triple of irreducible representations of $\U(n)$.
+    Let $C_{\ya, \yb}^{\yc}$ denote the multiplicity space of $\U(n)$-intertwiners from $V_{\yc}$ to $V_{\ya} \ot V_{\yb}$:
+    \begin{equation}
+        C_{\ya, \yb}^{\yc} \coloneqq \Hom_{\U(n)}(V_{\yc}, V_{\ya}\ot V_{\yb}) \simeq \Inv_{\U(n)}(V_{\yc^*} \ot V_{\ya} \ot V_{\yb}).
+    \end{equation}
+    The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
+    \begin{equation}
+        c_{\ya,\yb}^{\yc} \coloneqq \dim(C_{\ya, \yb}^{\yc}).
+    \end{equation}
+    The \textit{Clebsch-Gordon isometry} is the $\U(n)$-equivariant isometric linear map 
+    \begin{equation}
+        Y_{\ea,\eb}^{\ec} : C_{\ea,\eb}^{\ec} \ot V_{\ec} \to V_{\ea} \ot V_{\eb},
+    \end{equation}
+    sending $f \ot v \in C_{\ya,\yb}^{\yc} \ot V_{\yc}$ to $f(v) \in V_{\ya}\ot V_{\yb}$\footnote{If $C_{\ya,\yb}^{\yc} = 0$, then $Y_{\ya,\yb}^{\yc}$ is identified with the zero map.}.
+    The Clebsch-Gordon isometries (and coisometries) will be depicted diagrammatically with multiplicity spaces given a distinguished style as in \cite{agrawala1968graphical}:
+    \begin{equation}
+        \tikzfig{tikz/final/clebsch_gordon}.
+    \end{equation}
+\end{defn}
+
+\textcolor{red}{TODO: Summarize \cite{christandl2008quantum}.}
+\textcolor{red}{TODO: Briefly mention the direct and pedagogical Kempf-Ness style proofs of stronger results in \cite[Proposition 2.3]{berline2018horn} also using the strong duality result of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} and the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
+
+
+\begin{equation}
+    \label{eq:lr_triple_prod}
+    \tikzfig{tikz/final/lr_triple_prod}.
+\end{equation}
+
+
 \subsection{Generalized \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols \& tetrahedral eigenvalues}
+\label{sec:sixj_tet}
 
 \begin{defn}
     \label{defn:tet_gamma}
     Given positive integers $a,b$, and $d$, let $c=a+b,f=b+d$, and $e=a+b+d$.
-    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be Young diagrams of the following sizes:
+    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be a sextuple of Young diagrams with sizes:
     \begin{equation}
-        \label{eq:yd_sizes}
+        \label{eq:six_yd_sizes}
         \ya \vdash a, \qquad 
         \yb \vdash b, \qquad
         \yc \vdash c, \qquad
@@ -1357,20 +1408,9 @@ To support this claim, we define the following quantity.
         \ye \vdash e, \qquad
         \yf \vdash f.
     \end{equation}
-    %\begin{equation}
-    %    \label{eq:xyz_sized_young_diagrams}
-    %    \begin{alignedat}{3}
-    %         &\ya \vdash_{n} x, \qquad 
-    %        &&\yb \vdash_{n} y, \qquad
-    %        &&\yc \vdash_{n} x+y, \qquad\\
-    %         &\yd \vdash_{n} z, \qquad
-    %        &&\ye \vdash_{n} x+y+z, \qquad
-    %        &&\yf \vdash_{n} y+z.
-    %    \end{alignedat}
-    %\end{equation}
-    and define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b+d}$ by
+    Define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b+d}$ by
     \begin{equation}
-        \label{eq:extended_projs}
+        \label{eq:tet_extended_projs}
         \begin{alignedat}{3}
             &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad 
             &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb} \ot \id^{\ot d}, \qquad
@@ -1408,7 +1448,7 @@ To support this claim, we define the following quantity.
     %In the context of the tetrahedral Horn problem for positive semidefinite eigenvalues, one necessarily has $\tau_{\min} = \min(\abs \ea, \abs \eb, \abs \ed)$.
 \end{rem}
 
-Another technical difficulty which complicates subsequent analysis is that the set of projection operators $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ defined by \cref{eq:extended_projs} is \textit{almost} pairwise mutually commuting.
+Another technical difficulty which complicates subsequent analysis is that the set of projection operators $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ defined by \cref{eq:tet_extended_projs} is \textit{almost} pairwise mutually commuting.
 \begin{lem}
     \label{lem:tet_com_rels}
     Every pair of projection operators in $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ is commuting with only possible exception being $\Pi_{\yc}$ and $\Pi_{\yf}$.
@@ -1427,10 +1467,39 @@ Another technical difficulty which complicates subsequent analysis is that the s
     The obtruction for the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ is simply that $\Pi_{\yc}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot b+d}$ and likewise $\Pi_{\yf}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot a+b}$.
 \end{proof}
 
+\begin{defn}[Generalized 6j operators]
+    \label{defn:sixj}
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams with sizes $(a,b,c,d,e,f)$ given by \cref{eq:six_yd_sizes}.
+    Then we define the \defnsty{$\U(n)$-$6j$ operator} to be the operator\footnotemark{}
+    \begin{equation}
+        \abcdefsymbolprimed
+        :
+        C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
+    \end{equation}
+    defined by
+    \begin{equation}
+        \label{eq:sixj}
+        \abcdefsymbolprimed
+        \coloneqq
+        \frac{1}{\dim(V_{\ye})}
+        \Tr_{V_{\ye}}[
+        Y_{\ya,\yf}^{\ye\dagger}
+        (\id_{V_{\ya}}\ot Y_{\yb,\yd}^{\yf\dagger})
+        (Y_{\ya,\yb}^{\yc}\ot\id_{V_{\yd}})
+        Y_{\yc,\yd}^{\ye}
+        ],
+    \end{equation}
+    and depicted diagrammatically by
+    \begin{equation}
+        \tikzfig{tikz/final/sixj_defn}.
+    \end{equation}
+    \footnotetext{It is important to note that there does not seem to exist a universal convention concerning how $6j$ symbols are normalized; \citeauthor{coquereaux2023integer} discusses is problem in \cite{coquereaux2023integer}.}.
+\end{defn}
+ 
 The following proposition is the analogue of \cref{prop:HS_integral_uni}.
 \begin{prop}
     \label{prop:HS_integral_tet}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams with sizes given by \cref{eq:yd_sizes}.
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams with sizes given by \cref{eq:six_yd_sizes}.
     Then
     \begin{align}
         \label{eq:tet_mean_value}
@@ -1460,9 +1529,9 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
         =
         \iota_{II} \left(\id_{V_{\ee}^{n}} \ot \id_{W_{\ea}} \ot \id_{W_{\eb}} \ot \id_{W_{\ed}} \ot \abcdefsymbolprimed \right) \iota_{I}^{\dagger} 
     \end{equation}
-    This follows from the follow diagrammatic calculation \textcolor{red}{TODO: Explain this.}:
+    The form of these isometries can be deduced by applying \cref{eq:lr_triple_prod} four times in the following diagrammatic calculation:
     \begin{equation}
-        \scalebox{0.8}{\tikzfig{tikz/ud_sixj_iso}}.
+        \scalebox{0.9}{\tikzfig{tikz/final/sixj_sextuple_prod}}.
     \end{equation}
     From \cref{eq:ud_sixj_prod_proj_iso} we conclude
     \begin{equation}
@@ -1483,7 +1552,7 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     \end{align}
     where the sum is taken over Young diagrams with the following sizes:
     \begin{equation}
-        \label{eq:yd_sizes_rank}
+        \label{eq:six_yd_sizes_rank}
         \ya \vdash_{r(\ea)} a, \qquad 
         \yb \vdash_{r(\eb)} b, \qquad
         \yc \vdash_{r(\ec)} c, \qquad
@@ -1493,8 +1562,8 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     \end{equation}
 \end{prop}
 \begin{proof}
-    To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
-    That one can restrict to Young diagrams with depths bounded according to \cref{eq:yd_sizes} follows
+    To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:six_yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
+    That one can restrict to Young diagrams with depths bounded according to \cref{eq:six_yd_sizes} follows
     because $\TetGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc, \yd, \ye, \yf)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef))$.\footnote{This claim actually follows from \cref{thm:abd_dep_upper_bound} and will be proven shortly. Importantly, \cref{thm:abd_dep_upper_bound} does not rely on \cref{prop:completeness_rel_tet}.}
 \end{proof}
 
@@ -1502,7 +1571,7 @@ Our next goal will be to derive two upper bounds on the absolute value of $\TetG
 Our first upper bound is \textit{independent} of the given matrices and follows as a corollary of \cref{lem:tet_com_rels}.
 \begin{cor}
     \label{cor:abd_indep_upper_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:yd_sizes}.
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:six_yd_sizes}.
     Then for all tetrahedral, non-zero positive semidefinite $(A,B,C,D,E,F)$, we have
     \begin{equation}
         \label{eq:tet_gamma_sixj_upper_bound}
@@ -1562,7 +1631,7 @@ This result proves that in the limit of large values for $(x,y,z)$, the magnitud
 \end{thm}
 \begin{proof}
     The first portion of the proof does not depend on the value of $k$.
-    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:yd_sizes} for $x,y,z$ arbitrary positive integers.
+    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:six_yd_sizes} for $x,y,z$ arbitrary positive integers.
     As in the proof of \cref{cor:abd_indep_upper_bound}, we let $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$.
     Using the commutation relations provided by \cref{lem:tet_com_rels} we apply the Cauchy-Schwarz inequality to $\braket{X,Y} = \Tr(X^{*} Y) \leq \Tr(X^{*}X)^{\frac{1}{2}}\Tr(Y^{*}Y)^{\frac{1}{2}}$ for $X = \Omega^{\frac{1}{2}}\Pi_{\yf}\Pi_{\ya}\Pi_{\yb}$ and $Y = \Omega^{\frac{1}{2}}\Pi_{\yc} \Pi_{\yd} \Pi_{\ye}$ to obtain
     \begin{align}
@@ -1863,7 +1932,7 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
     \begin{equation}
         \tikzfig{tikz/final/sixj_upper}
     \end{equation}
-    The first equality follows from substituting \cref{eq:sixj_operator}.
+    The first equality follows from \cref{defn:sixj}.
     The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
     The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}^{n}$ to itself on the left and $V_{\ye}^{n}$ to itself on the right.
     Note that the factors of $\dim(V_{\ye}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
@@ -1950,300 +2019,7 @@ We are now in a position to prove the main result of this section.
     Moreover by \cref{eq:balanced_sizes}, the $(1-\log k)$ terms cancel and therefore $I' = I(\ec, \ef; \eb, \ee) \geq 0$ as claimed above.
 \end{proof}
 
-
-
-\section{OLD CONTENT}
-\subsection{Littlewood-Richardson coefficients \& \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
-
-\begin{defn}[Littlewood-Richarson coefficients]
-    %\label{defn:lr_coeffs}
-    Let $\ea, \eb, \ec \in \domweights{n}$ be a triple of dominant weights for $\GL(n)$ and let $V_{\ea},V_{\eb},V_{\ec}$ be the triple of irreducible representations of $\GL(n)$ with corresponding highest weights.
-    Let $C_{\ea, \eb}^{\ec}$ denote the multiplicity space of $\GL(n)$-intertwiners from $V_{\ec}$ to $V_{\ea} \ot V_{\eb}$:
-    \begin{equation}
-        C_{\ea, \eb}^{\ec} \coloneqq \Hom_{\GL(n)}(V_{\ec}, V_{\ea}\ot V_{\eb}) \simeq \Inv_{\GL(n)}(V_{\ec^*} \ot V_{\ea} \ot V_{\eb}).
-    \end{equation}
-    The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
-    \begin{equation}
-        c_{\ea,\eb}^{\ec} \coloneqq \dim(C_{\ea, \eb}^{\ec}).
-    \end{equation}
-\end{defn}
-\begin{defn}[Clebsch-Gordon isometries]
-    Given $\ea,\eb,\ec$ as in \cref{defn:lr_coeffs}, a \textit{Clebsch-Gordon isometry} is a $\GL(n)$-equivariant isometric linear map sending $f \ot v \in C_{\ea,\eb}^{\ec} \ot V_{\ec}$ to $f(v) \in V_{\ea}\ot V_{\eb}$\footnote{If $C_{\ea,\eb}^{\ec} = 0$, then $Y_{\ea,\eb}^{\ec}$ is identified with the origin in $V_{\ea}\otimes V_{\eb}$.}.
-    Let
-    \begin{equation}
-        Y_{\ea,\eb}^{\ec} : C_{\ea,\eb}^{\ec} \ot V_{\ec} \to V_{\ea} \ot V_{\eb},
-    \end{equation}
-    be a Clebsch-Gordon isometry and depict it diagrammatically by
-    \begin{equation}
-        \tikzfig{tikz/ud-eval-operator}.
-    \end{equation}
-    The conjugate transpose of the Clebsch-Gordon isometry is 
-    \begin{equation}
-        Y_{\ea,\eb}^{\ec \dagger} : V_{\ea} \ot V_{\eb} \to C_{\ea,\eb}^{\ec} \ot V_{\ec},
-    \end{equation}
-    will be depicted diagrammatically by
-    \begin{equation}
-        \tikzfig{tikz/ud-transpose-eval-operator}.
-    \end{equation}
-\end{defn}
-
-\begin{rem}
-    In this section, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
-    Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\ec$ and $n\times n$ blocks $A',B'$ with eigenvalues $\ea,\eb$.
-    One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
-    This can be accomplished by considering the branching multiplicities $m^{\ea\eb}_{\ec}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
-    In fact there exists a representation-theoretic analogue of \cref{thm:trigonal_block}, specifically \cite[Theorem 9.2.3]{goodman2000representations}.
-    In particular, the values of $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ coincide provided the Young diagrams $(\ea,\eb,\ec)$ involved have depths at most $(\min\{a,n\}, \min\{b,n\}, \min\{a+b,n\})$; this ensures that $V_{\ea}^{a}, V_{\eb}^{b}, V_{\ec}^{a+b}$ and $V_{\ea}^{n}, V_{\eb}^{n}, V_{\ec}^{n}$ are all non-zero representation spaces and therefore $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ are both meaningfully defined.
-    The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
-    This parallels the fact that, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
-\end{rem}
-
-\begin{defn}[Recoupling operators]
-    %\label{defn:ud_recoupling_operator}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:yd_sizes}.
-    Then we define the \defnsty{$\U(n)$-$6j$ operator} to be the operator
-    \begin{equation}
-        \abcdefsymbolprimed
-        :
-        C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
-    \end{equation}
-    defined by
-    \begin{equation}
-        \label{eq:sixj_operator}
-        \abcdefsymbolprimed
-        \coloneqq
-        \frac{
-            \Tr_{V_{\ye}}[
-            Y_{\ya,\yf}^{\ye\dagger}
-            (\id_{V_{\ya}}\ot Y_{\yb,\yd}^{\yf\dagger})
-            (Y_{\ya,\yb}^{\yc}\ot\id_{V_{\yd}})
-            Y_{\yc,\yd}^{\ye}
-            ]
-        }{\dim(V_{\ye})},
-    \end{equation}
-    which is depicted diagrammatically by
-    \begin{equation}
-        \tikzfig{tikz/ud-recoupling-defn-explicit}.
-    \end{equation}
-\end{defn}
-{\color{red}
-    WARNING: The convention I am using for the curly braces seems to differ from many of the uses of the curly braces to define the Wigner 6j coefficient which differs in that I think the Wigner 6j coefficient does not include the additional factor of $\dim(V_{\ee}^{n})$.
-    This lack of common convention seems to be echoed by \citeauthor{coquereaux2023integer} \cite{coquereaux2023integer}.
-}
-
-Subsequent sections will primarily be interested in the square of the Hilbert-Schmidt norm of the recoupling operator in \cref{defn:ud_recoupling_operator}.
-While the individual coefficients of the recoupling operator are dependent on a choice of basis for each of the multiplicity spaces, its Hilbert-Schmidt and operator norms are not dependent on such a choice of basis.
-The following lemma provides a formula for the square of the Hilbert-Schmidt norm as an integral over $\SU(n)^{\times 4}$.
-\begin{lem}[Character formula]
-    %\label{lem:character_formula}
-    Let $\abcdefsymbol : C^{\mu}_{\ea,\eb} \ot C^{\ex}_{\mu,\ec} \to C^{\ex}_{\ea, \nu} \ot C^{\nu}_{\eb,\ec}$ be the recoupling operator defined in \cref{defn:ud_recoupling_operator}.
-    Then
-    \begin{equation}
-        %\label{eq:character_formula}
-        R^{\ea\eb\ec}_{\ed\ee\ef} \coloneqq
-        \dim(V_{\ee})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
-        = \int_{\SU(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\ea,\eb,\ec}_{\ed,\ee,\ef}(u_1,u_2,u_3,u_4).
-    \end{equation}
-    where
-    \begin{equation}
-        X^{\ea,\eb,\ec}_{\ed,\ee,\ef}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\ea}(u_1^{-1}u_2)\chi_{\eb}(u_4^{-1}u_2)\chi_{\ec}(u_2^{-1}u_3)\chi_{\ed}(u_4^{-1}u_3)\chi_{\ee}(u_3^{-1}u_1)\chi_{\ef}(u_1^{-1}u_4)
-    \end{equation}
-\end{lem}
-Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(n)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
-\begin{proof}[Proof of \cref{lem:character_formula}]
-    The proof follows from (i) the following identities concerning the character $\chi_{\ex}(u) = \Tr(\pi_{\ex}(u))$ and duality $\pi_{\ex}^{*}(u) = (\pi_{\ex}(u^{-1}))^{T}$ relations
-    \begin{equation}
-        \tikzfig{tikz/character-duality},
-    \end{equation}
-    and (ii) the integral formula for the projection operator $\Pi_{\ea,\eb}^{\ec}$ onto the subspace of invariant vectors in $V_{\ea} \ot V_{\eb} \ot V_{\ec}^{*}$:
-    \begin{equation}
-        \tikzfig{tikz/triple-invariant-proj}.
-    \end{equation}
-    Applied four times, we obtain
-    \begin{equation}
-        \tikzfig{tikz/ud-recoupling-character-formula}.
-    \end{equation}
-\end{proof}
-
-{\color{blue}
-\begin{rem}
-    With the integral character formula $R^{\ea\eb\ec}_{\ed\ee\ef}$ established, it is interesting to compare it against the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(g_1, g_2 ; t)$ in \cite{mcswiggen2021harish}:
-    \begin{equation}
-        K_{G}(g_1, g_2; t) = \sum_{\ex} \dim V_{\ex}^{n} \chi_{\ex}(g_1 g_2^{-1}) e^{-t(\abs{\ex+\rho}^{2} - \abs{\rho})/2},
-    \end{equation}
-    where the sum is over all dominant integral weights $\ex$ for $G$ and $\rho$ the associated Weyl vector.
-    It is conceivable that ther might be a method for expressing $R^{\ea\eb\ec}_{\ed\ee\ef}$ as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
-\end{rem}
-}
-
-\subsection{Littlewood-Richardson coefficients \& the trigonal Horn problem}
-%\label{sec:LR_coeffs_trigonal}
-
-{\color{red}
-    TC: TODO: There is a lot of work left to do to clean up this section.
-    In particular, it would be very useful to present a brief pedagogical account of the connection between the Littlewood-Richardson coefficients and the trigonal Horn problem and then use that intuition as a basis for extrapolating to the case of the tetrahedral Horn problem and the need for a representation-theory object which captures the additional consistency constraints imposed by the tetrahedral Horn problem.
-}
-{\color{red}
-    TODO: This section also needs a lot of work, there are about half a dozen or so ways of building up the connection between the Littlewood-Richardson coefficients and the trigonal Horn problem.
-    In the end, the approach we need to take here should mirror the approach in \cite{christandl2008quantum} as closely as possible because it is this approach that we make use of when generalizing from the trigonal to the tetrahedral Horn problem.
-    For example, one common strategy for simplifying the presentation is to shift from the asymmetric variant of the Horn problem where $A+B=C$ to the symmetric variant of the Horn problem where $A+B+C=0$.
-    While this makes things conceptually much clearer, when generalizing to the tetrhedral Horn problem, the more ``symmetric'' approach becomes a slight obstacle and forces one to consider artificial matching conditions of the form $C + C' = 0$ and therefore to consider a total of twelve matrices.
-
-    It is also worth mentioning that one can describe the Horn inequalities themselves in terms of the LR coefficents. This discussion should be included in \cref{sec:horn_ineqs}.
-}
-
-Our first result can be viewed as a simple condition which is sufficient to conclude that a given triple of integer eigenvalues are trigonal.
-\begin{lem}
-    If $c_{\ea,\eb}^{\ec} > 0$, then there exists Hermitian matrices $A \in \orbit_{\ea}$, $B \in \orbit_{\eb}$, and $C \in \orbit_{\ec}$, satisfying $A + B - C = 0$.
-\end{lem}
-\begin{proof}
-    Our proof proceeds in the style of \cite[Proposition 2.3]{berline2018horn}.
-    Given any dominant weight $\ex \in \domweights{n}$, let $P_{\ex}$ denote the Hermitian projection operator onto the invariant
-\end{proof}
-
-Using the theory of spectrum estimation developed in the context of quantum information theory \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}, the following pair of theorems were proven in \cite{christandl2008quantum}.
-Recall that $(\ea,\eb,\ec) \in (\eigs{n})^{\times 3}$ are said to be \textit{trigonal} if there exists Hermitian matrices $A, B, C \in \herm(n)$ satisfying (i) $A+B+C=0$ and (ii)
-\begin{equation}
-    (\eig(A), \eig(B), \eig(C)) = (\ea,\eb,\ec).
-\end{equation}
-
-\begin{thm}
-    %\label{thm:LR_pos_implies_herm}
-    If $c_{\ea,\eb,\ec} > 0$ for some $\ea, \eb, \ec \in \domweights{n}$, then $(\ea,\eb,\ec)$ are trigonal.
-\end{thm}
-
-\begin{thm}
-    If $(\ea,\eb,\ec) \in (\eigs{n})^{\times 3}$ are triangular, then there exists a graded sequence
-    $(\tilde \ea(n), \tilde \eb(n), \tilde \ec(n)) \in (\domweights{n})^{\times 3}$ such that (i) for all $n \in \mathbb N_{>0}$,
-    \begin{equation}
-        c_{\tilde \ea(n), \tilde \eb(n), \tilde \ec(n)} > 0,
-    \end{equation}
-    and (ii)
-    \begin{align}
-        \lim_{n\to\infty} \frac{\tilde \ea(n)}{n} = \ea, \qquad
-        \lim_{n\to\infty} \frac{\tilde \eb(n)}{n} = \eb, \qquad
-        \lim_{n\to\infty} \frac{\tilde \ec(n)}{n} = \ec.
-    \end{align}
-\end{thm}
-
-\begin{prop}[Kempf-Ness]
-    %\label{prop:kempf-ness-abc}
-    Let $(A,B,C) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}$ be a triple of $d\times d$ Hermitian matrices with integer-valued eigenvalues and let
-    \begin{equation}
-        w_{A,B,C} \coloneqq \varphi(A) \ot \varphi(B) \ot \varphi(C) = v_\ea^{u_A} \ot v_\eb^{u_B} \ot v_\ec^{u_C}
-    \end{equation}
-    be the associated coherent state of unit norm in $V_{\ea} \ot V_{\eb} \ot V_{\ec}$.
-    Define the capacity of $(A,B,C)$ as
-    \begin{align}
-        \capacity(A,B,C) 
-        &\coloneqq \inf_{g \in \GL(n)} \norm{[\pi_{\ea}(g)\ot\pi_{\eb}(g)\ot\pi_{\ec}(g)] w_{A,B,C}}^{2}, \\
-        &= \inf_{g \in \GL(n)} \norm{v_\ea^{gu_A} \ot v_\eb^{gu_B} \ot v_\ec^{gu_C}}^{2}.
-    \end{align}
-    Then $\capacity(A,B,C) \in [0,1]$ with 
-    \begin{equation}
-        \capacity(A,B,C) = 1 \iff \mu(A,B,C) = A+B+C = 0.
-    \end{equation}
-\end{prop}
-\begin{proof}
-    \textcolor{red}{Summarize the direct and pedagogical Kempf-Ness style proof in \cite[Proposition 2.3]{berline2018horn}.} 
-\end{proof}
-
-The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} (using the convention where capacities and constant portions are defined in terms of squared norms instead of norms directly).
-\begin{thm}[Strong-duality \& Occasionality]
-    Let everything be as in \cref{prop:kempf-ness-abc} and let $k$ be a positive integer.
-    Define the constant portion of $A,B,C$ of degree $k$ to be
-    \begin{equation}
-        \cst_{k}(A,B,C) = \norm{\Gamma_{\ea,\eb,\ec}^{k} w_{A,B,C}^{\otimes k}}^{\frac{2}{k}},
-    \end{equation}
-    where $\Gamma_{\ea,\eb,\ec}^{k}$ is the projection operator onto the subspace of $\GL(n)$-invariant vectors in $(V_{\ea}\ot V_{\eb} \ot V_{\ec})^{\ot k}$.
-    Then
-    \begin{equation}
-        %\label{eq:strong_duality}
-        \capacity(A,B,C) = \sup_{k} \cst_{k}(A,B,C)
-    \end{equation}
-    Moreover, when $\capacity(A,B,C) = 1$ and $\mu(A,B,C) = 0$, there exists an integer $m > 0$ such that
-    \begin{equation}
-        %\label{eq:occasionality}
-        \lim_{k\to\infty} (mk)^{s}\cst_{mk}(A,B,C) > 0
-    \end{equation}
-    where $s = \dim \U(n) - \dim \U(n)_{[w_{A,B,C}]}$.
-\end{thm}
-\begin{cor}
-    Consider the quantity $\tilde c_{\ea,\eb,\ec}$ which measures the fraction of vectors $V_{\ea} \ot V_{\eb} \ot V_{\ec}$ which are $\GL(n)$-invariant:
-    \begin{align}
-        \tilde c_{\ea, \eb, \ec} 
-        &= \frac{\dim[(V_{\ea} \ot V_{\eb} \ot V_{\ec})^{\GL(n)}]}{\dim(V_{\ea} \ot V_{\eb} \ot V_{\ec})}.
-    \end{align}
-    If there exists $(A,B,C)\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}$ such that $A+B+C=0$, then there exists an integer $K > 0$ such that $c_{K\ea,K\eb,K\ec} \geq 1$\footnote{In fact the proof of the saturation conjecture implies $K = 1$ always suffices.}, and therefore for all integers $M > 0$
-    \begin{equation}
-        \tilde c_{MK\ea, MK\eb, MK\ec} \geq \frac{1}{\dim(V_{MK\ea} \ot V_{MK\eb} \ot V_{MK\ec})}.
-    \end{equation}
-    On the other hand, if there does not exist $(A,B,C) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}$ such that $A+B+C = 0$, then the function $k \mapsto \tilde c_{k\ea, k\eb, k\ec}$ admits an exponential upper bound\footnote{The semigroup property of Littlewood-Richardson coefficients together with the at most polynomial growth in $\dim(V_{k\ex})$ combined with the exponential upper bound on $\tilde c_{k\ea,k\eb,k\ec}$ actually implies $c_{\ea,\eb,\ec} = 0$ whenever $A+B+C=0$.}
-    \begin{equation}
-        \tilde c_{k\ea, k\eb, k\ec} \leq \max_{A,B,C} \capacity(A,B,C)^{k}.
-    \end{equation}
-\end{cor}
-\begin{proof}
-    The lower-bound follows from the operator inequality
-     \begin{equation}
-         %\label{eq:inclusivity}
-         \ket{v_{\ex}^{u}}\bra{v_{\ex}^{u}} \leq \id_{V_{\ex}},
-    \end{equation}
-    for all unit vectors $v_{\ex}^{u} \in V_{\ex}$ while the upper-bound follows from the resolution of identity over the normalized Haar measure $\diff u$ for $\U(n)$:
-    \begin{equation}
-        %\label{eq:resolution}
-        \id_{V_{\ex}} = \dim(V_{\ex}) \int_{u\in\U(n)} \diff u \ket{v_{\ex}^{u}}\bra{v_{\ex}^{u}}.
-    \end{equation}
-    %{v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec^{u_C}}
-    Applying \cref{eq:resolution} three times to the definition of $\tilde c_{k\ea,k\eb,k\ec}$ yields
-    \begin{align}
-        %\label{eq:tilde_c_k_integral}
-        \begin{split}
-            \tilde c_{k\ea, k\eb, k\ec} 
-            &= \frac{\dim[(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})^{\GL(n)}]}{\dim(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})} \\
-            &= \int \diff u_A \diff u_B \diff u_C \braket{(v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec}^{u_C}), \Gamma_{k\ea,k\eb,k\ec}^{1} (v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec}^{u_C})}.
-        \end{split}
-    \end{align}
-    While the operator $\Gamma_{k\ea,k\eb,k\ec}^{1}$ appearing in \cref{eq:tilde_c_k_integral} above projects onto the subspace of $\GL(n)$-invariant vectors in $V_{k\ea}\ot V_{k\eb} \ot V_{k\ec}$, the operator $\Gamma_{\ea,\eb,\ec}^{k}$ projects onto the subspace of $\GL(n)$-invariant vectors in $(V_{\ea}\otimes V_{\eb} \otimes V_{\ec})^{\ot k}$.
-    Since $V_{k\ex}$ always embeds isometrically and equivariantly into $V_{\ex}^{\ot k}$ for any $\ex$, we have that$V_{k\ea}\ot V_{k\eb} \ot V_{k\ec}$ is a subspace of $(V_{\ea}\otimes V_{\eb} \otimes V_{\ec})^{\ot k}$ with respect to a $\GL(n)$-equivariant isometry and therefore the projection operators satisfy
-    \begin{equation}
-        \Gamma_{k\ea,k\eb,k\ec}^{1} = (\iota_{\ea}^{k}\ot\iota_{\eb}^{k}\ot\iota_{\ec}^{k})^{\dagger} \Gamma_{\ea,\eb,\ec}^{k} (\iota_{\ea}^{k}\ot\iota_{\eb}^{k}\ot\iota_{\ec}^{k}).
-    \end{equation}
-    Moreover, using the $\GL(n)$-equivariance of $\Gamma_{\ea,\eb,\ec}^{k}$ and the inequality $\Gamma_{\ea,\eb,\ec}^{k} \leq (\id_{V_{\ea}\ot V_{\eb} \ot V_{\ec}})^{\otimes k}$ yields, for all $g \in \GL(n)$, an upper bound on the integrand in \cref{eq:tilde_c_k_integral}:    \begin{align}
-        &\braket{(v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec}^{u_C}), \Gamma_{k\ea,k\eb,k\ec}^{1} (v_{k\ea}^{u_A} \ot v_{k\eb}^{u_B} \ot v_{k\ec}^{u_C})}\\
-        &\qquad=\braket{(v_{\ea}^{u_A} \ot v_{\eb}^{u_B} \ot v_{\ec}^{u_C})^{\ot k}, \Gamma_{\ea,\eb,\ec}^{k} (v_{\ea}^{u_A} \ot v_{\eb}^{u_B} \ot v_{\ec}^{u_C})^{\ot k}}, \\
-        &\qquad=\braket{(v_{\ea}^{gu_A} \ot v_{\eb}^{gu_B} \ot v_{\ec}^{gu_C})^{\ot k}, \Gamma_{\ea,\eb,\ec}^{k} (v_{\ea}^{gu_A} \ot v_{\eb}^{gu_B} \ot v_{\ec}^{gu_C})^{\ot k}}, \\
-        &\qquad\leq\braket{(v_{\ea}^{gu_A} \ot v_{\eb}^{gu_B} \ot v_{\ec}^{gu_C})^{\ot k}, (v_{\ea}^{gu_A} \ot v_{\eb}^{gu_B} \ot v_{\ec}^{gu_C})^{\ot k}}, \\
-        &\qquad= \norm{v_\ea^{gu_A} \ot v_\eb^{gu_B} \ot v_\ec^{gu_C}}^{2k}.
-    \end{align}
-    Finally, let $(u_{A}',u_{B}',u_{C}')$ be unitaries which achieve the maximum of the integrand appearing in \cref{eq:tilde_c_k_integral} (continuity of the integrand and compactness of $\U(n)$ gaurantees existence) such that $\tilde c_{k\ea,k\eb,k\ec}$ admits the bound
-    \begin{equation}
-        \tilde c_{k\ea, k\eb, k\ec} \leq \norm{v_\ea^{gu_A'} \ot v_\eb^{gu_B'} \ot v_\ec^{gu_C'}}^{2k}.
-    \end{equation}
-    Since $g \in \GL(n)$ is arbitrary and $(u_{A}',u_{B}',u_{C}')$ is independent of $g$ by definition one obtains
-    \begin{equation}
-        \tilde c_{k\ea, k\eb, k\ec} \leq \inf_{g \in \GL(n)} \norm{v_\ea^{gu_A'} \ot v_\eb^{gu_B'} \ot v_\ec^{gu_C'}}^{2k} = \capacity(A',B',C')^{k} \leq \max_{A,B,C}\capacity(A,B,C)^{k}.
-    \end{equation}
-    \textcolor{red}{TODO: Prove that the capacity is attained by some Hermitian matrices $A,B,C$ (maybe using the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
-    This establishes the claimed upper bound.
-    To prove the claimed lower bound, let $v_{\ea}^{u_{A}'} \ot v_{\eb}^{u_{B}'} \ot v_{\ec}^{u_{C}'}$ be the coherent state associated with the Hermitian matrices $(A,B,C)$ satisfying $A+B+C=0$.
-    Then using \cref{eq:inclusivity} and the positive demidefiniteness of $\Gamma_{k\ea,k\eb,k\ec}^{1}$ we obtain,
-    \begin{align}
-        %\label{eq:tilde_c_k_inclusivity}
-        \begin{split}
-            \tilde c_{k\ea, k\eb, k\ec} 
-            &= \frac{\dim[(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})^{\GL(n)}]}{\dim(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})} \\
-            &\geq \frac{\braket{(v_{k\ea}^{u_A'} \ot v_{k\eb}^{u_B'} \ot v_{k\ec}^{u_C'}), \Gamma_{k\ea,k\eb,k\ec}^{1} (v_{k\ea}^{u_A'} \ot v_{k\eb}^{u_B'} \ot v_{k\ec}^{u_C'})}}{\dim(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})}, \\
-            &= \frac{\braket{(v_{\ea}^{u_A'} \ot v_{\eb}^{u_B'} \ot v_{\ec}^{u_C'})^{\ot k}, \Gamma_{\ea,\eb,\ec}^{k} (v_{\ea}^{u_A'} \ot v_{\eb}^{u_B'} \ot v_{\ec}^{u_C'})^{\ot k}}}{\dim(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})}, \\
-            &= \frac{\cst_{k}(A,B,C)}{\dim(V_{k\ea} \ot V_{k\eb} \ot V_{k\ec})}.
-        \end{split}
-    \end{align}
-    Now \cref{eq:occasionality} implies there exists positive integers $m,s > 0$ such that for sufficiently large $k$, $(mk)^{s} \cst_{mk}(A,B,C) > 0$ which implies $c_{mk\ea, mk\eb, mk\ec} \neq 0$ and thus $c_{mk\ea, mk\eb, mk\ec} \geq 1$. 
-    Taking $K = mk$ for sufficiently large $k$ proves the claim. 
-\end{proof}
-
-
-\clearpage
+%\clearpage
 \appendix
 
 \section{Multinomial distribution inequalities}
@@ -2298,6 +2074,60 @@ The following is a combination of \cite[Theorem 1 \& Proposition 3.1]{franks2020
     \end{align}
     as claimed because $\sqrt{2\pi} > 1$ and $\frac{1}{12} < \frac{e^{-\frac{1}{12}}}{4\sqrt{2\pi}} = 0.09176\cdots$.
 \end{proof}
+
+\section{A character formula for \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
+
+Throughout \cref{sec:sixj_tet} we proved a number of results concerning the square of the Hilbert-Schmidt norm of the recoupling operator defined by \cref{defn:sixj}.
+The following result provides a formula for the square of the Hilbert-Schmidt norm as an integral over four copies of $\U(n)$.
+\begin{lem}[Character formula]
+    \label{lem:character_formula}
+    Let $\abcdefsymbolprimed : C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd}$ be the recoupling operator defined in \cref{defn:sixj}.
+    Then
+    \begin{equation}
+        \label{eq:character_formula}
+        \dim(V_{\ye})^{2}\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^{2}
+        = \int_{\U(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\ya,\yb,\yc}_{\yd,\ye,\yf}(u_1,u_2,u_3,u_4).
+    \end{equation}
+    where
+    \begin{equation}
+        X^{\ya,\yb,\yc}_{\yd,\ye,\yf}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\ya}(u_1^{-1}u_2)\chi_{\yb}(u_4^{-1}u_2)\chi_{\yc}(u_2^{-1}u_3)\chi_{\yd}(u_4^{-1}u_3)\chi_{\ye}(u_3^{-1}u_1)\chi_{\yf}(u_1^{-1}u_4).
+    \end{equation}
+\end{lem}
+Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(2)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
+\begin{proof}[Proof of \cref{lem:character_formula}]
+    The proof follows from (i) the following identities concerning the character $\chi_{\yx}(u) = \Tr(\pi_{\yx}(u))$ and duality $\pi_{\yx}^{*}(u) = (\pi_{\yx}(u^{-1}))^{T}$ relations
+    \begin{equation}
+        \tikzfig{tikz/final/char_duality},
+    \end{equation}
+    and (ii) the integral formula for the projection operator $\Pi_{\ea,\eb}^{\ec}$ onto the subspace of invariant vectors in $V_{\ea} \ot V_{\eb} \ot V_{\ec}^{*}$:
+    \begin{equation}
+        \tikzfig{tikz/final/triple_invariant}.
+    \end{equation}
+    Applied four times, we obtain \cref{eq:character_formula}:
+    \begin{equation}
+        \tikzfig{tikz/final/sixj_char_formula}.
+    \end{equation}
+\end{proof}
+
+We conclude by noting that the integrands appearing in the above character formula are closely related to the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(u_1, u_2 ; t)$ in \cite{mcswiggen2021harish}:
+\begin{equation}
+    K_{G}(u_1, u_2; t) = \sum_{\yx} \dim V_{\yx}^{n} \chi_{\yx}(u_1 u_2^{-1}) e^{-t(\abs{\yx+\rho}^{2} - \abs{\rho})/2},
+\end{equation}
+where the sum is over all dominant integral weights $\yx$ for $G$ and $\rho$ the associated Weyl vector.
+It is conceivable that the square of the Hilbert-Schmidt norm of the generalized $6j$ symbols for $G$ can be seen as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
+
+\section{Seesaw reciprocity \& eigenvalues of blocks}
+
+In \cref{sec:lr_tri}, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
+Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\ec$ and $n\times n$ blocks $A',B'$ with eigenvalues $\ea,\eb$.
+One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
+This can be accomplished by considering the branching multiplicities $m^{\ea\eb}_{\ec}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
+In fact there exists a representation-theoretic analogue of \cref{thm:trigonal_block}, specifically \cite[Theorem 9.2.3]{goodman2000representations}.
+In particular, the values of $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ coincide provided the Young diagrams $(\ea,\eb,\ec)$ involved have depths at most $(\min\{a,n\}, \min\{b,n\}, \min\{a+b,n\})$; this ensures that $V_{\ea}^{a}, V_{\eb}^{b}, V_{\ec}^{a+b}$ and $V_{\ea}^{n}, V_{\eb}^{n}, V_{\ec}^{n}$ are all non-zero representation spaces and therefore $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ are both meaningfully defined.
+The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
+This parallels the fact that, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
+
+\textcolor{red}{TODO: Describe the same correpsondence for the blockwise $6j$ symbols.}
 
 \clearpage
 \printbibliography
