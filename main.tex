@@ -92,6 +92,8 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{itemize}
 }
 
+\textcolor{blue}{Hyperbolic polynomials, Horn's problem, Lax conjecture \cite{serre2009weyl,speyer2005horn}.}
+
 %\clearpage
 \section{Tetrahedral eigenvalues \& the tetrahedral Horn problem}
 
@@ -793,6 +795,9 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
     and have eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ (using a similar argument presented in the proof of \cref{thm:trigonal_block}); i.e., one concludes that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
 \end{proof}
 
+\clearpage
+\section{Inequalities for tetrahedral eigenvalues}
+
 \begin{rem}
     The correspondence between the tetrahedral Horn problem and the eigenvalues of principal submatrices of $3\times 3$ matrices provided by \cref{cor:tetrahedral_block} enables us to import a myriad of known results concerning the eigenvalues of principal submatrices.
     Specifically, the results due to \citeauthor{audenaert2010strongly} \cite{audenaert2010strongly}, \citeauthor{lami2017log} \cite{lami2017log}, \citeauthor{niculescu2025old} \cite{niculescu2025old}, \citeauthor{paksoy2014inequalities} \cite{paksoy2014inequalities}, \citeauthor{lewin2014family} \cite{lewin2014family}.
@@ -803,8 +808,6 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
     From this perspective, one may view Horn problems are kinds of ``spectral'' classical marginal problems for blocks of Guassian random variables.
 \end{rem}
 
-%\clearpage
-\section{Inequalities for tetrahedral eigenvalues}
 
 \begin{itemize}
     \item In \cite{ando1999norm}, \citeauthor{ando1999norm} proved a subadditivity inequality for non-negative operator monotone functions $f(t)$ on $[0, \infty)$.
@@ -829,6 +832,8 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
     \item It seems to be that analogous results were also derived by \citeauthor{friedland2013submodular} \cite{friedland2013submodular}.
     \item Later, in \cite{lami2017log}, \citeauthor{lami2017log} is concerned with the option $f(x) = \ln x$ which pertains to log-determinant inequalities and its connection to entropy inequalities.
     \item \textcolor{red}{It seems probable that could be a unifying submodularity inequality (maybe related to \cite{gao2017unifying}?)}
+    \item For a reference on convex functions \cite{niculescu2006convex}
+    \item See also the 1971 paper ``Bounds for the determinant of the sum of Hermitian matrices'' \cite{fiedler1971bounds}
 \end{itemize}
 
 \begin{prop}
@@ -942,6 +947,8 @@ The following operator inequality can be used to prove a number of inequalities 
 \begin{proof}
     The result is obtained from applying a non-commutative multinomial expansion and noting that every summand on the right-hand-side above also appears on the left-hand-side above.
 \end{proof}
+See also \cite{berndt2015hlawka,niculescu2023functions}.
+
 To obtain an inequality which depends only on the eigenvalues of $B, A+B, B+C$, and $A+B+C$, one can simply pair the positive semidefinite operator in \cref{lem:mne_operator_ineq} with an $\SU(n)$-equivariant and positive semidefinite operator:
 \begin{cor}
     \label{cor:isotypic_ineq}
@@ -1023,14 +1030,7 @@ For instance
 \begin{equation}
     e_k(A) + e_k(B) + e_k(C) + e_k(A+B+C) \geq e_k(A+B) + e_k(B+C) + e_k(A+C),
 \end{equation}
-as well as reporting other inequalities \cite[Section 6.2]{niculescu2023functions} by other authors:
-\begin{equation}
-    {\det}^{\frac12} A + {\det}^{\frac12} B + {\det}^{\frac12} C + {\det}^{\frac12}(A+B+C) \leq {\det}^{\frac12}(A+B) + {\det}^{\frac12}(B+C) + {\det}^{\frac12}(A+C),
-\end{equation}
-\begin{equation}
-    {\det}^{\frac1n} (A+B) {\det}^{\frac1n} (A+C) \geq {\det}^{\frac1n} (B) {\det}^{\frac1n} (C) + {\det}^{\frac1n} (A+B+C){\det}^{\frac1n} (A)
-\end{equation}
-\textcolor{red}{TC: Confirm the above two inequalities hold for complex Hermitian matrices, not just real symmetric ones.}
+
 
 One also has another determinant inequality which is non-linear in determinants \cite[Lemma 2.3]{tie2011rearrangement}.
 \begin{lem}
@@ -1139,6 +1139,57 @@ where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric po
 %    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
 %}
 
+\subsection{The Courtade-Minkowski-Sra determinant inequality}
+
+Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $B, A+B, B+C$ and $A+B+C$.
+Here we show how to improve the determinant inequality $\det(A+B)\det(B+C) \geq \det(A+B+C)\det(B)$ in a manner which also accounts for the determinants $\det(A)$ and $\det(C)$.
+This inequality exploits Minkowski's determinat inequality for positive semidefinite $n\times n$ matrices $A$ and $B$ which reads (see \cite[Theorem 7.8.21]{horn1985matrix} or \cite[Equation II.44]{bhatia1997matrix}):
+\begin{equation}
+    \det(A+B)^{\frac{1}{n}} \geq \det(A)^{\frac{1}{n}} + \det(B)^{\frac{1}{n}}.
+\end{equation}
+The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
+This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
+\begin{prop}[Courtade-Minkowski-Sra determinant inequality]
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cms_ineq}
+        \det (A+B)^{\frac1n} \det (B+C)^{\frac1n} \geq \det (A+B+C)^{\frac1n}\det (B)^{\frac1n} + \det (A)^{\frac1n} \det(C)^{\frac1n}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    By standard continuity arguments, it suffices to prove the inequality for $A,B,C > 0$ positive definite (applying the result to positive definite $(A+\varepsilon I, B+\varepsilon I, C+\varepsilon)$ and sending $\varepsilon \to 0$ yields the positive semidefinite claim).
+    As $B$ is positive definite, it is also invertible and we may define
+    \begin{equation}
+        X = B^{-\frac{1}{2}}AB^{-\frac{1}{2}}, \qquad
+        Y = B^{-\frac{1}{2}}CB^{-\frac{1}{2}}.
+    \end{equation}
+    By dividing \cref{eq:cms_ineq} by $\det(B)^{\frac{2}{n}} \neq 0$, it then suffices to prove
+    \begin{equation}
+        \label{eq:cms_ineq_xy}
+        \det (I+X)^{\frac1n} \det (I+Y)^{\frac1n} \geq \det (I+X+Y)^{\frac1n} + \det (X)^{\frac1n} \det(Y)^{\frac1n}.
+    \end{equation}
+    Let $\ex(X) = \eig(X)$ and $\ex(Y) = \eig(Y)$. Then for any permutation $\pi \in S_n$ let
+    \begin{equation}
+        L_{\pi} = \diag\{1+\ex_i(X) + \ex_{\pi(i)}(Y)\}_{i=1}^{n}, \qquad R_{\pi} = \diag\{\ex_i(X)\ex_{\pi(i)}(Y)\}_{i=1}^{n}.
+    \end{equation}
+    Then we have the identity
+    \begin{align}
+        \det(I+X)\det(I+Y) 
+        &= \prod_{i=1}^{n} (1+\ex_i(X)) \prod_{i=1}^{n} (1+\ex_i(Y)), \\
+        &= \prod_{i=1}^{n} (1+\ex_i(X) + \ex_{\pi(i)}(Y) + \ex_i(X)\ex_{\pi(i)}(Y)),\\
+        &= \det(L_{\pi} + R_{\pi})
+    \end{align} 
+    Here we can apply Minkowski's theorem to obtain 
+    \begin{equation}
+        \det(L_{\pi} + R_{\pi})^{\frac{1}{n}} \geq \det(L_{\pi})^{\frac{1}{n}} + \det(R_{\pi})^{\frac{1}{n}}.
+    \end{equation}
+    By definition, we have $\det(R_{\pi}) = \det(X)\det(Y)$ for any permutation $\pi$, while a theorem do to \citeauthor{fiedler1971bounds} \cite{fiedler1971bounds} states (see also \cite[Exercise VI.7.2,Theorem VI.7.1]{bhatia1997matrix})
+    \begin{equation}
+        \det(I+X+Y) \leq \max_{\pi} \prod_{i=1}^{n} (\ex_i(I+X) + \ex_{\pi(i)}(Y)) = \max_{\pi} \det(L_{\pi}).
+    \end{equation}
+    Combining these bounds together yields \cref{eq:cms_ineq_xy} and thus the claim holds. 
+\end{proof}
 
 \subsection{The C\c{S}W inequality}
 At this stage, it is worth comparing the inequality in \cref{eq:SSA_like_ineq} to a similar inequality derived by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}, which holds for tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ which are non-negative and sufficiently small in the sense that $\ex_1 + \abs{\ex} \leq 1$:
