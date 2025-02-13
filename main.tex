@@ -409,7 +409,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \end{prop}
 \begin{proof}
     To begin, notice that each of the operations on $(\ea,\eb,\ec,\ed,\ee,\ef)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
-    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software. \textcolor{red}{TODO: Supply mathematica code used for this.}
+    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software.
     Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
     Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
     \begin{align}
@@ -577,8 +577,8 @@ Note that in subsequent sections we will often explicitly assume the candidate e
         s_2 = \frac{a+c+d+f}{2}, \quad
         s_3 = \frac{b+c+e+f}{2}.
     \end{equation}
-    Whether there exists analogous types of symmetries for the tetrahredral Horn's problem when $d>2$ remains an open problem.
-    \textcolor{red}{TODO: Describe how Regge symmetries emerge from $\SU(2)$ $6j$ symbol symmetries \cite{boalch2007regge}, how they can be viewed as a scissors-congruence of Euclidean tetrahedra perserving both the volume invariants and Dhen invariants \cite{akopyan2019regge}, and how higher rank Regge symmetries are connected to the eigenvalue conjecture \cite{morozov2018new}.}
+    It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence perserving both the volume invariants and Dhen invariants \cite{akopyan2019regge}.
+    Whether there exists analogous types of symmetries for the tetrahredral Horn's problem for $n\times n$ matrices when $n\geq 3$ remains an open problem \cite{morozov2018new}.
 \end{rem}
 
 %\clearpage
@@ -594,24 +594,24 @@ Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtian the following fu
 \begin{lem}
     \label{lem:trigonal_block}
     Let $(A, B, C)$ be a triple of $n \times n$ Hermitian matrices with eigenvalues $(\ea, \eb, \ec)$ such that $C=A+B$.
-    Let $\Sigma_{A,B}$ be the $2n \times 2n$ Hermitian matrix
+    Let $C'$ be the $2n \times 2n$ Hermitian matrix
     \begin{equation}
-        \Sigma_{A,B} = \begin{bmatrix}
+        C' = \begin{bmatrix}
             A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
             B^{\frac{1}{2}}A^{\frac{1}{2}} & B
         \end{bmatrix}.
     \end{equation}
-    Then $\Sigma_{A,B} \geq 0$ is positive semidefinite, has rank at most $n$ and has eigenvalues given by $\ec$
+    Then $C' \geq 0$ is positive semidefinite, has rank at most $n$ and has eigenvalues given by $\ec$
     \begin{equation}
-        \eig(\Sigma_{A,B}) \simeq \eig(A+B) = \eig(C) = \ec.
+        \eig(C') \simeq \eig(A+B) = \eig(C) = \ec.
     \end{equation}
 \end{lem}
 \begin{proof}
-    That $\Sigma_{A,B}$ is positive semidefinite and has rank at most $n$ follows because $\Sigma_{A,B}$ can be decomposed as $\Sigma_{A,B} = T^{*} T$ where $T$ is the $n \times 2n$ block matrix
+    That $C'$ is positive semidefinite and has rank at most $n$ follows because $C'$ can be decomposed as $C' = T^{*} T$ where $T$ is the $n \times 2n$ block matrix
     \begin{equation}
         T = \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}.
     \end{equation}
-    That $\Sigma_{A,B}$ and $A+B$ share the same eigenvalues (up to padding by $n$ zeros) follows because for any rectangular matrix $T$, the eigenvalues of $T^{*}T$ and $TT^{*}$ are equal (up to padding by zeros) and in this instance
+    That $C'$ and $A+B$ share the same eigenvalues (up to padding by $n$ zeros) follows because for any rectangular matrix $T$, the eigenvalues of $T^{*}T$ and $TT^{*}$ are equal (up to padding by zeros) and in this instance
     \begin{equation}
         T^{*}T = 
         \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
@@ -621,7 +621,7 @@ Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtian the following fu
             A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
             B^{\frac{1}{2}}A^{\frac{1}{2}} & B
         \end{bmatrix}
-        = \Sigma_{A,B}
+        = C'
         \qquad
         TT^{*} = 
         \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
@@ -632,43 +632,43 @@ Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtian the following fu
 From the perspective of \cref{lem:trigonal_block}, one can view the trigonal Horn problem involving the eigenvalues $(\ea,\eb,\ec)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
 \begin{equation}
     \label{eq:block_ABX}
-    \Sigma = \begin{bmatrix}
-        A & X \\
-        X^{*} & B
+    C' = \begin{bmatrix}
+        A' & Z \\
+        Z^{*} & B'
     \end{bmatrix},
 \end{equation}
-and the eigenvalues of its two $n\times n$ diagonal blocks $A$ and $B$.
-It is known, by \cite[Theorem 7.7.9]{horn2012matrix} or more generally \cite[Theorem 5.11]{moslehian2019positivity} that if $\Sigma$ is a $2\times 2$ block matrix such that $A,B \geq 0$, then $\Sigma \geq 0$ if and only if the off-diagonal block $X$ is of the form
+and the eigenvalues of its two $n\times n$ diagonal blocks $Z$ and $Z$.
+It is known, by \cite[Theorem 7.7.9]{horn2012matrix} or more generally \cite[Theorem 5.11]{moslehian2019positivity} that if $C'$ is a $2\times 2$ block matrix such that $A',B' \geq 0$, then $C' \geq 0$ if and only if the off-diagonal block $Z$ is of the form
 \begin{equation}
-    X = A^{\frac{1}{2}} K B^{\frac{1}{2}}
+    Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}
 \end{equation}
 for some contraction matrix $K$ (largest eigenvalue of $(K^{*}K)^{\frac{1}{2}}$ is at most unity).
-Additionally, when $X = A^{\frac{1}{2}} K B^{\frac{1}{2}}$, one has the decomposition
+Additionally, when $Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}$, one has the decomposition
 \begin{equation}
-    \Sigma = \begin{bmatrix}
-        A & X \\
-        X^{*} & B
+    C' = \begin{bmatrix}
+        A' & Z \\
+        Z^{*} & B'
     \end{bmatrix} 
     =
     \begin{bmatrix}
-        A^{\frac{1}{2}} & 0 \\
-        0 & B^{\frac{1}{2}}
+        A'^{\frac{1}{2}} & 0 \\
+        0 & B'^{\frac{1}{2}}
     \end{bmatrix}
     \begin{bmatrix}
         I & K \\
         K^{*} & I
     \end{bmatrix}
     \begin{bmatrix}
-        A^{\frac{1}{2}} & 0 \\
-        0 & B^{\frac{1}{2}}
+        A'^{\frac{1}{2}} & 0 \\
+        0 & B'^{\frac{1}{2}}
     \end{bmatrix},
 \end{equation}
 noting that $K$ is a contraction if and only if the middle block matrix above is positive semidefinite \cite[Lemma 5.10]{moslehian2019positivity}.
 
-Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A^{\frac{1}{2}} K B^{\frac{1}{2}} = A^{\frac{1}{2}} B^{\frac{1}{2}}$).
-A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $\Sigma$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
-Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $\Sigma$ and $A+B$ in terms of properties of $X$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
-Nevertheless, when the rank of $\Sigma$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of the trigonal Horn problem.
+Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A'^{\frac{1}{2}} K B'^{\frac{1}{2}} = A'^{\frac{1}{2}} B'^{\frac{1}{2}}$).
+A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $C'$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
+Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $C'$ and of the blocks $A'$ and $B'$ in terms of properties of $Z$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
+Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of the trigonal Horn problem.
 \begin{thm}
     \label{thm:trigonal_block}
     Let $(\ea,\eb,\ec)$ be a triple of positive semidefinite eigenvalues of length at most $n$.
@@ -677,24 +677,24 @@ Nevertheless, when the rank of $\Sigma$ is constrained to be at most $n$, we obt
         \item there exists a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$,
         \item there exists an $2n \times 2n$ Hermitian matrix,
             \begin{equation}
-                \Sigma = \begin{bmatrix}
-                    A' & X \\
-                    X^{*} & B'
+                C' = \begin{bmatrix}
+                    A' & Z \\
+                    Z^{*} & B'
                 \end{bmatrix},
             \end{equation}
-            such that $\eig(A') = \ea$, $\eig(B') = \eb$, and $\eig(\Sigma) = \ec$.
+            such that $\eig(A') = \ea$, $\eig(B') = \eb$, and $\eig(C') = \ec$.
     \end{enumerate}
 \end{thm}
 \begin{proof}
-    Since we explicitly assume all of the eigenvalues in the triple $(\ea,\eb,\ec)$ are non-negative, the Hermitian matrices $A,B,C$, and $\Sigma,A',B'$ involved in the statements above are necessarily positive semidefinite.
-    The claim (i) $\implies$ (ii) follows from \cref{lem:trigonal_block} by setting $(\Sigma, A', B') = (\Sigma_{A,B}, A, B)$.
-    That (ii) $\implies$ (i) follows by noticing that if $\Sigma$ has eigenvalues $\ec$, then it has rank at most $n$.
-    Therefore, as $\Sigma \geq 0$, there exists a $n\times 2n$ block matrix $T$ of the form
+    Since we explicitly assume all of the eigenvalues in the triple $(\ea,\eb,\ec)$ are non-negative, the Hermitian matrices $A,B,C$, and $A',B',C'$ involved in the statements above are necessarily positive semidefinite.
+    The claim (i) $\implies$ (ii) follows from \cref{lem:trigonal_block}.
+    That (ii) $\implies$ (i) follows by noticing that if $C'$ has eigenvalues $\ec$, then it has rank at most $n$.
+    Therefore, as $C' \geq 0$, there exists a $n\times 2n$ block matrix $T$ of the form
     \begin{equation}
         T = \begin{bmatrix} T_{A} & T_{B} \end{bmatrix} 
     \end{equation}
-    such that $\Sigma = T^{*} T$. 
-    The diagonal blocks of $\Sigma$ are therefore $A' = T_{A}^*T_{A}$, and $B' = T_{B}^{*}T_{B}$.
+    such that $C' = T^{*} T$. 
+    The diagonal blocks of $C'$ are therefore $A' = T_{A}^*T_{A}$, and $B' = T_{B}^{*}T_{B}$.
     As in the proof of \cref{lem:trigonal_block}, we note that $T^{*}T$ and $TT^{*}$ have the same eigenvalues up to padding by zeros.
     Therefore, by letting $A = T_{A} T_{A}^{*}$ and $B = T_{B} T_{B}^*$ we see that 
     \begin{align}
@@ -703,9 +703,9 @@ Nevertheless, when the rank of $\Sigma$ is constrained to be at most $n$, we obt
             \eig(B) = \eig(T_{B} T_{B}^{*}) &\simeq \eig(T_{B}^{*} T_{B}) = \eig(B') = \eb,
         \end{split}
     \end{align}
-    while the eigenvalues of $C = A+B = T_{A} T_{A}^{*} + T_{B} T_{B}^*$ match the eigenvalues of $\ec$ because
+    while the eigenvalues of $C = A+B = T_{A} T_{A}^{*} + T_{B} T_{B}^*$ match the eigenvalues of $C'$ because
     \begin{equation}
-        \eig(C) = \eig(A+B) =\eig(T_{A} T_{A}^{*} + T_{B} T_{B}^*) = \eig(T T^{*}) \simeq \eig(T^{*}T) = \eig(\Sigma) = \ec.
+        \eig(C) = \eig(A+B) =\eig(T_{A} T_{A}^{*} + T_{B} T_{B}^*) = \eig(T T^{*}) \simeq \eig(T^{*}T) = \eig(C') = \ec.
     \end{equation}
 \end{proof}
 
@@ -714,41 +714,43 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
 \begin{cor}
     \label{cor:tetrahedral_block}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of positive semidefinite eigenvalues of length at most $n$.
-    Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral if and only if there exists a $3n \times 3n$ matrix $\Sigma$ of the form
+    Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral if and only if there exists a $3n \times 3n$ matrix $E'$ of the form
     \begin{equation}
         \label{eq:block_3by3}
-        \Sigma =
+        E' =
         \begin{bmatrix}
             A' & Z & Y \\
             Z^{*} & B' & X\\
             Y^{*} & X^{*} & D'
         \end{bmatrix},
+        \qquad \text{with blocks} \qquad
+        C' = \begin{bmatrix}
+            A' & Z \\
+            Z^{*} & B'\\
+        \end{bmatrix}, \quad
+        F' = \begin{bmatrix}
+            B' & X \\
+            X^{*} & D'
+        \end{bmatrix}
     \end{equation}
     such that
     \begin{equation}
         \label{eq:block_eigenvalue_tet}
         \eig(A') = \ea, \quad
         \eig(B') = \eb, \quad
-        \eig\begin{pmatrix}
-            A' & Z \\
-            Z^{*} & B'\\
-        \end{pmatrix} = \ec, \quad
+        \eig(C') = \ec, \quad
         \eig(D') = \ed, \quad
-        \eig(\Sigma) = \ee, \quad
-        \eig
-        \begin{pmatrix}
-            B' & X \\
-            X^{*} & D'
-        \end{pmatrix} = \ef.
+        \eig(E') = \ee, \quad
+        \eig(F') = \ef.
     \end{equation}
 \end{cor}
 \begin{proof}
     The proof is analogous to the proofs of \cref{lem:trigonal_block} and \cref{thm:trigonal_block}.
     First we prove the ``only if'' portion of the claim which is a corollary of \cref{lem:trigonal_block}.
     Suppose $(A,B,C,D,E,F)$ is a tetrahedral sextuple of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ec)$.
-    Let $\Sigma = \Sigma_{A,B,D}$ be given by
+    Let $E'$ be given by
     \begin{equation}
-        \Sigma_{A,B,D} =
+        E' =
         \begin{bmatrix}
             A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
         \end{bmatrix}^{*}
@@ -762,14 +764,14 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
             D^{\frac{1}{2}}A^{\frac{1}{2}} & D^{\frac{1}{2}}B^{\frac{1}{2}} & D
         \end{bmatrix}
     \end{equation}
-    Then the eigenvalues of the corresponding principal submatrices of $\Sigma$ satisfy \cref{eq:block_eigenvalue_tet} by \cref{lem:trigonal_block}.
+    Then the eigenvalues of the corresponding principal submatrices of $E'$ satisfy \cref{eq:block_eigenvalue_tet} by \cref{lem:trigonal_block}.
     Now we prove the ``if'' portion of the claim which is a corollary of \cref{thm:trigonal_block}.
-    If $\Sigma$ is a matrix of form given by \cref{eq:block_3by3} with eigenvalues $\ee$ with length at most $n$, then $\Sigma$ is positive semidefinite with rank at most $n$.
+    If $E'$ is a matrix of form given by \cref{eq:block_3by3} with eigenvalues $\ee$ with length at most $n$, then $E'$ is positive semidefinite with rank at most $n$.
     Therefore, there exists an $n\times 3n$ block matrix
     \begin{equation}
         T = \begin{bmatrix} T_{A} & T_{B} & T_{D} \end{bmatrix} 
     \end{equation}
-    such that $\Sigma = T^{*}T$ and thus
+    such that $E' = T^{*}T$ and thus
     \begin{equation}
         \begin{alignedat}{6}
             &A' &&= T_{A}^{*}T_{A}, \qquad
@@ -832,7 +834,8 @@ As a corrollary of this correspondence between the trigonal Horn problem and the
     \item It seems to be that analogous results were also derived by \citeauthor{friedland2013submodular} \cite{friedland2013submodular}.
     \item Later, in \cite{lami2017log}, \citeauthor{lami2017log} is concerned with the option $f(x) = \ln x$ which pertains to log-determinant inequalities and its connection to entropy inequalities.
     \item \textcolor{red}{It seems probable that could be a unifying submodularity inequality (maybe related to \cite{gao2017unifying}?)}
-    \item For a reference on convex functions \cite{niculescu2006convex}
+    \item For a reference on convex functions see \citeauthor{niculescu2006convex} \cite{niculescu2006convex} 
+    \item also the amazing paper by \citeauthor{davis1957all} \cite{davis1957all} which cleanly proves that a spectral function on $n\times n$ Hermitian matarices (to some partially ordered real vector space like $\mathbb R$) is convex if and only if the corresponding symmetric function of $n$ real eigenvalues is convex.
     \item See also the 1971 paper ``Bounds for the determinant of the sum of Hermitian matrices'' \cite{fiedler1971bounds}
 \end{itemize}
 
@@ -1112,6 +1115,20 @@ For example, it seems to prove
     E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
 \end{equation}
 where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
+
+An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is \citeauthor{bauschke2001hyperbolic}.
+For the particular case of the real vector space of $n\times n$ Hermitian matrices of dimension $n(n+1)/2$, the polynomial $X \mapsto \det(X)$ is hyperbolic in the direction of the identity matrix $\id_n$ (i.e., Hermitian matrices only have real eigenvalues).
+Moreover, the homogeneous polynomial $p_m(X) = \Tr(P_{(1,\stackrel{m}{\ldots}, 1)}X^{\otimes m})$ is the sum of the principal minors of $X$ of size $m$ and also equals the elementary symmetric polynomial of the eigenvalues of $X$, i.e.,
+\begin{equation}
+    p_m(X) = E_m (\eig(X)).
+\end{equation}
+The homogeneous polynomial $p_m(X)$, like the determinant $\det(X) = p_n(X)$ itself, is also hyperbolic in the direction of the identity matrix $\id_n$.
+In this context, together with the positivity $p_m(\id_n) > 0$, Gårding's inequality generalizes the Minkowski determinant inequality and yields superlinearity of $p_m(X)^{\frac{1}{m}}$:
+\begin{equation}
+    p_{m}(X+Y)^{\frac{1}{m}} \geq p_m(X)^{\frac{1}{m}} + p_m(Y)^{\frac{1}{m}}
+\end{equation}
+for all $X,Y$ positive semidefinite (the hyperbolicity cone for $p_m$).
+This inequality is due to \citeauthor{marcus1957inequalities} \cite[Theorem]{marcus1957inequalities}.
 }
 
 
@@ -1139,7 +1156,7 @@ where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric po
 %    Also consider if $X \geq Y$ then $f(X) \geq f(Y)$ but also $X \mapsto X' \coloneqq \Tr(X)I - X$ sends PSD matrices to PSD matrices so the inequality concerning $(\Tr \circ f)(X)$ above also holds for $(\Tr \circ f)(\Tr(X)I - X)$.
 %}
 
-\subsection{The Courtade-Minkowski-Sra determinant inequality}
+\subsection{The Courtade-Sra determinant inequality}
 
 Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $B, A+B, B+C$ and $A+B+C$.
 Here we show how to improve the determinant inequality $\det(A+B)\det(B+C) \geq \det(A+B+C)\det(B)$ in a manner which also accounts for the determinants $\det(A)$ and $\det(C)$.
@@ -1147,9 +1164,9 @@ This inequality exploits Minkowski's determinat inequality for positive semidefi
 \begin{equation}
     \det(A+B)^{\frac{1}{n}} \geq \det(A)^{\frac{1}{n}} + \det(B)^{\frac{1}{n}}.
 \end{equation}
-The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
+The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}\footnote{Note in \cite{courtade2017concavity}, \citeauthor{courtade2017concavity} conjectures a generalization of the Brunn-Minkowski inequality for bounded convex sets $A,B,C$ in $\mathbb R^{n}$ of the form $V(A+B)^{\frac{1}{n}}V(B+C)^{\frac{1}{n}} \geq V(A+B+C)^{\frac{1}{n}}V(B)^{\frac{1}{n}} + V(A)^{\frac{1}{n}}V(C)^{\frac{1}{n}}$. See also \cite{costa1984similarity}.}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
 This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
-\begin{prop}[Courtade-Minkowski-Sra determinant inequality]
+\begin{prop}[Courtade-Sra determinant inequality]
     Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then
     \begin{equation}
