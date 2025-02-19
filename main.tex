@@ -56,7 +56,7 @@ In parallel to Horn's problem, numerous variations and extensions of Horn's prob
 For example, numerous authors have considered the admissible eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
 In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random}.
 This correspondence between the singular values of a product and the eigenvalues of sum has been generalized substantially by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization}.
-For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues}.
+For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
 
 Recent developments surrounding Horn's problem not covered by the aforementioned reviews include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues of the sum given random matrices with fixed spectra in a series of papers by \citeauthor{coquereaux2018orbital} \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
 \begin{center}%
@@ -807,7 +807,7 @@ Consequently, every inequality constraining trigonal eigenvalues can be lifted t
 These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
 Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
 Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
-For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues}.
+For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
 In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
 \begin{equation}
     \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
@@ -1000,8 +1000,8 @@ Moreover, while it can be shown that \cref{eq:SSA_like_ineq} is strictly tighter
         \label{eq:audenaert}
         \Tr f(E') + \Tr f(B') \geq \Tr f(C') + \Tr f(F').
     \end{equation}
-    Their conclusion, later rediscovered by \citeauthor{friedland2013submodular} \cite{friedland2013submodular} was that it suffices for $f'$ to be an operator monotone.
-    In light of \cref{cor:tetrahedral_block}, the results of \citeauthor{audenaert2010strongly} and \cite{friedland2013submodular} then lead to an indirect proof of \cref{thm:sagnol_ineq}.
+    Their conclusion, also discovered by \citeauthor{friedland2013submodular} \cite{friedland2013submodular} was that it is \textit{sufficient} for $f'$ to be an operator monotone to conclude \cref{eq:audenaert} holds.
+    In light of \cref{cor:tetrahedral_block}, the results of \citeauthor{audenaert2010strongly} and \cite{friedland2013submodular} give an alternative proof of \cref{thm:sagnol_ineq}.
     In \cite{lewin2014family}, \citeauthor{lewin2014family} further proved that $f'$ being an operator monotone is also \textit{necessary} for \cref{eq:audenaert} to hold for all $3\times 3$ block matrices $E'$.
     Note that from the proof of \cref{thm:sagnol_ineq} above, it is not too difficult to see that $f'$ being an operator monotone is also necessary for \cref{eq:sagnol_ineq} to hold (otherwise it becomes possible for \cref{eq:sagnol_final_step} to become negative).
 \end{rem}
@@ -1035,7 +1035,7 @@ This inequality also appears in the recent review paper by \citeauthor{niculescu
     \end{equation}
 \end{prop}
 \begin{proof}
-    By standard continuity arguments, it suffices to prove the inequality for $A,B,C > 0$ positive definite (applying the result to positive definite $(A+\varepsilon I, B+\varepsilon I, C+\varepsilon)$ and sending $\varepsilon \to 0$ yields the positive semidefinite claim).
+    By standard continuity arguments, it suffices to prove the inequality for $B > 0$ positive definite (if it holds for positive definite $B+\varepsilon I$, then continuity permits taking the limit $\varepsilon \to 0$).
     As $B$ is positive definite, it is also invertible and we may define
     \begin{equation}
         X = B^{-\frac{1}{2}}AB^{-\frac{1}{2}}, \qquad
@@ -1074,7 +1074,7 @@ Sra also proves
 \begin{equation}
     E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
 \end{equation}
-where $E_k(X) = e_{k}(\eig(X))$ where $E_k$ is the $k$th elementary symmetric polynomial.
+where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
 
 The proof relies on a concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
 An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is also \cite{bauschke2001hyperbolic}.
@@ -1091,7 +1091,16 @@ In this context, together with the positivity $p_m(\id_n) > 0$, Gårding's inequ
 for all $X,Y$ positive semidefinite (the hyperbolicity cone for $p_m$).
 This inequality is due to \citeauthor{marcus1957inequalities} \cite[Theorem 2]{marcus1957inequalities},
 but it can also be proven using joint concavity of $(A_1,\ldots, A_m)\mapsto A_1^{\frac{1}{m}}\ot \cdots \ot A_m^{\frac{1}{m}}$ and thus concavity of $(A^{\frac{1}{m}})^{\ot m}$ and thus by homogeneity the operator inequality $((A+B)^{\frac{1}{m}})^{\ot m} \geq (A^{\frac{1}{m}})^{\ot m} + (B^{\frac{1}{m}})^{\ot m}$ (\cite[Exercise 4.2.9]{bhatia2009positive}).
-TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet.
+TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet:
+\begin{conj}
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cs_ineq}
+        E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
+    \end{equation}
+    where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
+\end{conj}
 }
 
 %\clearpage
