@@ -113,7 +113,7 @@ In particular, while the triangular Horn's problem is completely characterized b
         \eig(B) = \eb, \quad
         \eig(C) = \ec.
     \end{equation}
-    The problem of determining the set of trigonal eigenvalues $(\ea,\eb,\ec)$ will be referred to as the \defnsty{trigonal Horn problem}.
+    The problem of determining the set of trigonal eigenvalues $(\ea,\eb,\ec)$ is known as \defnsty{Horn problem}.
 \end{prob}
 
 \begin{prob}[Tetrahedral Horn problem]
@@ -139,43 +139,31 @@ In particular, while the triangular Horn's problem is completely characterized b
     The problem of determining the set of tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ will be referred to as the \defnsty{tetrahedral Horn problem}.
 \end{prob}
 
-The tetrahedral Horn problem can be viewed as a generalization of the trigonal Horn problem in a variety of ways.
-First and foremost, the trigonal Horn problem is a special case of the tetrahedral Horn problem.
-\begin{prop}
-    A triplet $(\ea,\eb,\ec)$ of eigenvalues is trigonal if and only if the sextuple $(\ea,\eb,\ec,0,\ec,\eb)$ is tetrahedral.
-\end{prop}
-\begin{proof}
-    If $(\ea,\eb,\ec)$ are the eigenvalues of $(A,B,C)$ satisfying $A+B=C$, then one can see that $(A,B,C,0,C,B)$ satisfy \cref{eq:tet_linear_constraints} and have eigenvalues $(\ea,\eb,\ec,0,\ec,\eb)$.
-    Conversely, if $(\ea,\eb,\ec,0,\ec,\eb)$ are tetrahedral then it is straightforward to see that $(\ea,\eb,\ec)$ are trigonal.
-\end{proof}
-
-More generally, it is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the trigonal Horn problem subject to additional matching constraints.
-\begin{lem}
-    \label{lem:four_faces}
-    A sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of
-    \begin{equation}
-        \label{eq:four_faces}
-        (\ea,\eb,\ec), \qquad
-        (\eb,\ed,\ef), \qquad
-        (\ec,\ed,\ee), \qquad
-        (\ea,\ef,\ee),
-    \end{equation}
-    are trigonal.
-\end{lem}
-\begin{proof}
-    The claim follows from a relaxation of the conditions defining the tetrahedral Horn problem. 
-    In particular, there exists a sextuple $(A,B,C,D,E,F)$ of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq:tet_linear_constraints} \textit{only if} there exists twelve Hermitian matrices 
-    \begin{equation}
-        \label{eq:twelve_fold}
-        (A,A',B,B',C,C',D,D',E,E',F,F')
-    \end{equation}
-    with eigenvalues $(\ea,\ea,\eb,\eb,\ec,\ec,\ed,\ed,\ee,\ee,\ef,\ef)$ satisfying
-    \begin{equation}
-        A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
-    \end{equation}
-    Now notice that each of the four linear constraints above depend on a disjoint subset of the twelve matrices in \cref{eq:twelve_fold} and therefore the respective eigenvalues are independently constrained.
-    In other words, this relaxation of the tetrahedral Horn problem is equivalent to the statement that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues \textit{only if} each of four triplets in \cref{eq:four_faces} are trigonal.
-\end{proof}
+The tetrahedral Horn problem can be viewed as a generalization of the Horn's problem in a variety of ways.
+For instance, a triplet $(\ea,\eb,\ec)$ of eigenvalues is trigonal if and only if the sextuple $(\ea,\eb,\ec,0,\ec,\eb)$ is tetrahedral.
+More generally, it is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of Horn's original problem subject to additional matching constraints.
+Specifically, a sextuple of eigenvales $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
+\begin{equation}
+    \label{eq:four_faces}
+    (\ea,\eb,\ec), \qquad
+    (\eb,\ed,\ef), \qquad
+    (\ec,\ed,\ee), \qquad
+    (\ea,\ef,\ee).
+\end{equation}
+If each of the above triplets are trigonal, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
+\begin{equation}
+    \label{eq:four_faces_matrices}
+    A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
+\end{equation}
+The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the primed and unprimed Hermitian matrices to coincide:\footnote{Note that by conjugating the third and fourth conditions in \cref{eq:four_faces_matrices} by unitaries $U$ and $V$ respectively, it is possible to set $C' \mapsto U^{-1} C' U = C$ and $F' \mapsto V^{-1} F' V = F$, and thus one could assume without loss of generality that $C=C'$ and $F=F'$.}
+\begin{equation}
+    A = A', \quad 
+    B = B', \quad
+    C = C', \quad
+    D = D', \quad
+    E = E', \quad
+    F = F'.
+\end{equation}
 
 \subsection{Low dimensional solutions}
 
@@ -210,7 +198,7 @@ More generally, it is possible to view the tetrahedral Horn problem as the conju
 \end{exam}
 
 \begin{rem}[Traces are tetrahedral]
-    In the original, trigonal version of Horn's problem, the eigenvalues $(\ea, \eb, \ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ necessarily must satisfy a basic equality condition known as the \textit{trace condition}:
+    In the original version of Horn's problem, the eigenvalues $(\ea, \eb, \ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ necessarily must satisfy a basic equality condition known as the \textit{trace condition}:
     \begin{equation}
         \label{eq:tri_trace_cond}
         \abs{\ea}+\abs{\eb}=\abs{\ec},
@@ -252,7 +240,8 @@ More generally, it is possible to view the tetrahedral Horn problem as the conju
     \end{equation}
     Furthermore, if $A$ is determined by the coordinates $(a_1,a_2,a_3)$ and $B$ by the coordinates $(b_1,b_2,b_3)$, then their sum $C=A+B$ is determined by the coordinates $(c_1, c_2, c_3) = (a_1 + b_1, a_2 + b_2, a_3 + b_3)$.
     Consequently, in this setting, the tetrahedral Horn's problem reduces to problem of describing the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a Euclidean tetrahedron in $\mathbb R^{3}$. 
-    This problem admits of a well-studied solution \cite{richardson1902trigonometry,wirth2009edge}, namely, the conjunction of a quadruplet of triangle-inequalities 
+    This problem admits of a well-studied solution \cite{richardson1902trigonometry,wirth2009edge}, namely, the conjunction of a quadruplet of triangle-inequalities
+
     \begin{equation}
         \label{eq:quadruplet_triangle_constraints}
         \abs{a-b} \leq c \leq a+b, \qquad
@@ -274,8 +263,17 @@ More generally, it is possible to view the tetrahedral Horn problem as the conju
         \end{pmatrix}
         \geq 0.
     \end{equation}
-    The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when $D(a,b,c,d,e,f)$ is positive and when the triangle inequalities above are also satisfied, $D(a,b,c,d,e,f)$ is always equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}.
+    The quantity $D(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when $D(a,b,c,d,e,f)$ is positive and when the triangle inequalities above are also satisfied, $D(a,b,c,d,e,f)$ is always equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}\footnotemark{}.
     \Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+    \footnotetext{The triangle inequalities $\abs{a-b} \leq c \leq a+b$ are also equivalent to the non-negativity of the \textit{area}, $D(a,b,c)$, of the triangle with side-lengths $a,b$ and $c$ where
+    $D(a,b,c)^2 = -\frac{1}{16}\det 
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 \\ 
+        1 & 0 & a^2 & c^2 \\ 
+        1 & a^2 & 0 & b^2 \\ 
+        1 & c^2 & b^2 & 0 \\ 
+    \end{pmatrix}$ is equivalent to Heron's formula.
+    }
 
     \begin{figure}
     \begin{center}
@@ -423,9 +421,8 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
 \end{proof}
 \begin{rem}
-    The group of order $48$ appearing in \cref{prop:tet_symmetry} may be viewed as a subgroup of the group of all $6! \times 2^6 = 46,080$ possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
-    Moreover, this subgroup is maximal in the sense that it is the maximal subgroup of permutations and negations of the columns of coefficient matrix $\Gamma$ (appearing in \cref{eq:tet_coeff_matrix}) which is equivalent to a permutation and negation of the rows of $\Gamma$ (as in \cref{eq:signed_perm_rows}).
-    It can also be shown that this group of symmetries is isomorphic to the signed permutation group of three elements, i.e., $(\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2) \rtimes S_3$.
+    The group of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all $6! \times 2^6 = 46,080$ possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_linear_constraints}.
+    This group of symmetries is isomorphic to the signed permutation group of three elements, i.e., $(\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2) \rtimes S_3$.
     In order to see this, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
     \begin{equation}
         \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
@@ -490,7 +487,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     \begin{equation}
         \eig(X+xI) = \ex + x = (\ex_1 + x \geq \cdots \geq \ex_d + x).
     \end{equation}
-    The statement then follows from \cref{exam:one_dim_soln} because 
+    The statement then follows because
     \begin{equation}
         (A+xI,B+yI,C+(x+y)I,D+zI, E+(x+y+z)I, F+(y+z)I)
     \end{equation}
@@ -532,7 +529,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     the resulting shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all positive.
 \end{cor}
 \begin{proof}
-    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_d \geq \ea_d + \eb_n$ for the trigonal Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
+    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_d \geq \ea_d + \eb_n$ for Horn's problem where $C=A+B$ \cite{bhatia2001linear}.
     As a reminder, the smallest eigenvalue $\ex_n$ of a matrix $X$ is characterized by a minimization: $\ex_d = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
     \begin{equation}
         \ec_d = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \ea_d + \eb_d.
@@ -583,7 +580,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
 \subsection{Eigenvalues of blocks of positive semidefinite matrices}
 \label{sec:blocks_of_psd_matrices}
 
-The purpose of this section is to reformulate both the trigonal and tetrahedral Horn's problem as a instance of a slightly more general kind of eigenvalue problem involving positive semidefinite matrices.
+The purpose of this section is to reformulate both Horn's problem and tetrahedral Horn problem as a instance of a slightly more general kind of eigenvalue problem involving positive semidefinite matrices.
 Throughout this section, we will restrict our focus to the case of positive semidefinite matrices and their eigenvalues.
 As a reminder we note that this can be done without loss of generality due to \cref{cor:psd}.
 
@@ -627,7 +624,7 @@ Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtain the following fu
         = A + B.
     \end{equation}
 \end{proof}
-From the perspective of \cref{lem:trigonal_block}, one can view the trigonal Horn problem involving the eigenvalues $(\ea,\eb,\ec)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
+From the perspective of \cref{lem:trigonal_block}, one can view the Horn's problem involving the eigenvalues $(\ea,\eb,\ec)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
 \begin{equation}
     \label{eq:block_ABX}
     C' = \begin{bmatrix}
@@ -666,7 +663,7 @@ noting that $K$ is a contraction if and only if the middle block matrix above is
 Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A'^{\frac{1}{2}} K B'^{\frac{1}{2}} = A'^{\frac{1}{2}} B'^{\frac{1}{2}}$).
 A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $C'$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
 Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $C'$ and of the blocks $A'$ and $B'$ in terms of properties of $Z$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
-Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of the trigonal Horn problem.
+Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of Horn's problem.
 \begin{thm}
     \label{thm:trigonal_block}
     Let $(\ea,\eb,\ec)$ be a triple of positive semidefinite eigenvalues of length at most $n$.
@@ -707,7 +704,7 @@ Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain 
     \end{equation}
 \end{proof}
 
-As a corollary of this correspondence between the trigonal Horn problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
+As a corollary of this correspondence between the Horn's problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
 
 \begin{cor}
     \label{cor:tetrahedral_block}
@@ -802,7 +799,7 @@ The purpose of this section is to describe various inequalities which are necess
 The task of finding a complete set of inequalities which is both necessary and sufficient for $n\geq 3$ remains an open problem.
 
 \subsection{Horn's inequalities}
-Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal (\cref{lem:four_faces}).
+Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
 Consequently, every inequality constraining trigonal eigenvalues can be lifted to produce a quadruplet of inequalities constraining the set of tetrahedral eigenvalues.
 These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
 Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
@@ -860,13 +857,14 @@ To begin, we provide a simple example of a non-linear inequality constraining te
             &\quad= 2 \Tr[AD].
         \end{split}
     \end{align}
-    While the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities \cite[H.1.g \& H.1.h]{marshall2010inequalities}:
+    While the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}):
     \begin{equation}
         {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr[AD] \leq {\sum}_{j} \ea_j \ed_j,
     \end{equation} 
     where $\ed_{n-j+1} = -\ed^{*}_j$.
     The claim then follows because $\Tr[X^2] = \sum_{j}\ex_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \ex$.
 \end{proof}
+
 
 \subsection{Strongly subadditive/Submodular inequalities}
 
@@ -1096,11 +1094,17 @@ TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic p
     Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then
     \begin{equation}
-        \label{eq:cs_ineq}
+        \label{eq:cs_ineq_conjecture}
         E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
     \end{equation}
     where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
 \end{conj}
+Proving this conjecture has proven quite challenging.
+See \cite{marcus1957inequalities,mcleod1959four,anderson1984symmetric} for using inequalities and proof techniques which might be relevant.
+See also \cite{anderson1984symmetric} or \cite[Chapter 4]{bhatia2009positive} for many properties of matrix means and their ability to prove minkowski-like inequalities.
+See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
+
+See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
 }
 
 %\clearpage
@@ -2001,6 +2005,119 @@ The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the 
 This parallels the fact that, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
 
 \textcolor{red}{TODO: Describe the same correpsondence for the blockwise $6j$ symbols.}
+
+\section{Ptolemy \& Cayley-Menger inequalities}
+
+In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
+These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$. 
+The core idea is to consider the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ on $n\times n$ Hermitian matrices and the induced Hilbert-Schmidt norm $\norm{X} = \sqrt{\braket{X,X}}$.
+For any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X} = \norm{\ex}_2 = \left(\sum_{j=1}^{n} \ex_j^2\right)^{\frac{1}{2}}$.
+Recall that the four vertices of the tetrahedron of Hermitian matrices are
+\begin{equation}
+    V_0 = 0, \qquad V_1 = A, \qquad V_2 = A+B = C, \qquad V_3 = A+B+D = E.
+\end{equation}
+\subsection{Ptolemy's Inequality}
+Ptolemy's inequality applied any four points $V_0, V_1, V_2, V_3$ in a normed space reads
+\begin{equation}
+    \label{eq:vvvv_ptolemy}
+    \norm{V_3-V_0}\norm{V_1-V_2} \leq \norm{V_2-V_0}\norm{V_1-V_3} + \norm{V_1-V_0}\norm{V_2-V_3}.
+\end{equation}
+Applied to the vertices of the tetrahedron of Hermitian matrices, we obtain
+\begin{equation}
+    \label{eq:abcdef_ptolemy}
+    \norm{E}\norm{B} \leq \norm{C}\norm{F} + \norm{A}\norm{D}.
+\end{equation}
+It is known that every real inner product space with norm $\norm{X} = \sqrt{\braket{X,X}}$ is Ptolemaic in the sense that Ptolemy's inequality holds. 
+A converse of this result also holds due to \citeauthor{schoenberg1952remark}; namely, every real semi-normed space satisfying Ptolemny's inequality comes from a real inner product space \cite{schoenberg1952remark}.
+Here we will prove the former result, that a real inner product space satisfies Ptolemy's inequality.
+\begin{proof}
+    Note that to prove the inequality, one can take $V_0 = 0$ (by shifting) and assume the remaining vectors are non-zero (since otherwise the inequality holds trivially).
+    Under these assumptions, we aim to prove for all $V_1, V_2, V_3$ non-zero in a real inner product space,
+    \begin{equation}
+        \label{eq:shifted_ptolemy}
+        \norm{V_3}\norm{V_1-V_2} \leq \norm{V_2}\norm{V_1-V_3} + \norm{V_1}\norm{V_2-V_3}.
+    \end{equation}
+    Let $\tilde V_1, \tilde V_2, \tilde V_3$ be rescaled versions of $V_1,V_2,V_3$:
+    \begin{equation}
+        \tilde V_1 = \frac{V_1}{\norm{V_1}^2}, \qquad
+        \tilde V_2 = \frac{V_2}{\norm{V_2}^2}, \qquad
+        \tilde V_3 = \frac{V_3}{\norm{V_3}^2}.
+    \end{equation}  
+    Under this rescaling, the pairwise distances are rescaled as
+    \begin{equation}
+        \norm{\tilde V_i - \tilde V_j} = \sqrt{\frac{1}{\norm{V_i}^2} + \frac{1}{\norm{V_j}^2} - \frac{2 \abs{\braket{V_i,V_j}}^2}{\norm{V_i}^2\norm{V_j}^2}} = \frac{\norm{V_i-V_j}}{\norm{V_i} \norm{V_j}}.
+    \end{equation}
+    Then, the triangle inequality for $\norm{\cdot}$ applied to $\tilde V_1, \tilde V_2, \tilde V_3$,
+    \begin{equation}
+        \norm{ \tilde V_1 - \tilde V_2} \leq \norm{\tilde V_1 - \tilde V_3} + \norm{\tilde V_2 - \tilde V_3},
+    \end{equation}
+    is then equivalent to \cref{eq:shifted_ptolemy}.
+\end{proof}
+
+\subsection{Cayley-Menger Determinant}
+
+First we note that the four Hermitian matrices $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ necessarily lie inside a three-dimensional subspace of the set of $n\times n$ Hermitian matrices and thus there exists an orthonormal set of Hermitian matrices $L_1, L_2, L_3$ such that for each $i \in \{0,1,2,3\}$
+\begin{equation}
+    V_i = \sum_{j=1}^{3} (v_i)_j L_j
+\end{equation}
+In this basis, the vectors of coefficents $\{v_0, v_1, v_2, v_3\}$ constitute the vertices of a tetrahedra in $\mathbb R^3$ and moreover $\braket{V_i, V_j} = \Tr(V_i^* V_j) = \braket{v_i, v_j}$.
+Following the wikipedia derivation, define a $4 \times 4$ matrix by
+\begin{equation}
+    P = \begin{pmatrix}
+        v_0 & v_1 & v_2 & v_3  \\
+        1 & 1 & 1 & 1  \\
+    \end{pmatrix}
+\end{equation}
+such that $\abs{\det(P)} = 3! \mathrm{Vol}(v_0,v_1,v_2,v_3)$ where $\mathrm{Vol}(v_0,v_1,v_2,v_3)$ is the volumes of the tetrahedron with vertices $v_0,v_1,v_2,v_3 \in \mathbb R^3$.
+Then one augments $P$ to
+\begin{equation}
+    \tilde P = \begin{pmatrix}
+        v_0 & v_1 & v_2 & v_3 & 0  \\
+        1 & 1 & 1 & 1 & 0  \\
+        \norm{v_0}^{2} & \norm{v_1}^{2} & \norm{v_2}^{2} & \norm{v_3}^2 & 1 \\
+    \end{pmatrix}
+\end{equation}
+such that $\det(P) = \det(\tilde P)$ and also defines a $5 \times 5$ matrix $Q$ by 
+\begin{equation}
+    Q = \begin{pmatrix}
+        -2 & 0 & 0 & 0 & 0 \\ 
+        0 & -2 & 0 & 0 & 0 \\ 
+        0 & 0 & -2 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 & 1 \\ 
+        0 & 0 & 0 & 1 & 0 
+    \end{pmatrix}
+\end{equation}
+Then $\tilde P^{\dagger} Q \tilde P$ is a $5\times 5$ matrix
+\begin{equation}
+    \tilde \Sigma=
+    \tilde P^{\dagger} Q \tilde P = \begin{pmatrix}
+        0 & d_{01}^2 & d_{02}^2 & d_{03}^2 & 1 \\
+        d_{10}^2 & 0 & d_{12}^2 & d_{13}^2 & 1 \\
+        d_{20}^2 & d_{21}^2 & 0 & d_{23}^2 & 1 \\
+        d_{30}^2 & d_{31}^2 & d_{32}^2 & 0 & 1 \\
+        1 & 1 & 1 & 1 & 0 \\
+    \end{pmatrix}
+\end{equation}
+where 
+\begin{equation}
+    d_{ij}^2 \coloneqq \norm{v_i - v_j}^{2} = \norm{v_i}^{2} +\norm{v_j}^{2} - 2 \braket{v_i, v_j}.
+\end{equation}
+The determinant $\det(\tilde \Sigma)$ is equal to
+\begin{equation}
+    \det(\tilde \Sigma) = \det(\tilde P^{\dagger} Q \tilde P) = \det(Q) \det(P)^2 = 8 \cdot (3!)^2 \cdot \mathrm{Vol}^2 \geq 0.
+\end{equation}
+Using the isometric embedding of $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ into $\mathbb R^3$, the Cayley-Menger determinant inequality takes the form 
+\begin{equation}
+    \det
+    \begin{pmatrix}
+        0 & \norm{A}^2 & \norm{C}^{2} & \norm{E}^2 & 1 \\
+        \norm{A}^2 & 0 & \norm{B}^{2} & \norm{F}^2 & 1\\
+        \norm{C}^2 & \norm{B}^2 & 0 & \norm{D}^2 & 1 \\
+        \norm{E}^2 & \norm{F}^2 & \norm{D}^2 & 0 & 1 \\
+        1 & 1 & 1 & 1 & 0 \\
+    \end{pmatrix}
+    \geq 0
+\end{equation}
 
 \clearpage
 \printbibliography

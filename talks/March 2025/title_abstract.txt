@@ -1,0 +1,10 @@
+Title:
+Eigenvalues of tetrahedral sums of Hermitian matrices
+
+Abstract:
+Horn's problem aims to determine set of possible eigenvalues (a,b,c) for a triple of n x n Hermitian matrices (A,B,C) satisfying A+B=C.
+This talk is based on joint work with A. Alekseev and M. Christandl concerning a generalization of Horn's problem called the tetrahedral Horn problem.
+The tetrahedral Horn problem aims to determine the set of possible eigenvalues (a,b,c,d,e,f) for a sextuplet of n x n Hermitian matrices (A,B,C,D,E,F) satisfying A+B=C, B+D=F, C+D=E, and A+F=E.
+We will derive the complete solution for the tetrahedral Horn problem for n=2 and see how, unlike Horn's original problem, the solution space is not convex nor a polytope.
+For general n, we describe various inequality conditions and symmetries of the tetrahedral Horn problem.
+Moreover, we will prove how the set of tetrahedral eigenvalues is characterized the asymptotics of the Wigner 6j symbol for the unitary group U(n), generalizing the well-known correspondence between the Littlewood-Richardson coefficients and Horn's original problem.
