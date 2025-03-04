@@ -167,35 +167,35 @@ The tetrahedral Horn problem goes beyond four separate instances of Horn's origi
 
 \subsection{Low dimensional solutions}
 
-\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$n=1$}{n=1}]
-    \label{exam:one_dim_soln}
-    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $n=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
-    In this case, the tetrahedral Horn's problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
-    \begin{equation}
-        \label{eq:one_dim_tet_conds}
-        a + b = c, \quad
-        b + d = f, \quad
-        d + c = e, \quad
-        a + f = e,
-    \end{equation}
-    or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients encoding the linear system from \cref{eq:one_dim_tet_conds}:
-    \begin{equation}
-        \label{eq:tet_coeff_matrix}
-        \Gamma \coloneqq
-        \begin{pmatrix} 
-            1 & 1 & -1 & 0 & 0 & 0 \\
-            0 & 1 & 0 & 1 & 0 & -1 \\
-            0 & 0 & 1 & 1 & -1 & 0 \\
-            1 & 0 & 0 & 0 & -1 & 1 
-        \end{pmatrix}.
-    \end{equation}
-    It can be shown that the above coefficient matrix has a three dimensional kernel given by 
-    \begin{equation}
-        \label{eq:one_dim_soln}
-        (a,b,c,d,e,f) = (x, y, x+y, z, x+y+z, y+z).
-    \end{equation}
-    for $(x,y,z) \in \mathbb R^{3}$.
-\end{exam}
+%\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$n=1$}{n=1}]
+%    \label{exam:one_dim_soln}
+%    Perhaps the simplest example of the tetrahedral Horn's problem occurs when $n=1$; i.e., when Hermitian matrices and their eigenvalues are identified with real numbers.
+%    In this case, the tetrahedral Horn's problem reduces to the problem of which sextuples of real numbers $(a,b,c,d,e,f)$ simultaneously satisfy
+%    \begin{equation}
+%        \label{eq:one_dim_tet_conds}
+%        a + b = c, \quad
+%        b + d = f, \quad
+%        d + c = e, \quad
+%        a + f = e,
+%    \end{equation}
+%    or equivalently, are such that $(a,b,c,d,e,f) \in \ker \Gamma$ where $\Gamma$ is the $4 \times 6$ matrix of coefficients encoding the linear system from \cref{eq:one_dim_tet_conds}:
+%    \begin{equation}
+%        \label{eq:tet_coeff_matrix}
+%        \Gamma \coloneqq
+%        \begin{pmatrix} 
+%            1 & 1 & -1 & 0 & 0 & 0 \\
+%            0 & 1 & 0 & 1 & 0 & -1 \\
+%            0 & 0 & 1 & 1 & -1 & 0 \\
+%            1 & 0 & 0 & 0 & -1 & 1 
+%        \end{pmatrix}.
+%    \end{equation}
+%    It can be shown that the above coefficient matrix has a three dimensional kernel given by 
+%    \begin{equation}
+%        \label{eq:one_dim_soln}
+%        (a,b,c,d,e,f) = (x, y, x+y, z, x+y+z, y+z).
+%    \end{equation}
+%    for $(x,y,z) \in \mathbb R^{3}$.
+%\end{exam}
 
 \begin{rem}[Traces are tetrahedral]
     In the original version of Horn's problem, the eigenvalues $(\ea, \eb, \ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ necessarily must satisfy a basic equality condition known as the \textit{trace condition}:
@@ -213,13 +213,13 @@ The tetrahedral Horn problem goes beyond four separate instances of Horn's origi
         \abs{\ed} + \abs{\ec} = \abs{\ee}, \quad
         \abs{\ea} + \abs{\ef} = \abs{\ee}.
     \end{equation}
-    Comparing the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) with the $n=1$ case of the tetrahedral Horn's problem (\cref{eq:tet_linear_constraints}), we see that a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ can only be tetrahedral if their traces, $(\abs \ea, \abs \eb, \abs \ec, \abs \ed, \abs \ee, \abs \ef)$, are tetrahedral.
+    Furthermore, for the trivial case where $n=1$, the above trace constraints are both necessary and sufficient for the tetrahedral Horn problem.
 \end{rem}
 
 \begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$d=2$}{d=2}]
     \label{exam:d_2}
     Here we articulate the solution to the tetrahedral Horn's problem for $2\times 2$ Hermitian matrices.
-    According to \cref{cor:traceless}, one can restrict their focus to the case of \textit{traceless} $2 \times 2$ Hermitian matrices without loss of generality.
+    We restrict our focus to the case of \textit{traceless} $2 \times 2$ Hermitian matrices\footnote{In \cref{sec:symmetries}, \cref{cor:traceless}, we will see that this restriction can be made without loss of generality.}.
     In this context, the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ can be identified with a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that
     \begin{equation}
         \label{eq:traceless_two_dim_tetra}
@@ -301,7 +301,7 @@ The tetrahedral Horn problem goes beyond four separate instances of Horn's origi
 There are numerous types of symmetries present in the statement of \cref{prob:tet_problem}.
 The purpose of this section is to describe the scaling, inversion, tetrahedral, and shifting symmetries of the problem.
 These symmetries can, in many cases, be used to simplify the problem by selecting a canonical representative of the corresponding equivalence class; in other cases, it will be useful to leave \cref{prob:tet_problem} as stated.
-Later we will comment on the possibility of additional hidden symmetries not previously mentioned.
+%Later we will comment on the possibility of additional hidden symmetries not previously mentioned.
 
 \begin{prop}[Scaling symmetry]
     \label{prop:scaling}
@@ -312,7 +312,7 @@ Later we will comment on the possibility of additional hidden symmetries not pre
     The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_linear_constraints} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$; for example, we have $sA+sB-sC=0$ if and only if $s(A+B-C)=0$ if and only if $A+B-C=0$.
 \end{proof}
 
-One may wonder with or not it is possible to extend the scaling symmetry to consider scaling by negative $s < 0$.
+One may wonder wether it is possible to extend the scaling symmetry to consider scaling by negative $s < 0$.
 Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrices both negates and reverses the order of its eigenvalues.
 \begin{prop}[Inversion symmetry]
     \label{prop:inversion}
@@ -420,50 +420,6 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     Moreover, as the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ea^*, \ec, \eb, \ed, \ef, \ee)$ is invertible, one also has that if $(\ea,\eb,\ec,\ed,\ee,\ef)$ is not tetrahedral, then neither is $(\ea^*, \ec, \eb, \ed, \ef, \ee)$.
     An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
 \end{proof}
-\begin{rem}
-    The group of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all $6! \times 2^6 = 46,080$ possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_linear_constraints}.
-    This group of symmetries is isomorphic to the signed permutation group of three elements, i.e., $(\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2) \rtimes S_3$.
-    In order to see this, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
-    \begin{equation}
-        \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
-        \cong 
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right).
-    \end{equation}
-    Then one can see that each $\mathbb Z_2$ factor in the direct product $\mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
-    \begin{equation}
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ea & \ee^* & \ef^* \\ \ed & \eb^* & \ec^*}\right),
-        \qquad
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ed & \eb & \ef \\ \ea & \ee & \ec}\right),
-        \qquad
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ed^* & \ee & \ec \\ \ea^* & \eb & \ef}\right).
-    \end{equation}
-    The symmetric group $S_3$ of order $3! = 6$ acts instead by permuting the columns and negating a subset of the entries in the top row, producing a subgroup of order $6$ of the form:
-    \begin{equation}
-        \begin{alignedat}{3}
-            &\left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-            \quad
-            &&\left(\tightsextuple{\eb & \ec^* & \ea^* \\ \ee & \ef & \ed}\right)
-            \quad
-            &&\left(\tightsextuple{\ec^* & \ea & \eb^*  \\ \ef & \ed & \ee }\right)\\[0.5em]
-            &\left(\tightsextuple{\ea^* & \ec & \eb \\ \ed & \ef & \ee}\right)
-            \quad
-            &&\left(\tightsextuple{\eb^* & \ea^*  & \ec^* \\ \ee & \ed & \ef}\right)
-            \quad
-            &&\left(\tightsextuple{\ec & \eb^* & \ea \\ \ef & \ee & \ed}\right)\\
-        \end{alignedat}
-    \end{equation}
-    Moreover, the above group of symmetries admits a finite presentation with respect to generators $g_1 \simeq (\ea, \ef, \ee, \ed^{*}, \ec, \eb)$ and $g_2 \simeq (\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ as a free group over $g_1, g_2$ subject to the relations
-    \begin{equation}
-        \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
-    \end{equation}
-\end{rem}
-
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
@@ -510,7 +466,7 @@ As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes t
 \end{proof}
 The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn's problem it suffices to solve the tetrahedral Horn's problem for positive definite spectra only.
 Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
-The following corollary establishes, in a certain sense, the minimum shifting required to ensure strictly positive eigenvalues for all six Hermitian matrices (assuming some other basic inequalities hold).
+The following corollary establishes, in a certain sense, the minimum shifting required to ensure strictly positive eigenvalues for all six Hermitian matrices.
 Note that in subsequent sections we will often explicitly assume the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ed)$ are either non-negative or positive for the sake of technical convenience or sometimes to establish a connection with density matrices from quantum theory (which are positive semidefinite matrices with unit trace).
 \begin{cor}[Positive eigenvalues]
     \label{cor:psd}
@@ -547,7 +503,6 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     meaning $\ee+x+y+z$ is strictly positive also.
 \end{proof}
 
-
 \begin{rem}
     Although this section listed a handful of symmetries of the tetrahedral Horn's problem, there remains the possibility of additional symmetries which are unknown at this time.
     For example, in the case $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,morozov2018new,boalch2007regge,ponzano1968semiclassical}.
@@ -573,7 +528,11 @@ Note that in subsequent sections we will often explicitly assume the candidate e
         s_3 = \frac{b+c+e+f}{2}.
     \end{equation}
     It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
-    Whether there exists analogous types of symmetries for the tetrahedral Horn's problem for $n\times n$ matrices when $n\geq 3$ remains an open problem \cite{morozov2018new}.
+\end{rem}
+\begin{rem}
+    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a suprisinging symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry} (see also \cite{boalch2007regge}).
+    That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
+    At the moment, it remains unclear if there exists analogous symmetries for the generalized Wigner $6j$ symbol for $n \geq 3$ (or even its generalization to quantum groups \cite{morozov2018new}) or even if there exists such symmetries for the tetrahedral Horn problem for $n \geq 3$.
 \end{rem}
 
 %\clearpage
@@ -796,7 +755,7 @@ As a corollary of this correspondence between the Horn's problem and the eigenva
 \label{sec:ineqs}
 
 The purpose of this section is to describe various inequalities which are necessarily satisfied by tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
-The task of finding a complete set of inequalities which is both necessary and sufficient for $n\geq 3$ remains an open problem.
+In general, however, the task of finding a complete description of the space of tetrahedral eigenvalues for $n\geq 3$ remains an open problem.
 
 \subsection{Horn's inequalities}
 Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
@@ -804,7 +763,7 @@ Consequently, every inequality constraining trigonal eigenvalues can be lifted t
 These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
 Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
 Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
-For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
+For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues,knutson2000symplectic} or \cite[Appendix D]{niculescu2006convex}.
 In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
 \begin{equation}
     \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
@@ -819,10 +778,12 @@ and shortly thereafter Lidskii \cite{lidskii1953proper} \& Wielandt \cite{wielan
 Finally, in 1962, \citeauthor{horn1962eigenvalues} determined a complete collection of inequalities for $(\ea,\eb,\ec)$ are trigonal for the case where $n=3$ \cite{horn1962eigenvalues}.
 Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} provided an inductively defined set of subsets $I,J,K \subset \{1,\ldots, n\}$ of equal cardinality and conjectured that inequalities of the form
 \begin{equation}
+    \label{eq:IJK_ineq}
     {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
 \end{equation}
 were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
-While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s when the combined works of \citeauthor{klyachko1998stable} \cite{klyachko1998stable} and \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb} confirmed Horn's conjecture.
+While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, $\abs{\ea} + \abs{\eb} = \abs{\ec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
+Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
 
 For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
 
@@ -831,10 +792,10 @@ For the purposes of characterizing the set of tetrahedral eigenvalues further, w
 In \cref{sec:symmetries} we saw that the shifting symmetry implies, in a certain sense, one may assume without loss of generality that the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ef)$ are all non-negative or even strictly positive.
 While almost all of the following inequalities require this positivity assumption, we note that they can be extended to eigenvalues with negative entries in all cases.
 
-To begin, we provide a simple example of a non-linear inequality constraining tetrahedral eigenvalues.
+To begin, we provide an example of a non-linear inequality constraining tetrahedral eigenvalues which appears to be new.
 \begin{prop}
     \label{prop:simple_quadratic}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be non-negative tetrahedral eigenvalues.
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be non-negative tetrahedral eigenvalues of $n\times n$ Hermitian matrices.
     Then
     \begin{equation}
         2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \sum_{j=1}^{n}\left(\eb_j^2 + \ee_j^2 - \ec_j^2 - \ef_j^2\right) \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
@@ -846,6 +807,7 @@ To begin, we provide a simple example of a non-linear inequality constraining te
     satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
     Then the following identity holds:
     \begin{align}
+        \label{eq:quad_identity}
         \begin{split}
             & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
             &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
@@ -857,7 +819,13 @@ To begin, we provide a simple example of a non-linear inequality constraining te
             &\quad= 2 \Tr[AD].
         \end{split}
     \end{align}
-    While the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}):
+    At this stage, one may note that for all $A,D \geq 0$ positive semidefinite, $\Tr(AD) \geq 0$ and therefore,
+    \begin{equation}
+        \label{eq:quadratic_difference_pos}
+        \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \geq 0.
+    \end{equation}
+    This inequality is well-known and indeed follows as a special of \cite[Proposition 2.3]{sagnol2013approximation}.
+    The improvement made here is to note that while the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}):
     \begin{equation}
         {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr[AD] \leq {\sum}_{j} \ea_j \ed_j,
     \end{equation} 
@@ -878,11 +846,11 @@ An equivalent formulation is to consider eigenvalues of four PSD matrices $W,X,Y
 }
 
 Another strategy for understanding eigenvalues of positive semidefinite matrices and their sums is to consider the expansion of tensors powers of sums of matrices in relation to the tensor powers of their summands.\footnote{We will exploit a variation of this strategy repeatedly in \cref{sec:rep_theory}.}
-For instance, given a positive integer $k$ and positive semidefinite $A$ and $B$, using the non-commutative binomial expansion of $(A+B)^{\ot k}$, it is not too difficult to show \cite[Proposition 1.1]{berndt2015hlawka}:
+For instance, given a positive integer $k$ and positive semidefinite $A$ and $B$, using the non-commutative binomial expansion of $(A+B)^{\ot k}$ and dropping all summands involving both $A$ and $B$, one obtains \cite[Proposition 1.1]{berndt2015hlawka}:
 \begin{equation}
     (A+B)^{\ot k} \geq A^{\ot k} + B^{\ot k}.
 \end{equation}
-This observation can be generalized to obtain \cite[Lemma 2.2]{tie2011rearrangement}.
+This technique, was generalized by \cite{tie2011rearrangement} \cite[Lemma 2.2]{tie2011rearrangement} to obtain the following result.\footnote{Further extensions of this technique include inequalities involving the sum $A+C$ which are outside the scope of the tetrahedral Horn problem (see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions})}.
 \begin{prop}
     \label{prop:operator_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
@@ -891,8 +859,9 @@ This observation can be generalized to obtain \cite[Lemma 2.2]{tie2011rearrangem
         (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
     \end{equation}
 \end{prop}
-For further generalizations concerning operator inequalities involving the sum $A+C$ (which is outside the scope of the tetrahedral Horn problem), see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions}.
-From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $B, A+B, B+C$, and $A+B+C$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.
+From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $B, A+B, B+C$, and $A+B+C$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.\footnotemark{}
+\footnotetext{\citeauthor{paksoy2014inequalities} has used a similar approach to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
+Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
 \begin{cor}
     \label{cor:schur_ineq}
     Let $A,B,C \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$ with size $\abs{\yx} \coloneqq \yx_1 + \cdots + \yx_n = k$.
@@ -908,31 +877,27 @@ From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to
     \begin{equation}
         \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
     \end{equation}
-    Applying the positivity preserving map $X \mapsto \Tr(P_{\lambda}X^{\ot k})$ to \cref{prop:operator_ineq} yields
+    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
     \begin{equation}
         \Tr[P_{\ex}(A+B+C)^{\ot k}] + \Tr[P_{\ex}B^{\ot k}] \geq \Tr[P_{\ex}(A+B)^{\ot k}] + \Tr[P_{\ex}(B+C)^{\ot k}]
     \end{equation}
     and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
 \end{proof}
-In \cite{paksoy2014inequalities} used the technique behind \cref{prop:operator_ineq} to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
-Unfortunately, these generalized matrix functions, such as the permanent of a matrix, are in general not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is also a special case of \cref{cor:schur_ineq} where $\yx = (1,\stackrel{n}{\ldots},1)$, in which case $\Tr(P_{(1,\stackrel{n}{\ldots},1)} X^{\ot n}) = \det(X)$ and thus one has
+
+In the special where where $\yx = (\underbrace{1,\ldots,1}_n)$, where $\Tr(P_{(\underbrace{1,\ldots,1}_n)} X^{\ot n}) = \det(X)$ one obtains the well-known determinant inequality \cite[Lemma 2.2]{tie2011rearrangement}:
 \begin{equation}
     \label{eq:lin_det}
     \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C).
 \end{equation}
-It is also possible to show a multiplicative variant of \cref{eq:lin_det} also holds.
-\begin{prop}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices, then
-    \begin{equation}
-        \label{eq:mul_det}
-        \det(A+B+C)\det(B) \leq \det(A+B)\det(B+C).
-    \end{equation}
-\end{prop}
-This inequality follows from \cite[Problem IX.8.11]{bhatia1997matrix} whose proof is contained in the proof of an even stronger result proven later (\cref{prop:cs_ineq}).
-In the mean time, \cref{eq:mul_det} can be viewed as a special case of a general result discovered by \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
+Another well-known determinant inequality is the multiplicative variant of \cref{eq:lin_det} which states that for all $A,B,C \geq 0 $ positive semidefinite,
+\begin{equation}
+    \label{eq:mul_det}
+    \det(A+B+C)\det(B) \leq \det(A+B)\det(B+C).
+\end{equation}
+This inequality follows as a special case of a general result due to \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
 \begin{thm}
     \label{thm:sagnol_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices
+    Let $A,B,C \geq 0$ be positive semidefinite matrices.
     Let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ whose derivative $f'$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
     Then the following inequality holds
     \begin{equation}
@@ -954,27 +919,31 @@ In the mean time, \cref{eq:mul_det} can be viewed as a special case of a general
         \Delta_{A}\Delta_{C} F(B) = F(A+B+C) - F(A+B) - F(B+C) + F(B) \geq 0,
     \end{equation}
     where $\Delta_X$ is the difference operator $[\Delta_X F](Y) \coloneqq F(X+Y) - F(Y)$.
-    Take $\varepsilon > 0$ be small and let $A = \varepsilon W$ for some non-zero positive semidefinite $W$.
     By standard continuity arguments (and the assumption that $f$ is continuous), we may assume everything is positive definite in which case
     \begin{align}
-        \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon W} \Delta_C F(B)
-        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_C F (B+\varepsilon W) - \Delta_C F(B) \right) \\
-        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon W+B+C) - F(\varepsilon W + B) - F(B+C) + F(B) \right) \\
-        &= \Tr\left[(f'(B+C)-f'(B)) W \right]. \label{eq:sagnol_final_step}
+        \partial_{A} \Delta_C F(B)
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon A} \Delta_C F(B) \\
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_C F (B+\varepsilon A) - \Delta_C F(B) \right) \\
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon A+B+C) - F(\varepsilon A + B) - F(B+C) + F(B) \right) \\
+        &= \Tr\left[(f'(B+C)-f'(B)) A \right]. \label{eq:sagnol_final_step}
     \end{align}
     Using the assumption that $f'$ is an operator monotone (and the assumption of positive definiteness) together with $B+C \geq B$ (because $C \geq 0$), we have $f'(B+C) \geq f'(B)$ and thus $f'(B+C)-f'(B) \geq 0$ is a positive semidefinite operator.
     Therefore, the function $\Delta_C F(B)$ is non-decreasing under $B\mapsto A+B$ and thus \cref{eq:sagnol_diff} holds.
 \end{proof}
 As immediate corollaries to \cref{thm:sagnol_ineq}, letting $f(x) = \log x$ and noting $\Tr(\log X) = \log \det(X)$, one recovers \cref{eq:mul_det}.
-Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization} which states for all $A,B,C \geq 0$ and $p\in[0,1]$,
+Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization} which states for all $A,B,C \geq 0$,
 \begin{equation}
     \label{eq:bouhtou_ineq}
-    \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \geq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
+    \forall p \in [0,1] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \geq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
 \end{equation}
-On the other hand, letting $f(x) = x^p$ for $p \in (1,2]$ yields for all $A,B,C \geq 0$ and $p\in(1,2]$ the reverse
+In the limit where $p \to 0^+$, \citeauthor{sagnol2013approximation} also obtains at first order the well-known rank inequality \cite[Proposition A.1]{sagnol2013approximation}
+\begin{equation}
+    \rank(A+B) + \rank(B+C) \geq \rank(B) + \rank(A+B+C).
+\end{equation}
+On the other hand, letting $f(x) = x^p$ for $p \in (1,2]$ yields for all $A,B,C \geq 0$
 \begin{equation}
     \label{eq:bouhtou_ineq_reverse}
-    \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \leq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
+    \forall p \in (1,2] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \leq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
 \end{equation}
 Of particular interest to us in \cref{sec:large_n} is the function $f(x) = x \log x$ which implies for all $A,B,C\geq 0$ the inequality
 \begin{align}
@@ -1097,14 +1066,33 @@ TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic p
         \label{eq:cs_ineq_conjecture}
         E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
     \end{equation}
-    where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
+    where $E_k(X) = e_{k}(\eig(X))$ and where $e_k$ is the $k$th elementary symmetric polynomial.
 \end{conj}
+}
+{\color{red!80!black}
 Proving this conjecture has proven quite challenging.
 See \cite{marcus1957inequalities,mcleod1959four,anderson1984symmetric} for using inequalities and proof techniques which might be relevant.
 See also \cite{anderson1984symmetric} or \cite[Chapter 4]{bhatia2009positive} for many properties of matrix means and their ability to prove minkowski-like inequalities.
 See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
 
 See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
+What I believe I'm managed to prove is that if $\phi$ is a function such that $\log \phi$ is 2-monotone, i.e.,
+\begin{equation}
+    - (\partial_{A}\log \phi)(B) \geq 0, \qquad + (\partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then $\phi(A+B)\phi(B+C) \geq \phi(B) \phi(A+B+C)$ holds.
+If in addition, one has a weird kind of 3-montonicity, namely
+\begin{equation}
+    -\partial_{W}(\phi^2 \partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then,
+\begin{equation}
+    [\phi(A+B+W)\phi(B+C+W) - \phi(A+B+C+W)\phi(B+W)] - [\phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B)] \geq 0
+\end{equation}
+which means, assuming $\phi(0) = 0$ and for $B\mapsto 0$ and $W \mapsto B$, we have desired inequality:
+\begin{equation}
+    \phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B) - \phi(A)\phi(C) \geq 0.
+\end{equation}
 }
 
 %\clearpage
@@ -1270,6 +1258,10 @@ To support this claim, we define the following quantity.
 
 \subsection{Generalized \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols \& tetrahedral eigenvalues}
 \label{sec:sixj_tet}
+
+The purpose of this section is to introduce a representation theoretic object, namely the generalized Wigner $6j$ symbol, and then show how its asymptotic properties encode whether a given sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral in a manner which analogous to how the Littlewood-Richardson coefficient encodes whether a given triple $(\ea,\eb,\ec)$ is trigonal.
+For the case where $n=2$, this correspondence is well-known \cite{roberts1999classical,ponzano1968semiclassical,backens2010sixjsymbols}, while for the case where $n \geq 3$, this correspondence was already established indirectly by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
+Here we establish this correspondence directly.
 
 \begin{defn}
     \label{defn:tet_gamma}
@@ -1890,7 +1882,7 @@ We are now in a position to prove the main result of this section.
     provided the limit $I'$ exists.
     An application of Stirling's approximation \cite{robbins1955remark} to the dimension formula for $\dim(W_{\yx_k})$ together with the approximation $\yx_k \approx k \ex$ yields
     \begin{equation}
-        \frac{1}{k}\frac{\dim(W_{\yx_k})}{\abs{\yx}!} = s(\ex) + \abs{\ex} (1-\log k) + O(k^{-1}\log k)
+        \frac{1}{k}\log \left(\frac{\dim(W_{\yx_k})}{\abs{\yx}!}\right) = s(\ex) + \abs{\ex} (1-\log k) + O(k^{-1}\log k)
     \end{equation}
     where $s(\ex)$ is given in \cref{eq:little_s_defn}.
     Moreover by \cref{eq:balanced_sizes}, the $(1-\log k)$ terms cancel and therefore $I' = I(\ec, \ef; \eb, \ee) \geq 0$ as claimed above.
@@ -1898,6 +1890,63 @@ We are now in a position to prove the main result of this section.
 
 %\clearpage
 \appendix
+
+\section{On the oriented tetrahedral symmetry}
+
+The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_linear_constraints}.
+The group $G$ is isomorphic to both the direct product $S_2 \times S_4$ and to the signed permutation group of three elements, i.e., $(S_2 \times S_2 \times S_2) \rtimes S_3$.
+
+The first isomorphism, $G \simeq S_2 \times S_4$, can be understood as $S_2$ acting by the inversion of all eigenvalues,
+\begin{equation}
+    (\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ea^*,\eb^*,\ec^*,\ed^*,\ee^*,\ef^*),
+\end{equation}
+while $S_4$ acts by permutation of the \textit{vertices} of the tetrahedron in \cref{fig:tetrahedron_labelling_scheme}:
+each vertex permutation induces a permutation of the six directed edges with the possibility of inverting the orientation of a subset of the edges (such edge orientation reversals can be accounted for a corresponding inversion of eigenvalues).
+
+The second isomorphism, $G \simeq (S_2 \times S_2 \times S_2) \rtimes S_3$, can be understood by considering the triplet $(A,D), (B,E), (C,F)$ of non-adjacent pairs of edges in \cref{fig:tetrahedron_labelling_scheme}.
+Accordingly, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
+\begin{equation}
+    \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
+    \cong 
+    \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right).
+\end{equation}
+Then one can see that each $S_2$ factor in the direct product $S_2 \times S_2 \times S_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
+\begin{equation}
+    \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+    \leftrightarrow
+    \left(\tightsextuple{\ea & \ee^* & \ef^* \\ \ed & \eb^* & \ec^*}\right),
+    \qquad
+    \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+    \leftrightarrow
+    \left(\tightsextuple{\ed & \eb & \ef \\ \ea & \ee & \ec}\right),
+    \qquad
+    \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+    \leftrightarrow
+    \left(\tightsextuple{\ed^* & \ee & \ec \\ \ea^* & \eb & \ef}\right).
+\end{equation}
+The symmetric group $S_3$ of order $3! = 6$ acts instead by permuting the columns and negating a subset of the entries in the top row, producing a subgroup of order $6$ of the form:
+\begin{equation}
+    \begin{alignedat}{3}
+        &\left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+        \quad
+        &&\left(\tightsextuple{\eb & \ec^* & \ea^* \\ \ee & \ef & \ed}\right)
+        \quad
+        &&\left(\tightsextuple{\ec^* & \ea & \eb^*  \\ \ef & \ed & \ee }\right)\\[0.5em]
+        &\left(\tightsextuple{\ea^* & \ec & \eb \\ \ed & \ef & \ee}\right)
+        \quad
+        &&\left(\tightsextuple{\eb^* & \ea^*  & \ec^* \\ \ee & \ed & \ef}\right)
+        \quad
+        &&\left(\tightsextuple{\ec & \eb^* & \ea \\ \ef & \ee & \ed}\right)\\
+    \end{alignedat}
+\end{equation}
+
+%Moreover, the above group of symmetries admits a finite presentation with respect to generators $g_1 \simeq (\ea, \ef, \ee, \ed^{*}, \ec, \eb)$ and $g_2 \simeq (\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ as a free group over $g_1, g_2$ subject to the relations
+%\begin{equation}
+%    \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
+%\end{equation}
+
+We further remark that these symmetries also corresponding to symmetries of the Wigner $6j$ operator $\abcdefsymbol$ in \cref{defn:sixj} with the involution $\lambda \mapsto \lambda^{*}$ corresponding taking the dual representation $V_{\lambda}^{n} \mapsto (V_{\lambda}^{n})^{*}$.
+In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $\SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
 
 \section{Multinomial distribution inequalities}
 
