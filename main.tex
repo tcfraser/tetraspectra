@@ -7,7 +7,9 @@
 \affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 \affil[2]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
 
-\title{Eigenvalues of Tetrahedral sums of Hermitian matrices}
+\title{Asymptotics of higher rank 6j symbols and the tetrahedral Horn's problem}
+%Eigenvalues of Tetrahedral sums of Hermitian matrices
+}
 
 \date{\today}
 
@@ -15,7 +17,25 @@
 
 \maketitle
 
+%Duke, Borodin, Polererovich
+
+%Advances
+%Selecta, woodward, etingof, felder
+
+%CMP, Schweigert
+
+Abstract and 
+
 \begin{abstract}
+6j's SU(2) are important (CFT). asymptotitics well-understood. solution connected to tetrahedron
+
+for SU(n) it is operators, (still important) asymptotics not understood. 
+
+here, we connect the asymptotics of SU(n) 6js to the solution of a tetrahedral horn's problem for hermitian matrices (size n)
+
+the techniques arise from a probabilistic analysis inspired by techniques from quantum information theory, developed in the context of the quantum marginal problem. 
+
+as a corollary, we give a new perspective on inequalities on tetrahedral eigenvalues, first discovered in the area of optimization and information theory. 
     {\color{blue} TC: This is the MAIN draft for the TETRASPECTRA project.
     Older drafts are located in the folder titled ``old'' and will NOT compile properly.}\\
     Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a triple of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$.
@@ -1145,7 +1165,7 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     \begin{equation}
         \UniGamma \leq \dim(V_{\ya}^{n}) \exp(-a \kl{\nya}{\nea}),
     \end{equation}
-    where $\kl{\nya}{\nea}$ denotes the Kullbeck-Leibler divergence of $\nya$ from $\nea$.
+    where $\kl{\nya}{\nea}$ denotes the Kullback-Leibler divergence of $\nya$ from $\nea$.
 \end{prop}
 \begin{proof}
     See \cite{keyl2001estimating} for a proof (noting that $\Tr(\nrm A) = 1$).
@@ -1463,7 +1483,7 @@ Our first upper bound is \textit{independent} of the given matrices and follows 
 \end{proof}
 
 Our second upper bound on the magnitude of $\TetGamma$ depends on the \textit{eigenvalues} $(\ea,\eb,\ec,\ed,\ee,\ef)$ of the given tetrahedral matrices $(A, B, C, D, E, F)$ where $C=A+B$, $F=B+D$ and $E=A+B+D$.
-This result proves that in the limit of large values for $(x,y,z)$, the magnitude of $\TetGamma$ is sharply concentrated around those sextuples of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ which resemble the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of $(A,B,C,D,E,F)$.
+This result proves that in the limit of large Young diagrams, the magnitude of $\TetGamma$ is sharply concentrated around those Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ whose shapes resemble the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of $(A,B,C,D,E,F)$.
 \begin{thm}
     \label{thm:abd_dep_upper_bound}
     Let everything be as in \cref{defn:tet_gamma} and let the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes given by
