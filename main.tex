@@ -34,6 +34,7 @@ here, we connect the asymptotics of SU(n) 6js to the solution of a tetrahedral h
 the techniques arise from a probabilistic analysis inspired by techniques from quantum information theory, developed in the context of the quantum marginal problem. 
 
 as a corollary, we give a new perspective on inequalities on tetrahedral eigenvalues, first discovered in the area of optimization and information theory. 
+
     Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a triple of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$.
     The development of a complete solution to Horn's problem, due in large part to breakthroughs by A. Klyachko, A. Knutson, and T. Tao, has led to deep connections between eigenvalues of Hermitian matrices, tensor product invariants of matrix groups \& Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties via cohomology.
     
@@ -54,6 +55,35 @@ as a corollary, we give a new perspective on inequalities on tetrahedral eigenva
 \tableofcontents
 
 \section{Introduction}
+
+In this paper we prove the following bounds on $6j$ symbols for $\SU(n)$:
+\begin{thm}
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying 
+    \begin{equation}
+        \label{eq:tet_cond}
+        A+B=C, \quad B+D=F, \quad C+D=E, \quad A+F=E,
+    \end{equation}
+    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
+    \begin{equation}
+        \label{eq:six_convergence}
+        \frac{\ya_k}{k} \rightarrow \ea, \quad
+        \frac{\yb_k}{k} \rightarrow \eb, \quad
+        \frac{\yc_k}{k} \rightarrow \ec, \quad
+        \frac{\yd_k}{k} \rightarrow \ed, \quad
+        \frac{\ye_k}{k} \rightarrow \ee, \quad
+        \frac{\yf_k}{k} \rightarrow \ef,
+    \end{equation}
+    and
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
+        \geq \frac{1}{\mathrm{poly}(k)}.
+    \end{equation}
+    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
+        \leq \exp\left(- \Omega(k) \right).
+    \end{equation}
+\end{thm}
 
 There are a number of operations involving the transformation of Hermitian matrices under which it is possible to track the effect had of the corresponding sets of eigenvalues.
 For example, the eigenvalues, $\eig(X)$, of a Hermitian matrix, $X$, are invariant under conjugation by unitary matrices, $\eig(X) = \eig(UXU^{\dagger})$, covariant under taking positive powers $\eig(X^p) = \eig(X)^p$, covariant under multiplication by real numbers, $\eig(r X) = r \eig(X)$, and covariant under the addition of scalar matrices, $\eig(X+rI) = \eig(X) + (r,\ldots,r)$.
@@ -550,566 +580,6 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
     At the moment, it remains unclear if there exists analogous symmetries for the generalized Wigner $6j$ symbol for $n \geq 3$ (or even its generalization to quantum groups \cite{morozov2018new}) or even if there exists such symmetries for the tetrahedral Horn problem for $n \geq 3$.
 \end{rem}
-
-%\clearpage
-\subsection{Eigenvalues of blocks of positive semidefinite matrices}
-\label{sec:blocks_of_psd_matrices}
-
-The purpose of this section is to reformulate both Horn's problem and tetrahedral Horn problem as a instance of a slightly more general kind of eigenvalue problem involving positive semidefinite matrices.
-Throughout this section, we will restrict our focus to the case of positive semidefinite matrices and their eigenvalues.
-As a reminder we note that this can be done without loss of generality due to \cref{cor:psd}.
-
-Given a positive semidefinite matrix, $X$, with eigenvalues $\eig(X) = \chi = (\chi_1 \geq \cdots \geq \chi_n \geq 0)$ and eigen-decomposition $X = {\sum}_{i=1}^{n} \chi_i \Pi_i$, one can define $X^{\frac{1}{2}}$ by $X^{\frac{1}{2}} \coloneqq {\sum}_{i=1}^{n} \chi_i^{\frac{1}{2}} \Pi_i$.
-Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtain the following fundamental lemma relating the eigenvalues $\ec$ of a sum $C=A+B$ of $n\times n$ Hermitian matrices to the eigenvalues of a larger $2n\times 2n$ matrix $M$ built from $A$ and $B$.
-\begin{lem}
-    \label{lem:trigonal_block}
-    Let $(A, B, C)$ be a triple of $n \times n$ Hermitian matrices with eigenvalues $(\ea, \eb, \ec)$ such that $C=A+B$.
-    Let $C'$ be the $2n \times 2n$ Hermitian matrix
-    \begin{equation}
-        C' = \begin{bmatrix}
-            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
-            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
-        \end{bmatrix}.
-    \end{equation}
-    Then $C' \geq 0$ is positive semidefinite, has rank at most $n$ and has eigenvalues given by $\ec$
-    \begin{equation}
-        \eig(C') \simeq \eig(A+B) = \eig(C) = \ec.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    That $C'$ is positive semidefinite and has rank at most $n$ follows because $C'$ can be decomposed as $C' = T^{*} T$ where $T$ is the $n \times 2n$ block matrix
-    \begin{equation}
-        T = \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}.
-    \end{equation}
-    That $C'$ and $A+B$ share the same eigenvalues (up to padding by $n$ zeros) follows because for any rectangular matrix $T$, the eigenvalues of $T^{*}T$ and $TT^{*}$ are equal (up to padding by zeros) and in this instance
-    \begin{equation}
-        T^{*}T = 
-        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
-        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
-        =
-        \begin{bmatrix}
-            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
-            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
-        \end{bmatrix}
-        = C'
-        \qquad
-        TT^{*} = 
-        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
-        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
-        = A + B.
-    \end{equation}
-\end{proof}
-From the perspective of \cref{lem:trigonal_block}, one can view the Horn's problem involving the eigenvalues $(\ea,\eb,\ec)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
-\begin{equation}
-    \label{eq:block_ABX}
-    C' = \begin{bmatrix}
-        A' & Z \\
-        Z^{*} & B'
-    \end{bmatrix},
-\end{equation}
-and the eigenvalues of its two $n\times n$ diagonal blocks $Z$ and $Z$.
-It is known, by \cite[Theorem 7.7.9]{horn2012matrix} or more generally \cite[Theorem 5.11]{moslehian2019positivity} that if $C'$ is a $2\times 2$ block matrix such that $A',B' \geq 0$, then $C' \geq 0$ if and only if the off-diagonal block $Z$ is of the form
-\begin{equation}
-    Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}
-\end{equation}
-for some contraction matrix $K$ (largest eigenvalue of $(K^{*}K)^{\frac{1}{2}}$ is at most unity).
-Additionally, when $Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}$, one has the decomposition
-\begin{equation}
-    C' = \begin{bmatrix}
-        A' & Z \\
-        Z^{*} & B'
-    \end{bmatrix} 
-    =
-    \begin{bmatrix}
-        A'^{\frac{1}{2}} & 0 \\
-        0 & B'^{\frac{1}{2}}
-    \end{bmatrix}
-    \begin{bmatrix}
-        I & K \\
-        K^{*} & I
-    \end{bmatrix}
-    \begin{bmatrix}
-        A'^{\frac{1}{2}} & 0 \\
-        0 & B'^{\frac{1}{2}}
-    \end{bmatrix},
-\end{equation}
-noting that $K$ is a contraction if and only if the middle block matrix above is positive semidefinite \cite[Lemma 5.10]{moslehian2019positivity}.
-
-Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A'^{\frac{1}{2}} K B'^{\frac{1}{2}} = A'^{\frac{1}{2}} B'^{\frac{1}{2}}$).
-A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $C'$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
-Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $C'$ and of the blocks $A'$ and $B'$ in terms of properties of $Z$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
-Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of Horn's problem.
-\begin{thm}
-    \label{thm:trigonal_block}
-    Let $(\ea,\eb,\ec)$ be a triple of positive semidefinite eigenvalues of length at most $n$.
-    The following are equivalent:
-    \begin{enumerate}[(i)]
-        \item there exists a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$,
-        \item there exists an $2n \times 2n$ Hermitian matrix,
-            \begin{equation}
-                C' = \begin{bmatrix}
-                    A' & Z \\
-                    Z^{*} & B'
-                \end{bmatrix},
-            \end{equation}
-            such that $\eig(A') = \ea$, $\eig(B') = \eb$, and $\eig(C') = \ec$.
-    \end{enumerate}
-\end{thm}
-\begin{proof}
-    Since we explicitly assume all of the eigenvalues in the triple $(\ea,\eb,\ec)$ are non-negative, the Hermitian matrices $A,B,C$, and $A',B',C'$ involved in the statements above are necessarily positive semidefinite.
-    The claim (i) $\implies$ (ii) follows from \cref{lem:trigonal_block}.
-    That (ii) $\implies$ (i) follows by noticing that if $C'$ has eigenvalues $\ec$, then it has rank at most $n$.
-    Therefore, as $C' \geq 0$, there exists a $n\times 2n$ block matrix $T$ of the form
-    \begin{equation}
-        T = \begin{bmatrix} T_{A} & T_{B} \end{bmatrix} 
-    \end{equation}
-    such that $C' = T^{*} T$. 
-    The diagonal blocks of $C'$ are therefore $A' = T_{A}^*T_{A}$, and $B' = T_{B}^{*}T_{B}$.
-    As in the proof of \cref{lem:trigonal_block}, we note that $T^{*}T$ and $TT^{*}$ have the same eigenvalues up to padding by zeros.
-    Therefore, by letting $A = T_{A} T_{A}^{*}$ and $B = T_{B} T_{B}^*$ we see that 
-    \begin{align}
-        \begin{split}
-            \eig(A) = \eig(T_{A} T_{A}^{*}) &\simeq \eig(T_{A}^{*} T_{A}) = \eig(A') = \ea, \\
-            \eig(B) = \eig(T_{B} T_{B}^{*}) &\simeq \eig(T_{B}^{*} T_{B}) = \eig(B') = \eb,
-        \end{split}
-    \end{align}
-    while the eigenvalues of $C = A+B = T_{A} T_{A}^{*} + T_{B} T_{B}^*$ match the eigenvalues of $C'$ because
-    \begin{equation}
-        \eig(C) = \eig(A+B) =\eig(T_{A} T_{A}^{*} + T_{B} T_{B}^*) = \eig(T T^{*}) \simeq \eig(T^{*}T) = \eig(C') = \ec.
-    \end{equation}
-\end{proof}
-
-As a corollary of this correspondence between the Horn's problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
-
-\begin{cor}
-    \label{cor:tetrahedral_block}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of positive semidefinite eigenvalues of length at most $n$.
-    Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral if and only if there exists a $3n \times 3n$ matrix $E'$ of the form
-    \begin{equation}
-        \label{eq:block_3by3}
-        E' =
-        \begin{bmatrix}
-            A' & Z & Y \\
-            Z^{*} & B' & X\\
-            Y^{*} & X^{*} & D'
-        \end{bmatrix},
-        \qquad \text{with blocks} \qquad
-        C' = \begin{bmatrix}
-            A' & Z \\
-            Z^{*} & B'\\
-        \end{bmatrix}, \quad
-        F' = \begin{bmatrix}
-            B' & X \\
-            X^{*} & D'
-        \end{bmatrix}
-    \end{equation}
-    such that
-    \begin{equation}
-        \label{eq:block_eigenvalue_tet}
-        \eig(A') = \ea, \quad
-        \eig(B') = \eb, \quad
-        \eig(C') = \ec, \quad
-        \eig(D') = \ed, \quad
-        \eig(E') = \ee, \quad
-        \eig(F') = \ef.
-    \end{equation}
-\end{cor}
-\begin{proof}
-    The proof is analogous to the proofs of \cref{lem:trigonal_block} and \cref{thm:trigonal_block}.
-    First we prove the ``only if'' portion of the claim which is a corollary of \cref{lem:trigonal_block}.
-    Suppose $(A,B,C,D,E,F)$ is a tetrahedral sextuple of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ec)$.
-    Let $E'$ be given by
-    \begin{equation}
-        E' =
-        \begin{bmatrix}
-            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
-        \end{bmatrix}^{*}
-        \begin{bmatrix}
-            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-            A & A^{\frac{1}{2}}B^{\frac{1}{2}} & A^{\frac{1}{2}}D^{\frac{1}{2}} \\
-            B^{\frac{1}{2}}A^{\frac{1}{2}} & B & B^{\frac{1}{2}}D^{\frac{1}{2}} \\
-            D^{\frac{1}{2}}A^{\frac{1}{2}} & D^{\frac{1}{2}}B^{\frac{1}{2}} & D
-        \end{bmatrix}
-    \end{equation}
-    Then the eigenvalues of the corresponding principal submatrices of $E'$ satisfy \cref{eq:block_eigenvalue_tet} by \cref{lem:trigonal_block}.
-    Now we prove the ``if'' portion of the claim which is a corollary of \cref{thm:trigonal_block}.
-    If $E'$ is a matrix of form given by \cref{eq:block_3by3} with eigenvalues $\ee$ with length at most $n$, then $E'$ is positive semidefinite with rank at most $n$.
-    Therefore, there exists an $n\times 3n$ block matrix
-    \begin{equation}
-        T = \begin{bmatrix} T_{A} & T_{B} & T_{D} \end{bmatrix} 
-    \end{equation}
-    such that $E' = T^{*}T$ and thus
-    \begin{equation}
-        \begin{alignedat}{6}
-            &A' &&= T_{A}^{*}T_{A}, \qquad
-            &&B' &&= T_{B}^{*}T_{B}, \qquad
-            &&D' &&= T_{D}^{*}T_{D}, \\
-            &X &&= T_{B}^{*}T_{D}, \qquad
-            &&Y &&= T_{A}^{*}T_{D}, \qquad
-            &&Z &&= T_{A}^{*}T_{B}.
-        \end{alignedat}
-    \end{equation}
-    Now let $(A,B,C,D,E,F)$ be given by 
-    \begin{equation}
-        \begin{alignedat}{6}
-            &A &&= T_{A}T_{A}^{*}, \qquad
-            &&B &&= T_{B}T_{B}^{*}, \qquad
-            &&C &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*}, \\
-            &D &&= T_{D}T_{D}^{*}, \qquad
-            &&E &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*} + T_{D}T_{D}^{*}, \qquad
-            &&F &&= T_{B}T_{B}^{*} + T_{D}T_{D}^{*}.
-        \end{alignedat}
-    \end{equation}
-    From here, one may directly verify that these $n\times n$ Hermitian matrices satisfy \cref{eq:tet_linear_constraints}
-    and have eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ (using a similar argument presented in the proof of \cref{thm:trigonal_block}); i.e., one concludes that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
-\end{proof}
-
-\section{Inequalities for tetrahedral eigenvalues}
-\label{sec:ineqs}
-
-The purpose of this section is to describe various inequalities which are necessarily satisfied by tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
-In general, however, the task of finding a complete description of the space of tetrahedral eigenvalues for $n\geq 3$ remains an open problem.
-
-\subsection{Horn's inequalities}
-Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
-Consequently, every inequality constraining trigonal eigenvalues can be lifted to produce a quadruplet of inequalities constraining the set of tetrahedral eigenvalues.
-These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
-Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
-Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
-For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues,knutson2000symplectic} or \cite[Appendix D]{niculescu2006convex}.
-In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
-\begin{equation}
-    \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
-\end{equation}
-which constrain the largest and smallest eigenvalues respectively (note that under inversion symmetry, these inequalities are equivalent). 
-The first somewhat non-trivial inequality, derived by \citeauthor{weyl1912asymptotische} in 1912, is now known as \textit{Weyl's inequality} and states for all $i,j$ such that $i+j \leq n+1$ \cite{weyl1912asymptotische}\footnote{For $2\times 2$ matrices one can see that these necessary inequalities are also sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal; upon shifting to traceless eigenvalues using \cref{cor:traceless}, $\ea = (a,-a), \eb = (b, -b)$ and $\ec = (c,-c)$, and these inequalities become equivalent to the triangle inequalities $c \leq a+b$ and $c \geq \max\{b-a,a-b\}$.}
-\begin{equation}
-    \ea_i + \eb_j \geq \ec_{i+j-1}.
-\end{equation}
-In 1949, \citeauthor{fan1949theorem} derived a majorization inequality constraining the first $r$ largest eigenvalues \cite{fan1949theorem}, 
-and shortly thereafter Lidskii \cite{lidskii1953proper} \& Wielandt \cite{wielandt1955extremum} found proofs of another family of inequalities.
-Finally, in 1962, \citeauthor{horn1962eigenvalues} determined a complete collection of inequalities for $(\ea,\eb,\ec)$ are trigonal for the case where $n=3$ \cite{horn1962eigenvalues}.
-Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} provided an inductively defined set of subsets $I,J,K \subset \{1,\ldots, n\}$ of equal cardinality and conjectured that inequalities of the form
-\begin{equation}
-    \label{eq:IJK_ineq}
-    {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
-\end{equation}
-were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
-While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, $\abs{\ea} + \abs{\eb} = \abs{\ec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
-Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
-
-For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
-
-\subsection{A simple quadratic inequality}
-
-In \cref{sec:symmetries} we saw that the shifting symmetry implies, in a certain sense, one may assume without loss of generality that the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ef)$ are all non-negative or even strictly positive.
-While almost all of the following inequalities require this positivity assumption, we note that they can be extended to eigenvalues with negative entries in all cases.
-
-To begin, we provide an example of a non-linear inequality constraining tetrahedral eigenvalues which appears to be new.
-\begin{prop}
-    \label{prop:simple_quadratic}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be non-negative tetrahedral eigenvalues of $n\times n$ Hermitian matrices.
-    Then
-    \begin{equation}
-        2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \sum_{j=1}^{n}\left(\eb_j^2 + \ee_j^2 - \ec_j^2 - \ef_j^2\right) \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
-    \end{equation}
-\end{prop}
-\begin{proof}
-    Let $(A,B,C,D,E,F)$ be the tetrahedral sextuple of positive semidefinite matrices 
-    with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
-    satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
-    Then the following identity holds:
-    \begin{align}
-        \label{eq:quad_identity}
-        \begin{split}
-            & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
-            &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
-            &\quad= 
-            (\Tr[B^2])
-            +(\Tr[A^2] + \Tr[B^2] + \Tr[D^2] + 2\Tr[AB] + 2\Tr[BD] + 2 \Tr[AD])\\
-            &\qquad\qquad-(\Tr[A^2] + \Tr[B^2] + 2\Tr[AB])
-            -(\Tr[B^2] + \Tr[D^2] + 2\Tr[BD])\\
-            &\quad= 2 \Tr[AD].
-        \end{split}
-    \end{align}
-    At this stage, one may note that for all $A,D \geq 0$ positive semidefinite, $\Tr(AD) \geq 0$ and therefore,
-    \begin{equation}
-        \label{eq:quadratic_difference_pos}
-        \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \geq 0.
-    \end{equation}
-    This inequality is well-known and indeed follows as a special of \cite[Proposition 2.3]{sagnol2013approximation}.
-    The improvement made here is to note that while the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}):
-    \begin{equation}
-        {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr[AD] \leq {\sum}_{j} \ea_j \ed_j,
-    \end{equation} 
-    where $\ed_{n-j+1} = -\ed^{*}_j$.
-    The claim then follows because $\Tr[X^2] = \sum_{j}\ex_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \ex$.
-\end{proof}
-
-
-\subsection{Strongly subadditive/Submodular inequalities}
-
-{\color{blue}
-DISCLAIMER FROM TC: 
-The remainder of this section is written with respect to the $A,B,C$ convention instead of the $A,B,D$ convention. 
-When discussing the tetrahedral Horn problem and its relation to the ordinary Horn problem or when matching the problem to the properties of the $6j$ symbols, the $A,B,D$ convention is preferred. 
-However when talking about submodular/strong subadditivity inequalities and comparing with the literature, the $A,B,C$ convention is preferred. 
-Before finalizing the paper, it will be desirable to establish a globally consistent convention.
-An equivalent formulation is to consider eigenvalues of four PSD matrices $W,X,Y,Z$ with eigenvalues $(\omega, \chi, \upsilon, \zeta)$ such that $X+Y=W+Z$ and $W \geq X \geq Z$ and $W \geq Y \geq Z$.
-}
-
-Another strategy for understanding eigenvalues of positive semidefinite matrices and their sums is to consider the expansion of tensors powers of sums of matrices in relation to the tensor powers of their summands.\footnote{We will exploit a variation of this strategy repeatedly in \cref{sec:rep_theory}.}
-For instance, given a positive integer $k$ and positive semidefinite $A$ and $B$, using the non-commutative binomial expansion of $(A+B)^{\ot k}$ and dropping all summands involving both $A$ and $B$, one obtains \cite[Proposition 1.1]{berndt2015hlawka}:
-\begin{equation}
-    (A+B)^{\ot k} \geq A^{\ot k} + B^{\ot k}.
-\end{equation}
-This technique, was generalized by \cite{tie2011rearrangement} \cite[Lemma 2.2]{tie2011rearrangement} to obtain the following result.\footnote{Further extensions of this technique include inequalities involving the sum $A+C$ which are outside the scope of the tetrahedral Horn problem (see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions})}.
-\begin{prop}
-    \label{prop:operator_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
-    Then
-    \begin{equation}
-        (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
-    \end{equation}
-\end{prop}
-From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $B, A+B, B+C$, and $A+B+C$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.\footnotemark{}
-\footnotetext{\citeauthor{paksoy2014inequalities} has used a similar approach to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
-Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
-\begin{cor}
-    \label{cor:schur_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$ with size $\abs{\yx} \coloneqq \yx_1 + \cdots + \yx_n = k$.
-    Then
-    \begin{equation}
-        \label{eq:schur_ineq}
-        s_{\ex}(\eig(A+B+C)) + s_{\ex}(\eig(B)) \geq s_{\ex}(\eig(A+B)) + s_{\ex}(\eig(B+C)).
-    \end{equation}
-\end{cor}
-\begin{proof}
-    Given a Young diagram $\yx$, let $P_{\yx}$ be the Hermitian projection operator onto the isotypic subspace $V_{\yx}^{n} \ot W_{\yx} \subseteq (\mathbb C^{d})^{\ot k}$ (see \cref{sec:rep_theory} for details).
-    Given positive semidefinite matrix $X \geq 0$, one can show that 
-    \begin{equation}
-        \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
-    \end{equation}
-    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
-    \begin{equation}
-        \Tr[P_{\ex}(A+B+C)^{\ot k}] + \Tr[P_{\ex}B^{\ot k}] \geq \Tr[P_{\ex}(A+B)^{\ot k}] + \Tr[P_{\ex}(B+C)^{\ot k}]
-    \end{equation}
-    and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
-\end{proof}
-
-In the special where where $\yx = (\underbrace{1,\ldots,1}_n)$, where $\Tr(P_{(\underbrace{1,\ldots,1}_n)} X^{\ot n}) = \det(X)$ one obtains the well-known determinant inequality \cite[Lemma 2.2]{tie2011rearrangement}:
-\begin{equation}
-    \label{eq:lin_det}
-    \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C).
-\end{equation}
-Another well-known determinant inequality is the multiplicative variant of \cref{eq:lin_det} which states that for all $A,B,C \geq 0 $ positive semidefinite,
-\begin{equation}
-    \label{eq:mul_det}
-    \det(A+B+C)\det(B) \leq \det(A+B)\det(B+C).
-\end{equation}
-This inequality follows as a special case of a general result due to \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
-\begin{thm}
-    \label{thm:sagnol_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite matrices.
-    Let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ whose derivative $f'$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
-    Then the following inequality holds
-    \begin{equation}
-        \label{eq:sagnol_ineq}
-        \Tr f(A+B+C) 
-        +
-        \Tr f(B)
-        \geq
-        \Tr f(A+B)
-        +
-        \Tr f(B+C).
-    \end{equation}
-\end{thm}
-\begin{proof}
-    Here we sketch the proof in \cite[Section 2.1]{sagnol2013approximation}.
-    Let $F = \Tr \circ f$. The claim then amounts to proving for all $A,B,C\geq 0$,
-    \begin{equation}
-        \label{eq:sagnol_diff}
-        \Delta_{A}\Delta_{C} F(B) = F(A+B+C) - F(A+B) - F(B+C) + F(B) \geq 0,
-    \end{equation}
-    where $\Delta_X$ is the difference operator $[\Delta_X F](Y) \coloneqq F(X+Y) - F(Y)$.
-    By standard continuity arguments (and the assumption that $f$ is continuous), we may assume everything is positive definite in which case
-    \begin{align}
-        \partial_{A} \Delta_C F(B)
-        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon A} \Delta_C F(B) \\
-        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_C F (B+\varepsilon A) - \Delta_C F(B) \right) \\
-        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon A+B+C) - F(\varepsilon A + B) - F(B+C) + F(B) \right) \\
-        &= \Tr\left[(f'(B+C)-f'(B)) A \right]. \label{eq:sagnol_final_step}
-    \end{align}
-    Using the assumption that $f'$ is an operator monotone (and the assumption of positive definiteness) together with $B+C \geq B$ (because $C \geq 0$), we have $f'(B+C) \geq f'(B)$ and thus $f'(B+C)-f'(B) \geq 0$ is a positive semidefinite operator.
-    Therefore, the function $\Delta_C F(B)$ is non-decreasing under $B\mapsto A+B$ and thus \cref{eq:sagnol_diff} holds.
-\end{proof}
-As immediate corollaries to \cref{thm:sagnol_ineq}, letting $f(x) = \log x$ and noting $\Tr(\log X) = \log \det(X)$, one recovers \cref{eq:mul_det}.
-Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization} which states for all $A,B,C \geq 0$,
-\begin{equation}
-    \label{eq:bouhtou_ineq}
-    \forall p \in [0,1] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \geq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
-\end{equation}
-In the limit where $p \to 0^+$, \citeauthor{sagnol2013approximation} also obtains at first order the well-known rank inequality \cite[Proposition A.1]{sagnol2013approximation}
-\begin{equation}
-    \rank(A+B) + \rank(B+C) \geq \rank(B) + \rank(A+B+C).
-\end{equation}
-On the other hand, letting $f(x) = x^p$ for $p \in (1,2]$ yields for all $A,B,C \geq 0$
-\begin{equation}
-    \label{eq:bouhtou_ineq_reverse}
-    \forall p \in (1,2] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \leq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
-\end{equation}
-Of particular interest to us in \cref{sec:large_n} is the function $f(x) = x \log x$ which implies for all $A,B,C\geq 0$ the inequality
-\begin{align}
-    \label{eq:SSA_like_ineq}
-    S(A+B)+ S(B+C) \geq S(B) + S(A+B+C) 
-\end{align}
-where $S(X) = s(\eig(X)) \coloneqq -\sum_{i=1}^{n} \ex_i(X)\log\ex_i(X)$ is the \textit{unnormalized} von Neumann entropy of $X$.
-Note that a similar inequality involving entropies of sums of positive semidefinite matrices (subject to additional eigenvalue constraints) has appeared in \cite{christandl2018recoupling}.
-Moreover, while it can be shown that \cref{eq:SSA_like_ineq} is strictly tighter that the inequality in \cite{christandl2018recoupling} for fixed matrices, it is also possible to obtain \cref{eq:SSA_like_ineq} from the result in \cite{christandl2018recoupling} by downscaling the involved matrices in the sense of \cref{prop:simple_quadratic}.
-
-\begin{rem}
-    One consequence of \cref{cor:tetrahedral_block}, which relates the eigenvalues of sums of positive semidefinite matrices to the eigenvalues of diagonal blocks of larger positive semidefinite matrices with bounded rank, is that many of the aforementioned inequalities can now be seen as consequences of more general inequalities which constrain the eigenvalues of blocks.
-    
-    For instance, the Koteljanskii determinant inequality \cite{johnson1993determinantal} (in the notation of \cref{cor:tetrahedral_block}) implies for \textit{any} $3\times 3$ block matrix, that
-    \begin{equation}
-        \det(C')\det(F') \geq \det(E')\det(B').
-    \end{equation}
-    Using \cref{cor:tetrahedral_block}, the Koteljanskii determinant inequality becomes \cref{eq:mul_det}.
-    More generally, \citeauthor{audenaert2010strongly} were interested in functions $f$ which are strongly superadditive in the sense that for any $3\times 3$ block matrices $E'$ (again in the notation of \cref{cor:tetrahedral_block}) the following inequality holds \cite{audenaert2010strongly}:
-    \begin{equation}
-        \label{eq:audenaert}
-        \Tr f(E') + \Tr f(B') \geq \Tr f(C') + \Tr f(F').
-    \end{equation}
-    Their conclusion, also discovered by \citeauthor{friedland2013submodular} \cite{friedland2013submodular} was that it is \textit{sufficient} for $f'$ to be an operator monotone to conclude \cref{eq:audenaert} holds.
-    In light of \cref{cor:tetrahedral_block}, the results of \citeauthor{audenaert2010strongly} and \cite{friedland2013submodular} give an alternative proof of \cref{thm:sagnol_ineq}.
-    In \cite{lewin2014family}, \citeauthor{lewin2014family} further proved that $f'$ being an operator monotone is also \textit{necessary} for \cref{eq:audenaert} to hold for all $3\times 3$ block matrices $E'$.
-    Note that from the proof of \cref{thm:sagnol_ineq} above, it is not too difficult to see that $f'$ being an operator monotone is also necessary for \cref{eq:sagnol_ineq} to hold (otherwise it becomes possible for \cref{eq:sagnol_final_step} to become negative).
-\end{rem}
-
-{\color{blue}
-\begin{rem}
-    Much of the interest in characterizing the eigenvalues of principal submatrices of positive semidefinite matrices is closely related to the correspondence between positive semidefinite matrices and covariance matrices of Gaussian multivariate random variables \cite{lami2017log}.
-    From this perspective, principal submatrices become covariance matrices of Gaussian marginal distributions, and thus one may view the principal submatrix eigenvalue problem as a kind of ``spectral'' classical Gaussian marginal problem.
-    Note that from this perspective, the differential entropies of the underlying Gaussian distributions are equal to logarithms of determinants up to a additive constants \cite{lami2017log}. 
-    The Gaussian entropy region has been partially characterized by \citeauthor{shadbakht2011entropy} \cite{shadbakht2011entropy,hassibi2008entropy}.
-\end{rem}
-}
-
-\subsection{The Courtade-Sra determinant inequality}
-
-Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $B, A+B, B+C$ and $A+B+C$.
-Here we show how to improve the determinant inequality $\det(A+B)\det(B+C) \geq \det(A+B+C)\det(B)$ in a manner which also accounts for the determinants $\det(A)$ and $\det(C)$.
-This inequality exploits Minkowski's determinant inequality for positive semidefinite $n\times n$ matrices $A$ and $B$ which reads (see \cite[Theorem 7.8.21]{horn1985matrix} or \cite[Equation II.44]{bhatia1997matrix}):
-\begin{equation}
-    \det(A+B)^{\frac{1}{n}} \geq \det(A)^{\frac{1}{n}} + \det(B)^{\frac{1}{n}}.
-\end{equation}
-The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}\footnote{Note in \cite{courtade2017concavity}, \citeauthor{courtade2017concavity} conjectures a generalization of the Brunn-Minkowski inequality for bounded convex sets $A,B,C$ in $\mathbb R^{n}$ of the form $V(A+B)^{\frac{1}{n}}V(B+C)^{\frac{1}{n}} \geq V(A+B+C)^{\frac{1}{n}}V(B)^{\frac{1}{n}} + V(A)^{\frac{1}{n}}V(C)^{\frac{1}{n}}$. See also \cite{costa1984similarity}.}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
-This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
-\begin{prop}[Courtade-Sra determinant inequality]
-    \label{prop:cs_ineq}
-    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then
-    \begin{equation}
-        \label{eq:cs_ineq}
-        \det (A+B)^{\frac1n} \det (B+C)^{\frac1n} \geq \det (A+B+C)^{\frac1n}\det (B)^{\frac1n} + \det (A)^{\frac1n} \det(C)^{\frac1n}.
-    \end{equation}
-\end{prop}
-\begin{proof}
-    By standard continuity arguments, it suffices to prove the inequality for $B > 0$ positive definite (if it holds for positive definite $B+\varepsilon I$, then continuity permits taking the limit $\varepsilon \to 0$).
-    As $B$ is positive definite, it is also invertible and we may define
-    \begin{equation}
-        X = B^{-\frac{1}{2}}AB^{-\frac{1}{2}}, \qquad
-        Y = B^{-\frac{1}{2}}CB^{-\frac{1}{2}}.
-    \end{equation}
-    By dividing \cref{eq:cs_ineq} by $\det(B)^{\frac{2}{n}} \neq 0$, it then suffices to prove
-    \begin{equation}
-        \label{eq:cs_ineq_xy}
-        \det (I+X)^{\frac1n} \det (I+Y)^{\frac1n} \geq \det (I+X+Y)^{\frac1n} + \det (X)^{\frac1n} \det(Y)^{\frac1n}.
-    \end{equation}
-    Let $\ex(X) = \eig(X)$ and $\ex(Y) = \eig(Y)$. Then for any permutation $\pi \in S_n$ let
-    \begin{equation}
-        L_{\pi} = \diag\{1+\ex_i(X) + \ex_{\pi(i)}(Y)\}_{i=1}^{n}, \qquad R_{\pi} = \diag\{\ex_i(X)\ex_{\pi(i)}(Y)\}_{i=1}^{n}.
-    \end{equation}
-    Then we have the identity
-    \begin{align}
-        \det(I+X)\det(I+Y) 
-        &= \prod_{i=1}^{n} (1+\ex_i(X)) \prod_{i=1}^{n} (1+\ex_i(Y)), \\
-        &= \prod_{i=1}^{n} (1+\ex_i(X) + \ex_{\pi(i)}(Y) + \ex_i(X)\ex_{\pi(i)}(Y)),\\
-        &= \det(L_{\pi} + R_{\pi})
-    \end{align} 
-    Here we can apply Minkowski's theorem to obtain 
-    \begin{equation}
-        \det(L_{\pi} + R_{\pi})^{\frac{1}{n}} \geq \det(L_{\pi})^{\frac{1}{n}} + \det(R_{\pi})^{\frac{1}{n}}.
-    \end{equation}
-    By definition, we have $\det(R_{\pi}) = \det(X)\det(Y)$ for any permutation $\pi$, while a theorem do to \citeauthor{fiedler1971bounds} \cite{fiedler1971bounds} states (see also \cite[Exercise VI.7.2,Theorem VI.7.1]{bhatia1997matrix})
-    \begin{equation}
-        \det(I+X+Y) \leq \max_{\pi} \prod_{i=1}^{n} (\ex_i(I+X) + \ex_{\pi(i)}(Y)) = \max_{\pi} \det(L_{\pi}).
-    \end{equation}
-    Combining these bounds together yields \cref{eq:cs_ineq_xy} and thus the claim holds. 
-\end{proof}
-
-{\color{blue}
-TC: On \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality}
-Sra also proves
-\begin{equation}
-    E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
-\end{equation}
-where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
-
-The proof relies on a concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
-An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is also \cite{bauschke2001hyperbolic}.
-For the particular case of the real vector space of $n\times n$ Hermitian matrices of dimension $n(n+1)/2$, the polynomial $X \mapsto \det(X)$ is hyperbolic in the direction of the identity matrix $\id_n$ (i.e., Hermitian matrices only have real eigenvalues).
-Moreover, the homogeneous polynomial $p_m(X) = \Tr(P_{(1,\stackrel{m}{\ldots}, 1)}X^{\otimes m})$ is the sum of the principal minors of $X$ of size $m$ and also equals the elementary symmetric polynomial of the eigenvalues of $X$, i.e.,
-\begin{equation}
-    p_m(X) = E_m (\eig(X)).
-\end{equation}
-The homogeneous polynomial $p_m(X)$, like the determinant $\det(X) = p_n(X)$ itself, is also hyperbolic in the direction of the identity matrix $\id_n$.
-In this context, together with the positivity $p_m(\id_n) > 0$, Gårding's inequality generalizes the Minkowski determinant inequality and yields superlinearity of $p_m(X)^{\frac{1}{m}}$:
-\begin{equation}
-    p_{m}(X+Y)^{\frac{1}{m}} \geq p_m(X)^{\frac{1}{m}} + p_m(Y)^{\frac{1}{m}}
-\end{equation}
-for all $X,Y$ positive semidefinite (the hyperbolicity cone for $p_m$).
-This inequality is due to \citeauthor{marcus1957inequalities} \cite[Theorem 2]{marcus1957inequalities},
-but it can also be proven using joint concavity of $(A_1,\ldots, A_m)\mapsto A_1^{\frac{1}{m}}\ot \cdots \ot A_m^{\frac{1}{m}}$ and thus concavity of $(A^{\frac{1}{m}})^{\ot m}$ and thus by homogeneity the operator inequality $((A+B)^{\frac{1}{m}})^{\ot m} \geq (A^{\frac{1}{m}})^{\ot m} + (B^{\frac{1}{m}})^{\ot m}$ (\cite[Exercise 4.2.9]{bhatia2009positive}).
-TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet:
-\begin{conj}
-    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then
-    \begin{equation}
-        \label{eq:cs_ineq_conjecture}
-        E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
-    \end{equation}
-    where $E_k(X) = e_{k}(\eig(X))$ and where $e_k$ is the $k$th elementary symmetric polynomial.
-\end{conj}
-}
-{\color{red!80!black}
-Proving this conjecture has proven quite challenging.
-See \cite{marcus1957inequalities,mcleod1959four,anderson1984symmetric} for using inequalities and proof techniques which might be relevant.
-See also \cite{anderson1984symmetric} or \cite[Chapter 4]{bhatia2009positive} for many properties of matrix means and their ability to prove minkowski-like inequalities.
-See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
-
-See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
-What I believe I'm managed to prove is that if $\phi$ is a function such that $\log \phi$ is 2-monotone, i.e.,
-\begin{equation}
-    - (\partial_{A}\log \phi)(B) \geq 0, \qquad + (\partial_{C}\partial_{A}\log \phi)(B) \geq 0,
-\end{equation}
-then $\phi(A+B)\phi(B+C) \geq \phi(B) \phi(A+B+C)$ holds.
-If in addition, one has a weird kind of 3-montonicity, namely
-\begin{equation}
-    -\partial_{W}(\phi^2 \partial_{C}\partial_{A}\log \phi)(B) \geq 0,
-\end{equation}
-then,
-\begin{equation}
-    [\phi(A+B+W)\phi(B+C+W) - \phi(A+B+C+W)\phi(B+W)] - [\phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B)] \geq 0
-\end{equation}
-which means, assuming $\phi(0) = 0$ and for $B\mapsto 0$ and $W \mapsto B$, we have desired inequality:
-\begin{equation}
-    \phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B) - \phi(A)\phi(C) \geq 0.
-\end{equation}
-}
 
 %\clearpage
 \section{Representation theory \& eigenvalue estimation}
@@ -2059,8 +1529,133 @@ where the sum is over all dominant integral weights $\yx$ for $G$ and $\rho$ the
 It is conceivable that the square of the Hilbert-Schmidt norm of the generalized $6j$ symbols for $G$ can be seen as a low temperature limit, $t \to 0$, of an integral over products of heat kernels.
 
 \section{Seesaw reciprocity \& eigenvalues of blocks}
+\label{sec:blocks_of_psd_matrices}
 
-In \cref{sec:lr_tri}, we reviewed the correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
+The purpose of this section is to reformulate both Horn's problem and tetrahedral Horn problem as a instance of a slightly more general kind of eigenvalue problem involving positive semidefinite matrices.
+Throughout this section, we will restrict our focus to the case of positive semidefinite matrices and their eigenvalues.
+As a reminder we note that this can be done without loss of generality due to \cref{cor:psd}.
+
+Given a positive semidefinite matrix, $X$, with eigenvalues $\eig(X) = \chi = (\chi_1 \geq \cdots \geq \chi_n \geq 0)$ and eigen-decomposition $X = {\sum}_{i=1}^{n} \chi_i \Pi_i$, one can define $X^{\frac{1}{2}}$ by $X^{\frac{1}{2}} \coloneqq {\sum}_{i=1}^{n} \chi_i^{\frac{1}{2}} \Pi_i$.
+Inspired by \cite[Theorem IV.2.13]{bhatia1997matrix}, we obtain the following fundamental lemma relating the eigenvalues $\ec$ of a sum $C=A+B$ of $n\times n$ Hermitian matrices to the eigenvalues of a larger $2n\times 2n$ matrix $M$ built from $A$ and $B$.
+\begin{lem}
+    \label{lem:trigonal_block}
+    Let $(A, B, C)$ be a triple of $n \times n$ Hermitian matrices with eigenvalues $(\ea, \eb, \ec)$ such that $C=A+B$.
+    Let $C'$ be the $2n \times 2n$ Hermitian matrix
+    \begin{equation}
+        C' = \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
+        \end{bmatrix}.
+    \end{equation}
+    Then $C' \geq 0$ is positive semidefinite, has rank at most $n$ and has eigenvalues given by $\ec$
+    \begin{equation}
+        \eig(C') \simeq \eig(A+B) = \eig(C) = \ec.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    That $C'$ is positive semidefinite and has rank at most $n$ follows because $C'$ can be decomposed as $C' = T^{*} T$ where $T$ is the $n \times 2n$ block matrix
+    \begin{equation}
+        T = \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}.
+    \end{equation}
+    That $C'$ and $A+B$ share the same eigenvalues (up to padding by $n$ zeros) follows because for any rectangular matrix $T$, the eigenvalues of $T^{*}T$ and $TT^{*}$ are equal (up to padding by zeros) and in this instance
+    \begin{equation}
+        T^{*}T = 
+        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
+        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
+        =
+        \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B
+        \end{bmatrix}
+        = C'
+        \qquad
+        TT^{*} = 
+        \begin{bmatrix} A^{\frac{1}{2}} & B^{\frac{1}{2}} \end{bmatrix}
+        \begin{bmatrix} A^{\frac{1}{2}} \\ B^{\frac{1}{2}} \end{bmatrix}
+        = A + B.
+    \end{equation}
+\end{proof}
+From the perspective of \cref{lem:trigonal_block}, one can view the Horn's problem involving the eigenvalues $(\ea,\eb,\ec)$ of $n\times n$ Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ as a special case of a more general eigenvalue problem concerned with the relations between the eigenvalues of $2n \times 2n$ Hermitian matrices $\Sigma$ of the form
+\begin{equation}
+    \label{eq:block_ABX}
+    C' = \begin{bmatrix}
+        A' & Z \\
+        Z^{*} & B'
+    \end{bmatrix},
+\end{equation}
+and the eigenvalues of its two $n\times n$ diagonal blocks $Z$ and $Z$.
+It is known, by \cite[Theorem 7.7.9]{horn2012matrix} or more generally \cite[Theorem 5.11]{moslehian2019positivity} that if $C'$ is a $2\times 2$ block matrix such that $A',B' \geq 0$, then $C' \geq 0$ if and only if the off-diagonal block $Z$ is of the form
+\begin{equation}
+    Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}
+\end{equation}
+for some contraction matrix $K$ (largest eigenvalue of $(K^{*}K)^{\frac{1}{2}}$ is at most unity).
+Additionally, when $Z = A'^{\frac{1}{2}} K B'^{\frac{1}{2}}$, one has the decomposition
+\begin{equation}
+    C' = \begin{bmatrix}
+        A' & Z \\
+        Z^{*} & B'
+    \end{bmatrix} 
+    =
+    \begin{bmatrix}
+        A'^{\frac{1}{2}} & 0 \\
+        0 & B'^{\frac{1}{2}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        I & K \\
+        K^{*} & I
+    \end{bmatrix}
+    \begin{bmatrix}
+        A'^{\frac{1}{2}} & 0 \\
+        0 & B'^{\frac{1}{2}}
+    \end{bmatrix},
+\end{equation}
+noting that $K$ is a contraction if and only if the middle block matrix above is positive semidefinite \cite[Lemma 5.10]{moslehian2019positivity}.
+
+Therefore, the special case covered by \cref{lem:trigonal_block} corresponds to the case where the corresponding contraction matrix $K$ is the $n\times n$ identity matrix $K=I$ (or more generally any contractive matrix satisfying $A'^{\frac{1}{2}} K B'^{\frac{1}{2}} = A'^{\frac{1}{2}} B'^{\frac{1}{2}}$).
+A simple observation which distinguishes between eigenvalue problem concerning diagonal blocks and the eigenvalue problem concerning sums is simply that the rank of $C'$ can in general be up to $2n$ whereas the rank of the sum $C = A+B$ is at most $n$.
+Despite this additional freedom, there remains non-trivial relations constraining the eigenvalues of $C'$ and of the blocks $A'$ and $B'$ in terms of properties of $Z$ (see \cite{gumus2018positive,bourin2022eigenvalue}).
+Nevertheless, when the rank of $C'$ is constrained to be at most $n$, we obtain the following theorem which provides an equivalent formulation of Horn's problem.
+\begin{thm}
+    \label{thm:trigonal_block}
+    Let $(\ea,\eb,\ec)$ be a triple of positive semidefinite eigenvalues of length at most $n$.
+    The following are equivalent:
+    \begin{enumerate}[(i)]
+        \item there exists a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$,
+        \item there exists an $2n \times 2n$ Hermitian matrix,
+            \begin{equation}
+                C' = \begin{bmatrix}
+                    A' & Z \\
+                    Z^{*} & B'
+                \end{bmatrix},
+            \end{equation}
+            such that $\eig(A') = \ea$, $\eig(B') = \eb$, and $\eig(C') = \ec$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Since we explicitly assume all of the eigenvalues in the triple $(\ea,\eb,\ec)$ are non-negative, the Hermitian matrices $A,B,C$, and $A',B',C'$ involved in the statements above are necessarily positive semidefinite.
+    The claim (i) $\implies$ (ii) follows from \cref{lem:trigonal_block}.
+    That (ii) $\implies$ (i) follows by noticing that if $C'$ has eigenvalues $\ec$, then it has rank at most $n$.
+    Therefore, as $C' \geq 0$, there exists a $n\times 2n$ block matrix $T$ of the form
+    \begin{equation}
+        T = \begin{bmatrix} T_{A} & T_{B} \end{bmatrix} 
+    \end{equation}
+    such that $C' = T^{*} T$. 
+    The diagonal blocks of $C'$ are therefore $A' = T_{A}^*T_{A}$, and $B' = T_{B}^{*}T_{B}$.
+    As in the proof of \cref{lem:trigonal_block}, we note that $T^{*}T$ and $TT^{*}$ have the same eigenvalues up to padding by zeros.
+    Therefore, by letting $A = T_{A} T_{A}^{*}$ and $B = T_{B} T_{B}^*$ we see that 
+    \begin{align}
+        \begin{split}
+            \eig(A) = \eig(T_{A} T_{A}^{*}) &\simeq \eig(T_{A}^{*} T_{A}) = \eig(A') = \ea, \\
+            \eig(B) = \eig(T_{B} T_{B}^{*}) &\simeq \eig(T_{B}^{*} T_{B}) = \eig(B') = \eb,
+        \end{split}
+    \end{align}
+    while the eigenvalues of $C = A+B = T_{A} T_{A}^{*} + T_{B} T_{B}^*$ match the eigenvalues of $C'$ because
+    \begin{equation}
+        \eig(C) = \eig(A+B) =\eig(T_{A} T_{A}^{*} + T_{B} T_{B}^*) = \eig(T T^{*}) \simeq \eig(T^{*}T) = \eig(C') = \ec.
+    \end{equation}
+\end{proof}
+
+Here we established a correspondence between (i) the existence of $n\times n$ positive semidefinite matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ and (ii) the positivity of corresponding Littlewood-Richardson coefficients $c_{\ea\eb}^{\ec}$ which govern the branching problem for the diagonal subgroup $\GL(n) \xhookrightarrow{} \GL(n) \times \GL(n)$ sending $X$ to $(X,X)$.
 Recalling \cref{thm:trigonal_block}, there is a further correspondence to (iii) the existence of a $2n \times 2n$ positive semidefinite matrix $\Sigma$ with eigenvalues $\ec$ and $n\times n$ blocks $A',B'$ with eigenvalues $\ea,\eb$.
 One may wonder how to show the correspondence between (ii) and (iii) \textit{directly} without passing through (i).
 This can be accomplished by considering the branching multiplicities $m^{\ea\eb}_{\ec}$ for the blockwise subgroup $\GL(a) \times \GL(b) \xhookrightarrow{} \GL(a+b)$ sending $(A,B)$ to $A\oplus B$.
@@ -2069,9 +1664,180 @@ In particular, the values of $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ coincide 
 The distinction between $m^{\ea\eb}_{\ec}$ and $c_{\ea\eb}^{\ec}$ lies with the fact that it is possible for $c_{\ea\eb}^{\ec}$ to be zero while $m^{\ea\eb}_{\ec}$ is non-zero (this can happen when the depth of $\ec$ is greater than $n$ but at most $a+b$ so that $V_{\ec}^{n}$ is zero but $V_{\ec}^{a+b}$ is non-zero).
 This parallels the fact that, in general, the rank of the $2n\times 2n$ matrix $\Sigma$ in \cref{thm:trigonal_block} could be greater than $n$ while the rank of the $n\times n$ matrix $C$ is at most $n$.
 
+As a corollary of this correspondence between the Horn's problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
+\begin{thm}
+    \label{thm:tetrahedral_block}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of positive semidefinite eigenvalues of length at most $n$.
+    Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral if and only if there exists a $3n \times 3n$ matrix $E'$ of the form
+    \begin{equation}
+        \label{eq:block_3by3}
+        E' =
+        \begin{bmatrix}
+            A' & Z & Y \\
+            Z^{*} & B' & X\\
+            Y^{*} & X^{*} & D'
+        \end{bmatrix},
+        \qquad \text{with blocks} \qquad
+        C' = \begin{bmatrix}
+            A' & Z \\
+            Z^{*} & B'\\
+        \end{bmatrix}, \quad
+        F' = \begin{bmatrix}
+            B' & X \\
+            X^{*} & D'
+        \end{bmatrix}
+    \end{equation}
+    such that
+    \begin{equation}
+        \label{eq:block_eigenvalue_tet}
+        \eig(A') = \ea, \quad
+        \eig(B') = \eb, \quad
+        \eig(C') = \ec, \quad
+        \eig(D') = \ed, \quad
+        \eig(E') = \ee, \quad
+        \eig(F') = \ef.
+    \end{equation}
+\end{thm}
+\begin{proof}
+    The proof is analogous to the proofs of \cref{lem:trigonal_block} and \cref{thm:trigonal_block}.
+    First we prove the ``only if'' portion of the claim which is a corollary of \cref{lem:trigonal_block}.
+    Suppose $(A,B,C,D,E,F)$ is a tetrahedral sextuple of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ec)$.
+    Let $E'$ be given by
+    \begin{equation}
+        E' =
+        \begin{bmatrix}
+            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
+        \end{bmatrix}^{*}
+        \begin{bmatrix}
+            A^{\frac{1}{2}} & B^{\frac{1}{2}} & D^{\frac{1}{2}}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            A & A^{\frac{1}{2}}B^{\frac{1}{2}} & A^{\frac{1}{2}}D^{\frac{1}{2}} \\
+            B^{\frac{1}{2}}A^{\frac{1}{2}} & B & B^{\frac{1}{2}}D^{\frac{1}{2}} \\
+            D^{\frac{1}{2}}A^{\frac{1}{2}} & D^{\frac{1}{2}}B^{\frac{1}{2}} & D
+        \end{bmatrix}
+    \end{equation}
+    Then the eigenvalues of the corresponding principal submatrices of $E'$ satisfy \cref{eq:block_eigenvalue_tet} by \cref{lem:trigonal_block}.
+    Now we prove the ``if'' portion of the claim which is a corollary of \cref{thm:trigonal_block}.
+    If $E'$ is a matrix of form given by \cref{eq:block_3by3} with eigenvalues $\ee$ with length at most $n$, then $E'$ is positive semidefinite with rank at most $n$.
+    Therefore, there exists an $n\times 3n$ block matrix
+    \begin{equation}
+        T = \begin{bmatrix} T_{A} & T_{B} & T_{D} \end{bmatrix} 
+    \end{equation}
+    such that $E' = T^{*}T$ and thus
+    \begin{equation}
+        \begin{alignedat}{6}
+            &A' &&= T_{A}^{*}T_{A}, \qquad
+            &&B' &&= T_{B}^{*}T_{B}, \qquad
+            &&D' &&= T_{D}^{*}T_{D}, \\
+            &X &&= T_{B}^{*}T_{D}, \qquad
+            &&Y &&= T_{A}^{*}T_{D}, \qquad
+            &&Z &&= T_{A}^{*}T_{B}.
+        \end{alignedat}
+    \end{equation}
+    Now let $(A,B,C,D,E,F)$ be given by 
+    \begin{equation}
+        \begin{alignedat}{6}
+            &A &&= T_{A}T_{A}^{*}, \qquad
+            &&B &&= T_{B}T_{B}^{*}, \qquad
+            &&C &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*}, \\
+            &D &&= T_{D}T_{D}^{*}, \qquad
+            &&E &&= T_{A}T_{A}^{*} + T_{B}T_{B}^{*} + T_{D}T_{D}^{*}, \qquad
+            &&F &&= T_{B}T_{B}^{*} + T_{D}T_{D}^{*}.
+        \end{alignedat}
+    \end{equation}
+    From here, one may directly verify that these $n\times n$ Hermitian matrices satisfy \cref{eq:tet_linear_constraints}
+    and have eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ (using a similar argument presented in the proof of \cref{thm:trigonal_block}); i.e., one concludes that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
+\end{proof}
+
 \textcolor{red}{TODO: Describe the same correpsondence for the blockwise $6j$ symbols.}
 
-\section{Ptolemy \& Cayley-Menger inequalities}
+
+
+\section{Inequalities for tetrahedral eigenvalues}
+\label{sec:ineqs}
+
+The purpose of this section is to describe various inequalities which are necessarily satisfied by tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+In general, however, the task of finding a complete description of the space of tetrahedral eigenvalues for $n\geq 3$ remains an open problem.
+
+\subsection{Horn's inequalities}
+Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
+Consequently, every inequality constraining trigonal eigenvalues can be lifted to produce a quadruplet of inequalities constraining the set of tetrahedral eigenvalues.
+These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
+Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
+Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
+For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues,knutson2000symplectic} or \cite[Appendix D]{niculescu2006convex}.
+In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
+\begin{equation}
+    \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
+\end{equation}
+which constrain the largest and smallest eigenvalues respectively (note that under inversion symmetry, these inequalities are equivalent). 
+The first somewhat non-trivial inequality, derived by \citeauthor{weyl1912asymptotische} in 1912, is now known as \textit{Weyl's inequality} and states for all $i,j$ such that $i+j \leq n+1$ \cite{weyl1912asymptotische}\footnote{For $2\times 2$ matrices one can see that these necessary inequalities are also sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal; upon shifting to traceless eigenvalues using \cref{cor:traceless}, $\ea = (a,-a), \eb = (b, -b)$ and $\ec = (c,-c)$, and these inequalities become equivalent to the triangle inequalities $c \leq a+b$ and $c \geq \max\{b-a,a-b\}$.}
+\begin{equation}
+    \ea_i + \eb_j \geq \ec_{i+j-1}.
+\end{equation}
+In 1949, \citeauthor{fan1949theorem} derived a majorization inequality constraining the first $r$ largest eigenvalues \cite{fan1949theorem}, 
+and shortly thereafter Lidskii \cite{lidskii1953proper} \& Wielandt \cite{wielandt1955extremum} found proofs of another family of inequalities.
+Finally, in 1962, \citeauthor{horn1962eigenvalues} determined a complete collection of inequalities for $(\ea,\eb,\ec)$ are trigonal for the case where $n=3$ \cite{horn1962eigenvalues}.
+Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} provided an inductively defined set of subsets $I,J,K \subset \{1,\ldots, n\}$ of equal cardinality and conjectured that inequalities of the form
+\begin{equation}
+    \label{eq:IJK_ineq}
+    {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
+\end{equation}
+were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
+While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, $\abs{\ea} + \abs{\eb} = \abs{\ec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
+Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
+
+For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
+
+\subsection{A simple quadratic inequality}
+
+In \cref{sec:symmetries} we saw that the shifting symmetry implies, in a certain sense, one may assume without loss of generality that the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ef)$ are all non-negative or even strictly positive.
+While almost all of the following inequalities require this positivity assumption, we note that they can be extended to eigenvalues with negative entries in all cases.
+
+To begin, we provide an example of a non-linear inequality constraining tetrahedral eigenvalues which appears to be new.
+\begin{prop}
+    \label{prop:simple_quadratic}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be non-negative tetrahedral eigenvalues of $n\times n$ Hermitian matrices.
+    Then
+    \begin{equation}
+        2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \sum_{j=1}^{n}\left(\eb_j^2 + \ee_j^2 - \ec_j^2 - \ef_j^2\right) \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Let $(A,B,C,D,E,F)$ be the tetrahedral sextuple of positive semidefinite matrices 
+    with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
+    satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
+    Then the following identity holds:
+    \begin{align}
+        \label{eq:quad_identity}
+        \begin{split}
+            & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
+            &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
+            &\quad= 
+            (\Tr[B^2])
+            +(\Tr[A^2] + \Tr[B^2] + \Tr[D^2] + 2\Tr[AB] + 2\Tr[BD] + 2 \Tr[AD])\\
+            &\qquad\qquad-(\Tr[A^2] + \Tr[B^2] + 2\Tr[AB])
+            -(\Tr[B^2] + \Tr[D^2] + 2\Tr[BD])\\
+            &\quad= 2 \Tr[AD].
+        \end{split}
+    \end{align}
+    At this stage, one may note that for all $A,D \geq 0$ positive semidefinite, $\Tr(AD) \geq 0$ and therefore,
+    \begin{equation}
+        \label{eq:quadratic_difference_pos}
+        \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \geq 0.
+    \end{equation}
+    This inequality is well-known and indeed follows as a special of \cite[Proposition 2.3]{sagnol2013approximation}.
+    The improvement made here is to note that while the value of $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}):
+    \begin{equation}
+        {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr[AD] \leq {\sum}_{j} \ea_j \ed_j,
+    \end{equation} 
+    where $\ed_{n-j+1} = -\ed^{*}_j$.
+    The claim then follows because $\Tr[X^2] = \sum_{j}\ex_{j}^2$ for any Hermitian operator $X$ with eigenvalues $\eig(X) = \ex$.
+\end{proof}
+
+\subsection{Ptolemy \& Cayley-Menger inequalities}
 
 In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
 These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$. 
@@ -2081,7 +1847,8 @@ Recall that the four vertices of the tetrahedron of Hermitian matrices are
 \begin{equation}
     V_0 = 0, \qquad V_1 = A, \qquad V_2 = A+B = C, \qquad V_3 = A+B+D = E.
 \end{equation}
-\subsection{Ptolemy's Inequality}
+
+\subsubsection{Ptolemy's Inequality}
 Ptolemy's inequality applied any four points $V_0, V_1, V_2, V_3$ in a normed space reads
 \begin{equation}
     \label{eq:vvvv_ptolemy}
@@ -2119,7 +1886,7 @@ Here we will prove the former result, that a real inner product space satisfies 
     is then equivalent to \cref{eq:shifted_ptolemy}.
 \end{proof}
 
-\subsection{Cayley-Menger Determinant}
+\subsubsection{Cayley-Menger Determinant}
 
 First we note that the four Hermitian matrices $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ necessarily lie inside a three-dimensional subspace of the set of $n\times n$ Hermitian matrices and thus there exists an orthonormal set of Hermitian matrices $L_1, L_2, L_3$ such that for each $i \in \{0,1,2,3\}$
 \begin{equation}
@@ -2183,6 +1950,268 @@ Using the isometric embedding of $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ into $\mathbb R
     \end{pmatrix}
     \geq 0
 \end{equation}
+
+\subsection{Strongly subadditive/Submodular inequalities}
+
+{\color{blue}
+DISCLAIMER FROM TC: 
+The remainder of this section is written with respect to the $A,B,C$ convention instead of the $A,B,D$ convention. 
+When discussing the tetrahedral Horn problem and its relation to the ordinary Horn problem or when matching the problem to the properties of the $6j$ symbols, the $A,B,D$ convention is preferred. 
+However when talking about submodular/strong subadditivity inequalities and comparing with the literature, the $A,B,C$ convention is preferred. 
+Before finalizing the paper, it will be desirable to establish a globally consistent convention.
+An equivalent formulation is to consider eigenvalues of four PSD matrices $W,X,Y,Z$ with eigenvalues $(\omega, \chi, \upsilon, \zeta)$ such that $X+Y=W+Z$ and $W \geq X \geq Z$ and $W \geq Y \geq Z$.
+}
+
+Another strategy for understanding eigenvalues of positive semidefinite matrices and their sums is to consider the expansion of tensors powers of sums of matrices in relation to the tensor powers of their summands.\footnote{We will exploit a variation of this strategy repeatedly in \cref{sec:rep_theory}.}
+For instance, given a positive integer $k$ and positive semidefinite $A$ and $B$, using the non-commutative binomial expansion of $(A+B)^{\ot k}$ and dropping all summands involving both $A$ and $B$, one obtains \cite[Proposition 1.1]{berndt2015hlawka}:
+\begin{equation}
+    (A+B)^{\ot k} \geq A^{\ot k} + B^{\ot k}.
+\end{equation}
+This technique, was generalized by \cite{tie2011rearrangement} \cite[Lemma 2.2]{tie2011rearrangement} to obtain the following result.\footnote{Further extensions of this technique include inequalities involving the sum $A+C$ which are outside the scope of the tetrahedral Horn problem (see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions})}.
+\begin{prop}
+    \label{prop:operator_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
+    Then
+    \begin{equation}
+        (A+B+C)^{\ot k} + B^{\ot k} \geq (A+B)^{\ot k} + (B+C)^{\ot k}.
+    \end{equation}
+\end{prop}
+From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $B, A+B, B+C$, and $A+B+C$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.\footnotemark{}
+\footnotetext{\citeauthor{paksoy2014inequalities} has used a similar approach to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
+Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
+\begin{cor}
+    \label{cor:schur_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$ with size $\abs{\yx} \coloneqq \yx_1 + \cdots + \yx_n = k$.
+    Then
+    \begin{equation}
+        \label{eq:schur_ineq}
+        s_{\ex}(\eig(A+B+C)) + s_{\ex}(\eig(B)) \geq s_{\ex}(\eig(A+B)) + s_{\ex}(\eig(B+C)).
+    \end{equation}
+\end{cor}
+\begin{proof}
+    Given a Young diagram $\yx$, let $P_{\yx}$ be the Hermitian projection operator onto the isotypic subspace $V_{\yx}^{n} \ot W_{\yx} \subseteq (\mathbb C^{d})^{\ot k}$ (see \cref{sec:rep_theory} for details).
+    Given positive semidefinite matrix $X \geq 0$, one can show that 
+    \begin{equation}
+        \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
+    \end{equation}
+    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
+    \begin{equation}
+        \Tr[P_{\ex}(A+B+C)^{\ot k}] + \Tr[P_{\ex}B^{\ot k}] \geq \Tr[P_{\ex}(A+B)^{\ot k}] + \Tr[P_{\ex}(B+C)^{\ot k}]
+    \end{equation}
+    and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
+\end{proof}
+
+In the special where where $\yx = (\underbrace{1,\ldots,1}_n)$, where $\Tr(P_{(\underbrace{1,\ldots,1}_n)} X^{\ot n}) = \det(X)$ one obtains the well-known determinant inequality \cite[Lemma 2.2]{tie2011rearrangement}:
+\begin{equation}
+    \label{eq:lin_det}
+    \det(A+B+C) + \det(B) \geq \det(A+B) + \det(B+C).
+\end{equation}
+Another well-known determinant inequality is the multiplicative variant of \cref{eq:lin_det} which states that for all $A,B,C \geq 0 $ positive semidefinite,
+\begin{equation}
+    \label{eq:mul_det}
+    \det(A+B+C)\det(B) \leq \det(A+B)\det(B+C).
+\end{equation}
+This inequality follows as a special case of a general result due to \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
+\begin{thm}
+    \label{thm:sagnol_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite matrices.
+    Let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ whose derivative $f'$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
+    Then the following inequality holds
+    \begin{equation}
+        \label{eq:sagnol_ineq}
+        \Tr f(A+B+C) 
+        +
+        \Tr f(B)
+        \geq
+        \Tr f(A+B)
+        +
+        \Tr f(B+C).
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Here we sketch the proof in \cite[Section 2.1]{sagnol2013approximation}.
+    Let $F = \Tr \circ f$. The claim then amounts to proving for all $A,B,C\geq 0$,
+    \begin{equation}
+        \label{eq:sagnol_diff}
+        \Delta_{A}\Delta_{C} F(B) = F(A+B+C) - F(A+B) - F(B+C) + F(B) \geq 0,
+    \end{equation}
+    where $\Delta_X$ is the difference operator $[\Delta_X F](Y) \coloneqq F(X+Y) - F(Y)$.
+    By standard continuity arguments (and the assumption that $f$ is continuous), we may assume everything is positive definite in which case
+    \begin{align}
+        \partial_{A} \Delta_C F(B)
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon A} \Delta_C F(B) \\
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_C F (B+\varepsilon A) - \Delta_C F(B) \right) \\
+        &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon A+B+C) - F(\varepsilon A + B) - F(B+C) + F(B) \right) \\
+        &= \Tr\left[(f'(B+C)-f'(B)) A \right]. \label{eq:sagnol_final_step}
+    \end{align}
+    Using the assumption that $f'$ is an operator monotone (and the assumption of positive definiteness) together with $B+C \geq B$ (because $C \geq 0$), we have $f'(B+C) \geq f'(B)$ and thus $f'(B+C)-f'(B) \geq 0$ is a positive semidefinite operator.
+    Therefore, the function $\Delta_C F(B)$ is non-decreasing under $B\mapsto A+B$ and thus \cref{eq:sagnol_diff} holds.
+\end{proof}
+As immediate corollaries to \cref{thm:sagnol_ineq}, letting $f(x) = \log x$ and noting $\Tr(\log X) = \log \det(X)$, one recovers \cref{eq:mul_det}.
+Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization} which states for all $A,B,C \geq 0$,
+\begin{equation}
+    \label{eq:bouhtou_ineq}
+    \forall p \in [0,1] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \geq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
+\end{equation}
+In the limit where $p \to 0^+$, \citeauthor{sagnol2013approximation} also obtains at first order the well-known rank inequality \cite[Proposition A.1]{sagnol2013approximation}
+\begin{equation}
+    \rank(A+B) + \rank(B+C) \geq \rank(B) + \rank(A+B+C).
+\end{equation}
+On the other hand, letting $f(x) = x^p$ for $p \in (1,2]$ yields for all $A,B,C \geq 0$
+\begin{equation}
+    \label{eq:bouhtou_ineq_reverse}
+    \forall p \in (1,2] : \quad \sum_{j}\ex_j(A+B)^p + \sum_{j}\ex_j(B+C)^p \leq \sum_{j}\ex_j(B)^p + \sum_{j}\ex_j(A+B+C)^p.
+\end{equation}
+Of particular interest to us in \cref{sec:large_n} is the function $f(x) = x \log x$ which implies for all $A,B,C\geq 0$ the inequality
+\begin{align}
+    \label{eq:SSA_like_ineq}
+    S(A+B)+ S(B+C) \geq S(B) + S(A+B+C) 
+\end{align}
+where $S(X) = s(\eig(X)) \coloneqq -\sum_{i=1}^{n} \ex_i(X)\log\ex_i(X)$ is the \textit{unnormalized} von Neumann entropy of $X$.
+Note that a similar inequality involving entropies of sums of positive semidefinite matrices (subject to additional eigenvalue constraints) has appeared in \cite{christandl2018recoupling}.
+Moreover, while it can be shown that \cref{eq:SSA_like_ineq} is strictly tighter that the inequality in \cite{christandl2018recoupling} for fixed matrices, it is also possible to obtain \cref{eq:SSA_like_ineq} from the result in \cite{christandl2018recoupling} by downscaling the involved matrices in the sense of \cref{prop:simple_quadratic}.
+
+\begin{rem}
+    One consequence of \cref{cor:tetrahedral_block}, which relates the eigenvalues of sums of positive semidefinite matrices to the eigenvalues of diagonal blocks of larger positive semidefinite matrices with bounded rank, is that many of the aforementioned inequalities can now be seen as consequences of more general inequalities which constrain the eigenvalues of blocks.
+    
+    For instance, the Koteljanskii determinant inequality \cite{johnson1993determinantal} (in the notation of \cref{cor:tetrahedral_block}) implies for \textit{any} $3\times 3$ block matrix, that
+    \begin{equation}
+        \det(C')\det(F') \geq \det(E')\det(B').
+    \end{equation}
+    Using \cref{cor:tetrahedral_block}, the Koteljanskii determinant inequality becomes \cref{eq:mul_det}.
+    More generally, \citeauthor{audenaert2010strongly} were interested in functions $f$ which are strongly superadditive in the sense that for any $3\times 3$ block matrices $E'$ (again in the notation of \cref{cor:tetrahedral_block}) the following inequality holds \cite{audenaert2010strongly}:
+    \begin{equation}
+        \label{eq:audenaert}
+        \Tr f(E') + \Tr f(B') \geq \Tr f(C') + \Tr f(F').
+    \end{equation}
+    Their conclusion, also discovered by \citeauthor{friedland2013submodular} \cite{friedland2013submodular} was that it is \textit{sufficient} for $f'$ to be an operator monotone to conclude \cref{eq:audenaert} holds.
+    In light of \cref{cor:tetrahedral_block}, the results of \citeauthor{audenaert2010strongly} and \cite{friedland2013submodular} give an alternative proof of \cref{thm:sagnol_ineq}.
+    In \cite{lewin2014family}, \citeauthor{lewin2014family} further proved that $f'$ being an operator monotone is also \textit{necessary} for \cref{eq:audenaert} to hold for all $3\times 3$ block matrices $E'$.
+    Note that from the proof of \cref{thm:sagnol_ineq} above, it is not too difficult to see that $f'$ being an operator monotone is also necessary for \cref{eq:sagnol_ineq} to hold (otherwise it becomes possible for \cref{eq:sagnol_final_step} to become negative).
+\end{rem}
+
+{\color{blue}
+\begin{rem}
+    Much of the interest in characterizing the eigenvalues of principal submatrices of positive semidefinite matrices is closely related to the correspondence between positive semidefinite matrices and covariance matrices of Gaussian multivariate random variables \cite{lami2017log}.
+    From this perspective, principal submatrices become covariance matrices of Gaussian marginal distributions, and thus one may view the principal submatrix eigenvalue problem as a kind of ``spectral'' classical Gaussian marginal problem.
+    Note that from this perspective, the differential entropies of the underlying Gaussian distributions are equal to logarithms of determinants up to a additive constants \cite{lami2017log}. 
+    The Gaussian entropy region has been partially characterized by \citeauthor{shadbakht2011entropy} \cite{shadbakht2011entropy,hassibi2008entropy}.
+\end{rem}
+}
+
+\subsection{The Courtade-Sra determinant inequality}
+
+Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $B, A+B, B+C$ and $A+B+C$.
+Here we show how to improve the determinant inequality $\det(A+B)\det(B+C) \geq \det(A+B+C)\det(B)$ in a manner which also accounts for the determinants $\det(A)$ and $\det(C)$.
+This inequality exploits Minkowski's determinant inequality for positive semidefinite $n\times n$ matrices $A$ and $B$ which reads (see \cite[Theorem 7.8.21]{horn1985matrix} or \cite[Equation II.44]{bhatia1997matrix}):
+\begin{equation}
+    \det(A+B)^{\frac{1}{n}} \geq \det(A)^{\frac{1}{n}} + \det(B)^{\frac{1}{n}}.
+\end{equation}
+The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}\footnote{Note in \cite{courtade2017concavity}, \citeauthor{courtade2017concavity} conjectures a generalization of the Brunn-Minkowski inequality for bounded convex sets $A,B,C$ in $\mathbb R^{n}$ of the form $V(A+B)^{\frac{1}{n}}V(B+C)^{\frac{1}{n}} \geq V(A+B+C)^{\frac{1}{n}}V(B)^{\frac{1}{n}} + V(A)^{\frac{1}{n}}V(C)^{\frac{1}{n}}$. See also \cite{costa1984similarity}.}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
+This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
+\begin{prop}[Courtade-Sra determinant inequality]
+    \label{prop:cs_ineq}
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cs_ineq}
+        \det (A+B)^{\frac1n} \det (B+C)^{\frac1n} \geq \det (A+B+C)^{\frac1n}\det (B)^{\frac1n} + \det (A)^{\frac1n} \det(C)^{\frac1n}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    By standard continuity arguments, it suffices to prove the inequality for $B > 0$ positive definite (if it holds for positive definite $B+\varepsilon I$, then continuity permits taking the limit $\varepsilon \to 0$).
+    As $B$ is positive definite, it is also invertible and we may define
+    \begin{equation}
+        X = B^{-\frac{1}{2}}AB^{-\frac{1}{2}}, \qquad
+        Y = B^{-\frac{1}{2}}CB^{-\frac{1}{2}}.
+    \end{equation}
+    By dividing \cref{eq:cs_ineq} by $\det(B)^{\frac{2}{n}} \neq 0$, it then suffices to prove
+    \begin{equation}
+        \label{eq:cs_ineq_xy}
+        \det (I+X)^{\frac1n} \det (I+Y)^{\frac1n} \geq \det (I+X+Y)^{\frac1n} + \det (X)^{\frac1n} \det(Y)^{\frac1n}.
+    \end{equation}
+    Let $\ex(X) = \eig(X)$ and $\ex(Y) = \eig(Y)$. Then for any permutation $\pi \in S_n$ let
+    \begin{equation}
+        L_{\pi} = \diag\{1+\ex_i(X) + \ex_{\pi(i)}(Y)\}_{i=1}^{n}, \qquad R_{\pi} = \diag\{\ex_i(X)\ex_{\pi(i)}(Y)\}_{i=1}^{n}.
+    \end{equation}
+    Then we have the identity
+    \begin{align}
+        \det(I+X)\det(I+Y) 
+        &= \prod_{i=1}^{n} (1+\ex_i(X)) \prod_{i=1}^{n} (1+\ex_i(Y)), \\
+        &= \prod_{i=1}^{n} (1+\ex_i(X) + \ex_{\pi(i)}(Y) + \ex_i(X)\ex_{\pi(i)}(Y)),\\
+        &= \det(L_{\pi} + R_{\pi})
+    \end{align} 
+    Here we can apply Minkowski's theorem to obtain 
+    \begin{equation}
+        \det(L_{\pi} + R_{\pi})^{\frac{1}{n}} \geq \det(L_{\pi})^{\frac{1}{n}} + \det(R_{\pi})^{\frac{1}{n}}.
+    \end{equation}
+    By definition, we have $\det(R_{\pi}) = \det(X)\det(Y)$ for any permutation $\pi$, while a theorem do to \citeauthor{fiedler1971bounds} \cite{fiedler1971bounds} states (see also \cite[Exercise VI.7.2,Theorem VI.7.1]{bhatia1997matrix})
+    \begin{equation}
+        \det(I+X+Y) \leq \max_{\pi} \prod_{i=1}^{n} (\ex_i(I+X) + \ex_{\pi(i)}(Y)) = \max_{\pi} \det(L_{\pi}).
+    \end{equation}
+    Combining these bounds together yields \cref{eq:cs_ineq_xy} and thus the claim holds. 
+\end{proof}
+
+{\color{blue}
+TC: On \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality}
+Sra also proves
+\begin{equation}
+    E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
+\end{equation}
+where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
+
+The proof relies on a concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
+An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is also \cite{bauschke2001hyperbolic}.
+For the particular case of the real vector space of $n\times n$ Hermitian matrices of dimension $n(n+1)/2$, the polynomial $X \mapsto \det(X)$ is hyperbolic in the direction of the identity matrix $\id_n$ (i.e., Hermitian matrices only have real eigenvalues).
+Moreover, the homogeneous polynomial $p_m(X) = \Tr(P_{(1,\stackrel{m}{\ldots}, 1)}X^{\otimes m})$ is the sum of the principal minors of $X$ of size $m$ and also equals the elementary symmetric polynomial of the eigenvalues of $X$, i.e.,
+\begin{equation}
+    p_m(X) = E_m (\eig(X)).
+\end{equation}
+The homogeneous polynomial $p_m(X)$, like the determinant $\det(X) = p_n(X)$ itself, is also hyperbolic in the direction of the identity matrix $\id_n$.
+In this context, together with the positivity $p_m(\id_n) > 0$, Gårding's inequality generalizes the Minkowski determinant inequality and yields superlinearity of $p_m(X)^{\frac{1}{m}}$:
+\begin{equation}
+    p_{m}(X+Y)^{\frac{1}{m}} \geq p_m(X)^{\frac{1}{m}} + p_m(Y)^{\frac{1}{m}}
+\end{equation}
+for all $X,Y$ positive semidefinite (the hyperbolicity cone for $p_m$).
+This inequality is due to \citeauthor{marcus1957inequalities} \cite[Theorem 2]{marcus1957inequalities},
+but it can also be proven using joint concavity of $(A_1,\ldots, A_m)\mapsto A_1^{\frac{1}{m}}\ot \cdots \ot A_m^{\frac{1}{m}}$ and thus concavity of $(A^{\frac{1}{m}})^{\ot m}$ and thus by homogeneity the operator inequality $((A+B)^{\frac{1}{m}})^{\ot m} \geq (A^{\frac{1}{m}})^{\ot m} + (B^{\frac{1}{m}})^{\ot m}$ (\cite[Exercise 4.2.9]{bhatia2009positive}).
+TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet:
+\begin{conj}
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cs_ineq_conjecture}
+        E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
+    \end{equation}
+    where $E_k(X) = e_{k}(\eig(X))$ and where $e_k$ is the $k$th elementary symmetric polynomial.
+\end{conj}
+}
+{\color{red!80!black}
+Proving this conjecture has proven quite challenging.
+See \cite{marcus1957inequalities,mcleod1959four,anderson1984symmetric} for using inequalities and proof techniques which might be relevant.
+See also \cite{anderson1984symmetric} or \cite[Chapter 4]{bhatia2009positive} for many properties of matrix means and their ability to prove minkowski-like inequalities.
+See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
+
+See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
+What I believe I'm managed to prove is that if $\phi$ is a function such that $\log \phi$ is 2-monotone, i.e.,
+\begin{equation}
+    - (\partial_{A}\log \phi)(B) \geq 0, \qquad + (\partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then $\phi(A+B)\phi(B+C) \geq \phi(B) \phi(A+B+C)$ holds.
+If in addition, one has a weird kind of 3-montonicity, namely
+\begin{equation}
+    -\partial_{W}(\phi^2 \partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then,
+\begin{equation}
+    [\phi(A+B+W)\phi(B+C+W) - \phi(A+B+C+W)\phi(B+W)] - [\phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B)] \geq 0
+\end{equation}
+which means, assuming $\phi(0) = 0$ and for $B\mapsto 0$ and $W \mapsto B$, we have desired inequality:
+\begin{equation}
+    \phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B) - \phi(A)\phi(C) \geq 0.
+\end{equation}
+}
+
 
 \clearpage
 \printbibliography
