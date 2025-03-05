@@ -139,7 +139,33 @@ In particular, while the triangular Horn's problem is completely characterized b
     \end{itemize}
 }
 
-\textcolor{blue}{Hyperbolic polynomials, Horn's problem, Lax conjecture \cite{serre2009weyl,speyer2005horn}.}
+
+{\color{blue}
+TC: Here are some research notes concerning the $6j$ symbols:
+\begin{itemize}
+    \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
+    \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
+    \item The masters essay/thesis of \citeauthor{backens2010sixjsymbols} (\textcolor{red}{TODO: check if the pdf Matthias sent to me is the final version}) \cite{backens2010sixjsymbols}
+    \item The spectral quantum marginal problem and the $6j$ symbol for the symmetric group \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}
+    \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
+    \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
+    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $\U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
+    \item \citeauthor{keppeler2024wigner} recently calculated $\SU(n)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(n)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
+    \item Representation theoretic proof of the Regge symmetries due to \citeauthor{boalch2007regge} \cite{boalch2007regge}
+    \item Asymptotics of quantum $6j$ symbols \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
+    \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
+    \item \citeauthor{alcockspecial} consider the case of $6j$ symbols for $\SU(N)$ for wherein two opposing edges are labelled by fundamental irreps of $\SU(N)$ so that all vertices are multiplicity one (or zero) \cite{alcockspecial} \textcolor{blue}{TC: They also freely use the birdtrack notation which I enjoy.}
+    \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
+    \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
+    \item The original Ponzano-Regge paper \cite{ponzano1968semiclassical}
+    \item \citeauthor{gurau2008ponzano} derives the Ponzano-Regge asymptotic formula directly using Stirling's approximation applied to Racah's single-sum formula \cite{gurau2008ponzano}
+    \item \citeauthor{bartlett2023coherent} work with so-called \textit{coherent loop states} or \textit{Bohr-Sommerfeld states} to develop some semiclassical results concerning the inner products between such states (see also the talk on Youtube) \cite{bartlett2023coherent}
+    \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
+    \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
+    \item \citeauthor{artamonov2023classical} derives an explicit formula for the $n=3$ case \cite{artamonov2023classical}, and later to arbitrary $n$ \cite{artamonov2024calculation}.
+    \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $n$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $n$ \cite{lanina2023tug}.
+\end{itemize}
+}
 
 %\clearpage
 \section{Tetrahedral eigenvalues}
@@ -2162,6 +2188,7 @@ where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric po
 
 The proof relies on a concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
 An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is also \cite{bauschke2001hyperbolic}.
+%\textcolor{blue}{Hyperbolic polynomials, Horn's problem, Lax conjecture \cite{serre2009weyl,speyer2005horn}.}
 For the particular case of the real vector space of $n\times n$ Hermitian matrices of dimension $n(n+1)/2$, the polynomial $X \mapsto \det(X)$ is hyperbolic in the direction of the identity matrix $\id_n$ (i.e., Hermitian matrices only have real eigenvalues).
 Moreover, the homogeneous polynomial $p_m(X) = \Tr(P_{(1,\stackrel{m}{\ldots}, 1)}X^{\otimes m})$ is the sum of the principal minors of $X$ of size $m$ and also equals the elementary symmetric polynomial of the eigenvalues of $X$, i.e.,
 \begin{equation}
