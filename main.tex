@@ -1,9 +1,9 @@
 \documentclass[notitlepage, 10pt]{article}
 \input{imports/preamble}
 
-\author[1]{Thomas C. Fraser}
-\author[1]{Matthias Christandl}
 \author[2]{Anton Alekseev}
+\author[1]{Matthias Christandl}
+\author[1]{Thomas C. Fraser}
 \affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 \affil[2]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
 
@@ -24,17 +24,14 @@
 %CMP, Schweigert
 
 \begin{abstract}
+Wigner $6j$-symbols play a fundamental role in quantum physics displaying $SU(2)$ symmetry. In the context of quantum gravity, Ponzano and Regge described their semiclassical behaviour with the existence of Euclidean tetrahedra whose sidelength are given by the six js. For $SU(n)$ the corresponding symbol is an operator and, although still a central object in quantum theory, much more elusive, with an understanding of the asymptotics completely missing. Here, we connect the asymptotics of (the norm) of those symbols to the solution of a tetrahedral generalization of Horn's problem for Hermitian $n$-by-$n$ matrices. This makes sense, as a special case of the symbol is the Littlewood-Richardson coefficient, which reduces to Horn's problem in the semiclassical limit. Our arguments use Schur-Weyl duality in the context of probabilistic techniques from quantum information theory, developed in the context of spectrum estimation of density matrices and the quantum marginal problem. As a corollary, we give a new perspective on inequalities on tetrahedral eigenvalues first discovered in the area of optimization and information theory.
+\end{abstract}
 
-6j's SU(2) are important (CFT). asymptotitics well-understood. solution connected to tetrahedron
+\clearpage
+\tableofcontents
 
-for SU(n) it is operators, (still important) asymptotics not understood.
-
-here, we connect the asymptotics of SU(n) 6js to the solution of a tetrahedral horn's problem for hermitian matrices (size n)
-
-the techniques arise from a probabilistic analysis inspired by techniques from quantum information theory, developed in the context of the quantum marginal problem.
-
-as a corollary, we give a new perspective on inequalities on tetrahedral eigenvalues, first discovered in the area of optimization and information theory.
-
+\clearpage
+\section{old abstract}
     Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a triple of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$.
     The development of a complete solution to Horn's problem, due in large part to breakthroughs by A. Klyachko, A. Knutson, and T. Tao, has led to deep connections between eigenvalues of Hermitian matrices, tensor product invariants of matrix groups \& Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties via cohomology.
 
@@ -49,12 +46,6 @@ as a corollary, we give a new perspective on inequalities on tetrahedral eigenva
     Our result generalizes the well-known correspondence between admissible eigenvalues for Horn's problem and Littlewood-Richardson coefficients, and partially generalizes the well-known semiclassical analysis of J. Roberts for the case of $n=2$.
 
     Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
-\end{abstract}
-
-\clearpage
-\tableofcontents
-
-\clearpage
 \section{Introduction}
 
 In this paper we prove the following bounds on $6j$ symbols for $\SU(n)$:
@@ -666,11 +657,11 @@ The following result, know as spectrum or eigenvalue estimation, states that the
 
 \begin{prop}
     \label{prop:HS_measure}
-    Let $\diff \mu (A)$ denote the $\U(n)$-invariant Hilbert Schmidt probability measure over the set of $n \times n$ positive semidefinite trace one matrices and let $x$ be a positive integer.
+    Let $\diff \mu (A)$ denote the $\U(n)$-invariant Hilbert Schmidt probability measure over the set of $n \times n$ positive semidefinite trace one matrices and let $a$ be a positive integer.
     Then
     \begin{equation}
         \label{eq:HS_mean}
-        \mathbb E_{A} [A^{\ot a}] \coloneqq \int \diff \mu (A) A^{\ot k} = \sum_{\ya \vdash_n x} q_{\ya} P_{\ya}
+        \mathbb E_{A} [A^{\ot a}] \coloneqq \int \diff \mu (A) A^{\ot a} = \sum_{\ya \vdash_n x} q_{\ya} P_{\ya}
     \end{equation}
     where the coefficient $q_{\ya}$ equals
     \begin{equation}
@@ -1401,6 +1392,8 @@ We are now in a position to prove the main result of this section.
     Moreover by \cref{eq:balanced_sizes}, the $(1-\log k)$ terms cancel and therefore $I' = I(\ec, \ef; \eb, \ee) \geq 0$ as claimed above.
 \end{proof}
 
+\section*{Acknowledgements}
+MC and TC acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality. 
 %\clearpage
 \appendix
 
