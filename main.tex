@@ -1,14 +1,13 @@
 \documentclass[notitlepage, 10pt]{article}
 \input{imports/preamble}
 
-\author[2]{Anton Alekseev}
-\author[1]{Matthias Christandl}
-\author[1]{Thomas C. Fraser}
-\affil[1]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
-\affil[2]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
+\author[1]{Anton Alekseev}
+\author[2]{Matthias Christandl}
+\author[2]{Thomas C. Fraser}
+\affil[1]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
+\affil[2]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 
-\title{Asymptotics of higher rank \texorpdfstring{$6j$}{6j} symbols \\ and the tetrahedral Horn problem}
-%Eigenvalues of Tetrahedral sums of Hermitian matrices
+\title{Asymptotics of higher rank \texorpdfstring{$6j$}{6j} symbols \\ and tetrahedral Horn problems}
 
 \date{\today}
 
@@ -16,12 +15,11 @@
 
 \maketitle
 
-%Duke, Borodin, Polererovich
-
-%Advances
-%Selecta, woodward, etingof, felder
-
-%CMP, Schweigert
+% [Journal proposals]
+% 1) Duke, Borodin, Polererovich
+% 2) Advances
+% 3) Selecta, woodward, etingof, felder
+% 4) CMP, Schweigert
 
 \begin{abstract}
     Wigner $6j$-symbols play a fundamental role in quantum physics displaying $\SU(2)$ symmetry. 
@@ -37,107 +35,14 @@
 \tableofcontents
 
 \clearpage
-%\section{old abstract}
-%    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a triple of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$.
-%    The development of a complete solution to Horn's problem, due in large part to breakthroughs by A. Klyachko, A. Knutson, and T. Tao, has led to deep connections between eigenvalues of Hermitian matrices, tensor product invariants of matrix groups \& Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties via cohomology.
-%
-%    Here, we define and investigate a generalization of Horn's problem which we refer to as the \textit{tetrahedral Horn's problem}.
-%    The tetrahedral Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
-%    In this paper, we describe the scaling, shifting and oriented tetrahedral symmetries of the tetrahedral Horn's problem, as well as conjecture the existence of additional symmetries generalizing the Regge symmetries present in the case of $2\times 2$ Hermitian matrices.
-%    Furthermore, unlike the solution to Horn's problem, we show that the space of admissible sextuples of eigenvalues is neither convex nor a polytope.
-%    We demonstrate this qualitative difference explicitly in the case of $2\times 2$ Hermitian matrices.
-%
-%    For the general case of $n\times n$ Hermitian matrices, we collect a handful of previously known matrix inequalities for sums of positive semidefinite matrices and reinterpret them as necessary conditions for the tetrahedral Horn's problem.
-%    For a complete characterization, we provide a direct proof, using eigenvalue estimation techniques from quantum information theory, that the admissibility of a given sextuple of eigenvalues is encoded in the semiclassical asymptotics of the generalized Wigner $6j$ symbols for the unitary group $\U(n)$.
-%    Our result generalizes the well-known correspondence between admissible eigenvalues for Horn's problem and Littlewood-Richardson coefficients, and partially generalizes the well-known semiclassical analysis of J. Roberts for the case of $n=2$.
-%
-%    Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
+
 \section{Introduction}
 
-In this paper we prove the following bounds on $6j$ symbols for $\SU(n)$:
-\begin{thm}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying
-    \begin{equation}
-        \label{eq:tet_cond}
-        A+B=C, \quad B+D=F, \quad C+D=E, \quad A+F=E,
-    \end{equation}
-    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
-    \begin{equation}
-        \label{eq:six_convergence}
-        \frac{\ya_k}{k} \rightarrow \ea, \quad
-        \frac{\yb_k}{k} \rightarrow \eb, \quad
-        \frac{\yc_k}{k} \rightarrow \ec, \quad
-        \frac{\yd_k}{k} \rightarrow \ed, \quad
-        \frac{\ye_k}{k} \rightarrow \ee, \quad
-        \frac{\yf_k}{k} \rightarrow \ef,
-    \end{equation}
-    and
-    \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
-        \geq \frac{1}{\mathrm{poly}(k)}.
-    \end{equation}
-    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have
-    \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
-        \leq \exp\left(- \Omega(k) \right).
-    \end{equation}
-\end{thm}
+\textcolor{blue}{[OUTLINE: What are 6j Symbols?]\\}
+\textcolor{blue}{[OUTLINE: What has been done for SU(2), Wigner, Neville, Ponzano \& Regge, Roberts, Barrett-Crane type state-sum models, loop quantum gravity, etc...]\\}
+\textcolor{blue}{[OUTLINE: Previous work on SU(N)]\\}
 
-There are a number of operations involving the transformation of Hermitian matrices under which it is possible to track the effect had of the corresponding sets of eigenvalues.
-For example, the eigenvalues, $\eig(X)$, of a Hermitian matrix, $X$, are invariant under conjugation by unitary matrices, $\eig(X) = \eig(UXU^{\dagger})$, covariant under taking positive powers $\eig(X^p) = \eig(X)^p$, covariant under multiplication by real numbers, $\eig(r X) = r \eig(X)$, and covariant under the addition of scalar matrices, $\eig(X+rI) = \eig(X) + (r,\ldots,r)$.
-The operation of adding together Hermitian matrices is not an operation of this type.
-Specifically, the eigenvalues $\ec = \eig(A+B)$ of the sum of two matrices cannot be determined from the eigenvalues $\ea = \eig(A)$ and $\eb = \eig(B)$ of the summands \textit{alone}.
-Stated differently, to determine the eigenvalues involved, additional knowledge about the eigenvectors involved is typically required.
-Nevertheless, there are numerous mathematical situations wherein knowledge about the eigenvectors involved is lacking, yet it remains desirable to determine the set of admissible eigenvalues of a sum given the eigenvalues of the summands.
-
-The problem of determining the set $(\ea,\eb,\ec)$ of admissible eigenvalues has been investigated for over a century yet has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
-These inequalities, now known as the \textit{Horn inequalities} describe a polytope of admissible values for $(\ea,\eb,\ec)$ \cite{horn1962eigenvalues}.
-In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
-
-For applications of Horn's problem to quantum information theory and Nielsen's theorem \cite{nielsen1999conditions}, see the article due to \citeauthor{daftuar2005quantum} \cite{daftuar2005quantum}.
-
-In parallel to Horn's problem, numerous variations and extensions of Horn's problem have been explored by various authors.
-For example, numerous authors have considered the admissible eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
-In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random}.
-This correspondence between the singular values of a product and the eigenvalues of sum has been generalized substantially by \citeauthor{alekseev2001linearization} \cite{alekseev2001linearization}.
-For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
-
-Recent developments surrounding Horn's problem not covered by the aforementioned reviews include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues of the sum given random matrices with fixed spectra in a series of papers by \citeauthor{coquereaux2018orbital} \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
-\begin{center}%
-    \begin{figure}%
-        \ctikzfig{tikz/triangle-tetrahedral-problem}%
-        \caption{(Left) The \textit{triangular} Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn's problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}%
-        \label{fig:tetrahedron_labelling_scheme}%
-    \end{figure}%
-\end{center}%
-In this paper, we consider a generalization of Horn's problem previously considered only briefly in a paper due to \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
-While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization consider here aims to characterize the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
-These constraints arise naturally from building a kind of tetrahedral arrangement of Hermitian matrices inside the vector space of Hermitian matrices according to \cref{fig:tetrahedron_labelling_scheme}.
-Consequently, throughout the paper, we refer to this generalization of Horn's problem as the \textit{tetrahedral Horn's problem} and, by contrast, Horn's original problem, involving the sum of just two Hermitian matrices, as the \textit{triangular Horn's problem}.
-
-Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
-It is well-known that the space of admissible eigenvalues for a triangular arrangement of $2\times 2$ traceless\footnote{One can always assume, without loss of generality, that the Hermitian matrices involved are traceless due to a simple shifting symmetry which is described in \cref{sec:symmetries}.} Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
-As we shall see in \cref{exam:d_2}, this correspondence generalizes in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
-While this latter result is straightforward to prove and also well-known, indeed it forms the basis of the semiclassical asymptotics of the $\SU(2)$ Wigner $6j$ symbols \cite{roberts1999classical}, it leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices.
-In \cref{exam:d_2}, we will see that the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinant \cite{sitharam2018handbook}.
-
-Although we are ultimately interested in tackling the tetrahedral Horn's problem for $n\times n$ Hermitian matrices with $n > 2$, the $n=2$ case already demonstrates a strong qualitative difference between the triangular and tetrahedral variants of Horn's problem.
-In particular, while the triangular Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is in general \textit{not a polytope}.
-
-{\color{red}
-    TODO: Finish the introduction
-    \begin{itemize}
-        \item Talk about connections between Horn's problem \& Schubert calculus
-        \item talk about semiclassical asymptotics of $6j$ symbols
-        \item talk about entropy cones and open problems regarding entropy cones
-        \item talk about known submodular inequalities for PSD matrices
-        \item describe the scope \& results of the paper (more detailed abstract)
-        \item describe structure of the paper
-    \end{itemize}
-}
-
-
-{\color{blue}
+{\color{green!60!black}
 TC: Here are some research notes concerning the $6j$ symbols:
 \begin{itemize}
     \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
@@ -163,6 +68,76 @@ TC: Here are some research notes concerning the $6j$ symbols:
     \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $n$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $n$ \cite{lanina2023tug}.
 \end{itemize}
 }
+
+
+\textcolor{blue}{[OUTLINE: What we do for SU(N)]\\}
+The purpose of this paper is to report the following pair of complementary bounds on the norm $\norm{\abcdefsymbol}$ of the $6j$ symbols for the unitary group $\U(n)$.
+\begin{thm}
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying
+    \begin{equation}
+        \label{eq:tet_cond}
+        A+B=C, \quad B+D=F, \quad C+D=E, \quad A+F=E,
+    \end{equation}
+    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ satisfying
+    \begin{equation}
+        \label{eq:six_convergence}
+        \frac{\ya_k}{k} \rightarrow \ea, \quad
+        \frac{\yb_k}{k} \rightarrow \eb, \quad
+        \frac{\yc_k}{k} \rightarrow \ec, \quad
+        \frac{\yd_k}{k} \rightarrow \ed, \quad
+        \frac{\ye_k}{k} \rightarrow \ee, \quad
+        \frac{\yf_k}{k} \rightarrow \ef,
+    \end{equation}
+    and
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \geq \frac{1}{\mathrm{poly}(k)}.
+    \end{equation}
+    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \leq \exp\left(- \Omega(k) \right).
+    \end{equation}
+\end{thm}
+
+\textcolor{blue}{[OUTLINE: Horn's problem]\\}
+
+The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
+In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
+These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec)$.
+Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\gamma$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\alpha$ and $\beta$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
+For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
+See also the article by \citeauthor{daftuar2005quantum} for an account of applications to topics in quantum information theory \cite{daftuar2005quantum}.
+
+In parallel to Horn's problem, numerous variations and extensions of Horn's problem have been explored by various authors.
+For example, numerous authors have considered the admissible eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
+In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random, alekseev2001linearization}.
+
+\begin{center}%
+    \begin{figure}%
+        \ctikzfig{tikz/triangle-tetrahedral-problem}%
+        \caption{(Left) The \textit{triangular} Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn's problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}%
+        \label{fig:tetrahedron_labelling_scheme}%
+    \end{figure}%
+\end{center}%
+In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
+While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+These constraints arise naturally from building a kind of tetrahedral arrangement of Hermitian matrices inside the vector space of Hermitian matrices according to \cref{fig:tetrahedron_labelling_scheme}.
+
+Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
+It is well-known that the space of admissible eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
+This correspondence generalizes to the tetrahedral case in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
+While this latter result is straightforward to prove and also well-known, indeed it forms the basis of the semiclassical asymptotics of the $\SU(2)$ Wigner $6j$ symbols \cite{roberts1999classical}, it leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices;
+specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinants which are polynomial inequalities in the side-lengths $(a,b,c,d,e,f)$ \cite{sitharam2018handbook}.
+Even for $n=2$, we remark that there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
+In particular, while the Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is not convex nor a polytope.
+
+\textcolor{red}{TODO: Talk about Horn's problem \& Schubert calculus?}
+
+\textcolor{blue}{[OUTLINE: Structure of the paper]\\}
+
+\textcolor{red}{TODO: Descide on the structure of the paper?}
+Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 
 %\clearpage
 \section{Tetrahedral eigenvalues}
