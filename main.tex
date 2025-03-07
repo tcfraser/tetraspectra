@@ -40,7 +40,18 @@
 
 \textcolor{blue}{[OUTLINE: What are 6j Symbols?]\\}
 \textcolor{blue}{[OUTLINE: What has been done for SU(2), Wigner, Neville, Ponzano \& Regge, Roberts, Barrett-Crane type state-sum models, loop quantum gravity, etc...]\\}
+
+Various $k\to \infty$ asymptotics for the $U_q(\mathfrak{sl}_2)$ $6j$ symbol were calculated by \citeauthor{taylor2006sixj} and shown to encode (i) the existence a spherical tetrahedron on the unit sphere with prescribed edgelengths when $q=\exp(i\pi/r(k))$ is a root of unity (with $r(k) = k(r-2) + 2$) and (ii) the existence of a hyperbolic tetrahedron with prescribed edgelengths when $q=\exp(\pi/r(k))$ \cite{taylor2006sixj}.
+
 \textcolor{blue}{[OUTLINE: Previous work on SU(N)]\\}
+
+Over the years, much attention placed on the study of $\SU(n)$ or $U_q(\mathfrak{sl}_n)$ $6j$ symbols has been on the multiplicity-free cases where the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol is zero).
+
+For example, tensor products between symmetric representations $\lambda = (k)$ or conjugates of symmetric representations $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.} are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjected closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\alpha,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\alpha,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
+Building upon this work, \citeauthor{alekseev2020multiplicity} studied both the asymptotics of and symmetries in each of the Type I and Type II cases \cite{alekseev2020multiplicity}.
+
+More recently, \citeauthor{alcock2023wigner} have derived explicit formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\alpha, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\alpha, \delta = (1)$ \cite{alcock2023wigner}.
+Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\alpha,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\alpha,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\alpha,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
 
 {\color{green!60!black}
 TC: Here are some research notes concerning the $6j$ symbols:
@@ -51,12 +62,8 @@ TC: Here are some research notes concerning the $6j$ symbols:
     \item The spectral quantum marginal problem and the $6j$ symbol for the symmetric group \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}
     \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
-    \item The recent paper by \citeauthor{alekseev2020multiplicity} (different Alekseev!) covers the case of some multiplicity free formulas for the quantum $6j$ symbols for $\U_q(\mathrm{sl}_{N})$ \cite{alekseev2020multiplicity}
-    \item \citeauthor{keppeler2024wigner} recently calculated $\SU(n)$ $6j$ symbols with adjoint representations \cite{keppeler2024wigner} and a bit earlier \cite{alcock2023wigner} calculated $\SU(n)$ $6j$ symbols with at least two fundamental representations \cite{alcock2023wigner}.
     \item Representation theoretic proof of the Regge symmetries due to \citeauthor{boalch2007regge} \cite{boalch2007regge}
-    \item Asymptotics of quantum $6j$ symbols \citeauthor{taylor2006sixj} \cite{taylor2006sixj}
     \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
-    \item \citeauthor{alcockspecial} consider the case of $6j$ symbols for $\SU(N)$ for wherein two opposing edges are labelled by fundamental irreps of $\SU(N)$ so that all vertices are multiplicity one (or zero) \cite{alcockspecial} \textcolor{blue}{TC: They also freely use the birdtrack notation which I enjoy.}
     \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
     \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
     \item The original Ponzano-Regge paper \cite{ponzano1968semiclassical}
@@ -550,7 +557,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
 
 \begin{rem}
     Although this section listed a handful of symmetries of the tetrahedral Horn's problem, there remains the possibility of additional symmetries which are unknown at this time.
-    For example, in the case $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,morozov2018new,boalch2007regge,ponzano1968semiclassical}.
+    For example, in the case $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,boalch2007regge,ponzano1968semiclassical}.
     If there exists a tetrahedron with edge lengths $(a,b,c,d,e,f)$, then there also exists a tetrahedron with edge lengths
     \begin{equation}
         (s_1-a,s_1-b,c,s_1-d,s_1-e,f) \quad \text{where} \quad s_1 = \frac{a+b+d+e}{2}.
@@ -572,12 +579,14 @@ Note that in subsequent sections we will often explicitly assume the candidate e
         s_2 = \frac{a+c+d+f}{2}, \quad
         s_3 = \frac{b+c+e+f}{2}.
     \end{equation}
-    It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
 \end{rem}
 \begin{rem}
     The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a suprisinging symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry} (see also \cite{boalch2007regge}).
     That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
-    At the moment, it remains unclear if there exists analogous symmetries for the generalized Wigner $6j$ symbol for $n \geq 3$ (or even its generalization to quantum groups \cite{morozov2018new}) or even if there exists such symmetries for the tetrahedral Horn problem for $n \geq 3$.
+    It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
+
+    At the moment, it remains unclear if there exists analogous symmetries for the generalized Wigner $6j$ symbol for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
+    It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\SU(n)$.
 \end{rem}
 
 %\clearpage
