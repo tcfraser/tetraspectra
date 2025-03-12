@@ -135,6 +135,9 @@ In parallel to Horn's problem, numerous variations and extensions of Horn's prob
 For example, numerous authors have considered the admissible eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
 In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random, alekseev2001linearization}.
 
+In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
+While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+These constraints arise naturally from building a tetrahedral arrangement of $n\times n$ Hermitian matrices inside the vector space of such Hermitian matrices with edges labelled according to \cref{fig:tetrahedron_labelling_scheme}.
 \begin{center}%
     \begin{figure}%
         \ctikzfig{tikz/triangle-tetrahedral-problem}%
@@ -142,10 +145,6 @@ In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that
         \label{fig:tetrahedron_labelling_scheme}%
     \end{figure}%
 \end{center}%
-In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
-While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
-These constraints arise naturally from building a kind of tetrahedral arrangement of Hermitian matrices inside the vector space of Hermitian matrices according to \cref{fig:tetrahedron_labelling_scheme}.
-
 Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
 It is well-known that the space of admissible eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
 This correspondence generalizes to the tetrahedral case in the sense that the admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is in correspondence with the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
@@ -153,6 +152,9 @@ While this latter result is straightforward to prove and also well-known, indeed
 specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is provided by the positivity of so-called Cayley-Menger determinants which are polynomial inequalities in the side-lengths $(a,b,c,d,e,f)$ \cite{sitharam2018handbook}.
 Even for $n=2$, we remark that there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
 In particular, while the Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is not convex nor a polytope.
+
+More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem concerning either the singular values of products of invertible matrices or the tropical singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
+These variants are termed \textit{multiple} Horn problems in \cite{alekseev2025multiple}; the tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
 
 \textcolor{red}{TODO: Talk about Horn's problem \& Schubert calculus?}
 
