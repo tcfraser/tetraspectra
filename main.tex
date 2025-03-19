@@ -58,6 +58,9 @@ As an application of our results, we obtain a new proof of the strongly subaddit
 
 Various $k\to \infty$ asymptotics for the $U_q(\mathfrak{sl}_2)$ $6j$ symbol were calculated by \citeauthor{taylor2006sixj} and shown to encode (i) the existence a spherical tetrahedron on the unit sphere with prescribed edgelengths when $q=\exp(i\pi/r(k))$ is a root of unity (with $r(k) = k(r-2) + 2$) and (ii) the existence of a hyperbolic tetrahedron with prescribed edgelengths when $q=\exp(\pi/r(k))$ \cite{taylor2006sixj}.
 
+See also the thesis of \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
+
+
 \textcolor{blue}{[OUTLINE: Previous work on SU(N)]\\}
 
 Over the years, much attention placed on the study of $\SU(n)$ or $U_q(\mathfrak{sl}_n)$ $6j$ symbols has been on the multiplicity-free cases where the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol is zero).
@@ -73,8 +76,6 @@ TC: Here are some research notes concerning the $6j$ symbols:
 \begin{itemize}
     \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
     \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
-    \item The masters essay/thesis of \citeauthor{backens2010sixjsymbols} (\textcolor{red}{TODO: check if the pdf Matthias sent to me is the final version}) \cite{backens2010sixjsymbols}
-    \item The spectral quantum marginal problem and the $6j$ symbol for the symmetric group \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}
     \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
     \item Representation theoretic proof of the Regge symmetries due to \citeauthor{boalch2007regge} \cite{boalch2007regge}
@@ -157,6 +158,16 @@ More recently, \citeauthor{alekseev2025multiple} have investigated a few variant
 These variants are termed \textit{multiple} Horn problems in \cite{alekseev2025multiple}; the tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
 
 \textcolor{red}{TODO: Talk about Horn's problem \& Schubert calculus?}
+
+\textcolor{blue}{[OUTLINE: Quantum marginals problem]\\}
+
+The techniques used in this paper to derive bounds on the $6j$ symbol for the unitary group $\U(n)$ are closely related to the techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
+Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
+In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (referred to as the recoupling coefficients) in the limit as $k \to \infty$ either decay exponentially or can be bounded from below by a polynomial factor depending on whether there exists a density matrix with the prescribed marginal spectra \cite{christandl2018recoupling}.
+Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficents can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
+The approach taken by this paper differs from that of \cite{christandl2018recoupling} in that we prove the correspondence between solutions to the tetrahedral Horn problem on one hand and the asymptotics of the $6j$ symbol for $\U(n)$ on the other hand \textit{directly}, rather than first pass through the quantum marginals problem or through the $6j$ symbols for the symmetric group.
 
 \textcolor{blue}{[OUTLINE: Structure of the paper]\\}
 
@@ -2185,8 +2196,54 @@ Sra also proves
     E_k(B)E_k(A+B+C) \leq E_k(A+B) E_k(B+C)
 \end{equation}
 where $E_k(X) = e_{k}(\eig(X))$ where $e_k$ is the $k$th elementary symmetric polynomial.
+TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet:
+\begin{conj}
+    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cs_ineq_conjecture}
+        E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
+    \end{equation}
+    where $E_k(X) = e_{k}(\eig(X))$ and where $e_k$ is the $k$th elementary symmetric polynomial.
+\end{conj}
+}
+{\color{red!80!black}
+Proving this conjecture has proven quite challenging.
 
-The proof relies on a concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
+What I believe I'm managed to prove is the following.
+
+Let $\phi : \mathrm{PSD}_n \to \mathbb R$ be a function on the cone of positive semidefinite matrices.
+If $\phi$ is such that $\log \phi$ is 2-monotone, i.e.,
+\begin{equation}
+    - (\partial_{A}\log \phi)(B) \geq 0, \qquad +(\partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then it is fairly clear that
+\begin{equation}
+    \log \phi(A+B) + \log \phi(B+C) \geq \log \phi(B) + \log \phi(A+B+C),
+\end{equation}
+or equivalently,
+\begin{equation}
+    \phi(A+B)\phi(B+C) \geq \phi(B) \phi(A+B+C).
+\end{equation}
+
+If in addition to $\log \phi$ being 2-monotone, $\phi$ satisfies a kind of 3-montonicity, namely
+\begin{equation}
+    -\partial_{W}(\phi^2 \partial_{C}\partial_{A}\log \phi)(B) \geq 0,
+\end{equation}
+then,
+\begin{equation}
+    [\phi(A+B+W)\phi(B+C+W) - \phi(A+B+C+W)\phi(B+W)] - [\phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B)] \geq 0
+\end{equation}
+which means, assuming $\phi(0) = 0$ and for $B\mapsto 0$ and $W \mapsto B$, we have desired inequality:
+\begin{equation}
+    \phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B) - \phi(A)\phi(C) \geq 0.
+\end{equation}
+Then what remains is to prove that $\phi = E_k^{\frac{1}{k}}$ has this property.
+}
+
+{\color{green!60!black}
+TC: References that might be useful:
+The strongly subadditive inequalitity relies on the log concavity result for hyperbolic polynomials due to \citeauthor{bauschke2001hyperbolic} \cite{bauschke2001hyperbolic}.
 An excellent crash course into Gårding's theory of hyperbolic polynomials (as well as some important results) is also \cite{bauschke2001hyperbolic}.
 %\textcolor{blue}{Hyperbolic polynomials, Horn's problem, Lax conjecture \cite{serre2009weyl,speyer2005horn}.}
 For the particular case of the real vector space of $n\times n$ Hermitian matrices of dimension $n(n+1)/2$, the polynomial $X \mapsto \det(X)$ is hyperbolic in the direction of the identity matrix $\id_n$ (i.e., Hermitian matrices only have real eigenvalues).
@@ -2202,41 +2259,12 @@ In this context, together with the positivity $p_m(\id_n) > 0$, Gårding's inequ
 for all $X,Y$ positive semidefinite (the hyperbolicity cone for $p_m$).
 This inequality is due to \citeauthor{marcus1957inequalities} \cite[Theorem 2]{marcus1957inequalities},
 but it can also be proven using joint concavity of $(A_1,\ldots, A_m)\mapsto A_1^{\frac{1}{m}}\ot \cdots \ot A_m^{\frac{1}{m}}$ and thus concavity of $(A^{\frac{1}{m}})^{\ot m}$ and thus by homogeneity the operator inequality $((A+B)^{\frac{1}{m}})^{\ot m} \geq (A^{\frac{1}{m}})^{\ot m} + (B^{\frac{1}{m}})^{\ot m}$ (\cite[Exercise 4.2.9]{bhatia2009positive}).
-TC: I conjecture that \cref{eq:cs_ineq} also holds for more general hyperbolic polynomials, although I do not have a proof yet:
-\begin{conj}
-    Let $A,B,C \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then
-    \begin{equation}
-        \label{eq:cs_ineq_conjecture}
-        E_k^{\frac{1}{k}}(A+B) E_k^{\frac{1}{k}}(B+C) \geq E_k^{\frac{1}{k}}(A+B+C)E_k^{\frac{1}{k}}(B) + E_k^{\frac{1}{k}}(A) E_k^{\frac{1}{k}}(C),
-    \end{equation}
-    where $E_k(X) = e_{k}(\eig(X))$ and where $e_k$ is the $k$th elementary symmetric polynomial.
-\end{conj}
-}
-{\color{red!80!black}
-Proving this conjecture has proven quite challenging.
+
+
 See \cite{marcus1957inequalities,mcleod1959four,anderson1984symmetric} for using inequalities and proof techniques which might be relevant.
 See also \cite{anderson1984symmetric} or \cite[Chapter 4]{bhatia2009positive} for many properties of matrix means and their ability to prove minkowski-like inequalities.
 See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
-
 See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
-What I believe I'm managed to prove is that if $\phi$ is a function such that $\log \phi$ is 2-monotone, i.e.,
-\begin{equation}
-    - (\partial_{A}\log \phi)(B) \geq 0, \qquad + (\partial_{C}\partial_{A}\log \phi)(B) \geq 0,
-\end{equation}
-then $\phi(A+B)\phi(B+C) \geq \phi(B) \phi(A+B+C)$ holds.
-If in addition, one has a weird kind of 3-montonicity, namely
-\begin{equation}
-    -\partial_{W}(\phi^2 \partial_{C}\partial_{A}\log \phi)(B) \geq 0,
-\end{equation}
-then,
-\begin{equation}
-    [\phi(A+B+W)\phi(B+C+W) - \phi(A+B+C+W)\phi(B+W)] - [\phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B)] \geq 0
-\end{equation}
-which means, assuming $\phi(0) = 0$ and for $B\mapsto 0$ and $W \mapsto B$, we have desired inequality:
-\begin{equation}
-    \phi(A+B)\phi(B+C) - \phi(A+B+C)\phi(B) - \phi(A)\phi(C) \geq 0.
-\end{equation}
 }
 
 
