@@ -68,7 +68,7 @@ Over the years, much attention placed on the study of $\SU(n)$ or $U_q(\mathfrak
 For example, tensor products between symmetric representations $\lambda = (k)$ or conjugates of symmetric representations $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.} are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjected closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\alpha,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\alpha,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
 Building upon this work, \citeauthor{alekseev2020multiplicity} studied both the asymptotics of and symmetries in each of the Type I and Type II cases \cite{alekseev2020multiplicity}.
 
-More recently, \citeauthor{alcock2023wigner} have derived explicit formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\alpha, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\alpha, \delta = (1)$ \cite{alcock2023wigner}.
+More recently, \citeauthor{alcock2023wigner} have derived formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\alpha, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\alpha, \delta = (1)$ \cite{alcock2023wigner}.
 Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\alpha,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\alpha,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\alpha,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
 
 {\color{green!60!black}
@@ -708,6 +708,55 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\alpha)$.
 \end{prop}
 
+{\color{blue}
+
+\newcommand{\isotr}[2]{\tau_{#1}(#2)}
+\begin{defn}
+    Given an $n \times n$ matrix $X$ and an Young diagram $\lambda$ of size $\abs{\lambda}$ define
+    \begin{equation}
+        \isotr{\lambda}{X} \coloneqq \Tr[P_{\lambda} X^{\ot \abs{\lambda}}]
+    \end{equation}
+\end{defn}
+\begin{prop}
+    Here we report of a number of properties of $\isotr{\lambda}{X}$.
+    \begin{enumerate}[(i)]
+        \item $\isotr{(1)}{X} = \Tr(X)$
+        \item $\isotr{\lambda}{I} = \Tr(P_{\lambda}) = \dim(W_\lambda)\dim(V_{\lambda}^{n})$
+        \item $\sum_{\lambda \vdash k} \isotr{\lambda}{X} = \Tr(X)^k$ and thus $\sum_{\lambda \vdash k} \isotr{\lambda}{\nrm X} = 1$ for $\nrm X = \Tr(X)^{-1} X$
+        \item for all invertible $M$, $\isotr{\lambda}{MXM^{-1}} = \isotr{\lambda}{X}$ 
+        \item if $X \geq 0$ then $\isotr{\lambda}{X} \geq 0$
+        \item if $X, Y \geq 0$, then $\isotr{\lambda}{X+Y} \geq \isotr{\lambda}{X} + \isotr{\lambda}{X}$
+        \item if $s \in \mathbb R$, then $\isotr{\lambda}{sX} = s^{\abs{\lambda}} \isotr{\lambda}{X}$
+        \item $\isotr{\lambda}{X}$ is proportional to the Schur-polynomial in the eigenvalues of $X$:
+            \begin{equation}
+                \isotr{\lambda}{X} = \dim(W_{\lambda}) s_{\lambda}(\eig(X)),
+            \end{equation}
+        \item the expected value of $\tau_{\lambda}(X)$ over all $n\times n$ $X \geq 0, \Tr(X) = 1$ with respect to Hilbert-Schmidt measure is
+            \begin{equation}
+                \mathbb E_{X} \isotr{\lambda}{X} = \frac{\dim(V_{\lambda}^{n})^2}{\dim(V_{(\abs{\lambda})}^{n^2})}
+            \end{equation}
+        \item with respect to the Haar measure over $\U(n)$,
+            \begin{equation}
+                \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \isotr{\lambda}{X}   \frac{P_{\lambda}}{\Tr(P_{\lambda})}
+            \end{equation}
+    \end{enumerate}
+\end{prop}
+\begin{prop}
+    Let $A, B \geq 0$, and suppose $\alpha \vdash a, \beta \vdash b$.
+    Define $C=A+B$ and $c=a+b$.
+    Then 
+    \begin{equation}
+        \isotr{\alpha}{A} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\gamma}_{\alpha\beta} > 0}} \isotr{\gamma}{C}
+    \end{equation}
+\end{prop}
+
+\begin{cor}
+    \begin{equation}
+        \mathbb E_{A} \isotr{\alpha}{A} \cdot \mathbb E_{B} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\gamma}_{\alpha\beta} > 0}} \mathbb E_{A,B}\isotr{\gamma}{A+B}
+    \end{equation}
+\end{cor}
+}
+
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
 \label{sec:lr_tri}
 
@@ -742,7 +791,7 @@ To support this claim, we define the following quantity.
     Given $n\times n$ positive semidefinite matrices $A,B$ and $C=A+B$, let
     \begin{equation}
         \TriGamma
-        \coloneqq \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ea}\ot P_{\eb}) P_{\ec}]
+        \coloneqq \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ya} \ot P_{\yb}) P_{\yc}]
     \end{equation}
 \end{defn}
 
@@ -768,14 +817,155 @@ To support this claim, we define the following quantity.
     \end{equation}
 \end{defn}
 
+\begin{prop}
+    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ where $c=a+b$. Then
+    \begin{equation}
+        \mathbb E_{A,B}\TriGamma = R_{\ya,\yb;\yc} c^{\yc}_{\ya,\yb}
+    \end{equation}
+    where $c^{\yc}_{\ya,\yb}$ is the Littlewood-Richardson coefficient and $R_{\ya,\yb;\yc}$ is the ratio of dimensions:
+    \begin{equation}
+        R_{\ya,\yb;\yc} = \frac{\dim(V_{\ya}^n)\dim(V_{\yb}^n)\dim(V_{\yc}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Using \cref{prop:HS_measure} we obtain
+   \begin{align}
+        \mathbb E_{A,B}\TriGamma
+        &= q_{\ya}q_{\yb}\Tr[(P_{\ya}\ot P_{\yb}) P_{\yc}],
+        \label{eq:mean_tri_gamma}
+    \end{align}
+    where $q_{\ya}$ and $q_{\yb}$ are given by \cref{eq:HS_mean_coeff}.
+    Moreover, the operator $(P_{\ya}\ot P_{\yb}) P_{\yc}$ decomposes as
+    \begin{equation}
+        \label{eq:lr_triple_prod}
+        \tikzfig{tikz/final/lr_triple_prod}.
+    \end{equation}
+    and therefore taking the trace yields
+    \begin{equation}
+        \Tr[(P_{\ya}\ot P_{\yb}) P_{\yc}] = \dim(W_{\ya})\dim(W_{\yb})\dim(C_{\ya,\yb}^{\yc})\dim(V_{\yc}^{n}).
+        \label{eq:trace_tri_formula}
+    \end{equation}
+    Combining \cref{eq:mean_tri_gamma} and \cref{eq:trace_tri_formula} produces the claimed formula as $c_{\ya,\yb}^{\yc} = \dim(C_{\ya,\yb}^{\yc})$.
+\end{proof}
+
+The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
+\begin{prop}
+    Let $(A,B,C)$ be positive semidefinite $n \times n$ matrices satisfying $C=A+B$ with eigenvalues $(\ea,\eb,\ec)$.
+    Then
+    \begin{align}
+        \label{eq:tri_completeness}
+        \sum_{\ya, \yb, \yc}
+        \TriGamma = 1.
+    \end{align}
+    where the sum is taken over Young diagrams with the following sizes:
+    \begin{equation}
+        \label{eq:three_yd_sizes_rank}
+        \ya \vdash_{r(\ea)} a, \qquad
+        \yb \vdash_{r(\eb)} b, \qquad
+        \yc \vdash_{r(\ec)} c.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    To begin, note that \cref{eq:tri_completeness} holds when the sum is taken over Young diagrams with unrestricted rank, meaning $(\ya, \yb, \yc)$ have sizes $(a,b,c)$ with $c=a+b$ but arbitrary rank/depth.
+    That one can restrict to Young diagrams with depths bounded according to \cref{eq:three_yd_sizes_rank} follows
+    because $\TriGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec))$.
+\end{proof}
+\begin{thm}
+    Let $(\ea,\eb,\ec)$ be a triple of eigenvalues of non-zero positive semidefinite $(A,B,C)$ satisfying $C=A+B$.
+    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes given by
+    \begin{equation}
+        \label{eq:ceil_tri_yd_sizes}
+        \begin{alignedat}{3}
+            &\ya \vdash a = \ceil{k\abs{\ea}}, \qquad
+            &&\yb \vdash b = \ceil{k\abs{\eb}}, \qquad
+            &&\yc \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}},
+        \end{alignedat}
+    \end{equation}
+    for any positive integer $k \geq \tau_{\min}^{-1}$ where $\tau_{\min} = \min\{\abs{\alpha},\abs{\beta},\abs{\gamma}\}$.
+    Then
+    \begin{equation}
+        \TriGamma
+        \leq t(k) \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}/2).
+        \label{eq:tri_gamma_upper_bound}
+    \end{equation}
+    where $t(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc}_{\ea\eb\ec}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
+    \begin{equation}
+        I^{\ya\yb\yc}_{\ea\eb\ec}
+        =\abs{\ea} \kl{\nya}{\nea}
+        +\abs{\eb} \kl{\nyb}{\neb}
+        +\abs{\ec} \kl{\nyc}{\nec}.
+    \end{equation}
+\end{thm}
+\begin{proof}
+    The first portion of the proof does not depend on the value of $k$.
+    For now, we suppose the Young diagrams $(\ya,\yb,\yc)$ have sizes $(a,b,c)$ with $c=a+b$.
+    Then
+    \begin{align}
+        \TriGamma^2 
+        &= \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ya} \ot P_{\yb}) P_{\yc}]^2, \\
+        &\leq \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b})P_{\yc}]
+    \end{align}
+    The third term can be relaxed further to an upper bound in terms of $C = A+B$ because $C^{\ot c} = (A+B)^{\ot a+b}$ and therefore 
+    \begin{equation}
+        \Tr(P_{\yc} C^{\ot c}) = \sum_{j=0}^{c} \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
+    \end{equation}
+    Here we have used the $S_{c}$-equivariance of $P_{\yc}$.
+    Since each of the summands above are non-negative, we conclude for all $0 \leq j \leq c$ that
+    \begin{equation}
+        \Tr(P_{\yc} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
+    \end{equation}
+    Letting $j = a$ and $c-j=c-a=b$ and rearranging yields
+    \begin{equation}
+        \Tr(P_{\yc} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\yc} C^{\ot c}).
+    \end{equation}
+    Altogether we obtain
+    \begin{align}
+        \TriGamma^2 
+        \leq \frac{a!b!}{c!} \frac{\abs{\ea}^a\abs{\eb}^{b}}{\abs{\ec}^{c}} \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[\nrm C^{\ot c} P_{\yc}]
+    \end{align}
+    Our objective now will be to use the $k$-dependent values for $(a,b,c)$ to relax this upper bound further.
+    From \cref{eq:ceil_tri_yd_sizes}, we obtain the following estimates:
+    \begin{equation}
+        \begin{alignedat}{3}
+            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad
+            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad
+            &&k \abs{\ec} \leq c < k \abs{\ec} + 2.
+        \end{alignedat}
+    \end{equation}
+    An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions ($m=2$) implies the following bound
+    \begin{equation}
+        \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}
+        \leq 12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}.
+    \end{equation}
+    Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
+    \begin{equation}
+        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
+    \end{equation}
+    because $(\yc_i - i)-(\yc_j - j) \leq \abs{\yc} + 1$ as well as $j-i\geq 1$.
+    Using eigenvalue estimation, \cref{prop:eig_est}, we can relax the bound on $\Tr[\nrm C^{\ot c} P_{\yc}]$ to obtain a bound in terms of $k$:
+    \begin{equation}
+        \Tr[\nrm C^{\ot c} P_{\yc}]
+        \leq \dim(V_{\yc}^{n}) \exp(-c \kl{\nrm \yc}{\nrm \ec})
+        \leq (k\abs{\ec}+3)^{n(n-1)/2} \exp(-k \abs{\ec} \kl{\nrm \yc}{\nrm \ec})
+    \end{equation}
+    with similar bounds on $\Tr[\nrm A^{\ot a} P_{\ya}]$ and $\Tr[\nrm B^{\ot b} P_{\yb}]$.
+    Combining these bounds together yields 
+    \begin{equation}
+        \TriGamma^2 \leq 12^2 (k\abs{\ec}+2)^{\frac{1}{2}}[(k\abs{\ea}+2)(k\abs{\eb}+2)(k\abs{\ec}+3)]^{n(n-1)/2} \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}).
+    \end{equation}
+    Therefore, the claim holds if $t(k)$ is taken to be
+    \begin{equation}
+        t(k) = 12(k\tau_{\max}+3)^{\frac{3 n(n-1) + 1}{4}}.
+    \end{equation}
+    where $\tau_{\max} = \max\{\abs{\alpha}, \abs{\beta}, \abs{\gamma}\}$.
+\end{proof}
+
+
+
 \textcolor{red}{TODO: Summarize \cite{christandl2008quantum}.}
 \textcolor{red}{TODO: Briefly mention the direct and pedagogical Kempf-Ness style proofs of stronger results in \cite[Proposition 2.3]{berline2018horn} also using the strong duality result of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} and the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
 
 
-\begin{equation}
-    \label{eq:lr_triple_prod}
-    \tikzfig{tikz/final/lr_triple_prod}.
-\end{equation}
 
 
 \subsection{Generalized \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols \& tetrahedral eigenvalues}
@@ -953,7 +1143,7 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
 \end{prop}
 \begin{proof}
     To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:six_yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
-    That one can restrict to Young diagrams with depths bounded according to \cref{eq:six_yd_sizes} follows
+    That one can restrict to Young diagrams with depths bounded according to \cref{eq:six_yd_sizes_rank} follows
     because $\TetGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc, \yd, \ye, \yf)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef))$.\footnote{This claim actually follows from \cref{thm:abd_dep_upper_bound} and will be proven shortly. Importantly, \cref{thm:abd_dep_upper_bound} does not rely on \cref{prop:completeness_rel_tet}.}
 \end{proof}
 
@@ -1007,7 +1197,7 @@ This result proves that in the limit of large Young diagrams, the magnitude of $
         \leq p(k) \exp(-k I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}/6).
         \label{eq:tet_gamma_upper_bound}
     \end{equation}
-    where $p(k)$ is a polynomial in $k$ and where $I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
+    where $p(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
     \begin{equation}
         I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}
         =\abs{\ea} \kl{\nya}{\nea}
@@ -1021,7 +1211,7 @@ This result proves that in the limit of large Young diagrams, the magnitude of $
 \end{thm}
 \begin{proof}
     The first portion of the proof does not depend on the value of $k$.
-    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:six_yd_sizes} for $x,y,z$ arbitrary positive integers.
+    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:six_yd_sizes}.
     As in the proof of \cref{cor:abd_indep_upper_bound}, we let $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$.
     Using the commutation relations provided by \cref{lem:tet_com_rels} we apply the Cauchy-Schwarz inequality to $\braket{X,Y} = \Tr(X^{*} Y) \leq \Tr(X^{*}X)^{\frac{1}{2}}\Tr(Y^{*}Y)^{\frac{1}{2}}$ for $X = \Omega^{\frac{1}{2}}\Pi_{\yf}\Pi_{\ya}\Pi_{\yb}$ and $Y = \Omega^{\frac{1}{2}}\Pi_{\yc} \Pi_{\yd} \Pi_{\ye}$ to obtain
     \begin{align}
