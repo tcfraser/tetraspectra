@@ -818,6 +818,7 @@ To support this claim, we define the following quantity.
 \end{defn}
 
 \begin{prop}
+    \label{prop:tri_HS_mean}
     Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ where $c=a+b$. Then
     \begin{equation}
         \mathbb E_{A,B}\TriGamma = R_{\ya,\yb;\yc} c^{\yc}_{\ya,\yb}
@@ -848,8 +849,31 @@ To support this claim, we define the following quantity.
     Combining \cref{eq:mean_tri_gamma} and \cref{eq:trace_tri_formula} produces the claimed formula as $c_{\ya,\yb}^{\yc} = \dim(C_{\ya,\yb}^{\yc})$.
 \end{proof}
 
+Our first result establishes a connection between $\TriGamma$ and the corresponding Littlewood-Richardson coefficient.
+\begin{cor}
+    \label{cor:tri_indep_upper_bound}
+    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ satisfying $c=a+b$.
+    Then for any positive semidefinite matrices $(A,B,C)$ satisfying $C=A+B$, we have
+    \begin{equation}
+        \label{eq:tri_gamma_lr_upper_bound}
+        c^{\yc}_{\ya,\yb} = 0 \implies \TriGamma = 0.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    From the definition of $\TriGamma$, and the fact that $\nrm A^{\ot a} \ot \nrm B^{\ot b}$ is trace one positive semidefinite, we have the bound
+    \begin{equation}
+        \TriGamma \leq \norm{(P_{\ya} \ot P_{\yb})P_{\yc}}_{\infty}
+    \end{equation}
+    Using the decomposition of $(P_{\ya} \ot P_{\yb})P_{\yc}$ into isometries given by \cref{eq:lr_triple_prod}, we also have
+    \begin{equation}
+        \norm{(P_{\ya} \ot P_{\yb})P_{\yc}}_{\infty} = \norm{\id_{C^{\yc}_{\ya,\yb}}}_{\infty} = \begin{cases} 1 & c^{\yc}_{\ya,\yb} > 0 \\ 0 & c^{\yc}_{\ya,\yb} = 0 \end{cases}.
+    \end{equation}
+    Therefore if $c^{\yc}_{\ya,\yb} = 0$, then $(P_{\ya} \ot P_{\yb})P_{\yc} = 0$ and thus $\TriGamma = 0$ also.
+\end{proof}
+
 The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
 \begin{prop}
+    \label{prop:tri_completeness}
     Let $(A,B,C)$ be positive semidefinite $n \times n$ matrices satisfying $C=A+B$ with eigenvalues $(\ea,\eb,\ec)$.
     Then
     \begin{align}
@@ -885,10 +909,10 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     Then
     \begin{equation}
         \TriGamma
-        \leq t(k) \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}/2).
+        \leq p_{\tinytri}(k) \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}/2).
         \label{eq:tri_gamma_upper_bound}
     \end{equation}
-    where $t(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc}_{\ea\eb\ec}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
+    where $p_{\tinytri}(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc}_{\ea\eb\ec}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
     \begin{equation}
         I^{\ya\yb\yc}_{\ea\eb\ec}
         =\abs{\ea} \kl{\nya}{\nea}
@@ -920,8 +944,9 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     \end{equation}
     Altogether we obtain
     \begin{align}
+        \label{eq:tri_gamma_abc_upper_bound}
         \TriGamma^2 
-        \leq \frac{a!b!}{c!} \frac{\abs{\ea}^a\abs{\eb}^{b}}{\abs{\ec}^{c}} \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[\nrm C^{\ot c} P_{\yc}]
+        \leq \frac{a!b!}{c!} \frac{\abs{\ec}^{c}}{\abs{\ea}^a\abs{\eb}^{b}} \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[\nrm C^{\ot c} P_{\yc}]
     \end{align}
     Our objective now will be to use the $k$-dependent values for $(a,b,c)$ to relax this upper bound further.
     From \cref{eq:ceil_tri_yd_sizes}, we obtain the following estimates:
@@ -934,8 +959,8 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     \end{equation}
     An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions ($m=2$) implies the following bound
     \begin{equation}
-        \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}
-        \leq 12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}.
+        \frac{c!}{a!b!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}}{\abs{\ec}^{c}}
+        \geq 12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}.
     \end{equation}
     Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
@@ -951,22 +976,89 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     with similar bounds on $\Tr[\nrm A^{\ot a} P_{\ya}]$ and $\Tr[\nrm B^{\ot b} P_{\yb}]$.
     Combining these bounds together yields 
     \begin{equation}
-        \TriGamma^2 \leq 12^2 (k\abs{\ec}+2)^{\frac{1}{2}}[(k\abs{\ea}+2)(k\abs{\eb}+2)(k\abs{\ec}+3)]^{n(n-1)/2} \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}).
+        \TriGammak^2 \leq 12^2 (k\abs{\ec}+2)^{\frac{1}{2}}[(k\abs{\ea}+2)(k\abs{\eb}+2)(k\abs{\ec}+3)]^{n(n-1)/2} \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}).
     \end{equation}
-    Therefore, the claim holds if $t(k)$ is taken to be
+    Therefore, the claim holds if $p_{\tinytri}(k)$ is taken to be
     \begin{equation}
-        t(k) = 12(k\tau_{\max}+3)^{\frac{3 n(n-1) + 1}{4}}.
+        \label{eq:p_of_k_tri}
+        p_{\tinytri}(k) = 12(k\tau_{\max}+3)^{\frac{3 n(n-1) + 1}{4}}.
     \end{equation}
     where $\tau_{\max} = \max\{\abs{\alpha}, \abs{\beta}, \abs{\gamma}\}$.
 \end{proof}
 
+While the previous theorem states that $\TriGamma$ concentrates in magnitude around particular Young diagrams, it is not directly applicable to Horn problem simply because its value depends on more than just the eigenvalues of the matrices $(A,B,C)$.
+Nevertheless, combining the previous theorem the completeness relation (\cref{eq:tri_completeness}) yields a necessary condition for $(\ea,\eb,\ec)$ to be tetrahedral.
+\begin{cor}
+    Let $(\ea,\eb,\ec)$ be the eigenvalues of non-zero positive semidefinite matrices $(A,B,C)$ satisfying $C=A+B$ with minimum trace $\tau_{\min}$.
+    Then there exists a sextuple of sequences of Young diagrams $(\ya_k, \yb_k, \yc_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_tri_yd_sizes}
+    satisfying (i) the convergence condition
+    \begin{equation}
+        \label{eq:tri_convergence_rate}
+        I^{\ya_k\yb_k\yc_k}_{\ea\eb\ec}
+        \leq \frac{2}{k} \log p_{\tinytri}(k) q_{\tinytri}(k)
+        \stackrel{k\to\infty}{\longrightarrow} 0,
+    \end{equation}
+    where $q_{\tinytri}(k) = (k \tau_{\max}+2)^{3(r_{\max}-1)}$,
+    and (ii) the non-vanishing of the Littlewood-Richardson coefficient
+    \begin{equation}
+        c^{\yc_k}_{\ya_k,\yb_k} \neq 0.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    To proof the claim, we construct the sequence implicitly.
+    For each $k$, it suffices to take $(\ya_k, \yb_k, \yc_k)$ to be any sextuple of Young diagrams which maximizes the value of $\TriGamma$ with sizes determined by \cref{eq:ceil_tri_yd_sizes}:
+    \begin{equation}
+        (\ya_k, \yb_k, \yc_k) \coloneqq \underset{\ya\yb\yc}{\argmax} \hspace{0.5em}\TriGamma.
+    \end{equation}
+    While this maximal choice may not be unique, it will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TriGamma$ \cref{eq:tri_completeness}.
+    Specifically, this maximal choice must satisfy
+    \begin{equation}
+        \label{eq:tri_gamma_lower_bound}
+        \TriGammak \geq \frac{1}{q_{\tinytri}(k)}
+    \end{equation}
+    where $q_{\tinytri}(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:tri_completeness} viewed as a function of $k$.
+    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q_{\tinytri}(k)$ be as stated in the claim 
+    ensures \cref{eq:tri_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k)$ is at most $k \tau_{\max} + 2$ (resp. $r_{\max}$).
+    Moreover, applying \cref{eq:tri_gamma_upper_bound} yields
+    \begin{equation}
+        I^{\ya_k\yb_k\yc_k}_{\ea\eb\ec}
+        \leq \frac{2}{k}\log (q_{\tinytri}(k)p_{\tinytri}(k))
+    \end{equation}
+    and thus \cref{eq:tri_convergence_rate} holds because $p_{\tinytri}(k)$ and $q_{\tinytri}(k)$ are polynomials in $k$ with coefficients depending on the maximum trace $\tau_{\max}$ and maximum rank $r_{\max}$.
 
+    The non-vanishing of the Littlewood-Richardson coefficient is implied by \cref{cor:tri_indep_upper_bound}.
+\end{proof}
+
+\begin{rem}
+    The convergence condition above (\cref{eq:tri_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_tri_yd_sizes} together ensure that the Young diagrams $(\ya_k, \yb_k, \yc_k)$ converge to the eigenvalues $(\ea,\eb,\ec)$ in the following sense that
+    \begin{equation}
+        \label{eq:tri_convergence}
+        \begin{alignedat}{3}
+            & \frac{\ya_k}{k} \rightarrow \ea, \qquad
+            && \frac{\yb_k}{k} \rightarrow \eb, \qquad
+            && \frac{\yc_k}{k} \rightarrow \ec, \\
+        \end{alignedat}
+    \end{equation}
+    where $\frac{\yx_k}{k} \rightarrow \ex$ is shorthand for $\lim_{k\to \infty} (\yx_k)_i/k = \ex_i$ for all $i \in \{1,\ldots, n\}$.
+\end{rem}
+
+While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
+In other words, if $(\ea,\eb,\ec)$ are not tetrahedral, then no such sequence can exist.
+
+\begin{cor}
+    Let $(\ea, \eb, \ec)$ be a non-trigonal triple of positive semidefinite and non-zero eigenvalues.
+    Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k)$ with sizes given by \cref{eq:ceil_tri_yd_sizes} and converging to $(\ea,\eb,\ec)$ in the sense that \cref{eq:tri_convergence_rate} holds, one necessarily has
+    \begin{equation}
+        \forall k \geq K: \quad c^{\yc_k}_{\ya_k,\yb_k} = 0.
+    \end{equation}
+    for some sufficiently large $K$.
+\end{cor}
+\begin{proof}
+    \textcolor{red}{TODO: write the proof using \cref{prop:tri_HS_mean}.}
+\end{proof}
 
 \textcolor{red}{TODO: Summarize \cite{christandl2008quantum}.}
 \textcolor{red}{TODO: Briefly mention the direct and pedagogical Kempf-Ness style proofs of stronger results in \cite[Proposition 2.3]{berline2018horn} also using the strong duality result of \cite[Theorem 1 \& Proposition 3.1]{franks2020minimal} and the quantitative Kempf-Ness theorem \cite[Theorem 1.17]{burgisser2019towards}.}
-
-
-
 
 \subsection{Generalized \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols \& tetrahedral eigenvalues}
 \label{sec:sixj_tet}
@@ -1348,7 +1440,7 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
         \abs{\TetGammak} \geq \frac{1}{q(k)}
     \end{equation}
     where $q(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:tet_completeness} viewed as a function of $k$.
-    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ is at most $n \tau_{\max} + 3$ (resp. $r_{\max}$).
+    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ is at most $k \tau_{\max} + 3$ (resp. $r_{\max}$).
     Moreover, applying \cref{eq:tet_gamma_upper_bound} yields
     \begin{equation}
         I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\ea\eb\ec\ed\ee\ef}

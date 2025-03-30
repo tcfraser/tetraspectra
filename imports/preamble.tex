@@ -142,6 +142,8 @@
 \newcommand{\tuple}[1]{\boldsymbol{#1}}
 \newcommand{\unent}{N} % unnormalized entropy
 \newcommand{\vN}{H} % von Neumann entropy 
+\newcommand{\tinytri}{\Delta}
+\newcommand{\tinytet}{\boxtimes}
 
 \newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
 \newcommand{\braa}[1]{%
@@ -233,6 +235,7 @@
 \right]
 \endgroup
 }
+\newcommand{\TriGammak}{\TriGamma[A & B & C & \alpha_k' & \beta_k' & \gamma_k']}
 \newcommand{\TetGamma}[1][A & B & C & \alpha' & \beta' & \gamma' \\ D & E & F & \delta' & \epsilon' & \phi']{
 \begingroup
 \arraycolsep=1.5pt
@@ -242,7 +245,7 @@
 \right]
 \endgroup
 }
-\newcommand{\TetGammak}{\TetGamma[A & B & C & \alpha' & \beta' & \gamma' \\ D & E & F & \delta' & \epsilon' & \phi']}
+\newcommand{\TetGammak}{\TetGamma[A & B & C & \alpha_k' & \beta_k' & \gamma_k' \\ D & E & F & \delta_k' & \epsilon_k' & \phi_k']}
 \newcommand{\TetGammaTilde}{\TetGamma[\tilde A & \tilde B & \tilde C & \alpha' & \beta' & \gamma' \\ \tilde D & \tilde E & \tilde F & \delta' & \epsilon' & \phi']}
 
 % =====================================
