@@ -7,7 +7,7 @@
 \affil[1]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
 \affil[2]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
 
-\title{Asymptotics of higher rank \texorpdfstring{$6j$}{6j} symbols \\ and tetrahedral Horn problems}
+\title{Asymptotics of higher rank \texorpdfstring{$6j$}{6j} symbols \\ and the tetrahedral Horn problem}
 
 \date{\today}
 
@@ -25,8 +25,8 @@
 
 For a compact reductive group $G$, Wigner $6j$-symbols are maps between multiplicity spaces which encode the associativity constraint
 $
-(V_\alpha \otimes V_\beta) \otimes V_\gamma \cong 
-V_\alpha \otimes (V_\beta \otimes V_\gamma)
+(V_\ya \otimes V_\yb) \otimes V_\yd \cong 
+V_\ya \otimes (V_\yb \otimes V_\yd)
 $
 for unitary irreducible representations of $G$. For $G=SU(2)$, their asymptotic behavior for large weights was conjectured by Ponzano-Regge and established by Roberts using geometric quantization techniques. 
 
@@ -35,52 +35,77 @@ We show that their decay rate is polynomial or exponential depending on the exis
 
 As an application of our results, we obtain a new proof of the strongly subadditive entropy inequality for tetrahedra in the space of Hermitian matrices (the tetrahedral Horn problem).
 
-% \vskip 0.2cm
-
 % Wigner $6j$-symbols play a fundamental role in quantum physics displaying $\SU(2)$ symmetry.   The semiclassical behaviour or the $6j$-symbols, as conjectured by Ponzano and Regge and later proven using geometric quantization techniques by Roberts, is intimately related to the existence of Euclidean tetrahedra whose sidelengths correspond to the six $j$s. Upon generalizing to $\SU(n)$ for $n \geq 3$, the corresponding $6j$ symbol becomes an operator and, although still a central object in quantum theory, results concerning its semiclassical asymptotics are lacking. Here, we connect the asymptotics of (the norm of) the higher rank $6j$ symbols to the solution of a tetrahedral generalization of Horn's problem concerning sums of $n$-by-$n$ Hermitian matrices. Our result is consistent with the special case where (the norm of) the $6j$ symbol becomes the Littlewood-Richardson coefficient, whose semiclassical limit corresponds to solutions to Horn's problem. Our approach is through Schur-Weyl duality and the method of eignenvalue estimation previously developed in the context of quantum information theory. As a corollary, we provide a new perspective on a strongly subadditive unnormalized entropy inequality constraining tetrahedral eigenvalues.
 \end{abstract}
 
-\clearpage
 \tableofcontents
-
-\clearpage
 
 \section{Introduction}
 
-\textcolor{blue}{[OUTLINE: What are 6j Symbols?]\\}
-\textcolor{blue}{[OUTLINE: What has been done for SU(2), Wigner, Neville, Ponzano \& Regge, Roberts, Barrett-Crane type state-sum models, loop quantum gravity, etc...]\\}
+%\textcolor{blue}{[OUTLINE: What are 6j Symbols?]\\}
+Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \otimes V_\yb) \otimes V_\yc \cong V_\ya \otimes (V_\yb \otimes V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
+Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is a map between multiplicity spaces of the form
+\begin{equation*}
+    \abcdefsymbol
+    :
+    M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc} \to M^{\ye}_{\ya, \yf} \ot M^{\yf}_{\yb,\yd},
+\end{equation*}
+corresponding to the block-wise components of the change of basis from $\bigotimes_{\yc} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$ to $\bigotimes_{\phi} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$.
+Whenever the group $G$ is multiplicity-free, in the sense that the dimensions of all multiplicity spaces, $m^{\yc}_{\ya,\yb} \coloneqq \dim M^{\yc}_{\ya,\yb}$, are either zero or one, the corresponding $6j$-symbol is merely a scalar quantity.
+
+%\textcolor{blue}{[OUTLINE: For SU(2), Barrett-Crane type state-sum models, etc...]\\}
+In particular, the group $\SU(2)$ is multiplicity-free in this sense, and the $6j$-symbols for $\SU(2)$ are, depending on the normalization and/or phase convention, are also referred to as Wigner $6j$-symbols or Wigner $6j$-coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory}.
+The $6j$-symbols for $\SU(2)$ play a foundational role in the quantum theory of angular momentum, modelling the recoupling theory of three angular momenta, and thus they are used frequently in calculations involving the scattering of mutliple particles in nuclear, atomic and molecular physics \cite{varshalovich1988quantum,edmonds1996angular,aquilanti2012semiclassical}.
+Beyond the direct application to the theory of angular momenta, the $6j$-symbols for $\SU(2)$ also constitute a primitive object in the theory of spin networks \cite{penrose1971applications, baez2010physics}, representing a minimal non-trivial closed spin network.
+General spin networks are networks of trivalent vertices and connections labelled by irreps (spins) of $\SU(2)$ which provide a discrete/combinatorial and manifestly invariant model with applications to gauge theories on graphs or manifolds \cite{baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and proposed theories of quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum}.
+
+%\textcolor{blue}{[OUTLINE: Asymptotics Wigner, Neville, Ponzano \& Regge, Roberts]}
+Throughout this paper, by the \textit{asymptotics} of $6j$-symbols, we are referring to their behaviour in the regime wherein the six highest weights, $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, are becoming larger and larger in a suitable sense.
+The asymptotics of the $6j$-symbol for $\SU(2)$, wherein the irreps of dimension $\ell + 1$ may be identifed either by integers $\ell \in \{0, 1, \ldots, \}$ or half-integers $j=\frac{\ell}{2}\in\{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots \}$, were initially investigated by \citeauthor{wigner1960group} \cite[Chapter 27]{wigner1960group}.
+In the context of the quantum theory of angular momenta, the limit of large $\ell$ or equivalently large spins $j$ (also called quantum numbers) can alternatively be interpreted as the limit $\hbar \to 0$ which surpresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as semiclassical limits.
+Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ and total spin $\frac{e}{2}$, the $6j$-symbol, $\tightcurlysixj{a & b & c \\ d & e & f}$, can be interpreted as the quantum mechanical amplitude to observe the first and second particles to have combined spin $\frac{c}{2}$ given the second and third have combined spin $\frac{f}{2}$ \cite{wigner1960group,roberts1999classical}.
+\Citeauthor{wigner1960group} considered the probability for this event to occur in the asymptotic limit of large spins, i.e., the square of the $6j$-symbol, and conjectured the estimate:
+\begin{equation*}
+    \tightcurlysixj{a & b & c \\ d & e & f}^2 \approx \frac{1}{3 \pi V}
+\end{equation*}
+where $V$ is the volume of the Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$.
+Building upon the work of Wigner, \citeauthor{ponzano1968semiclassical} conjectured a formula for the amplitude of the $6j$-symbol itself in the limit of large spins \cite{ponzano1968semiclassical}.
+Later, using techniques from geometric quantization theory, \citeauthor{roberts1999classical} rigorously proved an asymptotic formula which is equivalent to the conjecture of \citeauthor{ponzano1968semiclassical} (up to minor differences) \cite{roberts1999classical}:
+\begin{thm}[\citeauthor{roberts1999classical}]
+    If $(a,b,c,d,e,f)$ are integer side-lengths of a Euclidean tetrahedron with volume $V$ and corresponding exterior dihedral angles $(\theta_a, \theta_b, \theta_c, \theta_d, \theta_e, \theta_f)$, then 
+    \begin{equation*}
+        \tightcurlysixj{ka & kb & kc \\ kd & ke & kf} \stackrel{k\to \infty}{\sim} \sqrt{\frac{2}{3 \pi V k^3}} \cos\left({\sum}_{\ell} (k \ell + 1) \frac{\theta_{\ell}}{2} + \frac{\pi}{4}\right),
+    \end{equation*}
+    where the sum is over the six sides $\ell$.
+    Otherwise, if there does not exist a Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$, then $\tightcurlysixj{ka & kb & kc \\ kd & ke & kf}$ decays to zero at an exponential rate as $k\to\infty$.
+\end{thm}
+Additional proofs of this asymptotic correspondence between $6j$-symbols for $\SU(2)$ and Euclidean tetrahedra have emerged in recent years including the elementary proof by \citeauthor{gurau2008ponzano} which applies Stirling's approximation directly to Racah's single-sum formula \cite{gurau2008ponzano} as well as group integral approach to evaluate so-called simple spin networks as Feynman graphs \cite{freidel2000simple,freidel2003asymptotics}.
+
 
 Various $k\to \infty$ asymptotics for the $U_q(\mathfrak{sl}_2)$ $6j$ symbol were calculated by \citeauthor{taylor2006sixj} and shown to encode (i) the existence a spherical tetrahedron on the unit sphere with prescribed edgelengths when $q=\exp(i\pi/r(k))$ is a root of unity (with $r(k) = k(r-2) + 2$) and (ii) the existence of a hyperbolic tetrahedron with prescribed edgelengths when $q=\exp(\pi/r(k))$ \cite{taylor2006sixj}.
 
 See also the thesis of \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
 
-
 \textcolor{blue}{[OUTLINE: Previous work on SU(N)]\\}
 
 Over the years, much attention placed on the study of $\SU(n)$ or $U_q(\mathfrak{sl}_n)$ $6j$ symbols has been on the multiplicity-free cases where the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol is zero).
 
-For example, tensor products between symmetric representations $\lambda = (k)$ or conjugates of symmetric representations $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.} are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjected closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\alpha,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\alpha,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
+For example, tensor products between symmetric representations $\lambda = (k)$ or conjugates of symmetric representations $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.} are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjected closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\ya,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\ya,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
 Building upon this work, \citeauthor{alekseev2020multiplicity} studied both the asymptotics of and symmetries in each of the Type I and Type II cases \cite{alekseev2020multiplicity}.
 
-More recently, \citeauthor{alcock2023wigner} have derived formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\alpha, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\alpha, \delta = (1)$ \cite{alcock2023wigner}.
-Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\alpha,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\alpha,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\alpha,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
+More recently, \citeauthor{alcock2023wigner} have derived formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\ya, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\ya, \delta = (1)$ \cite{alcock2023wigner}.
+Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\ya,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\ya,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\ya,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
 
 {\color{green!60!black}
 TC: Here are some research notes concerning the $6j$ symbols:
 \begin{itemize}
-    \item For a comphrensive reference textbook for the $6j$ coefficients, see the textbook by \citeauthor{varshalovich1988quantum} \cite{varshalovich1988quantum}, specifically Chapter 9.
     \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
-    \item Usage of Wigner's $6j$ symbol to compute asymptotic errors rates for the promise problem of distinguishing between two possible ``change points'' for a sequence of unknown pure states to transition from one unknown type to another \cite{akimoto2011discrimination}
     \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
-    \item Representation theoretic proof of the Regge symmetries due to \citeauthor{boalch2007regge} \cite{boalch2007regge}
     \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
     \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
     \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
-    \item The original Ponzano-Regge paper \cite{ponzano1968semiclassical}
-    \item \citeauthor{gurau2008ponzano} derives the Ponzano-Regge asymptotic formula directly using Stirling's approximation applied to Racah's single-sum formula \cite{gurau2008ponzano}
     \item \citeauthor{bartlett2023coherent} work with so-called \textit{coherent loop states} or \textit{Bohr-Sommerfeld states} to develop some semiclassical results concerning the inner products between such states (see also the talk on Youtube) \cite{bartlett2023coherent}
     \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
-    \item \citeauthor{marzuoli2005computing} connects quantum computing models to the recoupling theory of $\SU(2)$ angular momentum and also considers the semiclassical limit \cite{marzuoli2005computing}
     \item \citeauthor{artamonov2023classical} derives an explicit formula for the $n=3$ case \cite{artamonov2023classical}, and later to arbitrary $n$ \cite{artamonov2024calculation}.
     \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $n$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $n$ \cite{lanina2023tug}.
 \end{itemize}
@@ -95,24 +120,24 @@ The purpose of this paper is to report the following pair of complementary bound
         \label{eq:tet_cond}
         A+B=C, \quad B+D=F, \quad C+D=E, \quad A+F=E,
     \end{equation}
-    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ satisfying
+    then there exists a sequence of Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ satisfying
     \begin{equation}
         \label{eq:six_convergence}
-        \frac{\ya_k}{k} \rightarrow \ea, \quad
-        \frac{\yb_k}{k} \rightarrow \eb, \quad
-        \frac{\yc_k}{k} \rightarrow \ec, \quad
-        \frac{\yd_k}{k} \rightarrow \ed, \quad
-        \frac{\ye_k}{k} \rightarrow \ee, \quad
-        \frac{\yf_k}{k} \rightarrow \ef,
+        \frac{\yap_k}{k} \rightarrow \ea, \quad
+        \frac{\ybp_k}{k} \rightarrow \eb, \quad
+        \frac{\ycp_k}{k} \rightarrow \ec, \quad
+        \frac{\ydp_k}{k} \rightarrow \ed, \quad
+        \frac{\yep_k}{k} \rightarrow \ee, \quad
+        \frac{\yfp_k}{k} \rightarrow \ef,
     \end{equation}
     and
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}
         \geq \frac{1}{\mathrm{poly}(k)}.
     \end{equation}
     Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}
         \leq \exp\left(- \Omega(k) \right).
     \end{equation}
 \end{thm}
@@ -122,7 +147,7 @@ The purpose of this paper is to report the following pair of complementary bound
 The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
 In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
 These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec)$.
-Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\gamma$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\alpha$ and $\beta$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
+Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\gamma$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\ea$ and $\eb$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
 For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
 See also the article by \citeauthor{daftuar2005quantum} for an account of applications to topics in quantum information theory \cite{daftuar2005quantum}.
 
@@ -603,7 +628,8 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     \end{equation}
 \end{rem}
 \begin{rem}
-    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a suprisinging symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry} (see also \cite{boalch2007regge}).
+    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a suprisinging symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry}.
+    The paper due to \citeauthor{boalch2007regge} provides a comphrehensive and modern treatment of the Regge symmetry for the $6j$ symbol for $\SU(2)$ by viewing it as a consequence of a simpler symmetry of the $6j$-symbol for $\SU(3)$ \cite{boalch2007regge}.
     That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
     It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
 
@@ -645,21 +671,21 @@ Note that the representation $W_{\yx}$ of $S_{k}$ is independent of $n$;
 indeed, the right hand side of \cref{eq:frob_dim} does not depend on $n$ and coincides with the Hook-length formula \cite[Corollary 9.1.6]{goodman2000representations} (any value of $n$ which is at least the depth of $\yx$ suffices).
 
 \begin{defn}
-    Given a non-zero positive semidefinite $n \times n$ matrix $A$, a positive integer $x$, and a Young diagram $\ya \vdash_n x$, let
+    Given a non-zero positive semidefinite $n \times n$ matrix $A$, a positive integer $x$, and a Young diagram $\yap \vdash_n x$, let
     \begin{equation}
         \UniGamma
-        \coloneqq \Tr[\nrm A^{\ot a} P_{\ya}],
+        \coloneqq \Tr[\nrm A^{\ot a} P_{\yap}],
     \end{equation}
-    where $\nrm A = \frac{A}{\Tr(A)}$ is the normalization of $A$ and $P_{\ya}$ projects onto the isotypic component of $(\mathbb C^n)^{\ot a}$ indexed by $\ya$.
+    where $\nrm A = \frac{A}{\Tr(A)}$ is the normalization of $A$ and $P_{\yap}$ projects onto the isotypic component of $(\mathbb C^n)^{\ot a}$ indexed by $\yap$.
 \end{defn}
-As $P_{\ya}$ is $\U(n)$-equivariant, one observes that $\UniGamma$ depends only on the eigenvalues of $A$.
-The following result, know as spectrum or eigenvalue estimation, states that the map $\ya \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\ya$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
+As $P_{\yap}$ is $\U(n)$-equivariant, one observes that $\UniGamma$ depends only on the eigenvalues of $A$.
+The following result, know as spectrum or eigenvalue estimation, states that the map $\yap \mapsto \UniGamma$ for $A$ positive semidefinite is concentrated those Young diagrams $\yap$ whose shape matches the shape of the eigenvalues $\ea = \eig(A)$ \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
-    Let $A$ be a positive semidefinite matrix with eigenvalues $\ea = \eig(A)$ and let $\ya \vdash_n a$.
+    Let $A$ be a positive semidefinite matrix with eigenvalues $\ea = \eig(A)$ and let $\yap \vdash_n a$.
     Then
     \begin{equation}
-        \UniGamma \leq \dim(V_{\ya}^{n}) \exp(-a \kl{\nya}{\nea}),
+        \UniGamma \leq \dim(V_{\yap}^{n}) \exp(-a \kl{\nya}{\nea}),
     \end{equation}
     where $\kl{\nya}{\nea}$ denotes the Kullback-Leibler divergence of $\nya$ from $\nea$.
 \end{prop}
@@ -673,12 +699,12 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     Then
     \begin{equation}
         \label{eq:HS_mean}
-        \mathbb E_{A} [A^{\ot a}] \coloneqq \int \diff \mu (A) A^{\ot a} = \sum_{\ya \vdash_n x} q_{\ya} P_{\ya}
+        \mathbb E_{A} [A^{\ot a}] \coloneqq \int \diff \mu (A) A^{\ot a} = \sum_{\yap \vdash_n x} q_{\yap} P_{\yap}
     \end{equation}
-    where the coefficient $q_{\ya}$ equals
+    where the coefficient $q_{\yap}$ equals
     \begin{equation}
         \label{eq:HS_mean_coeff}
-        q_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})}
+        q_{\yap} = \frac{\dim(V_{\yap}^{n})}{\dim(W_{\yap})\dim(V_{(a)}^{n^2})}
     \end{equation}
 \end{prop}
 \begin{proof}
@@ -689,17 +715,17 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     Let $A$ be a positive semidefinite $n \times n$ matrix such that $\Tr(A) = 1$.
     Then
     \begin{align}
-        \mathbb E_{A} \UniGamma \coloneqq \int \diff \mu(A) \UniGamma = \frac{\dim(V_{\ya}^{n})^2}{\dim(V_{(a)}^{n^2})}.
+        \mathbb E_{A} \UniGamma \coloneqq \int \diff \mu(A) \UniGamma = \frac{\dim(V_{\yap}^{n})^2}{\dim(V_{(a)}^{n^2})}.
     \end{align}
 \end{prop}
 \begin{prop}
     \label{prop:completeness_rel_uni}
-    Let $A$ be positive semidefinite $n\times n$ matrix with $\Tr(A) = 1$ with eigenvalues $\alpha = \eig(A)$ and rank $r(\alpha) = \rank(A)$.
+    Let $A$ be positive semidefinite $n\times n$ matrix with $\Tr(A) = 1$ with eigenvalues $\ea = \eig(A)$ and rank $r(\ea) = \rank(A)$.
     Then for any positive integer $a$,
     \begin{equation}
-        \sum_{\ya \vdash_{r(\alpha)} a} \UniGamma = 1,
+        \sum_{\yap \vdash_{r(\ea)} a} \UniGamma = 1,
     \end{equation}
-    where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\alpha)$.
+    where the sum if over Young diagrams $\yap$ with size $a$ with depth at most $r(\ea)$.
 \end{prop}
 
 {\color{blue}
@@ -736,17 +762,17 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     \end{enumerate}
 \end{prop}
 \begin{prop}
-    Let $A, B \geq 0$, and suppose $\alpha \vdash a, \beta \vdash b$.
+    Let $A, B \geq 0$, and suppose $\yap \vdash a, \ybp \vdash b$.
     Define $C=A+B$ and $c=a+b$.
     Then 
     \begin{equation}
-        \isotr{\alpha}{A} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\gamma}_{\alpha\beta} > 0}} \isotr{\gamma}{C}
+        \isotr{\yap}{A} \isotr{\ybp}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\ycp \vdash c\\c^{\ycp}_{\yap\ybp} > 0}} \isotr{\ycp}{C}
     \end{equation}
 \end{prop}
 
 \begin{cor}
     \begin{equation}
-        \mathbb E_{A} \isotr{\alpha}{A} \cdot \mathbb E_{B} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\gamma}_{\alpha\beta} > 0}} \mathbb E_{A,B}\isotr{\gamma}{A+B}
+        \mathbb E_{A} \isotr{\yap}{A} \cdot \mathbb E_{B} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\ycp}_{\yap\ybp} > 0}} \mathbb E_{A,B}\isotr{\gamma}{A+B}
     \end{equation}
 \end{cor}
 }
@@ -754,57 +780,57 @@ The following result, know as spectrum or eigenvalue estimation, states that the
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
 \label{sec:lr_tri}
 
-The purpose of this section is to reveal how eigenvalue estimation can be used to prove a kind of correspondence between trigonal eigenvalue $(\ea,\eb,\ec)$ and Littlewood-Richardson coefficients $c_{\ya\yb}^{\yc}$.
+The purpose of this section is to reveal how eigenvalue estimation can be used to prove a kind of correspondence between trigonal eigenvalue $(\ea,\eb,\ec)$ and Littlewood-Richardson coefficients $c_{\yap\ybp}^{\ycp}$.
 Given a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, by eigenvalue estimation we see that each of
 \begin{equation}
-    \ya \mapsto \UniGamma[A & \ya], \qquad
-    \yb  \mapsto \UniGamma[B & \yb], \qquad
-    \yc \mapsto \UniGamma[C & \yc],
+    \yap \mapsto \UniGamma[A & \yap], \qquad
+    \ybp  \mapsto \UniGamma[B & \ybp], \qquad
+    \ycp \mapsto \UniGamma[C & \ycp],
 \end{equation}
-are respectively concentrated around Young diagrams $(\ya,\yb,\yc)$ whose normalized shapes $(\nya, \nyb, \nyc)$ approximate the normalized eigenvalues $(\nea,\neb,\nec)$.
-As a result of this concentration, one can detect whether there exists Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ by examining if whether there exists an intersection of subspaces onto which $P_{\ya}$, $P_{\yb}$ and $P_{\yc}$ project.
+are respectively concentrated around Young diagrams $(\yap,\ybp,\ycp)$ whose normalized shapes $(\nya, \nyb, \nyc)$ approximate the normalized eigenvalues $(\nea,\neb,\nec)$.
+As a result of this concentration, one can detect whether there exists Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ by examining if whether there exists an intersection of subspaces onto which $P_{\yap}$, $P_{\ybp}$ and $P_{\ycp}$ project.
 To support this claim, we define the following quantity.
 \begin{defn}
     Given positive integers $a$ and $b$, let $c=a+b$.
-    Let $(\ya, \yb, \yc)$ be a triple of Young diagrams with sizes:
+    Let $(\yap, \ybp, \ycp)$ be a triple of Young diagrams with sizes:
     \begin{equation}
         \label{eq:three_yd_sizes}
-        \ya \vdash a, \qquad
-        \yb \vdash b, \qquad
-        \yc \vdash c,
+        \yap \vdash a, \qquad
+        \ybp \vdash b, \qquad
+        \ycp \vdash c,
     \end{equation}
     Define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b}$ by
     \begin{equation}
         \label{eq:tri_extended_projs}
         \begin{alignedat}{3}
-            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b}, \qquad
-            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb}, \qquad
-            &&\Pi_{\yc} \coloneqq P_{\yc}.
+            &\Pi_{\yap} \coloneqq P_{\yap} \ot \id^{\ot b}, \qquad
+            &&\Pi_{\ybp} \coloneqq \id^{\ot a} \ot P_{\ybp}, \qquad
+            &&\Pi_{\ycp} \coloneqq P_{\ycp}.
         \end{alignedat}
     \end{equation}
     Given $n\times n$ positive semidefinite matrices $A,B$ and $C=A+B$, let
     \begin{equation}
         \TriGamma
-        \coloneqq \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ya} \ot P_{\yb}) P_{\yc}]
+        \coloneqq \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\yap} \ot P_{\ybp}) P_{\ycp}]
     \end{equation}
 \end{defn}
 
 \begin{defn}[Littlewood-Richardson coefficients]
     \label{defn:lr_coeffs}
-    Let $(\ya, \yb, \yc)$ be a triple of Young diagrams with sizes $(a,b,c)$ where $c=a+b$ and let $V_{\ya}^n,V_{\yb}^n,V_{\yc}^n$ be a triple of irreducible representations of $\U(n)$.
-    Let $C_{\ya, \yb}^{\yc}$ denote the multiplicity space of $\U(n)$-intertwiners from $V_{\yc}$ to $V_{\ya} \ot V_{\yb}$:
+    Let $(\yap, \ybp, \ycp)$ be a triple of Young diagrams with sizes $(a,b,c)$ where $c=a+b$ and let $V_{\yap}^n,V_{\ybp}^n,V_{\ycp}^n$ be a triple of irreducible representations of $\U(n)$.
+    Let $C_{\yap, \ybp}^{\ycp}$ denote the multiplicity space of $\U(n)$-intertwiners from $V_{\ycp}$ to $V_{\yap} \ot V_{\ybp}$:
     \begin{equation}
-        C_{\ya, \yb}^{\yc} \coloneqq \Hom_{\U(n)}(V_{\yc}, V_{\ya}\ot V_{\yb}) \simeq \Inv_{\U(n)}(V_{\yc^*} \ot V_{\ya} \ot V_{\yb}).
+        C_{\yap, \ybp}^{\ycp} \coloneqq \Hom_{\U(n)}(V_{\ycp}, V_{\yap}\ot V_{\ybp}) \simeq \Inv_{\U(n)}(V_{\ycp^*} \ot V_{\yap} \ot V_{\ybp}).
     \end{equation}
     The \defnsty{Littlewood-Richardson coefficient} is defined as the dimension of this multiplicity space:
     \begin{equation}
-        c_{\ya,\yb}^{\yc} \coloneqq \dim(C_{\ya, \yb}^{\yc}).
+        c_{\yap,\ybp}^{\ycp} \coloneqq \dim(C_{\yap, \ybp}^{\ycp}).
     \end{equation}
     The \textit{Clebsch-Gordon isometry} is the $\U(n)$-equivariant isometric linear map
     \begin{equation}
         Y_{\ea,\eb}^{\ec} : C_{\ea,\eb}^{\ec} \ot V_{\ec} \to V_{\ea} \ot V_{\eb},
     \end{equation}
-    sending $f \ot v \in C_{\ya,\yb}^{\yc} \ot V_{\yc}$ to $f(v) \in V_{\ya}\ot V_{\yb}$\footnote{If $C_{\ya,\yb}^{\yc} = 0$, then $Y_{\ya,\yb}^{\yc}$ is identified with the zero map.}.
+    sending $f \ot v \in C_{\yap,\ybp}^{\ycp} \ot V_{\ycp}$ to $f(v) \in V_{\yap}\ot V_{\ybp}$\footnote{If $C_{\yap,\ybp}^{\ycp} = 0$, then $Y_{\yap,\ybp}^{\ycp}$ is identified with the zero map.}.
     The Clebsch-Gordon isometries (and coisometries) will be depicted diagrammatically with multiplicity spaces given a distinguished style as in \cite{agrawala1968graphical}:
     \begin{equation}
         \tikzfig{tikz/final/clebsch_gordon}.
@@ -813,56 +839,56 @@ To support this claim, we define the following quantity.
 
 \begin{prop}
     \label{prop:tri_HS_mean}
-    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ where $c=a+b$. Then
+    Let $(\yap,\ybp,\ycp)$ be Young diagrams with sizes $(a,b,c)$ where $c=a+b$. Then
     \begin{equation}
-        \mathbb E_{A,B}\TriGamma = R_{\ya,\yb;\yc} c^{\yc}_{\ya,\yb}
+        \mathbb E_{A,B}\TriGamma = R_{\yap,\ybp;\ycp} c^{\ycp}_{\yap,\ybp}
     \end{equation}
-    where $c^{\yc}_{\ya,\yb}$ is the Littlewood-Richardson coefficient and $R_{\ya,\yb;\yc}$ is the ratio of dimensions:
+    where $c^{\ycp}_{\yap,\ybp}$ is the Littlewood-Richardson coefficient and $R_{\yap,\ybp;\ycp}$ is the ratio of dimensions:
     \begin{equation}
-        R_{\ya,\yb;\yc} = \frac{\dim(V_{\ya}^n)\dim(V_{\yb}^n)\dim(V_{\yc}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})}.
+        R_{\yap,\ybp;\ycp} = \frac{\dim(V_{\yap}^n)\dim(V_{\ybp}^n)\dim(V_{\ycp}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})}.
     \end{equation}
 \end{prop}
 \begin{proof}
     Using \cref{prop:HS_measure} we obtain
    \begin{align}
         \mathbb E_{A,B}\TriGamma
-        &= q_{\ya}q_{\yb}\Tr[(P_{\ya}\ot P_{\yb}) P_{\yc}],
+        &= q_{\yap}q_{\ybp}\Tr[(P_{\yap}\ot P_{\ybp}) P_{\ycp}],
         \label{eq:mean_tri_gamma}
     \end{align}
-    where $q_{\ya}$ and $q_{\yb}$ are given by \cref{eq:HS_mean_coeff}.
-    Moreover, the operator $(P_{\ya}\ot P_{\yb}) P_{\yc}$ decomposes as
+    where $q_{\yap}$ and $q_{\ybp}$ are given by \cref{eq:HS_mean_coeff}.
+    Moreover, the operator $(P_{\yap}\ot P_{\ybp}) P_{\ycp}$ decomposes as
     \begin{equation}
         \label{eq:lr_triple_prod}
         \tikzfig{tikz/final/lr_triple_prod}.
     \end{equation}
     and therefore taking the trace yields
     \begin{equation}
-        \Tr[(P_{\ya}\ot P_{\yb}) P_{\yc}] = \dim(W_{\ya})\dim(W_{\yb})\dim(C_{\ya,\yb}^{\yc})\dim(V_{\yc}^{n}).
+        \Tr[(P_{\yap}\ot P_{\ybp}) P_{\ycp}] = \dim(W_{\yap})\dim(W_{\ybp})\dim(C_{\yap,\ybp}^{\ycp})\dim(V_{\ycp}^{n}).
         \label{eq:trace_tri_formula}
     \end{equation}
-    Combining \cref{eq:mean_tri_gamma} and \cref{eq:trace_tri_formula} produces the claimed formula as $c_{\ya,\yb}^{\yc} = \dim(C_{\ya,\yb}^{\yc})$.
+    Combining \cref{eq:mean_tri_gamma} and \cref{eq:trace_tri_formula} produces the claimed formula as $c_{\yap,\ybp}^{\ycp} = \dim(C_{\yap,\ybp}^{\ycp})$.
 \end{proof}
 
 Our first result establishes a connection between $\TriGamma$ and the corresponding Littlewood-Richardson coefficient.
 \begin{cor}
     \label{cor:tri_indep_upper_bound}
-    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ satisfying $c=a+b$.
+    Let $(\yap,\ybp,\ycp)$ be Young diagrams with sizes $(a,b,c)$ satisfying $c=a+b$.
     Then for any positive semidefinite matrices $(A,B,C)$ satisfying $C=A+B$, we have
     \begin{equation}
         \label{eq:tri_gamma_lr_upper_bound}
-        c^{\yc}_{\ya,\yb} = 0 \implies \TriGamma = 0.
+        c^{\ycp}_{\yap,\ybp} = 0 \implies \TriGamma = 0.
     \end{equation}
 \end{cor}
 \begin{proof}
     From the definition of $\TriGamma$, and the fact that $\nrm A^{\ot a} \ot \nrm B^{\ot b}$ is trace one positive semidefinite, we have the bound
     \begin{equation}
-        \TriGamma \leq \norm{(P_{\ya} \ot P_{\yb})P_{\yc}}_{\infty}
+        \TriGamma \leq \norm{(P_{\yap} \ot P_{\ybp})P_{\ycp}}_{\infty}
     \end{equation}
-    Using the decomposition of $(P_{\ya} \ot P_{\yb})P_{\yc}$ into isometries given by \cref{eq:lr_triple_prod}, we also have
+    Using the decomposition of $(P_{\yap} \ot P_{\ybp})P_{\ycp}$ into isometries given by \cref{eq:lr_triple_prod}, we also have
     \begin{equation}
-        \norm{(P_{\ya} \ot P_{\yb})P_{\yc}}_{\infty} = \norm{\id_{C^{\yc}_{\ya,\yb}}}_{\infty} = \begin{cases} 1 & c^{\yc}_{\ya,\yb} > 0 \\ 0 & c^{\yc}_{\ya,\yb} = 0 \end{cases}.
+        \norm{(P_{\yap} \ot P_{\ybp})P_{\ycp}}_{\infty} = \norm{\id_{C^{\ycp}_{\yap,\ybp}}}_{\infty} = \begin{cases} 1 & c^{\ycp}_{\yap,\ybp} > 0 \\ 0 & c^{\ycp}_{\yap,\ybp} = 0 \end{cases}.
     \end{equation}
-    Therefore if $c^{\yc}_{\ya,\yb} = 0$, then $(P_{\ya} \ot P_{\yb})P_{\yc} = 0$ and thus $\TriGamma = 0$ also.
+    Therefore if $c^{\ycp}_{\yap,\ybp} = 0$, then $(P_{\yap} \ot P_{\ybp})P_{\ycp} = 0$ and thus $\TriGamma = 0$ also.
 \end{proof}
 
 The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
@@ -872,43 +898,43 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     Then
     \begin{align}
         \label{eq:tri_completeness}
-        \sum_{\ya, \yb, \yc}
+        \sum_{\yap, \ybp, \ycp}
         \TriGamma = 1.
     \end{align}
     where the sum is taken over Young diagrams with the following sizes:
     \begin{equation}
         \label{eq:three_yd_sizes_rank}
-        \ya \vdash_{r(\ea)} a, \qquad
-        \yb \vdash_{r(\eb)} b, \qquad
-        \yc \vdash_{r(\ec)} c.
+        \yap \vdash_{r(\ea)} a, \qquad
+        \ybp \vdash_{r(\eb)} b, \qquad
+        \ycp \vdash_{r(\ec)} c.
     \end{equation}
 \end{prop}
 \begin{proof}
-    To begin, note that \cref{eq:tri_completeness} holds when the sum is taken over Young diagrams with unrestricted rank, meaning $(\ya, \yb, \yc)$ have sizes $(a,b,c)$ with $c=a+b$ but arbitrary rank/depth.
+    To begin, note that \cref{eq:tri_completeness} holds when the sum is taken over Young diagrams with unrestricted rank, meaning $(\yap, \ybp, \ycp)$ have sizes $(a,b,c)$ with $c=a+b$ but arbitrary rank/depth.
     That one can restrict to Young diagrams with depths bounded according to \cref{eq:three_yd_sizes_rank} follows
-    because $\TriGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec))$.
+    because $\TriGamma = 0$ whenever the depth of \textit{any} of $(\yap, \ybp, \ycp)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec))$.
 \end{proof}
 \begin{thm}
     Let $(\ea,\eb,\ec)$ be a triple of eigenvalues of non-zero positive semidefinite $(A,B,C)$ satisfying $C=A+B$.
-    Let $(\ya,\yb,\yc)$ be Young diagrams with sizes given by
+    Let $(\yap,\ybp,\ycp)$ be Young diagrams with sizes given by
     \begin{equation}
         \label{eq:ceil_tri_yd_sizes}
         \begin{alignedat}{3}
-            &\ya \vdash a = \ceil{k\abs{\ea}}, \qquad
-            &&\yb \vdash b = \ceil{k\abs{\eb}}, \qquad
-            &&\yc \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}},
+            &\yap \vdash a = \ceil{k\abs{\ea}}, \qquad
+            &&\ybp \vdash b = \ceil{k\abs{\eb}}, \qquad
+            &&\ycp \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}},
         \end{alignedat}
     \end{equation}
-    for any positive integer $k \geq \tau_{\min}^{-1}$ where $\tau_{\min} = \min\{\abs{\alpha},\abs{\beta},\abs{\gamma}\}$.
+    for any positive integer $k \geq \tau_{\min}^{-1}$ where $\tau_{\min} = \min\{\abs{\ea},\abs{\eb},\abs{\gamma}\}$.
     Then
     \begin{equation}
         \TriGamma
-        \leq p_{\tinytri}(k) \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}/2).
+        \leq p_{\tinytri}(k) \exp(-k I^{\yap\ybp\ycp}_{\ea\eb\ec}/2).
         \label{eq:tri_gamma_upper_bound}
     \end{equation}
-    where $p_{\tinytri}(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc}_{\ea\eb\ec}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
+    where $p_{\tinytri}(k)$ grows polynomially in $k$ and where $I^{\yap\ybp\ycp}_{\ea\eb\ec}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
     \begin{equation}
-        I^{\ya\yb\yc}_{\ea\eb\ec}
+        I^{\yap\ybp\ycp}_{\ea\eb\ec}
         =\abs{\ea} \kl{\nya}{\nea}
         +\abs{\eb} \kl{\nyb}{\neb}
         +\abs{\ec} \kl{\nyc}{\nec}.
@@ -916,31 +942,31 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
 \end{thm}
 \begin{proof}
     The first portion of the proof does not depend on the value of $k$.
-    For now, we suppose the Young diagrams $(\ya,\yb,\yc)$ have sizes $(a,b,c)$ with $c=a+b$.
+    For now, we suppose the Young diagrams $(\yap,\ybp,\ycp)$ have sizes $(a,b,c)$ with $c=a+b$.
     Then
     \begin{align}
         \TriGamma^2 
-        &= \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\ya} \ot P_{\yb}) P_{\yc}]^2, \\
-        &\leq \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b})P_{\yc}]
+        &= \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b}) (P_{\yap} \ot P_{\ybp}) P_{\ycp}]^2, \\
+        &\leq \Tr[\nrm A^{\ot a}P_{\yap}]\Tr[\nrm B^{\ot b}P_{\ybp}]\Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b})P_{\ycp}]
     \end{align}
     The third term can be relaxed further to an upper bound in terms of $C = A+B$ because $C^{\ot c} = (A+B)^{\ot a+b}$ and therefore 
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot c}) = \sum_{j=0}^{c} \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
+        \Tr(P_{\ycp} C^{\ot c}) = \sum_{j=0}^{c} \binom{c}{j} \Tr(P_{\ycp} (A^{\ot j} \ot B^{\ot c-j}).
     \end{equation}
-    Here we have used the $S_{c}$-equivariance of $P_{\yc}$.
+    Here we have used the $S_{c}$-equivariance of $P_{\ycp}$.
     Since each of the summands above are non-negative, we conclude for all $0 \leq j \leq c$ that
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
+        \Tr(P_{\ycp} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\ycp} (A^{\ot j} \ot B^{\ot c-j}).
     \end{equation}
     Letting $j = a$ and $c-j=c-a=b$ and rearranging yields
     \begin{equation}
-        \Tr(P_{\yc} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\yc} C^{\ot c}).
+        \Tr(P_{\ycp} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\ycp} C^{\ot c}).
     \end{equation}
     Altogether we obtain
     \begin{align}
         \label{eq:tri_gamma_abc_upper_bound}
         \TriGamma^2 
-        \leq \frac{a!b!}{c!} \frac{\abs{\ec}^{c}}{\abs{\ea}^a\abs{\eb}^{b}} \Tr[\nrm A^{\ot a}P_{\ya}]\Tr[\nrm B^{\ot b}P_{\yb}]\Tr[\nrm C^{\ot c} P_{\yc}]
+        \leq \frac{a!b!}{c!} \frac{\abs{\ec}^{c}}{\abs{\ea}^a\abs{\eb}^{b}} \Tr[\nrm A^{\ot a}P_{\yap}]\Tr[\nrm B^{\ot b}P_{\ybp}]\Tr[\nrm C^{\ot c} P_{\ycp}]
     \end{align}
     Our objective now will be to use the $k$-dependent values for $(a,b,c)$ to relax this upper bound further.
     From \cref{eq:ceil_tri_yd_sizes}, we obtain the following estimates:
@@ -958,51 +984,51 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     \end{equation}
     Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
-        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
+        \dim(V_{\ycp}^{n}) \leq (\abs{\ycp}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
     \end{equation}
-    because $(\yc_i - i)-(\yc_j - j) \leq \abs{\yc} + 1$ as well as $j-i\geq 1$.
-    Using eigenvalue estimation, \cref{prop:eig_est}, we can relax the bound on $\Tr[\nrm C^{\ot c} P_{\yc}]$ to obtain a bound in terms of $k$:
+    because $(\ycp_i - i)-(\ycp_j - j) \leq \abs{\ycp} + 1$ as well as $j-i\geq 1$.
+    Using eigenvalue estimation, \cref{prop:eig_est}, we can relax the bound on $\Tr[\nrm C^{\ot c} P_{\ycp}]$ to obtain a bound in terms of $k$:
     \begin{equation}
-        \Tr[\nrm C^{\ot c} P_{\yc}]
-        \leq \dim(V_{\yc}^{n}) \exp(-c \kl{\nrm \yc}{\nrm \ec})
-        \leq (k\abs{\ec}+3)^{n(n-1)/2} \exp(-k \abs{\ec} \kl{\nrm \yc}{\nrm \ec})
+        \Tr[\nrm C^{\ot c} P_{\ycp}]
+        \leq \dim(V_{\ycp}^{n}) \exp(-c \kl{\nrm \ycp}{\nrm \ec})
+        \leq (k\abs{\ec}+3)^{n(n-1)/2} \exp(-k \abs{\ec} \kl{\nrm \ycp}{\nrm \ec})
     \end{equation}
-    with similar bounds on $\Tr[\nrm A^{\ot a} P_{\ya}]$ and $\Tr[\nrm B^{\ot b} P_{\yb}]$.
+    with similar bounds on $\Tr[\nrm A^{\ot a} P_{\yap}]$ and $\Tr[\nrm B^{\ot b} P_{\ybp}]$.
     Combining these bounds together yields 
     \begin{equation}
-        \TriGammak^2 \leq 12^2 (k\abs{\ec}+2)^{\frac{1}{2}}[(k\abs{\ea}+2)(k\abs{\eb}+2)(k\abs{\ec}+3)]^{n(n-1)/2} \exp(-k I^{\ya\yb\yc}_{\ea\eb\ec}).
+        \TriGammak^2 \leq 12^2 (k\abs{\ec}+2)^{\frac{1}{2}}[(k\abs{\ea}+2)(k\abs{\eb}+2)(k\abs{\ec}+3)]^{n(n-1)/2} \exp(-k I^{\yap\ybp\ycp}_{\ea\eb\ec}).
     \end{equation}
     Therefore, the claim holds if $p_{\tinytri}(k)$ is taken to be
     \begin{equation}
         \label{eq:p_of_k_tri}
         p_{\tinytri}(k) = 12(k\tau_{\max}+3)^{\frac{3 n(n-1) + 1}{4}}.
     \end{equation}
-    where $\tau_{\max} = \max\{\abs{\alpha}, \abs{\beta}, \abs{\gamma}\}$.
+    where $\tau_{\max} = \max\{\abs{\ea}, \abs{\eb}, \abs{\ec}\}$.
 \end{proof}
 
 While the previous theorem states that $\TriGamma$ concentrates in magnitude around particular Young diagrams, it is not directly applicable to Horn problem simply because its value depends on more than just the eigenvalues of the matrices $(A,B,C)$.
 Nevertheless, combining the previous theorem the completeness relation (\cref{eq:tri_completeness}) yields a necessary condition for $(\ea,\eb,\ec)$ to be tetrahedral.
 \begin{cor}
     Let $(\ea,\eb,\ec)$ be the eigenvalues of non-zero positive semidefinite matrices $(A,B,C)$ satisfying $C=A+B$ with minimum trace $\tau_{\min}$.
-    Then there exists a sextuple of sequences of Young diagrams $(\ya_k, \yb_k, \yc_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_tri_yd_sizes}
+    Then there exists a sextuple of sequences of Young diagrams $(\yap_k, \ybp_k, \ycp_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_tri_yd_sizes}
     satisfying (i) the convergence condition
     \begin{equation}
         \label{eq:tri_convergence_rate}
-        I^{\ya_k\yb_k\yc_k}_{\ea\eb\ec}
+        I^{\yap_k\ybp_k\ycp_k}_{\ea\eb\ec}
         \leq \frac{2}{k} \log p_{\tinytri}(k) q_{\tinytri}(k)
         \stackrel{k\to\infty}{\longrightarrow} 0,
     \end{equation}
     where $q_{\tinytri}(k) = (k \tau_{\max}+2)^{3(r_{\max}-1)}$,
     and (ii) the non-vanishing of the Littlewood-Richardson coefficient
     \begin{equation}
-        c^{\yc_k}_{\ya_k,\yb_k} \neq 0.
+        c^{\ycp_k}_{\yap_k,\ybp_k} \neq 0.
     \end{equation}
 \end{cor}
 \begin{proof}
     To proof the claim, we construct the sequence implicitly.
-    For each $k$, it suffices to take $(\ya_k, \yb_k, \yc_k)$ to be any sextuple of Young diagrams which maximizes the value of $\TriGamma$ with sizes determined by \cref{eq:ceil_tri_yd_sizes}:
+    For each $k$, it suffices to take $(\yap_k, \ybp_k, \ycp_k)$ to be any sextuple of Young diagrams which maximizes the value of $\TriGamma$ with sizes determined by \cref{eq:ceil_tri_yd_sizes}:
     \begin{equation}
-        (\ya_k, \yb_k, \yc_k) \coloneqq \underset{\ya\yb\yc}{\argmax} \hspace{0.5em}\TriGamma.
+        (\yap_k, \ybp_k, \ycp_k) \coloneqq \underset{\yap\ybp\ycp}{\argmax} \hspace{0.5em}\TriGamma.
     \end{equation}
     While this maximal choice may not be unique, it will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TriGamma$ \cref{eq:tri_completeness}.
     Specifically, this maximal choice must satisfy
@@ -1012,10 +1038,10 @@ Nevertheless, combining the previous theorem the completeness relation (\cref{eq
     \end{equation}
     where $q_{\tinytri}(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:tri_completeness} viewed as a function of $k$.
     As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q_{\tinytri}(k)$ be as stated in the claim 
-    ensures \cref{eq:tri_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k)$ is at most $k \tau_{\max} + 2$ (resp. $r_{\max}$).
+    ensures \cref{eq:tri_gamma_lower_bound} holds because the size (resp. rank) of any of $(\yap_k, \ybp_k, \ycp_k)$ is at most $k \tau_{\max} + 2$ (resp. $r_{\max}$).
     Moreover, applying \cref{eq:tri_gamma_upper_bound} yields
     \begin{equation}
-        I^{\ya_k\yb_k\yc_k}_{\ea\eb\ec}
+        I^{\yap_k\ybp_k\ycp_k}_{\ea\eb\ec}
         \leq \frac{2}{k}\log (q_{\tinytri}(k)p_{\tinytri}(k))
     \end{equation}
     and thus \cref{eq:tri_convergence_rate} holds because $p_{\tinytri}(k)$ and $q_{\tinytri}(k)$ are polynomials in $k$ with coefficients depending on the maximum trace $\tau_{\max}$ and maximum rank $r_{\max}$.
@@ -1024,26 +1050,26 @@ Nevertheless, combining the previous theorem the completeness relation (\cref{eq
 \end{proof}
 
 \begin{rem}
-    The convergence condition above (\cref{eq:tri_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_tri_yd_sizes} together ensure that the Young diagrams $(\ya_k, \yb_k, \yc_k)$ converge to the eigenvalues $(\ea,\eb,\ec)$ in the following sense that
+    The convergence condition above (\cref{eq:tri_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_tri_yd_sizes} together ensure that the Young diagrams $(\yap_k, \ybp_k, \ycp_k)$ converge to the eigenvalues $(\ea,\eb,\ec)$ in the following sense that
     \begin{equation}
         \label{eq:tri_convergence}
         \begin{alignedat}{3}
-            & \frac{\ya_k}{k} \rightarrow \ea, \qquad
-            && \frac{\yb_k}{k} \rightarrow \eb, \qquad
-            && \frac{\yc_k}{k} \rightarrow \ec, \\
+            & \frac{\yap_k}{k} \rightarrow \ea, \qquad
+            && \frac{\ybp_k}{k} \rightarrow \eb, \qquad
+            && \frac{\ycp_k}{k} \rightarrow \ec, \\
         \end{alignedat}
     \end{equation}
     where $\frac{\yx_k}{k} \rightarrow \ex$ is shorthand for $\lim_{k\to \infty} (\yx_k)_i/k = \ex_i$ for all $i \in \{1,\ldots, n\}$.
 \end{rem}
 
-While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
+While the existence of a convergent sequence $(\yap_k, \ybp_k, \ycp_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
 In other words, if $(\ea,\eb,\ec)$ are not tetrahedral, then no such sequence can exist.
 
 \begin{cor}
     Let $(\ea, \eb, \ec)$ be a non-trigonal triple of positive semidefinite and non-zero eigenvalues.
-    Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k)$ with sizes given by \cref{eq:ceil_tri_yd_sizes} and converging to $(\ea,\eb,\ec)$ in the sense that \cref{eq:tri_convergence_rate} holds, one necessarily has
+    Then for all sequences of Young diagrams $(\yap_k, \ybp_k, \ycp_k)$ with sizes given by \cref{eq:ceil_tri_yd_sizes} and converging to $(\ea,\eb,\ec)$ in the sense that \cref{eq:tri_convergence_rate} holds, one necessarily has
     \begin{equation}
-        \forall k \geq K: \quad c^{\yc_k}_{\ya_k,\yb_k} = 0.
+        \forall k \geq K: \quad c^{\ycp_k}_{\yap_k,\ybp_k} = 0.
     \end{equation}
     for some sufficiently large $K$.
 \end{cor}
@@ -1064,32 +1090,32 @@ Here we establish this correspondence directly.
 \begin{defn}
     \label{defn:tet_gamma}
     Given positive integers $a,b$, and $d$, let $c=a+b,f=b+d$, and $e=a+b+d$.
-    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be a sextuple of Young diagrams with sizes:
+    Let $(\yap, \ybp, \ycp, \ydp, \yep, \yfp)$ be a sextuple of Young diagrams with sizes:
     \begin{equation}
         \label{eq:six_yd_sizes}
-        \ya \vdash a, \qquad
-        \yb \vdash b, \qquad
-        \yc \vdash c, \qquad
-        \yd \vdash d, \qquad
-        \ye \vdash e, \qquad
-        \yf \vdash f.
+        \yap \vdash a, \qquad
+        \ybp \vdash b, \qquad
+        \ycp \vdash c, \qquad
+        \ydp \vdash d, \qquad
+        \yep \vdash e, \qquad
+        \yfp \vdash f.
     \end{equation}
     Define corresponding projection operators acting on $(\mathbb C^{n})^{\ot a+b+d}$ by
     \begin{equation}
         \label{eq:tet_extended_projs}
         \begin{alignedat}{3}
-            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad
-            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb} \ot \id^{\ot d}, \qquad
-            &&\Pi_{\yc} \coloneqq P_{\yc} \ot \id^{\ot d}, \qquad\\
-             &\Pi_{\yd} \coloneqq \id^{\ot a} \ot \id^{\ot b} \ot P_{\yd}, \qquad
-            &&\Pi_{\ye} \coloneqq P_{\ye}, \qquad
-            &&\Pi_{\yf} \coloneqq \id^{\ot a} \ot P_{\yf}.
+            &\Pi_{\yap} \coloneqq P_{\yap} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad
+            &&\Pi_{\ybp} \coloneqq \id^{\ot a} \ot P_{\ybp} \ot \id^{\ot d}, \qquad
+            &&\Pi_{\ycp} \coloneqq P_{\ycp} \ot \id^{\ot d}, \qquad\\
+             &\Pi_{\ydp} \coloneqq \id^{\ot a} \ot \id^{\ot b} \ot P_{\ydp}, \qquad
+            &&\Pi_{\yep} \coloneqq P_{\yep}, \qquad
+            &&\Pi_{\yfp} \coloneqq \id^{\ot a} \ot P_{\yfp}.
         \end{alignedat}
     \end{equation}
     Given $n\times n$ positive semidefinite matrices $A,B,D$ with $C=A+B$, $F=B+D$, and $E=A+B+D$, let
     \begin{equation}
         \TetGamma
-        = \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}].
+        = \Tr[(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi_{\yap}\Pi_{\ybp}\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep}\Pi_{\yfp}].
     \end{equation}
 \end{defn}
 
@@ -1114,45 +1140,45 @@ Here we establish this correspondence directly.
     %In the context of the tetrahedral Horn problem for positive semidefinite eigenvalues, one necessarily has $\tau_{\min} = \min(\abs \ea, \abs \eb, \abs \ed)$.
 \end{rem}
 
-Another technical difficulty which complicates subsequent analysis is that the set of projection operators $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ defined by \cref{eq:tet_extended_projs} is \textit{almost} pairwise mutually commuting.
+Another technical difficulty which complicates subsequent analysis is that the set of projection operators $\{\Pi_{\yap}, \Pi_{\ybp}, \Pi_{\ycp}, \Pi_{\ydp}, \Pi_{\yep}, \Pi_{\yfp}\}$ defined by \cref{eq:tet_extended_projs} is \textit{almost} pairwise mutually commuting.
 \begin{lem}
     \label{lem:tet_com_rels}
-    Every pair of projection operators in $\{\Pi_{\ya}, \Pi_{\yb}, \Pi_{\yc}, \Pi_{\yd}, \Pi_{\ye}, \Pi_{\yf}\}$ is commuting with only possible exception being $\Pi_{\yc}$ and $\Pi_{\yf}$.
-    Therefore, the operators $\Pi^{\yc}_{\ya\yb\yd\ye}$ and $\Pi^{\yf}_{\ya\yb\yd\ye}$ defined by
+    Every pair of projection operators in $\{\Pi_{\yap}, \Pi_{\ybp}, \Pi_{\ycp}, \Pi_{\ydp}, \Pi_{\yep}, \Pi_{\yfp}\}$ is commuting with only possible exception being $\Pi_{\ycp}$ and $\Pi_{\yfp}$.
+    Therefore, the operators $\Pi^{\ycp}_{\yap\ybp\ydp\yep}$ and $\Pi^{\yfp}_{\yap\ybp\ydp\yep}$ defined by
     \begin{align}
         \label{eq:commuting_extended_projs}
         \begin{split}
-            \Pi^{\yc}_{\ya\yb\yd\ye} = \Pi_{\yc}\Pi_{\ya}\Pi_{\yb}\Pi_{\yd}\Pi_{\ye}, \quad \text{and} \quad
-            \Pi^{\yf}_{\ya\yb\yd\ye} = \Pi_{\yf}\Pi_{\ya}\Pi_{\yb}\Pi_{\yd}\Pi_{\ye},
+            \Pi^{\ycp}_{\yap\ybp\ydp\yep} = \Pi_{\ycp}\Pi_{\yap}\Pi_{\ybp}\Pi_{\ydp}\Pi_{\yep}, \quad \text{and} \quad
+            \Pi^{\yfp}_{\yap\ybp\ydp\yep} = \Pi_{\yfp}\Pi_{\yap}\Pi_{\ybp}\Pi_{\ydp}\Pi_{\yep},
         \end{split}
     \end{align}
     are projection operators.
 \end{lem}
 \begin{proof}
-    That all projection operators except the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ commute follows from elementary applications of Schur's lemma.
-    The obstruction for the pair $\{\Pi_{\yc}, \Pi_{\yf}\}$ is simply that $\Pi_{\yc}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot b+d}$ and likewise $\Pi_{\yf}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot a+b}$.
+    That all projection operators except the pair $\{\Pi_{\ycp}, \Pi_{\yfp}\}$ commute follows from elementary applications of Schur's lemma.
+    The obstruction for the pair $\{\Pi_{\ycp}, \Pi_{\yfp}\}$ is simply that $\Pi_{\ycp}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot b+d}$ and likewise $\Pi_{\yfp}$ is not necessarily $\SU(n)$-equivariant with respect to the diagonal action on $\mathbb C^{\ot a+b}$.
 \end{proof}
 
 \begin{defn}[Generalized 6j operators]
     \label{defn:sixj}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams with sizes $(a,b,c,d,e,f)$ given by \cref{eq:six_yd_sizes}.
+    Let $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ be a sextuple of Young diagrams with sizes $(a,b,c,d,e,f)$ given by \cref{eq:six_yd_sizes}.
     Then we define the \defnsty{$\U(n)$-$6j$ operator} to be the operator\footnotemark{}
     \begin{equation}
         \abcdefsymbolprimed
         :
-        C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
+        C^{\ycp}_{\yap,\ybp} \ot C^{\yep}_{\ydp,\ycp} \to C^{\yep}_{\yap, \yfp} \ot C^{\yfp}_{\ybp,\ydp},
     \end{equation}
     defined by
     \begin{equation}
         \label{eq:sixj}
         \abcdefsymbolprimed
         \coloneqq
-        \frac{1}{\dim(V_{\ye})}
-        \Tr_{V_{\ye}}[
-        Y_{\ya,\yf}^{\ye\dagger}
-        (\id_{V_{\ya}}\ot Y_{\yb,\yd}^{\yf\dagger})
-        (Y_{\ya,\yb}^{\yc}\ot\id_{V_{\yd}})
-        Y_{\yc,\yd}^{\ye}
+        \frac{1}{\dim(V_{\yep})}
+        \Tr_{V_{\yep}}[
+        Y_{\yap,\yfp}^{\yep\dagger}
+        (\id_{V_{\yap}}\ot Y_{\ybp,\ydp}^{\yfp\dagger})
+        (Y_{\yap,\ybp}^{\ycp}\ot\id_{V_{\ydp}})
+        Y_{\ycp,\ydp}^{\yep}
         ],
     \end{equation}
     and depicted diagrammatically by
@@ -1165,7 +1191,7 @@ Another technical difficulty which complicates subsequent analysis is that the s
 The following proposition is the analogue of \cref{prop:HS_integral_uni}.
 \begin{prop}
     \label{prop:HS_integral_tet}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams with sizes given by \cref{eq:six_yd_sizes}.
+    Let $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ be Young diagrams with sizes given by \cref{eq:six_yd_sizes}.
     Then
     \begin{align}
         \label{eq:tet_mean_value}
@@ -1174,24 +1200,24 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
             &\coloneqq
             \iiint \diff \mu(A)\diff \mu(B)\diff \mu(D)\TetGamma\\
             &=
-            R_{\ya\yb\yd;\ye}\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^2
+            R_{\yap\ybp\ydp;\yep}\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^2
         \end{split}
     \end{align}
-    where $R_{\ya\yb\yd;\ye}$ is a ratio of dimensions:
+    where $R_{\yap\ybp\ydp;\yep}$ is a ratio of dimensions:
     \begin{equation}
-        R_{\ya\yb\yd;\ye} = \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})}.
+        R_{\yap\ybp\ydp;\yep} = \frac{\dim(V_{\yap}^{n})\dim(V_{\ybp}^{n})\dim(V_{\ydp}^{n})\dim(V_{\yep}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})}.
     \end{equation}
 \end{prop}
 \begin{proof}
     To prove \cref{eq:tet_mean_value}, we use \cref{prop:HS_measure} and \cref{lem:tet_com_rels} to see that
     \begin{equation}
         \label{eq:tet_mean_step_1}
-        \mathbb E_{A,B,D}\TetGamma = q_{\ya}q_{\yb}q_{\yd} \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}).
+        \mathbb E_{A,B,D}\TetGamma = q_{\yap}q_{\ybp}q_{\ydp} \Tr(\Pi_{\yap}\Pi_{\ybp}\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep}\Pi_{\yfp}).
     \end{equation}
-    We claim that the product $\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}$ is related to the generalized $6j$ operator $\abcdefsymbolprimed$ in that there exists appropriately-typed isometries $\iota_{I}$ and $\iota_{II}$ such that
+    We claim that the product $\Pi_{\yap}\Pi_{\ybp}\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep}\Pi_{\yfp}$ is related to the generalized $6j$ operator $\abcdefsymbolprimed$ in that there exists appropriately-typed isometries $\iota_{I}$ and $\iota_{II}$ such that
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_iso}
-        \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}
+        \Pi_{\yap}\Pi_{\ybp}\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep}\Pi_{\yfp}
         =
         \iota_{II} \left(\id_{V_{\ee}^{n}} \ot \id_{W_{\ea}} \ot \id_{W_{\eb}} \ot \id_{W_{\ed}} \ot \abcdefsymbolprimed \right) \iota_{I}^{\dagger}
     \end{equation}
@@ -1202,7 +1228,7 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
     From \cref{eq:ud_sixj_prod_proj_iso} we conclude
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_hs_norm}
-        \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}) = \dim(V_{\ee}^{n})\dim(W_{\ea})\dim(W_{\eb})\dim(W_{\ed})\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^2,
+        \Tr(\Pi_{\yap}\Pi_{\ybp}\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep}\Pi_{\yfp}) = \dim(V_{\ee}^{n})\dim(W_{\ea})\dim(W_{\eb})\dim(W_{\ed})\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^2,
     \end{equation}
     Combining \cref{eq:ud_sixj_prod_proj_hs_norm} with \cref{eq:tet_mean_step_1} and \cref{eq:HS_mean_coeff} then yields \cref{eq:tet_mean_value}.
 \end{proof}
@@ -1213,31 +1239,31 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     Then
     \begin{align}
         \label{eq:tet_completeness}
-        \sum_{\substack{\ya \yb \yc \\ \yd \ye \yf}}
+        \sum_{\substack{\yap \ybp \ycp \\ \ydp \yep \yfp}}
         \TetGamma = 1.
     \end{align}
     where the sum is taken over Young diagrams with the following sizes:
     \begin{equation}
         \label{eq:six_yd_sizes_rank}
-        \ya \vdash_{r(\ea)} a, \qquad
-        \yb \vdash_{r(\eb)} b, \qquad
-        \yc \vdash_{r(\ec)} c, \qquad
-        \yd \vdash_{r(\ed)} d, \qquad
-        \ye \vdash_{r(\ee)} e, \qquad
-        \yf \vdash_{r(\ef)} f.
+        \yap \vdash_{r(\ea)} a, \qquad
+        \ybp \vdash_{r(\eb)} b, \qquad
+        \ycp \vdash_{r(\ec)} c, \qquad
+        \ydp \vdash_{r(\ed)} d, \qquad
+        \yep \vdash_{r(\ee)} e, \qquad
+        \yfp \vdash_{r(\ef)} f.
     \end{equation}
 \end{prop}
 \begin{proof}
-    To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:six_yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$.
+    To begin, note that \cref{eq:tet_completeness} holds when the sum is taken over Young diagrams with unrestricted rank according to \cref{eq:six_yd_sizes} because $\sum_{\yx \vdash_n \ell} P_{\yx} = \id_{n}^{\otimes \ell}$ for all positive integers $\ell$ and $\yx \in \{\yap, \ybp, \ycp, \ydp, \yep, \yfp\}$.
     That one can restrict to Young diagrams with depths bounded according to \cref{eq:six_yd_sizes_rank} follows
-    because $\TetGamma = 0$ whenever the depth of \textit{any} of $(\ya, \yb, \yc, \yd, \ye, \yf)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef))$.\footnote{This claim actually follows from \cref{thm:abd_dep_upper_bound} and will be proven shortly. Importantly, \cref{thm:abd_dep_upper_bound} does not rely on \cref{prop:completeness_rel_tet}.}
+    because $\TetGamma = 0$ whenever the depth of \textit{any} of $(\yap, \ybp, \ycp, \ydp, \yep, \yfp)$ exceeds the corresponding ranks $(r(\ea), r(\eb), r(\ec), r(\ed), r(\ee), r(\ef))$.\footnote{This claim actually follows from \cref{thm:abd_dep_upper_bound} and will be proven shortly. Importantly, \cref{thm:abd_dep_upper_bound} does not rely on \cref{prop:completeness_rel_tet}.}
 \end{proof}
 
 Our next goal will be to derive two upper bounds on the absolute value of $\TetGamma$.
 Our first upper bound is \textit{independent} of the given matrices and follows as a corollary of \cref{lem:tet_com_rels}.
 \begin{cor}
     \label{cor:abd_indep_upper_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be Young diagrams of sizes given by \cref{eq:six_yd_sizes}.
+    Let $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ be Young diagrams of sizes given by \cref{eq:six_yd_sizes}.
     Then for all tetrahedral, non-zero positive semidefinite $(A,B,C,D,E,F)$, we have
     \begin{equation}
         \label{eq:tet_gamma_sixj_upper_bound}
@@ -1250,10 +1276,10 @@ Our first upper bound is \textit{independent} of the given matrices and follows 
     \begin{equation}
         \TetGamma
         =
-        \Tr(\Pi^{\yf}_{\ya\yb\yd\ye}(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi^{\yc}_{\ya\yb\yd\ye}).
+        \Tr(\Pi^{\yfp}_{\yap\ybp\ydp\yep}(\nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}) \Pi^{\ycp}_{\yap\ybp\ydp\yep}).
     \end{equation}
     Moreover, as $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$ is positive semidefinite trace one,
-    and $\Pi_1 \coloneqq \Pi^{\yf}_{\ya\yb\yd\ye}$ and $\Pi_2 \coloneqq \Pi^{\yc}_{\ya\yb\yd\ye}$ are projection operators by \cref{lem:tet_com_rels}, we have
+    and $\Pi_1 \coloneqq \Pi^{\yfp}_{\yap\ybp\ydp\yep}$ and $\Pi_2 \coloneqq \Pi^{\ycp}_{\yap\ybp\ydp\yep}$ are projection operators by \cref{lem:tet_com_rels}, we have
     \begin{equation}
         \abs{\TetGamma} = \abs{\Tr(\Pi_1 \Omega \Pi_2)} \leq \abs{\braket{v, \Pi_1 \Pi_2 v}} \leq \norm{\Pi_1\Pi_2}_{\infty} = \norm{\abcdefsymbolprimed}_{\infty}.
     \end{equation}
@@ -1261,31 +1287,31 @@ Our first upper bound is \textit{independent} of the given matrices and follows 
 \end{proof}
 
 Our second upper bound on the magnitude of $\TetGamma$ depends on the \textit{eigenvalues} $(\ea,\eb,\ec,\ed,\ee,\ef)$ of the given tetrahedral matrices $(A, B, C, D, E, F)$ where $C=A+B$, $F=B+D$ and $E=A+B+D$.
-This result proves that in the limit of large Young diagrams, the magnitude of $\TetGamma$ is sharply concentrated around those Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ whose shapes resemble the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of $(A,B,C,D,E,F)$.
+This result proves that in the limit of large Young diagrams, the magnitude of $\TetGamma$ is sharply concentrated around those Young diagrams $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ whose shapes resemble the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of $(A,B,C,D,E,F)$.
 \begin{thm}
     \label{thm:abd_dep_upper_bound}
-    Let everything be as in \cref{defn:tet_gamma} and let the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes given by
+    Let everything be as in \cref{defn:tet_gamma} and let the Young diagrams $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ have sizes given by
     \begin{equation}
         \label{eq:ceil_yd_sizes}
         \begin{alignedat}{3}
-            &\ya \vdash a = \ceil{k\abs{\ea}}, \qquad
-            &&\yb \vdash b = \ceil{k\abs{\eb}}, \qquad
-            &&\yc \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}, \qquad\\
-            &\yd \vdash d = \ceil{k\abs{\ed}}, \qquad
-            &&\ye \vdash e = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}+\ceil{k\abs{\ed}}, \qquad
-            &&\yf \vdash f = \ceil{k\abs{\eb}}+\ceil{k\abs{\ed}},
+            &\yap \vdash a = \ceil{k\abs{\ea}}, \qquad
+            &&\ybp \vdash b = \ceil{k\abs{\eb}}, \qquad
+            &&\ycp \vdash c = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}, \qquad\\
+            &\ydp \vdash d = \ceil{k\abs{\ed}}, \qquad
+            &&\yep \vdash e = \ceil{k\abs{\ea}}+\ceil{k\abs{\eb}}+\ceil{k\abs{\ed}}, \qquad
+            &&\yfp \vdash f = \ceil{k\abs{\eb}}+\ceil{k\abs{\ed}},
         \end{alignedat}
     \end{equation}
     for some positive integer $k > \tau_{\min}^{-1}$ where $\tau_{\min}$ is the minimum trace.
     Then
     \begin{equation}
         \abs{\TetGamma}
-        \leq p(k) \exp(-k I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}/6).
+        \leq p(k) \exp(-k I^{\yap\ybp\ycp\ydp\yep\yfp}_{\ea\eb\ec\ed\ee\ef}/6).
         \label{eq:tet_gamma_upper_bound}
     \end{equation}
-    where $p(k)$ grows polynomially in $k$ and where $I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
+    where $p(k)$ grows polynomially in $k$ and where $I^{\yap\ybp\ycp\ydp\yep\yfp}_{\ea\eb\ec\ed\ee\ef}$ is a quantity which measures the deviation of the primed quantities from the unprimed quantities:
     \begin{equation}
-        I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}
+        I^{\yap\ybp\ycp\ydp\yep\yfp}_{\ea\eb\ec\ed\ee\ef}
         =\abs{\ea} \kl{\nya}{\nea}
         +\abs{\eb} \kl{\nyb}{\neb}
         +\abs{\ec} \kl{\nyc}{\nec}
@@ -1297,67 +1323,67 @@ This result proves that in the limit of large Young diagrams, the magnitude of $
 \end{thm}
 \begin{proof}
     The first portion of the proof does not depend on the value of $k$.
-    For now, we suppose the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ have sizes determined by \cref{eq:six_yd_sizes}.
+    For now, we suppose the Young diagrams $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ have sizes determined by \cref{eq:six_yd_sizes}.
     As in the proof of \cref{cor:abd_indep_upper_bound}, we let $\Omega \coloneqq \nrm A^{\ot a} \ot \nrm B^{\ot b} \ot \nrm D^{\ot d}$.
-    Using the commutation relations provided by \cref{lem:tet_com_rels} we apply the Cauchy-Schwarz inequality to $\braket{X,Y} = \Tr(X^{*} Y) \leq \Tr(X^{*}X)^{\frac{1}{2}}\Tr(Y^{*}Y)^{\frac{1}{2}}$ for $X = \Omega^{\frac{1}{2}}\Pi_{\yf}\Pi_{\ya}\Pi_{\yb}$ and $Y = \Omega^{\frac{1}{2}}\Pi_{\yc} \Pi_{\yd} \Pi_{\ye}$ to obtain
+    Using the commutation relations provided by \cref{lem:tet_com_rels} we apply the Cauchy-Schwarz inequality to $\braket{X,Y} = \Tr(X^{*} Y) \leq \Tr(X^{*}X)^{\frac{1}{2}}\Tr(Y^{*}Y)^{\frac{1}{2}}$ for $X = \Omega^{\frac{1}{2}}\Pi_{\yfp}\Pi_{\yap}\Pi_{\ybp}$ and $Y = \Omega^{\frac{1}{2}}\Pi_{\ycp} \Pi_{\ydp} \Pi_{\yep}$ to obtain
     \begin{align}
         \begin{split}
             \abs{\TetGamma}^{6}
-            &=\abs{\Tr[(\Pi_{\yf}\Pi_{\ya}\Pi_{\yb}) \Omega (\Pi_{\yc} \Pi_{\yd} \Pi_{\ye})]}^6\\
+            &=\abs{\Tr[(\Pi_{\yfp}\Pi_{\yap}\Pi_{\ybp}) \Omega (\Pi_{\ycp} \Pi_{\ydp} \Pi_{\yep})]}^6\\
             &\leq
-            \Tr(\Pi_{\yf}\Pi_{\ya}\Pi_{\yb} \Omega)^3
-            \Tr(\Pi_{\yc}\Pi_{\yd}\Pi_{\ye} \Omega)^3\\
+            \Tr(\Pi_{\yfp}\Pi_{\yap}\Pi_{\ybp} \Omega)^3
+            \Tr(\Pi_{\ycp}\Pi_{\ydp}\Pi_{\yep} \Omega)^3\\
             &\leq
-            \Tr(\Pi_{\yf}\Omega)\Tr(\Pi_{\ya}\Omega)\Tr(\Pi_{\yb} \Omega)
-            \Tr(\Pi_{\yc}\Omega)\Tr(\Pi_{\yd}\Omega)\Tr(\Pi_{\ye} \Omega),
+            \Tr(\Pi_{\yfp}\Omega)\Tr(\Pi_{\yap}\Omega)\Tr(\Pi_{\ybp} \Omega)
+            \Tr(\Pi_{\ycp}\Omega)\Tr(\Pi_{\ydp}\Omega)\Tr(\Pi_{\yep} \Omega),
         \end{split}
     \end{align}
-    where the last inequality follows because $\Pi_{\yx} \leq \id_n^{\ot \abs\yx}$ for each $\yx$ in $\{\ya,\yb,\yc,\yd,\ye,\yf\}$.
+    where the last inequality follows because $\Pi_{\yx} \leq \id_n^{\ot \abs\yx}$ for each $\yx$ in $\{\yap,\ybp,\ycp,\ydp,\yep,\yfp\}$.
 
-    Now, for each $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, it is possible to upper-bound $\Tr(\Pi_{\yx} \Omega)$ using the eigenvalue estimation technique (\cref{prop:eig_est}).
-    For a detailed example, we will consider value of $\Tr(\Pi_{\yc} \Omega)$:
+    Now, for each $\yx \in \{\yap, \ybp, \ycp, \ydp, \yep, \yfp\}$, it is possible to upper-bound $\Tr(\Pi_{\yx} \Omega)$ using the eigenvalue estimation technique (\cref{prop:eig_est}).
+    For a detailed example, we will consider value of $\Tr(\Pi_{\ycp} \Omega)$:
     \begin{align}
-        \Tr(\Pi_{\yc} \Omega)
-        = \frac{\Tr[(P_{\yc} \ot \id^{\ot d})(A^{\ot a}\ot B^{\ot b} \ot D^{\ot d})]}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}
-        = \frac{\Tr[P_{\yc}(A^{\ot a}\ot B^{\ot b})]}{\abs{\ea}^{a}\abs{\eb}^{b}}.
+        \Tr(\Pi_{\ycp} \Omega)
+        = \frac{\Tr[(P_{\ycp} \ot \id^{\ot d})(A^{\ot a}\ot B^{\ot b} \ot D^{\ot d})]}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}
+        = \frac{\Tr[P_{\ycp}(A^{\ot a}\ot B^{\ot b})]}{\abs{\ea}^{a}\abs{\eb}^{b}}.
     \end{align}
     Under the assumption that $C = A+B$, we have $C^{\ot c} = (A+B)^{\ot a+b}$ which implies
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot c}) = \sum_{k=0}^{c} \binom{c}{k} \Tr(P_{\yc} (A^{\ot k} \ot B^{\ot c-k}).
+        \Tr(P_{\ycp} C^{\ot c}) = \sum_{k=0}^{c} \binom{c}{k} \Tr(P_{\ycp} (A^{\ot k} \ot B^{\ot c-k}).
     \end{equation}
-    Here we have used the $S_{c}$-equivariance of $P_{\yc}$.
+    Here we have used the $S_{c}$-equivariance of $P_{\ycp}$.
     Since each of the summands above are non-negative, we conclude for all $0 \leq j \leq c$ that
     \begin{equation}
-        \Tr(P_{\yc} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\yc} (A^{\ot j} \ot B^{\ot c-j}).
+        \Tr(P_{\ycp} C^{\ot c}) \geq \binom{c}{j} \Tr(P_{\ycp} (A^{\ot j} \ot B^{\ot c-j}).
     \end{equation}
     Letting $j = a$ and rearranging yields
     \begin{equation}
-        \Tr(P_{\yc} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\yc} C^{\ot c}).
+        \Tr(P_{\ycp} (A^{\ot a} \ot B^{\ot b})) \leq \frac{a!b!}{c!}\Tr(P_{\ycp} C^{\ot c}).
     \end{equation}
     Combining this result with the spectrum estimation bound (\cref{prop:eig_est}) yields
     \begin{align}
-        \Tr(\Pi_{\yc} \Omega)
-        %&\leq \frac{1}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{x!y!}{(x+y)!}\Tr[P_{\yc}C^{\ot a+y}],
-        \leq \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}\dim(V_{\yc}^{n})\exp(-c\kl{\nyc}{\nec}).
+        \Tr(\Pi_{\ycp} \Omega)
+        %&\leq \frac{1}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{x!y!}{(x+y)!}\Tr[P_{\ycp}C^{\ot a+y}],
+        \leq \frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!}\dim(V_{\ycp}^{n})\exp(-c\kl{\nyc}{\nec}).
     \end{align}
-    Analogous calculations for $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$ produce the following set of upper bounds:
+    Analogous calculations for $\yx \in \{\yap, \ybp, \ycp, \ydp, \yep, \yfp\}$ produce the following set of upper bounds:
     \begin{align}
         \begin{split}
-            \Tr(\Pi_{\ya} \Omega)
-            &\leq \dim(V_{\ya}^{n}) \exp(- a \kl{\nya}{\nea}), \\
-            \Tr(\Pi_{\yb} \Omega)
-            &\leq \dim(V_{\yb}^{n}) \exp(- b \kl{\nyb}{\neb}), \\
-            \Tr(\Pi_{\yc} \Omega)
-            &\leq \dim(V_{\yc}^{n})\frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!} \exp(- c \kl{\nyc}{\nec}), \\
-            \Tr(\Pi_{\yd} \Omega)
-            &\leq \dim(V_{\yd}^{n}) \exp(- d \kl{\nyd}{\ned}), \\
-            \Tr(\Pi_{\ye} \Omega)
-            &\leq \dim(V_{\ye}^{n})\frac{\abs{\ee}^{e}}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}\frac{a!b!d!}{e!} \exp(- e \kl{\nye}{\nee}), \\
-            \Tr(\Pi_{\yf} \Omega)
-            &\leq \dim(V_{\yf}^{n}) \frac{\abs{\ef}^{f}}{\abs{\eb}^{b}\abs{\ed}^{d}}\frac{b!d!}{f!} \exp(- f \kl{\nyf}{\nef}).
+            \Tr(\Pi_{\yap} \Omega)
+            &\leq \dim(V_{\yap}^{n}) \exp(- a \kl{\nya}{\nea}), \\
+            \Tr(\Pi_{\ybp} \Omega)
+            &\leq \dim(V_{\ybp}^{n}) \exp(- b \kl{\nyb}{\neb}), \\
+            \Tr(\Pi_{\ycp} \Omega)
+            &\leq \dim(V_{\ycp}^{n})\frac{\abs{\ec}^{c}}{\abs{\ea}^{a}\abs{\eb}^{b}}\frac{a!b!}{c!} \exp(- c \kl{\nyc}{\nec}), \\
+            \Tr(\Pi_{\ydp} \Omega)
+            &\leq \dim(V_{\ydp}^{n}) \exp(- d \kl{\nyd}{\ned}), \\
+            \Tr(\Pi_{\yep} \Omega)
+            &\leq \dim(V_{\yep}^{n})\frac{\abs{\ee}^{e}}{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}\frac{a!b!d!}{e!} \exp(- e \kl{\nye}{\nee}), \\
+            \Tr(\Pi_{\yfp} \Omega)
+            &\leq \dim(V_{\yfp}^{n}) \frac{\abs{\ef}^{f}}{\abs{\eb}^{b}\abs{\ed}^{d}}\frac{b!d!}{f!} \exp(- f \kl{\nyf}{\nef}).
         \end{split}
     \end{align}
-    Our objective now will be to use the $k$-dependent values for $(a,b,c,d,e,f)$ to upper bound the multinomial prefactors appearing in the bounds for $\yc$, $\ye$, and $\yf$ above in terms of $k$.
+    Our objective now will be to use the $k$-dependent values for $(a,b,c,d,e,f)$ to upper bound the multinomial prefactors appearing in the bounds for $\ycp$, $\yep$, and $\yfp$ above in terms of $k$.
     From \cref{eq:ceil_yd_sizes}, we obtain the following estimates:
     \begin{equation}
         \label{eq:size_estimates}
@@ -1377,19 +1403,19 @@ This result proves that in the limit of large Young diagrams, the magnitude of $
     \end{equation}
     Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
-        \dim(V_{\yc}^{n}) \leq (\abs{\yc}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
+        \dim(V_{\ycp}^{n}) \leq (\abs{\ycp}+1)^{n(n-1)/2} \leq (k\abs{\ec}+3)^{n(n-1)/2},
     \end{equation}
-    because $(\yc_i - i)-(\yc_j - j) \leq \abs{\yc} + 1$ as well as $j-i\geq 1$.
-    Altogether, we can relax the bound on $\Tr(\Pi_{\yc} \Omega)$ to obtain
+    because $(\ycp_i - i)-(\ycp_j - j) \leq \abs{\ycp} + 1$ as well as $j-i\geq 1$.
+    Altogether, we can relax the bound on $\Tr(\Pi_{\ycp} \Omega)$ to obtain
     \begin{equation}
-        \Tr(\Pi_{\yc} \Omega) \leq
+        \Tr(\Pi_{\ycp} \Omega) \leq
         12^{2}(k\abs{\ec}+3)^{\frac{n(n-1)}{2}+\frac{1}{2}}\exp\left(-k\abs{\ec}\kl{\nyc}{\nec}\right).
     \end{equation}
-    A similar calculations for $\Tr(\Pi_{\ye} \Omega)$ yields (noting to apply \cref{lem:multinomial_dist_lower_bound} for trinomial distributions when $m=3$) yields:
+    A similar calculations for $\Tr(\Pi_{\yep} \Omega)$ yields (noting to apply \cref{lem:multinomial_dist_lower_bound} for trinomial distributions when $m=3$) yields:
     \begin{equation}
-        \Tr(\Pi_{\ye} \Omega) \leq 12^{3}(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+1}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
+        \Tr(\Pi_{\yep} \Omega) \leq 12^{3}(k\abs{\ee}+4)^{\frac{n(n-1)}{2}+1}\exp\left(-k\abs{\ee}\kl{\nye}{\nee}\right).
     \end{equation}
-    It is also not too difficult to see that the polynomial in $k$ prefactor in the upper bound on $\Tr(\Pi_{\ye} \Omega)$ above is the largest such prefactor and thus \cref{eq:tet_gamma_upper_bound} indeed holds if we take $p(k)$ to be
+    It is also not too difficult to see that the polynomial in $k$ prefactor in the upper bound on $\Tr(\Pi_{\yep} \Omega)$ above is the largest such prefactor and thus \cref{eq:tet_gamma_upper_bound} indeed holds if we take $p(k)$ to be
     \begin{equation}
         \label{eq:p_of_k}
         p(k) = 12^{3}(k\tau_{\max}+4)^{\frac{n(n-1)}{2}+1}.
@@ -1401,18 +1427,18 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
 \begin{cor}
     \label{cor:tet_sixj_lower_bound}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of non-zero positive semidefinite tetrahedral Hermitian matrices $(A,B,C,D,E,F)$ with minimum trace $\tau_{\min}$.
-    Then there exists a sextuple of sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes}
+    Then there exists a sextuple of sequences of Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ indexed by positive integers $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes}
     satisfying both (i) the convergence condition
     \begin{equation}
         \label{eq:sextuple_convergence_rate}
-        I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\ea\eb\ec\ed\ee\ef}
+        I^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}_{\ea\eb\ec\ed\ee\ef}
         \leq \frac{6}{k} \log p(k) q(k)
         \stackrel{k\to\infty}{\longrightarrow} 0,
     \end{equation}
     and (ii) the lower bound
     \begin{equation}
         \label{eq:ud_sixj_lower_bound}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty}
+        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}_{\infty}
         \geq \frac{1}{q(k)},
     \end{equation}
     where $p(k)$ is given by \cref{eq:p_of_k} whereas $q(k)$ is given by
@@ -1423,9 +1449,9 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
 \end{cor}
 \begin{proof}
     To proof the claim, we construct the sequence implicitly.
-    For each $k$, it suffices to take $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ to be any sextuple of Young diagrams which maximizes the value of $\abs{\TetGamma}$ with sizes determined by \cref{eq:ceil_yd_sizes}:
+    For each $k$, it suffices to take $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ to be any sextuple of Young diagrams which maximizes the value of $\abs{\TetGamma}$ with sizes determined by \cref{eq:ceil_yd_sizes}:
     \begin{equation}
-        (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \coloneqq \underset{\ya\yb\yc\yd\ye\yf}{\argmax} \abs{\TetGamma}.
+        (\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k) \coloneqq \underset{\yap\ybp\ycp\ydp\yep\yfp}{\argmax} \abs{\TetGamma}.
     \end{equation}
     While this maximal choice may not be unique, it will necessarily satisfy a lower bound due to the completeness relation satisfied by $\TetGamma$ \cref{eq:tet_completeness}.
     Specifically, this maximal choice must satisfy
@@ -1434,10 +1460,10 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
         \abs{\TetGammak} \geq \frac{1}{q(k)}
     \end{equation}
     where $q(k)$ is any upper bound on the number of possible summands in the completeness relation \cref{eq:tet_completeness} viewed as a function of $k$.
-    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size (resp. rank) of any of $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ is at most $k \tau_{\max} + 3$ (resp. $r_{\max}$).
+    As there less than or equal to $(s+1)^{r-1}$ Young diagrams with $r$ rows with size at most $s$, letting $q(k)$ be given by \cref{eq:q_of_k} ensures \cref{eq:tet_gamma_lower_bound} holds because the size (resp. rank) of any of $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ is at most $k \tau_{\max} + 3$ (resp. $r_{\max}$).
     Moreover, applying \cref{eq:tet_gamma_upper_bound} yields
     \begin{equation}
-        I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\ea\eb\ec\ed\ee\ef}
+        I^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}_{\ea\eb\ec\ed\ee\ef}
         \leq \frac{6}{k}\log (q(k)p(k))
     \end{equation}
     and thus \cref{eq:sextuple_convergence_rate} holds because $p(k)$ and $q(k)$ are polynomials in $k$ with coefficients depending on the maximum trace $\tau_{\max}$ and maximum rank $r_{\max}$.
@@ -1445,30 +1471,30 @@ Nevertheless, combining \cref{thm:abd_dep_upper_bound} with the completeness rel
 \end{proof}
 
 \begin{rem}
-    The convergence condition above (\cref{eq:sextuple_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_yd_sizes} together ensure that the Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the following sense that
+    The convergence condition above (\cref{eq:sextuple_convergence_rate}) in conjunction with the size conditions given by \cref{eq:ceil_yd_sizes} together ensure that the Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ converge to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the following sense that
     \begin{equation}
         \label{eq:sextuple_convergence}
         \begin{alignedat}{3}
-            & \frac{\ya_k}{k} \rightarrow \ea, \qquad
-            && \frac{\yb_k}{k} \rightarrow \eb, \qquad
-            && \frac{\yc_k}{k} \rightarrow \ec, \\
-            & \frac{\yd_k}{k} \rightarrow \ed, \qquad
-            && \frac{\ye_k}{k} \rightarrow \ee, \qquad
-            && \frac{\yf_k}{k} \rightarrow \ef,
+            & \frac{\yap_k}{k} \rightarrow \ea, \qquad
+            && \frac{\ybp_k}{k} \rightarrow \eb, \qquad
+            && \frac{\ycp_k}{k} \rightarrow \ec, \\
+            & \frac{\ydp_k}{k} \rightarrow \ed, \qquad
+            && \frac{\yep_k}{k} \rightarrow \ee, \qquad
+            && \frac{\yfp_k}{k} \rightarrow \ef,
         \end{alignedat}
     \end{equation}
     where $\frac{\yx_k}{k} \rightarrow \ex$ is shorthand for $\lim_{k\to \infty} (\yx_k)_i/k = \ex_i$ for all $i \in \{1,\ldots, n\}$.
 \end{rem}
 
-While the existence of a convergent sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
+While the existence of a convergent sequence $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ of primed Young diagrams is necessary for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral by \cref{cor:tet_sixj_lower_bound}, our next result proves it is also sufficient.
 In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such sequence can exist.
 
 \begin{cor}
     Suppose $(\ea, \eb, \ec, \ed, \ee, \ef)$ is a non-tetrahedral sextuple of positive semidefinite and non-zero eigenvalues with minimum trace $\tau_{\min}$.
-    Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes} and converging to $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have
+    Then for all sequences of Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ indexed by $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes} and converging to $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
+        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}_{\mathrm{HS}}^{2}
         \leq \exp\left(- \frac{k \tau_{\min}}{12} D_{*}^{\ea\eb\ec\ed\ee\ef} + O(\log k)\right),
     \end{equation}
     where $D_{*}^{\ea\eb\ec\ed\ee\ef} > 0$ is a positive constant which measures the distance from $(\ea, \eb, \ec, \ed, \ee, \ef)$ to the closed set of tetrahedral eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ with matching traces (i.e., $\abs{\ea}=\abs{\tilde \ea}$, $\abs{\eb}=\abs{\tilde \eb}$, etc.):
@@ -1489,7 +1515,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 \begin{proof}
     Using \cref{eq:tet_mean_value}, we have
     \begin{align}
-        R_{\ya\yb\yd;\ye}\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_{\mathrm{HS}}^2
+        R_{\yap\ybp\ydp;\yep}\norm{\tightcurlysixj{ \yap & \ybp & \ycp \\ \ydp & \yep & \yfp}}_{\mathrm{HS}}^2
         =
         \iiint \diff \mu(A)\diff \mu(B)\diff \mu(D)\TetGamma
     \end{align}
@@ -1510,12 +1536,12 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     In this notation, the integrand above is also equal to $\TetGammaTilde$.
     Moreover, by \cref{eq:tet_gamma_upper_bound} we have a bound on the integrand,
     \begin{equation}
-        \abs{\TetGammaTilde} \leq p(k) \exp(-k I^{\ya\yb\yc\yd\ye\yf}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}/6).
+        \abs{\TetGammaTilde} \leq p(k) \exp(-k I^{\yap\ybp\ycp\ydp\yep\yfp}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}/6).
     \end{equation}
     %which implies
     %\begin{align}
-    %    \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd &  \ye &  \yf}}_{\mathrm{HS}}^2
-    %    &\leq R_{\ya,\yb,\yd;\ye}p(k)\exp(-k \inf_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}}} I^{\ya\yb\yc\yd\ye\yf}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}/6)
+    %    \norm{\tightcurlysixj{ \yap & \ybp & \ycp \\ \ydp &  \yep &  \yfp}}_{\mathrm{HS}}^2
+    %    &\leq R_{\yap,\ybp,\ydp;\yep}p(k)\exp(-k \inf_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}}} I^{\yap\ybp\ycp\ydp\yep\yfp}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}/6)
     %\end{align}
     Now by construction, the eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ are tetrahedral while by assumption, the eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not tetrahedral (although they have matching traces due to \cref{eq:tilde_defns}).
     Therefore we conclude that
@@ -1524,11 +1550,11 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     \end{equation}
     and therefore $I_{\tilde \ea\tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ea\eb\ec\ed\ee\ef} > 0$.
 
-    Our goal now will be to show that for any sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converging to the non-tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, one can also guarantee that for sufficiently large $k$, the exponent $I_{\tilde \ea\tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ above is also bounded from below by a positive constant.
+    Our goal now will be to show that for any sequence of Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ converging to the non-tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, one can also guarantee that for sufficiently large $k$, the exponent $I_{\tilde \ea\tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}$ above is also bounded from below by a positive constant.
     Let $\ex$ be a placeholder variable indexing $\ex \in \{\ea,\eb,\ec,\ed,\ee,\ef\}$.
-    By Pinsker's inequality for the relative entropy, we obtain a sequence of lower bounds on $I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}$:
+    By Pinsker's inequality for the relative entropy, we obtain a sequence of lower bounds on $I^{\yap\ybp\ycp\ydp\yep\yfp}_{\ea\eb\ec\ed\ee\ef}$:
     \begin{align}
-        I^{\ya\yb\yc\yd\ye\yf}_{\ea\eb\ec\ed\ee\ef}
+        I^{\yap\ybp\ycp\ydp\yep\yfp}_{\ea\eb\ec\ed\ee\ef}
         = \sum_{\ex} \abs{\ex} \kl{\nrm \yx}{\nrm \ex}
         \geq \frac{1}{2}\sum_{\ex} \abs{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2}
         %&\geq \frac{1}{2} \max_{\ex} \abs{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2}\\
@@ -1536,13 +1562,13 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         \geq \frac{\tau_{\min}}{2} \max_{\ex} \norm{\nrm \yx - \nrm \ex}_{1}^{2},
     \end{align}
     where $\tau_{\min}$ is the minimum trace over the eigenvalues (the lower indices).
-    Applying the last bound to $I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ yields
+    Applying the last bound to $I_{\ea\eb\ec\ed\ee\ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}$ yields
     \begin{equation}
-        \max_{\ex}\norm{\nrm \ex_k' - \nrm \ex}_{1} \leq \sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}
+        \max_{\ex}\norm{\nrm \ex_k' - \nrm \ex}_{1} \leq \sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}}
     \end{equation}
-    whereas applying the second to last bound to $I_{\tilde \ea\tilde \eb \tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ (noting that $\tau_{\min}$ is also the minimum trace of $(\tilde \ea,\tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$) yields
+    whereas applying the second to last bound to $I_{\tilde \ea\tilde \eb \tilde \ec\tilde \ed\tilde \ee\tilde \ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}$ (noting that $\tau_{\min}$ is also the minimum trace of $(\tilde \ea,\tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$) yields
     \begin{equation}
-        \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2 \leq 2 \tau_{\min}^{-1}I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}.
+        \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2 \leq 2 \tau_{\min}^{-1}I^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}.
     \end{equation}
     Furthermore, by the reverse triangle inequality we have
     \begin{align}
@@ -1561,20 +1587,20 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     Also, $6 \max_{\ex}\norm{\nrm \yx_k - \nrm \ex}_{1} \geq \sum_{\ex}\norm{\nrm \yx_k - \nrm \ex}_{1}$ as there are six summands.
     Combining all these bounds together yields
     %\begin{align}
-    %    I^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}
+    %    I^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}
     %    \geq
     %    \frac{\tau_{\min}}{2} \sum_{\ex} \norm{\nrm \yx_k - \nrm {\tilde \ex}}_{1}^2
     %    &\geq \frac{\tau_{\min}}{2}\left(D_{*}^{\ea\eb\ec\ed\ee\ef}
-    %    -24\sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}}\right),
+    %    -24\sqrt{2 \tau_{\min}^{-1} I_{\ea\eb\ec\ed\ee\ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}}\right),
     %\end{align}
     %and therefore,
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd &  \ye &  \yf}}_{\mathrm{HS}}^2
+        \norm{\tightcurlysixj{ \yap & \ybp & \ycp \\ \ydp &  \yep &  \yfp}}_{\mathrm{HS}}^2
         \leq  \exp\left(-k\left\{\frac{\tau_{\min} D_{*}^{\ea\eb\ec\ed\ee\ef}}{12}
-        -2\sqrt{2 \tau_{\min} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}} - \frac{1}{k}\log(R_{\ea_k',\yb_k,\yd_k;\ye_k}^{-1} p(k))\right\}\right).
+        -2\sqrt{2 \tau_{\min} I_{\ea\eb\ec\ed\ee\ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}} - \frac{1}{k}\log(R_{\ea_k',\ybp_k,\ydp_k;\yep_k}^{-1} p(k))\right\}\right).
     \end{equation}
-    By assumption, the Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge in normalization to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that $I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
-    Moreover, $R_{\ea_k',\yb_k,\yd_k;\ye_k}^{-1}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so \cref{eq:seq_ud_sixj_upper_bound} holds as claimed.
+    By assumption, the Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ converge in normalization to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that $I_{\ea\eb\ec\ed\ee\ef}^{\yap_k\ybp_k\ycp_k\ydp_k\yep_k\yfp_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
+    Moreover, $R_{\ea_k',\ybp_k,\ydp_k;\yep_k}^{-1}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so \cref{eq:seq_ud_sixj_upper_bound} holds as claimed.
 \end{proof}
 
 \section{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
@@ -1582,15 +1608,15 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 
 The purpose of this section is to show how to use the necessary condition for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral provided by \cref{cor:tet_sixj_lower_bound} to derive inequalities satisfied by tetrahedral eigenvalues.
 Our strategy will be to prove an upper bound the generalized $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
-By combining this upper bound with the lower bound provided by \cref{cor:tet_sixj_lower_bound}, we obtain a new constraint on the convergent sequence of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$.
+By combining this upper bound with the lower bound provided by \cref{cor:tet_sixj_lower_bound}, we obtain a new constraint on the convergent sequence of Young diagrams $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$.
 
 \begin{thm}
     \label{thm:sixj_ssa_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
+    Let $(\yap,\ybp,\ycp,\ydp,\yep,\yfp)$ be a sextuple of Young diagrams.
     Then
     \begin{equation}
         \norm{\abcdefsymbolprimed}_{\text{HS}}^{2}
-        \leq \left(c_{\ya,\yf}^{\ye}c_{\yb,\yd}^{\yf}c_{\ya,\yb}^{\yc}c_{\yc,\yd}^{\ye}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)}.
+        \leq \left(c_{\yap,\yfp}^{\yep}c_{\ybp,\ydp}^{\yfp}c_{\yap,\ybp}^{\ycp}c_{\ycp,\ydp}^{\yep}\right)^{\frac{1}{2}} \frac{\dim(V_{\ycp}^n) \dim(V_{\yfp}^n)}{\dim(V_{\ybp}^n) \dim(V_{\yep}^n)}.
     \end{equation}
 \end{thm}
 \begin{proof}
@@ -1601,17 +1627,17 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
     \end{equation}
     The first equality follows from \cref{defn:sixj}.
     The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
-    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}^{n}$ to itself on the left and $V_{\ye}^{n}$ to itself on the right.
-    Note that the factors of $\dim(V_{\ye}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
+    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\ybp}^{n}$ to itself on the left and $V_{\yep}^{n}$ to itself on the right.
+    Note that the factors of $\dim(V_{\yep}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
 \end{proof}
 
 An immediate application of \cref{thm:sixj_ssa_bound} is to combine it with \cref{cor:tet_sixj_lower_bound}.
-If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:tet_sixj_lower_bound} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that\footnote{Here we used the well-known inequality $\norm{X}_{\infty} \leq \norm{X}_{\text{HS}}$.}
+If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:tet_sixj_lower_bound} there exists a converging sequence of Young diagrams $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$ such that\footnote{Here we used the well-known inequality $\norm{X}_{\infty} \leq \norm{X}_{\text{HS}}$.}
 \begin{equation}
     \label{eq:combined_bound}
-    \frac{1}{q(k)^2} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{\text{HS}}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
+    \frac{1}{q(k)^2} \leq \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k & \yep_k & \yfp_k}}_{\text{HS}}^2 \leq \left(c_{\yap_k,\yfp_k}^{\yep_k}c_{\ybp_k,\ydp_k}^{\yfp_k}c_{\yap_k,\ybp_k}^{\ycp_k}c_{\ycp_k,\ydp_k}^{\yep_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\ycp_k}^n) \dim(V_{\yfp_k}^n)}{\dim(V_{\ybp_k}^n) \dim(V_{\yep_k}^n)}.
 \end{equation}
-Remarkably, both $q(k)$ (given by \cref{eq:q_of_k}) and the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}, c_{\yb_k,\yd_k}^{\yf_k}, c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams, i.e., $n \geq r_{\max}$ where $r_{\max}$ is the maximum rank of any of the tetrahedral eigenvalues).
+Remarkably, both $q(k)$ (given by \cref{eq:q_of_k}) and the Littlewood-Richardson coefficients $c_{\yap_k,\yfp_k}^{\yep_k}, c_{\ybp_k,\ydp_k}^{\yfp_k}, c_{\yap_k,\ybp_k}^{\ycp_k}$, and $c_{\ycp_k,\ydp_k}^{\yep_k}$ are \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams, i.e., $n \geq r_{\max}$ where $r_{\max}$ is the maximum rank of any of the tetrahedral eigenvalues).
 This observation provides one with an opportunity to optimize the above bound by varying the value of $n$.
 
 In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
@@ -1637,17 +1663,17 @@ Here we use an elegant presentation of this scaling, namely \cite[Lemma 2]{harro
 From \cref{prop:harrow_formula} we obtain the following corollary.
 \begin{cor}
     \label{cor:harrow_ssa_lim}
-    Let $\yc,\yf,\yb,\ye$ be a quadruple of Young diagrams such that
+    Let $\ycp,\yfp,\ybp,\yep$ be a quadruple of Young diagrams such that
     \begin{equation}
         \label{eq:balanced_sizes}
-        \abs{\yc}+\abs{\yf} = \abs{\yb}+\abs{\ye}.
+        \abs{\ycp}+\abs{\yfp} = \abs{\ybp}+\abs{\yep}.
     \end{equation}
     Then
     \begin{equation}
         \lim_{n\to\infty}
-        \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)} =
-        \frac{\abs{\yb}!\abs{\ye}!}{\abs{\yc}!\abs{\yf}!}
-        \frac{\dim(W_{\yc}) \dim(W_{\yf})}{\dim(W_{\yb}) \dim(W_{\ye})}
+        \frac{\dim(V_{\ycp}^n) \dim(V_{\yfp}^n)}{\dim(V_{\ybp}^n) \dim(V_{\yep}^n)} =
+        \frac{\abs{\ybp}!\abs{\yep}!}{\abs{\ycp}!\abs{\yfp}!}
+        \frac{\dim(W_{\ycp}) \dim(W_{\yfp})}{\dim(W_{\ybp}) \dim(W_{\yep})}
     \end{equation}
 \end{cor}
 \begin{proof}
@@ -1655,7 +1681,7 @@ From \cref{prop:harrow_formula} we obtain the following corollary.
     \begin{equation}
         \lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{\abs{\yx}}} = \frac{\dim(W_{\yx})}{\abs{\yx}!}.
     \end{equation}
-    The claim then follows because the missing prefactor, $\frac{n^{\abs{\yb}}n^{\abs{\ye}}}{n^{\abs{\yc}}n^{\abs{\yf}}}$, is equal to one by \cref{eq:balanced_sizes}.
+    The claim then follows because the missing prefactor, $\frac{n^{\abs{\ybp}}n^{\abs{\yep}}}{n^{\abs{\ycp}}n^{\abs{\yfp}}}$, is equal to one by \cref{eq:balanced_sizes}.
 \end{proof}
 We are now in a position to prove the main result of this section.
 \begin{thm}
@@ -1674,8 +1700,8 @@ We are now in a position to prove the main result of this section.
     As $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral, the trace conditions (\cref{eq:tet_trace_conds}) necessarily imply that \cref{eq:balanced_sizes} holds.
     Therefore, by \cref{cor:harrow_ssa_lim} and the discussion surrounding the bound in \cref{eq:combined_bound} we conclude that along the convergent sequence of Young diagrams satisfies
     \begin{equation}
-        I' \coloneqq \lim_{k\to\infty} \frac{1}{k} \log \left[\frac{\abs{\yb_k}!\abs{\ye_k}!}{\abs{\yc_k}!\abs{\yf_k}!}
-        \frac{\dim(W_{\yc_k}) \dim(W_{\yf_k})}{\dim(W_{\yb_k}) \dim(W_{\ye_k})}\right] \geq 0
+        I' \coloneqq \lim_{k\to\infty} \frac{1}{k} \log \left[\frac{\abs{\ybp_k}!\abs{\yep_k}!}{\abs{\ycp_k}!\abs{\yfp_k}!}
+        \frac{\dim(W_{\ycp_k}) \dim(W_{\yfp_k})}{\dim(W_{\ybp_k}) \dim(W_{\yep_k})}\right] \geq 0
     \end{equation}
     provided the limit $I'$ exists.
     An application of Stirling's approximation \cite{robbins1955remark} to the dimension formula for $\dim(W_{\yx_k})$ together with the approximation $\yx_k \approx k \ex$ yields
@@ -1807,16 +1833,16 @@ Throughout \cref{sec:sixj_tet} we proved a number of results concerning the squa
 The following result provides a formula for the square of the Hilbert-Schmidt norm as an integral over four copies of $\U(n)$.
 \begin{lem}[Character formula]
     \label{lem:character_formula}
-    Let $\abcdefsymbolprimed : C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd}$ be the $6j$ operator defined in \cref{defn:sixj}.
+    Let $\abcdefsymbolprimed : C^{\ycp}_{\yap,\ybp} \ot C^{\yep}_{\ydp,\ycp} \to C^{\yep}_{\yap, \yfp} \ot C^{\yfp}_{\ybp,\ydp}$ be the $6j$ operator defined in \cref{defn:sixj}.
     Then
     \begin{equation}
         \label{eq:character_formula}
-        \dim(V_{\ye})^{2}\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^{2}
-        = \int_{\U(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\ya,\yb,\yc}_{\yd,\ye,\yf}(u_1,u_2,u_3,u_4).
+        \dim(V_{\yep})^{2}\norm{\abcdefsymbolprimed}_{\mathrm{HS}}^{2}
+        = \int_{\U(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\yap,\ybp,\ycp}_{\ydp,\yep,\yfp}(u_1,u_2,u_3,u_4).
     \end{equation}
     where
     \begin{equation}
-        X^{\ya,\yb,\yc}_{\yd,\ye,\yf}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\ya}(u_1^{-1}u_2)\chi_{\yb}(u_4^{-1}u_2)\chi_{\yc}(u_2^{-1}u_3)\chi_{\yd}(u_4^{-1}u_3)\chi_{\ye}(u_3^{-1}u_1)\chi_{\yf}(u_1^{-1}u_4).
+        X^{\yap,\ybp,\ycp}_{\ydp,\yep,\yfp}(u_1,u_2,u_3,u_4) \coloneqq \chi_{\yap}(u_1^{-1}u_2)\chi_{\ybp}(u_4^{-1}u_2)\chi_{\ycp}(u_2^{-1}u_3)\chi_{\ydp}(u_4^{-1}u_3)\chi_{\yep}(u_3^{-1}u_1)\chi_{\yfp}(u_1^{-1}u_4).
     \end{equation}
 \end{lem}
 Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(2)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
@@ -2099,7 +2125,7 @@ Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} p
     {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
 \end{equation}
 were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
-While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, $\abs{\ea} + \abs{\eb} = \abs{\ec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
+While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, $\abs{\ea} + \abs{\eb} = \abs{\ec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\ycp}_{\yap,\ybp}$ is non-zero (here $\yap = (i_p - p, \ldots, i_1 - 1)$, $\ybp = (j_p - p, \ldots, j_1 - 1)$, and $\ycp = (k_p - p, \ldots, k_1 - 1)$).
 Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
 
 For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
