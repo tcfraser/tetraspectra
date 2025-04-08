@@ -50,19 +50,21 @@ Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V
     :
     M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc} \to M^{\ye}_{\ya, \yf} \ot M^{\yf}_{\yb,\yd},
 \end{equation*}
-corresponding to the block-wise components of the change of basis from $\bigotimes_{\yc} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$ to $\bigotimes_{\phi} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$.
+corresponding to the block-wise components of the canonical isomorphism from $\bigotimes_{\yc} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$ to $\bigotimes_{\phi} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$.
 Whenever the group $G$ is multiplicity-free, in the sense that the dimensions of all multiplicity spaces, $m^{\yc}_{\ya,\yb} \coloneqq \dim M^{\yc}_{\ya,\yb}$, are either zero or one, the corresponding $6j$-symbol is merely a scalar quantity.
 
 %\textcolor{blue}{[OUTLINE: For SU(2), Barrett-Crane type state-sum models, etc...]\\}
-In particular, the group $\SU(2)$ is multiplicity-free in this sense, and the $6j$-symbols for $\SU(2)$ are, depending on the normalization and/or phase convention, are also referred to as Wigner $6j$-symbols or Wigner $6j$-coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory}.
+\vspace{1em}
+\textbf{Wigner's $\boldsymbol{6j}$-symbol for $\boldsymbol{\SU(2)}$:}
+The group $\SU(2)$ is multiplicity-free and the $6j$-symbols for $\SU(2)$ are, depending on the normalization and/or phase convention, are also referred to as Wigner $6j$-symbols or Wigner $6j$-coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory}.
 The $6j$-symbols for $\SU(2)$ play a foundational role in the quantum theory of angular momentum, modelling the recoupling theory of three angular momenta, and thus they are used frequently in calculations involving the scattering of mutliple particles in nuclear, atomic and molecular physics \cite{varshalovich1988quantum,edmonds1996angular,aquilanti2012semiclassical}.
 Beyond the direct application to the theory of angular momenta, the $6j$-symbols for $\SU(2)$ also constitute a primitive object in the theory of spin networks \cite{penrose1971applications, baez2010physics}, representing a minimal non-trivial closed spin network.
-General spin networks are networks of trivalent vertices and connections labelled by irreps (spins) of $\SU(2)$ which provide a discrete/combinatorial and manifestly invariant model with applications to gauge theories on graphs or manifolds \cite{baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and proposed theories of quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum}.
+General spin networks are networks of trivalent vertices and connections labelled by irreps (spins) of $\SU(2)$ which provide a discrete/combinatorial and manifestly invariant model with applications to gauge theories on graphs or manifolds \cite{baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and various aspects of proposed models for quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum}.
 
 %\textcolor{blue}{[OUTLINE: Asymptotics Wigner, Neville, Ponzano \& Regge, Roberts]}
 Throughout this paper, by the \textit{asymptotics} of $6j$-symbols, we are referring to their behaviour in the regime wherein the six highest weights, $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, are becoming larger and larger in a suitable sense.
 The asymptotics of the $6j$-symbol for $\SU(2)$, wherein the irreps of dimension $\ell + 1$ may be identifed either by integers $\ell \in \{0, 1, \ldots, \}$ or half-integers $j=\frac{\ell}{2}\in\{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots \}$, were initially investigated by \citeauthor{wigner1960group} \cite[Chapter 27]{wigner1960group}.
-In the context of the quantum theory of angular momenta, the limit of large $\ell$ or equivalently large spins $j$ (also called quantum numbers) can alternatively be interpreted as the limit $\hbar \to 0$ which surpresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as semiclassical limits.
+In the context of the quantum theory of angular momenta, the limit of large $\ell$, or equivalently large spins $j$, may also be interpreted as the limit wherein Planck's costant tends to zero, $\hbar \propto \frac{1}{k} \to 0$, which surpresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as semiclassical limits.
 Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ and total spin $\frac{e}{2}$, the $6j$-symbol, $\tightcurlysixj{a & b & c \\ d & e & f}$, can be interpreted as the quantum mechanical amplitude to observe the first and second particles to have combined spin $\frac{c}{2}$ given the second and third have combined spin $\frac{f}{2}$ \cite{wigner1960group,roberts1999classical}.
 \Citeauthor{wigner1960group} considered the probability for this event to occur in the asymptotic limit of large spins, i.e., the square of the $6j$-symbol, and conjectured the estimate:
 \begin{equation*}
@@ -79,43 +81,48 @@ Later, using techniques from geometric quantization theory, \citeauthor{roberts1
     where the sum is over the six sides $\ell$.
     Otherwise, if there does not exist a Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$, then $\tightcurlysixj{ka & kb & kc \\ kd & ke & kf}$ decays to zero at an exponential rate as $k\to\infty$.
 \end{thm}
+It is worth emphasizing that \citeauthor{chen1999asymptotics} \cite{chen1999asymptotics} obtained a rigorous proof of the \citeauthor{ponzano1968semiclassical} asymptotics (with minor correction due to \cite{watson1999asymptotic}) slightly before \citeauthor{chen1999asymptotics} using estimates from the theory of hypergeometric functions.
 Additional proofs of this asymptotic correspondence between $6j$-symbols for $\SU(2)$ and Euclidean tetrahedra have emerged in recent years including the elementary proof by \citeauthor{gurau2008ponzano} which applies Stirling's approximation directly to Racah's single-sum formula \cite{gurau2008ponzano} as well as group integral approach to evaluate so-called simple spin networks as Feynman graphs \cite{freidel2000simple,freidel2003asymptotics}.
+See also the paper by \citeauthor{bartlett2023coherent} for an accessible presentation of these kinds of calculations \cite{bartlett2023coherent}.
+Analogous asymptotic formulas have also been obtained for the $6j$ symbol for the quantum group $U_q(\mathfrak{sl}_2)$ for a $k$-dependent parameter $q$ \cite{taylor2006sixj}.
+The asymptotics calculated by \citeauthor{taylor2006sixj} encode (i) the existence of a spherical tetrahedron on the unit sphere with prescribed edgelengths whenever $q=\exp(i\pi/r(k))$ is an $r(k)$th root of unity or (ii) the existence of a hyperbolic tetrahedron with prescribed edgelengths when $q=\exp(\pi/r(k))$ is positive real (here $r(k) = k(r-2) + 2$ for $r > 2$ a fixed integer) \cite{taylor2006sixj}.
 
+More generally, that the asymptotics of representation-theoretic quantities (such as $6j$-symbols) are controlled by the existence of some critical geometric object is explained by the theory of geometric quantization \cite{roberts2002asymptotics}. 
+Geometric quantization, broadly speaking, associates classical phase spaces modelled by symplectic manifolds to quantum phase spaces modelled by Hilbert spaces \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
+In particular, \citeauthor{kirillov2004lectures}'s orbit principle \cite{kirillov2004lectures} proposes an association between (i) the coadjoint orbits of a compact Lie group $G$ passing through an integral weight $\yx$ to (ii) the corresponding unitary irreps of $G$ of highest weight $\yx$.
+Furthermore, products of coadjoint orbits correspond to tensor products of irreps and moreover symplectic quotients of the resulting products of orbits are identified with invariant vectors in the resulting tensor products of irreps \cite{roberts2002asymptotics, guillemin1982geometric}.
+For the aforementioned case of $\SU(2)$, the coadjoint orbits can be identified the $\mathrm{SO}(3)$ rotations of vectors in Euclidean $\mathbb R^3$ (i.e. spheres of fixed radius), and thus the asymptotics of representation-theoretic quantities for $\SU(2)$ are controlled by the existence of corresponding geometric objects in Euclidean $\mathbb R^3$ with prescribed edge-lengths \cite{roberts2002asymptotics}.
 
-Various $k\to \infty$ asymptotics for the $U_q(\mathfrak{sl}_2)$ $6j$ symbol were calculated by \citeauthor{taylor2006sixj} and shown to encode (i) the existence a spherical tetrahedron on the unit sphere with prescribed edgelengths when $q=\exp(i\pi/r(k))$ is a root of unity (with $r(k) = k(r-2) + 2$) and (ii) the existence of a hyperbolic tetrahedron with prescribed edgelengths when $q=\exp(\pi/r(k))$ \cite{taylor2006sixj}.
-
-See also the thesis of \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
-
-\textcolor{blue}{[OUTLINE: Previous work on SU(N)]\\}
-
-Over the years, much attention placed on the study of $\SU(n)$ or $U_q(\mathfrak{sl}_n)$ $6j$ symbols has been on the multiplicity-free cases where the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol is zero).
-
-For example, tensor products between symmetric representations $\lambda = (k)$ or conjugates of symmetric representations $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.} are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjected closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\ya,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\ya,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
+\vspace{1em}
+\textbf{$\boldsymbol{6j}$-symbols for $\boldsymbol{\SU(n)}$:}
+The purpose of this paper is prove statements concerning the asymptotics of the $6j$ symbol for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}$ are labelled by highest-weights $\lambda$ which can also be identified with Young diagrams.
+One of the primary difficulties in proving statements about $6j$ symbols for $\SU(n)$ for $n\geq 3$ is the presence of non-trivial multiplicity spaces, i.e. the dimensions of tensor-product multiplicity spaces for $\SU(n)$, also known as Littlewood-Richardson coefficients, can be greater than one.
+Because of these difficulties, over the years, considerable attention has been placed on the study of $\SU(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which are multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol defined to be zero).
+For instance, tensor products involving symmetric representations, where $\lambda = (k)$, or conjugates of symmetric representations, $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.}, are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjectured closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\ya,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\ya,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
 Building upon this work, \citeauthor{alekseev2020multiplicity} studied both the asymptotics of and symmetries in each of the Type I and Type II cases \cite{alekseev2020multiplicity}.
-
 More recently, \citeauthor{alcock2023wigner} have derived formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\ya, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\ya, \delta = (1)$ \cite{alcock2023wigner}.
 Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\ya,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\ya,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\ya,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
+As stated by \citeauthor{coquereaux2023integer}, ``apart from very few special cases (low dimension of irreps and no multiplicity), ... we are not aware of any published general result.'' \cite{coquereaux2023integer}.
 
 {\color{green!60!black}
-TC: Here are some research notes concerning the $6j$ symbols:
+TC: Some residual research-notes concerning the $6j$ symbols:
 \begin{itemize}
-    \item A great summary by \citeauthor{roberts2002asymptotics} \cite{roberts2002asymptotics}; also the original result for the asymptotics of the $6j$ symbols due to  \citeauthor{roberts1999classical} \cite{roberts1999classical}
-    \item See also \Citeauthor{coquereaux2023integer}'s later paper which promotes the alternative, albeit equivalent, usage of the integer-valued $\mathrm{gon}$ and $\mathrm{tet}$ functions in place of the rational-valued theta (triangular) and irrational-valued 6j symbols \cite{coquereaux2023integer}. Most relevant for this project is \cite[Section IV D]{coquereaux2023integer} which discusses the apparent lack of substantial generalization from $\SU(2)$ to $\SU(N)$ (\textit{``apart from very few special cases (low dimension of irreps and no multiplicity) worked out by physicists at the time of the eightfold way, we are not aware of any published general result''}).
-    \item The integral formula for the square of the $\SU(2)$ $6j$ symbol can be performed by an appropriate change of variables \cite{freidel2003asymptotics}. See also other papers by Laurent Freidel and collaborators that are relavent \cite{freidel2000simple,freidel20076j,freidel2010holomorphic}.
-    \item Only the tetrahedral symmetry of the $\U_q(\SL(N))$ $6j$-symbol is known, the counterpart of the Regge symmetry is still unknown, although \citeauthor{morozov2018new} conjectures the generalized Regge symmetry may be related to the eigenvalue conjecture, just as it is in the case when $N=2$ \cite{morozov2018new}.
     \item The graphical notion, specifically the use of an additional edge for multiplicity spaces can has been used for a long time, as early as \cite{agrawala1968graphical,moussouris1984quantum}.
-    \item \citeauthor{bartlett2023coherent} work with so-called \textit{coherent loop states} or \textit{Bohr-Sommerfeld states} to develop some semiclassical results concerning the inner products between such states (see also the talk on Youtube) \cite{bartlett2023coherent}
     \item \citeauthor{aquilanti2012semiclassical} provides an excellent introduction to subject of classical $6j$ symbols, their history, diagrammatics, presentations and asymptotics \cite{aquilanti2012semiclassical}
-    \item \citeauthor{artamonov2023classical} derives an explicit formula for the $n=3$ case \cite{artamonov2023classical}, and later to arbitrary $n$ \cite{artamonov2024calculation}.
     \item There is a series of papers involving Alexey Sleptsov, starting with a computation of quantum $6j$ symbols for generic dimension $n$ but with symmetric representations in terms of certain hypergeometric polynomials \cite{mironov2017sixj}, then with a discussion of the eigenvalue hypothesis and its potential connection to generalized Regge symmetries \cite{morozov2018new}, then with a calculation of all multiplicity free quantum $6j$ symbols for arbitrary dimension \cite{alekseev2020multiplicity}, and then finally with the discovery of novel ``tug-the-hook'' symmetries for quantum $6j$ symbols for all $n$ \cite{lanina2023tug}.
 \end{itemize}
 }
 
-
-\textcolor{blue}{[OUTLINE: What we do for SU(N)]\\}
-The purpose of this paper is to report the following pair of complementary bounds on the norm $\norm{\abcdefsymbol}$ of the $6j$ symbols for the unitary group $\U(n)$.
-\begin{thm}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying
+\vspace{1em}
+\textbf{Our contribution:}
+Our approach bypasses the difficulties presented by multiplicities by focusing only on the \textit{norm} (specifically the Hilbert-Schmidt, Frobenius or Schatten $2$-norm) of the $6j$ symbol for $\SU(n)$:
+\begin{equation*}
+    \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_2 \coloneqq \Tr\left[\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}^{\dagger}\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}\right].
+\end{equation*}
+Following the procedure provided by geometric quantization, one expects the asymptotics of the $6j$-symbol for $\U(n)$ to be controlled by existence of some kind of tetrahedral object in space of coadjoint orbits for $\U(n)$.
+In particular, the coadjoint orbits of $\U(n)$ can be identified with the orbits of $n\times n$ Hermitian matrices, $X$, under the conjugation action, $X \mapsto U^{-1} X U$, by unitary $n \times n$ matrices $U \in \U(n)$; in other words, coadjoint orbits are associated to sets of $n\times n$ Hermitian matrices sharing a common set of eigenvalues $\ex = (\ex_1 \geq \ldots \geq \ex_n)$.
+\begin{thm}[Informal]
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying
     \begin{equation}
         \label{eq:tet_cond}
         A+B=C, \quad B+D=F, \quad C+D=E, \quad A+F=E,
@@ -130,20 +137,31 @@ The purpose of this paper is to report the following pair of complementary bound
         \frac{\yep_k}{k} \rightarrow \ee, \quad
         \frac{\yfp_k}{k} \rightarrow \ef,
     \end{equation}
-    and
+    such that
     \begin{equation}
-        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}
+        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}_2
         \geq \frac{1}{\mathrm{poly}(k)}.
     \end{equation}
-    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have
-    \begin{equation}
-        \norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}
-        \leq \exp\left(- \Omega(k) \right).
-    \end{equation}
+    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any matrices satisfying \cref{eq:tet_cond}, then for any sequence of Young diagrams satisfying \cref{eq:six_convergence}, we have exponential decay in the value of $\norm{\tightcurlysixj{ \yap_k & \ybp_k & \ycp_k \\ \ydp_k &  \yep_k &  \yfp_k}}_2$.
 \end{thm}
+Before continuing, it is worth emphasizing the similarties and differences between our result and the asymptotic formula proven by \citeauthor{roberts1999classical} above \cite{roberts1999classical}.
+First and foremost, our result goes beyond that of \citeauthor{roberts1999classical} in the sense that it applies to the higher-rank Lie group $\SU(n)$ for $n \geq 3$.
+Moreover, our result, even when restricted to the case for $\SU(2)$, goes beyond the statement of proven by \citeauthor{roberts1999classical} in the sense our result is applicable to \textit{irrational} eigenvalues/edge-lengths, whereas the former is only applicable to \textit{integer}, or with a minor re-scaling, \textit{rational} eigenvalues/edge-lengths.
+Nevertheless, one drawback of our result is that it merely promises the \textit{existence} of some sequence of Young diagrams, $(\yap_k, \ybp_k, \ycp_k, \ydp_k, \yep_k, \yfp_k)$, converging to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, whereas the result of \citeauthor{roberts1999classical} provides a concrete statement about the particular sequence of \textit{scaled} Young diagrams $(k\ya, k\yb, k\yc, k\yd, k\ye, k\yf)$.
 
-\textcolor{blue}{[OUTLINE: Horn's problem]\\}
+Another drawback of our result is that it merely provides a polynomial lower bound on the value of $\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_2$ and does not provide an asymptotic formula which would serve as the a proper generalization of the \citeauthor{ponzano1968semiclassical} formula above \cite{ponzano1968semiclassical}.
+The \citeauthor{ponzano1968semiclassical} formula for $\SU(2)$ was traditionally obtained using the method of \textit{stationary phases} which relies on both an integral formula for the $6j$-symbol with exponential integrand along with a geometric understanding of the \textit{isolated} critical points for the exponential phase \cite{ponzano1968semiclassical,gurau2008ponzano}.
+In the case of $\SU(2)$ with generic edge-lengths, there is a formulation involving exactly \textit{two} isolated critical points corresponding the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with given edge-lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
+Generalizating this type of criticality analysis to $\SU(n)$ for $n\geq 3$ appears to be a significant challenge, and even if an analysis was performed, one would still need to compute a corresponding Hessian for each critical point and evaluate the total contribution \cite{roberts2002asymptotics}.
+Perhaps another approach, such as the approach adopted by \citeauthor{taylor2006sixj} (see also \cite{chen1999asymptotics}) to prove asymptotics for the $6j$-symbol for $U_q(\mathfrak{sl}_2)$ using recursion relations \cite{taylor2006sixj} (see also the formulas for the $6j$-symbols for $\mathrm{gl}_n$ in terms of generalized hypergeometric functions due to \cite{artamonov2024calculation} \cite{artamonov2023classical,artamonov2024calculation}).
 
+\vspace{1em}
+\textbf{Eigenvalue estimation:}
+Our approach to proving the above theorem relies on the concept of \textit{weak Schur sampling}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of density matrices (trace one, positive semidefinite matrices), which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak}.
+\textcolor{red}{TODO: Finish the explanation of the eigenvalue-estimation idea once a suitable presentation of the all the ``$\Gamma$'' functions have been fixed.}
+
+\vspace{1em}
+\textbf{The tetrahedral Horn problem:}
 The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
 In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
 These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec)$.
@@ -176,10 +194,8 @@ In particular, while the Horn's problem is completely characterized by a \textit
 More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem concerning either the singular values of products of invertible matrices or the tropical singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
 These variants are termed \textit{multiple} Horn problems in \cite{alekseev2025multiple}; the tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
 
-\textcolor{red}{TODO: Talk about Horn's problem \& Schubert calculus?}
-
-\textcolor{blue}{[OUTLINE: Quantum marginals problem]\\}
-
+\vspace{1em}
+\textbf{Quantum marginals \& the $\boldsymbol{6j}$-symbol for the symmetric group $S_k$:}
 The techniques used in this paper to derive bounds on the $6j$ symbol for the unitary group $\U(n)$ are closely related to the techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
 In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
 Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
@@ -187,9 +203,10 @@ In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (refer
 Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
 This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficents can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
 The approach taken by this paper differs from that of \cite{christandl2018recoupling} in that we prove the correspondence between solutions to the tetrahedral Horn problem on one hand and the asymptotics of the $6j$ symbol for $\U(n)$ on the other hand \textit{directly}, rather than first pass through the quantum marginals problem or through the $6j$ symbols for the symmetric group.
+We note that this more direct approach was initiated, in the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
 
-\textcolor{blue}{[OUTLINE: Structure of the paper]\\}
-
+\vspace{1em}
+\textbf{Structure of the paper:}
 \textcolor{red}{TODO: Descide on the structure of the paper?}
 Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 
@@ -1643,7 +1660,7 @@ This observation provides one with an opportunity to optimize the above bound by
 In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
 In general, for fixed $\yx$, the function $n \mapsto V_{\yx}^{n}$ can grow at an exponential rate with increasing $n$.
 One can find estimates for $\dim(V_{\ex}^{n})$ in the regime where $n$ is large compared to $\abs{\yx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
-Here we use an elegant presentation of this scaling, namely \cite[Lemma 2]{harrow2023approximate}, which relates the asymptotics of $\dim(V_{\ex}^{n})$ to $\dim(W_{\ex})$.
+Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\ex}^{n})$ to the value of $\dim(W_{\ex})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}.
 \begin{prop}
     \label{prop:harrow_formula}
     Let $\yx$ be a Young diagram with depth at most $n$. Then
@@ -1831,6 +1848,8 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
 
 Throughout \cref{sec:sixj_tet} we proved a number of results concerning the square of the Hilbert-Schmidt norm of the $6j$ operator defined by \cref{defn:sixj}.
 The following result provides a formula for the square of the Hilbert-Schmidt norm as an integral over four copies of $\U(n)$.
+
+
 \begin{lem}[Character formula]
     \label{lem:character_formula}
     Let $\abcdefsymbolprimed : C^{\ycp}_{\yap,\ybp} \ot C^{\yep}_{\ydp,\ycp} \to C^{\yep}_{\yap, \yfp} \ot C^{\yfp}_{\ybp,\ydp}$ be the $6j$ operator defined in \cref{defn:sixj}.
@@ -1846,6 +1865,7 @@ The following result provides a formula for the square of the Hilbert-Schmidt no
     \end{equation}
 \end{lem}
 Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known formula for the square of the $6j$-symbol for $\SU(2)$ (see \cite[Equation (1)]{freidel2003asymptotics} and also \cite{barrett1998classical,freidel2000simple}).
+
 \begin{proof}[Proof of \cref{lem:character_formula}]
     The proof follows from (i) the following identities concerning the character $\chi_{\yx}(u) = \Tr(\pi_{\yx}(u))$ and duality $\pi_{\yx}^{*}(u) = (\pi_{\yx}(u^{-1}))^{T}$ relations
     \begin{equation}
@@ -1860,6 +1880,7 @@ Note that when $n = 2$, \cref{eq:character_formula} recovers the well-known form
         \tikzfig{tikz/final/sixj_char_formula}.
     \end{equation}
 \end{proof}
+
 
 We conclude by noting that the integrands appearing in the above character formula are closely related to the character formula for the heat kernel of a compact Lie group $G$ \cite{fegan1978heat}, denoted by $K_{G}(u_1, u_2 ; t)$ in \cite{mcswiggen2021harish}:
 \begin{equation}
