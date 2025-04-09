@@ -98,10 +98,10 @@ For the aforementioned case of $\SU(2)$, the coadjoint orbits can be identified 
 The purpose of this paper is prove statements concerning the asymptotics of the $6j$ symbol for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}$ are labelled by highest-weights $\lambda$ which can also be identified with Young diagrams.
 One of the primary difficulties in proving statements about $6j$ symbols for $\SU(n)$ for $n\geq 3$ is the presence of non-trivial multiplicity spaces, i.e. the dimensions of tensor-product multiplicity spaces for $\SU(n)$, also known as Littlewood-Richardson coefficients, can be greater than one.
 Because of these difficulties, over the years, considerable attention has been placed on the study of $\SU(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which are multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is either one or zero (in the latter case the $6j$ symbol defined to be zero).
-For instance, tensor products involving symmetric representations, where $\lambda = (k)$, or conjugates of symmetric representations, $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.}, are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjectured closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\ya,\beta,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\ya,\beta,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
+For instance, tensor products involving symmetric representations, where $\lambda = (k)$, or conjugates of symmetric representations, $\lambda = (k^{(n-1)})$\footnote{Here $k^{(n-1)}$ is shorthand for a string $k, k, \ldots, k$ consisting of $n-1$ repetitions of $k$.}, are necessariliy multiplicity free; \citeauthor{nawata2013multiplicity} conjectured closed form expressions for the $U_q(\mathfrak{sl}_n)$ $6j$ symbols when $a,b,d$ and $e$ are integers and either $(\ya,\yb,\delta,\epsilon) = ((a), (b^{(n-1)}), (d), (e^{(n-1)}))$ and $a+d=b+e$ (Type I) or $(\ya,\yb,\delta,\epsilon) = ((a), (b), (d^{(n-1)}), (e^{(n-1)}))$ and $a+b=d+e$ (Type II) as well as the cases which can be related to these by known symmetries of the corresponding $6j$ symbol \cite{nawata2013multiplicity}.
 Building upon this work, \citeauthor{alekseev2020multiplicity} studied both the asymptotics of and symmetries in each of the Type I and Type II cases \cite{alekseev2020multiplicity}.
 More recently, \citeauthor{alcock2023wigner} have derived formulae for the family of $\SU(n)$ $6j$ symbols where at least one pair of non-adjacent edges, say $(\ya, \delta)$ correspond to a pair of fundamental/defining representations, i.e., $\ya, \delta = (1)$ \cite{alcock2023wigner}.
-Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\ya,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\ya,\beta,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\ya,\beta,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
+Shortly thereafter, \citeauthor{keppeler2024wigner} expanded upon these results to derive formulae for the family of $\SU(n)$ $6j$ symbols where either (i) at least one pair of non-adjacent edges consists of fundamental or adjoint representations, i.e., $\ya,\delta \in \{(1), (2, 1^{(n-2)})\}$, or (ii) at least one vertex, say $(\ya,\yb,\phi)$, consists entirely of fundamental or adjoint representations, i.e., $\ya,\yb,\phi \in \{(1), (2, 1^{(n-2)})\}$ \cite{keppeler2024wigner}.
 As stated by \citeauthor{coquereaux2023integer}, ``apart from very few special cases (low dimension of irreps and no multiplicity), ... we are not aware of any published general result.'' \cite{coquereaux2023integer}.
 
 {\color{green!60!black}
@@ -159,6 +159,9 @@ Perhaps another approach, such as the approach adopted by \citeauthor{taylor2006
 \textbf{Eigenvalue estimation:}
 Our approach to proving the above theorem relies on the concept of \textit{weak Schur sampling}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of density matrices (trace one, positive semidefinite matrices), which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak}.
 \textcolor{red}{TODO: Finish the explanation of the eigenvalue-estimation idea once a suitable presentation of the all the ``$\Gamma$'' functions have been fixed.}
+
+
+
 
 \vspace{1em}
 \textbf{The tetrahedral Horn problem:}
@@ -746,52 +749,125 @@ The following result, know as spectrum or eigenvalue estimation, states that the
 \end{prop}
 
 {\color{blue}
-
-\newcommand{\isotr}[2]{\tau_{#1}(#2)}
+\hrule
 \begin{defn}
-    Given an $n \times n$ matrix $X$ and an Young diagram $\lambda$ of size $\abs{\lambda}$ define
-    \begin{equation}
-        \isotr{\lambda}{X} \coloneqq \Tr[P_{\lambda} X^{\ot \abs{\lambda}}]
-    \end{equation}
-\end{defn}
-\begin{prop}
-    Here we report of a number of properties of $\isotr{\lambda}{X}$.
-    \begin{enumerate}[(i)]
-        \item $\isotr{(1)}{X} = \Tr(X)$
-        \item $\isotr{\lambda}{I} = \Tr(P_{\lambda}) = \dim(W_\lambda)\dim(V_{\lambda}^{n})$
-        \item $\sum_{\lambda \vdash k} \isotr{\lambda}{X} = \Tr(X)^k$ and thus $\sum_{\lambda \vdash k} \isotr{\lambda}{\nrm X} = 1$ for $\nrm X = \Tr(X)^{-1} X$
-        \item for all invertible $M$, $\isotr{\lambda}{MXM^{-1}} = \isotr{\lambda}{X}$ 
-        \item if $X \geq 0$ then $\isotr{\lambda}{X} \geq 0$
-        \item if $X, Y \geq 0$, then $\isotr{\lambda}{X+Y} \geq \isotr{\lambda}{X} + \isotr{\lambda}{X}$
-        \item if $s \in \mathbb R$, then $\isotr{\lambda}{sX} = s^{\abs{\lambda}} \isotr{\lambda}{X}$
-        \item $\isotr{\lambda}{X}$ is proportional to the Schur-polynomial in the eigenvalues of $X$:
-            \begin{equation}
-                \isotr{\lambda}{X} = \dim(W_{\lambda}) s_{\lambda}(\eig(X)),
-            \end{equation}
-        \item the expected value of $\tau_{\lambda}(X)$ over all $n\times n$ $X \geq 0, \Tr(X) = 1$ with respect to Hilbert-Schmidt measure is
-            \begin{equation}
-                \mathbb E_{X} \isotr{\lambda}{X} = \frac{\dim(V_{\lambda}^{n})^2}{\dim(V_{(\abs{\lambda})}^{n^2})}
-            \end{equation}
-        \item with respect to the Haar measure over $\U(n)$,
-            \begin{equation}
-                \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \isotr{\lambda}{X}   \frac{P_{\lambda}}{\Tr(P_{\lambda})}
-            \end{equation}
-    \end{enumerate}
-\end{prop}
-\begin{prop}
-    Let $A, B \geq 0$, and suppose $\yap \vdash a, \ybp \vdash b$.
-    Define $C=A+B$ and $c=a+b$.
-    Then 
-    \begin{equation}
-        \isotr{\yap}{A} \isotr{\ybp}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\ycp \vdash c\\c^{\ycp}_{\yap\ybp} > 0}} \isotr{\ycp}{C}
-    \end{equation}
-\end{prop}
+    Let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$.
+    Given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{(1)}^{n} \simeq \mathbb C^{n}$, we define $\pi_{\yx}(X)$ by the formula:
+    \begin{equation*}
+        \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]}{\dim(W_{\yx})}
+    \end{equation*}
+    where $\iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{(1)}^{\ot \abs{\yx}}$ is the equivariant isometry for the $\yx$-isotypic subspace of $V_{(1)}^{\ot \abs{\yx}}$.
+    This definition ensures that $X^{\ot k} \simeq \bigoplus_{\yx \vdash k} \pi_{\yx}(X)^{\oplus W_{\yx}}$ holds for any positive integer $k$.
+    When $X$ is a unitary, $\pi_{\yx}(X)$ is the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is warranted.
+    If $X \geq 0$ is positive semidefinite, then $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
+    If $\yx = (1)$, then $\pi_{(1)}(X) = X$ as $\dim(W_{(1)}) = 1$.
 
-\begin{cor}
+    Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
     \begin{equation}
-        \mathbb E_{A} \isotr{\yap}{A} \cdot \mathbb E_{B} \isotr{\beta}{B} \leq \frac{c!}{a!b!} \sum_{\substack{\gamma \vdash c\\c^{\ycp}_{\yap\ybp} > 0}} \mathbb E_{A,B}\isotr{\gamma}{A+B}
+        \pi_{\yx}(sX) = s^{\abs{\yx}} \pi_{\yx}(X).
     \end{equation}
-\end{cor}
+    Additionally, if $X,Y$ are two matrices, we have
+    \begin{equation}
+        \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y). 
+    \end{equation}
+    The \textit{character} of $X$ satisfies
+    \begin{equation*}
+        \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot \abs{\yx}}]}{\dim(W_{\yx})} = s_{\yx}(\eig(X)),
+    \end{equation*}
+    where $s_{\yx}(\eig(X))$ is the corresponding Schur-polynomial evaluated on the eigenvalues of $X$.
+    For fixed positive integer $k$, we also define the \textit{Plancherel distribution} $\{\mu_\yx | \yx \vdash k\}$ over Young diagrams of size $k$ according to
+    \begin{equation}
+        \mu_\yx \coloneqq \frac{(\dim W_\yx)^2}{\abs{\yx}!}.
+    \end{equation}
+    Moreover, we define the rescaling of $\pi_{\yx}(X)$ to be
+    \begin{equation*}
+        \tilde \pi_{\yx}(X) \coloneqq \dim(W_{\yx}) \pi_{\yx}(X) = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}],
+    \end{equation*}
+    and the corresponding rescaled character is
+    \begin{equation*}
+        \tilde \chi_\yx(X) \coloneqq \Tr[\tilde \pi_{\yx}(X)] = \Tr[P_{\yx} X^{\ot \abs{\yx}}],
+    \end{equation*}
+    where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace.
+    These rescaled characters emerge as coefficients in the following decomposition associated to an integral over Haar measure over $\U(n)$,
+    \begin{equation}
+        \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \tilde \chi_{\yx}(X)   \frac{P_{\yx}}{\Tr(P_{\yx})}.
+    \end{equation}
+    This normalization scheme means that $\tilde \pi_{\yx}(X)$ is \textit{not} a representation, while the character $\tilde \chi_{\yx}(X)$ satisfies
+    \begin{equation}
+        \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = \sum_{\yx \vdash k} \Tr[X^{\ot k} P_{\yx}] = \Tr[X^{\ot k}] = \Tr[X]^k.
+    \end{equation}
+    Therefore, whenever $X$ is positive semidefinite and trace one (i.e., when $X$ is a density matrix), we have that $\yx \mapsto \tilde \pi_{\yx}(X)$ is a probability distribution as $\sum_{\yx \vdash k} \tilde \pi_{\yx}(X) = 1$ in this case.
+\end{defn}
+\begin{thm}[Binomial theorem] 
+    Let $A,B$ be $n \times n$ matrices.
+    Then
+    \begin{equation}
+        \tilde \pi_\yc(A+B) = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+    \end{equation}
+    where $\Phi^{\yc}_{\ya,\yb}$ is the linear superoperator sending operators on $V_{\ya}^{n} \ot V_{\yb}^{n}$ to operators on $V_{\yc}^{n}$ according to the formula
+    \begin{equation}
+        \Phi^{\yc}_{\ya,\yb}[\cdot] = \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \cdot (\iota^{\yc}_{\ya,\yb}) \right],
+    \end{equation}
+    where $\iota^{\yc}_{\ya,\yb} : C^{\yc}_{\ya,\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$.
+    If $C^{\yc}_{\ya,\yb}$ is zero-dimensional, then $\iota^{\yc}_{\ya,\yb}$ and $\Phi^{\yc}_{\ya,\yb}$ are taken to be zero maps.
+\end{thm}
+\begin{proof}
+    By definition, we have $\tilde \pi_{\yc}(A+B) = \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A+B)^{\ot \abs{\yc}} \iota_{\yc}]$. 
+    Note that we can expand $(A+B)^{\ot k}$ using a non-commutative binomial expansion:
+    \begin{equation}
+        (A+B)^{\ot k} = \sum_{\ell=0}^{k} \binom{k}{\ell}  \frac{1}{k!} \sum_{\sigma \in S_{k}} \sigma^{-1} (A^{\ot \ell} \otimes B^{\ot (k - \ell)})\sigma
+    \end{equation}
+    were $\sigma \in S_{k}$ acts on $(\mathbb C^{n})^{\ot k}$ by permutation of tensor factors.
+    However, as the superoperator $\Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} \cdot \iota_{\yc}]$ is manifestly $S_{\abs{\yc}}$-invariant (due to the partial trace over the representation space $W_{\yc}$ of $S_{\abs{\yc}}$), the normalized sum over $\sigma \in S_{\abs{\yc}}$ dissappears and one obtains
+    \begin{equation}
+        \tilde \pi_{\yc}(A+B) = \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A^{\ot \ell} \otimes B^{\ot (k - \ell)}) \iota_{\yc}].
+    \end{equation}
+    Next decompose $A^{\ot \ell}$ (resp. $B^{\ot (k - \ell)}$) into isotypic components indexed by $\ya \vdash \ell$ (resp. $\yb \vdash k - \ell$) to obtain
+    \begin{equation}
+        A^{\ot \ell} \otimes B^{\ot (k - \ell)} = \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} (\iota_{\ya} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\ya} \ot \iota_{\yb})^{\dagger}.
+    \end{equation}
+    Combining these results and noting that the $S_{\abs{\yc}}$-representation space $W_{\yc}$ recomposes as $W_{\yc} \simeq \bigoplus_{\ya,\yb} C^{\yc}_{\ya,\yb} \ot W_{\ya} \ot W_{\yb}$ under the restriction to the subgroup $S_{\abs{\ya}} \times S_{\abs{\yb}}$ acting on the first $\ell$ and last $k-\ell$ factors respectively produces
+    \begin{align}
+        \tilde \pi_{\yc}(A+B) 
+        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (\iota_{\alpha} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\alpha} \ot \iota_{\yb})^{\dagger} \iota_{\yc}] \\
+        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \dim(W_\ya)\dim(W_\yb) \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \pi_\ya(A) \ot \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})], \\
+        &= \sum_{\alpha,\beta} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \tilde \pi_\ya(A) \ot \tilde \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})],
+    \end{align}
+    where the final line follows because $C^{\yc}_{\ya,\yb}$ is zero whenever $\abs{\yc} \neq \abs{\ya}+\abs{\yb}$.
+\end{proof}
+\begin{prop}[Eigenvalue-estimation]
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix and let $\ell(X) = -\log \eig(X)$ denote the entrywise negative logarithm of its eigenvalues.
+    Then
+    \begin{equation}
+        \exp( - \braket{\yx, \ell(X)}) \leq \chi_{\yx}(X) \leq \dim(V_{\yx}^{n})\exp( - \braket{\yx, \ell(X)})
+    \end{equation}
+    Alternatively,
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \leq \dim(V_{\yx}^{n}) \exp( - \abs{\yx} \kl{\nrm \yx}{\eig(\nrm X)}).
+    \end{equation}
+\end{prop}
+\begin{rem}
+    Taking the trace of both sides of the binomial theorem yields
+    \begin{equation}
+        \tilde \chi_\yc(A+B) = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+    \end{equation}
+    where $P^{\yc}_{\ya,\yb}$ projects onto the $\yc$-isotypic component of $V_{\ya}^n \ot V_{\yb}^{n}$.
+    Furthermore, the summand may be written in the following form:
+    \begin{equation}
+        \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)] = \Tr[P_{\yc}(P_{\ya}\ot P_{\yb})(A^{\ot \abs{\ya}} \ot B^{\ot \abs{\yb}})]
+    \end{equation}
+    Under the assumption that $A,B \geq 0$ and positive semidefinite, one obtains various inequalities.
+    For instance, by noting that $P^{\yc}_{\ya,\yb} \leq \id_{V_{\ya}^n} \ot \id_{V_{\yb}^n}$:
+    \begin{equation}
+        \tilde \chi_\yc(A+B) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya,\yb} \neq 0}} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B).
+    \end{equation}
+    Or by considering the edge cases where $(\alpha,\beta) = (\gamma,\cdot)$ or $(\alpha,\beta) = (\cdot,\gamma)$ we obtain superadditivity:
+    \begin{equation}
+        \pi_{\yc}(A+B) \geq \pi_{\yc}(A) + \pi_{\yc}(B).
+    \end{equation}
+\end{rem}
+
+\hrule
 }
 
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
