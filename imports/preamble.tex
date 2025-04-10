@@ -171,15 +171,15 @@
 \DeclareMathOperator{\U}{U}
 
 % Shorthands for eigenvalue labels 
-\newcommand{\ea}{\alpha}
-\newcommand{\eb}{\beta}
-\newcommand{\ec}{\gamma}
-\newcommand{\ed}{\delta}
-\newcommand{\ee}{\epsilon}
-\newcommand{\ef}{\phi}
-\newcommand{\ex}{\lambda}
+\newcommand{\ea}{\alpha'}
+\newcommand{\eb}{\beta'}
+\newcommand{\ec}{\gamma'}
+\newcommand{\ed}{\delta'}
+\newcommand{\ee}{\epsilon'}
+\newcommand{\ef}{\phi'}
+\newcommand{\ex}{\lambda'}
 
-% Shorthands for young diagram labels primed
+% Shorthands for young diagram labels
 \newcommand{\ya}{\alpha}
 \newcommand{\yb}{\beta}
 \newcommand{\yc}{\gamma}
@@ -188,33 +188,33 @@
 \newcommand{\yf}{\phi}
 \newcommand{\yx}{\lambda}
 
-% Shorthands for young diagram labels primed
-\newcommand{\yap}{\alpha'}
-\newcommand{\ybp}{\beta'}
-\newcommand{\ycp}{\gamma'}
-\newcommand{\ydp}{\delta'}
-\newcommand{\yep}{\epsilon'}
-\newcommand{\yfp}{\phi'}
-\newcommand{\yxp}{\lambda'}
+%% Shorthands for young diagram labels primed
+%\newcommand{\yap}{\alpha'}
+%\newcommand{\ybp}{\beta'}
+%\newcommand{\ycp}{\gamma'}
+%\newcommand{\ydp}{\delta'}
+%\newcommand{\yep}{\epsilon'}
+%\newcommand{\yfp}{\phi'}
+%\newcommand{\yxp}{\lambda'}
 
 % Normalization of eigenvalues or young diagrams
 \newcommand{\nrm}{\underline}
 
-\newcommand{\nea}{\nrm{\alpha}}
-\newcommand{\neb}{\nrm{\beta}}
-\newcommand{\nec}{\nrm{\gamma}}
-\newcommand{\ned}{\nrm{\delta}}
-\newcommand{\nee}{\nrm{\epsilon}}
-\newcommand{\nef}{\nrm{\phi}}
-\newcommand{\nex}{\nrm{\lambda}}
+\newcommand{\nea}{\nrm{\alpha}'}
+\newcommand{\neb}{\nrm{\beta}'}
+\newcommand{\nec}{\nrm{\gamma}'}
+\newcommand{\ned}{\nrm{\delta}'}
+\newcommand{\nee}{\nrm{\epsilon}'}
+\newcommand{\nef}{\nrm{\phi}'}
+\newcommand{\nex}{\nrm{\lambda}'}
 
-\newcommand{\nya}{\nrm{\alpha}'}
-\newcommand{\nyb}{\nrm{\beta}'}
-\newcommand{\nyc}{\nrm{\gamma}'}
-\newcommand{\nyd}{\nrm{\delta}'}
-\newcommand{\nye}{\nrm{\epsilon}'}
-\newcommand{\nyf}{\nrm{\phi}'}
-\newcommand{\nyx}{\nrm{\lambda}'}
+\newcommand{\nya}{\nrm{\alpha}}
+\newcommand{\nyb}{\nrm{\beta}}
+\newcommand{\nyc}{\nrm{\gamma}}
+\newcommand{\nyd}{\nrm{\delta}}
+\newcommand{\nye}{\nrm{\epsilon}}
+\newcommand{\nyf}{\nrm{\phi}}
+\newcommand{\nyx}{\nrm{\lambda}}
 
 % --- More compact arrays below ---
 % NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
@@ -226,7 +226,7 @@
 \endgroup
 }
 
-\newcommand{\UniGamma}[1][A & \alpha']{
+\newcommand{\UniGamma}[1][A & \ya]{
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
@@ -235,7 +235,7 @@
 \right]
 \endgroup
 }
-\newcommand{\TriGamma}[1][A & B & C & \alpha' & \beta' & \gamma']{
+\newcommand{\TriGamma}[1][A & B & C & \ya & \yb & \yc]{
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
@@ -244,8 +244,8 @@
 \right]
 \endgroup
 }
-\newcommand{\TriGammak}{\TriGamma[A & B & C & \alpha_k' & \beta_k' & \gamma_k']}
-\newcommand{\TetGamma}[1][A & B & C & \alpha' & \beta' & \gamma' \\ D & E & F & \delta' & \epsilon' & \phi']{
+\newcommand{\TriGammak}{\TriGamma[A & B & C & \ya_k & \yb_k & \yc_k]}
+\newcommand{\TetGamma}[1][A & B & C & \ya & \yb & \yc \\ D & E & F & \yd & \ye & \yf]{
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
@@ -254,7 +254,7 @@
 \right]
 \endgroup
 }
-\newcommand{\TetGammak}{\TetGamma[A & B & C & \alpha_k' & \beta_k' & \gamma_k' \\ D & E & F & \delta_k' & \epsilon_k' & \phi_k']}
+\newcommand{\TetGammak}{\TetGamma[A & B & C & \ya_k & \yb_k & \yc_k \\ D & E & F & \yd_k & \ye_k & \yf_k]}
 \newcommand{\TetGammaTilde}{\TetGamma[\tilde A & \tilde B & \tilde C & \alpha' & \beta' & \gamma' \\ \tilde D & \tilde E & \tilde F & \delta' & \epsilon' & \phi']}
 
 % =====================================
