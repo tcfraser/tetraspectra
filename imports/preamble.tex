@@ -142,8 +142,9 @@
 \newcommand{\tuple}[1]{\boldsymbol{#1}}
 \newcommand{\unent}{N} % unnormalized entropy
 \newcommand{\vN}{H} % von Neumann entropy 
-\newcommand{\tinytri}{\Delta}
-\newcommand{\tinytet}{\boxtimes}
+\newcommand{\tinyuni}{\includegraphics[width=0.2em]{tikz/uni-tri-tet/uni.pdf}}
+\newcommand{\tinytri}{\includegraphics[width=0.5em]{tikz/uni-tri-tet/tri.pdf}}
+\newcommand{\tinytet}{\includegraphics[width=0.7em]{tikz/uni-tri-tet/tet.pdf}}
 
 \newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
 \newcommand{\braa}[1]{%
@@ -226,35 +227,31 @@
 \endgroup
 }
 
-\newcommand{\UniGamma}[1][A & \ya]{
+\newcommand{\UniGammaOpt}[2]{\Gamma_{\!\!#1}(#2)}
+\newcommand{\UniGamma}{\UniGammaOpt{A}{\ya}}
+
+\newcommand{\TriGammaOpt}[2]{
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
-\Gamma\!\left[
-    \begin{array}{@{}c|c@{}}#1\end{array}
-\right]
+\Gamma_{\!\!#1}^{\tinytri}\!\left(
+    \begin{array}{@{}ccc@{}}#2\end{array}
+\right)
 \endgroup
 }
-\newcommand{\TriGamma}[1][A & B & C & \ya & \yb & \yc]{
+\newcommand{\TriGamma}{\TriGammaOpt{A,B}{\ya & \yb & \yc}}
+\newcommand{\TriGammak}{\TriGammaOpt{A,B}{\ya_k & \yb_k & \yc_k}}
+\newcommand{\TetGammaOpt}[2]{
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
-\Gamma\!\left[
-    \begin{array}{@{}ccc|ccc@{}}#1\end{array}
-\right]
+\Gamma_{\!\!#1}^{\tinytet}\!\left(
+    \begin{array}{@{}ccc@{}}#2\end{array}
+\right)
 \endgroup
 }
-\newcommand{\TriGammak}{\TriGamma[A & B & C & \ya_k & \yb_k & \yc_k]}
-\newcommand{\TetGamma}[1][A & B & C & \ya & \yb & \yc \\ D & E & F & \yd & \ye & \yf]{
-\begingroup
-\arraycolsep=1.5pt
-\renewcommand{\arraystretch}{0.3}
-\Gamma\!\left[
-    \begin{array}{@{}ccc|ccc@{}}#1\end{array}
-\right]
-\endgroup
-}
-\newcommand{\TetGammak}{\TetGamma[A & B & C & \ya_k & \yb_k & \yc_k \\ D & E & F & \yd_k & \ye_k & \yf_k]}
-\newcommand{\TetGammaTilde}{\TetGamma[\tilde A & \tilde B & \tilde C & \alpha' & \beta' & \gamma' \\ \tilde D & \tilde E & \tilde F & \delta' & \epsilon' & \phi']}
+\newcommand{\TetGamma}{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
+\newcommand{\TetGammak}{\TetGammaOpt{A,B,D}{\ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}
+\newcommand{\TetGammaTilde}{\TetGammaOpt{\tilde A, \tilde B, \tilde D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
 
 % =====================================

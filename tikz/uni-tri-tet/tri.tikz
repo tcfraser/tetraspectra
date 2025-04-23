@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (-0.25, -0.25) {};
+		\node [style=none] (3) at (0, 0.175) {};
+		\node [style=none] (4) at (0.25, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (1.center)
+			 to (3.center)
+			 to (4.center)
+			 to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

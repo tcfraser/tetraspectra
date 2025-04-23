@@ -157,7 +157,7 @@ Perhaps another approach, such as the approach adopted by \citeauthor{taylor2006
 
 \vspace{1em}
 \textbf{Eigenvalue estimation:}
-Our approach to proving the above theorem relies on the concept of \textit{weak Schur sampling}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of density matrices (trace one, positive semidefinite matrices), which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak}.
+Our approach to proving the above theorem relies on the concept of \textit{weak Schur sampling}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of density matrices (trace one, positive semidefinite matrices), which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
 \textcolor{red}{TODO: Finish the explanation of the eigenvalue-estimation idea once a suitable presentation of the all the ``$\Gamma$'' functions have been fixed.}
 
 
@@ -657,7 +657,7 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\SU(n)$.
 \end{rem}
 
-%\clearpage
+\clearpage
 \section{Representation theory \& eigenvalue estimation}
 \label{sec:rep_theory}
 
@@ -748,6 +748,7 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\ea)$.
 \end{prop}
 
+\clearpage
 {\color{blue}
 \hrule
 TC: Here I'm reformulating everything with two objectives: (i) to invoke eigenvalue estimation as late as possible, and (ii) to \textit{discover} the ``$\Gamma$'' quantities I had defined in a more organic way.
@@ -810,20 +811,86 @@ For example, the tri-gamma quantitity remerges as a summand in the binomial expa
     \end{equation}
     Given a tuple of non-negative sorted eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$ summing to one, $\sum_{i=1}^{n}\ex_i = 1$, the distribution $\yx \mapsto \tilde \chi_{\yx}(\diag(\ex))$ over $\yx \vdash k$ is denoted $\mathrm{SW}^{k}(\ex)$ and called the \textit{Schur-Weyl} distribution in \cite{odonnell2016efficient}.
 \end{defn}
+\begin{prop}[Eigenvalue estimation]
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
+    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    and
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
+\end{prop}
+%\begin{rem}
+%    We will use the eigenvalue estimation bounds in two essentially related ways.
+%    Let $N^{k}_{\varepsilon}(\nrm \ex)$ denote the set of Young diagrams $\yx$ of size $k$ which are close to the normalized eigenvalues $\nrm \ex$:
+%    \begin{equation}
+%        N^{k}_{\varepsilon}(\nrm \ex) \coloneqq \{ \yx \vdash k \mid \kl{\nrm \yx}{\nrm \ex} < \varepsilon \}.
+%    \end{equation}
+%    Then we have a lower bound,
+%    \begin{equation}
+%        \yx \in N^{k}_{\varepsilon}(\nrm \ex) \implies \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(- k \varepsilon).
+%    \end{equation}
+%\end{rem}
+\begin{prop}[Eigenvalue separation]
+    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
+    For each positive integer $k \geq 1$ and positive powers $p,q > 0$, define
+    \begin{equation}
+        \Delta_{k}^{p,q}(A, B) \coloneqq \sum_{\yx \vdash k}\tilde \chi_{\yx}(A)^p\tilde \chi_{\yx}(B)^{q}.
+    \end{equation}
+    By homogeneity, we have $\Delta_{k}^{p,q}(a A, b B) = a^{pk}b^{qk}\Delta_{k}^{p,q}(A, B)$.
+    Moreover, we have
+    \begin{equation}
+        \Delta_{k}^{p,q}(\nrm A, \nrm B) \leq \abs{\mathrm{Par}(k,n)} m_n(k)^{p+q} \exp\left(-ks^2\frac{pq}{2(p+q)}\right).
+    \end{equation}
+    Therefore, if $s > 0$, then $\lim_{k\to \infty} \Delta_{k}^{p,q}(\nrm A, \nrm B) = 0$ for every $p,q>0$.
+    Otherwise, if $s = 0$, then $\nrm \ea = \nrm \eb$ and
+    \begin{equation}
+        \Delta_{k}^{p,q}(\nrm A, \nrm B) \coloneqq \sum_{\yx \vdash k}\tilde \chi_{\yx}(\nrm \ea)^{p+q} \geq \frac{1}{\abs{\mathrm{Par}(k,n)}^{p+q-1}}.
+    \end{equation}
+    Of special importance is the case where $p = q = \frac{1}{2}$, in which case $\Delta_{k}^{\frac{1}{2},\frac{1}{2}}(A, B)$ becomes the fidelity between the probability distributions $\tilde \chi_{\yx}(\nrm A)$ and $\tilde \chi_{\yx}(\nrm B)$:
+    \begin{equation}
+        F_{k}(\nrm A, \nrm B) \coloneqq \Delta_{k}^{\frac{1}{2}, \frac{1}{2}}(\nrm A, \nrm B) = \sum_{\yx \vdash k}\sqrt{\tilde \chi_{\yx}(\nrm A)\tilde \chi_{\yx}(\nrm B)}.
+    \end{equation}
+    Then if $s > 0$ we have
+    \begin{equation}
+        F_k(\nrm A, \nrm B) \leq \abs{\mathrm{Par}(k,n)} m_n(k) \exp\left(-\frac{ks^2}{8}\right).
+    \end{equation}
+    and otherwise, $s = 0$ and
+    \begin{equation}
+        F_k(\nrm A, \nrm B) = 1.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The proof follows from eigenvalue estimation for a Young diagram $\yx \vdash k$ which yields
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm A) \leq m_n(k) \exp( - k \kl{\nrm \yx}{\nrm \ea}).
+    \end{equation}
+    Furthermore, Pinsker's inequality yields
+    \begin{align}
+        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
+        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2},
+        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
+    \end{align}
+    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
+    For the lower bound in the case where $s=0$, we use the fact that $\tilde \chi_{\yx}(\nrm \ea)$ is a probability distributon and thus the relavent quantity is minimized for uniform distributions.
+\end{proof}
 It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
 \begin{equation}
     V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
 \end{equation}
 Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
 \begin{equation}
-    h_{\yx} \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
+    h_n(\yx) \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
 \end{equation}
 The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
 \begin{prop}
     Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
     Then for $\yx \vdash k$,
     \begin{align}
-        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h_{\yx} \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h_n(\yx) \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
     \end{align}
 \end{prop}
 \begin{proof}
@@ -832,14 +899,14 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
     \end{equation}
     for some proportionality constants $h_{\yx}$.
-    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h_{\yx}$.
+    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h_n(\yx)$.
     Therefore,
     \begin{align}
         \mathbb E_{X} [\tilde \pi_{\yx}(X)]
         = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
-        = h_{\yx} \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
-        = h_{\yx} \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
-        = h_{\yx} \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+        = h_n(\yx) \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
+        = h_n(\yx) \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
+        = h_n(\yx) \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
     \end{align}
 \end{proof}
 \begin{thm}[Binomial theorem] 
@@ -895,19 +962,6 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \mathbb E_{A,B \sim 1} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)] = h_{\ya}h_{\yb} \frac{c^{\yc}_{\ya,\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)}\id_{V_{\yc}^n}
     \end{equation}
 \end{cor}
-\begin{proof}
-\end{proof}
-\begin{prop}[Eigenvalue-estimation]
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix and let $\ell(X) = -\log \eig(X)$ denote the entrywise negative logarithm of its eigenvalues.
-    Then
-    \begin{equation}
-        \exp( - \braket{\yx, \ell(X)}) \leq \chi_{\yx}(X) \leq \dim(V_{\yx}^{n})\exp( - \braket{\yx, \ell(X)})
-    \end{equation}
-    Alternatively,
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \leq \dim(V_{\yx}^{n}) \exp( - \abs{\yx} \kl{\nrm \yx}{\eig(\nrm X)}).
-    \end{equation}
-\end{prop}
 \begin{rem}
     As a sanity check, in the case where $A = B = X$, the binomial theorem reads
     \begin{align}
@@ -940,49 +994,49 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     \begin{equation}
         \Gamma^{\yc}_{\ya,\yb}(A,B) = \Tr[P_{\yc}(P_{\ya}\ot P_{\yb})(A^{\ot \abs{\ya}} \ot B^{\ot \abs{\yb}})].
     \end{equation}
-    If one fixes $a,b,c \geq 0$ non-negative integers such that $c=a+b$, and considers Young diagrams
-    \begin{equation}
-        \ya \vdash a, \qquad \yb \vdash b, \qquad \yc \vdash c,
-    \end{equation}
-    one has
-    \begin{equation}
-        \sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}} \Gamma^{\yc}_{\ya,\yb}(A,B) = \tilde \chi_{\ya}(A) \tilde \chi_{\yb}(B)
-    \end{equation}
-    and thus there exists a normalization relation 
-    \begin{equation}
-        %\sum_{\substack{\ya \vdash a \\ \yb \vdash b \\ \yc \vdash c}}
-        \sum_{\ya \vdash a}\sum_{\yb \vdash b}\sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}}
-        \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) = 1.
-    \end{equation}
-    The quantity $\Gamma^{\yc}_{\ya,\yb}(A,B)$ satisfies for all unitary $U \in \U(n)$, the identity
-    \begin{equation}
-        \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,U^{-1}BU) = \Gamma^{\yc}_{\ya,\yb}(A,B),
-    \end{equation}
-    but in general, there exists $U,V \in \U(n)$ such that
-    \begin{equation}
-        \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,V^{-1}BV) \neq \Gamma^{\yc}_{\ya,\yb}(A,B).
-    \end{equation}
-    In other words, $\Gamma^{\yc}_{\ya,\yb}(A,B)$ does \textit{not} depend on only the eigenvalues $\eig(A)$ and $\eig(B)$.
-    Nevertheless, under the assumption that $A,B$ and $C=A+B$ are positive semidefinite, we can place upper bounds on $\Gamma^{\yc}_{\ya,\yb}(A,B)$ which depend only on the eigenvalues of $A$, $B$ or $C$.
-    Since $\Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \geq 0$ is non-negative in this case, we have
-    \begin{equation}
-        \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\ya}(\nrm A) \tilde \chi_{\yb}(\nrm B)
-    \end{equation}
-    and also from the Binomial theorem,
-    \begin{equation}
-        m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\yc}(\nrm C)
-    \end{equation}
-    where $m_{A,B}(a,b) \in [0,1]$ is the binomial probability:
-    \begin{equation}
-        m_{A,B}(a,b) = \frac{c!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(C)^c} = \frac{(a+b)!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(A+B)^c}.
-    \end{equation}
-    Our goal is to combine these bounds with the normalization relation above.
-    As $0 \leq m_{A,B}(a,b) \leq 1$, we can relax the bounds a bit to make the statement more symmetric to obtain
-    \begin{equation}
-        \min\{ \tilde \chi_{\ya}(\ea), \tilde \chi_{\yb}(\eb), \tilde \chi_{\yc}(\ec) \}
-        \geq
-        m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B)
-    \end{equation}
+    %If one fixes $a,b,c \geq 0$ non-negative integers such that $c=a+b$, and considers Young diagrams
+    %\begin{equation}
+    %    \ya \vdash a, \qquad \yb \vdash b, \qquad \yc \vdash c,
+    %\end{equation}
+    %one has
+    %\begin{equation}
+    %    \sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}} \Gamma^{\yc}_{\ya,\yb}(A,B) = \tilde \chi_{\ya}(A) \tilde \chi_{\yb}(B)
+    %\end{equation}
+    %and thus there exists a normalization relation 
+    %\begin{equation}
+    %    %\sum_{\substack{\ya \vdash a \\ \yb \vdash b \\ \yc \vdash c}}
+    %    \sum_{\ya \vdash a}\sum_{\yb \vdash b}\sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}}
+    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) = 1.
+    %\end{equation}
+    %The quantity $\Gamma^{\yc}_{\ya,\yb}(A,B)$ satisfies for all unitary $U \in \U(n)$, the identity
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,U^{-1}BU) = \Gamma^{\yc}_{\ya,\yb}(A,B),
+    %\end{equation}
+    %but in general, there exists $U,V \in \U(n)$ such that
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,V^{-1}BV) \neq \Gamma^{\yc}_{\ya,\yb}(A,B).
+    %\end{equation}
+    %In other words, $\Gamma^{\yc}_{\ya,\yb}(A,B)$ does \textit{not} depend on only the eigenvalues $\eig(A)$ and $\eig(B)$.
+    %Nevertheless, under the assumption that $A,B$ and $C=A+B$ are positive semidefinite, we can place upper bounds on $\Gamma^{\yc}_{\ya,\yb}(A,B)$ which depend only on the eigenvalues of $A$, $B$ or $C$.
+    %Since $\Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \geq 0$ is non-negative in this case, we have
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\ya}(\nrm A) \tilde \chi_{\yb}(\nrm B)
+    %\end{equation}
+    %and also from the Binomial theorem,
+    %\begin{equation}
+    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\yc}(\nrm C)
+    %\end{equation}
+    %where $m_{A,B}(a,b) \in [0,1]$ is the binomial probability:
+    %\begin{equation}
+    %    m_{A,B}(a,b) = \frac{c!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(C)^c} = \frac{(a+b)!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(A+B)^c}.
+    %\end{equation}
+    %Our goal is to combine these bounds with the normalization relation above.
+    %As $0 \leq m_{A,B}(a,b) \leq 1$, we can relax the bounds a bit to make the statement more symmetric to obtain
+    %\begin{equation}
+    %    \min\{ \tilde \chi_{\ya}(\ea), \tilde \chi_{\yb}(\eb), \tilde \chi_{\yc}(\ec) \}
+    %    \geq
+    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B)
+    %\end{equation}
 
     %For instance, by noting that $P^{\yc}_{\ya,\yb} \leq \id_{V_{\ya}^n} \ot \id_{V_{\yb}^n}$:
     %\begin{equation}
@@ -999,46 +1053,47 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     %which is a non-trivial necessary inequality for Horn's problem.
     %For instance, when $\yc = (n)$, $\pi_{(n)}(X) = \det(X)$ and thus one expects $\det(C) \geq \det(A) + \det(B)$ for any $C = A+B$ where $A,B,C \geq 0$.
 \end{rem}
-\begin{thm}
-    A triple $(\ea, \eb, \ec)$ of positive semidefinite eigenvalues are the eigenvalues of some positive semidefinite matrices $(A,B,C)$ satsifying $C=A+B$ if and only if for all $(a,b,c)$ satisfying $c=a+b$,
-    \begin{equation}
-        \sum_{\ya, \yb ,\yc}
-        \min\{ \tilde \chi_{\ya}(\nea), \tilde \chi_{\yb}(\neb), \tilde \chi_{\yc}(\nec) \} \geq \frac{c!}{a!b!} \frac{\Tr(\ea)^a\Tr(\eb)^b}{\Tr(\ec)^c},
-    \end{equation}
-    where the sum is taken over all $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c$ such that $c^{\yc}_{\ya,\yb} \neq 0$.
-\end{thm}
-\begin{proof}
-    The ``only if'' portion of the proof follows from the previous discussion.
-    The ``if'' portion follows by proving the contrapositive, namely that if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices, then the inequality above fails to hold for some $(a,b,c)$.
-    We will show explicitly that a violation occurs when
-    \begin{equation}
-        a = \ceil{k \abs{\ea}}, \qquad
-        b = \ceil{k \abs{\eb}}, \qquad
-        c = \ceil{k \abs{\ea}} + \ceil{k \abs{\eb}},
-    \end{equation}
-    for a sufficiently large parameter $k$.
-    For these particular values, we have the following estimates:
-    \begin{equation}
-        \begin{alignedat}{3}
-            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad
-            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad
-            &&k \abs{\ec} \leq c < k \abs{\ec} + 2.
-        \end{alignedat}
-    \end{equation}
-\end{proof}
-\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
+%\begin{thm}
+%    A triple $(\ea, \eb, \ec)$ of positive semidefinite eigenvalues are the eigenvalues of some positive semidefinite matrices $(A,B,C)$ satsifying $C=A+B$ if and only if for all $(a,b,c)$ satisfying $c=a+b$,
+%    \begin{equation}
+%        \sum_{\ya, \yb ,\yc}
+%        \min\{ \tilde \chi_{\ya}(\nea), \tilde \chi_{\yb}(\neb), \tilde \chi_{\yc}(\nec) \} \geq \frac{c!}{a!b!} \frac{\Tr(\ea)^a\Tr(\eb)^b}{\Tr(\ec)^c},
+%    \end{equation}
+%    where the sum is taken over all $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c$ such that $c^{\yc}_{\ya,\yb} \neq 0$.
+%\end{thm}
+%\begin{proof}
+%    The ``only if'' portion of the proof follows from the previous discussion.
+%    The ``if'' portion follows by proving the contrapositive, namely that if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices, then the inequality above fails to hold for some $(a,b,c)$.
+%    We will show explicitly that a violation occurs when
+%    \begin{equation}
+%        a = \ceil{k \abs{\ea}}, \qquad
+%        b = \ceil{k \abs{\eb}}, \qquad
+%        c = \ceil{k \abs{\ea}} + \ceil{k \abs{\eb}},
+%    \end{equation}
+%    for a sufficiently large parameter $k$.
+%    For these particular values, we have the following estimates:
+%    \begin{equation}
+%        \begin{alignedat}{3}
+%            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad
+%            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad
+%            &&k \abs{\ec} \leq c < k \abs{\ec} + 2.
+%        \end{alignedat}
+%    \end{equation}
+%\end{proof}
+%\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
 \hrule
 }
 
+\clearpage
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
 \label{sec:lr_tri}
 
 The purpose of this section is to reveal how eigenvalue estimation can be used to prove a kind of correspondence between trigonal eigenvalue $(\ea,\eb,\ec)$ and Littlewood-Richardson coefficients $c_{\ya\yb}^{\yc}$.
 Given a triple of Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, by eigenvalue estimation we see that each of
 \begin{equation}
-    \ya \mapsto \UniGamma[A & \ya], \qquad
-    \yb  \mapsto \UniGamma[B & \yb], \qquad
-    \yc \mapsto \UniGamma[C & \yc],
+    \ya \mapsto \UniGammaOpt{A}{\ya}, \qquad
+    \yb  \mapsto \UniGammaOpt{B}{\yb}, \qquad
+    \yc \mapsto \UniGammaOpt{C}{\yc},
 \end{equation}
 are respectively concentrated around Young diagrams $(\ya,\yb,\yc)$ whose normalized shapes $(\nya, \nyb, \nyc)$ approximate the normalized eigenvalues $(\nea,\neb,\nec)$.
 As a result of this concentration, one can detect whether there exists Hermitian matrices $(A,B,C)$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$ by examining if whether there exists an intersection of subspaces onto which $P_{\ya}$, $P_{\yb}$ and $P_{\yc}$ project.
@@ -1081,7 +1136,7 @@ To support this claim, we define the following quantity.
     \end{equation}
     The \textit{Clebsch-Gordon isometry} is the $\U(n)$-equivariant isometric linear map
     \begin{equation}
-        Y_{\ea,\eb}^{\ec} : C_{\ea,\eb}^{\ec} \ot V_{\ec} \to V_{\ea} \ot V_{\eb},
+        Y_{\ya,\yb}^{\yc} : C_{\ya,\yb}^{\yc} \ot V_{\yc} \to V_{\ya} \ot V_{\yb},
     \end{equation}
     sending $f \ot v \in C_{\ya,\yb}^{\yc} \ot V_{\yc}$ to $f(v) \in V_{\ya}\ot V_{\yb}$\footnote{If $C_{\ya,\yb}^{\yc} = 0$, then $Y_{\ya,\yb}^{\yc}$ is identified with the zero map.}.
     The Clebsch-Gordon isometries (and coisometries) will be depicted diagrammatically with multiplicity spaces given a distinguished style as in \cite{agrawala1968graphical}:
@@ -1094,7 +1149,7 @@ To support this claim, we define the following quantity.
     \label{prop:tri_HS_mean}
     Let $(\ya,\yb,\yc)$ be Young diagrams with sizes $(a,b,c)$ where $c=a+b$. Then
     \begin{equation}
-        \mathbb E_{A,B}\TriGamma = R_{\ya,\yb;\yc} c^{\yc}_{\ya,\yb}
+        \mathbb E_{A,B}\TriGamma = h_{\ya}h_{\yb}\frac{\dim V_{\yc}^{n}}{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}c^{\yc}_{\ya,\yb} = R_{\ya,\yb;\yc}c^{\yc}_{\ya,\yb}
     \end{equation}
     where $c^{\yc}_{\ya,\yb}$ is the Littlewood-Richardson coefficient and $R_{\ya,\yb;\yc}$ is the ratio of dimensions:
     \begin{equation}
@@ -1452,14 +1507,10 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
             \mathbb E_{A,B,D}\TetGamma
             &\coloneqq
             \iiint \diff \mu(A)\diff \mu(B)\diff \mu(D)\TetGamma\\
-            &=
-            R_{\ya\yb\yd;\ye}\norm{\abcdefsymbol}_{\mathrm{HS}}^2
+            &= h_n(\ya)h_n(\yb)h_n(\yd) \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
+            \norm{\abcdefsymbol}_{2}^2.
         \end{split}
     \end{align}
-    where $R_{\ya\yb\yd;\ye}$ is a ratio of dimensions:
-    \begin{equation}
-        R_{\ya\yb\yd;\ye} = \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})}.
-    \end{equation}
 \end{prop}
 \begin{proof}
     To prove \cref{eq:tet_mean_value}, we use \cref{prop:HS_measure} and \cref{lem:tet_com_rels} to see that
@@ -1481,7 +1532,7 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
     From \cref{eq:ud_sixj_prod_proj_iso} we conclude
     \begin{equation}
         \label{eq:ud_sixj_prod_proj_hs_norm}
-        \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}) = \dim(V_{\ee}^{n})\dim(W_{\ea})\dim(W_{\eb})\dim(W_{\ed})\norm{\abcdefsymbol}_{\mathrm{HS}}^2,
+        \Tr(\Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}) = \dim(V_{\ee}^{n})\dim(W_{\ea})\dim(W_{\eb})\dim(W_{\ed})\norm{\abcdefsymbol}_{2}^2,
     \end{equation}
     Combining \cref{eq:ud_sixj_prod_proj_hs_norm} with \cref{eq:tet_mean_step_1} and \cref{eq:HS_mean_coeff} then yields \cref{eq:tet_mean_value}.
 \end{proof}
@@ -1747,7 +1798,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     Then for all sequences of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ indexed by $k > \tau_{\min}^{-1}$ with sizes given by \cref{eq:ceil_yd_sizes} and converging to $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that \cref{eq:sextuple_convergence_rate} holds, we have
     \begin{equation}
         \label{eq:seq_ud_sixj_upper_bound}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\mathrm{HS}}^{2}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{2}^{2}
         \leq \exp\left(- \frac{k \tau_{\min}}{12} D_{*}^{\ea\eb\ec\ed\ee\ef} + O(\log k)\right),
     \end{equation}
     where $D_{*}^{\ea\eb\ec\ed\ee\ef} > 0$ is a positive constant which measures the distance from $(\ea, \eb, \ec, \ed, \ee, \ef)$ to the closed set of tetrahedral eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ with matching traces (i.e., $\abs{\ea}=\abs{\tilde \ea}$, $\abs{\eb}=\abs{\tilde \eb}$, etc.):
@@ -1768,11 +1819,17 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 \begin{proof}
     Using \cref{eq:tet_mean_value}, we have
     \begin{align}
-        R_{\ya\yb\yd;\ye}\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_{\mathrm{HS}}^2
+        R_{\ya\yb\yd;\ye}\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_{2}^2
         =
         \iiint \diff \mu(A)\diff \mu(B)\diff \mu(D)\TetGamma
     \end{align}
-    where the integral is taken over a triple of $n\times n$ trace one positive semidefinite matrices $A, B, D$.
+    where $R_{\ya\yb\yd;\ye}$ is a ratio of dimensions,
+    \begin{equation}
+        R_{\ya\yb\yd;\ye} 
+        = h_n(\ya)h_n(\yb)h_n(\yd) \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
+        =     \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})},
+    \end{equation}
+    and where the integral is taken over a triple of $n\times n$ trace one positive semidefinite matrices $A, B, D$.
     For each integrand, define a tetrahedral sextuple $(\tilde A,\tilde B,\tilde C,\tilde D,\tilde E,\tilde F)$ as follows
     \begin{equation}
         \label{eq:tilde_defns}
@@ -1793,7 +1850,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     \end{equation}
     %which implies
     %\begin{align}
-    %    \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd &  \ye &  \yf}}_{\mathrm{HS}}^2
+    %    \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd &  \ye &  \yf}}_{2}^2
     %    &\leq R_{\ya,\yb,\yd;\ye}p(k)\exp(-k \inf_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}}} I^{\ya\yb\yc\yd\ye\yf}_{\tilde \ea \tilde \eb\tilde \ec\tilde \ed\tilde \ee\tilde \ef}/6)
     %\end{align}
     Now by construction, the eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ are tetrahedral while by assumption, the eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not tetrahedral (although they have matching traces due to \cref{eq:tilde_defns}).
@@ -1848,7 +1905,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     %\end{align}
     %and therefore,
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_{\mathrm{HS}}^2
+        \norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}_{2}^2
         \leq  \exp\left(-k\left\{\frac{\tau_{\min} D_{*}^{\ea\eb\ec\ed\ee\ef}}{12}
         -2\sqrt{2 \tau_{\min} I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}} - \frac{1}{k}\log(R_{\ya_k,\yb_k,\yd_k;\ye_k}^{-1} p(k))\right\}\right).
     \end{equation}
@@ -1856,6 +1913,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     Moreover, $R_{\ya_k,\yb_k,\yd_k;\ye_k}^{-1}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so \cref{eq:seq_ud_sixj_upper_bound} holds as claimed.
 \end{proof}
 
+\clearpage
 \section{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
 \label{sec:large_n}
 
@@ -1868,7 +1926,7 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
     Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
     Then
     \begin{equation}
-        \norm{\abcdefsymbol}_{\text{HS}}^{2}
+        \norm{\abcdefsymbol}_{2}^{2}
         \leq \left(c_{\ya,\yf}^{\ye}c_{\yb,\yd}^{\yf}c_{\ya,\yb}^{\yc}c_{\yc,\yd}^{\ye}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)}.
     \end{equation}
 \end{thm}
@@ -1885,10 +1943,10 @@ By combining this upper bound with the lower bound provided by \cref{cor:tet_six
 \end{proof}
 
 An immediate application of \cref{thm:sixj_ssa_bound} is to combine it with \cref{cor:tet_sixj_lower_bound}.
-If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:tet_sixj_lower_bound} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that\footnote{Here we used the well-known inequality $\norm{X}_{\infty} \leq \norm{X}_{\text{HS}}$.}
+If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:tet_sixj_lower_bound} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that\footnote{Here we used the well-known inequality $\norm{X}_{\infty} \leq \norm{X}_{2}$.}
 \begin{equation}
     \label{eq:combined_bound}
-    \frac{1}{q(k)^2} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{\text{HS}}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
+    \frac{1}{q(k)^2} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{2}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
 \end{equation}
 Remarkably, both $q(k)$ (given by \cref{eq:q_of_k}) and the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}, c_{\yb_k,\yd_k}^{\yf_k}, c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams, i.e., $n \geq r_{\max}$ where $r_{\max}$ is the maximum rank of any of the tetrahedral eigenvalues).
 This observation provides one with an opportunity to optimize the above bound by varying the value of $n$.
@@ -2092,7 +2150,7 @@ The following result provides a formula for the square of the Hilbert-Schmidt no
     Then
     \begin{equation}
         \label{eq:character_formula}
-        \dim(V_{\ye})^{2}\norm{\abcdefsymbol}_{\mathrm{HS}}^{2}
+        \dim(V_{\ye})^{2}\norm{\abcdefsymbol}_{2}^{2}
         = \int_{\U(n)^{4}} \diff u_1 \diff u_2 \diff u_3 \diff u_4 X^{\ya,\yb,\yc}_{\yd,\ye,\yf}(u_1,u_2,u_3,u_4).
     \end{equation}
     where

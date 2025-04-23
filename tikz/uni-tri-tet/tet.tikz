@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (-0.75, -0.25) {};
+		\node [style=none] (2) at (0.75, 0.25) {};
+		\node [style=none] (3) at (-0.25, 0.75) {};
+		\node [style=none] (4) at (0.25, -0.75) {};
+		\node [style=crossing] (5) at (0, 0) {};
+		\node [style=none] (6) at (0, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [very thick] (1.center)
+			 to (3.center)
+			 to (2.center)
+			 to (4.center)
+			 to cycle;
+		\draw [very thick] (4.center) to (6.center);
+		\draw [very thick] (6.center) to (3.center);
+		\draw [very thick] (5) to (2.center);
+		\draw [very thick] (5) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
