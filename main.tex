@@ -883,14 +883,14 @@ It is well-known that there is a multiplicity-free decomposition of the represen
 \end{equation}
 Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
 \begin{equation}
-    h_n(\yx) \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
+    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
 \end{equation}
 The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
 \begin{prop}
     Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
     Then for $\yx \vdash k$,
     \begin{align}
-        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h_n(\yx) \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
     \end{align}
 \end{prop}
 \begin{proof}
@@ -899,14 +899,14 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
     \end{equation}
     for some proportionality constants $h_{\yx}$.
-    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h_n(\yx)$.
+    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
     Therefore,
     \begin{align}
         \mathbb E_{X} [\tilde \pi_{\yx}(X)]
         = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
-        = h_n(\yx) \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
-        = h_n(\yx) \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
-        = h_n(\yx) \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
     \end{align}
 \end{proof}
 \begin{thm}[Binomial theorem] 
@@ -1507,7 +1507,7 @@ The following proposition is the analogue of \cref{prop:HS_integral_uni}.
             \mathbb E_{A,B,D}\TetGamma
             &\coloneqq
             \iiint \diff \mu(A)\diff \mu(B)\diff \mu(D)\TetGamma\\
-            &= h_n(\ya)h_n(\yb)h_n(\yd) \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
+            &= h^n_\ya h^n_\yb h^n_\yd \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
             \norm{\abcdefsymbol}_{2}^2.
         \end{split}
     \end{align}
@@ -1826,7 +1826,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     where $R_{\ya\yb\yd;\ye}$ is a ratio of dimensions,
     \begin{equation}
         R_{\ya\yb\yd;\ye} 
-        = h_n(\ya)h_n(\yb)h_n(\yd) \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
+        = h^n_\ya h^n_\yb h^n_\yd \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}
         =     \frac{\dim(V_{\ya}^{n})\dim(V_{\yb}^{n})\dim(V_{\yd}^{n})\dim(V_{\ye}^{n})}{\dim(V_{(a)}^{n^2})\dim(V_{(b)}^{n^2})\dim(V_{(d)}^{n^2})},
     \end{equation}
     and where the integral is taken over a triple of $n\times n$ trace one positive semidefinite matrices $A, B, D$.
@@ -1912,6 +1912,153 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     By assumption, the Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converge in normalization to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ in the sense that $I_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}$ tends to zero as $k\to \infty$ at a rate given by \cref{eq:sextuple_convergence_rate}.
     Moreover, $R_{\ya_k,\yb_k,\yd_k;\ye_k}^{-1}$ can be upper bounded by a polynomial in $k$ and $p(k)$ is a polynomial in $k$ so \cref{eq:seq_ud_sixj_upper_bound} holds as claimed.
 \end{proof}
+
+\clearpage
+{\color{blue}
+\hrule
+\begin{defn}
+    Fix positive integers $(a,b,c,d,e,f)$ such that
+    \begin{equation}
+        c=a+b, \qquad f=b+d, \qquad e=a+b+d.
+    \end{equation}
+    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be a sextuple of Young diagrams with respective sizes $(a,b,c,d,e,f)$.
+    Define
+    \begin{equation}
+        Q\left[\ygrid\right] 
+        \coloneqq 
+         h^n_\ya h^n_\yb h^n_\yd \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)} \norm{\abcdefsymbol}_{2}^2.
+    \end{equation}
+    Moreover, given a sextuple $(A,B,C,D,E,F)$ of positive semidefinite $n \times n$ matrices with prescribed eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, define
+    \begin{equation}
+        P\left[\ygrid\middle|\egrid \right]
+        \coloneqq 
+        \Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}].
+    \end{equation}
+    By construction, $Q$ and $P$ are both probability distributions over the aforementioned sextuples of Young diagrams.
+    Let the fidelity between these distributions be denoted by
+    \begin{equation}
+        F\left[\egrid\right]
+        \coloneqq
+        \sum_{\substack{\ya\yb\yc\\\yd\ye\yf}}
+        \sqrt{
+            Q\left[\ygrid\right]
+            P\left[\ygrid\middle|\egrid \right]
+        }
+    \end{equation}
+\end{defn}
+\begin{prop}
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then
+    \begin{equation}
+        F\left[\egrid\right] \geq \frac{1}{12^\frac{7}{2}(k \abs{\ee}+4)^{3 n^2(n^2-1)/4+18n-17}}
+    \end{equation}
+    Otherwise, $D_{*}\left[\egrid \right] > 0$ and
+    \begin{equation}
+        F\left[\egrid\right] \leq 12^\frac{7}{8}(k \abs{\ee}+4)^{\frac{5}{16}n(n-1) + 6(n-1) + \frac{2}{8}}\exp(-\frac{k}{5} D_{*}\left[\egrid \right] )
+    \end{equation}
+
+\end{prop}
+\begin{proof}
+    To to the claim, it will be useful to define, for each sextuple $(\ya,\yb,\yc,\yd,\ye,\yf)$ and each triple $(X,Y,Z)$ of positive semidefinite matrices, the function
+    \begin{equation}
+        \TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}
+        \coloneqq \Tr[(X^{\ot a} \ot Y^{\ot b} \ot Z^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}],
+    \end{equation}
+    where
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad
+            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb} \ot \id^{\ot d}, \qquad
+            &&\Pi_{\yc} \coloneqq P_{\yc} \ot \id^{\ot d}, \qquad\\
+             &\Pi_{\yd} \coloneqq \id^{\ot a} \ot \id^{\ot b} \ot P_{\yd}, \qquad
+            &&\Pi_{\ye} \coloneqq P_{\ye}, \qquad
+            &&\Pi_{\yf} \coloneqq \id^{\ot a} \ot P_{\yf}.
+        \end{alignedat}
+    \end{equation}
+    This function arises naturally as the integrand in an integral formula for the distribution $Q$:
+    \begin{equation}
+        Q\left[\ygrid\right] = \iiint \diff \mu(X)\diff \mu(Y)\diff \mu(Z)\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf},
+    \end{equation}
+    where the measure $\diff \mu(X)$ is the Hilbert-Schmidt measure over the set of positive semidefinite $n\times n $ matrices with trace one, i.e., $\Tr(X) = \Tr(Y) = \Tr(Z) = 1$.
+    Additionally, for any $X,Y,Z \geq 0$ with $\Tr(X) = \Tr(Y) = \Tr(Z) = 1$ an application of the Cauchy-Schwarz inequality yields
+    \begin{equation}
+        Q\left[\ygrid\right] \geq \frac{h^n_\ya h^n_\yb h^n_\yd \dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)} \abs{\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^2.
+    \end{equation}
+    On an seemingly unrelated note, for each tetrahedral sextuple $(A,B,C,D,E,F)$ of positive semidefinite matrices satisfying $C=A+B, F=B+D$, and $E=A+B+D$, with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, another application of the Cauchy-Schwarz inequality and three applications of the Binomial theorem yields 
+    \begin{equation} 
+        P\left[\ygrid\middle|\egrid \right] \geq 
+        \left(\frac{c!}{a!b!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}}{\abs{\ec}^{c}}\right)
+        \left(\frac{f!}{b!d!}\frac{\abs{\eb}^{b}\abs{\ed}^{d}}{\abs{\ef}^{f}}\right)
+        \left(\frac{e!}{a!b!d!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}{\abs{\ee}^{e}}\right)
+        \abs{\TetGamma}^4.
+    \end{equation}
+    If one fixes a sufficiently large positive integer $k$ and then sets $(a,b,d)$ to scale with $k$ according to
+    \begin{equation}
+        a = \ceil{k \abs{\ea}}, \quad b = \ceil{k \abs{\eb}}, \quad d = \ceil{k \abs{\ed}},
+    \end{equation}
+    then \cref{lem:multinomial_dist_lower_bound} implies lower-bounds on the multinomial prefactors, which produces a relaxed bound
+    \begin{equation} 
+        P\left[\ygrid\middle|\egrid \right] \geq 
+        \frac{1}{12^7(k \abs{\ee}+3)^{2}}
+        \abs{\TetGamma}^4.
+    \end{equation}
+    Therefore, combining all bounds yields
+    \begin{align}
+        P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right]
+        &\geq \frac{1}{12^7(k \abs{\ee}+3)^{3 n^2(n^2-1)/2  + 2}} \abs{\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^6 \\
+        &\geq \frac{1}{12^7(k \abs{\ee}+4)^{3 n^2(n^2-1)/2 + 36(n-1) + 2}} 
+    \end{align}
+
+    One can now combine these separate bounds on $P$ and $Q$ to obtain a bound between $P$ and $Q$.
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the given candidate sextuple of eigenvalues satisfying the trace conditions.
+    Then for any $X,Y,Z \geq 0$ positive semidefinite $n\times n$ matrices that are trace one, let
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\tilde A \coloneqq \abs{\ea}X, \qquad
+            &&\tilde B \coloneqq \abs{\eb}Y, \qquad
+            &&\tilde C \coloneqq \abs{\ea}X+\abs{\eb}Y, \qquad \\
+            &\tilde D \coloneqq \abs{\ed}Z, \qquad
+            &&\tilde E \coloneqq \abs{\ea}X+\abs{\eb}Y+\abs{\ed}Z, \qquad
+            &&\tilde F \coloneqq \abs{\eb}Y + \abs{\ed}Z.
+        \end{alignedat}
+    \end{equation}
+    This ensures that the eigenvalues $(\eat,\ebt,\ect,\edt,\eet,\eft)$ of $(\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F)$ are tetrahedral and moreover that the traces of the tetrahedral eigenvalues match the traces of the candidate eigenvalues:
+    \begin{equation}
+        (\abs \eat,\abs \ebt,\abs \ect,\abs \edt,\abs \eet,\abs \eft) = (\abs \ea, \abs \eb, \abs \ec, \abs \ed, \abs \ee, \abs \ef).
+    \end{equation}
+    Using the integral formula for $Q$ above, we obtain
+    \begin{equation}
+        Q\left[\ygrid\right] \leq \sup_{\tilde A,\tilde B,\tilde D} \abs{\TetGammaOpt{\nrm{\tilde A},\nrm{\tilde B},\nrm{\tilde D}}{\ya & \yb & \yc \\ \yd & \ye & \yf}} \leq 12^\frac{7}{4}(k \abs{\ee}+3)^{\frac{2}{4}} \sup_{\tilde A,\tilde B,\tilde D}P\left[\ygrid\middle|\etgrid \right]^{\frac{1}{4}}.
+    \end{equation}
+    But eigenvalue estimation yields the following bound:
+    \begin{equation}
+        P\left[\ygrid\middle|\etgrid \right]^{\frac{1}{8}} P\left[\ygrid\middle|\egrid \right]^{\frac{1}{2}} \leq (k\abs{\ee}+4)^{\frac{5}{16}n(n-1)}\exp(-\frac{k}{5} D_{*}\left[\egrid \right] )
+    \end{equation}
+    This is because Pinsker's inequality yields
+    \begin{align}
+        p\kl{\nrm \yx}{\nrm \ex} + q\kl{\nrm \yx}{\nrm \ext}
+        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ex}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \ext}_1^{2},
+        \geq \frac{pq}{2(p+q)} \norm{\nrm \ex - \nrm \ext}_1^{2},
+    \end{align}
+    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ex + q \nrm \ext$.
+   
+    Now define $D_{*}\left(\egrid \right)$ a non-negative constant which measures the distance from $(\ea, \eb, \ec, \ed, \ee, \ef)$ to the closed set of tetrahedral eigenvalues $(\eat, \ebt, \ect, \edt, \eet, \eft)$ with matching traces (i.e., $\abs{\ea}=\abs{\eat}$, $\abs{\eb}=\abs{\ebt}$, etc.)
+    \begin{align}
+        \begin{split}
+            D_{*}\left(\egrid \right) \coloneqq
+            \min_{\substack{\eat \ebt \ect \\ \edt \eet \eft}}
+            \bigg(
+                &\abs{\ea}\norm{\nea - \tilde{\nea}}_{1}^{2}
+                + \abs{\eb}\norm{\neb - \tilde{\neb}}_{1}^{2}
+                + \abs{\ec}\norm{\nec - \tilde{\nec}}_{1}^{2} + \cdots \\
+                &\cdots + \abs{\ed}\norm{\ned - \tilde{\ned}}_{1}^{2}
+                + \abs{\ef}\norm{\nee - \tilde{\nee}}_{1}^{2}
+                + \abs{\ee}\norm{\nef - \tilde{\nef}}_{1}^{2}
+            \bigg).
+        \end{split}
+    \end{align}
+\end{proof}
+\hrule
+}
 
 \clearpage
 \section{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
@@ -2098,7 +2245,7 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound}
-        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{m-1}{2}}
+        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{1-m}{2}}
     \end{equation}
 \end{lem}
 \begin{proof}
@@ -2133,7 +2280,7 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
     Also $Z \geq z_i$ so altogether, we have
     \begin{align}
         \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
-        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{m-1}{2}},
+        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{1-m}{2}},
     \end{align}
     as claimed because $\sqrt{2\pi} > 1$ and $\frac{1}{12} < \frac{e^{-\frac{1}{12}}}{4\sqrt{2\pi}} = 0.09176\cdots$.
 \end{proof}

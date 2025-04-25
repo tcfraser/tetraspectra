@@ -189,6 +189,15 @@
 \newcommand{\yf}{\phi}
 \newcommand{\yx}{\lambda}
 
+% Shorthands for tetrahedral eigenvales 
+\newcommand{\eat}{\tilde \alpha'}
+\newcommand{\ebt}{\tilde \beta'}
+\newcommand{\ect}{\tilde \gamma'}
+\newcommand{\edt}{\tilde \delta'}
+\newcommand{\eet}{\tilde \epsilon'}
+\newcommand{\eft}{\tilde \phi'}
+\newcommand{\ext}{\tilde \lambda'}
+
 %% Shorthands for young diagram labels primed
 %\newcommand{\yap}{\alpha'}
 %\newcommand{\ybp}{\beta'}
@@ -223,13 +232,25 @@
 \begingroup
 \arraycolsep=1.5pt
 \renewcommand{\arraystretch}{0.3}
-\begin{array}{cccccc}#1\end{array}
+\begin{array}{@{}cccccc@{}}#1\end{array}
 \endgroup
 }
+\newcommand{\tighttriple}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\begin{array}{@{}ccc@{}}#1\end{array}
+\endgroup
+}
+\newcommand{\ygrid}{\tighttriple{\ya&\yb&\yc\\\yd&\ye&\yf}}
+\newcommand{\egrid}{\tighttriple{\ea&\eb&\ec\\\ed&\ee&\ef}}
+\newcommand{\etgrid}{\tighttriple{\eat&\ebt&\ect\\\edt&\eet&\eft}}
 
+% UniGamma
 \newcommand{\UniGammaOpt}[2]{\Gamma_{\!\!#1}(#2)}
 \newcommand{\UniGamma}{\UniGammaOpt{A}{\ya}}
 
+% TriGamma
 \newcommand{\TriGammaOpt}[2]{
 \begingroup
 \arraycolsep=1.5pt
@@ -241,6 +262,8 @@
 }
 \newcommand{\TriGamma}{\TriGammaOpt{A,B}{\ya & \yb & \yc}}
 \newcommand{\TriGammak}{\TriGammaOpt{A,B}{\ya_k & \yb_k & \yc_k}}
+
+% TetGamma
 \newcommand{\TetGammaOpt}[2]{
 \begingroup
 \arraycolsep=1.5pt
@@ -250,8 +273,8 @@
 \right)
 \endgroup
 }
-\newcommand{\TetGamma}{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
-\newcommand{\TetGammak}{\TetGammaOpt{A,B,D}{\ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}
-\newcommand{\TetGammaTilde}{\TetGammaOpt{\tilde A, \tilde B, \tilde D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
+\newcommand{\TetGamma}{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
+\newcommand{\TetGammak}{\TetGammaOpt{\nrm A,\nrm B, \nrm D}{\ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}
+\newcommand{\TetGammaTilde}{\TetGammaOpt{\nrm {\tilde A}, \nrm {\tilde B}, \nrm {\tilde D}}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
 
 % =====================================
