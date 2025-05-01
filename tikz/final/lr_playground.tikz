@@ -1,0 +1,662 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=square] (141) at (-25, 9.75) {$X$};
+		\node [style=none] (142) at (-25, 12.5) {};
+		\node [style=none] (143) at (-25, 7) {};
+		\node [style=none] (144) at (-25, 12.5) {};
+		\node [style=tight] (145) at (-22, 9.75) {$X$};
+		\node [style=tight] (146) at (-21, 9.75) {$X$};
+		\node [style=tight] (147) at (-19, 9.75) {$X$};
+		\node [style=none] (148) at (-20, 9.75) {$\cdots$};
+		\node [style=none] (149) at (-22.25, 10.75) {};
+		\node [style=none] (150) at (-18.75, 10.75) {};
+		\node [style=none] (151) at (-19, 11.25) {};
+		\node [style=none] (152) at (-22, 11.25) {};
+		\node [style=none] (153) at (-19, 10.75) {};
+		\node [style=none] (154) at (-21, 10.75) {};
+		\node [style=none] (155) at (-22, 10.75) {};
+		\node [style=none] (156) at (-22.25, 8.75) {};
+		\node [style=none] (157) at (-18.75, 8.75) {};
+		\node [style=none] (158) at (-19, 8.25) {};
+		\node [style=none] (159) at (-22, 8.25) {};
+		\node [style=none] (160) at (-19, 8.75) {};
+		\node [style=none] (161) at (-21, 8.75) {};
+		\node [style=none] (162) at (-22, 8.75) {};
+		\node [style=none] (163) at (-21.5, 11.25) {};
+		\node [style=none] (164) at (-19.5, 11.25) {};
+		\node [style=none] (165) at (-19.5, 8.25) {};
+		\node [style=none] (166) at (-21.5, 8.25) {};
+		\node [style=none] (167) at (-20.75, 12) {$V_{\lambda}^{n}$};
+		\node [style=none] (168) at (-20.75, 7.25) {$V_{\lambda}^{n}$};
+		\node [style=none] (169) at (-21.5, 12.5) {};
+		\node [style=none] (170) at (-21.5, 7) {};
+		\node [style=none] (171) at (-24.5, 12.25) {$\lambda$};
+		\node [style=none] (172) at (-24.5, 7.25) {$\lambda$};
+		\node [style=none] (173) at (-18.25, 11.25) {};
+		\node [style=none] (174) at (-18.25, 8.25) {};
+		\node [style=none] (175) at (-23.5, 9.75) {$\coloneqq$};
+		\node [style=none] (176) at (-17.75, 9.75) {$W_{\lambda}$};
+		\node [style=none] (178) at (-14.25, 11.5) {};
+		\node [style=none] (179) at (-14.25, 7.5) {};
+		\node [style=none] (180) at (-14.25, 11.5) {};
+		\node [style=none] (181) at (-13.75, 11.25) {$\lambda$};
+		\node [style=none] (182) at (-13.75, 7.75) {$\lambda$};
+		\node [style=none] (183) at (-16, 9.5) {$\mathbb E_{U}$};
+		\node [style=none] (184) at (-15.25, 10) {};
+		\node [style=none] (185) at (-13.25, 10) {};
+		\node [style=none] (186) at (-15.25, 9) {};
+		\node [style=none] (187) at (-13.25, 9) {};
+		\node [style=none] (188) at (-14.25, 9.5) {$U \cdot X$};
+		\node [style=none] (189) at (-14.25, 10) {};
+		\node [style=none] (190) at (-14.25, 9) {};
+		\node [style=square] (191) at (-11.5, 10.5) {$X$};
+		\node [style=none] (192) at (-11.5, 11) {};
+		\node [style=none] (193) at (-11.5, 10) {};
+		\node [style=none] (194) at (-10.75, 11) {};
+		\node [style=none] (195) at (-10.75, 10) {};
+		\node [style=none] (197) at (-12, 9.5) {};
+		\node [style=none] (198) at (-10.25, 9.5) {};
+		\node [style=none] (199) at (-11.5, 8.75) {};
+		\node [style=none] (200) at (-10.75, 8.75) {};
+		\node [style=none] (201) at (-10.5, 8.75) {$\lambda$};
+		\node [style=none] (202) at (-10.5, 10.5) {$\lambda$};
+		\node [style=none] (203) at (-12.75, 9.5) {$=$};
+		\node [style=none] (204) at (-9.75, 11.5) {};
+		\node [style=none] (205) at (-9.75, 7.5) {};
+		\node [style=none] (206) at (-9.75, 11.5) {};
+		\node [style=none] (207) at (-9.25, 11.25) {$\lambda$};
+		\node [style=none] (208) at (-9.25, 7.75) {$\lambda$};
+		\node [style=square] (1153) at (-6.75, 9.75) {$I$};
+		\node [style=none] (1154) at (-6.75, 11.75) {};
+		\node [style=none] (1155) at (-6.75, 7.75) {};
+		\node [style=none] (1156) at (-6.75, 11.75) {};
+		\node [style=none] (1157) at (-6.25, 11.5) {$\lambda$};
+		\node [style=none] (1158) at (-6.25, 8) {$\lambda$};
+		\node [style=none] (1159) at (-2.75, 11.75) {};
+		\node [style=none] (1160) at (-2.75, 7.75) {};
+		\node [style=none] (1161) at (-2.75, 11.75) {};
+		\node [style=none] (1162) at (-2.25, 11.5) {$\lambda$};
+		\node [style=none] (1163) at (-2.25, 8) {$\lambda$};
+		\node [style=none] (1164) at (-5.5, 9.75) {$=$};
+		\node [style=none] (1165) at (-8.5, 12.5) {};
+		\node [style=none] (1166) at (-8.5, 7) {};
+		\node [style=none] (1167) at (-17, 12.25) {};
+		\node [style=none] (1168) at (-17, 7) {};
+		\node [style=none] (1169) at (-4, 9.75) {$\dim W_{\lambda}$};
+		\node [style=square] (1832) at (-21.25, 3.25) {$A$};
+		\node [style=square] (1833) at (-20.25, 3.25) {$B$};
+		\node [style=dot] (1834) at (-20.75, 5.25) {};
+		\node [style=dot] (1835) at (-20.75, 1.25) {};
+		\node [style=square] (1836) at (-19.25, 3.25) {$C$};
+		\node [style=square] (1842) at (-14.25, 3.25) {$C$};
+		\node [style=none] (1843) at (-18, 3.25) {$\leq$};
+		\node [style=none] (1845) at (-23.75, 3.25) {$\frac{|\gamma|!}{|\alpha|!|\beta|!}$};
+		\node [style=none] (1850) at (-16, 3.25) {$A\!\!+\!\!B$};
+		\node [style=none] (1851) at (-16, 3.75) {};
+		\node [style=none] (1852) at (-16, 2.75) {};
+		\node [style=none] (1846) at (-17, 3.75) {};
+		\node [style=none] (1847) at (-15, 3.75) {};
+		\node [style=none] (1848) at (-17, 2.75) {};
+		\node [style=none] (1849) at (-15, 2.75) {};
+		\node [style=square] (1853) at (3.5, -3.25) {$A$};
+		\node [style=square] (1854) at (4.5, -3.25) {$B$};
+		\node [style=dot] (1855) at (4, -1.25) {};
+		\node [style=dot] (1856) at (4, -5.25) {};
+		\node [style=square] (1857) at (5.5, -3.25) {$C$};
+		\node [style=square] (1858) at (15.5, -3.25) {$C$};
+		\node [style=none] (1861) at (13.75, -3.25) {$A\!\!+\!\!B$};
+		\node [style=none] (1862) at (13.75, -2.75) {};
+		\node [style=none] (1863) at (13.75, -3.75) {};
+		\node [style=none] (1864) at (12.75, -2.75) {};
+		\node [style=none] (1865) at (14.75, -2.75) {};
+		\node [style=none] (1866) at (12.75, -3.75) {};
+		\node [style=none] (1867) at (14.75, -3.75) {};
+		\node [style=none] (1868) at (1.5, -3.25) {$\mathbb E_{ABC}$};
+		\node [style=none] (1869) at (0, -3.25) {$=$};
+		\node [style=none] (1870) at (-6.5, -3.75) {};
+		\node [style=none] (1871) at (-2.75, -3.75) {};
+		\node [style=square] (1872) at (-6.25, -2.75) {$A$};
+		\node [style=none] (1873) at (-6.25, -2.25) {};
+		\node [style=none] (1874) at (-6.25, -3.25) {};
+		\node [style=none] (1875) at (-5.75, -2.25) {};
+		\node [style=none] (1876) at (-5.75, -3.25) {};
+		\node [style=none] (1877) at (-6.25, -4.25) {};
+		\node [style=none] (1878) at (-5.75, -4.25) {};
+		\node [style=square] (1879) at (-5.25, -2.75) {$B$};
+		\node [style=none] (1880) at (-5.25, -2.25) {};
+		\node [style=none] (1881) at (-5.25, -3.25) {};
+		\node [style=none] (1882) at (-4.75, -2.25) {};
+		\node [style=none] (1883) at (-4.75, -3.25) {};
+		\node [style=none] (1884) at (-5.25, -4.25) {};
+		\node [style=none] (1885) at (-4.75, -4.25) {};
+		\node [style=square] (1886) at (-4.25, -2.75) {$C$};
+		\node [style=none] (1887) at (-4.25, -2.25) {};
+		\node [style=none] (1888) at (-4.25, -3.25) {};
+		\node [style=none] (1889) at (-3.75, -2.25) {};
+		\node [style=none] (1890) at (-3.75, -3.25) {};
+		\node [style=none] (1891) at (-4.25, -4.25) {};
+		\node [style=none] (1892) at (-3.75, -4.25) {};
+		\node [style=none] (1893) at (-6, -1.75) {$\alpha$};
+		\node [style=none] (1894) at (-5, -1.75) {$\beta$};
+		\node [style=none] (1895) at (-4, -1.75) {$\gamma$};
+		\node [style=none] (1896) at (-6, -4.75) {$\alpha$};
+		\node [style=none] (1897) at (-5, -4.75) {$\beta$};
+		\node [style=none] (1898) at (-4, -4.75) {$\gamma$};
+		\node [style=none] (1899) at (7, -3.25) {$\leq$};
+		\node [style=none] (1900) at (8.75, -3.25) {$\frac{|\alpha|!|\beta|!}{|\gamma|!}$};
+		\node [style=none] (1901) at (-3.25, -2.75) {};
+		\node [style=none] (1902) at (-2.75, -2.75) {};
+		\node [style=none] (1903) at (-3, -3.25) {$\gamma$};
+		\node [style=none] (1904) at (-1.5, -3.25) {$c^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (1905) at (11.5, -3.25) {$\mathbb E_{ABC}$};
+		\node [style=none] (1907) at (25.5, -3) {$A\!\!+\!\!B$};
+		\node [style=none] (1908) at (25.5, -2.5) {};
+		\node [style=none] (1909) at (25.5, -3.5) {};
+		\node [style=none] (1914) at (18.5, -3.25) {$\frac{|\alpha|!|\beta|!}{|\gamma|!}$};
+		\node [style=none] (1915) at (23, -3.25) {$\mathbb E_{AB}$};
+		\node [style=none] (1916) at (16.5, -3.25) {$=$};
+		\node [style=square] (1917) at (20.75, -2.5) {$C$};
+		\node [style=none] (1918) at (20.75, -2) {};
+		\node [style=none] (1919) at (20.75, -3) {};
+		\node [style=none] (1920) at (21.25, -2) {};
+		\node [style=none] (1921) at (21.25, -3) {};
+		\node [style=none] (1922) at (21, -1.5) {$\gamma$};
+		\node [style=none] (1923) at (27, -2.5) {};
+		\node [style=none] (1924) at (27, -3.5) {};
+		\node [style=none] (1925) at (20.75, -4) {};
+		\node [style=none] (1926) at (21.25, -4) {};
+		\node [style=none] (1927) at (21, -4.5) {$\gamma$};
+		\node [style=none] (1928) at (20.5, -3.5) {};
+		\node [style=none] (1929) at (21.5, -3.5) {};
+		\node [style=none] (1910) at (24.5, -2.5) {};
+		\node [style=none] (1911) at (26.5, -2.5) {};
+		\node [style=none] (1912) at (24.5, -3.5) {};
+		\node [style=none] (1913) at (26.5, -3.5) {};
+		\node [style=none] (1976) at (-15, -3.25) {};
+		\node [style=none] (1977) at (-12.25, -3.25) {};
+		\node [style=none] (1983) at (-14.75, -3.75) {};
+		\node [style=none] (1984) at (-14.25, -3.75) {};
+		\node [style=none] (1990) at (-13.75, -3.75) {};
+		\node [style=none] (1991) at (-13.25, -3.75) {};
+		\node [style=none] (2002) at (-14.5, -4.25) {$\alpha$};
+		\node [style=none] (2003) at (-13.5, -4.25) {$\beta$};
+		\node [style=square] (2009) at (-11, -3) {$A$};
+		\node [style=square] (2010) at (-10, -3) {$B$};
+		\node [style=dot] (2011) at (-10.5, -1) {};
+		\node [style=dot] (2012) at (-10.5, -5) {};
+		\node [style=none] (2014) at (-14, -2.75) {$1$};
+		\node [style=none] (2033) at (-7.25, -3.25) {$\leq$};
+		\node [style=square] (2035) at (4, 10.5) {$X$};
+		\node [style=none] (2036) at (4, 11) {};
+		\node [style=none] (2037) at (4, 10) {};
+		\node [style=none] (2038) at (4.5, 11) {};
+		\node [style=none] (2039) at (4.5, 10) {};
+		\node [style=none] (2040) at (4.25, 11.5) {$\lambda$};
+		\node [style=none] (2041) at (3.75, 9.5) {};
+		\node [style=none] (2042) at (4.75, 9.5) {};
+		\node [style=none] (2043) at (4, 9) {};
+		\node [style=none] (2044) at (4.5, 9) {};
+		\node [style=none] (2045) at (4.25, 8.5) {$\lambda$};
+		\node [style=square] (2046) at (5.5, 10.5) {$Y$};
+		\node [style=none] (2047) at (5.5, 11) {};
+		\node [style=none] (2048) at (5.5, 10) {};
+		\node [style=none] (2049) at (6, 11) {};
+		\node [style=none] (2050) at (6, 10) {};
+		\node [style=none] (2051) at (5.75, 11.5) {$\lambda$};
+		\node [style=none] (2052) at (5.25, 9.5) {};
+		\node [style=none] (2053) at (6.25, 9.5) {};
+		\node [style=none] (2054) at (5.5, 9) {};
+		\node [style=none] (2055) at (6, 9) {};
+		\node [style=none] (2056) at (5.75, 8.5) {$\lambda$};
+		\node [style=none] (2057) at (14, 9.5) {$\leq \mathrm{Tr}(X)^k\mathrm{Tr}(Y)^k \exp(-\frac{k}{4} |\!| \mathrm{eig}(\underline X)-\mathrm{eig}(\underline Y)|\!|_1^2)$};
+		\node [style=square] (2058) at (-8.5, -3) {$C$};
+		\node [style=none] (2059) at (-8.5, -2.5) {};
+		\node [style=none] (2060) at (-8.5, -3.5) {};
+		\node [style=none] (2061) at (-8, -2.5) {};
+		\node [style=none] (2062) at (-8, -3.5) {};
+		\node [style=none] (2063) at (-8.25, -2) {$\gamma$};
+		\node [style=none] (2064) at (-12.75, -3.75) {};
+		\node [style=none] (2065) at (-12.25, -3.75) {};
+		\node [style=none] (2066) at (-12.5, -4.25) {$\gamma$};
+		\node [style=square] (2067) at (-10.5, 3.25) {$A$};
+		\node [style=square] (2068) at (-9.5, 3.25) {$B$};
+		\node [style=dot] (2069) at (-10, 5.25) {};
+		\node [style=dot] (2070) at (-10, 1.25) {};
+		\node [style=none] (2071) at (-3, 3.25) {$A\!\!+\!\!B$};
+		\node [style=none] (2072) at (-3, 3.75) {};
+		\node [style=none] (2073) at (-3, 2.75) {};
+		\node [style=none] (2074) at (-1.5, 3.75) {};
+		\node [style=none] (2075) at (-1.5, 2.75) {};
+		\node [style=none] (2076) at (-4, 3.75) {};
+		\node [style=none] (2077) at (-2, 3.75) {};
+		\node [style=none] (2078) at (-4, 2.75) {};
+		\node [style=none] (2079) at (-2, 2.75) {};
+		\node [style=none] (2080) at (-6, 3.25) {$\frac{|\alpha|!|\beta|!}{|\gamma|!}$};
+		\node [style=none] (2081) at (-8, 3.25) {$\leq$};
+		\node [style=none] (2082) at (-7.25, -4.25) {};
+		\node [style=none] (2083) at (-7.25, -5.5) {};
+		\node [style=none] (2084) at (-7.25, -6.25) {$\forall A,B$};
+		\node [style=none] (2085) at (-16, -3.25) {$\leq$};
+		\node [style=none] (2086) at (-16, -4.25) {};
+		\node [style=none] (2087) at (-16, -5.5) {};
+		\node [style=none] (2088) at (-16, -6.25) {$C=A+B$};
+		\node [style=none] (2089) at (-25, -3.5) {$\frac{|\gamma|!}{|\alpha|!|\beta|!}$};
+		\node [style=none] (2090) at (-23, -3.5) {};
+		\node [style=none] (2091) at (-20.25, -3.5) {};
+		\node [style=none] (2092) at (-22.75, -4) {};
+		\node [style=none] (2093) at (-22.25, -4) {};
+		\node [style=none] (2094) at (-21.75, -4) {};
+		\node [style=none] (2095) at (-21.25, -4) {};
+		\node [style=none] (2096) at (-22.5, -4.5) {$\alpha$};
+		\node [style=none] (2097) at (-21.5, -4.5) {$\beta$};
+		\node [style=square] (2098) at (-19, -3.25) {$A$};
+		\node [style=square] (2099) at (-18, -3.25) {$B$};
+		\node [style=dot] (2100) at (-18.5, -1.25) {};
+		\node [style=dot] (2101) at (-18.5, -5.25) {};
+		\node [style=none] (2102) at (-22, -3) {$1$};
+		\node [style=none] (2103) at (-20.75, -4) {};
+		\node [style=none] (2104) at (-20.25, -4) {};
+		\node [style=none] (2105) at (-20.5, -4.5) {$\gamma$};
+		\node [style=none] (2106) at (-17.5, -1) {$2$};
+		\node [style=square] (2107) at (3.5, -10.25) {$\underline A$};
+		\node [style=square] (2108) at (4.5, -10.25) {$\underline B$};
+		\node [style=dot] (2109) at (4, -8.25) {};
+		\node [style=dot] (2110) at (4, -12.25) {};
+		\node [style=square] (2111) at (5.5, -10.25) {$\underline C$};
+		\node [style=square] (2112) at (20.5, -10.25) {$\underline C$};
+		\node [style=none] (2113) at (18.75, -10.25) {$\underline{A\!\!+\!\!B}$};
+		\node [style=none] (2114) at (18.75, -9.75) {};
+		\node [style=none] (2115) at (18.75, -10.75) {};
+		\node [style=none] (2116) at (17.75, -9.75) {};
+		\node [style=none] (2117) at (19.75, -9.75) {};
+		\node [style=none] (2118) at (17.75, -10.75) {};
+		\node [style=none] (2119) at (19.75, -10.75) {};
+		\node [style=none] (2120) at (1.5, -10.25) {$\mathbb E_{ABC}$};
+		\node [style=none] (2121) at (0, -10.25) {$=$};
+		\node [style=none] (2122) at (-6.5, -10.75) {};
+		\node [style=none] (2123) at (-2.75, -10.75) {};
+		\node [style=square] (2124) at (-6.25, -9.75) {$\underline A$};
+		\node [style=none] (2125) at (-6.25, -9.25) {};
+		\node [style=none] (2126) at (-6.25, -10.25) {};
+		\node [style=none] (2127) at (-5.75, -9.25) {};
+		\node [style=none] (2128) at (-5.75, -10.25) {};
+		\node [style=none] (2129) at (-6.25, -11.25) {};
+		\node [style=none] (2130) at (-5.75, -11.25) {};
+		\node [style=square] (2131) at (-5.25, -9.75) {$\underline B$};
+		\node [style=none] (2132) at (-5.25, -9.25) {};
+		\node [style=none] (2133) at (-5.25, -10.25) {};
+		\node [style=none] (2134) at (-4.75, -9.25) {};
+		\node [style=none] (2135) at (-4.75, -10.25) {};
+		\node [style=none] (2136) at (-5.25, -11.25) {};
+		\node [style=none] (2137) at (-4.75, -11.25) {};
+		\node [style=square] (2138) at (-4.25, -9.75) {$\underline C$};
+		\node [style=none] (2139) at (-4.25, -9.25) {};
+		\node [style=none] (2140) at (-4.25, -10.25) {};
+		\node [style=none] (2141) at (-3.75, -9.25) {};
+		\node [style=none] (2142) at (-3.75, -10.25) {};
+		\node [style=none] (2143) at (-4.25, -11.25) {};
+		\node [style=none] (2144) at (-3.75, -11.25) {};
+		\node [style=none] (2145) at (-6, -8.75) {$\alpha$};
+		\node [style=none] (2146) at (-5, -8.75) {$\beta$};
+		\node [style=none] (2147) at (-4, -8.75) {$\gamma$};
+		\node [style=none] (2148) at (-6, -11.75) {$\alpha$};
+		\node [style=none] (2149) at (-5, -11.75) {$\beta$};
+		\node [style=none] (2150) at (-4, -11.75) {$\gamma$};
+		\node [style=none] (2151) at (7, -10.25) {$\leq$};
+		\node [style=none] (2153) at (-3.25, -9.75) {};
+		\node [style=none] (2154) at (-2.75, -9.75) {};
+		\node [style=none] (2155) at (-3, -10.25) {$\gamma$};
+		\node [style=none] (2156) at (-1.5, -10.25) {$c^{\gamma}_{\alpha,\beta}$};
+		\node [style=none] (2157) at (16.5, -10.25) {$\mathbb E_{ABC}$};
+		\node [style=none] (2158) at (34, -10.25) {$\underline{A\!\!+\!\!B}$};
+		\node [style=none] (2159) at (34, -9.75) {};
+		\node [style=none] (2160) at (34, -10.75) {};
+		\node [style=none] (2162) at (31.5, -10.5) {$\mathbb E_{AB}$};
+		\node [style=none] (2163) at (21.5, -10.25) {$=$};
+		\node [style=square] (2164) at (29.25, -9.75) {$\underline C$};
+		\node [style=none] (2165) at (29.25, -9.25) {};
+		\node [style=none] (2166) at (29.25, -10.25) {};
+		\node [style=none] (2167) at (29.75, -9.25) {};
+		\node [style=none] (2168) at (29.75, -10.25) {};
+		\node [style=none] (2169) at (29.5, -8.75) {$\gamma$};
+		\node [style=none] (2170) at (35.5, -9.75) {};
+		\node [style=none] (2171) at (35.5, -10.75) {};
+		\node [style=none] (2172) at (29.25, -11.25) {};
+		\node [style=none] (2173) at (29.75, -11.25) {};
+		\node [style=none] (2174) at (29.5, -11.75) {$\gamma$};
+		\node [style=none] (2175) at (29, -10.75) {};
+		\node [style=none] (2176) at (30, -10.75) {};
+		\node [style=none] (2177) at (33, -9.75) {};
+		\node [style=none] (2178) at (35, -9.75) {};
+		\node [style=none] (2179) at (33, -10.75) {};
+		\node [style=none] (2180) at (35, -10.75) {};
+		\node [style=none] (2181) at (-15, -10.25) {};
+		\node [style=none] (2182) at (-12.25, -10.25) {};
+		\node [style=none] (2183) at (-14.75, -10.75) {};
+		\node [style=none] (2184) at (-14.25, -10.75) {};
+		\node [style=none] (2185) at (-13.75, -10.75) {};
+		\node [style=none] (2186) at (-13.25, -10.75) {};
+		\node [style=none] (2187) at (-14.5, -11.25) {$\alpha$};
+		\node [style=none] (2188) at (-13.5, -11.25) {$\beta$};
+		\node [style=square] (2189) at (-11, -10) {$\underline A$};
+		\node [style=square] (2190) at (-10, -10) {$\underline B$};
+		\node [style=dot] (2191) at (-10.5, -8) {};
+		\node [style=dot] (2192) at (-10.5, -12) {};
+		\node [style=none] (2193) at (-14, -9.75) {$1$};
+		\node [style=none] (2194) at (-7.25, -10.25) {$\leq$};
+		\node [style=square] (2195) at (-8.5, -10) {$\underline C$};
+		\node [style=none] (2196) at (-8.5, -9.5) {};
+		\node [style=none] (2197) at (-8.5, -10.5) {};
+		\node [style=none] (2198) at (-8, -9.5) {};
+		\node [style=none] (2199) at (-8, -10.5) {};
+		\node [style=none] (2200) at (-8.25, -9) {$\gamma$};
+		\node [style=none] (2201) at (-12.75, -10.75) {};
+		\node [style=none] (2202) at (-12.25, -10.75) {};
+		\node [style=none] (2203) at (-12.5, -11.25) {$\gamma$};
+		\node [style=none] (2204) at (-7.25, -11.25) {};
+		\node [style=none] (2205) at (-7.25, -12.5) {};
+		\node [style=none] (2206) at (-7.25, -13.25) {$\forall A,B$};
+		\node [style=none] (2207) at (-16, -10.25) {$\leq$};
+		\node [style=none] (2208) at (-16, -11.25) {};
+		\node [style=none] (2209) at (-16, -12.5) {};
+		\node [style=none] (2210) at (-16, -13.25) {$C=A+B$};
+		\node [style=none] (2211) at (-27.25, -10.5) {$\frac{|\gamma|!}{|\alpha|!|\beta|!}\frac{\mathrm{Tr}(A)^a\mathrm{Tr}(B)^b}{\mathrm{Tr}(C)^{c}}$};
+		\node [style=none] (2212) at (-23, -10.5) {};
+		\node [style=none] (2213) at (-20.25, -10.5) {};
+		\node [style=none] (2214) at (-22.75, -11) {};
+		\node [style=none] (2215) at (-22.25, -11) {};
+		\node [style=none] (2216) at (-21.75, -11) {};
+		\node [style=none] (2217) at (-21.25, -11) {};
+		\node [style=none] (2218) at (-22.5, -11.5) {$\alpha$};
+		\node [style=none] (2219) at (-21.5, -11.5) {$\beta$};
+		\node [style=square] (2220) at (-19, -10.25) {$\underline A$};
+		\node [style=square] (2221) at (-18, -10.25) {$\underline B$};
+		\node [style=dot] (2222) at (-18.5, -8.25) {};
+		\node [style=dot] (2223) at (-18.5, -12.25) {};
+		\node [style=none] (2224) at (-22, -10) {$1$};
+		\node [style=none] (2225) at (-20.75, -11) {};
+		\node [style=none] (2226) at (-20.25, -11) {};
+		\node [style=none] (2227) at (-20.5, -11.5) {$\gamma$};
+		\node [style=none] (2228) at (-17.5, -8) {$2$};
+		\node [style=none] (2229) at (-28, -5) {};
+		\node [style=none] (2230) at (-28, -9) {};
+		\node [style=none] (2231) at (-25, -7) {$\times \frac{1}{\mathrm{Tr}(A)^a\mathrm{Tr}(B)^b\mathrm{Tr}(C)^c}$};
+		\node [style=none] (2232) at (11.5, -10.25) {$\frac{|\alpha|!|\beta|!}{|\gamma|!}\frac{\mathrm{Tr}(C)^{c}}{\mathrm{Tr}(A)^a\mathrm{Tr}(B)^b}$};
+		\node [style=none] (2233) at (25.25, -10.25) {$\frac{|\alpha|!|\beta|!}{|\gamma|!}\frac{\mathrm{Tr}(C)^{c}}{\mathrm{Tr}(A)^a\mathrm{Tr}(B)^b}$};
+		\node [style=none] (2234) at (13.25, 6.5) {$1\geq \frac{|\gamma|!}{|\alpha|!|\beta|!}\frac{\mathrm{Tr}(A)^a\mathrm{Tr}(B)^b}{\mathrm{Tr}(C)^{c}} \geq \frac{1}{12^2(k+2)^{\frac{1}{2}}}$};
+		\node [style=none] (2235) at (13.25, 5.25) {$(k+3)^{n(n-1)/2} \leq (|\lambda|+1)^{n(n-1)/2} \leq \dim(V_{\lambda}) \geq 1$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=mid-route] (143.center) to (141);
+		\draw [style=mid-route] (141) to (144.center);
+		\draw [style=box] (152.center)
+			 to (149.center)
+			 to (150.center)
+			 to (151.center)
+			 to cycle;
+		\draw [style=box] (159.center)
+			 to (156.center)
+			 to (157.center)
+			 to (158.center)
+			 to cycle;
+		\draw [style=mid-route] (145) to (155.center);
+		\draw [style=mid-route] (146) to (154.center);
+		\draw [style=mid-route] (162.center) to (145);
+		\draw [style=mid-route] (161.center) to (146);
+		\draw [style=mid-route] (147) to (153.center);
+		\draw [style=mid-route] (160.center) to (147);
+		\draw [style=mid-route] (170.center) to (166.center);
+		\draw [style=mid-route] (163.center) to (169.center);
+		\draw [style=mid-route] (164.center)
+			 to [bend left=90, looseness=1.25] (173.center)
+			 to (174.center)
+			 to [bend left=90, looseness=1.25] (165.center);
+		\draw [style=box] (184.center)
+			 to (185.center)
+			 to (187.center)
+			 to (186.center)
+			 to cycle;
+		\draw [style=mid-route] (189.center) to (180.center);
+		\draw [style=mid-route] (179.center) to (190.center);
+		\draw [style=mid-route] (192.center)
+			 to [bend left=90, looseness=1.25] (194.center)
+			 to (195.center)
+			 to [bend left=90, looseness=1.25] (193.center)
+			 to (191.center)
+			 to cycle;
+		\draw (198.center) to (197.center);
+		\draw [style=mid-route] (200.center)
+			 to [bend left=90, looseness=1.75] (199.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (205.center) to (206.center);
+		\draw [style=mid-route] (1155.center) to (1153);
+		\draw [style=mid-route] (1153) to (1156.center);
+		\draw [style=mid-route] (1160.center) to (1161.center);
+		\draw [style=annotatebox] (1166.center) to (1165.center);
+		\draw [style=annotatebox] (1168.center) to (1167.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (1834) to (1835);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (1835) to (1832);
+		\draw [style=mid-route, in=-90, out=60] (1835) to (1833);
+		\draw [style=mid-route, in=30, out=-90, looseness=0.75] (1836) to (1835);
+		\draw [style=mid-route, in=90, out=-30, looseness=0.75] (1834) to (1836);
+		\draw [style=mid-route, in=300, out=90] (1833) to (1834);
+		\draw [style=mid-route, in=240, out=90] (1832) to (1834);
+		\draw [style=over-route, in=90, out=90, looseness=1.25] (1842) to (1851.center);
+		\draw [style=over-route, in=-90, out=-90, looseness=1.25] (1852.center) to (1842);
+		\draw [style=box] (1846.center)
+			 to (1847.center)
+			 to (1849.center)
+			 to (1848.center)
+			 to cycle;
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (1855) to (1856);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (1856) to (1853);
+		\draw [style=mid-route, in=-90, out=60] (1856) to (1854);
+		\draw [style=mid-route, in=30, out=-90, looseness=0.75] (1857) to (1856);
+		\draw [style=mid-route, in=90, out=-30, looseness=0.75] (1855) to (1857);
+		\draw [style=mid-route, in=300, out=90] (1854) to (1855);
+		\draw [style=mid-route, in=240, out=90] (1853) to (1855);
+		\draw [style=over-route, in=90, out=90, looseness=1.25] (1858) to (1862.center);
+		\draw [style=over-route, in=-90, out=-90, looseness=1.25] (1863.center) to (1858);
+		\draw [style=box] (1866.center)
+			 to (1864.center)
+			 to (1865.center)
+			 to (1867.center)
+			 to cycle;
+		\draw (1870.center) to (1871.center);
+		\draw [style=mid-route] (1873.center)
+			 to [bend left=90, looseness=1.25] (1875.center)
+			 to (1876.center)
+			 to [bend left=90, looseness=1.25] (1874.center)
+			 to (1872.center)
+			 to cycle;
+		\draw [style=mid-route] (1877.center)
+			 to [bend left=90, looseness=1.75] (1878.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1880.center)
+			 to [bend left=90, looseness=1.25] (1882.center)
+			 to (1883.center)
+			 to [bend left=90, looseness=1.25] (1881.center)
+			 to (1879.center)
+			 to cycle;
+		\draw [style=mid-route] (1884.center)
+			 to [bend left=90, looseness=1.75] (1885.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route] (1887.center)
+			 to [bend left=90, looseness=1.25] (1889.center)
+			 to (1890.center)
+			 to [bend left=90, looseness=1.25] (1888.center)
+			 to (1886.center)
+			 to cycle;
+		\draw [style=mid-route] (1891.center)
+			 to [bend left=90, looseness=1.75] (1892.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1901.center) to (1902.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1902.center) to (1901.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (1918.center) to (1920.center);
+		\draw [style=mid-route] (1920.center) to (1921.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (1921.center) to (1919.center);
+		\draw [style=mid-route] (1919.center) to (1917);
+		\draw [style=mid-route] (1917) to (1918.center);
+		\draw [style=over-route, bend left=90] (1908.center) to (1923.center);
+		\draw [style=over-route] (1923.center) to (1924.center);
+		\draw [style=over-route, bend left=90] (1924.center) to (1909.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1925.center) to (1926.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1926.center) to (1925.center);
+		\draw (1929.center) to (1928.center);
+		\draw [style=box] (1912.center)
+			 to (1910.center)
+			 to (1911.center)
+			 to (1913.center)
+			 to cycle;
+		\draw (1976.center) to (1977.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1983.center) to (1984.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1984.center) to (1983.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1990.center) to (1991.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (1991.center) to (1990.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2011) to (2012);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2012) to (2009);
+		\draw [style=mid-route, in=-90, out=60] (2012) to (2010);
+		\draw [style=mid-route, in=300, out=90] (2010) to (2011);
+		\draw [style=mid-route, in=240, out=90] (2009) to (2011);
+		\draw [style=mid-route, bend left=60, looseness=1.25] (2011) to (2012);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2036.center) to (2038.center);
+		\draw [style=mid-route] (2038.center) to (2039.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2039.center) to (2037.center);
+		\draw [style=mid-route] (2037.center) to (2035);
+		\draw [style=mid-route] (2035) to (2036.center);
+		\draw [style=mid-route] (2041.center) to (2042.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2043.center) to (2044.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2044.center) to (2043.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2047.center) to (2049.center);
+		\draw [style=mid-route] (2049.center) to (2050.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2050.center) to (2048.center);
+		\draw [style=mid-route] (2048.center) to (2046);
+		\draw [style=mid-route] (2046) to (2047.center);
+		\draw [style=mid-route] (2052.center) to (2053.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2054.center) to (2055.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2055.center) to (2054.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2059.center) to (2061.center);
+		\draw [style=mid-route] (2061.center) to (2062.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2062.center) to (2060.center);
+		\draw [style=mid-route] (2060.center) to (2058);
+		\draw [style=mid-route] (2058) to (2059.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2064.center) to (2065.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2065.center) to (2064.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2069) to (2070);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2070) to (2067);
+		\draw [style=mid-route, in=-90, out=60] (2070) to (2068);
+		\draw [style=mid-route, in=300, out=90] (2068) to (2069);
+		\draw [style=mid-route, in=240, out=90] (2067) to (2069);
+		\draw [style=mid-route, bend left=60, looseness=1.25] (2069) to (2070);
+		\draw [style=over-route, bend left=90] (2072.center) to (2074.center);
+		\draw [style=over-route] (2074.center) to (2075.center);
+		\draw [style=over-route, bend left=90] (2075.center) to (2073.center);
+		\draw [style=box] (2079.center)
+			 to (2078.center)
+			 to (2076.center)
+			 to (2077.center)
+			 to cycle;
+		\draw [style=arrannotate] (2083.center) to (2082.center);
+		\draw [style=arrannotate] (2087.center) to (2086.center);
+		\draw (2090.center) to (2091.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2092.center) to (2093.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2093.center) to (2092.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2094.center) to (2095.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2095.center) to (2094.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2100) to (2101);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2101) to (2098);
+		\draw [style=mid-route, in=-90, out=60] (2101) to (2099);
+		\draw [style=mid-route, in=300, out=90] (2099) to (2100);
+		\draw [style=mid-route, in=240, out=90] (2098) to (2100);
+		\draw [style=mid-route, bend left=60, looseness=1.25] (2100) to (2101);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2103.center) to (2104.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2104.center) to (2103.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2109) to (2110);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2110) to (2107);
+		\draw [style=mid-route, in=-90, out=60] (2110) to (2108);
+		\draw [style=mid-route, in=30, out=-90, looseness=0.75] (2111) to (2110);
+		\draw [style=mid-route, in=90, out=-30, looseness=0.75] (2109) to (2111);
+		\draw [style=mid-route, in=300, out=90] (2108) to (2109);
+		\draw [style=mid-route, in=240, out=90] (2107) to (2109);
+		\draw [style=over-route, in=90, out=90, looseness=1.25] (2112) to (2114.center);
+		\draw [style=over-route, in=-90, out=-90, looseness=1.25] (2115.center) to (2112);
+		\draw [style=box] (2118.center)
+			 to (2116.center)
+			 to (2117.center)
+			 to (2119.center)
+			 to cycle;
+		\draw (2122.center) to (2123.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2125.center) to (2127.center);
+		\draw [style=mid-route] (2127.center) to (2128.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2128.center) to (2126.center);
+		\draw [style=mid-route] (2126.center) to (2124);
+		\draw [style=mid-route] (2124) to (2125.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2129.center) to (2130.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2130.center) to (2129.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2132.center) to (2134.center);
+		\draw [style=mid-route] (2134.center) to (2135.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2135.center) to (2133.center);
+		\draw [style=mid-route] (2133.center) to (2131);
+		\draw [style=mid-route] (2131) to (2132.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2136.center) to (2137.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2137.center) to (2136.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2139.center) to (2141.center);
+		\draw [style=mid-route] (2141.center) to (2142.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2142.center) to (2140.center);
+		\draw [style=mid-route] (2140.center) to (2138);
+		\draw [style=mid-route] (2138) to (2139.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2143.center) to (2144.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2144.center) to (2143.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2153.center) to (2154.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2154.center) to (2153.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2165.center) to (2167.center);
+		\draw [style=mid-route] (2167.center) to (2168.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2168.center) to (2166.center);
+		\draw [style=mid-route] (2166.center) to (2164);
+		\draw [style=mid-route] (2164) to (2165.center);
+		\draw [style=over-route, bend left=90] (2159.center) to (2170.center);
+		\draw [style=over-route] (2170.center) to (2171.center);
+		\draw [style=over-route, bend left=90] (2171.center) to (2160.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2172.center) to (2173.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2173.center) to (2172.center);
+		\draw (2176.center) to (2175.center);
+		\draw [style=box] (2179.center) to (2177.center);
+		\draw [style=box] (2177.center) to (2178.center);
+		\draw [style=box] (2178.center) to (2180.center);
+		\draw [style=box] (2180.center) to (2179.center);
+		\draw (2181.center) to (2182.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2183.center) to (2184.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2184.center) to (2183.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2185.center) to (2186.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2186.center) to (2185.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2191) to (2192);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2192) to (2189);
+		\draw [style=mid-route, in=-90, out=60] (2192) to (2190);
+		\draw [style=mid-route, in=300, out=90] (2190) to (2191);
+		\draw [style=mid-route, in=240, out=90] (2189) to (2191);
+		\draw [style=mid-route, bend left=60, looseness=1.25] (2191) to (2192);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2196.center) to (2198.center);
+		\draw [style=mid-route] (2198.center) to (2199.center);
+		\draw [style=mid-route, bend left=90, looseness=1.25] (2199.center) to (2197.center);
+		\draw [style=mid-route] (2197.center) to (2195);
+		\draw [style=mid-route] (2195) to (2196.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2201.center) to (2202.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2202.center) to (2201.center);
+		\draw [style=arrannotate] (2205.center) to (2204.center);
+		\draw [style=arrannotate] (2209.center) to (2208.center);
+		\draw (2212.center) to (2213.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2214.center) to (2215.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2215.center) to (2214.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2216.center) to (2217.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2217.center) to (2216.center);
+		\draw [style=kron, in=150, out=-150, looseness=1.25] (2222) to (2223);
+		\draw [style=mid-route, in=-90, out=120, looseness=0.75] (2223) to (2220);
+		\draw [style=mid-route, in=-90, out=60] (2223) to (2221);
+		\draw [style=mid-route, in=300, out=90] (2221) to (2222);
+		\draw [style=mid-route, in=240, out=90] (2220) to (2222);
+		\draw [style=mid-route, bend left=60, looseness=1.25] (2222) to (2223);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2225.center) to (2226.center);
+		\draw [style=mid-route, bend left=90, looseness=1.75] (2226.center) to (2225.center);
+		\draw [style=arrannotate, bend right=45, looseness=1.25] (2229.center) to (2230.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

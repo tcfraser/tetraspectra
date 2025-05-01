@@ -1288,7 +1288,7 @@ The following proposition is the analogue of \cref{prop:completeness_rel_uni}.
     An application of \cref{lem:multinomial_dist_lower_bound} for binomial distributions ($m=2$) implies the following bound
     \begin{equation}
         \frac{c!}{a!b!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}}{\abs{\ec}^{c}}
-        \geq 12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}.
+        \geq \frac{1}{12^{2}\left(k \abs{\ec}+2\right)^\frac{1}{2}}.
     \end{equation}
     Moreover, from Weyl's dimension formula, \cref{eq:weyl_dim}, we obtain \cite[Equation 7]{christandl2006spectra}:
     \begin{equation}
@@ -1946,6 +1946,22 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         }
     \end{equation}
 \end{defn}
+\begin{lem}
+    Given integers $(a,b,c,d,e,f)$ such that $c=a+b, f=b+d$ and $e = a+b+d$, we have
+    \begin{align}
+        \frac{e!}{a!b!d!} \frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} &\leq \min\left\{\frac{c!}{a!b!} \frac{\Tr(A)^{a}\Tr(B)^{b}}{\Tr(C)^{c}}, \frac{f!}{b!d!} \frac{\Tr(B)^{b}\Tr(D)^{d}}{\Tr(F)^{f}} \right\}.
+    \end{align}
+    Moreover, letting $k$ be given and setting
+    \begin{equation}
+        a = \ceil{k\frac{\Tr(A)}{\Tr(E)}}, \qquad
+        b = \ceil{k\frac{\Tr(B)}{\Tr(E)}}, \qquad
+        d = \ceil{k\frac{\Tr(D)}{\Tr(E)}},
+    \end{equation}
+    yields the following bound:
+    \begin{equation}
+        \frac{e!}{a!b!d!}\frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} &\geq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+3}\right), \\
+    \end{equation}
+\end{lem}
 \begin{prop}
     If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then
     \begin{equation}
@@ -2057,6 +2073,32 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         \end{split}
     \end{align}
 \end{proof}
+\hrule
+Moreover, as 
+\begin{equation}
+    \Tr[P_{\ya}] \mathbb E_{A \sim \mathcal O_{\ea}} P_{\ya} \nrm A^{\otimes a}P_{\ya} = \Tr[P_{\ya} \nrm A^{\otimes a}] P_{\ya},
+\end{equation}
+and $P_{\ya} \nrm A^{\otimes a}P_{\ya} = \iota_{\ya} \pi_{\ya}(\nrm A) \ot \id_{W_{\ya}} \ot \iota_{\ya}^{\dagger}$,
+and
+\begin{equation}
+    Q\left[\ygrid\right] 
+    \coloneqq \mathbb E_{X,Y,Z}\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf} = q^n_{\ya}q^n_{\yb}q^n_{\yd} \Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]
+\end{equation}
+where $q^n_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})} = \frac{h^n_{\ya}}{\Tr(P_{\ya})}$,
+we have
+\begin{align}
+    &S\left[\ygrid\middle|\egrid \right]\\
+    &\coloneqq P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right], \\
+    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}]\Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]\\
+    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr(P_{\ya})\Tr(P_{\yb})\Tr(P_{\yc})\Tr(P_{\yd})\Tr(P_{\ye})\Tr(P_{\yf})
+    \mathbb E \Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}]\\
+    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})
+    \mathbb E\Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}] \\
+    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})\dim(W_{\ya}\ot W_{\yb} \ot W_{\yd})
+    \mathbb E\Tr[(\pi_{\ya}(\nrm A) \ot \pi_{\yb}(\nrm B) \ot \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
+    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\dim(V_{\yc}\ot V_{\ye} \ot V_{\yf})
+   \mathbb E \Tr[(\tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B) \ot \tilde \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\tilde \pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\tilde \pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\tilde \pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
+\end{align}
 \hrule
 }
 
@@ -2245,10 +2287,16 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound}
-        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{1-m}{2}}
+        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}
     \end{equation}
 \end{lem}
-\begin{proof}
+In particular, when $W = 1$ so that $w_i = p_i$ are probability distributions and $z_i = \ceil{k p_i}$ so that $z_i \approx kp_i$ for large $k$, we have for $m=2$ and $m=3$ the bounds
+\begin{align}
+    \label{eq:binomial_trinomial_lower_bounds}
+    \frac{(z_1+z_2)!}{z_1!z_2!}p_1^{z_1} p_2^{z_2} &\geq \frac{\sqrt{2\pi}}{11^2}\left(\frac{1}{\sqrt{k+2}}\right), \\
+    \frac{(z_1+z_2+z_3)!}{z_1!z_2!z_3!}p_1^{z_1} p_2^{z_2} p_3^{z_3} &\geq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+3}\right)
+\end{align}
+\begin{proof}[Proof of \cref{lem:multinomial_dist_lower_bound}]
     The proof follows from a version of Stirling's approximation due to \citeauthor{robbins1955remark} \cite{robbins1955remark} which states
     \begin{equation}
         k! = \sqrt{2\pi} k^{k+\frac{1}{2}} e^{-k} e^{r_k},
@@ -2280,9 +2328,11 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
     Also $Z \geq z_i$ so altogether, we have
     \begin{align}
         \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
-        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}} \geq \left(\frac{1}{12}\right)^{m}(kW + m)^{\frac{1-m}{2}},
+        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}, \\
+        &\geq \sqrt{2\pi}\left(\frac{1}{4\sqrt{2\pi}\exp(\frac{1}{12})}\right)^{m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}, \\
+        &\geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}},
     \end{align}
-    as claimed because $\sqrt{2\pi} > 1$ and $\frac{1}{12} < \frac{e^{-\frac{1}{12}}}{4\sqrt{2\pi}} = 0.09176\cdots$.
+    as claimed because $4\sqrt{2\pi}e^{\frac{1}{12}} = 10.8978\cdots < 11$.
 \end{proof}
 
 \section{A character formula for \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
