@@ -1957,10 +1957,16 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         b = \ceil{k\frac{\Tr(B)}{\Tr(E)}}, \qquad
         d = \ceil{k\frac{\Tr(D)}{\Tr(E)}},
     \end{equation}
+    ensures that $e=a+b+d \leq k+2$ (because $e < k+3$), and also
     yields the following bound:
     \begin{equation}
-        \frac{e!}{a!b!d!}\frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} &\geq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+3}\right), \\
+        \frac{e!}{a!b!d!}\frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} \geq \frac{1}{t(k)} \coloneqq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+2}\right), \\
     \end{equation}
+    Furthermore, let
+    \begin{equation}
+        m_n(k) = (k+3)^{n(n-1)/2} 
+    \end{equation}
+    to ensure $\max\{\dim V_{\ya}^{n}, \ldots, \dim V_{\ye}^{n}\} \leq (\abs{\ye}+1)^{n(n-1)/2} \leq m_n(k)$.
 \end{lem}
 \begin{prop}
     If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then
@@ -2074,31 +2080,90 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
     \end{align}
 \end{proof}
 \hrule
-Moreover, as 
-\begin{equation}
-    \Tr[P_{\ya}] \mathbb E_{A \sim \mathcal O_{\ea}} P_{\ya} \nrm A^{\otimes a}P_{\ya} = \Tr[P_{\ya} \nrm A^{\otimes a}] P_{\ya},
-\end{equation}
-and $P_{\ya} \nrm A^{\otimes a}P_{\ya} = \iota_{\ya} \pi_{\ya}(\nrm A) \ot \id_{W_{\ya}} \ot \iota_{\ya}^{\dagger}$,
-and
-\begin{equation}
-    Q\left[\ygrid\right] 
-    \coloneqq \mathbb E_{X,Y,Z}\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf} = q^n_{\ya}q^n_{\yb}q^n_{\yd} \Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]
-\end{equation}
-where $q^n_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})} = \frac{h^n_{\ya}}{\Tr(P_{\ya})}$,
-we have
-\begin{align}
-    &S\left[\ygrid\middle|\egrid \right]\\
-    &\coloneqq P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right], \\
-    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}]\Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]\\
-    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr(P_{\ya})\Tr(P_{\yb})\Tr(P_{\yc})\Tr(P_{\yd})\Tr(P_{\ye})\Tr(P_{\yf})
-    \mathbb E \Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}]\\
-    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})
-    \mathbb E\Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}] \\
-    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})\dim(W_{\ya}\ot W_{\yb} \ot W_{\yd})
-    \mathbb E\Tr[(\pi_{\ya}(\nrm A) \ot \pi_{\yb}(\nrm B) \ot \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
-    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\dim(V_{\yc}\ot V_{\ye} \ot V_{\yf})
-   \mathbb E \Tr[(\tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B) \ot \tilde \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\tilde \pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\tilde \pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\tilde \pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
-\end{align}
+%Moreover, as 
+%\begin{equation}
+%    \Tr[P_{\ya}] \mathbb E_{A \sim \mathcal O_{\ea}} P_{\ya} \nrm A^{\otimes a}P_{\ya} = \Tr[P_{\ya} \nrm A^{\otimes a}] P_{\ya},
+%\end{equation}
+%and $P_{\ya} \nrm A^{\otimes a}P_{\ya} = \iota_{\ya} \pi_{\ya}(\nrm A) \ot \id_{W_{\ya}} \ot \iota_{\ya}^{\dagger}$,
+%and
+%\begin{equation}
+%    Q\left[\ygrid\right] 
+%    \coloneqq \mathbb E_{X,Y,Z}\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf} = q^n_{\ya}q^n_{\yb}q^n_{\yd} \Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]
+%\end{equation}
+%where $q^n_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})} = \frac{h^n_{\ya}}{\Tr(P_{\ya})}$,
+%we have
+%\begin{align}
+%    &S\left[\ygrid\middle|\egrid \right]\\
+%    &\coloneqq P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right], \\
+%    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}]\Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]\\
+%    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr(P_{\ya})\Tr(P_{\yb})\Tr(P_{\yc})\Tr(P_{\yd})\Tr(P_{\ye})\Tr(P_{\yf})
+%    \mathbb E \Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}]\\
+%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})
+%    \mathbb E\Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}] \\
+%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})\dim(W_{\ya}\ot W_{\yb} \ot W_{\yd})
+%    \mathbb E\Tr[(\pi_{\ya}(\nrm A) \ot \pi_{\yb}(\nrm B) \ot \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
+%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\dim(V_{\yc}\ot V_{\ye} \ot V_{\yf})
+%   \mathbb E \Tr[(\tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B) \ot \tilde \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\tilde \pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\tilde \pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\tilde \pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
+%\end{align}
+\hrule
+\begin{defn}
+    Given a candidate sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, let
+    \begin{align}
+        \begin{split}
+        D_{*}\!\!\left(\egrid \right)
+        \coloneqq \min_{\substack{ABC\\DEF}} \max\left\{\norm{\eig(A+B)-\eig(C)}_1, \norm{\eig(B+D)-\eig(F)}_1, \norm{\eig(A+B+D)-\eig(E)}_1\right\}
+        \end{split}
+    \end{align}
+    where the minimum is taken over all Hermitian matrices $(A,B,C,D,E,F)$ with the prescribed eigenvalues.
+\end{defn}
+\begin{lem}
+    Define
+    \begin{align}
+        \TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} 
+        &\coloneqq \Tr[(A^{\ot a} \ot B^{\ot b} \ot D^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}], \\
+        &= \Tr[\tilde \pi_{\ya}(A)\otimes \tilde \pi_{\yb}(B) \otimes \tilde \pi_{\yd}(D) P^{\yc}_{\ya\yb}P^{\yf}_{\yb\yd}P^{\ye}_{\ya\yb\yd}].
+    \end{align}
+    This quantity emerges naturally from the integral formula:
+    \begin{equation}
+        \mathbb E_{A,B,D}\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} = \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2.
+    \end{equation}
+    with
+    \begin{equation}
+        R^{\ye,n}_{\ya,\yb,\yd}\coloneqq \frac{\dim V_{\ye}^{n}}{\dim V_{\ya}^n\ot V_{\yb}^{n}\ot V_{\yd}^{n}}
+    \end{equation}
+    The following bounds hold:
+    \begin{align}
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) \norm{\abcdefsymbol}_2, \\
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \frac{\abs{\ya}!\abs{\yb}!\abs{\yd}!}{\abs{\ye}!}\tilde \chi_{\ye}(A+B+D), \\
+        %\abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        %\tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) \\
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \left(\frac{\abs{\yb}!\abs{\yd}!}{\abs{\yf}!}\tilde \chi_{\ya}(A)\tilde \chi_{\yf}(B+D)\right)^{\frac{1}{2}}
+        \left(\frac{\abs{\ya}!\abs{\yb}!}{\abs{\yc}!}\tilde \chi_{\yc}(A+B)\tilde \chi_{\yd}(D)\right)^{\frac{1}{2}}
+    \end{align}
+\end{lem}
+\begin{rem}
+    After normalizing the positive semidefinite matrices $A,B,D$ to $\nrm A, \nrm B, \nrm D$, relaxing $\tilde \chi_\yx(\nrm X) \leq 1$, and using the $k$-dependent sizes of Young diagrams, $(a,b,c,d,e,f)$, one obtains the bound
+    \begin{equation}
+        \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^3 \leq
+        \tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})
+    \end{equation}
+    and also
+    \begin{equation}
+        \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^5 \leq
+        \tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})\norm{\abcdefsymbol}_2^2
+    \end{equation}
+    where $t(k) = \frac{11^3}{\sqrt{2\pi}}(k+2)$ is the polynomial expression emerging from the trinomial distribution lower bound.\\
+    Similarly, using the integral formula, if $D_{*}\!\!\left(\egrid \right) \leq \varepsilon$, then
+    \begin{align}
+        &\tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm F)\tilde \chi_{\ye}(\nrm E)\norm{\abcdefsymbol}_2^2 \\
+        &\quad \leq \tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) R^{\ye,n;-1}_{\ya,\yb,\yd}\mathbb E_{A,B,D} \abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} \\
+        &\quad \leq \tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) t(k)^3R^{\ye,n;-1}_{\ya,\yb,\yd}\mathbb E_{ABD} \tilde \chi_{\yc}(\nrm{A+B})^{\frac{1}{3}}\tilde \chi_{\yf}(\nrm{B+D})^{\frac{1}{3}}\tilde \chi_{\ye}(\nrm{A+B+D})^{\frac{1}{3}}\\
+        &\quad \leq t(k)^3 m_n(k)^{3\times \frac{4}{3}+3} \exp(-k\frac{\tau_{\min}}{\tau_{\max}}\frac{\varepsilon^2}{8})\\
+    \end{align}
+\end{rem}
 \hrule
 }
 
@@ -2278,24 +2343,18 @@ In the case where $n = 2$, the involution map becomes the identity map (as every
 
 \begin{lem}
     \label{lem:multinomial_dist_lower_bound}
-    Fix $m\geq 2$ and let $(w_1, \ldots, w_m) \in \mathbb R_{> 0}^{m}$ have minimum $w_{\min} \coloneqq \min\{ w_1, \ldots, w_m\} > 0$.
-    Let $k$ be a positive integer satisfying $k \geq w_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_m) \in \mathbb N_{>0}^{m}$ by the equation
+    Fix $m\geq 2$ and let $(p_1, \ldots, p_m) \in \mathbb R_{> 0}^{m}$ have minimum $p_{\min} \coloneqq \min\{ p_1, \ldots, p_m\} > 0$ and total $p_1 + \cdots + p_m = 1$.
+    Let $k$ be a positive integer satisfying $k \geq p_{\min}^{-1}$ and define positive integers $(z_1, \ldots, z_m) \in \mathbb N_{>0}^{m}$ by the equation
     \begin{equation}
-        z_{i} \coloneqq \ceil{kw_{i}}.
+        z_{i} \coloneqq \ceil{kp_{i}}.
     \end{equation}
-    Let $Z = z_1+\cdots+z_m$ and $W = w_1 + \cdots + w_m$.
+    Let $Z = z_1+\cdots+z_m$.
     Then
     \begin{equation}
         \label{eq:multinomial_dist_lower_bound}
-        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}} \geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}
+        \frac{Z!}{z_1! \cdots z_m!}p_1^{z_{1}}\cdots p_{m}^{z_{m}} \geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{k+m-1}\right)^{\frac{m-1}{2}}
     \end{equation}
 \end{lem}
-In particular, when $W = 1$ so that $w_i = p_i$ are probability distributions and $z_i = \ceil{k p_i}$ so that $z_i \approx kp_i$ for large $k$, we have for $m=2$ and $m=3$ the bounds
-\begin{align}
-    \label{eq:binomial_trinomial_lower_bounds}
-    \frac{(z_1+z_2)!}{z_1!z_2!}p_1^{z_1} p_2^{z_2} &\geq \frac{\sqrt{2\pi}}{11^2}\left(\frac{1}{\sqrt{k+2}}\right), \\
-    \frac{(z_1+z_2+z_3)!}{z_1!z_2!z_3!}p_1^{z_1} p_2^{z_2} p_3^{z_3} &\geq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+3}\right)
-\end{align}
 \begin{proof}[Proof of \cref{lem:multinomial_dist_lower_bound}]
     The proof follows from a version of Stirling's approximation due to \citeauthor{robbins1955remark} \cite{robbins1955remark} which states
     \begin{equation}
@@ -2305,21 +2364,21 @@ In particular, when $W = 1$ so that $w_i = p_i$ are probability distributions an
         \qquad
         \frac{1}{12k+1}\leq r_k \leq \frac{1}{12k}.
     \end{equation}
-    Therefore,
+    Direct substitution produces
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
-        &=\left(\frac{1}{2\pi Z}\right)^{\frac{m-1}{2}}\prod_{i=1}^{m}\left(\frac{Z}{z_i}\right)^{\frac{1}{2}}\left(\frac{Zw_i}{z_iW}\right)^{z_i}\exp\left(r_{Z} - \sum_{i=1}^{m} r_{z_i}\right).
+        \frac{Z!}{z_1! \cdots z_m!}p_1^{z_{1}}\cdots p_{m}^{z_{m}}
+        &=\left(\frac{\sqrt{2\pi}}{\sqrt{2\pi}^m}\right)\frac{1}{Z^{\frac{m-1}{2}}}\prod_{i=1}^{m}\left(\frac{Z}{z_i}\right)^{\frac{1}{2}}\left(\frac{Zp_i}{z_i}\right)^{z_i}\exp\left(r_{Z} - \sum_{i=1}^{m} r_{z_i}\right).
     \end{align}
-    In this setting, we have let $z_i = \ceil{k w_i}$ which implies
+    In this setting, we have let $z_i = \ceil{k pn_i}$ which implies
     \begin{equation}
-        kw_i \leq z_i < kw_i + 1,
+        kp_i \leq z_i < kp_i + 1,
         \qquad \text{and} \qquad
-        kW \leq Z < kW+m.
+        k \leq Z \leq k+m-1.
     \end{equation}
-    Consequently\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+1} \geq \frac{1}{4}$.},
+    Consequently because it was assumed that $kp_i \geq 1$,\footnote{Here we use the identity that $x \geq 1$ implies $\left(\frac{x}{x+1}\right)^{x+1} \geq \frac{1}{4}$.},
     \begin{equation}
-        \left(\frac{Zw_i}{z_iW}\right)^{z_i}
-        \geq \left(\frac{kw_i}{kw_i+1}\right)^{kw_i+1} \geq \frac{1}{4}.
+        \left(\frac{Zpi}{z_i}\right)^{z_i}
+        \geq \left(\frac{kp_i}{kp_i+1}\right)^{kp_i+1} \geq \frac{1}{4}.
     \end{equation}
     The remainder term satisfies
     \begin{equation}
@@ -2327,10 +2386,10 @@ In particular, when $W = 1$ so that $w_i = p_i$ are probability distributions an
     \end{equation}
     Also $Z \geq z_i$ so altogether, we have
     \begin{align}
-        \frac{Z!}{z_1! \cdots z_m!}\frac{w_1^{z_{1}}\cdots w_{m}^{z_{m}}}{W^{Z}}
-        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}, \\
-        &\geq \sqrt{2\pi}\left(\frac{1}{4\sqrt{2\pi}\exp(\frac{1}{12})}\right)^{m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}}, \\
-        &\geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{kW+m}\right)^{\frac{m-1}{2}},
+        \frac{Z!}{z_1! \cdots z_m!}p_1^{z_{1}}\cdots p_{m}^{z_{m}}
+        &\geq \left(\frac{1}{2\pi}\right)^{\frac{m-1}{2}}\left(\frac{1}{4}\right)^{m}\exp\left(-\frac{m}{12}\right) \left(\frac{1}{k+m-1}\right)^{\frac{m-1}{2}}, \\
+        &\geq \sqrt{2\pi}\left(\frac{1}{4\sqrt{2\pi}\exp(\frac{1}{12})}\right)^{m}\left(\frac{1}{k+m-1}\right)^{\frac{m-1}{2}}, \\
+        &\geq \frac{\sqrt{2\pi}}{11^m}\left(\frac{1}{k+m-1}\right)^{\frac{m-1}{2}},
     \end{align}
     as claimed because $4\sqrt{2\pi}e^{\frac{1}{12}} = 10.8978\cdots < 11$.
 \end{proof}
