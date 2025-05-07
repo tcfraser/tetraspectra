@@ -836,37 +836,15 @@ For example, the tri-gamma quantitity remerges as a summand in the binomial expa
 %\end{rem}
 \begin{prop}[Eigenvalue separation]
     Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
-    For each positive integer $k \geq 1$ and positive powers $p,q > 0$, define
+    For any positive powers $p,q > 0$, we have
     \begin{equation}
-        \Delta_{k}^{p,q}(A, B) \coloneqq \sum_{\yx \vdash k}\tilde \chi_{\yx}(A)^p\tilde \chi_{\yx}(B)^{q}.
-    \end{equation}
-    By homogeneity, we have $\Delta_{k}^{p,q}(a A, b B) = a^{pk}b^{qk}\Delta_{k}^{p,q}(A, B)$.
-    Moreover, we have
-    \begin{equation}
-        \Delta_{k}^{p,q}(\nrm A, \nrm B) \leq \abs{\mathrm{Par}(k,n)} m_n(k)^{p+q} \exp\left(-ks^2\frac{pq}{2(p+q)}\right).
-    \end{equation}
-    Therefore, if $s > 0$, then $\lim_{k\to \infty} \Delta_{k}^{p,q}(\nrm A, \nrm B) = 0$ for every $p,q>0$.
-    Otherwise, if $s = 0$, then $\nrm \ea = \nrm \eb$ and
-    \begin{equation}
-        \Delta_{k}^{p,q}(\nrm A, \nrm B) \coloneqq \sum_{\yx \vdash k}\tilde \chi_{\yx}(\nrm \ea)^{p+q} \geq \frac{1}{\abs{\mathrm{Par}(k,n)}^{p+q-1}}.
-    \end{equation}
-    Of special importance is the case where $p = q = \frac{1}{2}$, in which case $\Delta_{k}^{\frac{1}{2},\frac{1}{2}}(A, B)$ becomes the fidelity between the probability distributions $\tilde \chi_{\yx}(\nrm A)$ and $\tilde \chi_{\yx}(\nrm B)$:
-    \begin{equation}
-        F_{k}(\nrm A, \nrm B) \coloneqq \Delta_{k}^{\frac{1}{2}, \frac{1}{2}}(\nrm A, \nrm B) = \sum_{\yx \vdash k}\sqrt{\tilde \chi_{\yx}(\nrm A)\tilde \chi_{\yx}(\nrm B)}.
-    \end{equation}
-    Then if $s > 0$ we have
-    \begin{equation}
-        F_k(\nrm A, \nrm B) \leq \abs{\mathrm{Par}(k,n)} m_n(k) \exp\left(-\frac{ks^2}{8}\right).
-    \end{equation}
-    and otherwise, $s = 0$ and
-    \begin{equation}
-        F_k(\nrm A, \nrm B) = 1.
+        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\abs{\yx}+1)^{\frac{n(n-1)}{2}(p+q)} \exp\left(-\abs{\yx} s^2\frac{pq}{2(p+q)}\right).
     \end{equation}
 \end{prop}
 \begin{proof}
-    The proof follows from eigenvalue estimation for a Young diagram $\yx \vdash k$ which yields
+    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
     \begin{equation}
-        \tilde \chi_{\yx}(\nrm A) \leq m_n(k) \exp( - k \kl{\nrm \yx}{\nrm \ea}).
+        \tilde \chi_{\yx}(\nrm A)^p \leq (\abs{\yx}+1)^{\frac{n(n-1)}{2}p} \exp( - \abs{\yx} p\kl{\nrm \yx}{\nrm \ea}).
     \end{equation}
     Furthermore, Pinsker's inequality yields
     \begin{align}
@@ -875,7 +853,6 @@ For example, the tri-gamma quantitity remerges as a summand in the binomial expa
         \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
     \end{align}
     where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
-    For the lower bound in the case where $s=0$, we use the fact that $\tilde \chi_{\yx}(\nrm \ea)$ is a probability distributon and thus the relavent quantity is minimized for uniform distributions.
 \end{proof}
 It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
 \begin{equation}
@@ -962,38 +939,40 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \mathbb E_{A,B \sim 1} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)] = h_{\ya}h_{\yb} \frac{c^{\yc}_{\ya,\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)}\id_{V_{\yc}^n}
     \end{equation}
 \end{cor}
-\begin{rem}
-    As a sanity check, in the case where $A = B = X$, the binomial theorem reads
-    \begin{align}
-        \tilde \pi_{\yc}(2X)
-        &=2^{\abs{\yc}} \tilde \pi_{\yc}(X), \\
-        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(X) \ot \tilde \pi_{\yb}(X)], \\
-        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} \tilde \pi_{\yc}(X).
-    \end{align}
-    Now the coefficients in front of $\tilde \pi_{\yc}(X)$ match because, for any fixed $\ell$, $W_{\yc} \cong \bigoplus_{\ya \vdash \ell, \yb \vdash \abs{\yc}-\ell} C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)$.
-    Therefore, we have
-    \begin{equation}
-        \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
-        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} \sum_{\ya\vdash \ell,\yb\vdash \abs{\yc}-\ell}  \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
-        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} = 
-        2^{\abs{\yc}}
-    \end{equation}
-    as expected.
-\end{rem}
+%\begin{rem}
+%    As a sanity check, in the case where $A = B = X$, the binomial theorem reads
+%    \begin{align}
+%        \tilde \pi_{\yc}(2X)
+%        &=2^{\abs{\yc}} \tilde \pi_{\yc}(X), \\
+%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(X) \ot \tilde \pi_{\yb}(X)], \\
+%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} \tilde \pi_{\yc}(X).
+%    \end{align}
+%    Now the coefficients in front of $\tilde \pi_{\yc}(X)$ match because, for any fixed $\ell$, $W_{\yc} \cong \bigoplus_{\ya \vdash \ell, \yb \vdash \abs{\yc}-\ell} C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)$.
+%    Therefore, we have
+%    \begin{equation}
+%        \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
+%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} \sum_{\ya\vdash \ell,\yb\vdash \abs{\yc}-\ell}  \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
+%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} = 
+%        2^{\abs{\yc}}
+%    \end{equation}
+%    as expected.
+%\end{rem}
 \begin{rem}
     Taking the trace of both sides of the binomial theorem yields
     \begin{equation}
-        \tilde \chi_\yc(A+B) = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+        \tilde \chi_\yc(A+B) = \Tr[P_{\yc} (A+B)^{\ot \abs{\yc}}] = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
     \end{equation}
     where $P^{\yc}_{\ya,\yb}$ projects onto the $\yc$-isotypic component of $V_{\ya}^n \ot V_{\yb}^{n}$.
-    Define $\Gamma^{\yc}_{\ya,\yb}(A,B)$ to be the argument in the sum above:
+    Fixing a triple $(\ya,\yb,\yc)$ with sizes $c=a+b$ such that $c^{\yc}_{\ya,\yb} \neq 0$ and letting $C = A+B$ gives rise to the following inequality:
     \begin{equation}
-        \Gamma^{\yc}_{\ya,\yb}(A,B) \coloneqq \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B)].
+        \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)].
     \end{equation}
-    Alternatively, but equivalently, one has
+    Furthermore normalizing everything yields
     \begin{equation}
-        \Gamma^{\yc}_{\ya,\yb}(A,B) = \Tr[P_{\yc}(P_{\ya}\ot P_{\yb})(A^{\ot \abs{\ya}} \ot B^{\ot \abs{\yb}})].
+        \label{eq:binomial_ineq}
+        \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!}\frac{\Tr(A)^{a}\Tr(B)^{b}}{\Tr(C)^{c}} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B)].
     \end{equation}
+    We refer to this as the binomial inequality.
     %If one fixes $a,b,c \geq 0$ non-negative integers such that $c=a+b$, and considers Young diagrams
     %\begin{equation}
     %    \ya \vdash a, \qquad \yb \vdash b, \qquad \yc \vdash c,
@@ -1914,122 +1893,202 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 \end{proof}
 
 \clearpage
-{\color{blue}
-\hrule
-\begin{defn}
-    Fix positive integers $(a,b,c,d,e,f)$ such that
-    \begin{equation}
-        c=a+b, \qquad f=b+d, \qquad e=a+b+d.
-    \end{equation}
-    Let $(\ya, \yb, \yc, \yd, \ye, \yf)$ be a sextuple of Young diagrams with respective sizes $(a,b,c,d,e,f)$.
-    Define
-    \begin{equation}
-        Q\left[\ygrid\right] 
-        \coloneqq 
-         h^n_\ya h^n_\yb h^n_\yd \frac{\dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)} \norm{\abcdefsymbol}_{2}^2.
-    \end{equation}
-    Moreover, given a sextuple $(A,B,C,D,E,F)$ of positive semidefinite $n \times n$ matrices with prescribed eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, define
-    \begin{equation}
-        P\left[\ygrid\middle|\egrid \right]
-        \coloneqq 
-        \Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}].
-    \end{equation}
-    By construction, $Q$ and $P$ are both probability distributions over the aforementioned sextuples of Young diagrams.
-    Let the fidelity between these distributions be denoted by
-    \begin{equation}
-        F\left[\egrid\right]
-        \coloneqq
-        \sum_{\substack{\ya\yb\yc\\\yd\ye\yf}}
-        \sqrt{
-            Q\left[\ygrid\right]
-            P\left[\ygrid\middle|\egrid \right]
-        }
-    \end{equation}
-\end{defn}
-\begin{lem}
-    Given integers $(a,b,c,d,e,f)$ such that $c=a+b, f=b+d$ and $e = a+b+d$, we have
-    \begin{align}
-        \frac{e!}{a!b!d!} \frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} &\leq \min\left\{\frac{c!}{a!b!} \frac{\Tr(A)^{a}\Tr(B)^{b}}{\Tr(C)^{c}}, \frac{f!}{b!d!} \frac{\Tr(B)^{b}\Tr(D)^{d}}{\Tr(F)^{f}} \right\}.
-    \end{align}
-    Moreover, letting $k$ be given and setting
-    \begin{equation}
-        a = \ceil{k\frac{\Tr(A)}{\Tr(E)}}, \qquad
-        b = \ceil{k\frac{\Tr(B)}{\Tr(E)}}, \qquad
-        d = \ceil{k\frac{\Tr(D)}{\Tr(E)}},
-    \end{equation}
-    ensures that $e=a+b+d \leq k+2$ (because $e < k+3$), and also
-    yields the following bound:
-    \begin{equation}
-        \frac{e!}{a!b!d!}\frac{\Tr(A)^{a}\Tr(B)^{b}\Tr(D)^{d}}{\Tr(E)^{e}} \geq \frac{1}{t(k)} \coloneqq \frac{\sqrt{2\pi}}{11^3}\left(\frac{1}{k+2}\right), \\
-    \end{equation}
-    Furthermore, let
-    \begin{equation}
-        m_n(k) = (k+3)^{n(n-1)/2} 
-    \end{equation}
-    to ensure $\max\{\dim V_{\ya}^{n}, \ldots, \dim V_{\ye}^{n}\} \leq (\abs{\ye}+1)^{n(n-1)/2} \leq m_n(k)$.
-\end{lem}
-\begin{prop}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then
-    \begin{equation}
-        F\left[\egrid\right] \geq \frac{1}{12^\frac{7}{2}(k \abs{\ee}+4)^{3 n^2(n^2-1)/4+18n-17}}
-    \end{equation}
-    Otherwise, $D_{*}\left[\egrid \right] > 0$ and
-    \begin{equation}
-        F\left[\egrid\right] \leq 12^\frac{7}{8}(k \abs{\ee}+4)^{\frac{5}{16}n(n-1) + 6(n-1) + \frac{2}{8}}\exp(-\frac{k}{5} D_{*}\left[\egrid \right] )
-    \end{equation}
 
-\end{prop}
-\begin{proof}
-    To to the claim, it will be useful to define, for each sextuple $(\ya,\yb,\yc,\yd,\ye,\yf)$ and each triple $(X,Y,Z)$ of positive semidefinite matrices, the function
+
+\subsection{Necessary and sufficient conditions}
+
+Throughout this section, we will consider a candidate sextuple of eigenvalues, denoted by $(\ea,\eb,\ec,\ed,\ee,\ef)$ and will assume they are associated to non-zero positive semidefinite $n\times n$ matrices, typically denoted by $(A,B,C,D,E,F)$.
+While we do not necessarily assume the candidate eigenvalues to be tetrahedral, we will assume they at least satisfy the trace conditions:
+\begin{equation}
+    \label{eq:tet_eig_trace_cond}
+    \etr{\ec} = \etr{\ea} + \etr{\eb}, \quad
+    \etr{\ef} = \etr{\eb} + \etr{\ed}, \quad
+    \etr{\ee} = \etr{\ec} + \etr{\ed}, \quad \text{and} \quad
+    \etr{\ee} = \etr{\ea} + \etr{\ef}.
+\end{equation}
+
+\begin{align}
+    \disttetalt
+    &\coloneqq \min_{\substack{ABC\\DEF}} \max\left\{\norm{\eig(\nrm{A+B})-\eig(\nrm C)}_1, \norm{\eig(\nrm{B+D})-\eig(\nrm{F})}_1, \norm{\eig(\nrm{A+B+D})-\eig(\nrm{E})}_1\right\}
+\end{align}
+where the minimum is taken over all $(A,B,C,D,E,F)$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+Note that $\disttetalt \geq 0$ holds with equality if and only if the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
+
+The purpose of this section is to produce a family of \textit{necessary} conditions for $(\ea,\eb,\ec,\ed,\ee,\ef)$ to be tetrahedral, and furthermore that the conjunction of these necessary conditions is actually \textit{sufficient}.
+These conditions take the form of a lower bound on a quantity (to be defined shortly) which is interpreted as the expected value of the squared norm $\norm{\abcdefsymbol}_2^2$ of the $6j$ symbol when the Young diagrams $(\ya, \yb, \yc, \yd, \ye, \yf)$ are sampled randomly from the sets of Young diagrams with fixed sizes $(a,b,c,d,e,f)$ subject to the contraints 
+\begin{equation}
+    \label{eq:yd_size_cond}
+    c=a+b, \quad f=b+d, \quad e=c+d, \quad \text{and} \quad e=a+f.
+\end{equation}
+More specifically, these conditions are indexed by a positive integer $k$ which determines the sizes $(a,b,c,d,e,f)$ of the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ in a manner which ensures the relative proportions of the Young diagram sizes, $(a,b,c,d,e,f)$, are approximately $k$ times the relative proportions of the eigenvalue traces $(\etr \ea, \etr \eb, \etr \ec, \etr \ed, \etr \ee, \etr \ef)$.
+Specifically, $a,b$, and $d$ are taken to be
+\begin{equation}
+    \label{eq:yd_ceil_cond}
+    a = \ceil{k\frac{\etr{\ea}}{\etr{\ee}}}, \qquad
+    b = \ceil{k\frac{\etr{\eb}}{\etr{\ee}}}, \qquad
+    d = \ceil{k\frac{\etr{\ed}}{\etr{\ee}}},
+\end{equation}
+while $c,e$ and $f$ are then fixed by \cref{eq:yd_size_cond}.
+
+Furthermore, we define three polynomials in $k$:
+\begin{equation}
+    t(k) = \frac{\sqrt{2\pi}}{11^3}(k+2), \qquad y_r(k) = (k+3)^{r-1}, \qquad m_n(k) = (k+3)^{n(n-1)/2}.
+\end{equation}
+Our main theorem then concerns the following quantity,
+\begin{equation}
+    \wksixj \coloneqq \sum_{\substack{\ya\yb\yc\\\yd\ye\yf}} \tilde \chi_\ya(\nrm A)\tilde \chi_\yb(\nrm B)\tilde \chi_\yc(\nrm C)\tilde \chi_\yd(\nrm D)\tilde \chi_\ye(\nrm E)\tilde \chi_\yf(\nrm F) \norm{\abcdefsymbol}_{2}^2,
+\end{equation}
+which is equal to the expected value of the squared Hilbert-Schmidt norm of the $6j$ symbol when the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ are sampled independently from each other according to their corresponding Schur-Weyl distributions.
+Our first result provides a lower bound on the value of $\wk$.
+\begin{thm}
+    \label{thm:wk_lower}
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues with maximum rank $r = \rank(\ee)$, then
     \begin{equation}
-        \TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}
-        \coloneqq \Tr[(X^{\ot a} \ot Y^{\ot b} \ot Z^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}],
+        \wksixj \geq \frac{1}{t(k)^3}\frac{1}{y_r(k)^{24}}.
+    \end{equation}
+\end{thm}
+Our second result provides a complementary upper bound on the value of $\wk$.
+\begin{thm}
+    \label{thm:wk_upper}
+    Given candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, we have
+    \begin{equation}
+        \wksixj \leq t(k)y_{r}(k)^6m_n(k)^6\exp\left(-k\frac{\tau_{\min}}{\tau_{\max}} \frac{1}{10}\disttetalt^2\right)
+    \end{equation}
+\end{thm}
+When \cref{thm:wk_lower,thm:wk_upper} are taken together, one concludes that if $\disttetalt = \Delta > 0$, then for sufficiently large $k$ such that $\frac{k}{\log k} \gtrsim \frac{1}{\Delta^2}$, the inequality in \cref{thm:wk_lower} becomes violated.
+\begin{proof}[Proof of \cref{thm:wk_lower}]
+    Given a positive semidefinite $n\times n$ matrices $A,B,D$, define
+    \begin{align}
+        \TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} 
+        &\coloneqq \Tr[(A^{\ot a} \ot B^{\ot b} \ot D^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}].
+    \end{align}
+    The following bounds hold:
+    \begin{align}
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) \norm{\abcdefsymbol}_2, \\
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \frac{\abs{\ya}!\abs{\yb}!\abs{\yd}!}{\abs{\ye}!}\tilde \chi_{\ye}(A+B+D) \\
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
+        \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D), \\
+        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^2 &\leq
+        \left(\frac{\abs{\yb}!\abs{\yd}!}{\abs{\yf}!}\tilde \chi_{\ya}(A)\tilde \chi_{\yf}(B+D)\right)
+        \left(\frac{\abs{\ya}!\abs{\yb}!}{\abs{\yc}!}\tilde \chi_{\yc}(A+B)\tilde \chi_{\yd}(D)\right).
+    \end{align}
+    After normalizing the positive semidefinite matrices $A,B,D$ to $\nrm A, \nrm B, \nrm D$, relaxing some instances of $\tilde \chi_\yx(\nrm X) \leq 1$, and using the $k$-dependent sizes of Young diagrams, $(a,b,c,d,e,f)$, one obtains the bound
+    %\begin{equation}
+    %    \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^3 \leq
+    %    \tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})
+    %\end{equation}
+    %and also
+    %\begin{equation}
+    %    \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^4 \leq
+    %    \tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})
+    %\end{equation}
+    %and also
+    \begin{equation}
+        \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^5 \leq
+        \tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})\norm{\abcdefsymbol}_2^2
+    \end{equation}
+    where the factor $t(k)$ is the polynomial expression emerging from the trinomial distribution lower bound from \cref{lem:multinomial_dist_lower_bound} due to \cref{eq:yd_size_cond} and \cref{eq:yd_ceil_cond} and
+    \begin{align}
+        \frac{1}{t(k)} \leq \frac{e!}{a!b!d!} \frac{\etr{\ea}^{a}\etr{\eb}^{b}\etr{\ed}^{d}}{\etr{\ee}^{e}} &\leq \min\left\{\frac{c!}{a!b!} \frac{\etr{\ea}^{a}\etr{\eb}^{b}}{\etr{\ec}^{c}}, \frac{f!}{b!d!} \frac{\etr{\eb}^{b}\etr{\ed}^{d}}{\etr{\ef}^{f}} \right\}.
+    \end{align}
+    By assumption, $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral meaning there exists $A,B,D$ such that the above inequality implies
+    \begin{equation}
+        \wksixj \geq \frac{1}{t(k)^3}\sum_{\substack{\ya\yb\yc\\\yd\ye\yf}}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^5.
+    \end{equation}
+    Now as defined, $\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}$ need not be a real number;
+    nevertheless it is still normalized in the sense that
+    \begin{equation}
+        \sum_{\substack{\ya\yb\yc\\\yd\ye\yf}}\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf} = 1.
+    \end{equation}
+    Given any collection of $s$ non-zero complex numbers $(z_1, \ldots, z_s)$ summing to one, $\sum_{i=1}^{s}z_i = 1$, one can show $\sum_{i=1}^{s}\abs{z_i}^p$ has minimum value $s \frac{1}{s^p} = \frac{1}{s^{p-1}}$ and is achieved when $z_i=\frac{1}{s}$.
+    In this case, the number of possible Young diagrams for which $\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}$ is non-zero is upper bounded by $y_{r}(k)^6$ and therefore the claim holds.
+\end{proof}
+\begin{proof}[Proof of \cref{thm:wk_upper}]
+    Given the integral formula,
+    \begin{equation}
+        \mathbb E_{A,B,D}\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} = \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2,
+    \end{equation}
+    we obtain,
+    \begin{align}
+        &\tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm F)\tilde \chi_{\ye}(\nrm E)\norm{\abcdefsymbol}_2^2 \\
+        &\quad \leq R^{\ye,n;-1}_{\ya,\yb,\yd} \tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) \mathbb E_{A,B,D} \abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} \\
+        &\quad \leq t(k)R^{\ye,n;-1}_{\ya,\yb,\yd}\tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) \mathbb E_{ABD} \tilde \chi_{\yc}(\nrm{A+B})^{\frac{1}{3}}\tilde \chi_{\yf}(\nrm{B+D})^{\frac{1}{3}}\tilde \chi_{\ye}(\nrm{A+B+D})^{\frac{1}{3}}.
+    \end{align}
+    Now using the eigenvalue separation lemma, which states,
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X)^p\tilde \chi_{\yx}(\nrm X)^q \leq \dim(V_{\yx}^n)^{p+q} \exp(-\abs{\yx}\frac{pq}{2(p+q)} \norm{\eig(\nrm X)-\eig(\nrm Y)}^{2}_1),
+    \end{equation}
+    we conclude (using $p=1$, and $q=\frac{1}{4}$, and that $\abs{\yx} \geq k \frac{\tau_{\min}}{\tau_{\max}}$),
+    \begin{align}
+        &\tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm F)\tilde \chi_{\ye}(\nrm E)\norm{\abcdefsymbol}_2^2 \\
+        &\quad\leq t(k)R^{\ye,n;-1}_{\ya,\yb,\yd}\dim(V_{\yc}^{n}\ot V_{\ye}^{n} \ot V_{\yf}^{n})^{\frac{5}{4}} \exp\left(-k\frac{\tau_{\min}}{\tau_{\max}} \frac{1}{10}\disttetalt^2\right).
+    \end{align}
+    Finally, the claim holds because $1 \leq \dim(V_{\yx}^{n}) \leq m_n(k)$ for all $\yx \in \{\ya,\yb,\yc,\yd,\ye,\yf\}$ and the exponents sum to $1+1+1+\frac{5}{4}+\frac{1}{4}+\frac{5}{4} = \frac{23}{4} < 6$ and there are at most $y_{r}(k)^6$ summands.
+\end{proof}
+
+\clearpage
+{\color{green!50!black}
+    TC: THIS IS A POTENTIAL ALTERNATIVE USING A DIFFERENCE DISTANCE \\
+    To quantify the distance from $(\ea,\eb,\ec,\ed,\ee,\ef)$ to the closed set of tetrahedral eigenvalues, we use the following distance measure:
+    \begin{align}
+        \disttet
+        &\coloneqq \min_{\substack{\tilde \ea \tilde \eb \tilde \ec\tilde\ed \tilde \ee \tilde \ef\\\mathrm{tetrahedral}\\\forall \ex : \abs{\tilde \ex}=\abs{\ex}}} 
+        \max\{
+            \norm{\nea - \tilde{\nea}}_{1},
+            \norm{\neb - \tilde{\neb}}_{1},
+            \norm{\nec - \tilde{\nec}}_{1},
+            \norm{\ned - \tilde{\ned}}_{1},
+            \norm{\nee - \tilde{\nee}}_{1},
+            \norm{\nef - \tilde{\nef}}_{1}
+        \},
+    \end{align}
+    where the minimum is taken over all sextuples $(\tilde{\ea},\tilde{\eb},\tilde{\ec},\tilde{\ed},\tilde{\ee},\tilde{\ef})$ of tetrahedral eigenvalues subject to the constraint that the respective traces are equal:
+    \begin{equation}
+        \etr{\tilde{\ea}} = \etr{\ea}, \quad
+        \etr{\tilde{\eb}} = \etr{\eb}, \quad
+        \etr{\tilde{\ec}} = \etr{\ec}, \quad
+        \etr{\tilde{\ed}} = \etr{\ed}, \quad
+        \etr{\tilde{\ee}} = \etr{\ee}, \quad
+        \etr{\tilde{\ef}} = \etr{\ef}.
+    \end{equation}
+    Evidently, $\disttet \geq 0$ with equality holding if and only if the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
+    Moreover we have $\disttetalt \geq \disttet$.\\
+
+    We will define two probability distributions, $\qk$ and $\pk$.
+    These probability distributions are defined over a common set of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ with sizes $(a,b,c,d,e,f)$ depending on $k$ according to \cref{eq:yd_size_cond} and \cref{eq:yd_ceil_cond}.
+    First, $\qk$ is defined by
+    \begin{equation}
+        \qksixj \coloneqq h^n_\ya h^n_\yb h^n_\yd R^{\ye,n}_{\ya,\yb,\yd} \norm{\abcdefsymbol}_{2}^2.
     \end{equation}
     where
     \begin{equation}
-        \begin{alignedat}{3}
-            &\Pi_{\ya} \coloneqq P_{\ya} \ot \id^{\ot b} \ot \id^{\ot d}, \qquad
-            &&\Pi_{\yb} \coloneqq \id^{\ot a} \ot P_{\yb} \ot \id^{\ot d}, \qquad
-            &&\Pi_{\yc} \coloneqq P_{\yc} \ot \id^{\ot d}, \qquad\\
-             &\Pi_{\yd} \coloneqq \id^{\ot a} \ot \id^{\ot b} \ot P_{\yd}, \qquad
-            &&\Pi_{\ye} \coloneqq P_{\ye}, \qquad
-            &&\Pi_{\yf} \coloneqq \id^{\ot a} \ot P_{\yf}.
-        \end{alignedat}
+        h^{n}_\yx = \frac{\dim(V_\yx^n)^2}{\dim(V_{(\abs{\yx})}^{n^2})}, \qquad \text{and} \qquad R^{\ye,n}_{\ya,\yb,\yd}\coloneqq \frac{\dim (V_{\ye}^{n})}{\dim (V_{\ya}^n\ot V_{\yb}^{n}\ot V_{\yd}^{n})}.
     \end{equation}
-    This function arises naturally as the integrand in an integral formula for the distribution $Q$:
+    That $\qk$ is a probability distribution follows from the observation that 
     \begin{equation}
-        Q\left[\ygrid\right] = \iiint \diff \mu(X)\diff \mu(Y)\diff \mu(Z)\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf},
+        \sum_{\yc \vdash c}\sum_{\yf \vdash f}\norm{\abcdefsymbol}_{2}^2 = \dim(C^{\ye}_{\ya,\yb,\yd})
     \end{equation}
-    where the measure $\diff \mu(X)$ is the Hilbert-Schmidt measure over the set of positive semidefinite $n\times n $ matrices with trace one, i.e., $\Tr(X) = \Tr(Y) = \Tr(Z) = 1$.
-    Additionally, for any $X,Y,Z \geq 0$ with $\Tr(X) = \Tr(Y) = \Tr(Z) = 1$ an application of the Cauchy-Schwarz inequality yields
-    \begin{equation}
-        Q\left[\ygrid\right] \geq \frac{h^n_\ya h^n_\yb h^n_\yd \dim V_\ye^n}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)} \abs{\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^2.
-    \end{equation}
-    On an seemingly unrelated note, for each tetrahedral sextuple $(A,B,C,D,E,F)$ of positive semidefinite matrices satisfying $C=A+B, F=B+D$, and $E=A+B+D$, with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, another application of the Cauchy-Schwarz inequality and three applications of the Binomial theorem yields 
-    \begin{equation} 
-        P\left[\ygrid\middle|\egrid \right] \geq 
-        \left(\frac{c!}{a!b!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}}{\abs{\ec}^{c}}\right)
-        \left(\frac{f!}{b!d!}\frac{\abs{\eb}^{b}\abs{\ed}^{d}}{\abs{\ef}^{f}}\right)
-        \left(\frac{e!}{a!b!d!}\frac{\abs{\ea}^{a}\abs{\eb}^{b}\abs{\ed}^{d}}{\abs{\ee}^{e}}\right)
-        \abs{\TetGamma}^4.
-    \end{equation}
-    If one fixes a sufficiently large positive integer $k$ and then sets $(a,b,d)$ to scale with $k$ according to
-    \begin{equation}
-        a = \ceil{k \abs{\ea}}, \quad b = \ceil{k \abs{\eb}}, \quad d = \ceil{k \abs{\ed}},
-    \end{equation}
-    then \cref{lem:multinomial_dist_lower_bound} implies lower-bounds on the multinomial prefactors, which produces a relaxed bound
-    \begin{equation} 
-        P\left[\ygrid\middle|\egrid \right] \geq 
-        \frac{1}{12^7(k \abs{\ee}+3)^{2}}
-        \abs{\TetGamma}^4.
-    \end{equation}
-    Therefore, combining all bounds yields
-    \begin{align}
-        P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right]
-        &\geq \frac{1}{12^7(k \abs{\ee}+3)^{3 n^2(n^2-1)/2  + 2}} \abs{\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^6 \\
-        &\geq \frac{1}{12^7(k \abs{\ee}+4)^{3 n^2(n^2-1)/2 + 36(n-1) + 2}} 
-    \end{align}
+    where $C^{\ye}_{\ya,\yb,\yd}$ is multiplicity for $V_{\ye}^{n}$ appearing the tensor product $V_{\ya}^n\ot V_{\yb}^{n}\ot V_{\yd}^{n}$.
+    Note that $\qk$ depends only on the ratios between the \textit{traces} of the candidate eigenvalues (as they fix the sizes of the involved Young diagrams), but not on the particular eigenvalues themselves.
 
+    Now for each such positive integer $k$, we define a distribution $\pk$, as the product distribution:
+    \begin{align}
+        \pksixj
+        &\coloneqq \tilde \chi_\ya(\nrm A)\tilde \chi_\yb(\nrm B)\tilde \chi_\yc(\nrm C)\tilde \chi_\yd(\nrm D)\tilde \chi_\ye(\nrm E)\tilde \chi_\yf(\nrm F),
+        %&=\Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}],
+    \end{align}
+    where $(A,B,C,D,E,F)$ are any Hermitian operators with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+
+    We will prove the following theorem regarding the relationship between $\qk$ and $\pk$:
+    \begin{thm}
+        If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral eigenvalues, then
+        \begin{equation}
+            \qksixj^4 \leq \sup_{\mathrm{tetra tilde}} t(k)^3 \pksixjt
+        \end{equation}
+    \end{thm}
+\hrule
     One can now combine these separate bounds on $P$ and $Q$ to obtain a bound between $P$ and $Q$.
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the given candidate sextuple of eigenvalues satisfying the trace conditions.
     Then for any $X,Y,Z \geq 0$ positive semidefinite $n\times n$ matrices that are trace one, let
@@ -2062,7 +2121,6 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
         \geq \frac{pq}{2(p+q)} \norm{\nrm \ex - \nrm \ext}_1^{2},
     \end{align}
     where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ex + q \nrm \ext$.
-   
     Now define $D_{*}\left(\egrid \right)$ a non-negative constant which measures the distance from $(\ea, \eb, \ec, \ed, \ee, \ef)$ to the closed set of tetrahedral eigenvalues $(\eat, \ebt, \ect, \edt, \eet, \eft)$ with matching traces (i.e., $\abs{\ea}=\abs{\eat}$, $\abs{\eb}=\abs{\ebt}$, etc.)
     \begin{align}
         \begin{split}
@@ -2078,93 +2136,6 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
             \bigg).
         \end{split}
     \end{align}
-\end{proof}
-\hrule
-%Moreover, as 
-%\begin{equation}
-%    \Tr[P_{\ya}] \mathbb E_{A \sim \mathcal O_{\ea}} P_{\ya} \nrm A^{\otimes a}P_{\ya} = \Tr[P_{\ya} \nrm A^{\otimes a}] P_{\ya},
-%\end{equation}
-%and $P_{\ya} \nrm A^{\otimes a}P_{\ya} = \iota_{\ya} \pi_{\ya}(\nrm A) \ot \id_{W_{\ya}} \ot \iota_{\ya}^{\dagger}$,
-%and
-%\begin{equation}
-%    Q\left[\ygrid\right] 
-%    \coloneqq \mathbb E_{X,Y,Z}\TetGammaOpt{X,Y,Z}{\ya & \yb & \yc \\ \yd & \ye & \yf} = q^n_{\ya}q^n_{\yb}q^n_{\yd} \Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]
-%\end{equation}
-%where $q^n_{\ya} = \frac{\dim(V_{\ya}^{n})}{\dim(W_{\ya})\dim(V_{(a)}^{n^2})} = \frac{h^n_{\ya}}{\Tr(P_{\ya})}$,
-%we have
-%\begin{align}
-%    &S\left[\ygrid\middle|\egrid \right]\\
-%    &\coloneqq P\left[\ygrid\middle|\egrid \right]Q\left[\ygrid\right], \\
-%    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr[P_{\ya} \nrm A^{\otimes a}]\Tr[P_{\yb} \nrm B^{\otimes b}]\Tr[P_{\yc} \nrm C^{\otimes c}]\Tr[P_{\yd} \nrm D^{\otimes d}]\Tr[P_{\ye} \nrm E^{\otimes e}]\Tr[P_{\yf} \nrm F^{\otimes f}]\Tr[(P_{\ya} \ot P_{\yb} \ot P_{\yd})(P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}) P_{\ye}]\\
-%    &= q^n_{\ya}q^n_{\yb}q^n_{\yd}\Tr(P_{\ya})\Tr(P_{\yb})\Tr(P_{\yc})\Tr(P_{\yd})\Tr(P_{\ye})\Tr(P_{\yf})
-%    \mathbb E \Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}]\\
-%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})
-%    \mathbb E\Tr[(P_{\ya}\nrm A^{\ot a}P_{\ya} \ot P_{\yb}\nrm B^{\ot b}P_{\yb} \ot P_{\yd} \nrm B^{\ot b} P_{\yd})(P_{\yc}\nrm C^{\ot c}P_{\yc} \ot \id^{\ot d})(\id^{\ot a} \ot P_{\yf}\nrm F^{\ot f}P_{\yf}) P_{\ye}\nrm E^{\ot e}P_{\ye}] \\
-%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\Tr(P_{\yc})\Tr(P_{\ye})\Tr(P_{\yf})\dim(W_{\ya}\ot W_{\yb} \ot W_{\yd})
-%    \mathbb E\Tr[(\pi_{\ya}(\nrm A) \ot \pi_{\yb}(\nrm B) \ot \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
-%    &= h^n_{\ya}h^n_{\yb}h^n_{\yd}\dim(V_{\yc}\ot V_{\ye} \ot V_{\yf})
-%   \mathbb E \Tr[(\tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B) \ot \tilde \pi_{\yd}(\nrm B))(\iota^{\yc}_{\ya\yb}\tilde \pi_{\yc}(\nrm C)\iota^{\yc,\dagger}_{\ya\yb} \ot \id_{V_{\yd}^{n}})(\id_{V_{\ya}^{n}} \ot \iota^{\yf}_{\yb\yd}\tilde \pi_{\yf}(\nrm F)\iota^{\yf,\dagger}_{\yb\yd}) \iota^{\ye}_{\ya\yb\yd}\tilde \pi_{\ye}(\nrm E)\iota^{\ye,\dagger}_{\ya\yb\yd}]\\
-%\end{align}
-\hrule
-\begin{defn}
-    Given a candidate sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, let
-    \begin{align}
-        \begin{split}
-        D_{*}\!\!\left(\egrid \right)
-        \coloneqq \min_{\substack{ABC\\DEF}} \max\left\{\norm{\eig(A+B)-\eig(C)}_1, \norm{\eig(B+D)-\eig(F)}_1, \norm{\eig(A+B+D)-\eig(E)}_1\right\}
-        \end{split}
-    \end{align}
-    where the minimum is taken over all Hermitian matrices $(A,B,C,D,E,F)$ with the prescribed eigenvalues.
-\end{defn}
-\begin{lem}
-    Define
-    \begin{align}
-        \TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} 
-        &\coloneqq \Tr[(A^{\ot a} \ot B^{\ot b} \ot D^{\ot d}) \Pi_{\ya}\Pi_{\yb}\Pi_{\yc}\Pi_{\yd}\Pi_{\ye}\Pi_{\yf}], \\
-        &= \Tr[\tilde \pi_{\ya}(A)\otimes \tilde \pi_{\yb}(B) \otimes \tilde \pi_{\yd}(D) P^{\yc}_{\ya\yb}P^{\yf}_{\yb\yd}P^{\ye}_{\ya\yb\yd}].
-    \end{align}
-    This quantity emerges naturally from the integral formula:
-    \begin{equation}
-        \mathbb E_{A,B,D}\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf} = \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2.
-    \end{equation}
-    with
-    \begin{equation}
-        R^{\ye,n}_{\ya,\yb,\yd}\coloneqq \frac{\dim V_{\ye}^{n}}{\dim V_{\ya}^n\ot V_{\yb}^{n}\ot V_{\yd}^{n}}
-    \end{equation}
-    The following bounds hold:
-    \begin{align}
-        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
-        \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) \norm{\abcdefsymbol}_2, \\
-        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
-        \frac{\abs{\ya}!\abs{\yb}!\abs{\yd}!}{\abs{\ye}!}\tilde \chi_{\ye}(A+B+D), \\
-        %\abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
-        %\tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B)\tilde \chi_{\yd}(D) \\
-        \abs{\TetGammaOpt{A,B,D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} &\leq
-        \left(\frac{\abs{\yb}!\abs{\yd}!}{\abs{\yf}!}\tilde \chi_{\ya}(A)\tilde \chi_{\yf}(B+D)\right)^{\frac{1}{2}}
-        \left(\frac{\abs{\ya}!\abs{\yb}!}{\abs{\yc}!}\tilde \chi_{\yc}(A+B)\tilde \chi_{\yd}(D)\right)^{\frac{1}{2}}
-    \end{align}
-\end{lem}
-\begin{rem}
-    After normalizing the positive semidefinite matrices $A,B,D$ to $\nrm A, \nrm B, \nrm D$, relaxing $\tilde \chi_\yx(\nrm X) \leq 1$, and using the $k$-dependent sizes of Young diagrams, $(a,b,c,d,e,f)$, one obtains the bound
-    \begin{equation}
-        \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^3 \leq
-        \tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})
-    \end{equation}
-    and also
-    \begin{equation}
-        \frac{1}{t(k)^3}\abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}^5 \leq
-        \tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{A+B})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm{B+D})\tilde \chi_{\ye}(\nrm{A+B+D})\norm{\abcdefsymbol}_2^2
-    \end{equation}
-    where $t(k) = \frac{11^3}{\sqrt{2\pi}}(k+2)$ is the polynomial expression emerging from the trinomial distribution lower bound.\\
-    Similarly, using the integral formula, if $D_{*}\!\!\left(\egrid \right) \leq \varepsilon$, then
-    \begin{align}
-        &\tilde \chi_{\ya}(\nrm A)\tilde \chi_{\yb}(\nrm B)\tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yd}(\nrm D)\tilde \chi_{\yf}(\nrm F)\tilde \chi_{\ye}(\nrm E)\norm{\abcdefsymbol}_2^2 \\
-        &\quad \leq \tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) R^{\ye,n;-1}_{\ya,\yb,\yd}\mathbb E_{A,B,D} \abs{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}} \\
-        &\quad \leq \tilde \chi_{\yc}(\nrm{C})\tilde \chi_{\yf}(\nrm{F})\tilde \chi_{\ye}(\nrm{E}) t(k)^3R^{\ye,n;-1}_{\ya,\yb,\yd}\mathbb E_{ABD} \tilde \chi_{\yc}(\nrm{A+B})^{\frac{1}{3}}\tilde \chi_{\yf}(\nrm{B+D})^{\frac{1}{3}}\tilde \chi_{\ye}(\nrm{A+B+D})^{\frac{1}{3}}\\
-        &\quad \leq t(k)^3 m_n(k)^{3\times \frac{4}{3}+3} \exp(-k\frac{\tau_{\min}}{\tau_{\max}}\frac{\varepsilon^2}{8})\\
-    \end{align}
-\end{rem}
-\hrule
 }
 
 \clearpage

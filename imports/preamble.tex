@@ -112,6 +112,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\proj}{\mathbb P} % projective space
 \DeclareMathOperator{\Tr}{Tr}
+\newcommand{\etr}[1]{\left|#1\right|} % trace of a set of psd eigenvalues
 \DeclareMathOperator{\Herm}{Herm}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Res}{Res}
@@ -245,6 +246,18 @@
 \newcommand{\ygrid}{\tighttriple{\ya&\yb&\yc\\\yd&\ye&\yf}}
 \newcommand{\egrid}{\tighttriple{\ea&\eb&\ec\\\ed&\ee&\ef}}
 \newcommand{\etgrid}{\tighttriple{\eat&\ebt&\ect\\\edt&\eet&\eft}}
+\newcommand{\swsixjk}{\Gamma^{k}_{\!\tinytet}\!\!\left[\egrid \right]}
+\newcommand{\qk}{Q_{k}}
+\newcommand{\qksixj}{Q_{k}\!\!\left[\ygrid\right]}
+\newcommand{\pk}{P_{k}}
+\newcommand{\pksixj}{P_{k}\!\!\left[\ygrid\middle|\egrid\right]}
+\newcommand{\pksixjt}{P_{k}\!\!\left[\ygrid\middle|\etgrid\right]}
+\newcommand{\fk}{F_{k}}
+\newcommand{\fksixj}{F_{k}\!\!\left[\egrid\right]}
+\newcommand{\wk}{W_{k}}
+\newcommand{\wksixj}{W_{k}\!\!\left[\egrid\right]}
+\newcommand{\disttet}{D_{\mathrm{ext}}\!\!\left[\egrid\right]}
+\newcommand{\disttetalt}{\Delta\!\!\left[\egrid\right]}
 
 % UniGamma
 \newcommand{\UniGammaOpt}[2]{\Gamma_{\!\!#1}(#2)}
