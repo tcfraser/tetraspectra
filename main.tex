@@ -1060,6 +1060,47 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
 %    \end{equation}
 %\end{proof}
 %\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
+\begin{rem}
+    Let $\nu_{\ec}$ be the probability distribution over $\{\yc \vdash c\}$ given by
+    \begin{equation}
+        \nu_{\ec}(\yc) \coloneqq \iint \diff W \Tr[P_\yc (\nrm{W\cdot \ec})^{\ot c}] = \Tr[P_\yc (\nrm{\ec})^{\ot c}] = \tilde \chi_{\yc}(\nrm{\ec}).
+    \end{equation}
+    Moreover, let $\mu_{\ea,\eb}$ be the probability distribution over the same space given by
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
+    \end{equation}
+    Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    \end{equation}
+    %One can then consider the quantity
+    %\begin{equation}
+    %    F_{\ea,\eb;\ec}^{(c),s_1,s_2} = \sum_{\yc\vdash c}\tilde \chi_{\yc}(\nrm{\ec})^{s_1}
+    %    \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{s_2}
+    %\end{equation}
+    Now for \textit{any} $(A,B)$ with eigenvalues $(\ea,\eb)$ such that $C = A+B$ has eigenvalues $\ec$, we have the identity:
+    \begin{equation}
+        \nu_{\ec}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
+    \end{equation}
+    Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under this assumption.
+    To relate these two quantities more closely, we use the following inequality:
+    \begin{equation}
+        \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
+    \end{equation}
+    Applying this inequality to the summand in $\nu_{\ec}(\yc)$ simply produces the trivial upper bound $\nu_{\ec}(\yc) \leq 1$.
+    A more subtle application of this inequality captures the fact that it is trivial when $P^{\yc}_{\ya\yb} = 0$ or equivalently when $c^{\yc}_{\ya\yb} = \Tr[P^{\yc}_{\ya\yb}]/\dim(V_{\yc}^{n}) = 0$.
+    For a fixed $\yc$, define
+    \begin{equation}
+        m_n(\yc) \coloneqq \min_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb}\neq 0}}\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+    \end{equation}
+    Then we have our key result which holds for all $\yc$:
+    \begin{thm}
+        If $(\ea,\eb,\ec)$ are the eigenvalues of $(A,B,C)$ positive semidefinite $n\times n$ matrices satisfying $A+B=C$, then
+        \begin{equation}
+            \mu_{\ea,\eb}(\yc) \geq m_n(\yc)\nu_{\ec}(\yc)
+        \end{equation}
+    \end{thm}
+    \end{rem}
 \hrule
 }
 
