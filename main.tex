@@ -1937,12 +1937,12 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     \end{equation}
     and therefore whenever $c^{\yc}_{\ya\yb} \neq 0$, we obtain a $(\ya,\yb)$-independent inequality:
     \begin{equation}
-        \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{p_n(c)},
+        \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{p_n(c)},
     \end{equation}
     where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
     Altogether we obtain the inequality:
     \begin{equation}
-        \mu_{\ea,\eb}(\yc) \geq \frac{1}{p_n(c)}\nu_{\ec}(\yc).
+        \mu_{\ea,\eb}(\yc) \geq \frac{\dim V_{\yc}^n}{p_n(c)}\nu_{\ec}(\yc).
     \end{equation}
     which holds for all $\yc \vdash c$ independently of the decomposition of $C = A+B$.
         
@@ -1993,6 +1993,53 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
             \frac{k}{\ln ((k+1)^{n^2+n-2}p_n(k))}>\frac{4}{\varepsilon^2}.
         \end{equation}
     \end{thm}
+\hrule
+    For the specific case of $n =2$, and $\yx = (\yx_1, \yx_2)$ with $\abs{\yx} = \yx_1 + \yx_2 = k$, we have
+    \begin{equation}
+        d_\yx \coloneqq \dim V_{(\yx_1,\yx_2)}^{2} = \yx_1 - \yx_2 + 1 \leq k+1.
+    \end{equation}
+    \begin{equation}
+        \tilde \chi_{\yx}(x) = \Tr[P_{(\yx_1,\yx_2)} \diag(x_1,x_2)^{\ot k}] = d_{\yx}\frac{k!}{(\yx_1+1)!\yx_2!} (x_1x_2)^{\yx_2} \frac{x_1^{d_\yx} - x_2^{d_\yx}}{x_1 - x_2}.
+    \end{equation}
+    Therefore, 
+    \begin{equation}
+        \mu_{a,b}(\yx) = d_{\yx}\frac{k!}{(c_1+c_2)^k} \sum_{j=0}^{k} \sum_{\ya\vdash j,\yb \vdash k-j} \frac{(a_1a_2)^{\ya_2}}{(\ya_1+1)!\ya_2!} \frac{a_1^{d_\ya} - a_2^{d_\ya}}{a_1 - a_2}\frac{ (b_1b_2)^{\yb_2}}{(\yb_1+1)!\yb_2!} \frac{b_1^{d_\yb} - b_2^{d_\yb}}{b_1 - b_2}c^{\yx}_{\ya\yb}
+    \end{equation}
+    \begin{equation}
+        \nu_{c}(\yx) = d_{\yx}\frac{k!}{(c_1+c_2)^k}\frac{(c_1c_2)^{\yx_2}}{(\yx_1+1)!\yx_2!}  \frac{c_1^{d_\yx} - c_2^{d_\yx}}{c_1 - c_2}.
+    \end{equation}
+    Which means the inequality $\mu_{a,b}(\yx) \geq \frac{d_{\yx}}{k^2/4+k+1} \nu_{c}(\yx)$ simplifies to
+    \begin{equation}
+        \left(\sum_{j=0}^{k} \sum_{\ya\vdash j,\yb \vdash k-j} \frac{(a_1a_2)^{\ya_2}}{(\ya_1+1)!\ya_2!} \frac{a_1^{d_\ya} - a_2^{d_\ya}}{a_1 - a_2}\frac{ (b_1b_2)^{\yb_2}}{(\yb_1+1)!\yb_2!} \frac{b_1^{d_\yb} - b_2^{d_\yb}}{b_1 - b_2}c^{\yx}_{\ya\yb}\right) 
+        \geq \frac{d_{\yx}}{k^2/4+k+1}
+        \left(\frac{(c_1c_2)^{\yx_2}}{(\yx_1+1)!\yx_2!}  \frac{c_1^{d_\yx} - c_2^{d_\yx}}{c_1 - c_2}\right)
+    \end{equation}
+    Letting $\delta_\ya = \ya_1 - \ya_2$, etc. and noting that $c^{\yx}_{\ya\yb} \in \{0,1\}$ with $c^{\yx}_{\ya\yb} = 1$ iff $\abs{\delta_{\ya}-\delta_{\yb}} \leq \delta_{\yx} \leq \delta_{\ya}+\delta_{\yb}$, we have
+\hrule
+    Alternatively, a more operator-norm focused result would be the following:
+    %\begin{equation}
+    %    \bra \psi \Phi^{\yc}_{\ya\yb}(\tilde \pi_\ya(A) \ot \tilde \pi_\yb(B)) \ket \psi \leq c^{\yc}_{\ya\yb} \norm{\tilde \pi_\ya(A)}_{\infty} \norm{\tilde \pi_\yb(B)}_{\infty}.
+    %\end{equation}
+    %\begin{equation}
+    %    \bra \psi \Tr_{W_{\yc}}[\iota^{\dagger}_{\yc} (P_\ya A^{\ot a} P_\ya \ot P_\yb B^{\ot b} P_\yb) \iota_{\yc}] \ket \psi \leq c^{\yc}_{\ya\yb} \norm{\tilde \pi_\ya(A)}_{\infty} \norm{\tilde \pi_\yb(B)}_{\infty}.
+    %\end{equation}
+    %\begin{equation}
+    %    \bra \psi \Tr_{W_{\yc}}[\iota^{\dagger}_{\yc} (A^{\ot a} \ot B^{\ot b}) \iota_{\yc}] \ket \psi \leq \sum_{\ya,\yb} c^{\yc}_{\ya\yb} \norm{\tilde \pi_\ya(A)}_{\infty} \norm{\tilde \pi_\yb(B)}_{\infty}.
+    %\end{equation}
+    \begin{align}
+        \bra \psi \tilde \pi_{\yc}(C) \ket \psi 
+        &= \bra \psi \Tr_{W_{\yc}}[\iota^{\dagger}_{\yc} C^{\ot c} \iota_{\yc}] \ket \psi \\
+        &= \sum_{a+b=c} \frac{c!}{a!b!} \bra \psi \Tr_{W_{\yc}}[\iota^{\dagger}_{\yc} (A^{\ot a} \ot B^{\ot b}) \iota_{\yc}] \ket \psi \\
+        &\leq  \sum_{a+b=c} \frac{c!}{a!b!} \sum_{\ya\vdash a,\yb\vdash b} c^{\yc}_{\ya\yb} \norm{\tilde \pi_\ya(A)}_{\infty} \norm{\tilde \pi_\yb(B)}_{\infty}.
+    \end{align}
+    \begin{align}
+        \frac{\norm{\tilde \pi_{\yc}(C)}_{\infty}}{\abs{\yc}!}
+        &\leq \sum_{\ya\yb} c^{\yc}_{\ya\yb} \frac{\norm{\tilde \pi_\ya(A)}_{\infty}}{\abs{\ya}!} \frac{\norm{\tilde \pi_\yb(B)}_{\infty}}{\abs{\yb}!}.
+    \end{align}
+    \begin{align}
+        \frac{\norm{\pi_{\yc}(C)}_{\infty}}{\abs{\yc}!}
+        &\leq \sum_{\ya\yb} \frac{c^{\yc}_{\ya\yb}\dim W_{\ya}\dim W_{\yb}}{\dim W_{\yc}} \frac{\norm{\pi_\ya(A)}_{\infty}}{\abs{\ya}!} \frac{\norm{\pi_\yb(B)}_{\infty}}{\abs{\yb}!}.
+    \end{align}
 \hrule
     To better understand the meaning of the quantity $W_{\ea,\eb;\ec}^{(c)}$, consider $(x,y,z) \in \mathbb R_{\geq 0}^{3}$ such that $x+y=z$.
     Then
