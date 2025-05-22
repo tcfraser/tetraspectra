@@ -748,539 +748,6 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\ea)$.
 \end{prop}
 
-\clearpage
-{\color{blue}
-\hrule
-TC: Here I'm reformulating everything with two objectives: (i) to invoke eigenvalue estimation as late as possible, and (ii) to \textit{discover} the ``$\Gamma$'' quantities I had defined in a more organic way.
-For example, the tri-gamma quantitity remerges as a summand in the binomial expansion theorem.
-
-\begin{defn}
-    Let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$.
-    Given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{(1)}^{n} \simeq \mathbb C^{n}$, we define $\pi_{\yx}(X)$ by the formula:
-    \begin{equation*}
-        \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]}{\dim(W_{\yx})}
-    \end{equation*}
-    where $\iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{(1)}^{\ot \abs{\yx}}$ is the equivariant isometry for the $\yx$-isotypic subspace of $V_{(1)}^{\ot \abs{\yx}}$.
-    This definition ensures that $X^{\ot k} \simeq \bigoplus_{\yx \vdash k} \pi_{\yx}(X)^{\oplus W_{\yx}}$ holds for any positive integer $k$.
-    When $X$ is a unitary, $\pi_{\yx}(X)$ is the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is warranted.
-    If $X \geq 0$ is positive semidefinite, then $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
-    If $\yx = (1)$, then $\pi_{(1)}(X) = X$ as $\dim(W_{(1)}) = 1$.
-
-    Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
-    \begin{equation}
-        \pi_{\yx}(sX) = s^{\abs{\yx}} \pi_{\yx}(X).
-    \end{equation}
-    Additionally, if $X,Y$ are two matrices, we have
-    \begin{equation}
-        \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y). 
-    \end{equation}
-    The \textit{character} of $X$ satisfies
-    \begin{equation*}
-        \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot \abs{\yx}}]}{\dim(W_{\yx})} = s_{\yx}(\eig(X)),
-    \end{equation*}
-    where $s_{\yx}(\eig(X))$ is the corresponding Schur-polynomial evaluated on the eigenvalues of $X$.
-    For fixed positive integer $k$, we also define the \textit{Plancherel distribution} $\{\mu_\yx | \yx \vdash k\}$ over Young diagrams of size $k$ according to
-    \begin{equation}
-        \mu_\yx \coloneqq \frac{(\dim W_\yx)^2}{\abs{\yx}!}.
-    \end{equation}
-    Moreover, we define the rescaling of $\pi_{\yx}(X)$ to be
-    \begin{equation*}
-        \tilde \pi_{\yx}(X) \coloneqq \dim(W_{\yx}) \pi_{\yx}(X) = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}],
-    \end{equation*}
-    and the corresponding rescaled character is
-    \begin{equation*}
-        \tilde \chi_\yx(X) \coloneqq \Tr[\tilde \pi_{\yx}(X)] = \Tr[P_{\yx} X^{\ot \abs{\yx}}] = \dim(W_{\yx})s_{\yx}(\eig(X)),
-    \end{equation*}
-    where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace.
-
-    These rescaled characters emerge as coefficients in the following decomposition associated to an integral over Haar measure over $\U(n)$,
-    \begin{equation}
-        \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \tilde \chi_{\yx}(X)   \frac{P_{\yx}}{\Tr(P_{\yx})}.
-    \end{equation}
-    This normalization scheme means that $\tilde \pi_{\yx}(X)$ is \textit{not} a representation, while the character $\tilde \chi_{\yx}(X)$ satisfies
-    \begin{equation}
-        \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = \sum_{\yx \vdash k} \Tr[X^{\ot k} P_{\yx}] = \Tr[X^{\ot k}] = \Tr[X]^k.
-    \end{equation}
-    Therefore, whenever $X$ is positive semidefinite and trace one (i.e., when $X$ is a density matrix), we have that the map $\yx \mapsto \tilde \chi_{\yx}(X)$ is a probability distribution when restricted to the set of Young diagrams with a fixed number $k$ of boxes:
-    \begin{equation}
-        X\geq 0 \implies \tilde \chi_{\yx}(X) \geq 0, \qquad \text{and} \qquad \Tr(X) = 1 \implies \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = 1.
-    \end{equation}
-    As the (rescaled) character $\chi_{\yx}(X)$ depends only on the eigenvalues $\eig(X)$ of $X$, we have
-    \begin{equation}
-        \chi_{\yx}(X) = \chi_{\yx}(\diag(\eig(X)).
-    \end{equation}
-    Given a tuple of non-negative sorted eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$ summing to one, $\sum_{i=1}^{n}\ex_i = 1$, the distribution $\yx \mapsto \tilde \chi_{\yx}(\diag(\ex))$ over $\yx \vdash k$ is denoted $\mathrm{SW}^{k}(\ex)$ and called the \textit{Schur-Weyl} distribution in \cite{odonnell2016efficient}.
-\end{defn}
-\begin{prop}[Eigenvalue estimation]
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
-    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    and
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
-\end{prop}
-%\begin{rem}
-%    We will use the eigenvalue estimation bounds in two essentially related ways.
-%    Let $N^{k}_{\varepsilon}(\nrm \ex)$ denote the set of Young diagrams $\yx$ of size $k$ which are close to the normalized eigenvalues $\nrm \ex$:
-%    \begin{equation}
-%        N^{k}_{\varepsilon}(\nrm \ex) \coloneqq \{ \yx \vdash k \mid \kl{\nrm \yx}{\nrm \ex} < \varepsilon \}.
-%    \end{equation}
-%    Then we have a lower bound,
-%    \begin{equation}
-%        \yx \in N^{k}_{\varepsilon}(\nrm \ex) \implies \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(- k \varepsilon).
-%    \end{equation}
-%\end{rem}
-\begin{prop}[Eigenvalue separation]
-    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
-    For any positive powers $p,q > 0$, we have
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\dim V_{\yx}^{n})^{p+q} \exp\left(-\abs{\yx} s^2\frac{pq}{2(p+q)}\right).
-    \end{equation}
-\end{prop}
-\begin{proof}
-    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p \leq (\dim V_{\yx}^{n})^p \exp( - \abs{\yx} p\kl{\nrm \yx}{\nrm \ea}).
-    \end{equation}
-    Furthermore, Pinsker's inequality yields
-    \begin{align}
-        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
-        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2}
-        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
-    \end{align}
-    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
-\end{proof}
-It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
-\begin{equation}
-    V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
-\end{equation}
-Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
-\begin{equation}
-    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
-\end{equation}
-The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
-\begin{prop}
-    Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
-    Then for $\yx \vdash k$,
-    \begin{align}
-        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
-\end{prop}
-\begin{proof}
-    Given a measure $\mu(X)$ that is invariant under conjugation by $\U(n)$, the operator $\mathbb E_{X} [X^{\ot k}]$ is necessarily $\U(n)$ equivariant and thus decomposes as 
-    \begin{equation}
-        \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
-    \end{equation}
-    for some proportionality constants $h_{\yx}$.
-    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
-    Therefore,
-    \begin{align}
-        \mathbb E_{X} [\tilde \pi_{\yx}(X)]
-        = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
-\end{proof}
-\begin{thm}[Binomial theorem] 
-    Let $A,B$ be $n \times n$ matrices.
-    Then
-    \begin{equation}
-        \tilde \pi_\yc(A+B) = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
-    \end{equation}
-    where $\Phi^{\yc}_{\ya,\yb}$ is the linear superoperator sending operators on $V_{\ya}^{n} \ot V_{\yb}^{n}$ to operators on $V_{\yc}^{n}$ according to the formula
-    \begin{equation}
-        \Phi^{\yc}_{\ya,\yb}[\cdot] = \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \cdot (\iota^{\yc}_{\ya,\yb}) \right],
-    \end{equation}
-    where $\iota^{\yc}_{\ya,\yb} : C^{\yc}_{\ya,\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$.
-    If $C^{\yc}_{\ya,\yb}$ is zero-dimensional, then $\iota^{\yc}_{\ya,\yb}$ and $\Phi^{\yc}_{\ya,\yb}$ are taken to be zero maps.
-\end{thm}
-\begin{proof}
-    By definition, we have $\tilde \pi_{\yc}(A+B) = \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A+B)^{\ot \abs{\yc}} \iota_{\yc}]$. 
-    Note that we can expand $(A+B)^{\ot k}$ using a non-commutative binomial expansion:
-    \begin{equation}
-        (A+B)^{\ot k} = \sum_{\ell=0}^{k} \binom{k}{\ell}  \frac{1}{k!} \sum_{\sigma \in S_{k}} \sigma^{-1} (A^{\ot \ell} \otimes B^{\ot (k - \ell)})\sigma
-    \end{equation}
-    were $\sigma \in S_{k}$ acts on $(\mathbb C^{n})^{\ot k}$ by permutation of tensor factors.
-    However, as the superoperator $\Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} \cdot \iota_{\yc}]$ is manifestly $S_{\abs{\yc}}$-invariant (due to the partial trace over the representation space $W_{\yc}$ of $S_{\abs{\yc}}$), the normalized sum over $\sigma \in S_{\abs{\yc}}$ dissappears and one obtains
-    \begin{equation}
-        \tilde \pi_{\yc}(A+B) = \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A^{\ot \ell} \otimes B^{\ot (k - \ell)}) \iota_{\yc}].
-    \end{equation}
-    Next decompose $A^{\ot \ell}$ (resp. $B^{\ot (k - \ell)}$) into isotypic components indexed by $\ya \vdash \ell$ (resp. $\yb \vdash k - \ell$) to obtain
-    \begin{equation}
-        A^{\ot \ell} \otimes B^{\ot (k - \ell)} = \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} (\iota_{\ya} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\ya} \ot \iota_{\yb})^{\dagger}.
-    \end{equation}
-    Combining these results and noting that the $S_{\abs{\yc}}$-representation space $W_{\yc}$ recomposes as $W_{\yc} \simeq \bigoplus_{\ya,\yb} C^{\yc}_{\ya,\yb} \ot W_{\ya} \ot W_{\yb}$ under the restriction to the subgroup $S_{\abs{\ya}} \times S_{\abs{\yb}}$ acting on the first $\ell$ and last $k-\ell$ factors respectively produces
-    \begin{align}
-        \tilde \pi_{\yc}(A+B) 
-        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (\iota_{\alpha} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\alpha} \ot \iota_{\yb})^{\dagger} \iota_{\yc}] \\
-        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \dim(W_\ya)\dim(W_\yb) \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \pi_\ya(A) \ot \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})], \\
-        &= \sum_{\alpha,\beta} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \tilde \pi_\ya(A) \ot \tilde \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})],
-    \end{align}
-    where the final line follows as the sum in both cases is over all $\ya,\yb$ such that $\abs{\yc} = \abs{\ya}+\abs{\yb}$ as the multiplicity space $C^{\yc}_{\ya,\yb}$ is zero whenever $\abs{\yc} \neq \abs{\ya}+\abs{\yb}$.
-\end{proof}
-\begin{cor}
-    For $x > 0 $, let $X \sim x$ denote a random positive semidefinite matrix sampled such that its trace is fixed, $\Tr(X) = x$, and its normalization, $\nrm X \coloneqq X/\Tr(X)$, is distributed according to the Hilbert-Schmidt measure.
-    Fix $a,b,c \in \mathbb R_{\geq 0}$ such that $c=a+b$.
-    Then
-    \begin{equation}
-        \mathbb E_{\substack{A \sim a \\ B \sim b}} \tilde \pi_{\yc}(\nrm{A+B}) 
-        = \id_{V_{\yc}^n} \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} 
-        \frac{a^{\abs{\ya}}b^{\abs{\yb}}}{c^{\abs{\yc}}}
-        \frac{c^{\yc}_{\ya,\yb}h_{\ya}h_{\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)} 
-    \end{equation}
-\end{cor}
-%\begin{cor}
-%    \begin{equation}
-%        \mathbb E_{A,B \sim 1} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)] = h_{\ya}h_{\yb} \frac{c^{\yc}_{\ya,\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)}\id_{V_{\yc}^n}
-%    \end{equation}
-%\end{cor}
-%\begin{rem}
-%    As a sanity check, in the case where $A = B = X$, the binomial theorem reads
-%    \begin{align}
-%        \tilde \pi_{\yc}(2X)
-%        &=2^{\abs{\yc}} \tilde \pi_{\yc}(X), \\
-%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(X) \ot \tilde \pi_{\yb}(X)], \\
-%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} \tilde \pi_{\yc}(X).
-%    \end{align}
-%    Now the coefficients in front of $\tilde \pi_{\yc}(X)$ match because, for any fixed $\ell$, $W_{\yc} \cong \bigoplus_{\ya \vdash \ell, \yb \vdash \abs{\yc}-\ell} C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)$.
-%    Therefore, we have
-%    \begin{equation}
-%        \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
-%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} \sum_{\ya\vdash \ell,\yb\vdash \abs{\yc}-\ell}  \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
-%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} = 
-%        2^{\abs{\yc}}
-%    \end{equation}
-%    as expected.
-%\end{rem}
-%\begin{rem}
-    %Taking the trace of both sides of the binomial theorem yields
-    %\begin{equation}
-    %    \tilde \chi_\yc(A+B) = \Tr[P_{\yc} (A+B)^{\ot \abs{\yc}}] = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
-    %\end{equation}
-    %where $P^{\yc}_{\ya,\yb}$ projects onto the $\yc$-isotypic component of $V_{\ya}^n \ot V_{\yb}^{n}$.
-    %Fixing a triple $(\ya,\yb,\yc)$ with sizes $c=a+b$ such that $c^{\yc}_{\ya,\yb} \neq 0$ and letting $C = A+B$ gives rise to the following inequality:
-    %\begin{equation}
-    %    \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)].
-    %\end{equation}
-    %Furthermore normalizing everything yields
-    %\begin{equation}
-    %    \label{eq:binomial_ineq}
-    %    \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!}\frac{\Tr(A)^{a}\Tr(B)^{b}}{\Tr(C)^{c}} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B)].
-    %\end{equation}
-    %We refer to this as the binomial inequality.
-    %If one fixes $a,b,c \geq 0$ non-negative integers such that $c=a+b$, and considers Young diagrams
-    %\begin{equation}
-    %    \ya \vdash a, \qquad \yb \vdash b, \qquad \yc \vdash c,
-    %\end{equation}
-    %one has
-    %\begin{equation}
-    %    \sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}} \Gamma^{\yc}_{\ya,\yb}(A,B) = \tilde \chi_{\ya}(A) \tilde \chi_{\yb}(B)
-    %\end{equation}
-    %and thus there exists a normalization relation 
-    %\begin{equation}
-    %    %\sum_{\substack{\ya \vdash a \\ \yb \vdash b \\ \yc \vdash c}}
-    %    \sum_{\ya \vdash a}\sum_{\yb \vdash b}\sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}}
-    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) = 1.
-    %\end{equation}
-    %The quantity $\Gamma^{\yc}_{\ya,\yb}(A,B)$ satisfies for all unitary $U \in \U(n)$, the identity
-    %\begin{equation}
-    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,U^{-1}BU) = \Gamma^{\yc}_{\ya,\yb}(A,B),
-    %\end{equation}
-    %but in general, there exists $U,V \in \U(n)$ such that
-    %\begin{equation}
-    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,V^{-1}BV) \neq \Gamma^{\yc}_{\ya,\yb}(A,B).
-    %\end{equation}
-    %In other words, $\Gamma^{\yc}_{\ya,\yb}(A,B)$ does \textit{not} depend on only the eigenvalues $\eig(A)$ and $\eig(B)$.
-    %Nevertheless, under the assumption that $A,B$ and $C=A+B$ are positive semidefinite, we can place upper bounds on $\Gamma^{\yc}_{\ya,\yb}(A,B)$ which depend only on the eigenvalues of $A$, $B$ or $C$.
-    %Since $\Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \geq 0$ is non-negative in this case, we have
-    %\begin{equation}
-    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\ya}(\nrm A) \tilde \chi_{\yb}(\nrm B)
-    %\end{equation}
-    %and also from the Binomial theorem,
-    %\begin{equation}
-    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\yc}(\nrm C)
-    %\end{equation}
-    %where $m_{A,B}(a,b) \in [0,1]$ is the binomial probability:
-    %\begin{equation}
-    %    m_{A,B}(a,b) = \frac{c!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(C)^c} = \frac{(a+b)!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(A+B)^c}.
-    %\end{equation}
-    %Our goal is to combine these bounds with the normalization relation above.
-    %As $0 \leq m_{A,B}(a,b) \leq 1$, we can relax the bounds a bit to make the statement more symmetric to obtain
-    %\begin{equation}
-    %    \min\{ \tilde \chi_{\ya}(\ea), \tilde \chi_{\yb}(\eb), \tilde \chi_{\yc}(\ec) \}
-    %    \geq
-    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B)
-    %\end{equation}
-
-    %For instance, by noting that $P^{\yc}_{\ya,\yb} \leq \id_{V_{\ya}^n} \ot \id_{V_{\yb}^n}$:
-    %\begin{equation}
-    %    \tilde \chi_\yc(A+B) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya,\yb} \neq 0}} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B).
-    %\end{equation}
-    %Or by noting that each summand is non-negative, the following holds for all $\yc$:
-    %\begin{equation}
-    %    \tilde \chi_\yc(A+B) \geq \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
-    %\end{equation}
-    %Or by considering the edge cases where $(\alpha,\beta) = (\gamma,\cdot)$ or $(\alpha,\beta) = (\cdot,\gamma)$ we obtain superadditivity:
-    %\begin{equation}
-    %    \pi_{\yc}(A+B) \geq \pi_{\yc}(A) + \pi_{\yc}(B),
-    %\end{equation}
-    %which is a non-trivial necessary inequality for Horn's problem.
-    %For instance, when $\yc = (n)$, $\pi_{(n)}(X) = \det(X)$ and thus one expects $\det(C) \geq \det(A) + \det(B)$ for any $C = A+B$ where $A,B,C \geq 0$.
-%\end{rem}
-%\begin{thm}
-%    A triple $(\ea, \eb, \ec)$ of positive semidefinite eigenvalues are the eigenvalues of some positive semidefinite matrices $(A,B,C)$ satsifying $C=A+B$ if and only if for all $(a,b,c)$ satisfying $c=a+b$,
-%    \begin{equation}
-%        \sum_{\ya, \yb ,\yc}
-%        \min\{ \tilde \chi_{\ya}(\nea), \tilde \chi_{\yb}(\neb), \tilde \chi_{\yc}(\nec) \} \geq \frac{c!}{a!b!} \frac{\Tr(\ea)^a\Tr(\eb)^b}{\Tr(\ec)^c},
-%    \end{equation}
-%    where the sum is taken over all $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c$ such that $c^{\yc}_{\ya,\yb} \neq 0$.
-%\end{thm}
-%\begin{proof}
-%    The ``only if'' portion of the proof follows from the previous discussion.
-%    The ``if'' portion follows by proving the contrapositive, namely that if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices, then the inequality above fails to hold for some $(a,b,c)$.
-%    We will show explicitly that a violation occurs when
-%    \begin{equation}
-%        a = \ceil{k \abs{\ea}}, \qquad
-%        b = \ceil{k \abs{\eb}}, \qquad
-%        c = \ceil{k \abs{\ea}} + \ceil{k \abs{\eb}},
-%    \end{equation}
-%    for a sufficiently large parameter $k$.
-%    For these particular values, we have the following estimates:
-%    \begin{equation}
-%        \begin{alignedat}{3}
-%            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad
-%            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad
-%            &&k \abs{\ec} \leq c < k \abs{\ec} + 2.
-%        \end{alignedat}
-%    \end{equation}
-%\end{proof}
-%\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
-\hrule
-\begin{rem}
-    Let $\nu_{\ec}$ be the probability distribution over $\{\yc \vdash c\}$ given by
-    \begin{equation}
-        \nu_{\ec}(\yc) \coloneqq \iint \diff W \Tr[P_\yc (\nrm{W\cdot \ec})^{\ot c}] = \Tr[P_\yc (\nrm{\ec})^{\ot c}] = \tilde \chi_{\yc}(\nrm{\ec}).
-    \end{equation}
-    Moreover, let $\mu_{\ea,\eb}$ be the probability distribution over the same space given by
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
-    \end{equation}
-    Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
-    \end{equation}
-    %where $T_{\ya,\yb}^{\yc;n}$ is a probability distribution over $\{\yc \vdash c\}$ conditioned on fixed $\ya,\yb$ given by the decomposition of the tensor $V_{\ya}^{n} \ot V_{\yb}^{n}$ into isotypic components:
-    %\begin{equation}
-    %    T_{\ya,\yb}^{\yc;n} \coloneqq \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
-    %\end{equation}
-    %Also define for $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c = a+b$ the joint probability:
-    %\begin{equation}
-    %    \mu_{\ea,\eb}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
-    %\end{equation}
-    %One can then consider the quantity
-    %\begin{equation}
-    %    F_{\ea,\eb;\ec}^{(c),s_1,s_2} = \sum_{\yc\vdash c}\tilde \chi_{\yc}(\nrm{\ec})^{s_1}
-    %    \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{s_2}
-    %\end{equation}
-    Now for \textit{any} $(A,B)$ with eigenvalues $(\ea,\eb)$ such that $C = A+B$ has eigenvalues $\ec$, we have the identity
-    \begin{equation}
-        \nu_{\ec}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
-    \end{equation}
-    %Also define the joint probability:
-    %\begin{equation}
-    %    \nu_{\ec}^{A,B}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c}\Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
-    %\end{equation}
-    Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under the assumption that $(\ea,\eb,\ec)$ are trigonal.
-    To relate these two quantities more closely, we use that $P^{\yc}_{\ya\yb}$ is a projection operator and that $A$ and $B$ are both positive semidefinite to obtain:
-    \begin{equation}
-        \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
-    \end{equation}
-    %Therefore we obtain
-    %\begin{equation}
-    %    \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \nu_{\ec}(\ya,\yb,\yc) \leq \mu_{\ea,\eb}(\ya,\yb,\yc)
-    %\end{equation}
-    Now consider the bound $\dim V_\yx^n \leq (\abs{\yx}+1)^{n(n-1)/2}$.
-    Since $\abs{\ya} = a, \abs{\yb} = b$ and $a+b=c$, we have 
-    \begin{equation}
-        (a+1)(b+1) = ab + a+b + 1 \leq \frac{c^2}{4}+c+1
-    \end{equation}
-    and therefore whenever $c^{\yc}_{\ya\yb} \neq 0$, we obtain a $(\ya,\yb)$-independent inequality:
-    \begin{equation}
-        \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{p_n(c)},
-    \end{equation}
-    where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
-    Altogether we obtain the inequality:
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) \geq \frac{1}{p_n(c)}\nu_{\ec}(\yc).
-    \end{equation}
-    which holds for all $\yc \vdash c$ independently of the decomposition of $C = A+B$.
-        
-    The fidelity between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ over $\{\yc \vdash c\}$ is given by
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \coloneqq \left(\sum_{\yc\vdash c} \sqrt{\mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc)}\right)^{2},
-    \end{equation}
-    or alternatively,
-    \begin{equation}
-        \sqrt{F_{\ea,\eb;\ec}^{(c)}} \coloneqq \sum_{\yc\vdash c} \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\tilde\chi_{\yc}(\nrm \ec)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{\frac{1}{2}}.
-    \end{equation}
-    Our inequality between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ implies the lower bound
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{p_n(c)}.
-    \end{equation}
-    To obtain a complementary upper bound, let
-    \begin{equation}
-        \Delta_{\ea,\eb;\ec} \coloneqq \min_{U,V}\{\norm{\eig(\nrm{U\cdot \ea + V\cdot \eb})-\nrm \ec}_1\}.
-    \end{equation}
-    Then, by the eigenvalue separation lemma, we obtain a $(U,V)$-independent upper bound:
-    \begin{align}
-        \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}]\Tr[P_\yc (\nrm{\ec})^{\ot c}]
-        &\leq (c+1)^{n(n-1)} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\yc}^2),
-    \end{align}
-    Therefore, as there at most $\abs{\{\yc \vdash c\}} \leq (c+1)^{n-1}$ summands for $F_{\ea,\eb;\ec}^{(c)}$,
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \leq u_n(c) \exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2),
-    \end{equation}
-    where $u_n(c) \coloneqq (c+1)^{n^2+n-2}$.
-    %Therefore, if $r = \rank(\ec)$ then $\card{\{\yc \vdash_r c\}} \leq (c+1)^{r-1}$ and therefore we obtain:
-    %\begin{equation}
-    %    \Delta_{\ea,\eb;\yc} \leq \sqrt{2(3n(n-1)+r-1)\frac{\ln (c+1)}{c}}.
-    %\end{equation}
-    \begin{thm}
-        Fix a positive integer $k$.
-        If $(\ea,\eb,\ec)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$, then for every positive integer $k$,
-        \begin{equation}
-            F_{\ea,\eb;\ec}^{k} \geq \frac{1}{\ell_n(k)}.
-        \end{equation}
-        where $\ell_n(k) \coloneqq (k^2/4+k+1)^{n(n-1)/2}$.
-        Conversely, if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices and $\Delta_{\ea,\eb;\yc} > \varepsilon$, then the above inequality is violated for all $k$ such that
-        \begin{equation}
-            \frac{k}{\ln (u_n(k)\ell_n(k))}>\frac{4}{\varepsilon^2}.
-        \end{equation}
-        where $u_n(k) \coloneqq (k+1)^{n^2+n-2}$.
-    \end{thm}
-    \end{rem}
-\hrule
-    Expanding out both sides of the useful inequality above and moving normalizations, we see the inequality is equivalent to
-    \begin{equation}
-        \sum_{\ya,\yb}c^{\yc}_{\ya\yb} \frac{n^{\abs{\ya}}\dim W_{\ya} \chi_{\ya}(\ea)}{\abs{\ya}!\dim V_{\ya}^{n}}\frac{n^{\abs{\yb}}\dim W_{\yb} \chi_{\yb}(\eb)}{\abs{\yb}!\dim V_{\yb}^{n}} \geq \frac{1}{p_n(c)}\frac{n^{\abs{\yc}}\dim W_{\yc} \chi_{\yc}(\ec)}{\abs{\yc}!\dim V_{\yc}^n}
-    \end{equation}
-    Amazingly, $\lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{\abs{\yx}}} = \frac{\dim(W_{\yx})}{\abs{\yx}!}$.
-    Therefore, as $c^{\yc}_{\ya,\yb}$ is known to eventually be independent of $n$, we have by $n^{\abs{\yc}} = n^{\abs{\ya}}n^{\abs{\yb}}$, the identity
-    \begin{equation}
-        \lim_{n\to\infty} \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}= \frac{\abs{\ya}!\abs{\yb}!}{\abs{\yc}!} \frac{c^{\yc}_{\ya\yb}\dim W_{\yc}}{\dim (W_{\ya} \ot W_{\yb})}.
-    \end{equation}
-    This almost simplifies the inequality as $n\to\infty$, but unfortunately $p_n(c) \to \infty$ and thus the lower-bound trivializes.
-\hrule
-\begin{rem}
-    Given candidate eigenvalues $(\ea,\eb,\ec)$, and a positive integer $k$, let
-    \begin{equation}
-        K_{\ea,\eb,\ec}(s) \coloneqq \iint \! \diff U\diff V\diff W \Tr[P_\mu (U\cdot \ea + V \cdot \eb + s I - W \cdot \ec)^{\ot kn}].
-    \end{equation}
-    where $\mu = (k, k, \ldots, k)$ is a rectangular Young diagram with $n$ rows of $k$ boxes each.
-    We note that $V_{\mu}^{n}$ is isomorphic to the $k$th power of the determinantal representation of $\U(n)$ and thus also supports the trivial representation of $\SU(n)$.
-    Expanding everything out using the multinomial expansion and performing the integration over $U,V,W$ yields the formula
-    \begin{equation}
-        K_{\ea,\eb,\ec}(s) = \sum_{\substack{a,b,c,\ell=0\\a+b+c+\ell=kn}}^{kn} \frac{(kn)!}{a!b!c!\ell!} \sum_{\ya,\yb,\yc,\yx}c^{\mu}_{\ya\yb\yc\yx} \frac{\tilde \chi_\ya(\ea)\tilde \chi_\yb(\eb)\tilde \chi_\yc(-\ec)\tilde \chi_{\yx}(sI)}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n \ot V_{\yx}^n)}
-    \end{equation}
-    because
-    \begin{equation}
-        \frac{\Tr[P_{\mu} (P_{\ya}\ot P_{\yb}\ot P_{\yc}\ot P_{\yx})]}{\Tr[P_{\ya}\ot P_{\yb}\ot P_{\yc}\ot P_{\yx}]}
-        = \frac{c^{\mu}_{\ya\yb\yc\yx}}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n \ot V_{\yx}^n)}.
-    \end{equation}
-    Moreover, as $\tilde \chi_{\yx}(sI) = s^{\abs{\yx}} \tilde \chi_{\yx}(I) = s^{\abs{\yx}} \dim(W_{\yx} \ot V_{\yx}^{n})$,
-    \begin{equation}
-        K_{\ea,\eb,\ec}(s) = \sum_{\substack{a,b,c,\ell=0\\a+b+c+\ell=kn}}^{kn} \frac{(kn)!}{a!b!c!\ell!} \sum_{\ya,\yb,\yc,\yx}c^{\mu}_{\ya\yb\yc\yx} s^{\ell} \dim(W_{\yx})\frac{\tilde \chi_\ya(\ea)\tilde \chi_\yb(\eb)\tilde \chi_\yc(-\ec)}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n)}.
-    \end{equation}
-\hrule
-    Using the formula for the Schur-polynomial:
-    \begin{equation}
-        s_{\yx}(x) = \frac{\det[x_i^{\yx_j+n-j}]}{\det[x_i^{n-j}]}
-    \end{equation}
-    we note that if $x'_i \coloneqq z - x_i$, then
-    \begin{equation}
-        s_{\yx}(z-x) = \frac{\det[(z - x_i)^{\yx_j+n-j}]}{\det[(z - x_i)^{n-j}]}
-    \end{equation}
-    Using our binomial theorem, we have for $\yx \vdash k$, where
-    \begin{align}
-        \tilde \chi_{\yx}(zI-X) 
-        &= \sum_{j=0}^{k} \binom{k}{j} \Tr[P_{\yx} ((zI)^{\ot k-j}\ot (-X)^{\ot j})] \\
-        &= \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \Tr[P_{\yx} (I^{\ot k-j} \ot X^{\ot j})] \\
-        &= \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \sum_{\mu\vdash j} m^{\mu}_{\yx} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} \Tr[P_{\mu}X^{\ot j}]
-    \end{align}
-    where $\Tr_{k-j}[P_{\yx}] = \sum_{\mu\vdash j} L^{\yx}_{\mu} P_{\mu}$ with 
-    \begin{equation}
-        L^{\yx}_{\mu} = \frac{\Tr[P_{\yx}(I^{\ot k-j}\ot P_{\mu})]}{\Tr[P_{\mu}]} =  m^{\mu}_{\yx}\frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})}
-    \end{equation}
-    where $m^{\mu}_{\yx} = \dim(\Hom_{S_j}(W_{\mu}, \Res^{S_k}_{S_j} W_{\yx}))$ (noting that $m^{\mu}_{\yx} = 0$ if $\mu$ is not a subdiagram of $\yx$ denoted by $\mu \subseteq \yx$.
-    Therefore,
-    \begin{equation}
-        s_{\yx}(z-x) = \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \sum_{\mu\vdash j} \frac{m^{\mu}_{\yx} \dim(W_{\mu})}{\dim(W_{\yx})} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
-    \end{equation}
-    \begin{equation}
-        s_{\yx}(z-x) = \sum_{\mu \subseteq \yx} \binom{\abs{\yx}}{\abs{\mu}} (-1)^{\abs{\mu}}z^{\abs{\yx}-\abs{\mu}} \frac{m^{\mu}_{\yx} \dim(W_{\mu})}{\dim(W_{\yx})} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
-    \end{equation}
-    Now let $\yx^{*}$ denote the complementary Young diagram to $\yx$ inside a $n\times \lambda_1$ rectangular Young diagram thus ensuring $V_{\yx^{*}}^n \ot V_{\yx}^n$ contains the trivial representation and thus $(V_{\yx^{*}}^{n})^{*} \simeq V_{\yx}^{n}$ is an isomorphism of $\U(n)$ representations.
-    As $\abs{\yx^{*}} = n\lambda_1 - \abs{\lambda}$, we have
-    \begin{equation}
-        s_{\yx^{*}}(z-x) = \sum_{\mu \subseteq \yx^{*}} \binom{\abs{\yx^{*}}}{\abs{\mu}} (-1)^{\abs{\mu}}z^{\abs{\yx^{*}}-\abs{\mu}} \frac{m^{\mu}_{\yx^{*}} \dim(W_{\mu})}{\dim(W_{\yx^{*}})} \frac{\dim(V_{\yx^{*}}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
-    \end{equation}
-    TC: At this stage, it is not clear to me if there is an elegant (non-asymptotic) formula relating $s_{\yx^{*}}(z-x)$ to $s_{\yx}(x)$ for any value of $z$.
-\end{rem}
-\hrule
-    In this section, we recalle the fundamental bridge between algebraic objects and geometric objects which serves as Kirillov's orbit method and the more elementary form of geometric quantization.
-    In \cite{coquereaux2019revisiting}, \citeauthor{coquereaux2019revisiting} derives a formula relating the character $\chi_\yx(e^{iX})$ for an irreducible representation labelled by $\yx$ evaluated on $e^{iX} \in T$ to the Fourier transform of the orbit measure $\hat \mu_{\ex}(X) \coloneqq \int_{\mathcal O_{\ex}} \exp(i \braket{Y, X}) \diff \mu_{\ex}(Y)$.
-    This formula is simple and exact and is the cosequence of a number of well-known formulas.
-    First is the Weyl-Character formula in terms of the Weyl-vector $\rho = (n-1, n-2, \ldots, 1, 0)$,
-    \begin{equation}
-        \chi_{\yx}(e^{ix}) = \frac{\det[e^{ix_i(\yx_j+\rho_j)}]}{\det[e^{ix_i\rho_j}]},
-        \qquad
-        \chi_{\yx}(x) = \frac{\det[x_i^{\yx_j+\rho_j}]}{\det[x_i^{\rho_j}]},
-    \end{equation}
-    where $\det[e^{ix_i(\rho_j)}] = \Delta(e^{ix_i}) = \prod_{i<j} (e^{ix_i}-e^{ix_j})$ is the Weyl denominator and $\Delta$ the Vandermonde determinant, defined by the formula:
-    \begin{equation}
-        \Delta(x) = \det[x_i^{\rho_j}] = \det[x_i^{n-j}] = \prod_{i<j}(x_i-x_j).
-    \end{equation}
-    Weyl's dimension formula is then 
-    \begin{equation}
-        \dim(V_{\yx}^n) = \chi_{\yx}(e) = \frac{\Delta(\yx+\rho)}{\Delta(\rho)},
-    \end{equation}
-    where $\Delta(\rho) = (n-1)!! = (n-1)!(n-2)!\cdots 3!2!1!$ is the super factorial of $n-1$.
-    The second formula is the HCIZ integral formula:
-    \begin{equation}
-        \mathcal H(x,y) = \int \diff U \exp(\Tr[xU^{-1}yU]) = \frac{\det[e^{x_iy_j}]\Delta(\rho)}{\Delta(x)\Delta(y)}.
-    \end{equation}
-    Numerous proofs for this formula can be found in \cite{mcswiggen2021harish}, such as the particularly elgant proof using the Cauchy-Binet formula due to \cite{balantekin2000character}.
-    By a direct inspection, one derives an exact correspondence \cite[Equation 18]{coquereaux2018orbital}:
-    \begin{equation}
-        \Delta(e^{ix})\chi_{\yx}(e^{ix}) = \det[e^{ix_i(\yx_j+\rho_j)}] = \dim(V_{\yx}^{n})\Delta(ix) \mathcal H(ix,\yx+\rho).
-    \end{equation}
-    It is this formula through which \citeauthor{coquereaux2020horn} derive a direct correspondence between the Littlewood-Richardson coefficients (which is a integral over the compact torus of a product of three characters) and the Horn probability density function for the eigenvalues $\ec$ of the random matrix $C$ distributed such that $C=A+B$ for $(A,B)$ independent with eigenvalues $(\ea,\eb)$ (i.e. the Duistermaat-Heckman measure) (which is an integral over the non-compact Lie algebra of Hermitian matrices of a product of three HCIZ formulas).
-
-    Another interesting identity is following formula:
-    \begin{equation}
-        \mathcal H(x,y) = \sum_{k=0}^{\infty} \frac{1}{k!} \sum_{\mu\vdash k} \frac{\Tr[P_{\mu}x^{\ot k}]\Tr[P_{\mu}y^{\ot k}]}{\Tr[P_{\mu}]},
-    \end{equation}
-    which can be simplified using the identity
-    \begin{equation}
-        \frac{1}{\abs{\yx}!}\frac{\dim(W_{\yx})}{\dim(V_{\yx}^{n})} = \frac{\Delta(\rho)}{\prod_j(\yx+\rho)_j!},
-    \end{equation}
-    to obtain
-    \begin{equation}
-        \mathcal H(x,y) = \sum_{k=0}^{\infty}\sum_{\mu\vdash k} \frac{\Delta(\rho)}{\prod_j(\mu+\rho)_j!} \chi_{\mu}(x)\chi_{\mu}(y).
-    \end{equation}
-    and also
-    \begin{equation}
-        \frac{\chi_{\yx}(e^{ix})}{\dim(V_{\yx}^{n})} = \frac{\Delta(ix)}{\Delta(e^{ix})} \sum_{k=0}^{\infty}\sum_{\mu\vdash k} \frac{\chi_{\mu}(ix)}{\dim(V_{\mu}^{n})} \frac{\det[(\yx+\rho)_i^{(\mu+\rho)_j}]}{\prod_j(\mu+\rho)_j!}.
-    \end{equation}
-\hrule
-}
-
-\clearpage
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
 \label{sec:lr_tri}
 
@@ -2110,7 +1577,558 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 \end{proof}
 
 \clearpage
+\subsection{Drafting: Reformulating the main results}
+TC: Here I'm reformulating everything with two objectives: (i) to invoke eigenvalue estimation as late as possible, and (ii) to \textit{discover} the ``$\Gamma$'' quantities I had defined in a more organic way.
+For example, the tri-gamma quantitity remerges as a summand in the binomial expansion theorem.
 
+\begin{defn}
+    Let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$.
+    Given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{(1)}^{n} \simeq \mathbb C^{n}$, we define $\pi_{\yx}(X)$ by the formula:
+    \begin{equation*}
+        \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]}{\dim(W_{\yx})}
+    \end{equation*}
+    where $\iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{(1)}^{\ot \abs{\yx}}$ is the equivariant isometry for the $\yx$-isotypic subspace of $V_{(1)}^{\ot \abs{\yx}}$.
+    This definition ensures that $X^{\ot k} \simeq \bigoplus_{\yx \vdash k} \pi_{\yx}(X)^{\oplus W_{\yx}}$ holds for any positive integer $k$.
+    When $X$ is a unitary, $\pi_{\yx}(X)$ is the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is warranted.
+    If $X \geq 0$ is positive semidefinite, then $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
+    If $\yx = (1)$, then $\pi_{(1)}(X) = X$ as $\dim(W_{(1)}) = 1$.
+
+    Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
+    \begin{equation}
+        \pi_{\yx}(sX) = s^{\abs{\yx}} \pi_{\yx}(X).
+    \end{equation}
+    Additionally, if $X,Y$ are two matrices, we have
+    \begin{equation}
+        \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y). 
+    \end{equation}
+    The \textit{character} of $X$ satisfies
+    \begin{equation*}
+        \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot \abs{\yx}}]}{\dim(W_{\yx})} = s_{\yx}(\eig(X)),
+    \end{equation*}
+    where $s_{\yx}(\eig(X))$ is the corresponding Schur-polynomial evaluated on the eigenvalues of $X$.
+    For fixed positive integer $k$, we also define the \textit{Plancherel distribution} $\{\mu_\yx | \yx \vdash k\}$ over Young diagrams of size $k$ according to
+    \begin{equation}
+        \mu_\yx \coloneqq \frac{(\dim W_\yx)^2}{\abs{\yx}!}.
+    \end{equation}
+    Moreover, we define the rescaling of $\pi_{\yx}(X)$ to be
+    \begin{equation*}
+        \tilde \pi_{\yx}(X) \coloneqq \dim(W_{\yx}) \pi_{\yx}(X) = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}],
+    \end{equation*}
+    and the corresponding rescaled character is
+    \begin{equation*}
+        \tilde \chi_\yx(X) \coloneqq \Tr[\tilde \pi_{\yx}(X)] = \Tr[P_{\yx} X^{\ot \abs{\yx}}] = \dim(W_{\yx})s_{\yx}(\eig(X)),
+    \end{equation*}
+    where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace.
+
+    These rescaled characters emerge as coefficients in the following decomposition associated to an integral over Haar measure over $\U(n)$,
+    \begin{equation}
+        \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \tilde \chi_{\yx}(X)   \frac{P_{\yx}}{\Tr(P_{\yx})}.
+    \end{equation}
+    This normalization scheme means that $\tilde \pi_{\yx}(X)$ is \textit{not} a representation, while the character $\tilde \chi_{\yx}(X)$ satisfies
+    \begin{equation}
+        \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = \sum_{\yx \vdash k} \Tr[X^{\ot k} P_{\yx}] = \Tr[X^{\ot k}] = \Tr[X]^k.
+    \end{equation}
+    Therefore, whenever $X$ is positive semidefinite and trace one (i.e., when $X$ is a density matrix), we have that the map $\yx \mapsto \tilde \chi_{\yx}(X)$ is a probability distribution when restricted to the set of Young diagrams with a fixed number $k$ of boxes:
+    \begin{equation}
+        X\geq 0 \implies \tilde \chi_{\yx}(X) \geq 0, \qquad \text{and} \qquad \Tr(X) = 1 \implies \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = 1.
+    \end{equation}
+    As the (rescaled) character $\chi_{\yx}(X)$ depends only on the eigenvalues $\eig(X)$ of $X$, we have
+    \begin{equation}
+        \chi_{\yx}(X) = \chi_{\yx}(\diag(\eig(X)).
+    \end{equation}
+    Given a tuple of non-negative sorted eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$ summing to one, $\sum_{i=1}^{n}\ex_i = 1$, the distribution $\yx \mapsto \tilde \chi_{\yx}(\diag(\ex))$ over $\yx \vdash k$ is denoted $\mathrm{SW}^{k}(\ex)$ and called the \textit{Schur-Weyl} distribution in \cite{odonnell2016efficient}.
+\end{defn}
+\begin{prop}[Eigenvalue estimation]
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
+    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    and
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
+\end{prop}
+%\begin{rem}
+%    We will use the eigenvalue estimation bounds in two essentially related ways.
+%    Let $N^{k}_{\varepsilon}(\nrm \ex)$ denote the set of Young diagrams $\yx$ of size $k$ which are close to the normalized eigenvalues $\nrm \ex$:
+%    \begin{equation}
+%        N^{k}_{\varepsilon}(\nrm \ex) \coloneqq \{ \yx \vdash k \mid \kl{\nrm \yx}{\nrm \ex} < \varepsilon \}.
+%    \end{equation}
+%    Then we have a lower bound,
+%    \begin{equation}
+%        \yx \in N^{k}_{\varepsilon}(\nrm \ex) \implies \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(- k \varepsilon).
+%    \end{equation}
+%\end{rem}
+\begin{prop}[Eigenvalue separation]
+    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
+    For any positive powers $p,q > 0$, we have
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\dim V_{\yx}^{n})^{p+q} \exp\left(-\abs{\yx} s^2\frac{pq}{2(p+q)}\right).
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm A)^p \leq (\dim V_{\yx}^{n})^p \exp( - \abs{\yx} p\kl{\nrm \yx}{\nrm \ea}).
+    \end{equation}
+    Furthermore, Pinsker's inequality yields
+    \begin{align}
+        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
+        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2}
+        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
+    \end{align}
+    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
+\end{proof}
+It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
+\begin{equation}
+    V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
+\end{equation}
+Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
+\begin{equation}
+    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
+\end{equation}
+The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
+\begin{prop}
+    Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
+    Then for $\yx \vdash k$,
+    \begin{align}
+        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+    \end{align}
+\end{prop}
+\begin{proof}
+    Given a measure $\mu(X)$ that is invariant under conjugation by $\U(n)$, the operator $\mathbb E_{X} [X^{\ot k}]$ is necessarily $\U(n)$ equivariant and thus decomposes as 
+    \begin{equation}
+        \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
+    \end{equation}
+    for some proportionality constants $h_{\yx}$.
+    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
+    Therefore,
+    \begin{align}
+        \mathbb E_{X} [\tilde \pi_{\yx}(X)]
+        = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+    \end{align}
+\end{proof}
+\begin{thm}[Binomial theorem] 
+    Let $A,B$ be $n \times n$ matrices.
+    Then
+    \begin{equation}
+        \tilde \pi_\yc(A+B) = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+    \end{equation}
+    where $\Phi^{\yc}_{\ya,\yb}$ is the linear superoperator sending operators on $V_{\ya}^{n} \ot V_{\yb}^{n}$ to operators on $V_{\yc}^{n}$ according to the formula
+    \begin{equation}
+        \Phi^{\yc}_{\ya,\yb}[\cdot] = \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \cdot (\iota^{\yc}_{\ya,\yb}) \right],
+    \end{equation}
+    where $\iota^{\yc}_{\ya,\yb} : C^{\yc}_{\ya,\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$.
+    If $C^{\yc}_{\ya,\yb}$ is zero-dimensional, then $\iota^{\yc}_{\ya,\yb}$ and $\Phi^{\yc}_{\ya,\yb}$ are taken to be zero maps.
+\end{thm}
+\begin{proof}
+    By definition, we have $\tilde \pi_{\yc}(A+B) = \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A+B)^{\ot \abs{\yc}} \iota_{\yc}]$. 
+    Note that we can expand $(A+B)^{\ot k}$ using a non-commutative binomial expansion:
+    \begin{equation}
+        (A+B)^{\ot k} = \sum_{\ell=0}^{k} \binom{k}{\ell}  \frac{1}{k!} \sum_{\sigma \in S_{k}} \sigma^{-1} (A^{\ot \ell} \otimes B^{\ot (k - \ell)})\sigma
+    \end{equation}
+    were $\sigma \in S_{k}$ acts on $(\mathbb C^{n})^{\ot k}$ by permutation of tensor factors.
+    However, as the superoperator $\Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} \cdot \iota_{\yc}]$ is manifestly $S_{\abs{\yc}}$-invariant (due to the partial trace over the representation space $W_{\yc}$ of $S_{\abs{\yc}}$), the normalized sum over $\sigma \in S_{\abs{\yc}}$ dissappears and one obtains
+    \begin{equation}
+        \tilde \pi_{\yc}(A+B) = \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (A^{\ot \ell} \otimes B^{\ot (k - \ell)}) \iota_{\yc}].
+    \end{equation}
+    Next decompose $A^{\ot \ell}$ (resp. $B^{\ot (k - \ell)}$) into isotypic components indexed by $\ya \vdash \ell$ (resp. $\yb \vdash k - \ell$) to obtain
+    \begin{equation}
+        A^{\ot \ell} \otimes B^{\ot (k - \ell)} = \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} (\iota_{\ya} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\ya} \ot \iota_{\yb})^{\dagger}.
+    \end{equation}
+    Combining these results and noting that the $S_{\abs{\yc}}$-representation space $W_{\yc}$ recomposes as $W_{\yc} \simeq \bigoplus_{\ya,\yb} C^{\yc}_{\ya,\yb} \ot W_{\ya} \ot W_{\yb}$ under the restriction to the subgroup $S_{\abs{\ya}} \times S_{\abs{\yb}}$ acting on the first $\ell$ and last $k-\ell$ factors respectively produces
+    \begin{align}
+        \tilde \pi_{\yc}(A+B) 
+        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (\iota_{\alpha} \ot \iota_{\yb}) [(\id_{W_{\ya}} \ot \pi_{\ya}(A))\ot(\id_{W_{\yb}} \ot \pi_{\yb}(B))] (\iota_{\alpha} \ot \iota_{\yb})^{\dagger} \iota_{\yc}] \\
+        &= \sum_{\ell=0}^{k} \binom{k}{\ell} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k -\ell}} \dim(W_\ya)\dim(W_\yb) \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \pi_\ya(A) \ot \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})], \\
+        &= \sum_{\alpha,\beta} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr_{C^{\yc}_{\ya,\yb}} [ (\iota^{\yc}_{\ya,\yb})^{\dagger} \tilde \pi_\ya(A) \ot \tilde \pi_\yb(B) (\iota^{\yc}_{\ya,\yb})],
+    \end{align}
+    where the final line follows as the sum in both cases is over all $\ya,\yb$ such that $\abs{\yc} = \abs{\ya}+\abs{\yb}$ as the multiplicity space $C^{\yc}_{\ya,\yb}$ is zero whenever $\abs{\yc} \neq \abs{\ya}+\abs{\yb}$.
+\end{proof}
+\begin{cor}
+    For $x > 0 $, let $X \sim x$ denote a random positive semidefinite matrix sampled such that its trace is fixed, $\Tr(X) = x$, and its normalization, $\nrm X \coloneqq X/\Tr(X)$, is distributed according to the Hilbert-Schmidt measure.
+    Fix $a,b,c \in \mathbb R_{\geq 0}$ such that $c=a+b$.
+    Then
+    \begin{equation}
+        \mathbb E_{\substack{A \sim a \\ B \sim b}} \tilde \pi_{\yc}(\nrm{A+B}) 
+        = \id_{V_{\yc}^n} \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} 
+        \frac{a^{\abs{\ya}}b^{\abs{\yb}}}{c^{\abs{\yc}}}
+        \frac{c^{\yc}_{\ya,\yb}h_{\ya}h_{\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)} 
+    \end{equation}
+\end{cor}
+%\begin{cor}
+%    \begin{equation}
+%        \mathbb E_{A,B \sim 1} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)] = h_{\ya}h_{\yb} \frac{c^{\yc}_{\ya,\yb}}{\dim(V_{\ya}^n \ot V_{\yb}^n)}\id_{V_{\yc}^n}
+%    \end{equation}
+%\end{cor}
+%\begin{rem}
+%    As a sanity check, in the case where $A = B = X$, the binomial theorem reads
+%    \begin{align}
+%        \tilde \pi_{\yc}(2X)
+%        &=2^{\abs{\yc}} \tilde \pi_{\yc}(X), \\
+%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Phi^{\yc}_{\ya,\yb} [\tilde \pi_{\ya}(X) \ot \tilde \pi_{\yb}(X)], \\
+%        &= \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} \tilde \pi_{\yc}(X).
+%    \end{align}
+%    Now the coefficients in front of $\tilde \pi_{\yc}(X)$ match because, for any fixed $\ell$, $W_{\yc} \cong \bigoplus_{\ya \vdash \ell, \yb \vdash \abs{\yc}-\ell} C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)$.
+%    Therefore, we have
+%    \begin{equation}
+%        \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
+%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} \sum_{\ya\vdash \ell,\yb\vdash \abs{\yc}-\ell}  \frac{\dim(C^{\yc}_{\ya\yb} \ot W_\ya \ot W_\yb)}{\dim(W_\yc)} =
+%        \sum_{\ell = 0}^{\abs{\yc}} \binom{\abs{\yc}}{\ell} = 
+%        2^{\abs{\yc}}
+%    \end{equation}
+%    as expected.
+%\end{rem}
+%\begin{rem}
+    %Taking the trace of both sides of the binomial theorem yields
+    %\begin{equation}
+    %    \tilde \chi_\yc(A+B) = \Tr[P_{\yc} (A+B)^{\ot \abs{\yc}}] = \sum_{\ya,\yb} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+    %\end{equation}
+    %where $P^{\yc}_{\ya,\yb}$ projects onto the $\yc$-isotypic component of $V_{\ya}^n \ot V_{\yb}^{n}$.
+    %Fixing a triple $(\ya,\yb,\yc)$ with sizes $c=a+b$ such that $c^{\yc}_{\ya,\yb} \neq 0$ and letting $C = A+B$ gives rise to the following inequality:
+    %\begin{equation}
+    %    \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)].
+    %\end{equation}
+    %Furthermore normalizing everything yields
+    %\begin{equation}
+    %    \label{eq:binomial_ineq}
+    %    \Tr[\tilde \pi_{\yc}(C)] \geq \frac{c!}{a!b!}\frac{\Tr(A)^{a}\Tr(B)^{b}}{\Tr(C)^{c}} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(\nrm A) \ot \tilde \pi_{\yb}(\nrm B)].
+    %\end{equation}
+    %We refer to this as the binomial inequality.
+    %If one fixes $a,b,c \geq 0$ non-negative integers such that $c=a+b$, and considers Young diagrams
+    %\begin{equation}
+    %    \ya \vdash a, \qquad \yb \vdash b, \qquad \yc \vdash c,
+    %\end{equation}
+    %one has
+    %\begin{equation}
+    %    \sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}} \Gamma^{\yc}_{\ya,\yb}(A,B) = \tilde \chi_{\ya}(A) \tilde \chi_{\yb}(B)
+    %\end{equation}
+    %and thus there exists a normalization relation 
+    %\begin{equation}
+    %    %\sum_{\substack{\ya \vdash a \\ \yb \vdash b \\ \yc \vdash c}}
+    %    \sum_{\ya \vdash a}\sum_{\yb \vdash b}\sum_{\substack{\yc \vdash c\\c^{\yc}_{\ya\yb} \neq 0}}
+    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) = 1.
+    %\end{equation}
+    %The quantity $\Gamma^{\yc}_{\ya,\yb}(A,B)$ satisfies for all unitary $U \in \U(n)$, the identity
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,U^{-1}BU) = \Gamma^{\yc}_{\ya,\yb}(A,B),
+    %\end{equation}
+    %but in general, there exists $U,V \in \U(n)$ such that
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(U^{-1}AU,V^{-1}BV) \neq \Gamma^{\yc}_{\ya,\yb}(A,B).
+    %\end{equation}
+    %In other words, $\Gamma^{\yc}_{\ya,\yb}(A,B)$ does \textit{not} depend on only the eigenvalues $\eig(A)$ and $\eig(B)$.
+    %Nevertheless, under the assumption that $A,B$ and $C=A+B$ are positive semidefinite, we can place upper bounds on $\Gamma^{\yc}_{\ya,\yb}(A,B)$ which depend only on the eigenvalues of $A$, $B$ or $C$.
+    %Since $\Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \geq 0$ is non-negative in this case, we have
+    %\begin{equation}
+    %    \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\ya}(\nrm A) \tilde \chi_{\yb}(\nrm B)
+    %\end{equation}
+    %and also from the Binomial theorem,
+    %\begin{equation}
+    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B) \leq \tilde \chi_{\yc}(\nrm C)
+    %\end{equation}
+    %where $m_{A,B}(a,b) \in [0,1]$ is the binomial probability:
+    %\begin{equation}
+    %    m_{A,B}(a,b) = \frac{c!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(C)^c} = \frac{(a+b)!}{a!b!} \frac{\Tr(A)^a\Tr(B)^b}{\Tr(A+B)^c}.
+    %\end{equation}
+    %Our goal is to combine these bounds with the normalization relation above.
+    %As $0 \leq m_{A,B}(a,b) \leq 1$, we can relax the bounds a bit to make the statement more symmetric to obtain
+    %\begin{equation}
+    %    \min\{ \tilde \chi_{\ya}(\ea), \tilde \chi_{\yb}(\eb), \tilde \chi_{\yc}(\ec) \}
+    %    \geq
+    %    m_{A,B}(a,b) \Gamma^{\yc}_{\ya,\yb}(\nrm A,\nrm B)
+    %\end{equation}
+
+    %For instance, by noting that $P^{\yc}_{\ya,\yb} \leq \id_{V_{\ya}^n} \ot \id_{V_{\yb}^n}$:
+    %\begin{equation}
+    %    \tilde \chi_\yc(A+B) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya,\yb} \neq 0}} \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \tilde \chi_{\ya}(A)\tilde \chi_{\yb}(B).
+    %\end{equation}
+    %Or by noting that each summand is non-negative, the following holds for all $\yc$:
+    %\begin{equation}
+    %    \tilde \chi_\yc(A+B) \geq \frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!} \Tr[P^{\yc}_{\ya,\yb} \tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B)]
+    %\end{equation}
+    %Or by considering the edge cases where $(\alpha,\beta) = (\gamma,\cdot)$ or $(\alpha,\beta) = (\cdot,\gamma)$ we obtain superadditivity:
+    %\begin{equation}
+    %    \pi_{\yc}(A+B) \geq \pi_{\yc}(A) + \pi_{\yc}(B),
+    %\end{equation}
+    %which is a non-trivial necessary inequality for Horn's problem.
+    %For instance, when $\yc = (n)$, $\pi_{(n)}(X) = \det(X)$ and thus one expects $\det(C) \geq \det(A) + \det(B)$ for any $C = A+B$ where $A,B,C \geq 0$.
+%\end{rem}
+%\begin{thm}
+%    A triple $(\ea, \eb, \ec)$ of positive semidefinite eigenvalues are the eigenvalues of some positive semidefinite matrices $(A,B,C)$ satsifying $C=A+B$ if and only if for all $(a,b,c)$ satisfying $c=a+b$,
+%    \begin{equation}
+%        \sum_{\ya, \yb ,\yc}
+%        \min\{ \tilde \chi_{\ya}(\nea), \tilde \chi_{\yb}(\neb), \tilde \chi_{\yc}(\nec) \} \geq \frac{c!}{a!b!} \frac{\Tr(\ea)^a\Tr(\eb)^b}{\Tr(\ec)^c},
+%    \end{equation}
+%    where the sum is taken over all $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c$ such that $c^{\yc}_{\ya,\yb} \neq 0$.
+%\end{thm}
+%\begin{proof}
+%    The ``only if'' portion of the proof follows from the previous discussion.
+%    The ``if'' portion follows by proving the contrapositive, namely that if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices, then the inequality above fails to hold for some $(a,b,c)$.
+%    We will show explicitly that a violation occurs when
+%    \begin{equation}
+%        a = \ceil{k \abs{\ea}}, \qquad
+%        b = \ceil{k \abs{\eb}}, \qquad
+%        c = \ceil{k \abs{\ea}} + \ceil{k \abs{\eb}},
+%    \end{equation}
+%    for a sufficiently large parameter $k$.
+%    For these particular values, we have the following estimates:
+%    \begin{equation}
+%        \begin{alignedat}{3}
+%            &k \abs{\ea} \leq a < k \abs{\ea} + 1, \qquad
+%            &&k \abs{\eb} \leq b < k \abs{\eb} + 1, \qquad
+%            &&k \abs{\ec} \leq c < k \abs{\ec} + 2.
+%        \end{alignedat}
+%    \end{equation}
+%\end{proof}
+%\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
+\hrule
+    Let $\nu_{\ec}$ be the probability distribution over $\{\yc \vdash c\}$ given by
+    \begin{equation}
+        \nu_{\ec}(\yc) \coloneqq \iint \diff W \Tr[P_\yc (\nrm{W\cdot \ec})^{\ot c}] = \Tr[P_\yc (\nrm{\ec})^{\ot c}] = \tilde \chi_{\yc}(\nrm{\ec}).
+    \end{equation}
+    Moreover, let $\mu_{\ea,\eb}$ be the probability distribution over the same space given by
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
+    \end{equation}
+    Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    \end{equation}
+    %where $T_{\ya,\yb}^{\yc;n}$ is a probability distribution over $\{\yc \vdash c\}$ conditioned on fixed $\ya,\yb$ given by the decomposition of the tensor $V_{\ya}^{n} \ot V_{\yb}^{n}$ into isotypic components:
+    %\begin{equation}
+    %    T_{\ya,\yb}^{\yc;n} \coloneqq \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %\end{equation}
+    %Also define for $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c = a+b$ the joint probability:
+    %\begin{equation}
+    %    \mu_{\ea,\eb}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %\end{equation}
+    %One can then consider the quantity
+    %\begin{equation}
+    %    F_{\ea,\eb;\ec}^{(c),s_1,s_2} = \sum_{\yc\vdash c}\tilde \chi_{\yc}(\nrm{\ec})^{s_1}
+    %    \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{s_2}
+    %\end{equation}
+    Now for \textit{any} $(A,B)$ with eigenvalues $(\ea,\eb)$ such that $C = A+B$ has eigenvalues $\ec$, we have the identity
+    \begin{equation}
+        \nu_{\ec}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
+    \end{equation}
+    %Also define the joint probability:
+    %\begin{equation}
+    %    \nu_{\ec}^{A,B}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c}\Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
+    %\end{equation}
+    Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under the assumption that $(\ea,\eb,\ec)$ are trigonal.
+    To relate these two quantities more closely, we use that $P^{\yc}_{\ya\yb}$ is a projection operator and that $A$ and $B$ are both positive semidefinite to obtain:
+    \begin{equation}
+        \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
+    \end{equation}
+    %Therefore we obtain
+    %\begin{equation}
+    %    \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \nu_{\ec}(\ya,\yb,\yc) \leq \mu_{\ea,\eb}(\ya,\yb,\yc)
+    %\end{equation}
+    Now consider the bound $\dim V_\yx^n \leq (\abs{\yx}+1)^{n(n-1)/2}$.
+    Since $\abs{\ya} = a, \abs{\yb} = b$ and $a+b=c$, we have 
+    \begin{equation}
+        (a+1)(b+1) = ab + a+b + 1 \leq \frac{c^2}{4}+c+1
+    \end{equation}
+    and therefore whenever $c^{\yc}_{\ya\yb} \neq 0$, we obtain a $(\ya,\yb)$-independent inequality:
+    \begin{equation}
+        \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{1}{p_n(c)},
+    \end{equation}
+    where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
+    Altogether we obtain the inequality:
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) \geq \frac{1}{p_n(c)}\nu_{\ec}(\yc).
+    \end{equation}
+    which holds for all $\yc \vdash c$ independently of the decomposition of $C = A+B$.
+        
+    The fidelity between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ over $\{\yc \vdash c\}$ is given by
+    \begin{equation}
+        F_{\ea,\eb;\ec}^{(c)} \coloneqq \left(\sum_{\yc\vdash c} \sqrt{\mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc)}\right)^{2},
+    \end{equation}
+    or alternatively, the inner product between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ is
+    \begin{align}
+        W_{\ea,\eb;\ec}^{(c)} 
+        &\coloneqq \sum_{\yc\vdash c} \mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc),\\
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\substack{\ya\vdash a,\yb \vdash b \\ \yc\vdash c}} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\tilde\chi_{\yc}(\nrm \ec)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+    \end{align}
+    Our inequality between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ implies the lower bounds
+    \begin{equation}
+        F_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{p_n(c)}, \qquad W_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{(c+1)^{n-1}p_n(c)}
+    \end{equation}
+    as there at most $\abs{\{\yc \vdash c\}} \leq (c+1)^{n-1}$ summands.
+    To obtain a complementary upper bound, let
+    \begin{equation}
+        \Delta_{\ea,\eb;\ec} \coloneqq \min_{U,V}\{\norm{\eig(\nrm{U\cdot \ea + V\cdot \eb})-\nrm \ec}_1\}.
+    \end{equation}
+    Then, by the eigenvalue separation lemma, we obtain a $(U,V)$-independent upper bound:
+    \begin{align}
+        \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}]\Tr[P_\yc (\nrm{\ec})^{\ot c}]
+        &\leq (c+1)^{n(n-1)} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\yc}^2),
+    \end{align}
+    Therefore, for $F_{\ea,\eb;\ec}^{(c)}$ we have
+    \begin{equation}
+        F_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2+n-2}\exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2),
+    \end{equation}
+    while, for $W_{\ea,\eb;\ec}^{(c)}$ we have
+    \begin{equation}
+        W_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2-1} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2).
+    \end{equation}
+    %Therefore, if $r = \rank(\ec)$ then $\card{\{\yc \vdash_r c\}} \leq (c+1)^{r-1}$ and therefore we obtain:
+    %\begin{equation}
+    %    \Delta_{\ea,\eb;\yc} \leq \sqrt{2(3n(n-1)+r-1)\frac{\ln (c+1)}{c}}.
+    %\end{equation}
+    \begin{thm}
+        Fix a positive integer $k$.
+        If $(\ea,\eb,\ec)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$, then for every positive integer $k$,
+        \begin{equation}
+            W_{\ea,\eb;\ec}^{k} \geq \frac{1}{(k+1)^{n-1}p_n(k)}.
+        \end{equation}
+        Conversely, if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices and $\Delta_{\ea,\eb;\yc} > \varepsilon$, then the above inequality is violated for all $k$ such that
+        \begin{equation}
+            \frac{k}{\ln ((k+1)^{n^2+n-2}p_n(k))}>\frac{4}{\varepsilon^2}.
+        \end{equation}
+    \end{thm}
+\hrule
+    To better understand the meaning of the quantity $W_{\ea,\eb;\ec}^{(c)}$, consider $(x,y,z) \in \mathbb R_{\geq 0}^{3}$ such that $x+y=z$.
+    Then
+    \begin{align}
+        W_{xI/n,yI/n;zI/n}^{(c)} 
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{x^ay^b}{z^c} \frac{1}{n^{a+b+c}} \sum_{\substack{\ya\vdash a,\yb \vdash b \\ \yc\vdash c}} \Tr[P_{\ya}]\Tr[P_{\yb}]\Tr[P_{\yc}]\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \\
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{x^ay^b}{z^c} \frac{1}{n^{a+b+c}} \sum_{\substack{\ya\vdash a,\yb \vdash b \\ \yc\vdash c}} \dim(W_{\ya}\ot W_{\yb} \ot W_{\yc}) \dim (V_{\yc}^n)^2 c^{\yc}_{\ya\yb} \\
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{x^ay^b}{z^c} \frac{1}{n^{a+b+c}} \sum_{\yc\vdash c} \dim(W_{\yc} \ot V_{\yc}^n)^2 \\
+        &= \sum_{\yc\vdash c} \left(\frac{\dim(W_{\yc} \ot V_{\yc}^n)}{n^{c}}\right)^2.
+    \end{align}
+    Therefore, $W_{xI/n,yI/n;zI/n}^{(c)}$ just quantifies the (square of) the $2$-norm of the Schur-Weyl decomposition at order $c$.
+    Alternatively, we have
+    \begin{align}
+        F_{xI/n,yI/n;zI/n}^{(c)} = 1.
+    \end{align}
+\hrule
+    Expanding out both sides of the useful inequality above and moving normalizations, we see the inequality is equivalent to
+    \begin{equation}
+        \sum_{\ya,\yb}c^{\yc}_{\ya\yb} \frac{n^{\abs{\ya}}\dim W_{\ya} \chi_{\ya}(\ea)}{\abs{\ya}!\dim V_{\ya}^{n}}\frac{n^{\abs{\yb}}\dim W_{\yb} \chi_{\yb}(\eb)}{\abs{\yb}!\dim V_{\yb}^{n}} \geq \frac{1}{p_n(c)}\frac{n^{\abs{\yc}}\dim W_{\yc} \chi_{\yc}(\ec)}{\abs{\yc}!\dim V_{\yc}^n}
+    \end{equation}
+    Amazingly, $\lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{\abs{\yx}}} = \frac{\dim(W_{\yx})}{\abs{\yx}!}$.
+    Therefore, as $c^{\yc}_{\ya,\yb}$ is known to eventually be independent of $n$, we have by $n^{\abs{\yc}} = n^{\abs{\ya}}n^{\abs{\yb}}$, the identity
+    \begin{equation}
+        \lim_{n\to\infty} \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}= \frac{\abs{\ya}!\abs{\yb}!}{\abs{\yc}!} \frac{c^{\yc}_{\ya\yb}\dim W_{\yc}}{\dim (W_{\ya} \ot W_{\yb})}.
+    \end{equation}
+    This almost simplifies the inequality as $n\to\infty$, but unfortunately $p_n(c) \to \infty$ and thus the lower-bound trivializes.
+\hrule
+%    Given candidate eigenvalues $(\ea,\eb,\ec)$, and a positive integer $k$, let
+%    \begin{equation}
+%        K_{\ea,\eb,\ec}(s) \coloneqq \iint \! \diff U\diff V\diff W \Tr[P_\mu (U\cdot \ea + V \cdot \eb + s I - W \cdot \ec)^{\ot kn}].
+%    \end{equation}
+%    where $\mu = (k, k, \ldots, k)$ is a rectangular Young diagram with $n$ rows of $k$ boxes each.
+%    We note that $V_{\mu}^{n}$ is isomorphic to the $k$th power of the determinantal representation of $\U(n)$ and thus also supports the trivial representation of $\SU(n)$.
+%    Expanding everything out using the multinomial expansion and performing the integration over $U,V,W$ yields the formula
+%    \begin{equation}
+%        K_{\ea,\eb,\ec}(s) = \sum_{\substack{a,b,c,\ell=0\\a+b+c+\ell=kn}}^{kn} \frac{(kn)!}{a!b!c!\ell!} \sum_{\ya,\yb,\yc,\yx}c^{\mu}_{\ya\yb\yc\yx} \frac{\tilde \chi_\ya(\ea)\tilde \chi_\yb(\eb)\tilde \chi_\yc(-\ec)\tilde \chi_{\yx}(sI)}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n \ot V_{\yx}^n)}
+%    \end{equation}
+%    because
+%    \begin{equation}
+%        \frac{\Tr[P_{\mu} (P_{\ya}\ot P_{\yb}\ot P_{\yc}\ot P_{\yx})]}{\Tr[P_{\ya}\ot P_{\yb}\ot P_{\yc}\ot P_{\yx}]}
+%        = \frac{c^{\mu}_{\ya\yb\yc\yx}}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n \ot V_{\yx}^n)}.
+%    \end{equation}
+%    Moreover, as $\tilde \chi_{\yx}(sI) = s^{\abs{\yx}} \tilde \chi_{\yx}(I) = s^{\abs{\yx}} \dim(W_{\yx} \ot V_{\yx}^{n})$,
+%    \begin{equation}
+%        K_{\ea,\eb,\ec}(s) = \sum_{\substack{a,b,c,\ell=0\\a+b+c+\ell=kn}}^{kn} \frac{(kn)!}{a!b!c!\ell!} \sum_{\ya,\yb,\yc,\yx}c^{\mu}_{\ya\yb\yc\yx} s^{\ell} \dim(W_{\yx})\frac{\tilde \chi_\ya(\ea)\tilde \chi_\yb(\eb)\tilde \chi_\yc(-\ec)}{\dim(V_{\ya}^n\ot V_{\yb}^n \ot V_{\yc}^n)}.
+%    \end{equation}
+%\hrule
+    Using the formula for the Schur-polynomial:
+    \begin{equation}
+        s_{\yx}(x) = \frac{\det[x_i^{\yx_j+n-j}]}{\det[x_i^{n-j}]}
+    \end{equation}
+    we note that if $x'_i \coloneqq z - x_i$, then
+    \begin{equation}
+        s_{\yx}(z-x) = \frac{\det[(z - x_i)^{\yx_j+n-j}]}{\det[(z - x_i)^{n-j}]}
+    \end{equation}
+    Using our binomial theorem, we have for $\yx \vdash k$, where
+    \begin{align}
+        \tilde \chi_{\yx}(zI-X) 
+        &= \sum_{j=0}^{k} \binom{k}{j} \Tr[P_{\yx} ((zI)^{\ot k-j}\ot (-X)^{\ot j})] \\
+        &= \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \Tr[P_{\yx} (I^{\ot k-j} \ot X^{\ot j})] \\
+        &= \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \sum_{\mu\vdash j} m^{\mu}_{\yx} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} \Tr[P_{\mu}X^{\ot j}]
+    \end{align}
+    where $\Tr_{k-j}[P_{\yx}] = \sum_{\mu\vdash j} L^{\yx}_{\mu} P_{\mu}$ with 
+    \begin{equation}
+        L^{\yx}_{\mu} = \frac{\Tr[P_{\yx}(I^{\ot k-j}\ot P_{\mu})]}{\Tr[P_{\mu}]} =  m^{\mu}_{\yx}\frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})}
+    \end{equation}
+    where $m^{\mu}_{\yx} = \dim(\Hom_{S_j}(W_{\mu}, \Res^{S_k}_{S_j} W_{\yx}))$ (noting that $m^{\mu}_{\yx} = 0$ if $\mu$ is not a subdiagram of $\yx$ denoted by $\mu \subseteq \yx$.
+    Therefore,
+    \begin{equation}
+        s_{\yx}(z-x) = \sum_{j=0}^{k} \binom{k}{j} (-1)^{j}z^{k-j} \sum_{\mu\vdash j} \frac{m^{\mu}_{\yx} \dim(W_{\mu})}{\dim(W_{\yx})} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
+    \end{equation}
+    \begin{equation}
+        s_{\yx}(z-x) = \sum_{\mu \subseteq \yx} \binom{\abs{\yx}}{\abs{\mu}} (-1)^{\abs{\mu}}z^{\abs{\yx}-\abs{\mu}} \frac{m^{\mu}_{\yx} \dim(W_{\mu})}{\dim(W_{\yx})} \frac{\dim(V_{\yx}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
+    \end{equation}
+    Now let $\yx^{*}$ denote the complementary Young diagram to $\yx$ inside a $n\times \lambda_1$ rectangular Young diagram thus ensuring $V_{\yx^{*}}^n \ot V_{\yx}^n$ contains the trivial representation and thus $(V_{\yx^{*}}^{n})^{*} \simeq V_{\yx}^{n}$ is an isomorphism of $\U(n)$ representations.
+    As $\abs{\yx^{*}} = n\lambda_1 - \abs{\lambda}$, we have
+    \begin{equation}
+        s_{\yx^{*}}(z-x) = \sum_{\mu \subseteq \yx^{*}} \binom{\abs{\yx^{*}}}{\abs{\mu}} (-1)^{\abs{\mu}}z^{\abs{\yx^{*}}-\abs{\mu}} \frac{m^{\mu}_{\yx^{*}} \dim(W_{\mu})}{\dim(W_{\yx^{*}})} \frac{\dim(V_{\yx^{*}}^{n})}{\dim(V_{\mu}^{n})} s_{\mu}(x)
+    \end{equation}
+    TC: At this stage, it is not clear to me if there is an elegant (non-asymptotic) formula relating $s_{\yx^{*}}(z-x)$ to $s_{\yx}(x)$ for any value of $z$.
+\hrule
+    In this section, we recalle the fundamental bridge between algebraic objects and geometric objects which serves as Kirillov's orbit method and the more elementary form of geometric quantization.
+    In \cite{coquereaux2019revisiting}, \citeauthor{coquereaux2019revisiting} derives a formula relating the character $\chi_\yx(e^{iX})$ for an irreducible representation labelled by $\yx$ evaluated on $e^{iX} \in T$ to the Fourier transform of the orbit measure $\hat \mu_{\ex}(X) \coloneqq \int_{\mathcal O_{\ex}} \exp(i \braket{Y, X}) \diff \mu_{\ex}(Y)$.
+    This formula is simple and exact and is the cosequence of a number of well-known formulas.
+    First is the Weyl-Character formula in terms of the Weyl-vector $\rho = (n-1, n-2, \ldots, 1, 0)$,
+    \begin{equation}
+        \chi_{\yx}(e^{ix}) = \frac{\det[e^{ix_i(\yx_j+\rho_j)}]}{\det[e^{ix_i\rho_j}]},
+        \qquad
+        \chi_{\yx}(x) = \frac{\det[x_i^{\yx_j+\rho_j}]}{\det[x_i^{\rho_j}]},
+    \end{equation}
+    where $\det[e^{ix_i(\rho_j)}] = \Delta(e^{ix_i}) = \prod_{i<j} (e^{ix_i}-e^{ix_j})$ is the Weyl denominator and $\Delta$ the Vandermonde determinant, defined by the formula:
+    \begin{equation}
+        \Delta(x) = \det[x_i^{\rho_j}] = \det[x_i^{n-j}] = \prod_{i<j}(x_i-x_j).
+    \end{equation}
+    Weyl's dimension formula is then 
+    \begin{equation}
+        \dim(V_{\yx}^n) = \chi_{\yx}(e) = \frac{\Delta(\yx+\rho)}{\Delta(\rho)},
+    \end{equation}
+    where $\Delta(\rho) = (n-1)!! = (n-1)!(n-2)!\cdots 3!2!1!$ is the super factorial of $n-1$.
+    The second formula is the HCIZ integral formula:
+    \begin{equation}
+        \mathcal H(x,y) = \int \diff U \exp(\Tr[xU^{-1}yU]) = \frac{\det[e^{x_iy_j}]\Delta(\rho)}{\Delta(x)\Delta(y)}.
+    \end{equation}
+    Numerous proofs for this formula can be found in \cite{mcswiggen2021harish}, such as the particularly elgant proof using the Cauchy-Binet formula due to \cite{balantekin2000character}.
+    By a direct inspection, one derives an exact correspondence \cite[Equation 18]{coquereaux2018orbital}:
+    \begin{equation}
+        \Delta(e^{ix})\chi_{\yx}(e^{ix}) = \det[e^{ix_i(\yx_j+\rho_j)}] = \dim(V_{\yx}^{n})\Delta(ix) \mathcal H(ix,\yx+\rho).
+    \end{equation}
+    It is this formula through which \citeauthor{coquereaux2020horn} derive a direct correspondence between the Littlewood-Richardson coefficients (which is a integral over the compact torus of a product of three characters) and the Horn probability density function for the eigenvalues $\ec$ of the random matrix $C$ distributed such that $C=A+B$ for $(A,B)$ independent with eigenvalues $(\ea,\eb)$ (i.e. the Duistermaat-Heckman measure) (which is an integral over the non-compact Lie algebra of Hermitian matrices of a product of three HCIZ formulas).
+
+    Another interesting identity is following formula:
+    \begin{equation}
+        \mathcal H(x,y) = \sum_{k=0}^{\infty} \frac{1}{k!} \sum_{\mu\vdash k} \frac{\Tr[P_{\mu}x^{\ot k}]\Tr[P_{\mu}y^{\ot k}]}{\Tr[P_{\mu}]},
+    \end{equation}
+    which can be simplified using the identity
+    \begin{equation}
+        \frac{1}{\abs{\yx}!}\frac{\dim(W_{\yx})}{\dim(V_{\yx}^{n})} = \frac{\Delta(\rho)}{\prod_j(\yx+\rho)_j!},
+    \end{equation}
+    to obtain
+    \begin{equation}
+        \mathcal H(x,y) = \sum_{k=0}^{\infty}\sum_{\mu\vdash k} \frac{\Delta(\rho)}{\prod_j(\mu+\rho)_j!} \chi_{\mu}(x)\chi_{\mu}(y).
+    \end{equation}
+    and also
+    \begin{equation}
+        \frac{\chi_{\yx}(e^{ix})}{\dim(V_{\yx}^{n})} = \frac{\Delta(ix)}{\Delta(e^{ix})} \sum_{k=0}^{\infty}\sum_{\mu\vdash k} \frac{\chi_{\mu}(ix)}{\dim(V_{\mu}^{n})} \frac{\det[(\yx+\rho)_i^{(\mu+\rho)_j}]}{\prod_j(\mu+\rho)_j!}.
+    \end{equation}
+\hrule
+    TC: There are a few ways to recover the Littlewood-Richarson coefficients from the $6j$-symbols.
+    For example, after setting $\yd$ to the empty Young diagram (which we denote by $\emptyyoung$), corresponding to the representation space $V_{\emptyyoung}^{n}$ which supports the trivial irreducible representation of $\U(n)$ of dimension one, the $6j$-symbols simplify:
+    \begin{equation}
+        R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2 
+        \stackrel{\yd=\emptyyoung}{\longrightarrow} 
+        \delta_{\ye,\yc}\delta_{\yf,\yb} R^{\yc,n}_{\ya,\yb,\emptyyoung}\norm{\abcdefsymboldempty}_2^2
+        =\delta_{\ye,\yc}\delta_{\yf,\yb} \frac{\dim V_{\yc}^{n} c^{\yc}_{\ya,\yb}}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    \end{equation}
+\hrule
 
 \subsection{Necessary and sufficient conditions}
 
