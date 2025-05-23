@@ -24,14 +24,13 @@
 \begin{abstract}
 
 For a compact reductive group $G$, Wigner $6j$-symbols are maps between multiplicity spaces which encode the associativity constraint
-$
-(V_\ya \otimes V_\yb) \otimes V_\yd \cong 
-V_\ya \otimes (V_\yb \otimes V_\yd)
-$
-for unitary irreducible representations of $G$. For $G=SU(2)$, their asymptotic behavior for large weights was conjectured by Ponzano-Regge and established by Roberts using geometric quantization techniques. 
+$(V_\ya \otimes V_\yb) \otimes V_\yd \cong V_\ya \otimes (V_\yb \otimes V_\yd)$
+for unitary irreducible representations of $G$. 
+For $G=SU(2)$, their asymptotic behavior for large weights was conjectured by Ponzano-Regge and established by Roberts using geometric quantization techniques. 
 
 In this paper, we address the problem of asymptotic behavior of $6j$-symbols for $G=U(n)$. 
-We show that their decay rate is polynomial or exponential depending on the existence of a tetrahedron in the space of Hermitian $n$ by $n$ matrices with edges determined by the 6 arguments of the $6j$-symbol. Our proof is inspired by probabilistic techniques from quantum information theory.
+We show that their decay rate is polynomial or exponential depending on the existence of a tetrahedron in the space of Hermitian $n$ by $n$ matrices with edges determined by the 6 arguments of the $6j$-symbol. 
+Our proof is inspired by probabilistic techniques from quantum information theory.
 
 As an application of our results, we obtain a new proof of the strongly subadditive entropy inequality for tetrahedra in the space of Hermitian matrices (the tetrahedral Horn problem).
 
@@ -44,7 +43,7 @@ As an application of our results, we obtain a new proof of the strongly subaddit
 
 %\textcolor{blue}{[OUTLINE: What are 6j Symbols?]\\}
 Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \otimes V_\yb) \otimes V_\yc \cong V_\ya \otimes (V_\yb \otimes V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
-Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is a map between multiplicity spaces of the form
+Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
 \begin{equation*}
     \abcdefsymbol
     :
@@ -1897,9 +1896,11 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
     \end{equation}
     Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
-    \end{equation}
+    \begin{align}
+        \mu_{\ea,\eb}(\yc) 
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \iint \! \diff U\diff V \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm {U\cdot \ea}) \ot \tilde \pi_\yb(\nrm {V \cdot \eb})], \\
+        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+    \end{align}
     %where $T_{\ya,\yb}^{\yc;n}$ is a probability distribution over $\{\yc \vdash c\}$ conditioned on fixed $\ya,\yb$ given by the decomposition of the tensor $V_{\ya}^{n} \ot V_{\yb}^{n}$ into isotypic components:
     %\begin{equation}
     %    T_{\ya,\yb}^{\yc;n} \coloneqq \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
@@ -1922,6 +1923,12 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     %    \nu_{\ec}^{A,B}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c}\Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
     %\end{equation}
     Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under the assumption that $(\ea,\eb,\ec)$ are trigonal.
+    Already, one observes that
+    \begin{equation}
+        \mu_{\ea,\eb}(\yc) \leq \max_{\ec} \nu_{\ec}(\yc)
+    \end{equation}
+    where the maximum is taken over all eigenvalues $\ec$ such that $(\ea,\eb,\yc)$ are compatible.
+
     To relate these two quantities more closely, we use that $P^{\yc}_{\ya\yb}$ is a projection operator and that $A$ and $B$ are both positive semidefinite to obtain:
     \begin{equation}
         \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
@@ -2040,6 +2047,33 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \frac{\norm{\pi_{\yc}(C)}_{\infty}}{\abs{\yc}!}
         &\leq \sum_{\ya\yb} \frac{c^{\yc}_{\ya\yb}\dim W_{\ya}\dim W_{\yb}}{\dim W_{\yc}} \frac{\norm{\pi_\ya(A)}_{\infty}}{\abs{\ya}!} \frac{\norm{\pi_\yb(B)}_{\infty}}{\abs{\yb}!}.
     \end{align}
+\hrule
+    TC: I suspect there is a concavity/convexity or multiplicativity-type result lurking here.
+    If $c^{\yc}_{\ya\yb} > 0$, then let $\nu^{\yc}_{\ya,\yb} : V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ and $\omega^{\yc}_{\ya\yb} : W_{\ya} \ot W_{\yb} \to W_{\yc}$ be a Schur-Weyl-dual pair of equivariant isometries.
+    Then we have an operator on $V_{\yc}^{n}$ of the form
+    \begin{equation}
+        (\nu^{\yc}_{\ya,\yb})^{\dagger}(\tilde \pi_{\ya}(A) \ot \tilde \pi_{\yb}(B))(\nu^{\yc}_{\ya,\yb}) = \Tr_{W_{\yc}}[(\phi^{\yc}_{\ya,\yb})^{\dagger} (A^{\ot a} \ot B^{\ot b}) (\phi^{\yc}_{\ya,\yb})]
+    \end{equation}
+    where $\phi^{\yc}_{\ya,\yb} = (\iota_{\ya} \ot \iota_{\yb})(\omega^{\yc;\dagger}_{\ya\yb} \ot \nu^{\yc}_{\ya,\yb})$.
+    By $S_{c}$-invariance (due to the partial trace over $W_{\yc}$), we can freely symmetrize the copies of $A$ and $B$.
+    Note also that by the binomial theorem,
+    \begin{equation}
+        \frac{\tilde \pi_{\yc}(A+B)}{c!} \geq (\nu^{\yc}_{\ya,\yb})^{\dagger}\left(\frac{\tilde \pi_{\ya}(A)}{a!} \ot \frac{\tilde \pi_{\yb}(B)}{b!}\right)(\nu^{\yc}_{\ya,\yb}).
+    \end{equation}
+    or equivalently,
+    \begin{equation}
+        (\nu^{\yc}_{\ya,\yb}) \frac{\tilde \pi_{\yc}(A+B)}{c!}(\nu^{\yc}_{\ya,\yb})^{\dagger} \geq P^{\nu;\yc}_{\ya,\yb}\left(\frac{\tilde \pi_{\ya}(A)}{a!} \ot \frac{\tilde \pi_{\yb}(B)}{b!}\right)P^{\nu;\yc}_{\ya,\yb}.
+    \end{equation}
+    It is tempting to try and convert this operator inequality into an inequality on the operator norms.
+    This almost works, but unfortunately, even if the twirled highest weight vectors $v_{\ya}^{U} \in V_{\ya}^n$ and $v_{\yb}^{V} \in V_{\yb^n}$ have unit norm, the projection of their tensor product into $V_{\yc}^n$ does not necessarily have unit norm (unless $U=V$).
+    %Taking norms, we have
+    %\begin{equation}
+    %    f_{\ya}(A)f_{\yb}(B) \leq f_{\yc}(A+B)
+    %\end{equation}
+    %where
+    %\begin{equation}
+    %    f_{\yx}(X) \coloneqq \frac{\dim W_{\yx}}{\abs{\yx}!}\norm{\pi_{\yx}(X)}_{\infty} = \frac{\prod_{i<j}(\yx_i-\yx_j+j-i)}{\prod_{j}(\yx_j+n-j)!}x_1^{\yx_1} \cdots x_n^{\yx_n}
+    %\end{equation}
 \hrule
     To better understand the meaning of the quantity $W_{\ea,\eb;\ec}^{(c)}$, consider $(x,y,z) \in \mathbb R_{\geq 0}^{3}$ such that $x+y=z$.
     Then
@@ -2166,6 +2200,67 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     \begin{equation}
         \frac{\chi_{\yx}(e^{ix})}{\dim(V_{\yx}^{n})} = \frac{\Delta(ix)}{\Delta(e^{ix})} \sum_{k=0}^{\infty}\sum_{\mu\vdash k} \frac{\chi_{\mu}(ix)}{\dim(V_{\mu}^{n})} \frac{\det[(\yx+\rho)_i^{(\mu+\rho)_j}]}{\prod_j(\mu+\rho)_j!}.
     \end{equation}
+\hrule
+    The Plancherel theorem for compact groups states that for $f \in \mathcal L^{2}(G)$, and $h \in G$, one has an expansion:
+    \begin{equation}
+        f(h) = \sum_{\yx \in \hat G} \dim V_{\yx} \int \diff g f(g) \chi_{\yx}(gh^{-1}).
+    \end{equation}
+    This follows from the Peter-Weyl theorem which states that the rescaled matrix coefficients
+    \begin{equation}
+       \varphi^{\yx}_{ij}(g) \coloneqq \sqrt{\dim V_{\yx}} \pi_{\yx}(g)_{ij},
+    \end{equation}
+    as $\yx \in \hat G$ varies over all finite dimensional irreducible unitary representations of $G$ and $i,j \in \{1, \ldots, \dim V_{\yx}\}$,
+    form an orthonormal basis over $\mathcal L^{2}(G)$ with respect to the Haar-measure induced inner product.
+    Let $Z(g,h)$ be an integration kernel defined by
+    \begin{align}
+        Z(g,h) 
+        &= \sum_{\yx \in \hat G} \dim V_{\yx} \chi_{\yx}(gh^{-1})
+        = \sum_{\yx \in \hat G} \sum_{i,j=1}^{\dim V_{\yx}} \varphi_{ij}^{\yx}(g) \varphi_{ij}^{\yx}(h)^{*},
+    \end{align}
+    noting that $Z(g,h)$ can be loosely interpreted as the character of the regular representation of $G$ at $gh^{-1}$.\footnote{TC: I am using $Z$ here because it can also be interpreted as the zero-temperature $t \to \infty$ limit of the heat kernel on $G$ \cite{mcswiggen2021harish,fegan1978heat}.}
+    Then the Plancherel identity can be written as
+    \begin{equation}
+        f(h) = \int \diff g f(g) Z(g,h)
+    \end{equation}
+    or otherwise $\diff \delta_h(g) = \diff g Z(g,h)$ is the Dirac-delta measure concentrated at the point $h \in G$.
+    In the case of $G = \U(n)$, $\hat G$ is the set of all Young diagrams with at most $n$ rows.
+    While the integration Kernel $Z(g,h)$ divergences in this case, one can consider the homogeneous degree $k$ component of $Z(g,h)$ defined by a sum over all Young diagrams with $k$ boxes:
+    \begin{equation}
+        Z_k(g,h) = \sum_{\yx \vdash k} \dim V_{\yx}^{n} \chi_{\yx}(h^{-1}g) 
+    \end{equation}
+    This makes sense because when $\yx \vdash k$, $V_{\yx}^{n}$ supports an irreducible, unitary, polynomial representation $\pi_{\yx}(g)$ of $\U(n)$ where the matrix coefficients of $\pi_{\yx}(g)$ are homogeneous degree-$k$ polynomials in the matrix coefficients of $g \in U(n)$ and thus $Z_k(g,e)$ is also a homogeneous degree $k$ polynomial in $g$.
+    Letting $\tilde K(g,h;t)$ be defined by
+    \begin{equation}
+        \tilde K(g,h;t) = \sum_{k=0}^{\infty} Z_{k}(g,h) e^{-tk} = \sum_{\yx}\dim V_{\yx}^{n} \chi_{\yx}(h^{-1}g) e^{-t \abs{\yx}},
+    \end{equation}
+    we see that $\lim_{t\to 0^{+}}\tilde K(g,h;t) = Z(g,h)$ and that $Z_{k}(g,h) = \frac{1}{(-k)^{k}}\partial_{t}^{k} \tilde K(g,h;t) |_{t = 0}$.
+     
+    Now assuming we can freely extend these functions on $\U(n)$ to functions on arbitrary matrices, we might write (or rather define) for $n\times n$ matrices $X,Y$, the quantity:
+    \begin{equation}
+        Z_k(X,Y) \coloneqq \sum_{\yx \vdash k} \sum_{i,j=1}^{\dim V_{\yx}^{n}} \dim V_{\yx}^{n} \pi_{\yx}(X)_{ij} \pi_{\yx}(Y)_{ij}^{*}.
+    \end{equation}
+    One might conjecture that this quantity, or at least its sum over all $k$, also behaves like a Dirac delta measure which detects whether or not $X = Y$.
+
+    Our goal will be to apply this quantity to the Horn problem to detect wether $A+B = C$:
+    \begin{equation}
+        Z_k(A+B,C) \coloneqq \sum_{\yx \vdash k} \sum_{i,j=1}^{\dim V_{\yx}^{n}} \dim V_{\yx}^{n} \pi_{\yx}(A+B)_{ij} \pi_{\yx}(C)_{ij}^{*}.
+    \end{equation}
+    In order to derive a test for the eigenvalues $(\ea,\eb,\ec)$ of $(A,B,C)$, we consider integrating over orbits to obtain $W_k(\ea,\eb;\ec)$.
+    Using the binomial theorem and Schur-lemma we obtain the formula:
+    \begin{align}
+        W_k(\ea,\eb;\ec) 
+        &\coloneqq \iiint \diff U \diff V \diff W Z_k(U\cdot \ea+V\cdot \eb,W\cdot \ec), \\
+        &= \sum_{\yc \vdash k} \dim V_{\yc}^2 \sum_{\ya,\yb} c^{\yc}_{\ya,\yb} \left(\frac{\abs{\yc}!}{\abs{\ya}!\abs{\yb}!}\frac{\dim (W_{\ya} \ot W_{\yb} \ot W_{\yc})}{\dim W_{\yc}^2} \frac{\chi_{\ya}(\ea)\chi_{\yb}(\eb)\chi_{\yc}(\ec)}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yc}^{n})}\right).
+    \end{align}
+    TC: Note this formula is almost the same as the quantity defined above, except for normalizing the eigenvalues and for the additional factors of $1/\dim(W_{\yc})^{2}$.
+
+    One could correct for this by considering a quantity
+    \begin{equation}
+        Z_k'(g,h) \coloneqq \sum_{\yx \vdash k} \sum_{i,j=1}^{\dim V_{\yx}^{n}} \dim V_{\yx}^{n}(\dim W_{\yx})^2 \pi_{\yx}(g)_{ij} \pi_{\yx}(h)_{ij}^{*}.
+    \end{equation}
+    which has $Z_k'(g,e)$ behaving like the character of the representation $\bigoplus_{\yx \vdash k} V_{\yx}^{\oplus m_{\yx}}$ with multiplicity $m_{\yx} = \dim V_{\yx}^{n}(\dim W_{\yx})^2$.
+    Just as $Z_k(g,e)$ is the character of the representation $\bigoplus_{\yx \vdash k} V_{\yx}^{\oplus \dim V_{\yx}}$ which is isomorphic to left-representation of $g$ acting on symmetric representation of $k$ copies of a bipartite system. 
+    TC: There is more to work out here!
 \hrule
     TC: There are a few ways to recover the Littlewood-Richarson coefficients from the $6j$-symbols.
     For example, after setting $\yd$ to the empty Young diagram (which we denote by $\emptyyoung$), corresponding to the representation space $V_{\emptyyoung}^{n}$ which supports the trivial irreducible representation of $\U(n)$ of dimension one, the $6j$-symbols simplify:
