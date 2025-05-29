@@ -2355,12 +2355,24 @@ When \cref{thm:wk_lower,thm:wk_upper} are taken together, one concludes that if 
         \sum_{a+b=\abs{\yc}}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\ye\vdash a+b+\abs{\yd}}\sum_{\yf\vdash b+\abs{\yd}}Q\sixjargs &= \varphi_{\yc}(A+B)\varphi_{\yd}(D), \\
         \sum_{b+d=\abs{\yf}}\sum_{\yb\vdash b}\sum_{\yd\vdash d}\sum_{\ye\vdash \abs{\ya}+b+d}\sum_{\yc\vdash \abs{\ya}+b}Q\sixjargs &= \varphi_{\ya}(A)\varphi_{\yf}(B+D), \\
         \sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\sum_{\ye\vdash a+b+d}\sum_{\yc\vdash a+b}\sum_{\yf\vdash b+d}Q\sixjargs &= \frac{\Tr(A)^{a}}{a!}\frac{\Tr(B)^{b}}{b!}\frac{\Tr(D)^{d}}{d!}, \\
-        \sum_{a+b+d=k}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\sum_{\ye\vdash a+b+d}\sum_{\yc\vdash a+b}\sum_{\yf\vdash b+d}Q\sixjargs &= \frac{\Tr(A+B+D)^{k}}{k!}, \\
+        \sum_{a+b+d=k}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\sum_{\ye\vdash k}\sum_{\yc\vdash a+b}\sum_{\yf\vdash b+d}Q\sixjargs &= \frac{\Tr(A+B+D)^{k}}{k!}, \\
         \sum_{k=0}^{\infty}\sum_{a+b+d=k}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\sum_{\ye\vdash a+b+d}\sum_{\yc\vdash a+b}\sum_{\yf\vdash b+d}Q\sixjargs &= \exp(\Tr(A+B+D)), \\
-        \sum_{\yc\yf\ya\yb\yd}Q\sixjargs &= \varphi_{\ye}(A+B+D).
+        \sum_{a+b+d=\abs{\ye}}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\sum_{\yc\vdash a+b}\sum_{\yf\vdash b+d}Q\sixjargs &= \varphi_{\ye}(A+B+D).
+    \end{align}
+    \begin{align}
+        \varphi_{\ye}(A+B+D) &\leq \sum_{\substack{\yc,\yd\\c^{\ye}_{\yc\yd} > 0}} \varphi_{\yc}(A+B)\varphi_{\yd}(D) \\
+        \varphi_{\ye}(A+B+D) &\leq \sum_{\substack{\ya,\yf\\c^{\ye}_{\ya\yf} > 0}} \varphi_{\ya}(A)\varphi_{\yf}(B+D) \\
+        \varphi_{\ye}(A+B+D) &\leq \sum_{\substack{\ya,\yb,\yd\\c^{\ye}_{\ya\yb\yd} > 0}} \varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D) \\
     \end{align}
     \begin{equation}
         \mathbb E_{A,B,D}Q\sixjargs = \varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2,
+    \end{equation}
+    \begin{equation}
+        \mathbb E_{A,B,D}\varphi_{\ye}(A+B+D) = \sum_{a+b+d=\abs{\ye}}\sum_{\ya\vdash a}\sum_{\yb\vdash b}\sum_{\yd \vdash d}\varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}c^{\ye}_{\ya\yb\yd},
+    \end{equation}
+    By the Cauchy-Schwarz inequality we conclude
+    \begin{equation}
+        \abs{Q\sixjargs}^2 \leq \left(\sum_{\yc}Q\sixjargs\right)\left(\sum_{\yf}Q\sixjargs\right)
     \end{equation}
     The following bounds hold:
     \begin{align}
@@ -2373,6 +2385,18 @@ When \cref{thm:wk_lower,thm:wk_upper} are taken together, one concludes that if 
         \abs{Q\sixjargs} &\leq
         \left(\varphi_{\ya}(A)\varphi_{\yf}(B+D)\right)^{\frac{1}{2}}
         \left(\varphi_{\yc}(A+B)\varphi_{\yd}(D)\right)^{\frac{1}{2}}.
+    \end{align}
+    %\begin{equation}
+    %    \varphi_{\ya}(A)\varphi_{\yb}(B) = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb} \Phi_{\ya}(A) \ot \Phi_{\yb}(B)]
+    %\end{equation}
+    \begin{align}
+        &\varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2 = \mathbb E_{A,B,D}Q\sixjargs \leq \mathbb E_{A,B,D}\abs{Q\sixjargs}\\
+        &\quad\leq \mathbb E_{A,B,D} \left(\varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D)\varphi_{\ya}(A)\varphi_{\yf}(B+D)\varphi_{\yc}(A+B)\varphi_{\yd}(D)\right)^{\frac{1}{3}} \\
+        &\quad= \varphi_{\ya}(A)^{\frac{2}{3}}\varphi_{\ya}(D)^{\frac{2}{3}}\varphi_{\yb}(B)^{\frac{1}{3}} \mathbb E_{A,B,D} \left(\varphi_{\yf}(B+D)^{\frac{1}{3}}\varphi_{\yc}(A+B)^{\frac{1}{3}}\right) \\
+    \end{align}
+    \begin{align}
+        \varphi_{\ya}(A)^{\frac{1}{3}}\varphi_{\yb}(B)^{\frac{2}{3}}\varphi_{\yd}(D)^{\frac{1}{3}} R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2
+        \leq \mathbb E_{A,B,D} \left(\varphi_{\yf}(B+D)^{\frac{1}{3}}\varphi_{\yc}(A+B)^{\frac{1}{3}}\right)
     \end{align}
     After normalizing the positive semidefinite matrices $A,B,D$ to $\nrm A, \nrm B, \nrm D$, relaxing some instances of $\tilde \chi_\yx(\nrm X) \leq 1$, and using the $k$-dependent sizes of Young diagrams, $(a,b,c,d,e,f)$, one obtains the bound
     %\begin{equation}
