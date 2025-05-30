@@ -1947,6 +1947,12 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{p_n(c)},
     \end{equation}
     where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
+    Note we also could make use of the inequality:
+    \begin{equation}
+        c^{\yc}_{\ya\yb} \leq \frac{\dim W_{\yc}}{\dim W_{\ya}\dim W_{\yb}} \leq \dim W_{\yc},
+    \end{equation}
+    to extract an extra factor of $\dim W_{\yc}$ in places where it might be needed.
+
     Altogether we obtain the inequality:
     \begin{equation}
         \mu_{\ea,\eb}(\yc) \geq \frac{\dim V_{\yc}^n}{p_n(c)}\nu_{\ec}(\yc).
@@ -2047,6 +2053,121 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \frac{\norm{\pi_{\yc}(C)}_{\infty}}{\abs{\yc}!}
         &\leq \sum_{\ya\yb} \frac{c^{\yc}_{\ya\yb}\dim W_{\ya}\dim W_{\yb}}{\dim W_{\yc}} \frac{\norm{\pi_\ya(A)}_{\infty}}{\abs{\ya}!} \frac{\norm{\pi_\yb(B)}_{\infty}}{\abs{\yb}!}.
     \end{align}
+\hrule
+\clearpage
+\hrule
+    \begin{defn}
+        Given a Young diagram $\yx$, define the hook product $H_{\yx} \in \mathbb N$ of $\yx$ as
+        \begin{equation}
+            H_{\yx} = \frac{\abs{\yx}!}{\dim W_{\yx}} = \prod_{b \in \yx}h_{\yx}(b).
+        \end{equation}
+        Now given an $n\times n$ matrix $X$, let $\pi_{\yx}(X)$ denote the representation of $X$ and
+        \begin{equation}
+            \Phi_{\yx}(X) = \frac{\pi_{\yx}(X)}{H_{\yx}} = \frac{1}{\abs{\yx}!}\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]
+        \end{equation}
+        the hook-rescaled representation of $X$ and
+        \begin{equation}
+            \varphi_{\yx}(X) = \Tr[\Phi_{\yx}(X)] = \frac{\chi_{\yx}(X)}{H_{\yx}}
+        \end{equation}
+        the hook-rescaled character.
+        Note that if $\eig(X) = x$, then
+        \begin{equation}
+            \varphi_{\yx}(X) = \frac{\Tr[\pi_{\yx}(X)]}{H_{\yx}} = \frac{\dim W_{\yx} \Tr[\pi_{\yx}(X)]}{\abs{\yx}!} = \frac{\Tr[P_\yx X^{\ot \abs{\yx}}]}{\abs{\yx}!} = \frac{s_{\yx}(x)}{H_{\yx}}.
+        \end{equation}
+    \end{defn}
+    \begin{prop}[Binomial theorem]
+        Given two $n\times n$ matrices $A,B$,
+        \begin{equation}
+            \Phi_{\yc}(A+B) = \sum_{\ya,\yb} \Gamma^{\yc}_{\ya,\yb}[ \Phi_{\ya}(A) \ot \Phi_{\yb}(B) ].
+        \end{equation}
+        Here $\Gamma^{\yc}_{\ya,\yb}$ is the linear superoperator sending operators on $V_{\ya}^{n} \ot V_{\yb}^{n}$ to operators on $V_{\yc}^{n}$ according to the formula
+        \begin{equation}
+            \Gamma^{\yc}_{\ya,\yb}[\cdot] = \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \cdot (\iota^{\yc}_{\ya,\yb}) \right],
+        \end{equation}
+        where $\iota^{\yc}_{\ya,\yb} : C^{\yc}_{\ya,\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$.
+        If $C^{\yc}_{\ya,\yb}$ is zero-dimensional, then $\iota^{\yc}_{\ya,\yb}$ and $\Gamma^{\yc}_{\ya,\yb}$ are taken to be zero maps.
+    \end{prop}
+    As an immediate consequence, for $A,B \geq 0$ positive semidefinite, we have the operator inequality
+    \begin{equation}
+        \Phi_{\yx}(A+B) \geq \Phi_{\yx}(A) + \Phi_{\yx}(B),
+    \end{equation}
+    which also implies that $\varphi_{\yx}$ is superadditive
+    \begin{equation}
+        \varphi_{\yx}(A+B) \geq \varphi_{\yx}(A) + \varphi_{\yx}(B).
+    \end{equation}
+    Moreover, as $\Tr[\Gamma^{\yc}_{\ya,\yb}[ \cdot ]] = \Tr[P^{\yc}_{\ya\yb} (\cdot)]$ where $P^{\yc}_{\ya\yb}$ is the orthogonal projection operator onto the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$ we have
+    \begin{equation}
+        \varphi_{\yc}(A+B) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(A)\varphi_{\yb}(B).
+    \end{equation}
+    Given a function $f$ of matrices, we define the following shorthand notation. 
+    \begin{align}
+        \expect_{C\sim A \boxplus B} f(C) &\coloneqq \iint \!\diff U \diff V f(UAU^{-1}+VBV^{-1}), \\
+        \max_{C\in A \boxplus B} f(C) &\coloneqq \max_{U,V \in \U(n)} f(UAU^{-1}+VBV^{-1}).
+    \end{align}
+    \begin{cor}
+        \label{cor:random_sum}
+        \begin{equation}
+            \expect_{C \sim A \boxplus B} \frac{\varphi_{\yc}(C)}{\dim V_{\yc}^{n}} = \sum_{\ya,\yb} c^{\yc}_{\ya\yb} \frac{\varphi_{\ya}(A)}{\dim V_{\ya}^{n}}\frac{\varphi_{\yb}(B)}{\dim V_{\yb}^{n}} .
+        \end{equation}
+    \end{cor}
+    \begin{cor}
+        \label{cor:random_sum_ineq}
+        For a given $\yc$, let $m_n(\yc)$ be the following quantity
+        \begin{equation}
+            m_n(\yc) \coloneqq \min_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\frac{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}}{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}
+        \end{equation}
+        Then for all $A,B \geq 0$,
+        \begin{equation}
+            \varphi_{\yc}(A+B) 
+            \leq \max_{C \in A\boxplus B} \varphi_{\yc}(C) 
+            \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(A)\varphi_{\yb}(B) 
+            \leq \frac{1}{m_n(\yc)} \expect_{C \sim A \boxplus B} \varphi_{\yc}(C) 
+            \leq \frac{1}{m_n(\yc)} \max_{C \in A\boxplus B} \varphi_{\yc}(C).
+        \end{equation}
+    \end{cor}
+    \begin{thm}
+        Let $(\ea,\eb,\ec)$ be candidate positive semidefinite eigenvalues $\etr{\ec}=\etr{\ea}+\etr{\eb}$.
+        If there exists positive semidefinite matrices $A,B,C \geq 0$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $C=A+B$, then for all Young diagrams $\yc$, we have
+        \begin{equation}
+            \label{eq:polynomial_horn_ineq}
+            \varphi_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(\ea)\varphi_{\yb}(\eb).
+        \end{equation}
+        Moreover, if \cref{eq:polynomial_horn_ineq} holds for all Young diagrams $\yx \vdash k$ of size $k$, then
+        \begin{equation}
+            \Delta(\ea,\eb;\ec) \leq (3n+4)(n-1) \frac{\log (k+1)}{2k}.
+        \end{equation}
+        where $\Delta(\ea,\eb;\ec) \coloneqq \min_{C \in \ea \boxplus \eb}\norm{\nrm \ec - \nrm \eig(C)}_{1}$.
+    \end{thm}
+    \begin{proof}
+        By \cref{cor:random_sum_ineq} and the assumption that \cref{eq:polynomial_horn_ineq} holds for $\yc$ yields,
+        \begin{equation}
+            \varphi_{\yc}(\ec) \leq \frac{1}{m_n(\yc)} \max_{X \in \ea \boxplus \eb} \varphi_{\yc}(X).
+        \end{equation}
+        Therefore, as $\etr{\ec}=\etr{\ea}+\etr{\eb} = \Tr(X)$, we multiply both sides of this inequality by $H_{\yc}/\etr{\ec}^{k}$ and obtain
+        \begin{equation}
+            \Tr[P_{\yc} \nrm {\ec}^{\ot k}] \leq \frac{1}{m_n(\yc)} \max_{X \in \ea \boxplus \eb} \Tr[P_{\yc} \nrm X^{\ot k}].
+        \end{equation}
+        Using the eigenvalue separation lemma, we have an upper bound independent of $X \in \ea \boxplus \eb$.
+        \begin{align}
+            \Tr[P_{\yc} \nrm {\ec}^{\ot k}]\max_{X \in \ea \boxplus \eb} \Tr[P_{\yc} \nrm X^{\ot k}]
+            &\leq (\dim V_{\yc}^{n})^2 \exp\left( -\frac{k}{4} \Delta(\ea,\eb;\ec)^2 \right),
+        \end{align}
+        which therefore implies
+        \begin{align}
+            \Tr[P_{\yc} \nrm {\ec}^{\ot k}]
+            &\leq \sqrt{\frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)}} \exp\left( -\frac{k}{2} \Delta(\ea,\eb;\yc)^2 \right).
+        \end{align}
+        Now note that
+        \begin{equation}
+            \sqrt{\frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)}} = \max_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \sqrt{\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yc}^{n}}{c^{\yc}_{\ya\yb}}} \leq (k+1)^{3n(n-1)/4}.
+        \end{equation}
+        Summing both sides over $\yc \vdash k$, and noting there are at most $(k+1)^{n-1}$ summands yields
+        \begin{align}
+            1
+            &\leq (k+1)^{3n(n-1)/4 + n-1} \exp\left( -\frac{k}{2} \Delta(\ea,\eb;\ec)^2 \right).
+        \end{align}
+        Rearranging for $\Delta(\ea,\eb;\ec)$ yields the claim.
+    \end{proof}
 \hrule
     TC: I suspect there is a concavity/convexity or multiplicativity-type result lurking here.
     If $c^{\yc}_{\ya\yb} > 0$, then let $\nu^{\yc}_{\ya,\yb} : V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ and $\omega^{\yc}_{\ya\yb} : W_{\ya} \ot W_{\yb} \to W_{\yc}$ be a Schur-Weyl-dual pair of equivariant isometries.
