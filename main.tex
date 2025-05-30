@@ -1886,126 +1886,126 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
 %    \end{equation}
 %\end{proof}
 %\textcolor{red}{TC: SOMETHING IS MISSING HERE, THE INEQUALITY FEELS TOO WEAK, ALTHOUGH INDIRECTLY I KNOW IT WORKS}
-\hrule
-    Let $\nu_{\ec}$ be the probability distribution over $\{\yc \vdash c\}$ given by
-    \begin{equation}
-        \nu_{\ec}(\yc) \coloneqq \iint \diff W \Tr[P_\yc (\nrm{W\cdot \ec})^{\ot c}] = \Tr[P_\yc (\nrm{\ec})^{\ot c}] = \tilde \chi_{\yc}(\nrm{\ec}).
-    \end{equation}
-    Moreover, let $\mu_{\ea,\eb}$ be the probability distribution over the same space given by
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
-    \end{equation}
-    Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
-    \begin{align}
-        \mu_{\ea,\eb}(\yc) 
-        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \iint \! \diff U\diff V \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm {U\cdot \ea}) \ot \tilde \pi_\yb(\nrm {V \cdot \eb})], \\
-        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
-    \end{align}
-    %where $T_{\ya,\yb}^{\yc;n}$ is a probability distribution over $\{\yc \vdash c\}$ conditioned on fixed $\ya,\yb$ given by the decomposition of the tensor $V_{\ya}^{n} \ot V_{\yb}^{n}$ into isotypic components:
+%\hrule
+    %Let $\nu_{\ec}$ be the probability distribution over $\{\yc \vdash c\}$ given by
     %\begin{equation}
-    %    T_{\ya,\yb}^{\yc;n} \coloneqq \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %    \nu_{\ec}(\yc) \coloneqq \iint \diff W \Tr[P_\yc (\nrm{W\cdot \ec})^{\ot c}] = \Tr[P_\yc (\nrm{\ec})^{\ot c}] = \tilde \chi_{\yc}(\nrm{\ec}).
     %\end{equation}
-    %Also define for $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c = a+b$ the joint probability:
+    %Moreover, let $\mu_{\ea,\eb}$ be the probability distribution over the same space given by
     %\begin{equation}
-    %    \mu_{\ea,\eb}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %    \mu_{\ea,\eb}(\yc) \coloneqq \iint \! \diff U\diff V \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}].
     %\end{equation}
-    %One can then consider the quantity
+    %Performing the integral over $U,V \in U(n)$ (and assuming $\etr{\ec}=\etr{\ea}+\etr{\eb}$) yields the formula:
+    %\begin{align}
+    %    \mu_{\ea,\eb}(\yc) 
+    %    &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \iint \! \diff U\diff V \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm {U\cdot \ea}) \ot \tilde \pi_\yb(\nrm {V \cdot \eb})], \\
+    %    &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+    %\end{align}
+    %%where $T_{\ya,\yb}^{\yc;n}$ is a probability distribution over $\{\yc \vdash c\}$ conditioned on fixed $\ya,\yb$ given by the decomposition of the tensor $V_{\ya}^{n} \ot V_{\yb}^{n}$ into isotypic components:
+    %%\begin{equation}
+    %%    T_{\ya,\yb}^{\yc;n} \coloneqq \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %%\end{equation}
+    %%Also define for $\ya \vdash a, \yb \vdash b$, and $\yc \vdash c = a+b$ the joint probability:
+    %%\begin{equation}
+    %%    \mu_{\ea,\eb}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}
+    %%\end{equation}
+    %%One can then consider the quantity
+    %%\begin{equation}
+    %%    F_{\ea,\eb;\ec}^{(c),s_1,s_2} = \sum_{\yc\vdash c}\tilde \chi_{\yc}(\nrm{\ec})^{s_1}
+    %%    \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{s_2}
+    %%\end{equation}
+    %Now for \textit{any} $(A,B)$ with eigenvalues $(\ea,\eb)$ such that $C = A+B$ has eigenvalues $\ec$, we have the identity
     %\begin{equation}
-    %    F_{\ea,\eb;\ec}^{(c),s_1,s_2} = \sum_{\yc\vdash c}\tilde \chi_{\yc}(\nrm{\ec})^{s_1}
-    %    \left(\sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb) \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}\right)^{s_2}
+    %    \nu_{\ec}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
     %\end{equation}
-    Now for \textit{any} $(A,B)$ with eigenvalues $(\ea,\eb)$ such that $C = A+B$ has eigenvalues $\ec$, we have the identity
-    \begin{equation}
-        \nu_{\ec}(\yc) = \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\ya\vdash a,\yb \vdash b} \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
-    \end{equation}
-    %Also define the joint probability:
+    %%Also define the joint probability:
+    %%\begin{equation}
+    %%    \nu_{\ec}^{A,B}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c}\Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
+    %%\end{equation}
+    %Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under the assumption that $(\ea,\eb,\ec)$ are trigonal.
+    %Already, one observes that
     %\begin{equation}
-    %    \nu_{\ec}^{A,B}(\ya,\yb,\yc) = \frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c}\Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)].
+    %    \mu_{\ea,\eb}(\yc) \leq \max_{\ec} \nu_{\ec}(\yc)
     %\end{equation}
-    Note that $\nu_{\ec}$ and $\mu_{\ea,\eb}$ have a very similar form under the assumption that $(\ea,\eb,\ec)$ are trigonal.
-    Already, one observes that
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) \leq \max_{\ec} \nu_{\ec}(\yc)
-    \end{equation}
-    where the maximum is taken over all eigenvalues $\ec$ such that $(\ea,\eb,\yc)$ are compatible.
+    %where the maximum is taken over all eigenvalues $\ec$ such that $(\ea,\eb,\yc)$ are compatible.
 
-    To relate these two quantities more closely, we use that $P^{\yc}_{\ya\yb}$ is a projection operator and that $A$ and $B$ are both positive semidefinite to obtain:
-    \begin{equation}
-        \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
-    \end{equation}
-    %Therefore we obtain
+    %To relate these two quantities more closely, we use that $P^{\yc}_{\ya\yb}$ is a projection operator and that $A$ and $B$ are both positive semidefinite to obtain:
     %\begin{equation}
-    %    \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \nu_{\ec}(\ya,\yb,\yc) \leq \mu_{\ea,\eb}(\ya,\yb,\yc)
+    %    \Tr[P^{\yc}_{\ya\yb} \tilde \pi_\ya(\nrm A) \ot \tilde \pi_\yb(\nrm B)] \leq \Tr[\tilde \pi_\ya(\nrm A)]\Tr[\tilde \pi_\yb(\nrm B)] = \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb).
     %\end{equation}
-    Now consider the bound $\dim V_\yx^n \leq (\abs{\yx}+1)^{n(n-1)/2}$.
-    Since $\abs{\ya} = a, \abs{\yb} = b$ and $a+b=c$, we have 
-    \begin{equation}
-        (a+1)(b+1) = ab + a+b + 1 \leq \frac{c^2}{4}+c+1
-    \end{equation}
-    and therefore whenever $c^{\yc}_{\ya\yb} \neq 0$, we obtain a $(\ya,\yb)$-independent inequality:
-    \begin{equation}
-        \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{p_n(c)},
-    \end{equation}
-    where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
-    Note we also could make use of the inequality:
-    \begin{equation}
-        c^{\yc}_{\ya\yb} \leq \frac{\dim W_{\yc}}{\dim W_{\ya}\dim W_{\yb}} \leq \dim W_{\yc},
-    \end{equation}
-    to extract an extra factor of $\dim W_{\yc}$ in places where it might be needed.
+    %%Therefore we obtain
+    %%\begin{equation}
+    %%    \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \nu_{\ec}(\ya,\yb,\yc) \leq \mu_{\ea,\eb}(\ya,\yb,\yc)
+    %%\end{equation}
+    %Now consider the bound $\dim V_\yx^n \leq (\abs{\yx}+1)^{n(n-1)/2}$.
+    %Since $\abs{\ya} = a, \abs{\yb} = b$ and $a+b=c$, we have 
+    %\begin{equation}
+    %    (a+1)(b+1) = ab + a+b + 1 \leq \frac{c^2}{4}+c+1
+    %\end{equation}
+    %and therefore whenever $c^{\yc}_{\ya\yb} \neq 0$, we obtain a $(\ya,\yb)$-independent inequality:
+    %\begin{equation}
+    %    \frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})} \geq \frac{\dim V_{\yc}^n}{p_n(c)},
+    %\end{equation}
+    %where $p_n(c) \coloneqq (c^2/4+c+1)^{n(n-1)/2}$.
+    %Note we also could make use of the inequality:
+    %\begin{equation}
+    %    c^{\yc}_{\ya\yb} \leq \frac{\dim W_{\yc}}{\dim W_{\ya}\dim W_{\yb}} \leq \dim W_{\yc},
+    %\end{equation}
+    %to extract an extra factor of $\dim W_{\yc}$ in places where it might be needed.
 
-    Altogether we obtain the inequality:
-    \begin{equation}
-        \mu_{\ea,\eb}(\yc) \geq \frac{\dim V_{\yc}^n}{p_n(c)}\nu_{\ec}(\yc).
-    \end{equation}
-    which holds for all $\yc \vdash c$ independently of the decomposition of $C = A+B$.
-        
-    The fidelity between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ over $\{\yc \vdash c\}$ is given by
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \coloneqq \left(\sum_{\yc\vdash c} \sqrt{\mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc)}\right)^{2},
-    \end{equation}
-    or alternatively, the inner product between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ is
-    \begin{align}
-        W_{\ea,\eb;\ec}^{(c)} 
-        &\coloneqq \sum_{\yc\vdash c} \mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc),\\
-        &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\substack{\ya\vdash a,\yb \vdash b \\ \yc\vdash c}} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\tilde\chi_{\yc}(\nrm \ec)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
-    \end{align}
-    Our inequality between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ implies the lower bounds
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{p_n(c)}, \qquad W_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{(c+1)^{n-1}p_n(c)}
-    \end{equation}
-    as there at most $\abs{\{\yc \vdash c\}} \leq (c+1)^{n-1}$ summands.
-    To obtain a complementary upper bound, let
-    \begin{equation}
-        \Delta_{\ea,\eb;\ec} \coloneqq \min_{U,V}\{\norm{\eig(\nrm{U\cdot \ea + V\cdot \eb})-\nrm \ec}_1\}.
-    \end{equation}
-    Then, by the eigenvalue separation lemma, we obtain a $(U,V)$-independent upper bound:
-    \begin{align}
-        \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}]\Tr[P_\yc (\nrm{\ec})^{\ot c}]
-        &\leq (c+1)^{n(n-1)} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\yc}^2),
-    \end{align}
-    Therefore, for $F_{\ea,\eb;\ec}^{(c)}$ we have
-    \begin{equation}
-        F_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2+n-2}\exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2),
-    \end{equation}
-    while, for $W_{\ea,\eb;\ec}^{(c)}$ we have
-    \begin{equation}
-        W_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2-1} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2).
-    \end{equation}
-    %Therefore, if $r = \rank(\ec)$ then $\card{\{\yc \vdash_r c\}} \leq (c+1)^{r-1}$ and therefore we obtain:
+    %Altogether we obtain the inequality:
     %\begin{equation}
-    %    \Delta_{\ea,\eb;\yc} \leq \sqrt{2(3n(n-1)+r-1)\frac{\ln (c+1)}{c}}.
+    %    \mu_{\ea,\eb}(\yc) \geq \frac{\dim V_{\yc}^n}{p_n(c)}\nu_{\ec}(\yc).
     %\end{equation}
-    \begin{thm}
-        Fix a positive integer $k$.
-        If $(\ea,\eb,\ec)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$, then for every positive integer $k$,
-        \begin{equation}
-            W_{\ea,\eb;\ec}^{k} \geq \frac{1}{(k+1)^{n-1}p_n(k)}.
-        \end{equation}
-        Conversely, if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices and $\Delta_{\ea,\eb;\yc} > \varepsilon$, then the above inequality is violated for all $k$ such that
-        \begin{equation}
-            \frac{k}{\ln ((k+1)^{n^2+n-2}p_n(k))}>\frac{4}{\varepsilon^2}.
-        \end{equation}
-    \end{thm}
+    %which holds for all $\yc \vdash c$ independently of the decomposition of $C = A+B$.
+    %    
+    %The fidelity between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ over $\{\yc \vdash c\}$ is given by
+    %\begin{equation}
+    %    F_{\ea,\eb;\ec}^{(c)} \coloneqq \left(\sum_{\yc\vdash c} \sqrt{\mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc)}\right)^{2},
+    %\end{equation}
+    %or alternatively, the inner product between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ is
+    %\begin{align}
+    %    W_{\ea,\eb;\ec}^{(c)} 
+    %    &\coloneqq \sum_{\yc\vdash c} \mu_{\ea,\eb}(\yc)\nu_{\ec}(\yc),\\
+    %    &= \sum_{a+b=c}\frac{c!}{a!b!}\frac{\etr{\ea}^a\etr{\eb}^b}{\etr{\ec}^c} \sum_{\substack{\ya\vdash a,\yb \vdash b \\ \yc\vdash c}} \tilde \chi_{\ya}(\nrm \ea)\tilde\chi_{\yb}(\nrm \eb)\tilde\chi_{\yc}(\nrm \ec)\frac{\dim (V_{\yc}^n \ot C^{\yc}_{\ya\yb})}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+    %\end{align}
+    %Our inequality between $\mu_{\ea,\eb}$ and $\nu_{\ec}$ implies the lower bounds
+    %\begin{equation}
+    %    F_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{p_n(c)}, \qquad W_{\ea,\eb;\ec}^{(c)} \geq \frac{1}{(c+1)^{n-1}p_n(c)}
+    %\end{equation}
+    %as there at most $\abs{\{\yc \vdash c\}} \leq (c+1)^{n-1}$ summands.
+    %To obtain a complementary upper bound, let
+    %\begin{equation}
+    %    \Delta_{\ea,\eb;\ec} \coloneqq \min_{U,V}\{\norm{\eig(\nrm{U\cdot \ea + V\cdot \eb})-\nrm \ec}_1\}.
+    %\end{equation}
+    %Then, by the eigenvalue separation lemma, we obtain a $(U,V)$-independent upper bound:
+    %\begin{align}
+    %    \Tr[P_\yc (\nrm{U\cdot \ea + V \cdot \eb})^{\ot c}]\Tr[P_\yc (\nrm{\ec})^{\ot c}]
+    %    &\leq (c+1)^{n(n-1)} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\yc}^2),
+    %\end{align}
+    %Therefore, for $F_{\ea,\eb;\ec}^{(c)}$ we have
+    %\begin{equation}
+    %    F_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2+n-2}\exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2),
+    %\end{equation}
+    %while, for $W_{\ea,\eb;\ec}^{(c)}$ we have
+    %\begin{equation}
+    %    W_{\ea,\eb;\ec}^{(c)} \leq (c+1)^{n^2-1} \exp(-\frac{c}{4} \Delta_{\ea,\eb;\ec}^2).
+    %\end{equation}
+    %%Therefore, if $r = \rank(\ec)$ then $\card{\{\yc \vdash_r c\}} \leq (c+1)^{r-1}$ and therefore we obtain:
+    %%\begin{equation}
+    %%    \Delta_{\ea,\eb;\yc} \leq \sqrt{2(3n(n-1)+r-1)\frac{\ln (c+1)}{c}}.
+    %%\end{equation}
+    %\begin{thm}
+    %    Fix a positive integer $k$.
+    %    If $(\ea,\eb,\ec)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$, then for every positive integer $k$,
+    %    \begin{equation}
+    %        W_{\ea,\eb;\ec}^{k} \geq \frac{1}{(k+1)^{n-1}p_n(k)}.
+    %    \end{equation}
+    %    Conversely, if $(\ea,\eb,\ec)$ are not the eigenvalues of any such matrices and $\Delta_{\ea,\eb;\yc} > \varepsilon$, then the above inequality is violated for all $k$ such that
+    %    \begin{equation}
+    %        \frac{k}{\ln ((k+1)^{n^2+n-2}p_n(k))}>\frac{4}{\varepsilon^2}.
+    %    \end{equation}
+    %\end{thm}
 \hrule
     For the specific case of $n =2$, and $\yx = (\yx_1, \yx_2)$ with $\abs{\yx} = \yx_1 + \yx_2 = k$, we have
     \begin{equation}
@@ -2095,10 +2095,11 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
     \begin{equation}
         \varphi_{\yx}(A+B) \geq \varphi_{\yx}(A) + \varphi_{\yx}(B).
     \end{equation}
-    Moreover, as $\Tr[\Gamma^{\yc}_{\ya,\yb}[ \cdot ]] = \Tr[P^{\yc}_{\ya\yb} (\cdot)]$ where $P^{\yc}_{\ya\yb}$ is the orthogonal projection operator onto the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$ we have
-    \begin{equation}
-        \varphi_{\yc}(A+B) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(A)\varphi_{\yb}(B).
-    \end{equation}
+    Moreover, as $\Tr[\Gamma^{\yc}_{\ya,\yb}[ \cdot ]] = \Tr[P^{\yc}_{\ya\yb} (\cdot)]$ where $P^{\yc}_{\ya\yb}$ is the orthogonal projection operator onto the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$, we obtain the following inequalities:
+    \begin{align}
+        \varphi_{\yc}(A+B) &\leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(A)\varphi_{\yb}(B), \\
+        \varphi_{\ya}(A)\varphi_{\yb}(B) &\leq \sum_{\substack{\yc\\ c^{\yc}_{\ya\yb} > 0}} \varphi_{\yc}(A+B).
+    \end{align}
     Given a function $f$ of matrices, we define the following shorthand notation. 
     \begin{align}
         \expect_{C\sim A \boxplus B} f(C) &\coloneqq \iint \!\diff U \diff V f(UAU^{-1}+VBV^{-1}), \\
@@ -2134,37 +2135,34 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \end{equation}
         Moreover, if \cref{eq:polynomial_horn_ineq} holds for all Young diagrams $\yx \vdash k$ of size $k$, then
         \begin{equation}
-            \Delta(\ea,\eb;\ec) \leq (3n+4)(n-1) \frac{\log (k+1)}{2k}.
+            \Delta(\ea,\eb;\ec)^{2} \leq 2(3n+4)(n-1) \frac{\log (k+1)}{k}.
         \end{equation}
-        where $\Delta(\ea,\eb;\ec) \coloneqq \min_{C \in \ea \boxplus \eb}\norm{\nrm \ec - \nrm \eig(C)}_{1}$.
+        where $\Delta(\ea,\eb;\ec) \coloneqq \min_{C \in \ea \boxplus \eb}\norm{\nrm \ec -  \eig(\nrm C)}_{1}$.
     \end{thm}
     \begin{proof}
-        By \cref{cor:random_sum_ineq} and the assumption that \cref{eq:polynomial_horn_ineq} holds for $\yc$ yields,
+        That \cref{eq:polynomial_horn_ineq} must be satisfied by $(\ea,\eb,\ec)$ whenever there exists corresponding matrices follows directly from \cref{cor:random_sum_ineq}.
+        To prove the bound on $\Delta(\ea,\eb;\ec)$, it actually suffices for $(\ea,\eb,\ec)$ to satisfy a weaker constraint.
+        Specifically, the requirement that \cref{eq:polynomial_horn_ineq} is satisfied for a given $\yc$ can be relaxed, by \cref{cor:random_sum_ineq}, to the requirement that 
         \begin{equation}
             \varphi_{\yc}(\ec) \leq \frac{1}{m_n(\yc)} \max_{X \in \ea \boxplus \eb} \varphi_{\yc}(X).
         \end{equation}
-        Therefore, as $\etr{\ec}=\etr{\ea}+\etr{\eb} = \Tr(X)$, we multiply both sides of this inequality by $H_{\yc}/\etr{\ec}^{k}$ and obtain
-        \begin{equation}
-            \Tr[P_{\yc} \nrm {\ec}^{\ot k}] \leq \frac{1}{m_n(\yc)} \max_{X \in \ea \boxplus \eb} \Tr[P_{\yc} \nrm X^{\ot k}].
-        \end{equation}
-        Using the eigenvalue separation lemma, we have an upper bound independent of $X \in \ea \boxplus \eb$.
+        Since it was assumed that $\etr{\ec}=\etr{\ea}+\etr{\eb}=\Tr(X)$, an application of the eigenvalue separation lemma produces:
         \begin{align}
-            \Tr[P_{\yc} \nrm {\ec}^{\ot k}]\max_{X \in \ea \boxplus \eb} \Tr[P_{\yc} \nrm X^{\ot k}]
-            &\leq (\dim V_{\yc}^{n})^2 \exp\left( -\frac{k}{4} \Delta(\ea,\eb;\ec)^2 \right),
+            \varphi_{\yc}(\ec) 
+            &= 
+            \sqrt{\varphi_{\yc}(\ec)}\sqrt{\varphi_{\yc}(\ec)}, \\
+            &\leq \sqrt{\frac{1}{m_n(\yc)}}\max_{X \in \ea \boxplus \eb}\sqrt{\varphi_{\yc}(\ec)\varphi_{\yc}(X)}, \\
+            &\leq \frac{\etr{\ec}^{k}}{k!} \sqrt{\frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)}} \exp\left( -\frac{k}{8} \Delta(\ea,\eb;\yc)^2 \right).\label{eq:eig_sep_lr}
         \end{align}
-        which therefore implies
-        \begin{align}
-            \Tr[P_{\yc} \nrm {\ec}^{\ot k}]
-            &\leq \sqrt{\frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)}} \exp\left( -\frac{k}{2} \Delta(\ea,\eb;\yc)^2 \right).
-        \end{align}
-        Now note that
+        Furthermore, note that\footnote{\textcolor{blue}{TC: bound can be improved a bit by noting that $k=\abs{\yc}=\abs{\ya}+\abs{\yc}$ implies $(\abs{\ya}+1)(\abs{\yb}+1) = \abs{\ya}\abs{\yb} + \abs{\yc} + 1 \leq \frac{k^2}{4}+k+1$.}}
         \begin{equation}
-            \sqrt{\frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)}} = \max_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \sqrt{\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yc}^{n}}{c^{\yc}_{\ya\yb}}} \leq (k+1)^{3n(n-1)/4}.
+            \frac{(\dim V_{\yc}^{n})^{2}}{m_n(\yc)} = \max_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yc}^{n}}{c^{\yc}_{\ya\yb}} \leq \left((k+1)^{n(n-1)/2}\right)^{3}.
         \end{equation}
-        Summing both sides over $\yc \vdash k$, and noting there are at most $(k+1)^{n-1}$ summands yields
+        Since this constraint is assumed to hold for all $\yc \vdash k$, we may sum over all $\yc \vdash k$.
+        After summing and dividing both sides of \cref{eq:eig_sep_lr} by $\frac{\etr{\ec}^{k}}{k!}$ (and noting there are at most $(k+1)^{n-1}$ summands) yields
         \begin{align}
             1
-            &\leq (k+1)^{3n(n-1)/4 + n-1} \exp\left( -\frac{k}{2} \Delta(\ea,\eb;\ec)^2 \right).
+            &\leq (k+1)^{3n(n-1)/4 + n-1} \exp\left( -\frac{k}{8} \Delta(\ea,\eb;\ec)^2 \right).
         \end{align}
         Rearranging for $\Delta(\ea,\eb;\ec)$ yields the claim.
     \end{proof}
