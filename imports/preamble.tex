@@ -144,9 +144,9 @@
 \newcommand{\tuple}[1]{\boldsymbol{#1}}
 \newcommand{\unent}{N} % unnormalized entropy
 \newcommand{\vN}{H} % von Neumann entropy 
-\newcommand{\tinyuni}{\includegraphics[width=0.2em]{tikz/uni-tri-tet/uni.pdf}}
-\newcommand{\tinytri}{\includegraphics[width=0.5em]{tikz/uni-tri-tet/tri.pdf}}
-\newcommand{\tinytet}{\includegraphics[width=0.7em]{tikz/uni-tri-tet/tet.pdf}}
+%\newcommand{\tinyuni}{\includegraphics[width=0.2em]{tikz/uni-tri-tet/uni.pdf}}
+%\newcommand{\tinytri}{\includegraphics[width=0.5em]{tikz/uni-tri-tet/tri.pdf}}
+%\newcommand{\tinytet}{\includegraphics[width=0.7em]{tikz/uni-tri-tet/tet.pdf}}
 
 \newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
 \newcommand{\braa}[1]{%
@@ -182,6 +182,15 @@
 \newcommand{\ef}{f}
 \newcommand{\ex}{x}
 
+% eigenvalue traces
+\newcommand{\tea}{|\ea|}
+\newcommand{\teb}{|\eb|}
+\newcommand{\tec}{|\ec|}
+\newcommand{\ted}{|\ed|}
+\newcommand{\tee}{|\ee|}
+\newcommand{\tef}{|\ef|}
+\newcommand{\tex}{|\ex|}
+
 % Shorthands for young diagram labels
 \newcommand{\ya}{\alpha}
 \newcommand{\yb}{\beta}
@@ -191,34 +200,36 @@
 \newcommand{\yf}{\phi}
 \newcommand{\yx}{\lambda}
 \newcommand{\yn}{\eta}
+\newcommand{\yempty}{()}
 
-% Shorthands for tetrahedral eigenvales 
-\newcommand{\eat}{\tilde \alpha'}
-\newcommand{\ebt}{\tilde \beta'}
-\newcommand{\ect}{\tilde \gamma'}
-\newcommand{\edt}{\tilde \delta'}
-\newcommand{\eet}{\tilde \epsilon'}
-\newcommand{\eft}{\tilde \phi'}
-\newcommand{\ext}{\tilde \lambda'}
+% sizes of young diagrams 
+\newcommand{\sya}{|\ya|}
+\newcommand{\syb}{|\yb|}
+\newcommand{\syc}{|\yc|}
+\newcommand{\syd}{|\yd|}
+\newcommand{\sye}{|\ye|}
+\newcommand{\syf}{|\yf|}
+\newcommand{\syx}{|\yx|}
+\newcommand{\syn}{|\yn|}
 
 % Normalization of eigenvalues or young diagrams
 \newcommand{\nrm}{\underline}
 
-\newcommand{\nea}{\nrm{a}}
-\newcommand{\neb}{\nrm{b}}
-\newcommand{\nec}{\nrm{c}}
-\newcommand{\ned}{\nrm{d}}
-\newcommand{\nee}{\nrm{e}}
-\newcommand{\nef}{\nrm{f}}
-\newcommand{\nex}{\nrm{x}}
+\newcommand{\nea}{\nrm{\ea}}
+\newcommand{\neb}{\nrm{\eb}}
+\newcommand{\nec}{\nrm{\ec}}
+\newcommand{\ned}{\nrm{\ed}}
+\newcommand{\nee}{\nrm{\ee}}
+\newcommand{\nef}{\nrm{\ef}}
+\newcommand{\nex}{\nrm{\ex}}
 
-\newcommand{\nya}{\nrm{\alpha}}
-\newcommand{\nyb}{\nrm{\beta}}
-\newcommand{\nyc}{\nrm{\gamma}}
-\newcommand{\nyd}{\nrm{\delta}}
-\newcommand{\nye}{\nrm{\epsilon}}
-\newcommand{\nyf}{\nrm{\phi}}
-\newcommand{\nyx}{\nrm{\lambda}}
+\newcommand{\nya}{\nrm{\ya}}
+\newcommand{\nyb}{\nrm{\yb}}
+\newcommand{\nyc}{\nrm{\yc}}
+\newcommand{\nyd}{\nrm{\yd}}
+\newcommand{\nye}{\nrm{\ye}}
+\newcommand{\nyf}{\nrm{\yf}}
+\newcommand{\nyx}{\nrm{\yx}}
 
 % --- More compact arrays below ---
 % NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
@@ -236,59 +247,4 @@
 \begin{array}{@{}ccc@{}}#1\end{array}
 \endgroup
 }
-\newcommand{\ygrid}{\tighttriple{\ya&\yb&\yc\\\yd&\ye&\yf}}
-\newcommand{\egrid}{\tighttriple{\ea&\eb&\ec\\\ed&\ee&\ef}}
-\newcommand{\etgrid}{\tighttriple{\eat&\ebt&\ect\\\edt&\eet&\eft}}
-\newcommand{\swsixjk}{\Gamma^{k}_{\!\tinytet}\!\!\left[\egrid \right]}
-\newcommand{\qk}{Q_{k}}
-\newcommand{\qksixj}{Q_{k}\!\!\left[\ygrid\right]}
-\newcommand{\pk}{P_{k}}
-\newcommand{\pksixj}{P_{k}\!\!\left[\ygrid\middle|\egrid\right]}
-\newcommand{\pksixjt}{P_{k}\!\!\left[\ygrid\middle|\etgrid\right]}
-\newcommand{\fk}{F_{k}}
-\newcommand{\fksixj}{F_{k}\!\!\left[\egrid\right]}
-\newcommand{\wk}{W_{k}}
-\newcommand{\wksixj}{W_{k}\!\!\left[\egrid\right]}
-\newcommand{\disttet}{D_{\mathrm{ext}}\!\!\left[\egrid\right]}
-\newcommand{\disttetalt}{\Delta\!\!\left[\egrid\right]}
-
-% UniGamma
-\newcommand{\UniGammaOpt}[2]{\Gamma_{\!\!#1}(#2)}
-\newcommand{\UniGamma}{\UniGammaOpt{A}{\ya}}
-
-% TriGamma
-\newcommand{\TriGammaOpt}[2]{
-\begingroup
-\arraycolsep=1.5pt
-\renewcommand{\arraystretch}{0.3}
-\Gamma_{\!\!#1}^{\tinytri}\!\left(
-    \begin{array}{@{}ccc@{}}#2\end{array}
-\right)
-\endgroup
-}
-\newcommand{\TriGamma}{\TriGammaOpt{A,B}{\ya & \yb & \yc}}
-\newcommand{\TriGammak}{\TriGammaOpt{A,B}{\ya_k & \yb_k & \yc_k}}
-
-% TetGamma
-\newcommand{\TetGammaOpt}[2]{
-\begingroup
-\arraycolsep=1.5pt
-\renewcommand{\arraystretch}{0.3}
-\Gamma_{\!\!#1}^{\tinytet}\!\left(
-    \begin{array}{@{}ccc@{}}#2\end{array}
-\right)
-\endgroup
-}
-\newcommand{\TetGamma}{\TetGammaOpt{\nrm A,\nrm B,\nrm D}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
-\newcommand{\TetGammak}{\TetGammaOpt{\nrm A,\nrm B, \nrm D}{\ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}
-\newcommand{\TetGammaTilde}{\TetGammaOpt{\nrm {\tilde A}, \nrm {\tilde B}, \nrm {\tilde D}}{\ya & \yb & \yc \\ \yd & \ye & \yf}}
-
-\newcommand{\sixjargs}{
-\begingroup
-\arraycolsep=1.5pt
-\renewcommand{\arraystretch}{0.3}
-\left(\begin{array}{@{}ccc@{}}\ya & \yb & \yc \\ \yd & \ye & \yf\end{array}\right)
-\endgroup
-}
-
 % =====================================
