@@ -657,12 +657,15 @@ Note that in subsequent sections we will often explicitly assume the candidate e
 \end{rem}
 
 \clearpage
-\section{Representation theory \& eigenvalue estimation}
-\label{sec:rep_theory}
+\section{Polynomial eigenvalue inequalities}
 
-\subsection{Schur-Weyl duality \& eigenvalue estimation}
+The eigenvalues, $\ex = (\ex_1, \ldots, \ex_n)$, of an $n \times n$ Hermitian matrix $X$ determine which $\U(n)$ orbit,
 
-Our main tool for connecting the eigenvalues of an $n \times n$ Hermitian matrix $A$ to the representation theory of the unitary group $\U(n)$ will be to examine the Schur-Weyl decomposition of the $k$-th tensor power $A^{\ot k}$.
+\subsection{Polynomial representations \& Schur-Weyl duality}
+
+The purpose of this section is to review the representation theory of $\U(n)$, or equivalently, the polynomial representation theory of $\GL(n)$.
+
+will be to examine the Schur-Weyl decomposition of the $k$-th tensor power $A^{\ot k}$.
 To begin, we recall the Schur-Weyl decomposition of $(\mathbb C^{n})^{\ot k}$ as a representation of the group $S_k \times \U(n)$.
 
 \begin{prop}[Schur-Weyl duality]
@@ -746,6 +749,148 @@ The following result, know as spectrum or eigenvalue estimation, states that the
     \end{equation}
     where the sum if over Young diagrams $\ya$ with size $a$ with depth at most $r(\ea)$.
 \end{prop}
+
+\begin{defn}
+    Let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$.
+    Given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{(1)}^{n} \simeq \mathbb C^{n}$, we define $\pi_{\yx}(X)$ by the formula:
+    \begin{equation*}
+        \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]}{\dim(W_{\yx})}
+    \end{equation*}
+    where $\iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{(1)}^{\ot \abs{\yx}}$ is the equivariant isometry for the $\yx$-isotypic subspace of $V_{(1)}^{\ot \abs{\yx}}$.
+    This definition ensures that $X^{\ot k} \simeq \bigoplus_{\yx \vdash k} \pi_{\yx}(X)^{\oplus W_{\yx}}$ holds for any positive integer $k$.
+    When $X$ is a unitary, $\pi_{\yx}(X)$ is the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is warranted.
+    If $X \geq 0$ is positive semidefinite, then $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
+    If $\yx = (1)$, then $\pi_{(1)}(X) = X$ as $\dim(W_{(1)}) = 1$.
+
+    Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
+    \begin{equation}
+        \pi_{\yx}(sX) = s^{\abs{\yx}} \pi_{\yx}(X).
+    \end{equation}
+    Additionally, if $X,Y$ are two matrices, we have
+    \begin{equation}
+        \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y). 
+    \end{equation}
+    The \textit{character} of $X$ satisfies
+    \begin{equation*}
+        \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot \abs{\yx}}]}{\dim(W_{\yx})} = s_{\yx}(\eig(X)),
+    \end{equation*}
+    where $s_{\yx}(\eig(X))$ is the corresponding Schur-polynomial evaluated on the eigenvalues of $X$.
+    For fixed positive integer $k$, we also define the \textit{Plancherel distribution} $\{\mu_\yx | \yx \vdash k\}$ over Young diagrams of size $k$ according to
+    \begin{equation}
+        \mu_\yx \coloneqq \frac{(\dim W_\yx)^2}{\abs{\yx}!}.
+    \end{equation}
+    Moreover, we define the rescaling of $\pi_{\yx}(X)$ to be
+    \begin{equation*}
+        \tilde \pi_{\yx}(X) \coloneqq \dim(W_{\yx}) \pi_{\yx}(X) = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}],
+    \end{equation*}
+    and the corresponding rescaled character is
+    \begin{equation*}
+        \tilde \chi_\yx(X) \coloneqq \Tr[\tilde \pi_{\yx}(X)] = \Tr[P_{\yx} X^{\ot \abs{\yx}}] = \dim(W_{\yx})s_{\yx}(\eig(X)),
+    \end{equation*}
+    where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace.
+
+    These rescaled characters emerge as coefficients in the following decomposition associated to an integral over Haar measure over $\U(n)$,
+    \begin{equation}
+        \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \tilde \chi_{\yx}(X)   \frac{P_{\yx}}{\Tr(P_{\yx})}.
+    \end{equation}
+    This normalization scheme means that $\tilde \pi_{\yx}(X)$ is \textit{not} a representation, while the character $\tilde \chi_{\yx}(X)$ satisfies
+    \begin{equation}
+        \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = \sum_{\yx \vdash k} \Tr[X^{\ot k} P_{\yx}] = \Tr[X^{\ot k}] = \Tr[X]^k.
+    \end{equation}
+    Therefore, whenever $X$ is positive semidefinite and trace one (i.e., when $X$ is a density matrix), we have that the map $\yx \mapsto \tilde \chi_{\yx}(X)$ is a probability distribution when restricted to the set of Young diagrams with a fixed number $k$ of boxes:
+    \begin{equation}
+        X\geq 0 \implies \tilde \chi_{\yx}(X) \geq 0, \qquad \text{and} \qquad \Tr(X) = 1 \implies \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = 1.
+    \end{equation}
+    As the (rescaled) character $\chi_{\yx}(X)$ depends only on the eigenvalues $\eig(X)$ of $X$, we have
+    \begin{equation}
+        \chi_{\yx}(X) = \chi_{\yx}(\diag(\eig(X)).
+    \end{equation}
+    Given a tuple of non-negative sorted eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$ summing to one, $\sum_{i=1}^{n}\ex_i = 1$, the distribution $\yx \mapsto \tilde \chi_{\yx}(\diag(\ex))$ over $\yx \vdash k$ is denoted $\mathrm{SW}^{k}(\ex)$ and called the \textit{Schur-Weyl} distribution in \cite{odonnell2016efficient}.
+\end{defn}
+
+\subsection{The binomial theorem}
+
+\subsection{Polynomial inequalities}
+
+\subsubsection{Horn's original problem}
+
+\subsubsection{The tetrahedral Horn problem}
+
+\subsection{Proofs of sufficiency}
+
+\subsubsection{Eigenvalue estimation \& separation}
+
+\begin{prop}[Eigenvalue estimation]
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
+    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    and
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
+\end{prop}
+\begin{prop}[Eigenvalue separation]
+    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
+    For any positive powers $p,q > 0$, we have
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\dim V_{\yx}^{n})^{p+q} \exp\left(-\abs{\yx} s^2\frac{pq}{2(p+q)}\right).
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
+    \begin{equation}
+        \tilde \chi_{\yx}(\nrm A)^p \leq (\dim V_{\yx}^{n})^p \exp( - \abs{\yx} p\kl{\nrm \yx}{\nrm \ea}).
+    \end{equation}
+    Furthermore, Pinsker's inequality yields
+    \begin{align}
+        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
+        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2}
+        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
+    \end{align}
+    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
+\end{proof}
+It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
+\begin{equation}
+    V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
+\end{equation}
+Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
+\begin{equation}
+    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
+\end{equation}
+The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
+\begin{prop}
+    Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
+    Then for $\yx \vdash k$,
+    \begin{align}
+        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+    \end{align}
+\end{prop}
+\begin{proof}
+    Given a measure $\mu(X)$ that is invariant under conjugation by $\U(n)$, the operator $\mathbb E_{X} [X^{\ot k}]$ is necessarily $\U(n)$ equivariant and thus decomposes as 
+    \begin{equation}
+        \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
+    \end{equation}
+    for some proportionality constants $h_{\yx}$.
+    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
+    Therefore,
+    \begin{align}
+        \mathbb E_{X} [\tilde \pi_{\yx}(X)]
+        = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
+        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
+    \end{align}
+\end{proof}
+
+\clearpage
+\section{Representation theory \& eigenvalue estimation}
+\label{sec:rep_theory}
+
+\subsection{Schur-Weyl duality \& eigenvalue estimation}
+
 
 \subsection{Littlewood-Richardson coefficients \& trigonal eigenvalues}
 \label{sec:lr_tri}
@@ -1577,141 +1722,7 @@ In other words, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, then no such
 
 \clearpage
 \subsection{Drafting: Reformulating the main results}
-TC: Here I'm reformulating everything with two objectives: (i) to invoke eigenvalue estimation as late as possible, and (ii) to \textit{discover} the ``$\Gamma$'' quantities I had defined in a more organic way.
-For example, the tri-gamma quantitity remerges as a summand in the binomial expansion theorem.
 
-\begin{defn}
-    Let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$.
-    Given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{(1)}^{n} \simeq \mathbb C^{n}$, we define $\pi_{\yx}(X)$ by the formula:
-    \begin{equation*}
-        \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}]}{\dim(W_{\yx})}
-    \end{equation*}
-    where $\iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{(1)}^{\ot \abs{\yx}}$ is the equivariant isometry for the $\yx$-isotypic subspace of $V_{(1)}^{\ot \abs{\yx}}$.
-    This definition ensures that $X^{\ot k} \simeq \bigoplus_{\yx \vdash k} \pi_{\yx}(X)^{\oplus W_{\yx}}$ holds for any positive integer $k$.
-    When $X$ is a unitary, $\pi_{\yx}(X)$ is the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is warranted.
-    If $X \geq 0$ is positive semidefinite, then $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
-    If $\yx = (1)$, then $\pi_{(1)}(X) = X$ as $\dim(W_{(1)}) = 1$.
-
-    Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
-    \begin{equation}
-        \pi_{\yx}(sX) = s^{\abs{\yx}} \pi_{\yx}(X).
-    \end{equation}
-    Additionally, if $X,Y$ are two matrices, we have
-    \begin{equation}
-        \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y). 
-    \end{equation}
-    The \textit{character} of $X$ satisfies
-    \begin{equation*}
-        \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot \abs{\yx}}]}{\dim(W_{\yx})} = s_{\yx}(\eig(X)),
-    \end{equation*}
-    where $s_{\yx}(\eig(X))$ is the corresponding Schur-polynomial evaluated on the eigenvalues of $X$.
-    For fixed positive integer $k$, we also define the \textit{Plancherel distribution} $\{\mu_\yx | \yx \vdash k\}$ over Young diagrams of size $k$ according to
-    \begin{equation}
-        \mu_\yx \coloneqq \frac{(\dim W_\yx)^2}{\abs{\yx}!}.
-    \end{equation}
-    Moreover, we define the rescaling of $\pi_{\yx}(X)$ to be
-    \begin{equation*}
-        \tilde \pi_{\yx}(X) \coloneqq \dim(W_{\yx}) \pi_{\yx}(X) = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot \abs{\yx}} \iota_{\yx}],
-    \end{equation*}
-    and the corresponding rescaled character is
-    \begin{equation*}
-        \tilde \chi_\yx(X) \coloneqq \Tr[\tilde \pi_{\yx}(X)] = \Tr[P_{\yx} X^{\ot \abs{\yx}}] = \dim(W_{\yx})s_{\yx}(\eig(X)),
-    \end{equation*}
-    where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace.
-
-    These rescaled characters emerge as coefficients in the following decomposition associated to an integral over Haar measure over $\U(n)$,
-    \begin{equation}
-        \int_{\U(n)} \diff U (U X U^{-1})^{\ot k} = \sum_{\lambda \vdash k} \tilde \chi_{\yx}(X)   \frac{P_{\yx}}{\Tr(P_{\yx})}.
-    \end{equation}
-    This normalization scheme means that $\tilde \pi_{\yx}(X)$ is \textit{not} a representation, while the character $\tilde \chi_{\yx}(X)$ satisfies
-    \begin{equation}
-        \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = \sum_{\yx \vdash k} \Tr[X^{\ot k} P_{\yx}] = \Tr[X^{\ot k}] = \Tr[X]^k.
-    \end{equation}
-    Therefore, whenever $X$ is positive semidefinite and trace one (i.e., when $X$ is a density matrix), we have that the map $\yx \mapsto \tilde \chi_{\yx}(X)$ is a probability distribution when restricted to the set of Young diagrams with a fixed number $k$ of boxes:
-    \begin{equation}
-        X\geq 0 \implies \tilde \chi_{\yx}(X) \geq 0, \qquad \text{and} \qquad \Tr(X) = 1 \implies \sum_{\yx \vdash k} \tilde \chi_{\yx}(X) = 1.
-    \end{equation}
-    As the (rescaled) character $\chi_{\yx}(X)$ depends only on the eigenvalues $\eig(X)$ of $X$, we have
-    \begin{equation}
-        \chi_{\yx}(X) = \chi_{\yx}(\diag(\eig(X)).
-    \end{equation}
-    Given a tuple of non-negative sorted eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$ summing to one, $\sum_{i=1}^{n}\ex_i = 1$, the distribution $\yx \mapsto \tilde \chi_{\yx}(\diag(\ex))$ over $\yx \vdash k$ is denoted $\mathrm{SW}^{k}(\ex)$ and called the \textit{Schur-Weyl} distribution in \cite{odonnell2016efficient}.
-\end{defn}
-\begin{prop}[Eigenvalue estimation]
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
-    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    and
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
-\end{prop}
-%\begin{rem}
-%    We will use the eigenvalue estimation bounds in two essentially related ways.
-%    Let $N^{k}_{\varepsilon}(\nrm \ex)$ denote the set of Young diagrams $\yx$ of size $k$ which are close to the normalized eigenvalues $\nrm \ex$:
-%    \begin{equation}
-%        N^{k}_{\varepsilon}(\nrm \ex) \coloneqq \{ \yx \vdash k \mid \kl{\nrm \yx}{\nrm \ex} < \varepsilon \}.
-%    \end{equation}
-%    Then we have a lower bound,
-%    \begin{equation}
-%        \yx \in N^{k}_{\varepsilon}(\nrm \ex) \implies \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(- k \varepsilon).
-%    \end{equation}
-%\end{rem}
-\begin{prop}[Eigenvalue separation]
-    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
-    For any positive powers $p,q > 0$, we have
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\dim V_{\yx}^{n})^{p+q} \exp\left(-\abs{\yx} s^2\frac{pq}{2(p+q)}\right).
-    \end{equation}
-\end{prop}
-\begin{proof}
-    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p \leq (\dim V_{\yx}^{n})^p \exp( - \abs{\yx} p\kl{\nrm \yx}{\nrm \ea}).
-    \end{equation}
-    Furthermore, Pinsker's inequality yields
-    \begin{align}
-        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
-        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2}
-        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
-    \end{align}
-    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
-\end{proof}
-It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
-\begin{equation}
-    V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
-\end{equation}
-Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
-\begin{equation}
-    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
-\end{equation}
-The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
-\begin{prop}
-    Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
-    Then for $\yx \vdash k$,
-    \begin{align}
-        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
-\end{prop}
-\begin{proof}
-    Given a measure $\mu(X)$ that is invariant under conjugation by $\U(n)$, the operator $\mathbb E_{X} [X^{\ot k}]$ is necessarily $\U(n)$ equivariant and thus decomposes as 
-    \begin{equation}
-        \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
-    \end{equation}
-    for some proportionality constants $h_{\yx}$.
-    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
-    Therefore,
-    \begin{align}
-        \mathbb E_{X} [\tilde \pi_{\yx}(X)]
-        = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot \abs{\yx}}] \iota_{\yx}]
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
-\end{proof}
 \begin{thm}[Binomial theorem] 
     Let $A,B$ be $n \times n$ matrices.
     Then
