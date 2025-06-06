@@ -557,9 +557,9 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     The shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
 \end{prop}
 \begin{proof}
-    Given a Hermitian matrix $X$ with eigenvalues $\eig(X) = \ex$ and a constant $x \in \mathbb R$, the eigenvalues of $X+xI$ (where $I$ is the identity matrix) are
+    Given a Hermitian matrix $X$ with eigenvalues $\eig(X) = \ex$ and a constant $w \in \mathbb R$, the eigenvalues of $X+wI$ (where $I$ is the identity matrix) are
     \begin{equation}
-        \eig(X+xI) = \ex + x = (\ex_1 + x \geq \cdots \geq \ex_d + x).
+        \eig(X+wI) = \ex + w = (\ex_1 + w \geq \cdots \geq \ex_d + w).
     \end{equation}
     The statement then follows because
     \begin{equation}
@@ -2127,8 +2127,8 @@ The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$
         \end{equation}
     \end{cor}
     \begin{thm}
-        Let $(\ea,\eb,\ec)$ be candidate positive semidefinite eigenvalues $\etr{\ec}=\etr{\ea}+\etr{\eb}$.
-        If there exists positive semidefinite matrices $A,B,C \geq 0$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $C=A+B$, then for all Young diagrams $\yc$, we have
+        Let $(\ea,\eb,\ec)$ be candidate positive semidefinite eigenvalues satisfying $\etr{\ec}=\etr{\ea}+\etr{\eb}$.
+        If there exists positive semidefinite matrices $A,B,C \geq 0$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, then for all Young diagrams $\yc$, we have
         \begin{equation}
             \label{eq:polynomial_horn_ineq}
             \varphi_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(\ea)\varphi_{\yb}(\eb).
@@ -2511,8 +2511,30 @@ When \cref{thm:wk_lower,thm:wk_upper} are taken together, one concludes that if 
     \begin{align}
         &\varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D) R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2 = \mathbb E_{A,B,D}Q\sixjargs \leq \mathbb E_{A,B,D}\abs{Q\sixjargs}\\
         &\quad\leq \mathbb E_{A,B,D} \left(\varphi_{\ya}(A)\varphi_{\yb}(B)\varphi_{\yd}(D)\varphi_{\ya}(A)\varphi_{\yf}(B+D)\varphi_{\yc}(A+B)\varphi_{\yd}(D)\right)^{\frac{1}{3}} \\
-        &\quad= \varphi_{\ya}(A)^{\frac{2}{3}}\varphi_{\ya}(D)^{\frac{2}{3}}\varphi_{\yb}(B)^{\frac{1}{3}} \mathbb E_{A,B,D} \left(\varphi_{\yf}(B+D)^{\frac{1}{3}}\varphi_{\yc}(A+B)^{\frac{1}{3}}\right) \\
+        &\quad= \varphi_{\ya}(A)^{\frac{2}{3}}\varphi_{\ya}(D)^{\frac{2}{3}}\varphi_{\yb}(B)^{\frac{1}{3}} \mathbb E_{A,B,D} \left(\varphi_{\yf}(B+D)^{\frac{1}{3}}\varphi_{\yc}(A+B)^{\frac{1}{3}}\right)
     \end{align}
+    \begin{thm}
+        \begin{equation}
+            \varphi_{\yb}(B)\varphi_{\yn}(A+D) \leq \sum_{(\ya,\yd,\yc,\yf) \in S_{\yb,\yn}} \sqrt{\varphi_{\ya}(A)\varphi_{\yf}(B+D)\varphi_{\yc}(A+B)\varphi_{\yd}(D)}
+        \end{equation}
+        where 
+        \begin{equation}
+            S_{\yb,\yn} \coloneqq \{(\ya,\yd,\yc,\yf) | P^{\yf}_{\yb\yd} P^{\eta}_{\ya\yd} P^{\yc}_{\ya\yb} \neq 0 \}. \\
+        \end{equation}
+    \end{thm}
+    \begin{proof}
+        Fix Young diagrams $\ya,\yb,$ and $\yd$, and let $\Sigma$ be the operator on $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$ defined by
+        \begin{align}
+            \Sigma \coloneqq \Phi_{\ya}(A) \ot \Phi_{\yb}(B) \ot \Phi_{\yd}(D).
+        \end{align}
+        Then an application of the Cauchy-Schwarz inequality produces
+        \begin{align}
+            \abs{\Tr(P^{\eta}_{\ya\yd} P^{\yc}_{\ya\yb} \Sigma P^{\yf}_{\yb\yd} P^{\eta}_{\ya\yd})}^2
+            &\leq \Tr(P^{\eta}_{\ya\yd} P^{\yc}_{\ya\yb} \Sigma P^{\yc}_{\ya\yb} P^{\eta}_{\ya\yd})\Tr(P^{\eta}_{\ya\yd} P^{\yf}_{\yb\yd} \Sigma P^{\yf}_{\yb\yd} P^{\eta}_{\ya\yd}) \\
+            &\leq \Tr(P^{\yc}_{\ya\yb} \Sigma P^{\yc}_{\ya\yb})\Tr(P^{\yf}_{\yb\yd} \Sigma P^{\yf}_{\yb\yd}) \\
+            &\leq \varphi_{\ya}(A)\varphi_{\yf}(B+D)\varphi_{\yc}(A+B)\varphi_{\yd}(D)
+        \end{align}
+    \end{proof}
     \begin{align}
         \varphi_{\ya}(A)^{\frac{1}{3}}\varphi_{\yb}(B)^{\frac{2}{3}}\varphi_{\yd}(D)^{\frac{1}{3}} R^{\ye,n}_{\ya,\yb,\yd}\norm{\abcdefsymbol}_2^2
         \leq \mathbb E_{A,B,D} \left(\varphi_{\yf}(B+D)^{\frac{1}{3}}\varphi_{\yc}(A+B)^{\frac{1}{3}}\right)
@@ -3265,8 +3287,8 @@ To begin, we provide an example of a non-linear inequality constraining tetrahed
 
 In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
 These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$.
-The core idea is to consider the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ on $n\times n$ Hermitian matrices and the induced Hilbert-Schmidt norm $\norm{X} = \sqrt{\braket{X,X}}$.
-For any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X} = \norm{\ex}_2 = \left(\sum_{j=1}^{n} {\ex_j}^2\right)^{\frac{1}{2}}$.
+These results rely on the observation that the real vector space of $n \times n$ Hermitian matrices equipped with the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ has norm $\norm{X}_2 = \sqrt{\braket{X,X}}$ which is a function of the \textit{eigenvalues} of $X$.
+Specifically, for any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X}_2 = \norm{\ex}_2 = \left(\sum_{j=1}^{n} {\ex_j}^2\right)^{\frac{1}{2}}$.
 Recall that the four vertices of the tetrahedron of Hermitian matrices are
 \begin{equation}
     V_0 = 0, \qquad V_1 = A, \qquad V_2 = A+B = C, \qquad V_3 = A+B+D = E.
@@ -3409,7 +3431,7 @@ Unfortunately, these generalized matrix functions and generally not invariant un
     Then
     \begin{equation}
         \label{eq:schur_ineq}
-        s_{\ex}(\eig(A+B+C)) + s_{\ex}(\eig(B)) \geq s_{\ex}(\eig(A+B)) + s_{\ex}(\eig(B+C)).
+        s_{\yx}(\eig(A+B+C)) + s_{\yx}(\eig(B)) \geq s_{\yx}(\eig(A+B)) + s_{\yx}(\eig(B+C)).
     \end{equation}
 \end{cor}
 \begin{proof}
