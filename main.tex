@@ -783,6 +783,7 @@ The following result, know as spectrum or eigenvalue estimation, states that the
 \end{defn}
 
 \subsection{The binomial theorem}
+\label{sec:binomial_theorem}
 
 The purpose of this section is to state and prove a the binomial theorem, which serves as the foundation for all subsequent results in this paper.
 The binomial theorem expresses any polynomial irreducible representation of a matrix sum $X+Y$ as a sum over the polynomial irreducible representations of the summands $X$ and $Y$.
@@ -882,18 +883,9 @@ Before stating the main result of this section, we first generalize the quantiti
     \end{equation}
 \end{rem}
 
-\begin{rem}
-    From the definition of $\varphi^{\ya\yb}_{\yc}(X,Y)$, one concludes that for all $\ya,\yb$:
-    \begin{equation}
-        \varphi_{\ya}(X)\varphi_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \varphi^{\ya\yb}_{\yc}(X,Y),
-    \end{equation}
-    where the sum is over all $\yc$ such that $\syc = \sya + \syb$.
-    However, an analogous identity for the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ does not immediately follow because the tensor product $\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)$ is not necessarily block diagonalizable into $\yc$-isotypic subspaces.
-\end{rem}
-
-
 With these definitions in place, we are in a position to state the main result of this section.
 \begin{thm}[Binomial theorem]
+    \label{thm:binomial}
     For all $n\times n$ matrices $X,Y$, and all Young diagrams $\yc$,
     \begin{equation}
         \Phi_{\yc}(X+Y) = \sum_{\ya,\yb} \Phi^{\ya\yb}_{\yc}(X,Y),
@@ -904,30 +896,70 @@ With these definitions in place, we are in a position to state the main result o
     See preceding discussion.
 \end{proof}
 
+\begin{cor}
+    \label{cor:bisummation}
+    Let $X,Y$ be $n\times n$ matrices. Then the following identities hold:
+    \begin{align}
+        \forall \ya,\yb : \quad \sum_{\yc} \varphi^{\ya\yb}_{\yc}(X,Y) &= \varphi_{\ya}(X)\varphi_{\yb}(Y), \\
+        \forall \yc : \quad \sum_{\ya,\yb} \varphi^{\ya\yb}_{\yc}(X,Y) &= \varphi_{\yc}(X+Y).
+    \end{align}
+\end{cor}
+\begin{proof}
+    The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:binomial}.
+    For the second identity, involving a summation over $\yc$, follows from the resolution of the identity $\sum_{\yc \vdash \sya+\syb} P^{\yc}_{\ya\yb} = \id_{V_{\ya}^{n}\ot V_{\yb}^{n}}$:
+    \begin{equation}
+        \varphi_{\ya}(X)\varphi_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \varphi^{\ya\yb}_{\yc}(X,Y),
+    \end{equation}
+    where the last equality is just the definition of $\varphi^{\ya\yb}_{\yc}(X,Y)$. 
+    Once again, the condition that $\syc = \sya + \syb$ is implicitly present.
+\end{proof}
+
+\begin{rem}
+    One might consider what happens to the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ when one sums over $\yc$ instead of $(\ya,\yb)$.
+    However, an analogous identity concerning a sum over $\yc$ of the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ does not immediately follow because the tensor product $\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)$ is not necessarily block diagonalizable into $\yc$-isotypic subspaces in any obvious way.
+    One exception occurs when $X = Y$, in which case,
+    \begin{equation}
+        \pi_{\ya}(X) \ot \pi_{\yb}(X)
+        = \sum_{\yc} \iota_{\ya\yb}^{\yc} (\pi_{\yc}(X) \ot \id_{C^{\yc}_{\ya\yb}}) \iota_{\ya\yb}^{\yc;\dagger},
+    \end{equation}
+    which is the operator version of the character product formula $\chi_{\ya}(X)\chi_{\yb}(X) = \sum_{\yc} c^{\yc}_{\ya\yb} \chi_{\yc}(X)$.
+\end{rem}
+
 \subsection{Polynomial inequalities}
 
 \subsubsection{Horn's original problem}
 
+In \cref{sec:binomial_theorem} we introduced to the quantity $\varphi^{\ya\yb}_{\yc}(X,Y)$ and saw in \cref{cor:bisummation} that it satisfied two summation identities.
+Under the assumption that the matrices $X$, and $Y$ are positive semidefinite, we can conclude that $\varphi^{\ya\yb}_{\yc}(X,Y)$ is non-negative.
+This observation implies the following upper bounds on $\varphi^{\ya\yb}_{\yc}(X,Y)$.
+
 \begin{lem}
+    \label{lem:XY_marginal_upper_bounds}
     Let $X, Y \geq 0$ be positive semidefinite $n\times n$ matrices.
     For all Young diagrams $(\ya,\yb,\yc)$, we have the inequality
     \begin{align}
         \varphi^{\ya\yb}_{\yc}(X,Y) &\leq \min\{ \varphi_{\ya}(X)\varphi_{\yb}(Y), \varphi_{\yc}(X + Y) \}.
     \end{align}
 \end{lem}
+\begin{proof}
+    The claim follows directly from \cref{cor:bisummation} provided $\varphi^{\ya\yb}_{\yc}(X,Y) \geq 0$.
+    However, this follows because $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ and $P^{\yc}_{\ya\yb} \geq 0$ (it is a projection operator) and $\Phi_{\ya}(X), \Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
+\end{proof}
+
 \begin{cor}
     Let $X, Y \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then for all Young diagrams $\yc$, 
-    \begin{equation}
-        \varphi_{\yc}(X+Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\ya}(X)\varphi_{\yb}(Y).
-    \end{equation}
-    Similarly, for all Young diagrams $\ya$ and $\yb$,
-    \begin{equation}
-        \varphi_{\ya}(X)\varphi_{\yb}(Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\yc}(X+Y).
-    \end{equation}
+    Then the following inequalities hold:
+    \begin{align}
+        \forall \ya,\yb : \quad \varphi_{\ya}(X)\varphi_{\yb}(Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\yc}(X+Y), \\
+        \forall \yc : \quad \varphi_{\yc}(X+Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\ya}(X)\varphi_{\yb}(Y).
+    \end{align}
 \end{cor}
+\begin{proof}
+    The claim follows by applying upper bounds from \cref{lem:XY_marginal_upper_bounds} to the summations in \cref{cor:bisummation} being careful to note that if $c^{\yc}_{\ya\yb} = 0$, then $\varphi^{\ya\yb}_{\yc}(X,Y) = 0$ and one only needs to consider the cases where $c^{\yc}_{\ya\yb} \neq 0$.
+\end{proof}
 
 \subsubsection{The tetrahedral Horn problem}
+
 
 \begin{defn}
     Let $X,Y,Z$ be $n\times n$ matrices.
@@ -942,19 +974,31 @@ However, there are numerous cases where $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$
 The following two propositions capture the essential properties of the quantity $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$.
 The first proposition describes various summation identities, while the second captures describes various inequalities.
 \begin{prop}
-    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then
+    Let $X,Y,Z$ be $n\times n$ matrices.
+    Then the following summation identities hold:
     \begin{align}
-        \sum_{\yc\ye\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) \\
-        \sum_{\ye\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi^{\ya\yb}_{\yc}(X,Y)\varphi_{\yd}(Z) \\
+        \forall \ya,\yb,\yd : \qquad \sum_{\yc,\ye,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+        &= \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z), \\
+        \forall \ya,\yb,\yd,\yf : \qquad \sum_{\yc, \ye}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+        &= \varphi_{\ya}(X)\varphi^{\yb\yd}_{\yf}(Y,Z), \\
+        \forall \ya,\yb,\yd,\yc : \qquad \sum_{\ye, \yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+        &= \varphi^{\ya\yb}_{\yc}(X,Y)\varphi_{\yd}(Z), \\
+        \forall \ya,\yb,\yd,\ye : \qquad \sum_{\yc,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+        &= \varphi^{\ya\yb\yd}_{\ye}(X, Y, Z).
     \end{align}
 \end{prop}
+\begin{thm}
+    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then for all sextuples of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$,
+    \begin{equation}
+        \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
+        \left(\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\varphi_{\ye}(X+Y+Z)\right)^{\frac{1}{3}}
+    \end{equation}
+\end{thm}
 
 \begin{thm}
-    Let $X,Y,Z \geq 0$ be positive semidefniite $n\times n$ matrices.
-    Then for all triples of Young digrams $(\ya,\yb,\ed)$,
+    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then for all triples of Young digrams $(\ya,\yb,\yd)$,
     \begin{equation}
         \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z)
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
@@ -962,7 +1006,13 @@ The first proposition describes various summation identities, while the second c
     \end{equation}
 \end{thm}
 \begin{thm}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of $n \times n$ Her
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$,
+    then for all triples of Young digrams $(\ya,\yb,\yd)$,
+    \begin{equation}
+        \varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d)
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
+        \left(\varphi_{\ya}(a)\varphi_{\yf}(f)\varphi_{\yc}(c)\varphi_{\yd}(d)\varphi_{\ye}(e)\right)^{\frac{1}{3}}
+    \end{equation}
 \end{thm}
 
 \subsection{Proofs of sufficiency}
