@@ -969,120 +969,301 @@ This observation implies the following upper bounds on $\varphi^{\ya\yb}_{\yc}(X
     \end{equation}
 \end{defn}
 Remark that in our definition of $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$, we permit the sizes of the involved Young diagrams to be arbitrary.
-However, there are numerous cases where $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ is zero automatically; for example if $(\ya,\yb,\yc,\yd,\ye,\yf)$  whenever
+However, there are numerous conditions on the sizes of the Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ which are necessary (but not always sufficient) for $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ to be non-zero; specifically,
+\begin{equation}
+    \label{eq:yd_sizes_tet}
+    \sya + \syb = \syc, \qquad \syb + \syd = \syf, \qquad \sya + \syf = \sye, \qquad \syc + \syd = \sye.
+\end{equation}
 
-The following two propositions capture the essential properties of the quantity $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$.
-The first proposition describes various summation identities, while the second captures describes various inequalities.
+Moreover, even under the assumption that $X,Y,Z \geq 0$ are positive semidefinite, unlike the quantitity $\varphi^{\ya\yb}_{\yc}(X,Y)$, the quantity $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ is not necessarily nonnegative or even real valued.
+This is because the projection operators $P^{\yc}_{\ya\yb}$ and $P^{\yf}_{\yb\yd}$ do not necessarily commute with each other in the sense that for some values of $\ya,\yb,\yd,\yc,$ and $\yf$, one observes
+\begin{equation}
+    [P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}, \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}] \neq 0.
+\end{equation}
+Nevertheless, the projection operators $P^{\yc}_{\ya\yb}$ and $P^{\yf}_{\yb\yd}$ each respectively commute with $P^{\ye}_{\ya\yb\yd}$ in the sense that for all $\ya,\yb,\yc,\yd,\ye,$ and $\yf$,
+\begin{equation}
+    [P^{\ye}_{\ya\yb\yd}, P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}] = 0, \qquad
+    [P^{\ye}_{\ya\yb\yd}, \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}] = 0.
+\end{equation}
+Therefore, can can define Hermitian projection operators $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ by
+\begin{align}
+    \label{eq:double_projs}
+    \Pi_{\ya\yb\yd}^{\ye;\yc} \coloneqq P^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}), \qquad
+    \Pi_{\ya\yb\yd}^{\ye;\yf} \coloneqq P^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}).
+\end{align}
+If we additionally let $\Omega_{\ya\yb\yd}^{X,Y,Z} \coloneqq\Phi_{\ya}(X)\ot\Phi_{\yb}(Y)\ot\Phi_{\yd}(Z)$, then we can compactly express $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ as
+\begin{equation}
+    \label{eq:varphi_compact_tet}
+    \varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}].
+\end{equation}
+Moreover we denote parital sums of $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $\yc$ and $\yf$ respectively as
+\begin{align}
+    \varphi^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) &\coloneqq \sum_{\yc}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\yc\yd} (\Phi^{\ya\yb}_{\yc}(X,Y) \ot \Phi_{\yd}(Z))], \\
+    \varphi^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z) &\coloneqq \sum_{\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))],
+\end{align}
+where the sum over $\yc$ is implicitly such that $\syc = \sya + \syb$ and the sum over $\yf$ is implicitly such that $\syf = \syb + \syd$.
+Although $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ is not necessarily real or positive, the above expression makes it evident that
+\begin{equation}
+    \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) \geq 0, \qquad \varphi^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z) \geq 0.
+\end{equation}
+
+We summarize all of the summation identities satisfied by $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ in the following diagram:
+\ctikzfig{tikz/final/partial_sums}%
+%\begin{align}
+%    \forall \ya,\yb,\yd : \qquad \sum_{\yc,\ye,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+%    &= \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z), \\
+%    \forall \ya,\yb,\yd,\yf : \qquad \sum_{\yc, \ye}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+%    &= \varphi_{\ya}(X)\varphi^{\yb\yd}_{\yf}(Y,Z), \\
+%    \forall \ya,\yb,\yd,\yc : \qquad \sum_{\ye, \yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+%    &= \varphi^{\ya\yb}_{\yc}(X,Y)\varphi_{\yd}(Z), \\
+%    \forall \ya,\yb,\yd,\ye : \qquad \sum_{\yc,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+%    &= \varphi^{\ya\yb\yd}_{\ye}(X, Y, Z).
+%\end{align}
+
+The next series of results concerns upper bounds on the absolute value of $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$.
+These upper bounds follow from the following general lemma applied to the compact expression for $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ appearing in \cref{eq:varphi_compact_tet}.
+\begin{lem}
+    \label{lem:cs_ineq_double_proj}
+    Let $\Omega \geq 0$ be a positive semidefinite operator and let $\Pi_1, \Pi_2$ be Hermitian projection operators acting on a common vector space.
+    Then
+    \begin{equation}
+        \abs{\Tr(\Pi_1\Pi_2\Omega)} \leq \norm{\Pi_1\Pi_2}_{\infty} \Tr(\Pi_1\Omega)^{\frac{1}{2}}\Tr(\Pi_2\Omega)^{\frac{1}{2}}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    As $\Omega \geq 0$ is positive semidefinite, let $\Omega^{\frac{1}{2}} \geq 0$ denote its square root. 
+    Then let $L = \Pi_1\Pi_2\Omega^{\frac{1}{2}}$ and $R = \Pi_1\Omega^{\frac{1}{2}}$ so that
+    \begin{equation}
+        \braket{L,R} = \Tr(L^{\dagger} R) = \Tr(\Pi_1\Pi_2\Omega\Pi_1) = \Tr(\Pi_1\Pi_2\Omega),
+    \end{equation}
+    where the last equality uses the assumption that $\Pi_1^2 = \Pi_1$.
+    An application of the Cauchy-Schwarz inequality for the Hilbert-Schmidt inner product $\braket{L,R}$ then implies
+    \begin{equation}
+        \abs{\Tr(\Pi_1\Pi_2\Omega)}^2 = \abs{\braket{L,R}}^2 \leq \Tr[L^{\dagger}L]\Tr[R^{\dagger}R] = \Tr[\Pi_1\Pi_2\Omega\Pi_2\Pi_1]\Tr[\Pi_1\Omega\Pi_1] = \Tr[\Pi_1\Pi_2\Omega\Pi_2]\Tr[\Pi_1\Omega].
+    \end{equation}
+    Now let $\{ v_j \}_{j}$ be an orthonormal eigenbasis for $\Pi_2\Omega\Pi_2$ with eigenvalue $\omega_j \geq 0$.
+    Then, because it was assumed that $\Pi_2^{2} = \Pi_2$, we have
+    \begin{equation}
+        \Tr[\Pi_1\Pi_2\Omega\Pi_2] = \Tr[(\Pi_2\Pi_1^2\Pi_2)(\Pi_2\Omega\Pi_2)] = \sum_{j} \omega_j \braket{\Pi_1\Pi_2 v_j,\Pi_1\Pi_2v_j} \leq \sum_{j} \omega_j \norm{\Pi_1\Pi_2}_{\infty}^{2} = \Tr[\Pi_2\Omega]\norm{\Pi_1\Pi_2}_{\infty}^{2}.
+    \end{equation}
+    The claim then follows from combining these inequalities and taking the square root of both sides.
+\end{proof}
+In preparation of applying \cref{lem:cs_ineq_double_proj}, we observe the following.
 \begin{prop}
-    Let $X,Y,Z$ be $n\times n$ matrices.
-    Then the following summation identities hold:
-    \begin{align}
-        \forall \ya,\yb,\yd : \qquad \sum_{\yc,\ye,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z), \\
-        \forall \ya,\yb,\yd,\yf : \qquad \sum_{\yc, \ye}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi_{\ya}(X)\varphi^{\yb\yd}_{\yf}(Y,Z), \\
-        \forall \ya,\yb,\yd,\yc : \qquad \sum_{\ye, \yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi^{\ya\yb}_{\yc}(X,Y)\varphi_{\yd}(Z), \\
-        \forall \ya,\yb,\yd,\ye : \qquad \sum_{\yc,\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
-        &= \varphi^{\ya\yb\yd}_{\ye}(X, Y, Z).
-    \end{align}
+    \label{prop:6j_norm_double_proj}
+    For any sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$,
+    \begin{equation}
+        \norm{\abcdefsymbol}_{\infty} = \norm{\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}}_{\infty},
+    \end{equation}
+    where $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ defined in \cref{eq:double_projs}.
 \end{prop}
 \begin{thm}
+    \label{thm:varphi_tet_main_ineq}
     Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then for all sextuples of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$,
     \begin{equation}
-        \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
-        \left(\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\varphi_{\ye}(X+Y+Z)\right)^{\frac{1}{3}}
+        \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)^{\frac{1}{2}} \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)^{\frac{1}{2}}.
     \end{equation}
 \end{thm}
-
-\begin{thm}
+\begin{proof}
+    Under the assumption that $X,Y,Z \geq 0$, we have that $\Omega_{\ya\yb\yd}^{X,Y,Z} = \Phi_{\ya}(X)\ot\Phi_{\yb}(Y)\ot\Phi_{\yd}(Z) \geq 0$ is positive semidefinite also.
+    Now applying \cref{lem:cs_ineq_double_proj} to the compact expression for $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ in \cref{eq:varphi_compact_tet} yields
+    \begin{equation}
+        \abs{\Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]}
+        \leq \norm{\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}}_{\infty} \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}\Tr[\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}
+    \end{equation}
+    which is equivalent to the claim due to \cref{prop:6j_norm_double_proj}.
+\end{proof}
+\begin{cor}
+    \label{cor:tet_eigenvalue_min}
     Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then for all triples of Young digrams $(\ya,\yb,\yd)$,
     \begin{equation}
         \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z)
-        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
-        \left(\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\varphi_{\ye}(X+Y+Z)\right)^{\frac{1}{3}}
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
+        \min\{\left(\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\right)^{\frac{1}{2}}, \varphi_{\ye}(X+Y+Z) \}
     \end{equation}
-\end{thm}
-\begin{thm}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$,
-    then for all triples of Young digrams $(\ya,\yb,\yd)$,
+\end{cor}
+\begin{proof}
+    The claim follows by summing the inequality in \cref{thm:varphi_tet_main_ineq} over triples $(\yc,\ye,\yf)$ and relaxing both the sides of the resulting inequality. 
+    For the lower bound, we have $\varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) = \sum_{\yc\ye\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ which implies
     \begin{equation}
-        \varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d)
-        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}^{\frac{1}{2}} 
-        \left(\varphi_{\ya}(a)\varphi_{\yf}(f)\varphi_{\yc}(c)\varphi_{\yd}(d)\varphi_{\ye}(e)\right)^{\frac{1}{3}}
+        \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) \leq \sum_{\yc\ye\yf} \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
     \end{equation}
-\end{thm}
+    Now for the upper bound, we have 
+    (i) $\varphi_{\ya}(X)\varphi_{\yf}(Y+Z) = \sum_{\ye\yb\yd} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ which implies
+    \begin{equation}
+        \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) \leq \varphi_{\ya}(X)\varphi_{\yf}(Y+Z),
+    \end{equation}
+    (ii) $\varphi_{\yc}(X+Y)\varphi_{\yd}(Z) = \sum_{\ye\ya\yb} \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ which implies
+    \begin{equation}
+        \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \varphi_{\yc}(X+Y)\varphi_{\yd}(Z),
+    \end{equation}
+    and (iii) $\varphi_{\ye}(X+Y+Z) = \sum_{\ya\yb\yd} \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)$ which implies
+    \begin{equation}
+        \max\{\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z), \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\} \leq \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \varphi_{\ye}(X+Y+Z),
+    \end{equation}
+    Combining (i), (ii) and (iii),
+    \begin{equation}
+        \label{eq:tet_eigenvalue_min}
+        \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \min\{\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z),\varphi_{\ye}(X+Y+Z)^2\},
+    \end{equation}
+    which then yields the claim.
+\end{proof}
+\begin{cor}
+    \label{cor:tet_eigenvalue_cubic}
+    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then for all triples of Young digrams $(\ya,\yb,\yd)$,
+    \begin{equation}
+        \varphi_{\ya}(X)^{\frac{2}{3}}\varphi_{\yb}(Y)\varphi_{\yd}(Z)^{\frac{2}{3}}
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} \varphi_{\yf}(Y+Z)^{\frac{1}{3}}\varphi_{\yc}(X+Y)^{\frac{1}{3}}\varphi_{\ye}(X+Y+Z)^{\frac{1}{3}}.
+    \end{equation}
+\end{cor}
+\begin{proof}
+    The proof is analogous to \cref{cor:tet_eigenvalue_cubic}, except where we supplant \cref{eq:tet_eigenvalue_min} with the inequality
+    \begin{equation}
+        \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \left[\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\right]^{p}\varphi_{\ye}(X+Y+Z)^{2(1-p)},
+    \end{equation}
+    which holds for any $p \in [0,1]$.
+    The claim corresponds to the choice $p = \frac{2}{3}$ which makes the exponents match.
+\end{proof}
+
+
+\subsection{Random matrices}
+
+\begin{lem}
+    \label{lem:random_matrices_tet}
+    Let $(x,y,z)$ be a triple of positive semidefinite eigenvalues of $n \times n$ matrices and let $X \sim \mathcal O_{x}, Y \sim \mathcal O_{y},$ and $Z \sim \mathcal O_{z}$ be random positive semidefinite matrices distributed independently and Haar-uniformly in their respective coadjoint orbits.
+    Then
+    \begin{equation} 
+        \expect_{X \sim \mathcal O_{x}} \expect_{Y \sim \mathcal O_{y}} \expect_{Z \sim \mathcal O_{z}} \frac{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}{\dim V_{\ye}^{n}} = \norm{\abcdefsymbol}_{2}^{2} \frac{\varphi_{\ya}(x)}{\dim V_{\ya}^{n}}\frac{\varphi_{\yb}(y)}{\dim V_{\yb}^{n}}\frac{\varphi_{\yd}(z)}{\dim V_{\yd}^{n}}.
+    \end{equation}
+\end{lem}
 
 \subsection{Proofs of sufficiency}
 
+\begin{thm}
+    \label{thm:nec_suff_tet}
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$,
+    then for all triples of Young digrams $(\ya,\yb,\yd)$,
+    \begin{equation}
+        \label{eq:nec_suff_tet}
+        \varphi_{\ya}(a)^{\frac{2}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{2}{3}}
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
+        \varphi_{\yf}(f)^{\frac{1}{3}}\varphi_{\yc}(c)^{\frac{1}{3}}\varphi_{\ye}(e)^{\frac{1}{3}}.
+    \end{equation}
+    Moreover, if $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfies the trace conditions and \cref{eq:nec_suff_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then
+    \begin{equation}
+        D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq \min \max\{ \norm{}_1, \norm{}_1, \norm{}_1 \}
+    \end{equation}
+\end{thm}
+\begin{proof}
+    The necessity of \cref{eq:nec_suff_tet} is simply a restatement of \cref{cor:tet_eigenvalue_cubic} under the identification $A = X, B = Y,$ and $D = Z$.
+    All that remains therefore is to prove the distance bound for the case where \cref{eq:nec_suff_tet} is satisfied for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$.
+    If a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ happens to satisfy \cref{eq:nec_suff_tet} for a particular triple of Young diagrams $(\ya,\yb,\yd)$, then multiplying both sides of \cref{eq:nec_suff_tet} by $\varphi_{\ya}(a)^{\frac{4}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{4}{3}}$ yields
+    \begin{equation}
+        (\varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d))^2
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
+        \varphi_{\ya}(a)^{\frac{4}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{4}{3}} \varphi_{\yf}(f)^{\frac{1}{3}}\varphi_{\yc}(c)^{\frac{1}{3}}\varphi_{\ye}(e)^{\frac{1}{3}}.
+    \end{equation}
+    Now we intend to sum this expression over all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$.
+    For convenience, let $W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ denote the corresponding sum of the right-hand side:
+    \begin{equation}
+        W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}
+        \coloneqq \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \norm{\abcdefsymbol}_{\infty} 
+        \varphi_{\ya}(a)^{\frac{4}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{4}{3}} \varphi_{\yf}(f)^{\frac{1}{3}}\varphi_{\yc}(c)^{\frac{1}{3}}\varphi_{\ye}(e)^{\frac{1}{3}}.
+    \end{equation}
+    Here we have used the fact that $\norm{\abcdefsymbol}_{\infty}$ is only non-zero if $\sya + \syb + \syd = \sye = k$.
+    Now we remark that summing over $\varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d)$ yields
+    \begin{equation}
+        \sum_{\substack{\ya,\yb,\yd \\\sya + \syb + \syd = k}} \varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d) = \frac{\tee^k}{k!}
+    \end{equation}
+    since we explicitly assumed the trace conditions held, i.e., $\tee = \tea + \teb + \ted$.
+    Therefore, if $\Lambda_k^{(a,b,d)}$ denotes the number of triples $(\ya,\yb,\yd)$ such that $\varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d) \neq 0$, then standard moment inequalities produce:
+    \begin{align}
+        W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq \frac{1}{\Lambda_k^{(a,b,d)}}\left(\frac{\tee^k}{k!}\right)^2.
+    \end{align}
+    Our objective now is to derive a complementary upper bound on $W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ which involves the distance measure $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ using the eigenvalue separation lemma.
+    To accomplish this, note that an immediate corrollary of \cref{lem:random_matrices_tet} is the following bound which holds for any triple $(x,y,z)$ of positive semidefinite eigenvalues:
+    \begin{equation} 
+        \norm{\abcdefsymbol}_{2}^{2} \varphi_{\ya}(x)\varphi_{\yb}(y)\varphi_{\yd}(z) \leq R^{\ya\yb\yd}_{\ye} \max_{\substack{(X,Y,Z) \\\in \mathcal O_x \times \mathcal O_y \times \mathcal O_z}}\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
+    \end{equation}
+    where $R^{\ya\yb\yd}_{\ye} = \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\epsilon}^{n})}$.
+    Applying \cref{thm:varphi_tet_main_ineq} (and its related corollaries) to $\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces the following:
+    \begin{equation} 
+        \label{eq:sup_bound}
+        \norm{\abcdefsymbol}_{\infty} \varphi_{\ya}(\ex)^{\frac{2}{3}}\varphi_{\yb}(\ey)\varphi_{\yd}(\ez)^{\frac{2}{3}} \leq R^{\ya\yb\yd}_{\ye} \max_{\substack{(X,Y,Z) \\\in \mathcal O_\ex \times \mathcal O_\ey \times \mathcal O_\ez}} \varphi_{\yf}(Y+Z)^{\frac{1}{3}}\varphi_{\yc}(X+Y)^{\frac{1}{3}}\varphi_{\ye}(X+Y+Z)^{\frac{1}{3}}.
+    \end{equation}
+    Note that here we have made use of the inequality $\norm{\abcdefsymbol}_{2}^{2} \geq \norm{\abcdefsymbol}_{\infty}^2$ to simplify the presentation slightly.
+    Then \cref{eq:sup_bound} can be applied to each summand in $W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ (making sure to replace $(\ex,\ey,\ez)$ with $(\ea,\eb,\ed)$) to obtain
+    \begin{equation} 
+        W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}
+        \leq 
+        \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} R^{\ya\yb\yd}_{\ye} \varphi_{\ya}(a)^{\frac{2}{3}}\varphi_{\yd}(d)^{\frac{2}{3}}\max_{\substack{(X,Y,Z) \\\in \mathcal O_\ea \times \mathcal O_\eb \times \mathcal O_\ed}} \left[\varphi_{\yf}(\ef)\varphi_{\yf}(Y+Z)\varphi_{\yc}(\ec)\varphi_{\yc}(X+Y)\varphi_{\ye}(\ee)\varphi_{\ye}(X+Y+Z)\right]^{\frac{1}{3}}.
+    \end{equation}
+    Now the eigenvalue separation lemma applied to each summand gives
+    \begin{align} 
+        W_k\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}
+        &\leq 
+        \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}}
+        R^{\ya\yb\yd}_{\ye} \dim (V_{\yc}\ot V_{\ye}\ot V_{\yf})^{\frac{2}{3}} \left(\frac{\tea^{\sya}}{\sya!}\frac{\ted^{\syd}}{\syd!}\frac{\tilde F(c, \eig(X+Y))^{\syc}}{\syc!}\frac{\tilde F(e, \eig(X+Y+Z))^{\sye}}{\sye!}\frac{\tilde F(f, \eig(Y+Z))^{\syf}}{\syf!}\right)^{\frac{2}{3}}
+    \end{align}
+\end{proof}
+
+
 \subsubsection{Eigenvalue estimation \& separation}
 
+\begin{defn}
+    The Schur-Weyl distribution of order $k$ for a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ is defined as the probability distribution over Young diagrams $\yx$ with $k$ boxes with probability
+    \begin{equation}
+        p_{X}(\yx) \coloneqq \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]} = \frac{\varphi_{\yx}(X)}{\sum_{\yx \vdash k}\varphi_{\yx}(X)} = \frac{\dim W_{\yx} s_{\yx}(\ex)}{\tex^{k}} = \frac{k!}{\tex^{k}} \varphi_{\yx}(X).
+    \end{equation}
+\end{defn}
+\begin{prop}
+    Given a Young diagram $\yx = (\yx_1 \geq \cdots \geq \yx_n)$, and non-negative eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$,
+    \begin{equation}
+        \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n} \leq s_{\yx}(\ex) \leq \dim V_{\yx}^{n} \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n}, \qquad H_{\yx} \geq \yx_1!\cdots \yx_n!,
+    \end{equation}
+    where $\dim V_{\yx}^{n} = s_{\yx}(e)$ counts the number of semistandard Young tableaux and therefore
+    \begin{equation}
+        \frac{k!}{\tex^{k}}\varphi_{\yx}(\ex) = p_{X}(\yx) \leq s_{\yx}(e) m_{\nrm \ex}(\yx)
+    \end{equation}
+    where $m_{\nrm \ex}(\yx)$ is the multinomial distribution
+    \begin{equation}
+        m_{\nrm \ex}(\yx) \coloneqq \frac{k!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
+    \end{equation}
+\end{prop}
+
 \begin{prop}[Eigenvalue estimation]
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = \eig(X)$.
-    Then the Schur-Weyl distribution $\tilde \chi_{\yx}(\nrm X) = \Tr(P_{\yx} \nrm X^{\ot k})$ over $\yx \vdash k$ satisfies
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
+    Then the Schur-Weyl distribution $p_{X}(\yx)$ for $\yx \vdash k$ satisfies
     \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+        (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex}) \leq p_{X}(\yx) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
     \end{equation}
-    and
-    \begin{equation}
-        \tilde \chi_{\yx}(\nrm X) \geq (k+n)^{-\frac{(n+2)(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalue $\nrm \ex$.
+    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence of the normalized Young diagram $\nrm \yx$ from the normalized eigenvalues $\nrm \ex$.
 \end{prop}
 \begin{prop}[Eigenvalue separation]
-    Let $(\ea, \eb)$ be eigenvalues of positive semidefinite $n\times n$ matrices $(A,B)$ and let $s = \norm{\nrm \ea - \nrm \eb}_1$ be the separation between the eigenvalues of $\nrm A$ and $\nrm B$.
-    For any positive powers $p,q > 0$, we have
+    Let $(\ex, \ey)$ be eigenvalues of positive semidefinite $n\times n$ matrices $X,Y \geq 0$.
+    Then the fidelity $F_k(p_{X},p_{Y}) \coloneqq \sum_{\yx \vdash k} \sqrt{p_{X}(\yx)p_{Y}(\yx)}$ between Schur-Weyl distributions satisfies
     \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p\tilde \chi_{\yx}(\nrm B)^{q} \leq (\dim V_{\yx}^{n})^{p+q} \exp\left(-{\syx} s^2\frac{pq}{2(p+q)}\right).
+         F_k(p_{X},p_{Y}) \leq (k+1)^{n(n-1)/2} F_{k}(m_{\nrm x}, m_{\nrm y}) = (k+1)^{n(n-1)/2} F(\nrm \ex,\nrm \ey)^{k}.
     \end{equation}
 \end{prop}
-\begin{proof}
-    The proof follows from eigenvalue estimation for a Young diagram $\yx$ which yields
+\begin{prop}[Eigenvalue separation fixed $\yx$]
+    Let $X,Y\geq 0$ be positive semidefinite $n\times n$ matrices with the same trace $\tau = \Tr(X) = \Tr(Y)$.
+    Then for any Young diagram $\yx \vdash k$,
     \begin{equation}
-        \tilde \chi_{\yx}(\nrm A)^p \leq (\dim V_{\yx}^{n})^p \exp( - {\syx} p\kl{\nrm \yx}{\nrm \ea}).
+        \sqrt{\varphi_{\yx}(X)\varphi_{\yx}(Y)} \leq s_{\yx}(e)\frac{\tilde F(\ex,\ey)^k}{k!} .
     \end{equation}
-    Furthermore, Pinsker's inequality yields
-    \begin{align}
-        p\kl{\nrm \yx}{\nrm \ea} + q\kl{\nrm \yx}{\nrm \eb}
-        \geq \frac{p}{2} \norm{\nrm \yx - \nrm \ea}_1^{2} + \frac{q}{2}\norm{\nrm \yx - \nrm \eb}_1^{2}
-        \geq \frac{pq}{2(p+q)} \norm{\nrm \ea - \nrm \eb}_1^{2},
-    \end{align}
-    where the last inequality arises because the weighted sum of squared norms is minimized when $(p+q)\nrm \yx = p \nrm \ea + q \nrm \eb$.
-\end{proof}
-It is well-known that there is a multiplicity-free decomposition of the representation $V_{(k)}^{n^2}$ of $\U(n^2)$ under the restriction to the subgroup $\U(n) \times \U(n)$ known as \citeauthor{howe1987gl}-duality \cite{howe1987gl}:
-\begin{equation}
-    V_{(k)}^{n^2} \cong \bigoplus_{\yx \vdash k} V_{\yx}^{n} \ot V_{\yx}^{n}.
-\end{equation}
-Consequently, this provides a probability distribution over Young diagrams $\yx \vdash k$, which we refer to as the \textit{Howe distribution} with probabilities given by
-\begin{equation}
-    h^n_\yx \coloneqq \frac{\dim(V_{\yx}^{n})^2}{\dim(V_{(k)}^{n^2})}.
-\end{equation}
-The Howe distribution also appears when evaluating $\tilde \pi_{\yx}(X)$ for $X$ sampled randomly according to the so-called Hilbert-Schmidt measure \cite{zyczkowski2001induced}.
-\begin{prop}
-    Let $X \geq 0$ be a random positive semidefinite $n \times n$ matrix such that $\Tr(X) = 1$ sampled according to the Hilbert-Schmidt measure.
-    Then for $\yx \vdash k$,
-    \begin{align}
-        \mathbb E_{X \sim 1} \tilde \pi_{\yx}(X) = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
+    where $\tilde F(\ex,\ey) \coloneqq \tau F(\nrm \ex,\nrm \ey)$ denotes the unnormalized fidelity between $\ex$ and $\ey$ (it is strictly less that $\tau = \tex = \tey$ when $\ex \neq \ey$ and equals $\tau$ otherwise).
 \end{prop}
-\begin{proof}
-    Given a measure $\mu(X)$ that is invariant under conjugation by $\U(n)$, the operator $\mathbb E_{X} [X^{\ot k}]$ is necessarily $\U(n)$ equivariant and thus decomposes as 
+\begin{rem}
+    Note that the fidelity $F(p,q)$ between distributiosn $p,q$ is related to the total variation distance $TV(p,q) = \frac{1}{2}\norm{p-q}_{1}$ via the inequalities:
     \begin{equation}
-        \mathbb E_{X\sim 1} [X^{\ot k}] \coloneqq \int \diff \mu (X) X^{\ot k} = \sum_{\yx \vdash k} h_{\yx} \frac{P_{\yx}}{\Tr(P_{\yx})},
+        1- TV(p,q) \leq F(p,q) \leq \sqrt{1-TV(p,q)^2},
     \end{equation}
-    for some proportionality constants $h_{\yx}$.
-    For the Hilbert Schmidt measure, which is equivalent to the pushforward measure of the Haar measure induced by $\U(n^2)$ on $\mathbb C^{n^2}$ under the partial trace to operators on $\mathbb C^{n}$ \cite{zyczkowski2001induced}, the proportionality constant given by (see also \cite{walter2014multipartite}) the Howe distribution parameter $h^n_\yx$.
-    Therefore,
-    \begin{align}
-        \mathbb E_{X} [\tilde \pi_{\yx}(X)]
-        = \Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} \mathbb E_{X} [X^{\ot {\syx}}] \iota_{\yx}]
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} P_{\yx} \iota_{\yx}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\Tr_{W_{\yx}}[\id_{W_{\yx}} \ot \id_{V_{\yx}^{n}}]}{\Tr(P_{\yx})}
-        = h^n_\yx \frac{\id_{V_{\yx}^{n}}}{\dim(V_{\yx}^{n})}.
-    \end{align}
-\end{proof}
+    or alternatively, the Bhattacharyya coefficient $B(p,q) = - \log F(p,q)$ has $B(p,q) \geq \frac{1}{2} TV(p,q)^2 = \frac{1}{4}\norm{p-q}_1^2$.
+\end{rem}
 
 \section*{Acknowledgements}
 MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality. 
