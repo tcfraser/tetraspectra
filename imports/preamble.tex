@@ -144,9 +144,9 @@
 \newcommand{\tuple}[1]{\boldsymbol{#1}}
 \newcommand{\unent}{N} % unnormalized entropy
 \newcommand{\vN}{H} % von Neumann entropy 
-%\newcommand{\tinyuni}{\includegraphics[width=0.2em]{tikz/uni-tri-tet/uni.pdf}}
-%\newcommand{\tinytri}{\includegraphics[width=0.5em]{tikz/uni-tri-tet/tri.pdf}}
-%\newcommand{\tinytet}{\includegraphics[width=0.7em]{tikz/uni-tri-tet/tet.pdf}}
+\newcommand{\tinyuni}{\includegraphics[width=0.2em]{tikz/uni-tri-tet/uni.pdf}}
+\newcommand{\tinytri}{\includegraphics[width=0.5em]{tikz/uni-tri-tet/tri.pdf}}
+\newcommand{\tinytet}{\includegraphics[width=0.7em]{tikz/uni-tri-tet/tet.pdf}}
 
 \newsavebox{\mstrut} % https://tex.stackexchange.com/questions/625880/how-to-render-a-double-ket
 \newcommand{\braa}[1]{%
@@ -158,11 +158,11 @@
     \mathinner{\left|\mkern-2mu\left|{#1}\right\rangle\kern-0.25\ht\mstrut\right\rangle}%
 }
 
-\newcommand{\herm}{\s H}
+\newcommand{\herm}[1]{\mathrm{Herm}(#1)}
 \newcommand{\weights}[1]{\mathbb Z^{#1}}
 \newcommand{\domweights}[1]{\mathbb Z_{\mathrm{dec}}^{#1}}
 \newcommand{\ydia}[2][\infty]{\Upsilon_{#2,#1}}
-\newcommand{\eigs}[1]{\mathbb R_{\mathrm{dec}}^{#1}}
+\newcommand{\eigs}[1]{\mathrm{Eig}(#1)}
 \newcommand{\defnsty}[1]{\textit{#1}}
 \newcommand{\yaug}[2]{#1[#2]}
 \newcommand{\ot}{\otimes} % shorthand
