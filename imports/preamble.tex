@@ -9,6 +9,8 @@
 \usepackage{latexsym}
 \usepackage{mathtools}
 \usepackage{braket}
+
+\usepackage[aligntableaux=bottom,boxsize=0.2em]{ytableau} % for young diagrams
 % ===== BIBLIOGRAPHY SETTINGS =========
 % biblatex
 \usepackage[
@@ -158,11 +160,13 @@
     \mathinner{\left|\mkern-2mu\left|{#1}\right\rangle\kern-0.25\ht\mstrut\right\rangle}%
 }
 
-\newcommand{\herm}[1]{\mathrm{Herm}(#1)}
+\newcommand{\herm}[1]{\mathcal H(#1)}
+\newcommand{\eigs}[1]{\mathrm{Eig}(#1)}
+\newcommand{\hermp}[1]{\mathcal H_{+}(#1)}
+\newcommand{\eigsp}[1]{\mathrm{Eig}^{+}(#1)}
 \newcommand{\weights}[1]{\mathbb Z^{#1}}
 \newcommand{\domweights}[1]{\mathbb Z_{\mathrm{dec}}^{#1}}
 \newcommand{\ydia}[2][\infty]{\Upsilon_{#2,#1}}
-\newcommand{\eigs}[1]{\mathrm{Eig}(#1)}
 \newcommand{\defnsty}[1]{\textit{#1}}
 \newcommand{\yaug}[2]{#1[#2]}
 \newcommand{\ot}{\otimes} % shorthand
@@ -185,15 +189,15 @@
 \newcommand{\ez}{z}
 
 % eigenvalue traces
-\newcommand{\tea}{|\ea|}
-\newcommand{\teb}{|\eb|}
-\newcommand{\tec}{|\ec|}
-\newcommand{\ted}{|\ed|}
-\newcommand{\tee}{|\ee|}
-\newcommand{\tef}{|\ef|}
-\newcommand{\tex}{|\ex|}
-\newcommand{\tey}{|\ey|}
-\newcommand{\tez}{|\ez|}
+\newcommand{\tea}{\Tr[\ea]}
+\newcommand{\teb}{\Tr[\eb]}
+\newcommand{\tec}{\Tr[\ec]}
+\newcommand{\ted}{\Tr[\ed]}
+\newcommand{\tee}{\Tr[\ee]}
+\newcommand{\tef}{\Tr[\ef]}
+\newcommand{\tex}{\Tr[\ex]}
+\newcommand{\tey}{\Tr[\ey]}
+\newcommand{\tez}{\Tr[\ez]}
 
 % Shorthands for young diagram labels
 \newcommand{\ya}{\alpha}
