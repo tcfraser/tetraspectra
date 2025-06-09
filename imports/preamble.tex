@@ -65,6 +65,7 @@
 \usepackage[capitalise]{cleveref} % https://stackoverflow.com/questions/6499504/cleveref-fails-for-theorem-environments-sharing-the-same-counter
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}%[section]
+\newtheorem*{thm*}{Theorem} % unnumbered
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conj}[thm]{Conjecture}
@@ -99,10 +100,21 @@
 \crefname{rem}{remark}{remarks}
 \fi
 \makeatother
+% ===== REFERENCES IN SECTION TITLES =========
+% https://tex.stackexchange.com/questions/485976/hide-cleveref-links-in-section-title
+\usepackage{crossreftools}
+
+\let\ORGhypersetup\hypersetup
+\protected\def\hypersetup{\ORGhypersetup}
+\pdfstringdefDisableCommands{%
+  \def\hypersetup#1{}%
+  \let\Cref\crtCref
+  \let\cref\crtcref
+}
 % ===== LABELS FOR REFERENCES =========
-\usepackage[inline]{showlabels}
-\renewcommand{\showlabelfont}{\ttfamily\scriptsize} %https://tex.stackexchange.com/questions/472619/showlabels-change-of-font-size
-\def\showlabelsetlabel#1{\raise1ex\hbox{\showlabelfont \textcolor{blue}{#1}}}
+%\usepackage[inline]{showlabels}
+%\renewcommand{\showlabelfont}{\ttfamily\scriptsize} %https://tex.stackexchange.com/questions/472619/showlabels-change-of-font-size
+%\def\showlabelsetlabel#1{\raise1ex\hbox{\showlabelfont \textcolor{blue}{#1}}}
 % ======== TIKZ & TIKZIT ==============
 \usepackage{tikz}
 \usepackage{tikz/config/tikzit}
