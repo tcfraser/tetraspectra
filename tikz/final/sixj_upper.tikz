@@ -132,10 +132,6 @@
 		\node [style=none] (363) at (7.5, -3.25) {$\gamma$};
 		\node [style=none] (364) at (7.5, 0) {$\phi$};
 		\node [style=none] (365) at (7.5, 3.25) {$\gamma$};
-		\node [style=none] (367) at (7.5, 1) {$\alpha$};
-		\node [style=none] (368) at (7.5, 2.25) {$\delta$};
-		\node [style=none] (369) at (7.5, -2.25) {$\alpha$};
-		\node [style=none] (370) at (7.5, -1) {$\delta$};
 		\node [style=none] (371) at (8.75, -1.5) {$\epsilon$};
 		\node [style=none] (372) at (1.75, 3.5) {};
 		\node [style=none] (373) at (1.5, 3.5) {};
@@ -166,6 +162,10 @@
 		\node [style=none] (266) at (-8.25, 2.75) {};
 		\node [style=none] (267) at (-5.25, 1.25) {};
 		\node [style=none] (268) at (-5.25, 2.75) {};
+		\node [style=none] (497) at (7.5, 1) {$\alpha$};
+		\node [style=none] (498) at (7.5, 2.25) {$\delta$};
+		\node [style=none] (499) at (7.5, -2.25) {$\delta$};
+		\node [style=none] (500) at (7.5, -1) {$\alpha$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=mid-route] (185.center)
@@ -300,8 +300,8 @@
 		\draw [style=mid-route] (355) to (347);
 		\draw [style=mid-route, bend right=75, looseness=1.50] (351) to (359);
 		\draw [style=mid-route, bend left=285, looseness=1.50] (360) to (352);
-		\draw [style=mid-route, bend left=75, looseness=1.75] (356) to (348);
-		\draw [style=mid-route, bend left=75, looseness=1.50] (347) to (355);
+		\draw [style=mid-route, bend right=75, looseness=1.75] (348) to (356);
+		\draw [style=mid-route, bend right=75, looseness=1.50] (355) to (347);
 		\draw (372.center)
 			 to (373.center)
 			 to (374.center)

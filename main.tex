@@ -54,7 +54,7 @@ In this paper, we consider a generalization of Horn's problem investigated previ
 While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the possible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints: 
 \begin{equation}
     \label{eq:tet_cond}
-    A+B=C, \qquad B+D=F, \qquad, D+C=E, \qquad \text{and} \qquad A+F=E.
+    A+B=C, \qquad B+D=F, \qquad D+C=E, \qquad \text{and} \qquad A+F=E.
 \end{equation}
 These constraints arise naturally from building a tetrahedral arrangement of $n\times n$ Hermitian matrices inside the vector space of such Hermitian matrices with edges labelled according to \cref{fig:tetrahedron_labelling_scheme}.
 For this reason, we refer to this eigenvalue problem as the \textit{tetrahedral} Horn problem and we say a sextuple of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, is \textit{tetrahedral} if such matrices exist, and not tetrahedral otherwise.
@@ -82,13 +82,13 @@ These variants are termed \textit{multiple} Horn problems in \cite{alekseev2025m
 \vspace{1em}
 \textbf{Our contributions:}
 Regarding the tetrahedral Horn problem, we derive a new family of inequalities constraining the set of tetrahedral eigenvalues.
-These inequalities are expressed in terms of Schur polynomials $s_{\yx}(x)$ in the eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ which are homogeneous symmetric polynomials indexed by so-called Young diagrams $\yx$.
+These inequalities are expressed in terms of Schur polynomials $s_{\yx}(x)$ in the eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ which are homogeneous symmetric polynomials indexed by Young diagrams $\yx$.
 More accurately, we find our inequalities are best articulated in terms of a simple rescaling of the Schur polynomials $\varphi_{\yx}(\ex) = s_{\yx}(\ex)/H_{\yx}$ where $H_{\yx}$ is an positive integer equal to the product of the hook-lengths of all boxes in the Young diagram $\yx$.
 These inequalities are presented in the following theorem.
 \begin{thm}
     \label{thm:nec_tet}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$,
-    then for all triples of Young diagrams $(\ya,\yb,\yd)$,
+    There exists positive semidefinite $n\times n$ matrices $(A,B,C,D,E,F)$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$,
+    if and only if for all triples of Young diagrams $(\ya,\yb,\yd)$,
     \begin{equation}
         \label{eq:nec_tet}
         \varphi_{\ya}(a)^{\frac{2}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{2}{3}}
@@ -97,7 +97,7 @@ These inequalities are presented in the following theorem.
     \end{equation}
 \end{thm}
 The expression $\abcdefsymbol$ appearing here is known as the $6j$-symbol for the group of unitary $n\times n$ matrices $\U(n)$ and its significance will be explained shortly.
-Moreover, we quantify the utility of these inequalities by proving the following distance bound.
+Moreover, we prove a relationship between the homogeneous degrees of the involved Schur polynomials, and a distance measure, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, from the candidate eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, to the set of tetrahedral eigenvalues.
 \begin{thm}
     \label{thm:suff_tet}
     If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then 
@@ -106,33 +106,18 @@ Moreover, we quantify the utility of these inequalities by proving the following
     \end{equation}
     where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with equality holding if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
 \end{thm}
-In other words, the satisfication of \cref{eq:nec_tet} for all Young diagram $(\ya,\yb,\yd)$ is actually \textit{sufficient} to conclude $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral. 
-Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound.
-\begin{thm}
-    \label{thm:horn_orig_poly_ineqs}
-    Let $(\ea,\eb,\ec)$ be a triple of non-negative eigenvalues.
-    If there exists positive semidefinite matrices $A,B,C \geq 0$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, then for all Young diagrams $\yc$, we have
-    \begin{equation}
-        \label{eq:polynomial_horn_ineq}
-        \varphi_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(\ea)\varphi_{\yb}(\eb).
-    \end{equation}
-    Moreover, if $(\ea,\eb,\ec)$ satisfies both the trace condition \cref{eq:polynomial_horn_ineq} for all Young diagrams $\yc$ of size $\syc = k$, then
-    \begin{equation}
-        \frac{1}{\tec} D(\ea,\eb,\ec) \leq O\left(n\sqrt{\frac{\log k}{k}}\right).
-    \end{equation}
-    where $D(\ea,\eb,\ec)\coloneqq \min_{(A,B) \in \orbit_\ea \times \orbit_\eb} \norm{\eig(A+B)-\ec}_{1}$.
-\end{thm}
+Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{thm:horn_orig_poly_ineqs}).
 
 \vspace{1em}
 \textbf{Eigenvalue estimation:}
 Our approach to proving the above theorems relies on the concept of \textit{weak Schur sampling}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of density matrices (trace one, positive semidefinite matrices), which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
 These techniques rely heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
-Given a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ the spectrum estimation technique describes how the so-called Schur-Weyl distribution $p_{X}(\yx) = \Tr[P_{\yx}X^{\ot k}]\Tr[X^{\ot k}]$ concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration stengthens as the sizes of the Young diagrams, $k$, tend to infinity.
+Given a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ the spectrum estimation technique describes how the so-called Schur-Weyl distribution $p_{X}(\yx) = \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$ concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration stengthens as the sizes of the Young diagrams, $k$, tend to infinity.
 In this paper, we exploit this concentration phenomena to prove the distance bounds presented above.
 
 
 \vspace{1em}
-\textbf{$\boldsymbol{6j}$-symbols}
+\textbf{$\boldsymbol{6j}$-symbols:}
 Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \otimes V_\yb) \otimes V_\yc \cong V_\ya \otimes (V_\yb \otimes V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
 Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
 \begin{equation*}
@@ -154,7 +139,7 @@ General spin networks are networks of trivalent vertices and connections labelle
 %\textcolor{blue}{[OUTLINE: Asymptotics Wigner, Neville, Ponzano \& Regge, Roberts]}
 Throughout this paper, by the \textit{asymptotics} of $6j$-symbols, we are referring to their behaviour in the regime wherein the six highest weights, $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, are becoming larger and larger in a suitable sense.
 The asymptotics of the $6j$-symbol for $\SU(2)$, wherein the irreps of dimension $\ell + 1$ may be identifed either by integers $\ell \in \{0, 1, \ldots, \}$ or half-integers $j=\frac{\ell}{2}\in\{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots \}$, were initially investigated by \citeauthor{wigner1960group} \cite[Chapter 27]{wigner1960group}.
-In the context of the quantum theory of angular momenta, the limit of large $\ell$, or equivalently large spins $j$, may also be interpreted as the limit wherein Planck's costant tends to zero, $\hbar \propto \frac{1}{k} \to 0$, which surpresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as semiclassical limits.
+In the context of the quantum theory of angular momenta, the limit of large $\ell$, or equivalently large spins $j$, may also be interpreted as the limit wherein Planck's costant tends to zero, $\hbar \propto \frac{1}{k} \to 0$, which surpresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as \textit{semiclassical} limits.
 Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ and total spin $\frac{e}{2}$, the $6j$-symbol, $\tightcurlysixj{a & b & c \\ d & e & f}$, can be interpreted as the quantum mechanical amplitude to observe the first and second particles to have combined spin $\frac{c}{2}$ given the second and third have combined spin $\frac{f}{2}$ \cite{wigner1960group,roberts1999classical}.
 \Citeauthor{wigner1960group} considered the probability for this event to occur in the asymptotic limit of large spins, i.e., the square of the $6j$-symbol, and conjectured the estimate:
 \begin{equation*}
@@ -162,7 +147,7 @@ Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ 
 \end{equation*}
 where $V$ is the volume of the Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$.
 Building upon the work of Wigner, \citeauthor{ponzano1968semiclassical} conjectured a formula for the amplitude of the $6j$-symbol itself in the limit of large spins \cite{ponzano1968semiclassical}.
-Later, using techniques from geometric quantization theory, \citeauthor{roberts1999classical} rigorously proved an asymptotic formula which is equivalent to the conjecture of \citeauthor{ponzano1968semiclassical} (up to minor differences) \cite{roberts1999classical}:
+Later, using techniques from geometric quantization theory, \citeauthor{roberts1999classical} rigorously proved an asymptotic formula which is equivalent to the conjecture of \citeauthor{ponzano1968semiclassical} (up to minor differences) \cite{roberts1999classical}.
 \begin{thm}[\citeauthor{roberts1999classical}]
     If $(a,b,c,d,e,f)$ are integer side-lengths of a Euclidean tetrahedron with volume $V$ and corresponding exterior dihedral angles $(\theta_a, \theta_b, \theta_c, \theta_d, \theta_e, \theta_f)$, then 
     \begin{equation*}
@@ -198,8 +183,8 @@ Our approach bypasses the difficulties presented by multiplicities by focusing o
 Following the procedure provided by geometric quantization, one expects the asymptotics of the $6j$-symbol for $\U(n)$ to be controlled by existence of some kind of tetrahedral object in space of coadjoint orbits for $\U(n)$.
 In particular, the coadjoint orbits of $\U(n)$ can be identified with the orbits of $n\times n$ Hermitian matrices, $X$, under the conjugation action, $X \mapsto U^{-1} X U$, by unitary $n \times n$ matrices $U \in \U(n)$; in other words, coadjoint orbits are associated to sets of $n\times n$ Hermitian matrices sharing a common set of eigenvalues $\ex = (\ex_1 \geq \ldots \geq \ex_n)$.
 Using our methods we are able to prove the following inverse polynomial lower bound.
-\begin{thm}
-    \label{thm:asym_6j}
+\begin{cor}
+    \label{cor:asym_6j}
     If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$,
     then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
     such that
@@ -208,7 +193,7 @@ Using our methods we are able to prove the following inverse polynomial lower bo
         \geq \frac{1}{\mathrm{poly}(k)}.
     \end{equation}
     Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any such matrices, then for any sequence of Young diagrams converging in proportion to $(\ea, \eb, \ec, \ed, \ee, \ef)$, we have exponential decay in the value of $\norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}$.
-\end{thm}
+\end{cor}
 Before continuing, it is worth emphasizing the similarties and differences between our result and the asymptotic formula proven by \citeauthor{roberts1999classical} above \cite{roberts1999classical}.
 First and foremost, our result goes beyond that of \citeauthor{roberts1999classical} in the sense that it applies to the higher-rank Lie group $\U(n)$ for $n \geq 3$.
 Moreover, our result, even when restricted to the case for $\SU(2)$, goes beyond the statement proven by \citeauthor{roberts1999classical} in the sense our result is applicable to \textit{irrational} eigenvalues/edge-lengths, whereas the former is only applicable to \textit{integer}, or with a minor re-scaling, \textit{rational} eigenvalues/edge-lengths.
@@ -237,9 +222,8 @@ We note that this more direct approach was initiated, in the $n=2$ case, by \cit
 \textcolor{red}{TODO: Descide on the structure of the paper?}
 Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 
-\clearpage
-\section{Tetrahedral eigenvalues}
-\label{sec:tet_eig}
+\section{The tetrahedral Horn problem}
+\label{sec:tet_horn_prob}
 
 \subsection{Eigenvalue problems for matrix sums}
 
@@ -378,7 +362,6 @@ The measure of deviation which emerges naturally from our analysis is the follow
     Then $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with equality holding if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are trigonal.
 \end{defn}
 
-
 \subsection{Low dimensional solutions}
 
 %\begin{exam}[Tetrahedral Horn's problem for \texorpdfstring{$n=1$}{n=1}]
@@ -450,7 +433,7 @@ The measure of deviation which emerges naturally from our analysis is the follow
     \end{equation}
     Under this identification, the eigenvalues of $X$ are determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
     \begin{equation}
-        \eig(X) = \eig\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}, -\norm{x}), \qquad \text{where}, \qquad \norm{x} = \sqrt{x_1^2 + x_2^2 + x_3^2}.
+        \eig(X) = \eig\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}_2, -\norm{x}_2), \qquad \text{where}, \qquad \norm{x}_2 = \sqrt{x_1^2 + x_2^2 + x_3^2}.
     \end{equation}
     Furthermore, if $A$ is determined by the coordinates $(a_1,a_2,a_3)$ and $B$ by the coordinates $(b_1,b_2,b_3)$, then their sum $C=A+B$ is determined by the coordinates $(c_1, c_2, c_3) = (a_1 + b_1, a_2 + b_2, a_3 + b_3)$.
     Consequently, in this setting, the tetrahedral Horn's problem reduces to problem of describing the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a Euclidean tetrahedron in $\mathbb R^{3}$.
@@ -808,369 +791,8 @@ Note that in subsequent sections we will often explicitly assume the candidate e
     It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
 \end{rem}
 
-\section{Previously known inequalities for tetrahedral eigenvalues}
-\label{sec:previously_known}
-
-The purpose of this section is to describe various previously known inequalities which are necessarily satisfied by tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
-Readers exclusively interested in the techniques used to prove the results claimed in the introduction are encouraged to skip to \cref{sec:new_ineqs}.
-While our main theorems, \cref{thm:nec_tet,thm:suff_tet}, describe a countably infinite family of necessary inequalities which, when bundled together, are sufficient to characterize the set of tetrahedral eigenvalues for any fixed dimension $n$, the problem of providing a finite characterization, say in the form of a finite list of polynomial equalities and inequalities, remains an open problem for $n \geq 3$.
-
-\subsection{Horn's inequalities}
-Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
-Consequently, every inequality constraining trigonal eigenvalues can be lifted to produce a quadruplet of inequalities constraining the set of tetrahedral eigenvalues.
-These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
-Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
-Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
-For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues,knutson2000symplectic} or \cite[Appendix D]{niculescu2006convex}.
-In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
-\begin{equation}
-    \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
-\end{equation}
-which constrain the largest and smallest eigenvalues respectively (note that under inversion symmetry, these inequalities are equivalent).
-The first somewhat non-trivial inequality, derived by \citeauthor{weyl1912asymptotische} in 1912, is now known as \textit{Weyl's inequality} and states for all $i,j$ such that $i+j \leq n+1$ \cite{weyl1912asymptotische}\footnote{For $2\times 2$ matrices one can see that these necessary inequalities are also sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal; upon shifting to traceless eigenvalues using \cref{cor:traceless}, $\ea = (a,-a), \eb = (b, -b)$ and $\ec = (c,-c)$, and these inequalities become equivalent to the triangle inequalities $c \leq a+b$ and $c \geq \max\{b-a,a-b\}$.}
-\begin{equation}
-    \ea_i + \eb_j \geq \ec_{i+j-1}.
-\end{equation}
-In 1949, \citeauthor{fan1949theorem} derived a majorization inequality constraining the first $r$ largest eigenvalues \cite{fan1949theorem},
-and shortly thereafter Lidskii \cite{lidskii1953proper} \& Wielandt \cite{wielandt1955extremum} found proofs of another family of inequalities.
-Finally, in 1962, \citeauthor{horn1962eigenvalues} determined a complete collection of inequalities for $(\ea,\eb,\ec)$ are trigonal for the case where $n=3$ \cite{horn1962eigenvalues}.
-Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} provided an inductively defined set of subsets $I,J,K \subset \{1,\ldots, n\}$ of equal cardinality and conjectured that inequalities of the form
-\begin{equation}
-    \label{eq:IJK_ineq}
-    {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
-\end{equation}
-were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
-While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, ${\tea} + {\teb} = {\tec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
-Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
-
-For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
-
-\subsection{A simple quadratic inequality}
-
-In \cref{sec:symmetries} we saw that the shifting symmetry implies, in a certain sense, one may assume without loss of generality that the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ are all non-negative or even strictly positive.
-While almost all of the following inequalities require this positivity assumption, we note that they can be extended to eigenvalues with negative entries in all cases.
-
-Here we present an quadratic inequality which follows from a simple calculation.
-Let $(A,B,C,D,E,F)$ be positive semidefinite $n\times n$ matrices satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
-Then the following identity holds:
-\begin{align}
-    \label{eq:quad_identity}
-    \begin{split}
-        & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
-        &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
-        &\quad=
-        (\Tr[B^2])
-        +(\Tr[A^2] + \Tr[B^2] + \Tr[D^2] + 2\Tr[AB] + 2\Tr[BD] + 2 \Tr[AD])\\
-        &\qquad\qquad-(\Tr[A^2] + \Tr[B^2] + 2\Tr[AB])
-        -(\Tr[B^2] + \Tr[D^2] + 2\Tr[BD])\\
-        &\quad= 2 \Tr[AD].
-    \end{split}
-\end{align}
-Although the left-hand side of the above expression depends only on the set of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$,
-\begin{equation}
-    \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] = 
-    \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2,
-\end{equation}
-the right-hand side does not.
-Nevertheless, one may note that for all $A,D \geq 0$ positive semidefinite, $\Tr(AD) \geq 0$ and therefore,
-\begin{equation}
-    \label{eq:quadratic_difference_pos}
-    \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2 \geq 0.
-\end{equation}
-This inequality is well-known and indeed follows as a special case of \cite[Proposition 2.3]{sagnol2013approximation}.
-
-However, a minor improvement can be made here.
-While $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}) to bound the value of $\Tr(AD)$ to obtain
-\begin{equation}
-    {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr(AD) \leq {\sum}_{j} \ea_j \ed_j.
-\end{equation}
-Therefore, we conclude
-\begin{equation}
-    2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2 \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
-\end{equation}
-
-\subsection{Ptolemy \& Cayley-Menger inequalities}
-
-In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
-These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$.
-These results rely on the observation that the real vector space of $n \times n$ Hermitian matrices equipped with the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ has norm $\norm{X}_2 = \sqrt{\braket{X,X}}$ which is a function of the \textit{eigenvalues} of $X$.
-Specifically, for any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X}_2 = \norm{\ex}_2 = \left(\sum_{j=1}^{n} {\ex_j}^2\right)^{\frac{1}{2}}$.
-
-
-Recall that the four vertices of the tetrahedron of Hermitian matrices are
-\begin{equation}
-    V_0 = 0, \qquad V_1 = A, \qquad V_2 = A+B = C, \qquad V_3 = A+B+D = E.
-\end{equation}
-
-\textbf{Ptolemy's inequality:}
-Ptolemy's inequality is an inequality which holds for any four points $V_0, V_1, V_2, V_3$ in a normed space.
-It reads
-\begin{equation}
-    \label{eq:vvvv_ptolemy}
-    \norm{V_3-V_0}\norm{V_1-V_2} \leq \norm{V_2-V_0}\norm{V_1-V_3} + \norm{V_1-V_0}\norm{V_2-V_3}.
-\end{equation}
-Applied to the vertices of the tetrahedron of Hermitian matrices, we obtain
-\begin{equation}
-    \label{eq:abcdef_ptolemy}
-    \norm{E}\norm{B} \leq \norm{C}\norm{F} + \norm{A}\norm{D}.
-\end{equation}
-It is known that every real inner product space with norm $\norm{X} = \sqrt{\braket{X,X}}$ is Ptolemaic in the sense that Ptolemy's inequality holds.
-A converse of this result also holds due to \citeauthor{schoenberg1952remark}; namely, every real semi-normed space satisfying Ptolemny's inequality comes from a real inner product space \cite{schoenberg1952remark}.
-%Here we will prove the former result, that a real inner product space satisfies Ptolemy's inequality.
-%\begin{proof}
-%    Note that to prove the inequality, one can take $V_0 = 0$ (by shifting) and assume the remaining vectors are non-zero (since otherwise the inequality holds trivially).
-%    Under these assumptions, we aim to prove for all $V_1, V_2, V_3$ non-zero in a real inner product space,
-%    \begin{equation}
-%        \label{eq:shifted_ptolemy}
-%        \norm{V_3}\norm{V_1-V_2} \leq \norm{V_2}\norm{V_1-V_3} + \norm{V_1}\norm{V_2-V_3}.
-%    \end{equation}
-%    Let $\tilde V_1, \tilde V_2, \tilde V_3$ be rescaled versions of $V_1,V_2,V_3$:
-%    \begin{equation}
-%        \tilde V_1 = \frac{V_1}{\norm{V_1}^2}, \qquad
-%        \tilde V_2 = \frac{V_2}{\norm{V_2}^2}, \qquad
-%        \tilde V_3 = \frac{V_3}{\norm{V_3}^2}.
-%    \end{equation}
-%    Under this rescaling, the pairwise distances are rescaled as
-%    \begin{equation}
-%        \norm{\tilde V_i - \tilde V_j} = \sqrt{\frac{1}{\norm{V_i}^2} + \frac{1}{\norm{V_j}^2} - \frac{2 \abs{\braket{V_i,V_j}}^2}{\norm{V_i}^2\norm{V_j}^2}} = \frac{\norm{V_i-V_j}}{\norm{V_i} \norm{V_j}}.
-%    \end{equation}
-%    Then, the triangle inequality for $\norm{\cdot}$ applied to $\tilde V_1, \tilde V_2, \tilde V_3$,
-%    \begin{equation}
-%        \norm{ \tilde V_1 - \tilde V_2} \leq \norm{\tilde V_1 - \tilde V_3} + \norm{\tilde V_2 - \tilde V_3},
-%    \end{equation}
-%    is then equivalent to \cref{eq:shifted_ptolemy}.
-%\end{proof}
-
-\textbf{Cayley-Menger determinant:}
-First we note that the four Hermitian matrices $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ necessarily lie inside a three-dimensional subspace of the set of $n\times n$ Hermitian matrices and thus one can compute the square of its three-dimensional volume using the Cayley-Menger determinant just as in the case of $2 \times 2$ matrices as in \cref{exam:n_2}:
-
-%there exists an orthonormal set of Hermitian matrices $L_1, L_2, L_3$ such that for each $i \in \{0,1,2,3\}$
-%\begin{equation}
-%    V_i = \sum_{j=1}^{3} (v_i)_j L_j
-%\end{equation}
-%In this basis, the vectors of coefficents $\{v_0, v_1, v_2, v_3\}$ constitute the vertices of a tetrahedra in $\mathbb R^3$ and moreover $\braket{V_i, V_j} = \Tr(V_i^* V_j) = \braket{v_i, v_j}$.
-%Following the wikipedia derivation, define a $4 \times 4$ matrix by
-%\begin{equation}
-%    P = \begin{pmatrix}
-%        v_0 & v_1 & v_2 & v_3  \\
-%        1 & 1 & 1 & 1  \\
-%    \end{pmatrix}
-%\end{equation}
-%such that $\abs{\det(P)} = 3! \mathrm{Vol}(v_0,v_1,v_2,v_3)$ where $\mathrm{Vol}(v_0,v_1,v_2,v_3)$ is the volumes of the tetrahedron with vertices $v_0,v_1,v_2,v_3 \in \mathbb R^3$.
-%Then one augments $P$ to
-%\begin{equation}
-%    \tilde P = \begin{pmatrix}
-%        v_0 & v_1 & v_2 & v_3 & 0  \\
-%        1 & 1 & 1 & 1 & 0  \\
-%        \norm{v_0}^{2} & \norm{v_1}^{2} & \norm{v_2}^{2} & \norm{v_3}^2 & 1 \\
-%    \end{pmatrix}
-%\end{equation}
-%such that $\det(P) = \det(\tilde P)$ and also defines a $5 \times 5$ matrix $Q$ by
-%\begin{equation}
-%    Q = \begin{pmatrix}
-%        -2 & 0 & 0 & 0 & 0 \\
-%        0 & -2 & 0 & 0 & 0 \\
-%        0 & 0 & -2 & 0 & 0 \\
-%        0 & 0 & 0 & 0 & 1 \\
-%        0 & 0 & 0 & 1 & 0
-%    \end{pmatrix}
-%\end{equation}
-%Then $\tilde P^{\dagger} Q \tilde P$ is a $5\times 5$ matrix
-%\begin{equation}
-%    \tilde \Sigma=
-%    \tilde P^{\dagger} Q \tilde P = \begin{pmatrix}
-%        0 & d_{01}^2 & d_{02}^2 & d_{03}^2 & 1 \\
-%        d_{10}^2 & 0 & d_{12}^2 & d_{13}^2 & 1 \\
-%        d_{20}^2 & d_{21}^2 & 0 & d_{23}^2 & 1 \\
-%        d_{30}^2 & d_{31}^2 & d_{32}^2 & 0 & 1 \\
-%        1 & 1 & 1 & 1 & 0 \\
-%    \end{pmatrix}
-%\end{equation}
-%where
-%\begin{equation}
-%    d_{ij}^2 \coloneqq \norm{v_i - v_j}^{2} = \norm{v_i}^{2} +\norm{v_j}^{2} - 2 \braket{v_i, v_j}.
-%\end{equation}
-%The determinant $\det(\tilde \Sigma)$ is equal to
-%\begin{equation}
-%    \det(\tilde \Sigma) = \det(\tilde P^{\dagger} Q \tilde P) = \det(Q) \det(P)^2 = 8 \cdot (3!)^2 \cdot \mathrm{Vol}^2 \geq 0.
-%\end{equation}
-%Using the isometric embedding of $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ into $\mathbb R^3$, the Cayley-Menger determinant inequality takes the form
-\begin{equation}
-    \mathrm{CM}(\norm{A}, \norm{B}, \norm{C}, \norm{D}, \norm{E}, \norm{F})
-    =
-    \frac{1}{288}
-    \det
-    \begin{pmatrix}
-        0 & \norm{A}^2 & \norm{C}^{2} & \norm{E}^2 & 1 \\
-        \norm{A}^2 & 0 & \norm{B}^{2} & \norm{F}^2 & 1\\
-        \norm{C}^2 & \norm{B}^2 & 0 & \norm{D}^2 & 1 \\
-        \norm{E}^2 & \norm{F}^2 & \norm{D}^2 & 0 & 1 \\
-        1 & 1 & 1 & 1 & 0 \\
-    \end{pmatrix}
-    \geq 0
-\end{equation}
-
-\subsection{Strongly subadditive/Submodular inequalities}
-
-Another strategy for understanding eigenvalues of positive semidefinite matrices and their sums is to consider the expansion of tensors powers of sums of matrices in relation to the tensor powers of their summands.\footnote{We will exploit a variation of this strategy repeatedly in \cref{sec:new_ineqs}.}
-For instance, given a positive integer $k$ and positive semidefinite $X$ and $Y$, using the non-commutative binomial expansion of $(X+Y)^{\ot k}$ and dropping all summands involving both $X$ and $Y$, one obtains \cite[Proposition 1.1]{berndt2015hlawka}:
-\begin{equation}
-    (X+Y)^{\ot k} \geq X^{\ot k} + Y^{\ot k}.
-\end{equation}
-This technique, was generalized by \cite{tie2011rearrangement} \cite[Lemma 2.2]{tie2011rearrangement} to obtain the following result.\footnote{Further extensions of this technique include inequalities involving the sum $X+Z$ which are outside the scope of the tetrahedral Horn problem (see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions})}.
-\begin{prop}
-    \label{prop:operator_ineq}
-    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
-    Then
-    \begin{equation}
-        (X+Y+Z)^{\ot k} + Y^{\ot k} \geq (X+Y)^{\ot k} + (Y+Z)^{\ot k}.
-    \end{equation}
-\end{prop}
-From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $Y, X+Y, Y+Z$, and $X+Y+Z$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.\footnotemark{}
-\footnotetext{\citeauthor{paksoy2014inequalities} has used a similar approach to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
-Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
-\begin{cor}
-    \label{cor:schur_ineq}
-    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$.
-    Then
-    \begin{equation}
-        \label{eq:schur_ineq}
-        s_{\yx}(\eig(X+Y+Z)) + s_{\yx}(\eig(Y)) \geq s_{\yx}(\eig(X+Y)) + s_{\yx}(\eig(Y+Z)).
-    \end{equation}
-\end{cor}
-\begin{proof}
-    Given a Young diagram $\yx$, let $P_{\yx}$ be the Hermitian projection operator onto the isotypic subspace $V_{\yx}^{n} \ot W_{\yx} \subseteq (\mathbb C^{d})^{\ot k}$ (see the subsequent seequence, \cref{sec:schur_weyl} for more details).
-    Given positive semidefinite matrix $X \geq 0$, one can show that
-    \begin{equation}
-        \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
-    \end{equation}
-    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
-    \begin{equation}
-        \Tr[P_{\ex}(X+Y+Z)^{\ot k}] + \Tr[P_{\ex}Y^{\ot k}] \geq \Tr[P_{\ex}(X+Y)^{\ot k}] + \Tr[P_{\ex}(Y+Z)^{\ot k}]
-    \end{equation}
-    and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
-\end{proof}
-
-In the special where where $\yx = (\underbrace{1,\ldots,1}_n)$, one obtains the well-known determinant inequality \cite[Lemma 2.2]{tie2011rearrangement}:
-\begin{equation}
-    \label{eq:lin_det}
-    \det(X+Y+Z) + \det(Y) \geq \det(X+Y) + \det(Y+Z).
-\end{equation}
-Another well-known determinant inequality is the multiplicative variant of \cref{eq:lin_det} which states that for all $X,Y,Z \geq 0 $ positive semidefinite,
-\begin{equation}
-    \label{eq:mul_det}
-    \det(X+Y+Z)\det(Y) \leq \det(X+Y)\det(Y+Z).
-\end{equation}
-This inequality follows as a special case of a general result due to \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
-\begin{thm}
-    \label{thm:sagnol_ineq}
-    Let $X,Y,Z \geq 0$ be positive semidefinite matrices.
-    Let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ whose derivative $f'$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
-    Then the following inequality holds
-    \begin{equation}
-        \label{eq:sagnol_ineq}
-        \Tr f(X+Y+Z)
-        +
-        \Tr f(Y)
-        \geq
-        \Tr f(X+Y)
-        +
-        \Tr f(Y+Z).
-    \end{equation}
-\end{thm}
-\begin{proof}
-    See \cite[Section 2.1]{sagnol2013approximation}.
-    %Here we sketch the proof in .
-    %Let $F = \Tr \circ f$. The claim then amounts to proving for all $X,Y,Z\geq 0$,
-    %\begin{equation}
-    %    \label{eq:sagnol_diff}
-    %    \Delta_{X}\Delta_{Z} F(Y) = F(X+Y+Z) - F(X+Y) - F(Y+Z) + F(Y) \geq 0,
-    %\end{equation}
-    %where $\Delta_X$ is the difference operator $[\Delta_X F](Y) \coloneqq F(X+Y) - F(Y)$.
-    %By standard continuity arguments (and the assumption that $f$ is continuous), we may assume everything is positive definite in which case
-    %\begin{align}
-    %    \partial_{X} \Delta_Z F(Y)
-    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon X} \Delta_Z F(Y) \\
-    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_Z F (Y+\varepsilon X) - \Delta_Z F(Y) \right) \\
-    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon X+Y+Z) - F(\varepsilon X + Y) - F(Y+Z) + F(Y) \right) \\
-    %    &= \Tr\left[(f'(Y+Z)-f'(Y)) X \right]. \label{eq:sagnol_final_step}
-    %\end{align}
-    %Using the assumption that $f'$ is an operator monotone (and the assumption of positive definiteness) together with $Y+Z \geq Y$ (because $Z \geq 0$), we have $f'(Y+Z) \geq f'(Y)$ and thus $f'(Y+Z)-f'(Y) \geq 0$ is a positive semidefinite operator.
-    %Therefore, the function $\Delta_Z F(Y)$ is non-decreasing under $Y\mapsto X+Y$ and thus \cref{eq:sagnol_diff} holds.
-\end{proof}
-There are numerous inequalities of the form \cref{eq:sagnol_ineq} which immediately follow from \cref{thm:sagnol_ineq}.
-For example, letting $f(x) = \log x$ and noting $\Tr(\log X) = \log \det(X)$, one recovers \cref{eq:mul_det}.
-Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization}.
-In the limit where $p \to 0^+$, \citeauthor{sagnol2013approximation} also obtains at first order the well-known rank inequality \cite[Proposition A.1]{sagnol2013approximation}
-\begin{equation}
-    \rank(X+Y) + \rank(Y+Z) \geq \rank(Y) + \rank(X+Y+Z).
-\end{equation}
-One can also let $f(x) = x^p$ for $p \in (1,2]$.
-Of particular interest to us in \cref{sec:large_n} is the function $f(x) = x \log x$ which implies for all $X,Y,Z\geq 0$ the inequality
-\begin{align}
-    \label{eq:SSA_like_ineq}
-    S(X+Y)+ S(Y+Z) \geq S(Y) + S(X+Y+Z)
-\end{align}
-where for a positive semidefinite matrix $X$ with eigenvalues $\ex$, $S(X) \coloneqq s(\ex) \coloneqq -\sum_{i=1}^{n} \ex_i\log\ex_i$ is the \textit{unnormalized} von Neumann entropy of $X$.
-Note that a similar inequality involving entropies of sums of positive semidefinite matrices (subject to additional eigenvalue constraints) has appeared in \cite{christandl2018recoupling}.
-Moreover, while it can be shown that \cref{eq:SSA_like_ineq} is strictly tighter that the inequality in \cite{christandl2018recoupling} for fixed matrices, it is also possible to obtain \cref{eq:SSA_like_ineq} from the result in \cite{christandl2018recoupling} by downscaling the involved matrices in the sense of \cref{prop:scaling}.
-
-\subsection{The Courtade-Sra determinant inequality}
-
-Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $Y, X+Y, Y+Z$ and $X+Y+Z$.
-Here we show how to improve the determinant inequality $\det(X+Y)\det(Y+Z) \geq \det(X+Y+Z)\det(Y)$ in a manner which also accounts for the determinants $\det(X)$ and $\det(Z)$.
-This inequality exploits Minkowski's determinant inequality for positive semidefinite $n\times n$ matrices $X$ and $Y$ which reads (see \cite[Theorem 7.8.21]{horn1985matrix} or \cite[Equation II.44]{bhatia1997matrix}):
-\begin{equation}
-    \det(X+Y)^{\frac{1}{n}} \geq \det(X)^{\frac{1}{n}} + \det(Y)^{\frac{1}{n}}.
-\end{equation}
-The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}\footnote{Note in \cite{courtade2017concavity}, \citeauthor{courtade2017concavity} conjectures a generalization of the Brunn-Minkowski inequality for bounded convex sets $X,Y,Z$ in $\mathbb R^{n}$ of the form $V(X+Y)^{\frac{1}{n}}V(Y+Z)^{\frac{1}{n}} \geq V(X+Y+Z)^{\frac{1}{n}}V(Y)^{\frac{1}{n}} + V(X)^{\frac{1}{n}}V(Z)^{\frac{1}{n}}$. See also \cite{costa1984similarity}.}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
-This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
-\begin{prop}[Courtade-Sra determinant inequality]
-    \label{prop:cs_ineq}
-    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then
-    \begin{equation}
-        \label{eq:cs_ineq}
-        \det (X+Y)^{\frac1n} \det (Y+Z)^{\frac1n} \geq \det (X+Y+Z)^{\frac1n}\det (Y)^{\frac1n} + \det (X)^{\frac1n} \det(Z)^{\frac1n}.
-    \end{equation}
-\end{prop}
-\begin{proof}
-    By standard continuity arguments, it suffices to prove the inequality for $Y > 0$ positive definite (if it holds for positive definite $Y+\varepsilon I$, then continuity permits taking the limit $\varepsilon \to 0$).
-    As $Y$ is positive definite, it is also invertible and we may define
-    \begin{equation}
-        \tilde X = Y^{-\frac{1}{2}}XY^{-\frac{1}{2}}, \qquad
-        \tilde Z = Y^{-\frac{1}{2}}ZY^{-\frac{1}{2}}.
-    \end{equation}
-    By dividing \cref{eq:cs_ineq} by $\det(Y)^{\frac{2}{n}} \neq 0$, it then suffices to prove
-    \begin{equation}
-        \label{eq:cs_ineq_xy}
-        \det (I+\tilde X)^{\frac1n} \det (I+\tilde Z)^{\frac1n} \geq \det (I+\tilde X+\tilde Z)^{\frac1n} + \det (\tilde X)^{\frac1n} \det(\tilde Z)^{\frac1n}.
-    \end{equation}
-    Let $\ex = \eig(\tilde X)$ and $\ez = \eig(\tilde Z)$. Then for any permutation $\pi \in S_n$ let
-    \begin{equation}
-        L_{\pi} = \diag\{1+\ex_i + \ez_{\pi(i)}\}_{i=1}^{n}, \qquad R_{\pi} = \diag\{\ex_i\ez_{\pi(i)}\}_{i=1}^{n}.
-    \end{equation}
-    Then we have the identity
-    \begin{align}
-        \det(I+\tilde X)\det(I+\tilde Z)
-        &= \prod_{i=1}^{n} (1+\ex_i) \prod_{i=1}^{n} (1+\ez_i), \\
-        &= \prod_{i=1}^{n} (1+\ex_i + \ey_{\pi(i)} + \ex_i\ez_{\pi(i)}),\\
-        &= \det(L_{\pi} + R_{\pi})
-    \end{align}
-    Here we can apply Minkowski's theorem to obtain
-    \begin{equation}
-        \det(L_{\pi} + R_{\pi})^{\frac{1}{n}} \geq \det(L_{\pi})^{\frac{1}{n}} + \det(R_{\pi})^{\frac{1}{n}}.
-    \end{equation}
-    By definition, we have $\det(R_{\pi}) = \det(\tilde X)\det(\tilde Z)$ for any permutation $\pi$, while a theorem do to \citeauthor{fiedler1971bounds} \cite{fiedler1971bounds} states (see also \cite[Exercise VI.7.2,Theorem VI.7.1]{bhatia1997matrix})
-    \begin{equation}
-        \det(I+\tilde X+\tilde Y) \leq \max_{\pi} \prod_{i=1}^{n} (1+\ex_i + \ez_{\pi(i)}) = \max_{\pi} \det(L_{\pi}).
-    \end{equation}
-    Combining these bounds together yields \cref{eq:cs_ineq_xy} and thus the claim holds.
-\end{proof}
-
-\clearpage
-\section{New inequalities for tetrahedral eigenvalues}
-\label{sec:new_ineqs}
+\section{Inequalities for tetrahedral eigenvalues}
+\label{sec:ineqs_from_schur_weyl}
 
 The purpose of this section is to develop the technical machinery used to prove numerous new inequalities constraining the set of tetrahedral eigenvalues.
 Our approach relies heavily on the theory of irreducible representations of the group $\U(n)$ of unitary $n\times n$ matrices, or equivalently, the theory of polynomial irreducible representations of the group $\GL(n, \mathbb C)$ of invertible $n\times n$ matrices with complex entries.
@@ -1264,131 +886,6 @@ Here we present the Jacobi's bialternant formula
 \begin{equation}
     s_{\yx}(\ex) = \frac{\det[\ex_i^{\yx_j+n-j}]}{\det[\ex_i^{n-j}]} = \frac{1}{\Delta(\ex)}\det[\ex_i^{(\yx+\rho)_j}].
 \end{equation}
-
-\subsection{Eigenvalue estimation \& separation}
-\label{sec:eig_est_and_sep}
-
-In this section we show how the representations $\pi_{\yx}(X)$ of Hermitian matrices $X$ encode useful information about the eigenvalues $\ex = \eig(X)$ of $X$.
-These results apply to the case where $X \geq 0$ is a positive semidefinite matrix, in which case the representation $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
-Consequently, one obtains a formula for each Hermitian matrix $X$ with eigenvalues $\ex$ and each positive integer $k$:
-\begin{equation}
-    \Tr(X)^k = \Tr(X^{\ot k}) = \sum_{\yx \vdash k} \Tr[P_{\yx} X^{\ot k}] = \sum_{\yx \vdash k} \dim W_{\yx} \Tr[\pi_{\yx}(X)] = \sum_{\yx \vdash k} \dim W_{\yx} s_{\yx}(x).
-\end{equation}
-Whenever $X \geq 0$, each summand above is also non-negative and thus one can define a probability distribution known as the \textit{Schur-Weyl} distribution \cite{odonnell2016efficient}.
-\begin{defn}
-    The Schur-Weyl distribution of order $k$ for a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ is defined as the probability distribution over Young diagrams $\yx$ with $k$ boxes with probability
-    \begin{equation}
-        p_{X}(\yx) \coloneqq \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]} = \frac{\dim W_{\yx} s_{\yx}(\ex)}{\tex^{k}} = \frac{\syx! }{\tex^{k}}\frac{s_{\yx}(\ex)}{H_{\yx}}.
-    \end{equation}
-\end{defn}
-A key property of the Schur-Weyl distribution $p_{X}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
-\begin{equation}
-    m_{\ex}(\yx) \coloneqq \frac{\syx!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
-\end{equation}
-\begin{prop}
-    \label{prop:multinomial_bound}
-    Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
-    \begin{equation}
-        p_{X}(\yx) \leq \dim V_{\yx}^{n} m_{\nrm \ex}(\yx).
-    \end{equation}
-\end{prop}
-\begin{proof}
-    The proof follows from (i) an upper bound on the Schur-polynomial $s_{\yx}(\ex)$,
-    \begin{equation}
-        s_{\yx}(\ex) \leq \dim V_{\yx}^{n} \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n},
-    \end{equation}
-    which can be expressed as a sum over $\dim V_{\yx}^{n}$ multnomials of the form $\ex_1^{\mu_1}\ex_2^{\mu_2}\cdots \ex_n^{\mu_n}$ with $\ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n}$ the largest, and (ii) a lower bouond on the Hook-product,
-    \begin{equation}
-        H_{\yx} \geq \yx_1!\cdots \yx_n!,
-    \end{equation}
-    which follows because $h_{\yx}(b) \geq \yx_i - j + 1$ for a box in row $i$ and column $j$.
-\end{proof}
-\begin{rem}
-    One can eliminate the factor of $\dim V_{\yx}^{n}$ using the dimension bound
-    \begin{equation}
-        \dim V_{\yx}^{n} \leq (k+1)^{\frac{n(n-1)}{2}}.
-    \end{equation}
-\end{rem}
-The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
-\begin{prop}[Eigenvalue estimation]
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
-    Then the Schur-Weyl distribution $p_{X}(\yx)$ for $\yx \vdash k$ satisfies
-    \begin{equation}
-        p_{X}(\yx) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
-    \end{equation}
-    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence between the normalized Young diagram $\nrm \yx = \yx/\syx$ and the normalized eigenvalues $\nrm \ex = \ex/\tex$.
-\end{prop}
-This result captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_X(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\nrm \yx$, is similar to the eigenvalue distribution $\nrm x$.
-
-For our purposes, it will be useful to use a related result which captures the fact if two positive semidefinite matrices $X,Y \geq 0$ have disimilar eigenvalue distributions then the fidelity between their Schur-Weyl distributions is exponentially small in $k$.
-Recall the fidelity $F(p,q) \in [0,1]$ between distributions $p,q$, defined by
-\begin{equation}
-    F(p,q) = \sum_{i}\sqrt{p_iq_i},
-\end{equation}
-is equal to $F(p,q) = 1$ if and only if $p = q$.
-We refer to this result throughout the paper as the eigenvalue separation lemma.
-\begin{lem}[Eigenvalue separation]
-    Let $(\ex, \ey)$ be eigenvalues of positive semidefinite $n\times n$ matrices $X,Y \geq 0$.
-    Then the fidelity between Schur-Weyl distributions $p_X$ and $p_Y$ of order $k$
-    \begin{equation}
-        F_k(p_{X},p_{Y}) \coloneqq \sum_{\yx \vdash k} \sqrt{p_{X}(\yx)p_{Y}(\yx)}
-    \end{equation}
-    is bounded by
-    \begin{equation}
-         F_k(p_{X},p_{Y}) \leq (k+1)^{n(n-1)/2} F(\nrm \ex,\nrm \ey)^{k}.
-    \end{equation}
-    where $F(\nrm \ex,\nrm \ey)$ is the fidelity between the eigenvalue distributions of $X$ and $Y$,
-    \begin{equation}
-        F(\nrm \ex,\nrm \ey) = \sum_{i=1} \sqrt{\frac{\ex_i}{\tex}\frac{\ey_i}{\tey}}.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    The proof follows from \cref{prop:multinomial_bound} and the fact that fidelities are multiplicative with respect to multinomial distributions, i.e. $F_k(m_x, m_y) \leq F(\nrm \ex, \nrm \ey)$.
-    \begin{equation}
-         F_k(p_{X},p_{Y}) \leq (k+1)^{n(n-1)/2} F_k(m_{\ex},m_{\ey}) = (k+1)^{n(n-1)/2} F(\nrm \ex,\nrm \ey)^{k}.
-    \end{equation}
-\end{proof}
-\begin{rem}
-    The eigenvalue separation lemma states that when two positive semidefinite matrices $X,Y \geq 0$ have the same trace $\tau = \Tr(X) = \Tr(Y)$ but distinct eigenvalues $\ex \neq \ey$, then we can conclude $F(\nrm \ex,\nrm \ey) < 1 - \varepsilon$ for some $\varepsilon$ and therefore as $k \to \infty$, $F_k(p_{X},p_{Y}) \to 0$.
-\end{rem}
-\begin{rem}
-    In order to quantify the separation between distributions more geometrically, we use the fact that the Bhattacharyya coefficient, defined as $B(p,q) = - \log F(p,q)$, satisfies the lower bound $B(p,q) \geq \frac{1}{4}\norm{p-q}_1^2$ which implies
-    \begin{equation}
-        F(p,q)^k \leq \exp\left(-\frac{1}{4}\norm{p-q}_1^2\right).
-    \end{equation}
-\end{rem}
-%\begin{prop}[Eigenvalue separation]
-%    Let $X,X'\geq 0$ be positive semidefinite $n\times n$ matrices with the same trace $\tau_{X} = \Tr(X) = \Tr(X')$.
-%    Then for any integer $k \geq 0$,
-%    \begin{equation}
-%        \sum_{\yx \vdash k} \sqrt{\varphi_{\yx}(X)\varphi_{\yx}(X')} \leq (k+1)^{n(n-1)/2} \frac{\tilde F(\ex,\ex')^k}{k!} .
-%    \end{equation}
-%    where $\tilde F(\ex,\ex') \coloneqq \sum_{i=1}^{n} \sqrt{\ex_i \ex'_i}$ denotes the unnormalized fidelity between $\ex$ and $\ex'$ (it is strictly less that $\tau_{X}$ when $\ex \neq \ex'$ and equals $\tau_{X}$ otherwise).
-%\end{prop}
-%\begin{cor}[Multi-eigenvalue separation]
-%    Let $X,Y \geq 0$ and $X',Y'\geq 0$ be two pairs of $n\times n$ matrices with matching traces $\tau_X = \Tr(X) = \Tr(X')$ and $\tau_Y = \Tr(Y) = \Tr(Y')$.
-%    Then for any integer $k \geq 0$, 
-%    \begin{align}
-%        \sum_{\ell = 0}^{k} \sum_{\ya\vdash \ell,\yb\vdash k-\ell} \sqrt{\varphi_{\ya}(X)\varphi_{\ya}(X')}\sqrt{\varphi_{\yb}(Y)\varphi_{\yb}(Y')}
-%        \leq (k^2/4+k+1)^{n(n-1)/2}\frac{\tilde F(X \oplus Y,X' \oplus Y')^{k}}{k!}.
-%    \end{align}
-%\end{cor}
-%\begin{proof}
-%    The proof uses $\tilde F(X \oplus Y,X' \oplus Y') = \tilde F(X,X') + \tilde F(Y,Y')$ and the binomial expansion.
-%    The prefactor arises because if $\ya \vdash \ell$ and $\yb \vdash k-\ell$, then
-%    \begin{equation}
-%        \dim (V_{\ya}^{n})\dim (V_{\yb}^{n}) \leq (\ell+1)^{n(n-1)/2}(k-\ell+1)^{n(n-1)/2} = (\ell(k-\ell) + k + 1)^{n(n-1)/2},
-%    \end{equation}
-%    and $\ell(k-\ell) \leq (\frac{k}{2})^2$.
-%
-%    %\begin{align}
-%    %    &\sum_{\ell = 0}^{k} \sum_{\ya\vdash \ell,\yb\vdash k-\ell} \sqrt{\varphi_{\ya}(X)\varphi_{\ya}(X')}\sqrt{\varphi_{\yb}(Y)\varphi_{\yb}(Y')} \\
-%    %    &\qquad\leq\sum_{\ell = 0}^{k} [(\ell+1)(k-\ell+1)]^{n(n-1)/2} \frac{\tilde F(X,X')^\ell}{\ell!}\frac{\tilde F(Y,Y')^{k-\ell}}{(k-\ell)!},\\
-%    %    &\qquad\leq(k^2/4+k+1)^{n(n-1)/2}\sum_{\ell = 0}^{k} \frac{\tilde F(X,X')^\ell}{\ell!}\frac{\tilde F(Y,Y')^{k-\ell}}{(k-\ell)!},\\
-%    %    &\qquad=(k^2/4+k+1)^{n(n-1)/2}\frac{[\tilde F(X,X') + \tilde F(Y,Y')]^{k}}{k!}, \\
-%    %    &\qquad=(k^2/4+k+1)^{n(n-1)/2}\frac{\tilde F(X \oplus Y,X' \oplus Y')^{k}}{k!}.
-%    %\end{align}
-%\end{proof}
 
 
 \subsection{The binomial theorem}
@@ -1733,8 +1230,8 @@ These upper bounds follow from the following general lemma applied to the compac
     \end{equation}
     which is equivalent to the claim due to \cref{prop:6j_norm_double_proj}.
 \end{proof}
-\begin{lem}
-    \label{lem:tet_partial_sum_ineq}
+\begin{prop}
+    \label{prop:tet_partial_sum_ineq}
     Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then we have bounds on the partial sums,
     \begin{align}
@@ -1747,7 +1244,7 @@ These upper bounds follow from the following general lemma applied to the compac
     \begin{equation}
         \max\{\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z), \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\} \leq \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \min\{\varphi_{\ye}(X+Y+Z),\varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z)\}.
     \end{equation}
-\end{lem}
+\end{prop}
 \begin{proof}
     The bounds are consequences from summation identities and the fact that the partial sums $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ and $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ are non-negative real-valued.
     The first pair of bounds follow from the summation identities
@@ -1784,7 +1281,7 @@ These upper bounds follow from the following general lemma applied to the compac
     \begin{equation}
         \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) \leq \sum_{\yc\ye\yf} \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
     \end{equation}
-    Then for the upper bound, \cref{lem:tet_partial_sum_ineq} can be used to produce 
+    Then for the upper bound, \cref{prop:tet_partial_sum_ineq} can be used to produce 
     \begin{equation}
         \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \left[\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\right]^{p}\varphi_{\ye}(X+Y+Z)^{2(1-p)},
     \end{equation}
@@ -1796,9 +1293,9 @@ These upper bounds follow from the following general lemma applied to the compac
 \subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
 \label{sec:large_n}
 
-The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{thm:asym_6j} to derive inequalities on the entropies of the eigenvalues.
+The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} to derive inequalities on the entropies of the eigenvalues.
 Our strategy will be to prove an upper bound on the $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
-By combining this upper bound with the lower bound provided by \cref{thm:asym_6j} (specifically the $n$-independent bound in \cref{eq:n_independent_inverse_poly}), we will prove the following.
+By combining this upper bound with the lower bound provided by \cref{cor:asym_6j} (specifically the $n$-independent bound in \cref{eq:n_independent_inverse_poly}), we will prove the following.
 \begin{thm}
     \label{thm:entropic_ineq}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be tetrahedral eigenvalues.
@@ -1837,7 +1334,7 @@ We begin with our upper bound on the $6j$ symbol.
 \end{proof}
 
 An immediate application of \cref{lem:sixj_ssa_bound} is to combine it with \cref{eq:n_independent_inverse_poly}.
-If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{thm:asym_6j} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
+If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:asym_6j} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
 \begin{equation}
     \label{eq:combined_bound}
     \frac{1}{q(k)} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{2}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
@@ -1880,7 +1377,7 @@ From \cref{prop:harrow_formula} we obtain the following corollary.
         \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)} =
         \frac{{\syb}!{\sye}!}{{\syc}!{\syf}!}
         \frac{\dim(W_{\yc}) \dim(W_{\yf})}{\dim(W_{\yb}) \dim(W_{\ye})}
-        = \frac{H_{\yc}H_{\yf}}{H_{\yb}H_{\ye}}
+        = \frac{H_{\yb}H_{\ye}}{H_{\yc}H_{\yf}}
     \end{equation}
 \end{cor}
 \begin{proof}
@@ -1896,22 +1393,148 @@ We are now in a position to prove the main result of this section.
     Therefore, by \cref{cor:harrow_ssa_lim} and the discussion surrounding the bound in \cref{eq:combined_bound} we conclude that along the convergent sequence of Young diagrams,
     \begin{equation}
         \label{eq:hook_ratio_limit}
-        \lim_{k\to\infty} \frac{1}{k} \log \left[\frac{H_{\yb_k}H_{\ye_k}}{H_{\yc_k}H_{\yf_k}}\right] \geq 0
+        \lim_{k\to\infty} \frac{1}{k} \log \left(\frac{H_{\yb_k}H_{\ye_k}}{H_{\yc_k}H_{\yf_k}}\right) \geq 0
     \end{equation}
     provided the limit.
     To prove the limit exists, an application of Stirling's approximation, $\log n! \approx n \log n - n$ \cite{robbins1955remark}, to the approximation formula $H_{\yx} \approx \prod_{i=1}^{n}\yx_i!$ produces for any constant $\eta$ the formula
     \begin{equation}
-        \frac{1}{k}\log H_{\yx} \approx (\log \eta - 1) \syx + \sum_{i=1}^{n} \frac{\yx_i}{\eta}\log \frac{\yx_i}{\eta} 
+        \frac{1}{\eta}\log H_{\yx} \approx (\log \eta - 1) \syx + \sum_{i=1}^{n} \frac{\yx_i}{\eta}\log \frac{\yx_i}{\eta} 
     \end{equation}
     Because ${\syc}+{\syf} = {\syb}+{\sye}$ (\cref{eq:balanced_sizes}), the $(\log \eta - 1)$ terms will cancel in \cref{eq:hook_ratio_limit}.
-    Then using the fact that that $(\yb_k, \yc_k, \ye_k, \yf_k)$ converge to proportion to the eigenvalues $(\eb,\ec,\ee,\ef)$ (with proportionality constant $\eta = \frac{k}{\tee}$), we conclude that \cref{eq:hook_ratio_limit} has a limit can indeed equals the left-hand side of \cref{eq:entropic_ineq}. 
+    Then using the fact that that $(\yb_k, \yc_k, \ye_k, \yf_k)$ converge in proportion to the eigenvalues $(\eb,\ec,\ee,\ef)$ (with proportionality constant $\eta = \frac{k}{\tee}$), we conclude that \cref{eq:hook_ratio_limit} has a limit and moreover it equals the left-hand side of \cref{eq:entropic_ineq}. 
 \end{proof}
 
 
-\section{Proofs of main theorems}
-In this section we provide proofs of the distance bounds associated to \cref{thm:suff_tet}, \cref{thm:horn_orig_poly_ineqs}, and \cref{thm:asym_6j}.
+\section{Distance bounds via eigenvalue concentration}
+In this section we provide proofs of the distance bounds associated to \cref{thm:suff_tet}, \cref{thm:horn_orig_poly_ineqs}, and \cref{cor:asym_6j}.
 Note that \cref{thm:nec_tet} is just a restatement of \cref{cor:tet_eigenvalue_cubic} proven in the previous sections.
 These bounds make use of formulas from random matrix theory, which we review first in \cref{sec:random_matrices}.
+
+\subsection{Eigenvalue estimation \& separation}
+\label{sec:eig_est_and_sep}
+
+In this section we show how the representations $\pi_{\yx}(X)$ of Hermitian matrices $X$ encode useful information about the eigenvalues $\ex = \eig(X)$ of $X$.
+These results apply to the case where $X \geq 0$ is a positive semidefinite matrix, in which case the representation $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
+Consequently, one obtains a formula for each Hermitian matrix $X$ with eigenvalues $\ex$ and each positive integer $k$:
+\begin{equation}
+    \Tr(X)^k = \Tr(X^{\ot k}) = \sum_{\yx \vdash k} \Tr[P_{\yx} X^{\ot k}] = \sum_{\yx \vdash k} \dim W_{\yx} \Tr[\pi_{\yx}(X)] = \sum_{\yx \vdash k} \dim W_{\yx} s_{\yx}(x).
+\end{equation}
+Whenever $X \geq 0$, each summand above is also non-negative and thus one can define a probability distribution known as the \textit{Schur-Weyl} distribution \cite{odonnell2016efficient}.
+\begin{defn}
+    The Schur-Weyl distribution of order $k$ for a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ is defined as the probability distribution over Young diagrams $\yx$ with $k$ boxes with probability
+    \begin{equation}
+        p_{X}(\yx) \coloneqq \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]} = \frac{\dim W_{\yx} s_{\yx}(\ex)}{\tex^{k}} = \frac{\syx! }{\tex^{k}}\frac{s_{\yx}(\ex)}{H_{\yx}}.
+    \end{equation}
+\end{defn}
+A key property of the Schur-Weyl distribution $p_{X}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
+\begin{equation}
+    m_{\ex}(\yx) \coloneqq \frac{\syx!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
+\end{equation}
+\begin{prop}
+    \label{prop:multinomial_bound}
+    Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
+    \begin{equation}
+        p_{X}(\yx) \leq \dim V_{\yx}^{n} m_{\nrm \ex}(\yx).
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The proof follows from (i) an upper bound on the Schur-polynomial $s_{\yx}(\ex)$,
+    \begin{equation}
+        s_{\yx}(\ex) \leq \dim V_{\yx}^{n} \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n},
+    \end{equation}
+    which can be expressed as a sum over $\dim V_{\yx}^{n}$ multnomials of the form $\ex_1^{\mu_1}\ex_2^{\mu_2}\cdots \ex_n^{\mu_n}$ with $\ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n}$ the largest, and (ii) a lower bouond on the Hook-product,
+    \begin{equation}
+        H_{\yx} \geq \yx_1!\cdots \yx_n!,
+    \end{equation}
+    which follows because $h_{\yx}(b) \geq \yx_i - j + 1$ for a box in row $i$ and column $j$.
+\end{proof}
+\begin{rem}
+    One can eliminate the factor of $\dim V_{\yx}^{n}$ using the dimension bound
+    \begin{equation}
+        \dim V_{\yx}^{n} \leq (k+1)^{\frac{n(n-1)}{2}}.
+    \end{equation}
+\end{rem}
+The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
+\begin{prop}[Eigenvalue estimation]
+    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
+    Then the Schur-Weyl distribution $p_{X}(\yx)$ for $\yx \vdash k$ satisfies
+    \begin{equation}
+        p_{X}(\yx) \leq (k+1)^{\frac{n(n-1)}{2}} \exp(-k \kl{\nrm \yx}{\nrm \ex})
+    \end{equation}
+    where $\kl{\nrm \yx}{\nrm \ex}$ denotes the Kullback-Leibler divergence between the normalized Young diagram $\nrm \yx = \yx/\syx$ and the normalized eigenvalues $\nrm \ex = \ex/\tex$.
+\end{prop}
+This result captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_X(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\nrm \yx$, is similar to the eigenvalue distribution $\nrm x$.
+
+For our purposes, it will be useful to use a related result which captures the fact if two positive semidefinite matrices $X,Y \geq 0$ have disimilar eigenvalue distributions then the fidelity between their Schur-Weyl distributions is exponentially small in $k$.
+Recall the fidelity $F(p,q) \in [0,1]$ between distributions $p,q$, defined by
+\begin{equation}
+    F(p,q) = \sum_{i}\sqrt{p_iq_i},
+\end{equation}
+is equal to $F(p,q) = 1$ if and only if $p = q$.
+We refer to this result throughout the paper as the eigenvalue separation lemma.
+\begin{lem}[Eigenvalue separation]
+    Let $(\ex, \ey)$ be eigenvalues of positive semidefinite $n\times n$ matrices $X,Y \geq 0$.
+    Then the fidelity between Schur-Weyl distributions $p_X$ and $p_Y$ of order $k$
+    \begin{equation}
+        F_k(p_{X},p_{Y}) \coloneqq \sum_{\yx \vdash k} \sqrt{p_{X}(\yx)p_{Y}(\yx)}
+    \end{equation}
+    is bounded by
+    \begin{equation}
+         F_k(p_{X},p_{Y}) \leq (k+1)^{n(n-1)/2} F(\nrm \ex,\nrm \ey)^{k}.
+    \end{equation}
+    where $F(\nrm \ex,\nrm \ey)$ is the fidelity between the eigenvalue distributions of $X$ and $Y$,
+    \begin{equation}
+        F(\nrm \ex,\nrm \ey) = \sum_{i=1} \sqrt{\frac{\ex_i}{\tex}\frac{\ey_i}{\tey}}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    The proof follows from \cref{prop:multinomial_bound} and the fact that fidelities are multiplicative with respect to multinomial distributions, i.e. $F_k(m_x, m_y) \leq F(\nrm \ex, \nrm \ey)$.
+    \begin{equation}
+         F_k(p_{X},p_{Y}) \leq (k+1)^{n(n-1)/2} F_k(m_{\ex},m_{\ey}) = (k+1)^{n(n-1)/2} F(\nrm \ex,\nrm \ey)^{k}.
+    \end{equation}
+\end{proof}
+\begin{rem}
+    The eigenvalue separation lemma states that when two positive semidefinite matrices $X,Y \geq 0$ have the same trace $\tau = \Tr(X) = \Tr(Y)$ but distinct eigenvalues $\ex \neq \ey$, then we can conclude $F(\nrm \ex,\nrm \ey) < 1 - \varepsilon$ for some $\varepsilon$ and therefore as $k \to \infty$, $F_k(p_{X},p_{Y}) \to 0$.
+\end{rem}
+\begin{rem}
+    In order to quantify the separation between distributions more geometrically, we use the fact that the Bhattacharyya coefficient, defined as $B(p,q) = - \log F(p,q)$, satisfies the lower bound $B(p,q) \geq \frac{1}{4}\norm{p-q}_1^2$ which implies
+    \begin{equation}
+        F(p,q)^k \leq \exp\left(-\frac{1}{4}\norm{p-q}_1^2\right).
+    \end{equation}
+\end{rem}
+%\begin{prop}[Eigenvalue separation]
+%    Let $X,X'\geq 0$ be positive semidefinite $n\times n$ matrices with the same trace $\tau_{X} = \Tr(X) = \Tr(X')$.
+%    Then for any integer $k \geq 0$,
+%    \begin{equation}
+%        \sum_{\yx \vdash k} \sqrt{\varphi_{\yx}(X)\varphi_{\yx}(X')} \leq (k+1)^{n(n-1)/2} \frac{\tilde F(\ex,\ex')^k}{k!} .
+%    \end{equation}
+%    where $\tilde F(\ex,\ex') \coloneqq \sum_{i=1}^{n} \sqrt{\ex_i \ex'_i}$ denotes the unnormalized fidelity between $\ex$ and $\ex'$ (it is strictly less that $\tau_{X}$ when $\ex \neq \ex'$ and equals $\tau_{X}$ otherwise).
+%\end{prop}
+%\begin{cor}[Multi-eigenvalue separation]
+%    Let $X,Y \geq 0$ and $X',Y'\geq 0$ be two pairs of $n\times n$ matrices with matching traces $\tau_X = \Tr(X) = \Tr(X')$ and $\tau_Y = \Tr(Y) = \Tr(Y')$.
+%    Then for any integer $k \geq 0$, 
+%    \begin{align}
+%        \sum_{\ell = 0}^{k} \sum_{\ya\vdash \ell,\yb\vdash k-\ell} \sqrt{\varphi_{\ya}(X)\varphi_{\ya}(X')}\sqrt{\varphi_{\yb}(Y)\varphi_{\yb}(Y')}
+%        \leq (k^2/4+k+1)^{n(n-1)/2}\frac{\tilde F(X \oplus Y,X' \oplus Y')^{k}}{k!}.
+%    \end{align}
+%\end{cor}
+%\begin{proof}
+%    The proof uses $\tilde F(X \oplus Y,X' \oplus Y') = \tilde F(X,X') + \tilde F(Y,Y')$ and the binomial expansion.
+%    The prefactor arises because if $\ya \vdash \ell$ and $\yb \vdash k-\ell$, then
+%    \begin{equation}
+%        \dim (V_{\ya}^{n})\dim (V_{\yb}^{n}) \leq (\ell+1)^{n(n-1)/2}(k-\ell+1)^{n(n-1)/2} = (\ell(k-\ell) + k + 1)^{n(n-1)/2},
+%    \end{equation}
+%    and $\ell(k-\ell) \leq (\frac{k}{2})^2$.
+%
+%    %\begin{align}
+%    %    &\sum_{\ell = 0}^{k} \sum_{\ya\vdash \ell,\yb\vdash k-\ell} \sqrt{\varphi_{\ya}(X)\varphi_{\ya}(X')}\sqrt{\varphi_{\yb}(Y)\varphi_{\yb}(Y')} \\
+%    %    &\qquad\leq\sum_{\ell = 0}^{k} [(\ell+1)(k-\ell+1)]^{n(n-1)/2} \frac{\tilde F(X,X')^\ell}{\ell!}\frac{\tilde F(Y,Y')^{k-\ell}}{(k-\ell)!},\\
+%    %    &\qquad\leq(k^2/4+k+1)^{n(n-1)/2}\sum_{\ell = 0}^{k} \frac{\tilde F(X,X')^\ell}{\ell!}\frac{\tilde F(Y,Y')^{k-\ell}}{(k-\ell)!},\\
+%    %    &\qquad=(k^2/4+k+1)^{n(n-1)/2}\frac{[\tilde F(X,X') + \tilde F(Y,Y')]^{k}}{k!}, \\
+%    %    &\qquad=(k^2/4+k+1)^{n(n-1)/2}\frac{\tilde F(X \oplus Y,X' \oplus Y')^{k}}{k!}.
+%    %\end{align}
+%\end{proof}
+
 
 \subsection{Results for random matrices}
 \label{sec:random_matrices}
@@ -1934,6 +1557,10 @@ The first two propositions follow from standard applications of Schurs lemma, an
     Then for any Young diagram $\yx$,
     \begin{equation}
         \expect_{X \sim \mathrm{HS}_{\tau} } \pi_{\yx}(X) = \tau^{\syx}q_{n,\yx}\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
+    \end{equation}
+    where $q_{n,\yx}$ is the dimension ratio
+    \begin{equation}
+        q_{n,\yx} \coloneqq \frac{(\dim V_{\yx}^{n})^{2}}{\dim V_{(\syx)}^{n^2}}.
     \end{equation}
 \end{prop}
 \begin{cor}
@@ -1967,11 +1594,36 @@ The first two propositions follow from standard applications of Schurs lemma, an
     \end{equation}
 \end{cor}
 
-\subsection{Proof of \cref{thm:horn_orig_poly_ineqs}}
+\subsection{Distance bound for the original Horn problem}
+
+\begin{thm}
+    \label{thm:nec_tri}
+    \label{thm:horn_orig_poly_ineqs}
+    Let $(\ea,\eb,\ec)$ be a triple of non-negative eigenvalues.
+    If there exists positive semidefinite matrices $A,B,C \geq 0$ with eigenvalues $(\ea,\eb,\ec)$ satisfying $A+B=C$, then for all Young diagrams $\yc$, we have
+    \begin{equation}
+        \label{eq:polynomial_horn_ineq}
+        \varphi_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(\ea)\varphi_{\yb}(\eb).
+    \end{equation}
+\end{thm}
+
+\begin{thm}
+    \label{thm:suf_tri}
+    Let $(\ea,\eb,\ec)$ be a triple of non-negative eigenvalues satisfying trace condition $\tea + \teb = \tec$.
+    If for all Young diagrams $\yc$ of size $\syc = k$, 
+    \begin{equation}
+        \varphi_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \varphi_{\ya}(\ea)\varphi_{\yb}(\eb),
+    \end{equation}
+    then
+    \begin{equation}
+        D(\ea,\eb,\ec) \leq \tec O\left(n\sqrt{\frac{\log k}{k}}\right).
+    \end{equation}
+    where $D(\ea,\eb,\ec)\coloneqq \min_{(A,B) \in \orbit_\ea \times \orbit_\eb} \norm{\eig(A+B)-\ec}_{1}$.
+\end{thm}
 To begin we use the random matrix identities from \cref{sec:random_matrices} to prove that $\varphi_{\yc}(A+B)$ does not differ significantly when $A,B$ are replaced with random matrices in their respective coadjoint orbits.
 This result follows from \cref{cor:orig_horn_ineq}.
 \begin{cor}
-    \label{cor:random_sum_ineq}
+    \label{lem:random_tri_ineq}
     For a given $\yc$, let $m_n(\yc)$ be the following quantity
     \begin{equation}
         m_n(\yc) \coloneqq \min_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\frac{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}}{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}
@@ -1991,7 +1643,7 @@ From this point of view, the quantity $m_n(\yc)$ can be interpreted as the minim
 \begin{proof}[Proof of \cref{thm:horn_orig_poly_ineqs}]
     That \cref{eq:polynomial_horn_ineq} must be satisfied by $(\ea,\eb,\ec)$ whenever there exists follows from \cref{cor:orig_horn_ineq}.
     To prove the bound on $D(\ea,\eb,\ec)$, it actually suffices for $(\ea,\eb,\ec)$ to satisfy a weaker constraint.
-    Specifically, the requirement that \cref{eq:polynomial_horn_ineq} is satisfied for a given $\yc$ can be relaxed, by \cref{cor:random_sum_ineq}, to the requirement that 
+    Specifically, the requirement that \cref{eq:polynomial_horn_ineq} is satisfied for a given $\yc$ can be relaxed, by \cref{lem:random_tri_ineq}, to the requirement that 
     \begin{equation}
         \varphi_{\yc}(\ec) \leq \frac{1}{m_n(\yc)} \max_{(X,Y) \in \orbit_\ea \times \orbit_\eb} \varphi_{\yc}(X+Y).
     \end{equation}
@@ -2018,7 +1670,7 @@ From this point of view, the quantity $m_n(\yc)$ can be interpreted as the minim
     \end{align}
 \end{proof}
 
-\subsection{Proof of \cref{thm:suff_tet}}
+\subsection{Distance for the tetrahedral Horn problem}
 \begin{proof}[Proof of \cref{thm:suff_tet}]
     If a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ happens to satisfy \cref{eq:nec_tet} for a particular triple of Young diagrams $(\ya,\yb,\yd)$, then multiplying both sides of \cref{eq:nec_tet} by $\varphi_{\ya}(a)^{\frac{4}{3}}\varphi_{\yb}(b)\varphi_{\yd}(d)^{\frac{4}{3}}$ yields
     \begin{equation}
@@ -2093,9 +1745,9 @@ From this point of view, the quantity $m_n(\yc)$ can be interpreted as the minim
     which proves the claim.
 \end{proof}
 
-\subsection{Proof of \cref{thm:asym_6j}}
+\subsection{Asymptotics of the \texorpdfstring{$6j$}{6j} symbols}
 
-In order to prove \cref{thm:asym_6j} is will be useful to have a bound on the quantity $\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which directly relates the sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ to the eigenvalues of $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
+In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the quantity $\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which directly relates the sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ to the eigenvalues of $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
 \begin{lem}
     \label{lem:asym_sixj_helper}
     To begin let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices and let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of the matrices $(X, Y, X+Y, Z, X+Y+Z,Y+Z)$.
@@ -2117,7 +1769,7 @@ In order to prove \cref{thm:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
 \end{lem}
 \begin{proof}
-    A combination of \cref{thm:varphi_tet_main_ineq} and \cref{lem:tet_partial_sum_ineq} implies    
+    A combination of \cref{thm:varphi_tet_main_ineq} and \cref{prop:tet_partial_sum_ineq} implies    
     \begin{equation}
         \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
         \leq \norm{\abcdefsymbol}_{\infty} \left(\varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d) \times \varphi_{\yc}(c)\varphi_{\yd}(d) \times \varphi_{\ye}(e) \times \varphi_{\ya}(a)\varphi_{\yf}(f)\right)^{\frac{1}{4}},
@@ -2135,7 +1787,7 @@ In order to prove \cref{thm:asym_6j} is will be useful to have a bound on the qu
     \end{align}
     Since the product of the four distributions on the left-hand side above is at most the minimum of one or the product of relative entropy bounds on the right-hand side above (and the product of the dimensions to the fourth root is at most $[(k+1)^{\frac{n(n-1)}{2}}]^{\frac{8}{4}}$), obtain the claim.
 \end{proof}
-\begin{proof}[Proof of \cref{thm:asym_6j} ]
+\begin{proof}[Proof of \cref{cor:asym_6j} ]
     To begin we use \cref{lem:asym_sixj_helper} to prove the claimed inverse polynomial lower bound.
     Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
     Summing $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all sextuples of Young diagrams satisfying \cref{eq:yd_k_sizes} produces
@@ -2193,7 +1845,6 @@ In order to prove \cref{thm:asym_6j} is will be useful to have a bound on the qu
 \section*{Acknowledgements}
 MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality. 
 TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
-%\clearpage
 \appendix
 
 \section{Seesaw reciprocity \& eigenvalues of blocks}
@@ -2449,7 +2100,368 @@ As a corollary of this correspondence between the Horn's problem and the eigenva
 \end{rem}
 }
 
-\section{Conjectures}
+\section{Review of previous work of eigenvalues of sums}
+\label{sec:previously_known}
+
+The purpose of this section is to describe various previously known inequalities which are necessarily satisfied by tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+Readers exclusively interested in the techniques used to prove the results claimed in the introduction are encouraged to skip to \cref{sec:ineqs_from_schur_weyl}.
+While our main theorems, \cref{thm:nec_tet,thm:suff_tet}, describe a countably infinite family of necessary inequalities which, when bundled together, are sufficient to characterize the set of tetrahedral eigenvalues for any fixed dimension $n$, the problem of providing a finite characterization, say in the form of a finite list of polynomial equalities and inequalities, remains an open problem for $n \geq 3$.
+
+\subsection{Horn's inequalities}
+Recall that $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral only if each of $(\ea,\eb,\ec)$, $(\eb, \ec, \ef)$, $(\ec,\ed,\ee)$, and $(\ea,\ef,\ee)$ are trigonal as in \cref{eq:four_faces}.
+Consequently, every inequality constraining trigonal eigenvalues can be lifted to produce a quadruplet of inequalities constraining the set of tetrahedral eigenvalues.
+These inequalities can be understood as generalizations of the triangle inequalities, \cref{eq:quadruplet_triangle_constraints}, which hold for case where $n=2$.
+Therefore, before proceeding, we briefly summarize the inequalities satisfied by trigonal eigenvalues $(\ea,\eb,\ec)$.
+Of particular interest are Horn's inequalities \cite{horn1962eigenvalues} which are known to be necessary and sufficient \cite{klyachko1998stable,knutson1999honeycomb}.
+For a more complete historical account, the reader is directed to the survey articles \cite{bhatia2001linear,fulton1998eigenvalues,knutson2000symplectic} or \cite[Appendix D]{niculescu2006convex}.
+In addition to the aforementioned trace condition, ${\sum}_{i=1}^{n}\ea_i + {\sum}_{j=1}^{n}\eb_j = {\sum}_{k=1}^{n}\ec_k$, one always has the following pair of elementary inequalities,
+\begin{equation}
+    \ea_1 + \eb_1 \geq \ec_1, \quad \text{and} \quad \ea_n + \eb_n \leq \ec_n,
+\end{equation}
+which constrain the largest and smallest eigenvalues respectively (note that under inversion symmetry, these inequalities are equivalent).
+The first somewhat non-trivial inequality, derived by \citeauthor{weyl1912asymptotische} in 1912, is now known as \textit{Weyl's inequality} and states for all $i,j$ such that $i+j \leq n+1$ \cite{weyl1912asymptotische}\footnote{For $2\times 2$ matrices one can see that these necessary inequalities are also sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal; upon shifting to traceless eigenvalues using \cref{cor:traceless}, $\ea = (a,-a), \eb = (b, -b)$ and $\ec = (c,-c)$, and these inequalities become equivalent to the triangle inequalities $c \leq a+b$ and $c \geq \max\{b-a,a-b\}$.}
+\begin{equation}
+    \ea_i + \eb_j \geq \ec_{i+j-1}.
+\end{equation}
+In 1949, \citeauthor{fan1949theorem} derived a majorization inequality constraining the first $r$ largest eigenvalues \cite{fan1949theorem},
+and shortly thereafter Lidskii \cite{lidskii1953proper} \& Wielandt \cite{wielandt1955extremum} found proofs of another family of inequalities.
+Finally, in 1962, \citeauthor{horn1962eigenvalues} determined a complete collection of inequalities for $(\ea,\eb,\ec)$ are trigonal for the case where $n=3$ \cite{horn1962eigenvalues}.
+Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} provided an inductively defined set of subsets $I,J,K \subset \{1,\ldots, n\}$ of equal cardinality and conjectured that inequalities of the form
+\begin{equation}
+    \label{eq:IJK_ineq}
+    {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
+\end{equation}
+were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
+While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, ${\tea} + {\teb} = {\tec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
+Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
+
+For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
+
+\subsection{A simple quadratic inequality}
+
+In \cref{sec:symmetries} we saw that the shifting symmetry implies, in a certain sense, one may assume without loss of generality that the candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ are all non-negative or even strictly positive.
+While almost all of the following inequalities require this positivity assumption, we note that they can be extended to eigenvalues with negative entries in all cases.
+
+Here we present an quadratic inequality which follows from a simple calculation.
+Let $(A,B,C,D,E,F)$ be positive semidefinite $n\times n$ matrices satisfying $A+B=C$, $B+D=F$, and $A+F=C+D=E$.
+Then the following identity holds:
+\begin{align}
+    \label{eq:quad_identity}
+    \begin{split}
+        & \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] \\
+        &\quad=\Tr[(B)^2] + \Tr[(A+B+D)^2] - \Tr[(A+B)^2] - \Tr[(B+D)^2] \\
+        &\quad=
+        (\Tr[B^2])
+        +(\Tr[A^2] + \Tr[B^2] + \Tr[D^2] + 2\Tr[AB] + 2\Tr[BD] + 2 \Tr[AD])\\
+        &\qquad\qquad-(\Tr[A^2] + \Tr[B^2] + 2\Tr[AB])
+        -(\Tr[B^2] + \Tr[D^2] + 2\Tr[BD])\\
+        &\quad= 2 \Tr[AD].
+    \end{split}
+\end{align}
+Although the left-hand side of the above expression depends only on the set of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$,
+\begin{equation}
+    \Tr[B^2] + \Tr[E^2] - \Tr[C^2] - \Tr[F^2] = 
+    \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2,
+\end{equation}
+the right-hand side does not.
+Nevertheless, one may note that for all $A,D \geq 0$ positive semidefinite, $\Tr(AD) \geq 0$ and therefore,
+\begin{equation}
+    \label{eq:quadratic_difference_pos}
+    \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2 \geq 0.
+\end{equation}
+This inequality is well-known and indeed follows as a special case of \cite[Proposition 2.3]{sagnol2013approximation}.
+
+However, a minor improvement can be made here.
+While $\Tr(AD)$ cannot, in general, be determined from the eigenvalues $\ea = \eig(A)$ and $\ed = \eig(D)$, one can apply the von Neumann trace inequalities (\cite[H.1.g \& H.1.h]{marshall2010inequalities} or \cite[Proposition 4.4]{bauschke2001hyperbolic}) to bound the value of $\Tr(AD)$ to obtain
+\begin{equation}
+    {\sum}_{j} \ea_j \ed_{n-j+1} \leq \Tr(AD) \leq {\sum}_{j} \ea_j \ed_j.
+\end{equation}
+Therefore, we conclude
+\begin{equation}
+    2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2 \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
+\end{equation}
+
+\subsection{Ptolemy \& Cayley-Menger inequalities}
+
+In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
+These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$.
+These results rely on the observation that the real vector space of $n \times n$ Hermitian matrices equipped with the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ has norm $\norm{X}_2 = \sqrt{\braket{X,X}}$ which is a function of the \textit{eigenvalues} of $X$.
+Specifically, for any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X}_2 = \norm{\ex}_2 = \left(\sum_{j=1}^{n} {\ex_j}^2\right)^{\frac{1}{2}}$.
+
+
+Recall that the four vertices of the tetrahedron of Hermitian matrices are
+\begin{equation}
+    V_0 = 0, \qquad V_1 = A, \qquad V_2 = A+B = C, \qquad V_3 = A+B+D = E.
+\end{equation}
+
+\textbf{Ptolemy's inequality:}
+Ptolemy's inequality is an inequality which holds for any four points $V_0, V_1, V_2, V_3$ in a normed space.
+It reads
+\begin{equation}
+    \label{eq:vvvv_ptolemy}
+    \norm{V_3-V_0}\norm{V_1-V_2} \leq \norm{V_2-V_0}\norm{V_1-V_3} + \norm{V_1-V_0}\norm{V_2-V_3}.
+\end{equation}
+Applied to the vertices of the tetrahedron of Hermitian matrices, we obtain
+\begin{equation}
+    \label{eq:abcdef_ptolemy}
+    \norm{E}\norm{B} \leq \norm{C}\norm{F} + \norm{A}\norm{D}.
+\end{equation}
+It is known that every real inner product space with norm $\norm{X} = \sqrt{\braket{X,X}}$ is Ptolemaic in the sense that Ptolemy's inequality holds.
+A converse of this result also holds due to \citeauthor{schoenberg1952remark}; namely, every real semi-normed space satisfying Ptolemny's inequality comes from a real inner product space \cite{schoenberg1952remark}.
+%Here we will prove the former result, that a real inner product space satisfies Ptolemy's inequality.
+%\begin{proof}
+%    Note that to prove the inequality, one can take $V_0 = 0$ (by shifting) and assume the remaining vectors are non-zero (since otherwise the inequality holds trivially).
+%    Under these assumptions, we aim to prove for all $V_1, V_2, V_3$ non-zero in a real inner product space,
+%    \begin{equation}
+%        \label{eq:shifted_ptolemy}
+%        \norm{V_3}\norm{V_1-V_2} \leq \norm{V_2}\norm{V_1-V_3} + \norm{V_1}\norm{V_2-V_3}.
+%    \end{equation}
+%    Let $\tilde V_1, \tilde V_2, \tilde V_3$ be rescaled versions of $V_1,V_2,V_3$:
+%    \begin{equation}
+%        \tilde V_1 = \frac{V_1}{\norm{V_1}^2}, \qquad
+%        \tilde V_2 = \frac{V_2}{\norm{V_2}^2}, \qquad
+%        \tilde V_3 = \frac{V_3}{\norm{V_3}^2}.
+%    \end{equation}
+%    Under this rescaling, the pairwise distances are rescaled as
+%    \begin{equation}
+%        \norm{\tilde V_i - \tilde V_j} = \sqrt{\frac{1}{\norm{V_i}^2} + \frac{1}{\norm{V_j}^2} - \frac{2 \abs{\braket{V_i,V_j}}^2}{\norm{V_i}^2\norm{V_j}^2}} = \frac{\norm{V_i-V_j}}{\norm{V_i} \norm{V_j}}.
+%    \end{equation}
+%    Then, the triangle inequality for $\norm{\cdot}$ applied to $\tilde V_1, \tilde V_2, \tilde V_3$,
+%    \begin{equation}
+%        \norm{ \tilde V_1 - \tilde V_2} \leq \norm{\tilde V_1 - \tilde V_3} + \norm{\tilde V_2 - \tilde V_3},
+%    \end{equation}
+%    is then equivalent to \cref{eq:shifted_ptolemy}.
+%\end{proof}
+
+\textbf{Cayley-Menger determinant:}
+First we note that the four Hermitian matrices $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ necessarily lie inside a three-dimensional subspace of the set of $n\times n$ Hermitian matrices and thus one can compute the square of its three-dimensional volume using the Cayley-Menger determinant just as in the case of $2 \times 2$ matrices as in \cref{exam:n_2}:
+
+%there exists an orthonormal set of Hermitian matrices $L_1, L_2, L_3$ such that for each $i \in \{0,1,2,3\}$
+%\begin{equation}
+%    V_i = \sum_{j=1}^{3} (v_i)_j L_j
+%\end{equation}
+%In this basis, the vectors of coefficents $\{v_0, v_1, v_2, v_3\}$ constitute the vertices of a tetrahedra in $\mathbb R^3$ and moreover $\braket{V_i, V_j} = \Tr(V_i^* V_j) = \braket{v_i, v_j}$.
+%Following the wikipedia derivation, define a $4 \times 4$ matrix by
+%\begin{equation}
+%    P = \begin{pmatrix}
+%        v_0 & v_1 & v_2 & v_3  \\
+%        1 & 1 & 1 & 1  \\
+%    \end{pmatrix}
+%\end{equation}
+%such that $\abs{\det(P)} = 3! \mathrm{Vol}(v_0,v_1,v_2,v_3)$ where $\mathrm{Vol}(v_0,v_1,v_2,v_3)$ is the volumes of the tetrahedron with vertices $v_0,v_1,v_2,v_3 \in \mathbb R^3$.
+%Then one augments $P$ to
+%\begin{equation}
+%    \tilde P = \begin{pmatrix}
+%        v_0 & v_1 & v_2 & v_3 & 0  \\
+%        1 & 1 & 1 & 1 & 0  \\
+%        \norm{v_0}^{2} & \norm{v_1}^{2} & \norm{v_2}^{2} & \norm{v_3}^2 & 1 \\
+%    \end{pmatrix}
+%\end{equation}
+%such that $\det(P) = \det(\tilde P)$ and also defines a $5 \times 5$ matrix $Q$ by
+%\begin{equation}
+%    Q = \begin{pmatrix}
+%        -2 & 0 & 0 & 0 & 0 \\
+%        0 & -2 & 0 & 0 & 0 \\
+%        0 & 0 & -2 & 0 & 0 \\
+%        0 & 0 & 0 & 0 & 1 \\
+%        0 & 0 & 0 & 1 & 0
+%    \end{pmatrix}
+%\end{equation}
+%Then $\tilde P^{\dagger} Q \tilde P$ is a $5\times 5$ matrix
+%\begin{equation}
+%    \tilde \Sigma=
+%    \tilde P^{\dagger} Q \tilde P = \begin{pmatrix}
+%        0 & d_{01}^2 & d_{02}^2 & d_{03}^2 & 1 \\
+%        d_{10}^2 & 0 & d_{12}^2 & d_{13}^2 & 1 \\
+%        d_{20}^2 & d_{21}^2 & 0 & d_{23}^2 & 1 \\
+%        d_{30}^2 & d_{31}^2 & d_{32}^2 & 0 & 1 \\
+%        1 & 1 & 1 & 1 & 0 \\
+%    \end{pmatrix}
+%\end{equation}
+%where
+%\begin{equation}
+%    d_{ij}^2 \coloneqq \norm{v_i - v_j}^{2} = \norm{v_i}^{2} +\norm{v_j}^{2} - 2 \braket{v_i, v_j}.
+%\end{equation}
+%The determinant $\det(\tilde \Sigma)$ is equal to
+%\begin{equation}
+%    \det(\tilde \Sigma) = \det(\tilde P^{\dagger} Q \tilde P) = \det(Q) \det(P)^2 = 8 \cdot (3!)^2 \cdot \mathrm{Vol}^2 \geq 0.
+%\end{equation}
+%Using the isometric embedding of $(V_0,V_1,V_2,V_3) = (0,A,C,E)$ into $\mathbb R^3$, the Cayley-Menger determinant inequality takes the form
+\begin{equation}
+    \mathrm{CM}(\norm{A}, \norm{B}, \norm{C}, \norm{D}, \norm{E}, \norm{F})
+    =
+    \frac{1}{288}
+    \det
+    \begin{pmatrix}
+        0 & \norm{A}^2 & \norm{C}^{2} & \norm{E}^2 & 1 \\
+        \norm{A}^2 & 0 & \norm{B}^{2} & \norm{F}^2 & 1\\
+        \norm{C}^2 & \norm{B}^2 & 0 & \norm{D}^2 & 1 \\
+        \norm{E}^2 & \norm{F}^2 & \norm{D}^2 & 0 & 1 \\
+        1 & 1 & 1 & 1 & 0 \\
+    \end{pmatrix}
+    \geq 0
+\end{equation}
+
+\subsection{Strongly subadditive/Submodular inequalities}
+
+Another strategy for understanding eigenvalues of positive semidefinite matrices and their sums is to consider the expansion of tensors powers of sums of matrices in relation to the tensor powers of their summands.
+For instance, given a positive integer $k$ and positive semidefinite $X$ and $Y$, using the non-commutative binomial expansion of $(X+Y)^{\ot k}$ and dropping all summands involving both $X$ and $Y$, one obtains \cite[Proposition 1.1]{berndt2015hlawka}:
+\begin{equation}
+    (X+Y)^{\ot k} \geq X^{\ot k} + Y^{\ot k}.
+\end{equation}
+This technique, was generalized by \cite{tie2011rearrangement} \cite[Lemma 2.2]{tie2011rearrangement} to obtain the following result.\footnote{Further extensions of this technique include inequalities involving the sum $X+Z$ which are outside the scope of the tetrahedral Horn problem (see \cite{lin2014determinantal,berndt2015hlawka,niculescu2023functions})}.
+\begin{prop}
+    \label{prop:operator_ineq}
+    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $k$ be a positive integer.
+    Then
+    \begin{equation}
+        (X+Y+Z)^{\ot k} + Y^{\ot k} \geq (X+Y)^{\ot k} + (Y+Z)^{\ot k}.
+    \end{equation}
+\end{prop}
+From \cref{prop:operator_ineq} one can obtain an inequalities pertaining only to the eigenvalues of $Y, X+Y, Y+Z$, and $X+Y+Z$ by pairing the operator inequality with any $\U(n)$-equivariant positive semidefinite operator acting on $(\mathbb C^{n})^{\ot k}$.\footnotemark{}
+\footnotetext{\citeauthor{paksoy2014inequalities} has used a similar approach to prove analogous inequalities concerning so-called generalized matrix functions $d_{\chi}^{H}$ associated to irreducible characters $\chi$ of subgroups $H$ of the symmetric group $S_k$ \cite{marcus1965generalized,huber2021matrix}.
+Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
+\begin{cor}
+    \label{cor:schur_ineq}
+    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$.
+    Then
+    \begin{equation}
+        \label{eq:schur_ineq}
+        s_{\yx}(\eig(X+Y+Z)) + s_{\yx}(\eig(Y)) \geq s_{\yx}(\eig(X+Y)) + s_{\yx}(\eig(Y+Z)).
+    \end{equation}
+\end{cor}
+\begin{proof}
+    Given a Young diagram $\yx$, let $P_{\yx}$ be the Hermitian projection operator onto the isotypic subspace $V_{\yx}^{n} \ot W_{\yx} \subseteq (\mathbb C^{d})^{\ot k}$ (see the subsequent seequence, \cref{sec:schur_weyl} for more details).
+    Given positive semidefinite matrix $X \geq 0$, one can show that
+    \begin{equation}
+        \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
+    \end{equation}
+    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
+    \begin{equation}
+        \Tr[P_{\ex}(X+Y+Z)^{\ot k}] + \Tr[P_{\ex}Y^{\ot k}] \geq \Tr[P_{\ex}(X+Y)^{\ot k}] + \Tr[P_{\ex}(Y+Z)^{\ot k}]
+    \end{equation}
+    and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
+\end{proof}
+
+In the special where where $\yx = (\underbrace{1,\ldots,1}_n)$, one obtains the well-known determinant inequality \cite[Lemma 2.2]{tie2011rearrangement}:
+\begin{equation}
+    \label{eq:lin_det}
+    \det(X+Y+Z) + \det(Y) \geq \det(X+Y) + \det(Y+Z).
+\end{equation}
+Another well-known determinant inequality is the multiplicative variant of \cref{eq:lin_det} which states that for all $X,Y,Z \geq 0 $ positive semidefinite,
+\begin{equation}
+    \label{eq:mul_det}
+    \det(X+Y+Z)\det(Y) \leq \det(X+Y)\det(Y+Z).
+\end{equation}
+This inequality follows as a special case of a general result due to \citeauthor{sagnol2013approximation} \cite[Proposition 2.3]{sagnol2013approximation}.
+\begin{thm}
+    \label{thm:sagnol_ineq}
+    Let $X,Y,Z \geq 0$ be positive semidefinite matrices.
+    Let $f$ be a real valued and differentiable function over the non-negative real numbers $\mathbb R_{\geq 0}$ whose derivative $f'$ is an operator monotone function over the positive real numbers $\mathbb R_{>0}$.
+    Then the following inequality holds
+    \begin{equation}
+        \label{eq:sagnol_ineq}
+        \Tr f(X+Y+Z)
+        +
+        \Tr f(Y)
+        \geq
+        \Tr f(X+Y)
+        +
+        \Tr f(Y+Z).
+    \end{equation}
+\end{thm}
+\begin{proof}
+    See \cite[Section 2.1]{sagnol2013approximation}.
+    %Here we sketch the proof in .
+    %Let $F = \Tr \circ f$. The claim then amounts to proving for all $X,Y,Z\geq 0$,
+    %\begin{equation}
+    %    \label{eq:sagnol_diff}
+    %    \Delta_{X}\Delta_{Z} F(Y) = F(X+Y+Z) - F(X+Y) - F(Y+Z) + F(Y) \geq 0,
+    %\end{equation}
+    %where $\Delta_X$ is the difference operator $[\Delta_X F](Y) \coloneqq F(X+Y) - F(Y)$.
+    %By standard continuity arguments (and the assumption that $f$ is continuous), we may assume everything is positive definite in which case
+    %\begin{align}
+    %    \partial_{X} \Delta_Z F(Y)
+    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \Delta_{\varepsilon X} \Delta_Z F(Y) \\
+    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( \Delta_Z F (Y+\varepsilon X) - \Delta_Z F(Y) \right) \\
+    %    &= \lim_{\varepsilon \to 0} \frac{1}{\varepsilon} \left( F(\varepsilon X+Y+Z) - F(\varepsilon X + Y) - F(Y+Z) + F(Y) \right) \\
+    %    &= \Tr\left[(f'(Y+Z)-f'(Y)) X \right]. \label{eq:sagnol_final_step}
+    %\end{align}
+    %Using the assumption that $f'$ is an operator monotone (and the assumption of positive definiteness) together with $Y+Z \geq Y$ (because $Z \geq 0$), we have $f'(Y+Z) \geq f'(Y)$ and thus $f'(Y+Z)-f'(Y) \geq 0$ is a positive semidefinite operator.
+    %Therefore, the function $\Delta_Z F(Y)$ is non-decreasing under $Y\mapsto X+Y$ and thus \cref{eq:sagnol_diff} holds.
+\end{proof}
+There are numerous inequalities of the form \cref{eq:sagnol_ineq} which immediately follow from \cref{thm:sagnol_ineq}.
+For example, letting $f(x) = \log x$ and noting $\Tr(\log X) = \log \det(X)$, one recovers \cref{eq:mul_det}.
+Moreover, taking $f(x) = -x^{p}$ for $p \in [0,1]$, one obtains \cite[Lemma 5.3]{bouhtou2008optimization}.
+In the limit where $p \to 0^+$, \citeauthor{sagnol2013approximation} also obtains at first order the well-known rank inequality \cite[Proposition A.1]{sagnol2013approximation}
+\begin{equation}
+    \rank(X+Y) + \rank(Y+Z) \geq \rank(Y) + \rank(X+Y+Z).
+\end{equation}
+One can also let $f(x) = x^p$ for $p \in (1,2]$.
+Of particular interest to us in \cref{sec:large_n} is the function $f(x) = x \log x$ which implies for all $X,Y,Z\geq 0$ the inequality
+\begin{align}
+    \label{eq:SSA_like_ineq}
+    S(X+Y)+ S(Y+Z) \geq S(Y) + S(X+Y+Z)
+\end{align}
+where for a positive semidefinite matrix $X$ with eigenvalues $\ex$, $S(X) \coloneqq s(\ex) \coloneqq -\sum_{i=1}^{n} \ex_i\log\ex_i$ is the \textit{unnormalized} von Neumann entropy of $X$.
+Note that a similar inequality involving entropies of sums of positive semidefinite matrices (subject to additional eigenvalue constraints) has appeared in \cite{christandl2018recoupling}.
+Moreover, while it can be shown that \cref{eq:SSA_like_ineq} is strictly tighter that the inequality in \cite{christandl2018recoupling} for fixed matrices, it is also possible to obtain \cref{eq:SSA_like_ineq} from the result in \cite{christandl2018recoupling} by downscaling the involved matrices in the sense of \cref{prop:scaling}.
+
+\subsection{The Courtade-Sra determinant inequality}
+
+Many of the previously discussed inequalities constrain the eigenvalues of positive semidefinite matrices $Y, X+Y, Y+Z$ and $X+Y+Z$.
+Here we show how to improve the determinant inequality $\det(X+Y)\det(Y+Z) \geq \det(X+Y+Z)\det(Y)$ in a manner which also accounts for the determinants $\det(X)$ and $\det(Z)$.
+This inequality exploits Minkowski's determinant inequality for positive semidefinite $n\times n$ matrices $X$ and $Y$ which reads (see \cite[Theorem 7.8.21]{horn1985matrix} or \cite[Equation II.44]{bhatia1997matrix}):
+\begin{equation}
+    \det(X+Y)^{\frac{1}{n}} \geq \det(X)^{\frac{1}{n}} + \det(Y)^{\frac{1}{n}}.
+\end{equation}
+The following inequality can be attributed to an information-theoretic result obtained by \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening}\footnote{Note in \cite{courtade2017concavity}, \citeauthor{courtade2017concavity} conjectures a generalization of the Brunn-Minkowski inequality for bounded convex sets $X,Y,Z$ in $\mathbb R^{n}$ of the form $V(X+Y)^{\frac{1}{n}}V(Y+Z)^{\frac{1}{n}} \geq V(X+Y+Z)^{\frac{1}{n}}V(Y)^{\frac{1}{n}} + V(X)^{\frac{1}{n}}V(Z)^{\frac{1}{n}}$. See also \cite{costa1984similarity}.}, but the elementary proof we present here is do actually due to \citeauthor{sra2016reverse} \cite{sra2016reverse}.
+This inequality also appears in the recent review paper by \citeauthor{niculescu2023functions} \cite[Section 6.2]{niculescu2023functions}.
+\begin{prop}[Courtade-Sra determinant inequality]
+    \label{prop:cs_ineq}
+    Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
+    Then
+    \begin{equation}
+        \label{eq:cs_ineq}
+        \det (X+Y)^{\frac1n} \det (Y+Z)^{\frac1n} \geq \det (X+Y+Z)^{\frac1n}\det (Y)^{\frac1n} + \det (X)^{\frac1n} \det(Z)^{\frac1n}.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    By standard continuity arguments, it suffices to prove the inequality for $Y > 0$ positive definite (if it holds for positive definite $Y+\varepsilon I$, then continuity permits taking the limit $\varepsilon \to 0$).
+    As $Y$ is positive definite, it is also invertible and we may define
+    \begin{equation}
+        \tilde X = Y^{-\frac{1}{2}}XY^{-\frac{1}{2}}, \qquad
+        \tilde Z = Y^{-\frac{1}{2}}ZY^{-\frac{1}{2}}.
+    \end{equation}
+    By dividing \cref{eq:cs_ineq} by $\det(Y)^{\frac{2}{n}} \neq 0$, it then suffices to prove
+    \begin{equation}
+        \label{eq:cs_ineq_xy}
+        \det (I+\tilde X)^{\frac1n} \det (I+\tilde Z)^{\frac1n} \geq \det (I+\tilde X+\tilde Z)^{\frac1n} + \det (\tilde X)^{\frac1n} \det(\tilde Z)^{\frac1n}.
+    \end{equation}
+    Let $\ex = \eig(\tilde X)$ and $\ez = \eig(\tilde Z)$. Then for any permutation $\pi \in S_n$ let
+    \begin{equation}
+        L_{\pi} = \diag\{1+\ex_i + \ez_{\pi(i)}\}_{i=1}^{n}, \qquad R_{\pi} = \diag\{\ex_i\ez_{\pi(i)}\}_{i=1}^{n}.
+    \end{equation}
+    Then we have the identity
+    \begin{align}
+        \det(I+\tilde X)\det(I+\tilde Z)
+        &= \prod_{i=1}^{n} (1+\ex_i) \prod_{i=1}^{n} (1+\ez_i), \\
+        &= \prod_{i=1}^{n} (1+\ex_i + \ey_{\pi(i)} + \ex_i\ez_{\pi(i)}),\\
+        &= \det(L_{\pi} + R_{\pi})
+    \end{align}
+    Here we can apply Minkowski's theorem to obtain
+    \begin{equation}
+        \det(L_{\pi} + R_{\pi})^{\frac{1}{n}} \geq \det(L_{\pi})^{\frac{1}{n}} + \det(R_{\pi})^{\frac{1}{n}}.
+    \end{equation}
+    By definition, we have $\det(R_{\pi}) = \det(\tilde X)\det(\tilde Z)$ for any permutation $\pi$, while a theorem do to \citeauthor{fiedler1971bounds} \cite{fiedler1971bounds} states (see also \cite[Exercise VI.7.2,Theorem VI.7.1]{bhatia1997matrix})
+    \begin{equation}
+        \det(I+\tilde X+\tilde Y) \leq \max_{\pi} \prod_{i=1}^{n} (1+\ex_i + \ez_{\pi(i)}) = \max_{\pi} \det(L_{\pi}).
+    \end{equation}
+    Combining these bounds together yields \cref{eq:cs_ineq_xy} and thus the claim holds.
+\end{proof}
+
+
+\subsection{Some conjectures}
 
 {\color{blue}
 TC: On \texttt{mathoverflow} \url{https://mathoverflow.net/questions/257562/a-determinant-inequality}
@@ -2530,8 +2542,6 @@ See \cite{kozhasov2019positivity} for representation theorems and other results 
 }
 
 
-
-\clearpage
 \printbibliography
 
 \end{document}
