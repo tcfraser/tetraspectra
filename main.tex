@@ -883,7 +883,7 @@ Combining this formula with the non-commutative binomial expansion yields
 \end{equation}
 where
 \begin{equation}
-    \pi_{\yc}(X+Y) = \frac{1}{\dim (W_{\yc})} \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (X^{\ot \ell} \otimes Y^{\ot (k - \ell)}) \iota_{\yc}],
+    \dim (W_{\yc}) \pi_{\yc}(X+Y) = \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (X^{\ot \ell} \otimes Y^{\ot (k - \ell)}) \iota_{\yc}],
 \end{equation}
 where we have eliminated the symmetrization operation over $\sigma \in S_k$ because the partial trace over $W_{\yc}$ is $S_k$-invariant.
 At this stage, for each summand indexed by $0 \leq \ell \leq k$, we can decompose $X^{\ot \ell}$ into representations of $X$ labelled by $\ya$ with sizes $\sya = \ell$ and $Y^{\ot \ell}$ into representations of $Y$ labelled by $\yb$ with sizes $\syb = k-\ell$.
@@ -930,7 +930,7 @@ In order to simplify the presentation of our results considerably, we introduce 
 
 Before stating the main result of this section, we first generalize the quantities $\Phi_{\yx}(X)$ and $\varphi_{\yx}(X)$ to consider arguments involving more than one matrix.
 
-\begin{defn}[Mixed hook-rescaled representations]
+\begin{defn}
     Given a pair $(X,Y)$ of $n\times n$ matrices and a triple of Young diagrams $(\ya,\yb,\yc)$, define an operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ acting on the representation space $V_{\yc}^{n}$ as
     \begin{equation}
         \Phi^{\ya\yb}_{\yc}(X,Y) \coloneqq \Tr_{C^{\yc}_{\ya,\yb}} [\iota^{\yc;\dagger}_{\ya,\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)) \iota^{\yc}_{\ya,\yb}],
@@ -960,7 +960,7 @@ Before stating the main result of this section, we first generalize the quantiti
     \end{equation}
 \end{rem}
 
-With these definitions in place, we are in a position to state the main result of this section.
+With these definitions in place, we are in a position to state the binomial theorem.
 \begin{thm}[Binomial theorem]
     \label{thm:binomial}
     For all $n\times n$ matrices $X,Y$, and all Young diagrams $\yc$,
@@ -973,6 +973,7 @@ With these definitions in place, we are in a position to state the main result o
     See preceding discussion.
 \end{proof}
 
+Taking the trace of the operators in \cref{thm:binomial} produces the following corollary which pertains to sums of the quantity $\varphi^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}).
 \begin{cor}
     \label{cor:bisummation}
     Let $X,Y$ be $n\times n$ matrices. Then the following identities hold:
@@ -1006,7 +1007,7 @@ With these definitions in place, we are in a position to state the main result o
 \label{sec:new_ineq_horn_orig}
 
 In \cref{sec:binomial_theorem} we introduced to the quantity $\varphi^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}) and saw in \cref{cor:bisummation} that it satisfied two summation identities.
-Under the assumption that the matrices $X$, and $Y$ are positive semidefinite, we can conclude that $\varphi^{\ya\yb}_{\yc}(X,Y)$ is non-negative.
+Under the assumption that the matrices $X$, and $Y$ are positive semidefinite, we can conclude that $\varphi^{\ya\yb}_{\yc}(X,Y)$ is non-negative also because $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $P^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
 This observation implies the following upper bounds on $\varphi^{\ya\yb}_{\yc}(X,Y)$.
 
 \begin{lem}
@@ -1019,7 +1020,6 @@ This observation implies the following upper bounds on $\varphi^{\ya\yb}_{\yc}(X
 \end{lem}
 \begin{proof}
     The claim follows directly from \cref{cor:bisummation} provided $\varphi^{\ya\yb}_{\yc}(X,Y) \geq 0$.
-    However, this follows because $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ and $P^{\yc}_{\ya\yb} \geq 0$ (it is a projection operator) and $\Phi_{\ya}(X), \Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
 \end{proof}
 
 \begin{cor}
@@ -1135,7 +1135,6 @@ If we additionally let $\Omega_{\ya\yb\yd}^{X,Y,Z} \coloneqq \Phi_{\ya}(X)\ot\Ph
 \end{equation}
 
 Unlike the quantity $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} \Phi_{\ya}(X) \ot \Phi_{\yb}(Y)]$ involving two matrices $X,Y$ (see \cref{sec:binomial_theorem}), the quantity defined here, $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$, is not necessarily non-negative or even real valued even under the assumption that $X,Y,Z \geq 0$ are positive semidefinite.
-
 Nevertheless, summing over either $\yc$ or $\yf$ restores non-negativity because it eliminates one of the potentially non-commuting projection operators $\Pi_{\ya\yb\yd}^{\ye;\yc}$ or $\Pi_{\ya\yb\yd}^{\ye;\yf}$.
 We denote these partial sums of $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $\yc$ and $\yf$ respectively as
 \begin{align}
