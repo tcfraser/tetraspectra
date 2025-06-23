@@ -1008,32 +1008,108 @@ Taking the trace of the operators in \cref{thm:binomial} produces the following 
 
 In \cref{sec:binomial_theorem} we introduced to the quantity $\varphi^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}) and saw in \cref{cor:bisummation} that it satisfied two summation identities.
 Under the assumption that the matrices $X$, and $Y$ are positive semidefinite, we can conclude that $\varphi^{\ya\yb}_{\yc}(X,Y)$ is non-negative also because $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $P^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
-This observation implies the following upper bounds on $\varphi^{\ya\yb}_{\yc}(X,Y)$.
-
-\begin{lem}
-    \label{lem:XY_marginal_upper_bounds}
-    Let $X, Y \geq 0$ be positive semidefinite $n\times n$ matrices.
-    For all Young diagrams $(\ya,\yb,\yc)$, we have the inequality
+Moreover, we note that $\varphi^{\ya\yb}_{\yc}(X,Y) = 0$ whenever the Littlewood-Richardson coefficient $c^{\yc}_{\ya\yb}$ vanishes.
+These observations imply the following necessary condition for compatibility of eigenvalues.
+\begin{prop}
+    \label{prop:coupling_condition}
+    Let $(a,b,c)$ be a triple of non-negative eigenvalues.
+    Then there exists positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$ with eigenvalues $(a,b,c)$ only if for every triple of Young diagrams $(\ya,\yb,\yc)$ there exists a non-negative $\Gamma^{\yc}_{\ya\yb} \geq 0$ such that $\Gamma^{\yc}_{\ya\yb} = 0$ whenever $c^{\yc}_{\ya\yb} = 0$ and
     \begin{align}
-        \varphi^{\ya\yb}_{\yc}(X,Y) &\leq \min\{ \varphi_{\ya}(X)\varphi_{\yb}(Y), \varphi_{\yc}(X + Y) \}.
+        \forall \ya,\yb : \quad \sum_{\yc} \Gamma^{\yc}_{\ya\yb} = \varphi_{\ya}(a)\varphi_{\yb}(b),
+        \qquad \text{and} \qquad 
+        \forall \yc : \quad \sum_{\ya,\yb} \Gamma^{\yc}_{\ya\yb} = \varphi_{\yc}(c).
     \end{align}
-\end{lem}
+\end{prop}
 \begin{proof}
-    The claim follows directly from \cref{cor:bisummation} provided $\varphi^{\ya\yb}_{\yc}(X,Y) \geq 0$.
+    The claim follows directly from \cref{cor:bisummation} after identifying $\Gamma^{\yc}_{\ya\yb} = \varphi^{\ya\yb}_{\yc}(A,B) \geq 0$.
 \end{proof}
-
 \begin{cor}
-    \label{cor:orig_horn_ineq}
-    Let $X, Y \geq 0$ be positive semidefinite $n\times n$ matrices.
-    Then the following inequalities hold:
+    \label{cor:row_col_horn_ineqs}
+    Let $(a,b,c)$ be the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$. Then,
     \begin{align}
-        \forall \ya,\yb : \quad \varphi_{\ya}(X)\varphi_{\yb}(Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\yc}(X+Y), \\
-        \forall \yc : \quad \varphi_{\yc}(X+Y) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\ya}(X)\varphi_{\yb}(Y).
+        \forall \ya,\yb : \quad \varphi_{\ya}(a)\varphi_{\yb}(b) \leq \sum_{\substack{\yc\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\yc}(c), 
+        \qquad \text{and} \qquad 
+        \forall \yc : \quad \varphi_{\yc}(c) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\varphi_{\ya}(a)\varphi_{\yb}(b).
     \end{align}
 \end{cor}
 \begin{proof}
-    The claim follows by applying upper bounds from \cref{lem:XY_marginal_upper_bounds} to the summations in \cref{cor:bisummation} being careful to note that if $c^{\yc}_{\ya\yb} = 0$, then $\varphi^{\ya\yb}_{\yc}(X,Y) = 0$ and one only needs to consider the cases where $c^{\yc}_{\ya\yb} \neq 0$.
+    The claim follows from \cref{prop:coupling_condition} and noting that whenever $\Gamma^{\yc}_{\ya\yb} > 0$ (only when $c^{\yc}_{\ya\yb} > 0$) we have the bound $\Gamma^{\yc}_{\ya\yb} \leq \min\{\varphi_{\ya}(a)\varphi_{\yb}(b), \varphi_{\yc}(c)\}$ for all triples $(\ya,\yb,\yc)$.
 \end{proof}
+
+\begin{rem}
+    Using \cref{prop:coupling_condition}, it is possible to prove even stronger inequalities than those appearing in \cref{cor:row_col_horn_ineqs} by examining the set of triples of Young diagrams $(\ya, \yb, \yc)$ where $c^{\yc}_{\ya,\yb} \neq 0$.
+    We illustrate this point with an example.
+    Let $k = \sya + \syb = \syc = 4$, then the following is the table of values for $c^{\yc}_{\ya\yb}$.
+    \begin{center}
+        \newcommand{\zero}{\cellcolor{white}{\color{gray}$0$}}
+        \newcommand{\numb}[1]{\cellcolor{black!80!white}{\color{white}$#1$}}
+        \begin{tabular}{|cc||c|c|c|c|c||c|c|c||c|c|c|c||c|c|c||c|c|c|c|c|}
+            \hline
+            $c^{\yc}_{\ya\yb}$ & $\ya$ & 
+            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ &
+            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
+            $\ydiagram{2}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{1,1}$ &
+            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
+            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ \\
+            $\yc$ & $\yb$ & 
+            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ &
+            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
+            $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ &
+            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
+            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ \\ \hline\hline
+            $\ydiagram{4}$ & & 
+            \numb{1} & \zero & \zero & \zero & \zero & 
+            \numb{1} & \zero & \zero & 
+            \numb{1} & \zero & \zero & \zero & 
+            \numb{1} & \zero & \zero &
+            \numb{1} & \zero & \zero & \zero & \zero 
+            \\\hline
+            $\ydiagram{3,1}$ &  & 
+            \zero & \numb{1} & \zero & \zero & \zero & 
+            \numb{1} & \numb{1} & \zero & 
+            \numb{1} & \numb{1} & \numb{1} & \zero & 
+            \numb{1} & \numb{1} & \zero & 
+            \zero & \numb{1} & \zero & \zero & \zero 
+            \\\hline
+            $\ydiagram{2,2}$ &  & 
+            \zero & \zero & \numb{1} & \zero & \zero & 
+            \zero & \numb{1} & \zero & 
+            \numb{1} & \zero & \zero & \numb{1} & 
+            \zero & \numb{1} & \zero & 
+            \zero & \zero & \numb{1} & \zero & \zero 
+            \\\hline
+            $\ydiagram{2,1,1}$ &  & 
+            \zero & \zero & \zero & \numb{1} & \zero & 
+            \zero & \numb{1} & \numb{1} & 
+            \zero & \numb{1} & \numb{1} & \numb{1} &
+            \zero & \numb{1} & \numb{1} &
+            \zero & \zero & \zero & \numb{1} & \zero 
+            \\\hline
+            $\ydiagram{1,1,1,1}$ &  & 
+            \zero & \zero & \zero & \zero & \numb{1} & 
+            \zero & \zero & \numb{1} & 
+            \zero & \zero & \zero & \numb{1} & 
+            \zero & \zero & \numb{1} & 
+            \zero & \zero & \zero & \zero & \numb{1} 
+            \\\hline
+        \end{tabular}
+    \end{center}
+    Using this table, one sees the inequalities in \cref{cor:row_col_horn_ineqs} are associated to single columns or single rows, e.g., along the $(\ya,\yb) = (\ydiagram{2}, \ydiagram{1,1})$, we obtain
+    \begin{equation}
+        \varphi_{\ydiagram{2}}(X)\varphi_{\ydiagram{1,1}}(Y) \leq \varphi_{\ydiagram{3,1}}(X+Y) + \varphi_{\ydiagram{2,1,1}}(X+Y).
+    \end{equation}
+    However, using \cref{prop:coupling_condition}, a stronger inequality is obtained by including all columns covered by the rows associated to the right-hand side of the above inequality, e.g.,
+    \begin{equation}
+        \varphi_{\ydiagram{3,1}}(X) + \varphi_{\ydiagram{2,1,1}}(X) + 
+        \varphi_{\ydiagram{2}}(X)\varphi_{\ydiagram{1,1}}(Y) + \varphi_{\ydiagram{1,1}}(X)\varphi_{\ydiagram{2}}(Y) +
+        \varphi_{\ydiagram{3,1}}(Y) + \varphi_{\ydiagram{2,1,1}}(Y)
+        \leq \varphi_{\ydiagram{3,1}}(X+Y) + \varphi_{\ydiagram{2,1,1}}(X+Y).
+    \end{equation}
+    In general, \cref{prop:coupling_condition} describes a linear system of inequality constraints in the variables $\Gamma^{\yc}_{\ya\yb}, \varphi_{\ya}(a)\varphi_{\yb}(b),$ and $\varphi_{\yc}(c)\}$ which, in principle, be solved for $\varphi_{\ya}(a)\varphi_{\yb}(b)$ and $\varphi_{\yc}(c)$ by standard linear quantifier elimination techniques such as Fourier-Motzkin elimination \cite{dantzig1972fourier}.
+    While these additional inequalities are certainly interesting to explore, for the purposes of the original Horn problem, we will later prove, in \cref{prop:approx_tri}, that it is sufficient to restrict our attention to inequalities of the form \cref{cor:row_col_horn_ineqs}.
+\end{rem}
+
+
 
 \subsection{The \texorpdfstring{$\boldsymbol{6j}$}{6j} symbol for \texorpdfstring{$\boldsymbol{\U(n)}$}{U(n)}}
 \label{sec:sixj_tet}
