@@ -821,10 +821,15 @@ where the hook length, $h_{\yx}(b)$, of $b$ counts the number of boxes to the ri
 We refer to $H_{\yx}$ as the hook-product for $\yx$.
 
 Now let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$ with depth at most $n$.
-Throughout this paper, we let the $S_k \times \U(n)$ equivariant isometry for the $\yx$-isotypic subspace of $V_{\ydiagram{1}}^{\ot {\syx}} \simeq (\mathbb C^{n})^{\ot \syx}$ be denoted by
+Throughout this paper, the representation spaces $V_{\yx}^n$ are assumed to be equipped with respective Hermitian inner products making $\pi_{\yx}$ \textit{unitary} representations of $\U(n)$.
+Similarly, if $(\sigma_{\yx}, W_{\yx})$ denotes the irreducible representation of $S_k$ labelled by $\yx$, we assume $W_{\yx}$ is equipped with a real inner product making $\sigma_{\yx}$ an \textit{orthogonal} representation of $S_k$.
+In particular, the defining representation $V_{\ydiagram{1}} \simeq \mathbb C^{n}$ of $\U(n)$ is equipped with the standard Hermitian inner product on $\mathbb C^{n}$ making the standard basis $\{e_1, \ldots, e_n\}$ orthonormal.
+Then for each $\yx$-isotypic subspace of $V_{\ydiagram{1}}^{\ot {\syx}} \simeq (\mathbb C^{n})^{\ot \syx}$, we let
 \begin{equation}
-    \iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{\ydiagram{1}}^{\ot {\syx}}.
+    \iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{\ydiagram{1}}^{\ot {\syx}},
 \end{equation}
+denote the unique $S_k \times \U(n)$-equivariant map from $W_{\yx} \ot V_{\yx}^{n}$ to $V_{\ydiagram{1}}^{\ot {\syx}}$ which is additionally an isometry with respect to the choosen inner products on $W_{\yx}$, $V_{\yx}^{n}$ and $V_{\ydiagram{1}}$.
+
 Then given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{\ydiagram{1}}^{n} \simeq \mathbb C^{n}$, let $\pi_{\yx}(X)$ be defined by
 \begin{equation*}
     \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot {\syx}} \iota_{\yx}]}{\dim(W_{\yx})}.
@@ -892,12 +897,26 @@ At this stage, for each summand indexed by $0 \leq \ell \leq k$, we can decompos
     Y^{\ot k-\ell} = \sum_{\yb \vdash k-\ell} \iota_{\yb} (\pi_{\yb}(Y) \ot \id_{W_{\yb}}) \iota_{\yb}^{\dagger}.
 \end{align}
 Upon doing so, one encounters the composite operator $\iota_{\yc}^{\dagger}(\iota_{\ya} \ot \iota_{\yb})$ which maps from $(V_{\ya}^{n} \ot W_{\ya}) \ot (V_{\yb}^{n} \ot W_{\yb})$ to $(V_{\yc}^{n} \ot W_{\yc})$ in an $S_\ell \times S_{k-\ell}$-equivariant and $\U(n)$-equivariant manner.
-By Schur's lemma and Schur-Weyl duality, it can be written as
+At this stage define multiplicity spaces $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$ by
+\begin{align}
+    C^{\yc}_{\ya\yb} &\coloneqq \Hom_{\U(n)}(V_{\yc}^{n}, V_{\ya}^{n} \ot V_{\yb}^{n}), \\
+    \tilde C^{\yc}_{\ya\yb} &\coloneqq \Hom_{S_\ell \times S_{k-\ell}}(W_{\ya} \ot W_{\yb}, W_{\yc}),
+\end{align}
+where $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$ are equipped with Hermitian inner products induced by the corresponding inner products on each of the representation spaces.
+Furthermore, let $\iota^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ be the $\U(n)$-equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n}\ot V_{\yb}^{n}$ and $\omega^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot W_{\ya} \ot W_{\yb} \to W_{\yc}$ the $S_\ell \times S_{k-\ell}$-equivariant isometry for the $(\ya,\yb)$-isotypic subspace of $W_{\yc}$.
+
+An important consequence of Schur-Weyl duality is an identification between $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$\footnote{At least whenever $\syc = k$, $\sya = \ell$ and $\syc = k - \ell$ and $\ell(\ya), \ell(\yb), \ell(\yc) \leq n$.} given by the map $T^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \to \tilde C^{\yc}_{\ya\yb}$, where
 \begin{equation}
-    \iota_{\yc}^{\dagger}(\iota_{\ya} \ot \iota_{\yb}) = (\id_{V_{\yc}^{n}} \ot \omega^{\yc}_{\ya\yb}) (\iota^{\yc}_{\ya\yb} \ot \id_{W_{\ya} \ot W_{\yb}})^{\dagger}
+    T^{\yc}_{\ya\yb} \coloneqq
+    \frac{\Tr_{W_{\ya} \ot W_{\yb} \ot V_{\yc}^{n}}\left[
+        (\omega^{\yc;\dagger}_{\ya\yb} \ot \id_{V_{\yc}^{n}}) 
+        \circ (\iota_{\yc}^{\dagger})
+        \circ (\iota_{\ya} \ot \iota_{\yb}) 
+        \circ (\iota^{\yc}_{\ya\yb} \ot \id_{W_{\ya} \ot W_{\yb}})
+    \right]}{\dim(W_{\ya} \ot W_{\yb} \ot V_{\yc}^{n})}.
 \end{equation}
-where $\iota^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the $\U(n)$-equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n}\ot V_{\yb}^{n}$ and $\omega^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot W_{\ya} \ot W_{\yb} \to W_{\yc}$ the $S_\ell \times S_{k-\ell}$-equivariant isometry for the $(\ya,\yb)$-isotypic subspace of $W_{\yc}$.\footnote{Schur-Weyl duality provides us with a isometric and bijective identification between the multiplicity spaces for $V_{\yc}^{n}$ inside $V_{\ya}^{n} \ot V_{\yb}^{n}$ with respect to $U(n)$ and $W_{\ya} \ot W_{\yb}$ inside $W_{\yc}$ with respect to $S_{\ell} \times S_{k-\ell}$, hence why we use, by abuse of notation, the symbol $C^{\yc}_{\ya\yb}$ in both cases.}
-Combining everything together, and rearranging we obtain the formula
+Using Schur's lemma, one can show that $T^{\yc}_{\ya\yb}$ is actually a isometric and bijective map from $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$.
+Combining everything together, we obtain
 \begin{equation}
     \label{eq:proto_binomial_theorem}
     \frac{\dim W_{\yc} \pi_{\yc}(X+Y)}{\syc!} = \sum_{\ya,\yb} \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \frac{\dim W_{\ya} \pi_{\ya}(X)}{\sya!} \ot \frac{\dim W_{\ya} \pi_{\yb}(Y)}{\syb!} (\iota^{\yc}_{\ya,\yb})\right],
@@ -1138,10 +1157,10 @@ As we discussed in the introduction, the $6j$ symbol emerges naturally when cons
         \coloneqq
         \frac{1}{\dim(V_{\ye})}
         \Tr_{V_{\ye}}[
-        \iota_{\ya\yf}^{\ye;\dagger}
-        (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf;\dagger})
+        (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})^{\dagger}
+        (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}
         (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})
-        \iota_{\yc\yd}^{\ye}
+        (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})
         ].
     \end{equation}
     %and depicted diagrammatically by
@@ -1163,7 +1182,7 @@ Nevertheless, the projection operators $P^{\yc}_{\ya\yb}$ and $P^{\yf}_{\yb\yd}$
     [P^{\ye}_{\ya\yb\yd}, P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}] = 0, \qquad
     [P^{\ye}_{\ya\yb\yd}, \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}] = 0.
 \end{equation}
-Let $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ be projection operators given by 
+Let $\Pi_{\ya\yb\yd}^{\ye;\yc}$, and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ be Hermitian projection operators $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$ given by
 \begin{align}
     \begin{split}
         \label{eq:double_projs}
@@ -1175,15 +1194,31 @@ Let $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ be projection op
         = (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})(P^{\ye}_{\ya\yf} \ot \id_{C^{\yf}_{\yb\yd}})(\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}, \\
     \end{split}
 \end{align}
+
+For any operator $O : V_1 \to V_2$ between Hermitian vector spaces $V_1$ and $V_2$, we define operator norms $\norm{O}_{\infty} = \max_{v \in V_1, \norm{v}_{V_1} = 1} \norm{Ov}_{V_2}$ and $\norm{O}_{2} = \Tr_1[O^{\dagger} O]^{\frac{1}{2}} = \Tr_2[O O^{\dagger}]^{\frac{1}{2}}$.
 \begin{prop}
     \label{prop:6j_norm_double_proj}
     For any sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$,
     \begin{equation}
+        \label{eq:6j_norm_equivalences}
         \norm{\abcdefsymbol}_{\infty} = \norm{\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}}_{\infty}, \qquad
         \norm{\abcdefsymbol}_{2}^{2} = \frac{1}{\dim V_{\epsilon}^{n}}\Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}].
     \end{equation}
     %where $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ defined in \cref{eq:double_projs}.
 \end{prop}
+\begin{proof}
+    By definition, the product $\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}$ is an $\U(n)$-equivariant map on $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$ supported on the $\ye$-isotypic subspace $V_{\ye}^{n} \ot C^{\ye}_{\ya\yb\yd}$.
+    By Schur's lemma and \cref{defn:sixj}, we conclude
+    \begin{equation}
+        \Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf} =  
+        (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})
+        (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})
+        (\abcdefsymbol \ot V_{\ye}^{n})
+        (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})^{\dagger}
+        (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}.
+    \end{equation}
+    The norm conditions in \cref{eq:6j_norm_equivalences} then follow because the norms $\norm{O}_{\infty}$ and $\norm{O}_{2}$ are invariant under embedding $O$ into larger spaces using isometries and moreover that $\norm{O\ot \id_V}_{\infty} = \norm{O}_{\infty}$ for any vector space $V$.
+\end{proof}
 
 
 \subsection{Inequalities for the tetrahedral Horn problem}
@@ -1204,7 +1239,11 @@ However, there are numerous conditions on the sizes of the Young diagrams $(\ya,
     \label{eq:yd_sizes_tet}
     \sya + \syb = \syc, \qquad \syb + \syd = \syf, \qquad \sya + \syf = \sye, \qquad \syc + \syd = \sye.
 \end{equation}
-If we additionally let $\Omega_{\ya\yb\yd}^{X,Y,Z} \coloneqq \Phi_{\ya}(X)\ot\Phi_{\yb}(Y)\ot\Phi_{\yd}(Z)$, then we can compactly express $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ as
+If we additionally let 
+\begin{equation}
+    \Omega_{\ya\yb\yd}^{X,Y,Z} \coloneqq \Phi_{\ya}(X)\ot\Phi_{\yb}(Y)\ot\Phi_{\yd}(Z).
+\end{equation}
+then we can compactly express $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ as
 \begin{equation}
     \label{eq:varphi_compact_tet}
     \varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}].
@@ -1214,8 +1253,11 @@ Unlike the quantity $\varphi^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} \Phi_{\y
 Nevertheless, summing over either $\yc$ or $\yf$ restores non-negativity because it eliminates one of the potentially non-commuting projection operators $\Pi_{\ya\yb\yd}^{\ye;\yc}$ or $\Pi_{\ya\yb\yd}^{\ye;\yf}$.
 We denote these partial sums of $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $\yc$ and $\yf$ respectively as
 \begin{align}
-    \varphi^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) &\coloneqq \sum_{\yc}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\yc\yd} (\Phi^{\ya\yb}_{\yc}(X,Y) \ot \Phi_{\yd}(Z))], \\
-    \varphi^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z) &\coloneqq \sum_{\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))],
+    \label{eq:psum_defns}
+    \begin{split}
+        \varphi^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) &\coloneqq \sum_{\yc}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\yc\yd} (\Phi^{\ya\yb}_{\yc}(X,Y) \ot \Phi_{\yd}(Z))], \\
+        \varphi^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z) &\coloneqq \sum_{\yf}\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}] = \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))],
+    \end{split}
 \end{align}
 where the sum over $\yc$ is implicitly such that $\syc = \sya + \syb$ and the sum over $\yf$ is implicitly such that $\syf = \syb + \syd$.
 Although $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ is not necessarily real or positive, the above expression makes it evident that
@@ -1241,7 +1283,7 @@ These upper bounds follow from the following general lemma applied to the compac
 \end{prop}
 \begin{proof}
     As $\Omega \geq 0$ is positive semidefinite, let $\Omega^{\frac{1}{2}} \geq 0$ denote its square root. 
-    Then let $L = \Pi_1\Pi_2\Omega^{\frac{1}{2}}$ and $R = \Pi_1\Omega^{\frac{1}{2}}$ so that
+    Then let $L = \Omega^{\frac{1}{2}}\Pi_2\Pi_1$ and $R = \Omega^{\frac{1}{2}}\Pi_1$ so that
     \begin{equation}
         \braket{L,R} = \Tr(L^{\dagger} R) = \Tr(\Pi_1\Pi_2\Omega\Pi_1) = \Tr(\Pi_1\Pi_2\Omega),
     \end{equation}
@@ -1276,40 +1318,83 @@ These upper bounds follow from the following general lemma applied to the compac
 \end{proof}
 Our next proposition is essential for places bounds on $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ and $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ which depend only the eigenvalues of $X,Y,X+Y,Z,X+Y+Z$, and $Y+Z$.
 \begin{prop}
-    \label{prop:tet_partial_sum_ineq}
+    \label{prop:tet_psum_ineq}
     Let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices.
     Then we have bounds on the partial sums,
     \begin{align}
+        \label{eq:psum_prod_bounds}
         \begin{split}
             \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) &\leq \varphi_{\ya}(X)\varphi_{\yf}(Y+Z),\\
             \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) &\leq \varphi_{\yc}(X+Y)\varphi_{\yd}(Z),
         \end{split}
     \end{align}
-    as well as bounds which are uniform in both $\yc$ and $\ye$:
+    as well as bounds on $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)$:
     \begin{equation}
+        \label{eq:psum_yc_ye_uniform}
         \max\{\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z), \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\} \leq \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \min\{\varphi_{\ye}(X+Y+Z),\varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z)\}.
     \end{equation}
 \end{prop}
 \begin{proof}
-    The bounds are consequences from summation identities and the fact that the partial sums $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ and $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ are non-negative real-valued.
-    The first pair of bounds follow from the summation identities
+    Each of these bounds are consequences of the summation identities for $\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ and the fact that the partial sums $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ and $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ are non-negative real-valued whenever $X,Y,Z \geq 0$ are positive semidefinite.
+    While these summation identities are summarized in \cref{fig:sum_ident}, here we provide proofs for each.
+
+    For example, the quantity $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ (defined in \cref{eq:psum_defns}) can be summed over $\ye$ to obtain:
     \begin{align}
+        \label{eq:psum_yf_over_ye}
         \begin{split}
-            \varphi_{\ya}(X)\varphi_{\yf}(Y+Z) &= \sum_{\ye\yb\yd} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z), \\
-            \varphi_{\yc}(X+Y)\varphi_{\yd}(Z) &= \sum_{\ye\ya\yb} \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z).
+            \sum_{\ye} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) 
+            &= \sum_{\ye}\Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))] 
+            = \Tr[\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z)] 
+            = \varphi_{\ya}(X)\varphi_{\yf}^{\yb\yd}(Y,Z).
         \end{split}
     \end{align}
-    The last inequality comes from
-    \begin{equation}
-        \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) = \sum_{\yf} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) = \sum_{\yc} \varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)
-    \end{equation}
-    and the fact that 
+    Further summing over $\yb$ and $\yd$ and applying \cref{cor:bisummation} produces
     \begin{align}
         \begin{split}
-            \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) &= \sum_{\ye} \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z), \\
-            \varphi_{\ye}(X+Y+Z) &= \sum_{\ya\yb\yd} \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z).
+            \sum_{\ye\yb\yd} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) 
+            &= \varphi_{\ya}(X)\sum_{\yb\yd}\varphi_{\yf}^{\yb\yd}(Y,Z).
+            = \varphi_{\ya}(X)\varphi_{\yf}(Y+Z).
         \end{split}
     \end{align}
+    From the non-negativity of $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ we obtain the first claimed inequality in \cref{eq:psum_prod_bounds}.
+    The second claimed inequality in \cref{eq:psum_prod_bounds} follows analogously from summing $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ over $\ye$, $\ya$ and $\yb$.
+    The remaining claimed inequalities in \cref{eq:psum_yc_ye_uniform} are the result of similar summation identities.
+    For example, summing the quantity $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ over $\yf$ and applying \cref{eq:double_projs} produces
+    \begin{align}
+        \label{eq:psum_yf_over_yf}
+        \begin{split}
+            \sum_{\yf} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)
+            &= \sum_{\yf} \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))], \\
+            &= \sum_{\yf} \Tr[P^{\ye}_{\ya\yb\yd}(\id_{\ya}\ot P^{\yf}_{\yb\yd}) (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y) \ot \Phi_{\yd}(Z))], \\
+            &= \Tr[P^{\ye}_{\ya\yb\yd} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y) \ot \Phi_{\yd}(Z))], \\
+            &= \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z).
+        \end{split}
+    \end{align}
+    Therefore, from the non-negativity of $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$, we obtain $\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) \leq \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)$ which establishes one half of the lower bound on $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)$ in \cref{eq:psum_yc_ye_uniform}; the other half of the lower bound follows analogously from summing $\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ over $\yc$.
+    Finally, for the upper bounds on $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)$ in \cref{eq:psum_yc_ye_uniform}, we remark that \cref{cor:bisummation} can be extended to handle more than two matrices by repeated application of \cref{cor:bisummation};
+    specifically, by starting with \cref{eq:psum_yf_over_ye} and further summing over $\yf$ and applying \cref{eq:psum_yf_over_yf} and \cref{cor:bisummation}, we obtain
+    \begin{align}
+        \begin{split}
+            \sum_{\ye} \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) 
+            &= \sum_{\ye\yf} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z), \\
+            &= \sum_{\yf} \varphi_{\ya}(X)\varphi_{\yf}^{\yb\yd}(Y,Z), \\
+            &= \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z),
+        \end{split}
+    \end{align}
+    which is three matrix analogue of one half of \cref{cor:bisummation} and establishes the bound $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z)$ because $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \geq 0$.
+    For the other half of the three matrix analogue of \cref{cor:bisummation}, we can again use \cref{eq:psum_yf_over_yf} and apply \cref{cor:bisummation} twice to obtain
+    \begin{align}
+        \begin{split}
+            \sum_{\ya\yb\yd} \varphi^{\ya\yb\yd}_{\ye}(X,Y,Z)
+            &= \sum_{\ya\yb\yd\yf} \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z), \\
+            &= \sum_{\ya\yb\yd\yf} \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))], \\
+            &= \sum_{\ya\yf} \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \sum_{\yb\yd}\Phi^{\yb\yd}_{\yf}(Y,Z))], \\
+            &= \sum_{\ya\yf} \Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi_{\yf}(Y+Z))], \\
+            &= \sum_{\ya\yf} \varphi^{\ya\yf}_{\ye}(X, Y+Z), \\
+            &= \varphi_{\ye}(X+Y+Z),
+        \end{split}
+    \end{align}
+    which in turn establishes the remaining inequality $\varphi^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \varphi_{\ye}(X+Y+Z)$.
 \end{proof}
 
 We can now immediately prove the ``only if'' portion of the claim of \cref{thm:iff_tet}.
@@ -1328,13 +1413,18 @@ We can now immediately prove the ``only if'' portion of the claim of \cref{thm:i
     \begin{equation}
         \varphi_{\ya}(X)\varphi_{\yb}(Y)\varphi_{\yd}(Z) \leq \sum_{\yc\ye\yf} \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
     \end{equation}
-    Then for the upper bound, \cref{prop:tet_partial_sum_ineq} can be used to produce 
+    Then for the upper bound, \cref{prop:tet_psum_ineq} implies 
+    \begin{align}
+        \begin{split}
+            &\varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq\\
+            &\qquad\min\{ \varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z), \varphi_{\ye}(X+Y+Z)^{2}, \varphi_{\ya}(X)^2\varphi_{\yb}(Y)^2\varphi_{\yd}(Z)^2\}.
+        \end{split}
+    \end{align}
+    Here we elect to remove the minimization by relaxing this inequality to the following:
     \begin{equation}
-        \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \left[\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\right]^{p}\varphi_{\ye}(X+Y+Z)^{2(1-p)},
+        \varphi^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)\varphi^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z) \leq \left[\varphi_{\ya}(X)\varphi_{\yf}(Y+Z)\varphi_{\yc}(X+Y)\varphi_{\yd}(Z)\varphi_{\ye}(X+Y+Z)\right]^{\frac{2}{3}}.
     \end{equation}
-    which holds for any $p \in [0,1]$.
-    The claim corresponds to the choice $p = \frac{2}{3}$ which makes the exponents match.
-    Then the claimed result is obtained from dividing out both sides by a common factor of $(\varphi_{\ya}(X)\varphi_{\yd}(Z))^{\frac{1}{3}}$ (note that if $\varphi_{\ya}(X)\varphi_{\yd}(Z) = 0$, the inequality would hold trivially).
+    Then the claimed result is obtained by applying \cref{lem:varphi_tet_main_ineq} and then dividing by a common factor of $(\varphi_{\ya}(X)\varphi_{\yd}(Z))^{\frac{1}{3}}$ (note that whenever $\varphi_{\ya}(X)\varphi_{\yd}(Z) = 0$, the resuling inequality holds trivially).
 \end{proof}
 The proof of the ``if'' portion of \cref{thm:iff_tet} can be found in \cref{sec:dist_bound_for_tet_horn} which proves the distance bound of \cref{thm:approx_tet} (this implies the ``if'' portion of \cref{thm:iff_tet} after sending $k \to \infty$).
 
@@ -1558,8 +1648,11 @@ The first two propositions follow from standard applications of Schur's lemma, a
         \expect_{X \sim \orbit_{\ex}} \pi_{\yx}(X) = s_{\yx}(\ex)\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
     \end{equation}
 \end{prop}
+Moreover in our proof of \cref{cor:asym_6j}, we will use another measure, known as the Hilbert-Schmidt measure, over the compact space of trace $\tau$ positive semidefinite Hermitian matrices \cite{zyczkowski2001induced}.
+This measure is a product measure with respect to eigenvalues and eigenvectors and uses the $\U(n)$ Haar measure for the eigenvectors and the unique probability measure for the eigenvalues $x$ with density proportional to the squared Vandermonde determinant $\Delta(x)^2$ \cite{zyczkowski2001induced}.
+It can equivalently be characterized in terms of the pushforward of applying the map $\psi \mapsto \tau \Tr_{n}(\psi\psi^{\dagger})$ to $\U(n^2)$-Haar random unit vectors $\psi$ in $\mathbb C^{n} \ot \mathbb C^{n}$ \cite{zyczkowski2001induced}.
 \begin{prop}
-    Given a positive real number $\tau > 0$, let $X \sim \mathrm{HS}_{\tau}$ denote a random Hermitian matrix with coefficients $X_{ij} = \frac{\tau}{n} \sum_{k,s,t=1}^{n}U_{ik;ss}U^{-1}_{tt;jk}$ where $U \in \U(n^2)$ is a $n^2 \times n^2$ unitary matrix sampled uniformly with respect to the normalized Haar measure on $\U(n^2)$.
+    Given a positive real number $\tau > 0$, let $X \sim \mathrm{HS}_{\tau}$ denote a random Hermitian matrix with coefficients $X_{ij} = \tau \sum_{k=1}^{n}U_{ik;11}U^{*}_{jk;11}$ where $U \in \U(n^2)$ is a $n^2 \times n^2$ unitary matrix sampled uniformly with respect to the normalized Haar measure on $\U(n^2)$.
     Then for any Young diagram $\yx$,
     \begin{equation}
         \expect_{X \sim \mathrm{HS}_{\tau} } \pi_{\yx}(X) = \tau^{\syx}q_{n,\yx}\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
@@ -1699,7 +1792,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
         \norm{\abcdefsymbol}_{2}^{2} \varphi_{\ya}(x)\varphi_{\yb}(y)\varphi_{\yd}(z) \leq R^{\ya\yb\yd}_{\ye} \max_{\substack{(X,Y,Z) \\\in \orbit_x \times \orbit_y \times \orbit_z}}\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
     \end{equation}
     where $R^{\ya\yb\yd}_{\ye} = \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\epsilon}^{n})}$ and the where the maximum is taken over all triples $(X,Y,Z)$ of positive semidefinite matrices with eigenvalues $(x,y,z)$.
-    Applying \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_partial_sum_ineq} to $\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces
+    Applying \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} to $\abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces
     \begin{equation} 
         \label{eq:sup_bound}
         \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}\varphi_{\yf}(Y+Z)^{\frac{1}{3}}\varphi_{\yc}(X+Y)^{\frac{1}{3}}\varphi_{\ye}(X+Y+Z)^{\frac{1}{3}}.
@@ -1765,7 +1858,7 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
 \end{lem}
 \begin{proof}
-    A combination of \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_partial_sum_ineq} implies    
+    A combination of \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} implies    
     \begin{equation}
         \abs{\varphi^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
         \leq \norm{\abcdefsymbol}_{\infty} \left(\varphi_{\ya}(a)\varphi_{\yb}(b)\varphi_{\yd}(d) \times \varphi_{\yc}(c)\varphi_{\yd}(d) \times \varphi_{\ye}(e) \times \varphi_{\ya}(a)\varphi_{\yf}(f)\right)^{\frac{1}{4}},
@@ -1875,7 +1968,7 @@ Moreover, also in \cite{horn1962eigenvalues}, \citeauthor{horn1962eigenvalues} p
     {\sum}_{i\in I} \ea_i + {\sum}_{j\in J} \eb_j \geq {\sum}_{k\in K} \ec_{k},
 \end{equation}
 were both necessary and sufficient to ensure that $(\ea,\eb,\ec)$ are trigonal.
-While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, ${\tea} + {\teb} = {\tec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
+While proofs for some of these inequalities were found (see e.g., \cite{thompson1971eigenvalues,thompson1970eigenvalues}), it took until the late 1990s for Horn's problem to be solved by \citeauthor{klyachko1998stable} \cite{klyachko1998stable} who proved that $(\ea,\eb,\ec)$ if and only if in addition to the trace equality, ${\tea} + {\teb} = {\tec}$, \cref{eq:IJK_ineq} holds for all $(I,J,K)$ such that (i) $\abs{I} = \abs{J} = \abs{K} = p$ for some $p$, and (ii) the Littlewood-Richardson coefficient $c^{\yc}_{\ya,\yb}$ is non-zero (here $\ya = (i_p - p, \ldots, i_1 - 1)$, $\yb = (j_p - p, \ldots, j_1 - 1)$, and $\yc = (k_p - p, \ldots, k_1 - 1)$).
 Shortly thereafter, \citeauthor{knutson1999honeycomb} proved the saturation conjecture for Littlewood-Richardson coefficients \cite{knutson1999honeycomb}, which when combined with \citeauthor{klyachko1998stable}'s solution, proved Horn's conjecture.
 
 For the purposes of characterizing the set of tetrahedral eigenvalues further, we will henceforth be exclusively concerned with inequalities constraining the set of tetrahedral eigenvalues which are not already implied by Horn's inequalities.
