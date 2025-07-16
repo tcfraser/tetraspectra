@@ -26,6 +26,7 @@
 \newcommand{\emptyyoung}{\emptyset}
 \newcommand{\abcdefsymboldempty}{\tightcurlysixj{\alpha & \beta & \gamma \\ \emptyyoung & \gamma & \beta}}
 \newcommand{\abcdefsymbolprimed}{\tightcurlysixj{\alpha' & \beta' & \gamma' \\ \delta' & \epsilon' & \phi'}}
+\newcommand{\abcdefsymbolcefstarred}{\tightcurlysixj{\alpha & \beta & \gamma^* \\ \delta & \epsilon^* & \phi^*}}
 
 \usepackage{mathtools}
 \usepackage[vcentermath]{youngtab}
