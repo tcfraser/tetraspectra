@@ -1777,19 +1777,19 @@ In this section, we prove the following proposition pertaining to the original H
     To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}} \leq \dim (V_{\ya}^{n} \ot V_{\yb}^{n}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
     \begin{equation}
         \label{eq:second_ab_bound}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}} \max_{\substack{X \in \orbit_\ea \\ Y \in \orbit_\eb}} \vp_{\yc^{*}}(X+Y).
+        \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y).
     \end{equation}
     Then we combine the two bounds on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ from \cref{eq:first_ab_bound} and \cref{eq:second_ab_bound} and apply the eigenvalue separation bound \cref{eq:weak_eig_sep} to obtain
     \begin{align}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb) 
-        &\leq \sqrt{\polyk{2\binom{n}{2}} \polyk{n-1} \max_{\substack{X \in \orbit_\ea \\ Y \in \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
-        &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{X \in \orbit_\ea \\ Y \in \orbit_\eb}}\frac{F(\eig(X+Y), c)^k}{k!}, \\
+        &\leq \sqrt{\polyk{2\binom{n}{2}} \polyk{n-1} \max_{\substack{(X,Y) \in \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
+        &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{F(\eig(X+Y), c)^k}{k!}, \\
         \label{eq:ab_intermediate_bound}
         &= \polyk{2\binom{n}{2}+\frac{n-1}{2}}\frac{F(a,b;c)^k}{k!},
     \end{align}
     where $F(a,b;c)$ is defined as the maximum fidelity
     \begin{equation}
-        F(a,b;c) \coloneqq \max_{\substack{X \in \orbit_\ea \\ Y \in \orbit_\eb}} F(\eig(X+Y),c).
+        F(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} F(\eig(X+Y),c).
     \end{equation}
 
     Now we sum both sides of \cref{eq:ab_intermediate_bound} over \textit{all} pairs $(\ya,\yb)$ with total size $\sya+\syb=k$ to obtain
@@ -1862,7 +1862,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     Together this gives
     \begin{equation} 
         \label{eq:max_abs_value_bound}
-        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
+        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z) \in \\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
     \end{equation}
     Furthermore, applying \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} to the absolute value $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces
     \begin{equation} 
@@ -1876,7 +1876,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
         \begin{split}
             &\norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \norm{\abcdefsymbol}_{\infty} 
             \times \cdots \\ &\qquad\cdots \times 
-            \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
+            \max_{\substack{(X,Y,Z) \in\\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
             \left(\vp_{\ya}(X)\vp_{\yf}(Y+Z)\vp_{\yc}(X+Y)\vp_{\yd}(Z)\vp_{\ye}(X+Y+Z)\right)^{\frac{1}{3}},
         \end{split}
     \end{align}
@@ -1887,7 +1887,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
             &\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
             \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)}
             \times \cdots \\ &\qquad\cdots \times 
-            \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
+            \max_{\substack{(X,Y,Z) \in\\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
             \left(
                 \vp_{\ya}(\ea)\vp_{\ya}(X)
                 \vp_{\yf^*}(\ef)\vp_{\yf^*}(Y+Z)
@@ -1925,7 +1925,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     \begin{align}
         F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} 
         &\coloneqq
-        \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
+        \max_{\substack{(X,Y,Z) \in\\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
         F(\ea\oplus \ef, \eig(X\oplus Y+Z))
         F(\ec\oplus \ed, \eig(X+Y\oplus Z))
         F(\ee, \eig(X+Y+Z)).
