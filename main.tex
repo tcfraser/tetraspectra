@@ -102,7 +102,14 @@ Nevertheless, we prove the finite subset of such inequalities of fixed degree $k
         \label{eq:tri_abd_cef_dist_bound}
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right),
     \end{equation}
-    where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with equality holding if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
+    where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ is the distance measure
+    \begin{equation}
+        \label{eq:defn_tet_deviation}
+        D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq 
+        \min_{\substack{(A,B,D) \sim \\ \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}} 
+        \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2,
+    \end{equation}
+    where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
 \end{thm}
 Note this theorem actually implies the ``if'' portion of \cref{thm:iff_tet} as one can take $k \to \infty$.
 Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{prop:approx_tri}).
@@ -183,7 +190,7 @@ Using our methods we are able to prove the following inverse polynomial lower bo
 \begin{cor}
     \label{cor:asym_6j}
     If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$,
-    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
+    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ (with $\abs{ye_k} = k$) converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
     such that
     \begin{equation}
         \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
@@ -326,49 +333,36 @@ The tetrahedral Horn problem goes beyond four separate instances of Horn's origi
 %    F = \tilde F.
 %\end{equation}
 
-\subsection{Deviation Measures}
+%\subsection{Deviation Measures}
+%
+%In order to quantify the degree to which a candidate collection of eigenvalues is compatible, either in the case of Horn's original problem or in the case of the tetrahedral Horn problem, it will be helpful to define some measures of deviation or distance which are non-negative and vanish if and only if the eigenvalues are compatible.
+%
+%\begin{prop}
+%    Let $1 \leq p \leq \infty$.
+%    Then for pairs of Hermitian matrices $X,Y \in \herm{n}$ with eigenvalues $\eig (X) = \ex = (\ex_1 \geq \cdots \geq \ex_n)$ and $\eig(Y) = \ey = (\ey_1 \geq \cdots \geq \ey_n)$, one has
+%    \begin{equation}
+%        \norm{X-Y}_{p} \geq \norm{x-y}_{p}.
+%    \end{equation}
+%    Moreover, if $S \subseteq \herm{n}$ is a unitarily invariant and closed subset of Hermitian matrices.
+%    Then 
+%    \begin{equation}
+%        \min_{Y \in S} \norm{X - Y}_p = \min_{\ey \in \eig(S)} \norm{\ex - \ey}_p,
+%    \end{equation}
+%\end{prop}
+%
+%In terms of Horn's original problem, we can consider the set $S$ of Hermitian matrices which are of the form $A+B$ for some $(A,B) \in \orbit_{\ea} \times \orbit_{\eb}$.
+%\begin{prop}
+%    For a given triple of eigenvalues, $(\ea,\eb,\ec)$, and $1 \leq p \leq \infty$, let
+%    \begin{equation}
+%        D_p(\ea,\eb,\ec) \coloneqq \min_{U,V \in \U(n)} \norm{ \eig(U\!\cdot\![\ea] + V\!\cdot\![\eb]) - \ec }_{p}.
+%    \end{equation}
+%    Then $D_p(\ea,\eb,\ec) \geq 0$ with equality holding if and only if $(\ea,\eb,\ec)$ are trigonal.
+%    Moreover,
+%    \begin{equation}
+%        D_p(\ea,\eb,\ec) = \min_{A,B,C \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}} \norm{ A + B - C }_{p}.
+%    \end{equation}
+%\end{prop}
 
-In order to quantify the degree to which a candidate collection of eigenvalues is compatible, either in the case of Horn's original problem or in the case of the tetrahedral Horn problem, it will be helpful to define some measures of deviation or distance which are non-negative and vanish if and only if the eigenvalues are compatible.
-
-\begin{prop}
-    Let $1 \leq p \leq \infty$.
-    Then for pairs of Hermitian matrices $X,Y \in \herm{n}$ with eigenvalues $\eig (X) = \ex = (\ex_1 \geq \cdots \geq \ex_n)$ and $\eig(Y) = \ey = (\ey_1 \geq \cdots \geq \ey_n)$, one has
-    \begin{equation}
-        \norm{X-Y}_{p} \geq \norm{x-y}_{p}.
-    \end{equation}
-    Moreover, if $S \subseteq \herm{n}$ is a unitarily invariant and closed subset of Hermitian matrices.
-    Then 
-    \begin{equation}
-        \min_{Y \in S} \norm{X - Y}_p = \min_{\ey \in \eig(S)} \norm{\ex - \ey}_p,
-    \end{equation}
-\end{prop}
-
-In terms of Horn's original problem, we can consider the set $S$ of Hermitian matrices which are of the form $A+B$ for some $(A,B) \in \orbit_{\ea} \times \orbit_{\eb}$.
-\begin{prop}
-    For a given triple of eigenvalues, $(\ea,\eb,\ec)$, and $1 \leq p \leq \infty$, let
-    \begin{equation}
-        D_p(\ea,\eb,\ec) \coloneqq \min_{U,V \in \U(n)} \norm{ \eig(U\!\cdot\![\ea] + V\!\cdot\![\eb]) - \ec }_{p}.
-    \end{equation}
-    Then $D_p(\ea,\eb,\ec) \geq 0$ with equality holding if and only if $(\ea,\eb,\ec)$ are trigonal.
-    Moreover,
-    \begin{equation}
-        D_p(\ea,\eb,\ec) = \min_{A,B,C \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}} \norm{ A + B - C }_{p}.
-    \end{equation}
-\end{prop}
-
-For the tetrahedral Horn problem, there is some additional freedom in how one incorporates the various constraints.
-The measure of deviation which emerges naturally from our analysis is the following.
-\begin{defn}
-    \label{defn:tet_deviation}
-    For a given sextuple of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, and $1 \leq p \leq \infty$, let
-    \begin{align}
-        \begin{split}
-            D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq 
-            \min_{U,V,W \in \U(n)} \bigg( &\norm{ \eig(U\!\cdot\![\ea] + V\!\cdot\![\eb]) - \ec }_{1}^2 + \norm{ \eig(V\!\cdot\![\eb]+ W\!\cdot\![\ed]) - \ef }_{1}^2 +\\&\qquad\qquad+ \norm{ \eig(U\!\cdot\![\ea] + V\!\cdot\![\eb]+ W\!\cdot\![\ed]) - \ee }_{1}^2 \bigg)^{\frac{1}{2}}.
-        \end{split}
-    \end{align}
-    Then $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with equality holding if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are trigonal.
-\end{defn}
 
 \subsection{Low dimensional solutions}
 
@@ -1558,6 +1552,7 @@ Thus whenever $X \geq 0$, one can define a probability distribution known as the
 \begin{defn}
     The Schur-Weyl distribution of order $k$ for a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ is defined as the probability distribution over Young diagrams $\yx$ with $k$ boxes with probability
     \begin{equation}
+        \label{eq:schur_weyl}
         p_{\ex}(\yx) \coloneqq \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]} = \frac{\dim W_{\yx} s_{\yx}(\ex)}{\tex^{k}} = \frac{\syx! }{\tex^{k}}\vp_{\yx}(\ex).
     \end{equation}
 \end{defn}
@@ -1596,74 +1591,87 @@ The following is known result is known as eigenvalue or spectrum estimation \cit
     Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
     Then the Schur-Weyl distribution $p_{\ex}(\yx)$ for $\yx \vdash k$ satisfies
     \begin{equation}
-        p_{\ex}(\yx) \leq w_n(k) \exp(-k \kl{\nrm \yx}{\nrm \ex})
+        p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}}\right)
     \end{equation}
-    where $\nrm \yx = \frac{\yx}{\syx}$ and $\nrm \ex = \frac{\ex}{\tex}$ are normalizations of the Young diagram $\yx$ and eigenvalues $\ex$ respectively and where $\kl{p}{q}$ denotes the Kullback-Leibler divergence of a distribution $q$ from a distribution $p$:
+    where $\kl{p}{q}$ denotes the Kullback-Leibler divergence of a distribution $q$ from a distribution $p$:
     \begin{equation}
         \kl{p}{q} = \sum_{i=1}^{n} p_i \log \frac{p_i}{q_i}.
     \end{equation}
 \end{prop}
 The Kullback-Leibler divergence, $\kl{p}{q}$, is a non-negative quantity which vanishes if and only if $p=q$.
-Consequently, eigenvalue estimation captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_{\ex}(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\nrm \yx$, is similar to the eigenvalue distribution $\nrm \ex$.
+Consequently, eigenvalue estimation captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_{\ex}(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\yx/k$, is similar to the eigenvalue distribution $\ex/\tex$.
 
-For our purposes, it will instead be useful to use a related result which captures the fact if two positive semidefinite matrices $X,Y \geq 0$ have dissimilar eigenvalue distributions then the fidelity between their Schur-Weyl distributions is exponentially small in $k$.
-Recall the fidelity $F(p,q) \in [0,1]$ between distributions $p,q$ on the set $\{1,\ldots,n\}$ is defined by
+For our purposes, it will instead be useful to derive a result which compares the eigenvalues of a pair of positive semidefinite matrices $X,Y \geq 0$ directly.
+Recall that the \textit{fidelity} $F(p,q) \in [0,1]$ between two probability distributions $p$ and $q$ over a common set $\{1,\ldots,r\}$ is defined by $F(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i}$ and is equal one if and only if $p = q$.
+For notational convenient, we will extend this definition of fidelity to consider unnormalized distributions in the following way.
+Suppose $p = (p_1, \ldots, p_r)$ and $q = (q_1, \ldots, q_r)$ are non-negative tuples over the set $\{1,\ldots,r\}$ which are not necessarily normalized, but nevertheless have the same total $\tau = \sum_{i=1}^{r} p_i = \sum_{i=1}^{r} q_i$.
+Then we define the \textit{unnormalized fidelity} $F(p,q) \in [0,\tau]$ between $p$ and $q$ by
 \begin{equation}
-    F(p,q) = \sum_{i=1}^{n}\sqrt{p_iq_i},
+    F(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i},
 \end{equation}
-and is equal to $F(p,q) = 1$ if and only if $p = q$.
+where $F(p,q) = \tau$ if and only if $p=q$.
+The unnormalized fidelity inherits all of its properties from the normalizated fidelity by homogeneity:
+\begin{equation}
+    F(p,q) = \tau F\left( \frac{p}{\tau}, \frac{q}{\tau} \right).
+\end{equation}
+
 \begin{lem}[Eigenvalue separation]
     \label{lem:eig_sep}
-    Let $(\ex, \ey)$ be eigenvalues of positive semidefinite $n\times n$ matrices $X,Y \geq 0$.
-    Then the fidelity between Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ of order $k$,
-    \begin{equation}
-        F_k(p_{\ex},p_{\ey}) \coloneqq \sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)},
-    \end{equation}
-    is bounded by
-    \begin{equation}
-        F_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} F(\nrm \ex,\nrm \ey)^{k}.
-    \end{equation}
-    where $F(\nrm \ex,\nrm \ey)$ is the fidelity between the eigenvalue distributions of $X$ and $Y$,
-    \begin{equation}
-        F(\nrm \ex,\nrm \ey) = \sum_{i=1} \sqrt{\frac{\ex_i}{\tex}\frac{\ey_i}{\tey}}.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    The proof follows from \cref{prop:multinomial_bound} and the fact that fidelities are multiplicative with respect to multinomial distributions, i.e. $F_k(m_x, m_y) = F(\nrm \ex, \nrm \ey)^k$, and therefore
-    \begin{equation}
-         F_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} F_k(m_{\ex},m_{\ey}) = \polyk{\binom{n}{2}} F(\nrm \ex,\nrm \ey)^{k}.
-    \end{equation}
-\end{proof}
-Restating \cref{lem:eig_sep} in terms of the quantities $\vp_{\yx}(x)$ (which are simply proportional to the Schur-Weyl distribution $p_{x}(\lambda)$ with prefactor $\frac{\tex^{k}}{\syx!}$) we obtain the following corollary.
-\begin{cor}
-    \label{cor:eig_sep}
     Let $\ex$ and $\ey$ non-negative eigenvalues of length $n$ with the same trace $\tau = \tex = \tey$.
     For any non-negative integer $k\geq 1$,
     \begin{equation}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(x)\vp_{\yx}(y)} \leq \polyk{\binom{n}{2}} \frac{F(x,y)^{k}}{k!},
+        \label{eq:eig_sep}
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \polyk{\binom{n}{2}} \frac{F(\ex,\ey)^{k}}{k!},
     \end{equation}
-    where $F(\ex,\ey) = \sum_{i=1}^{n}\sqrt{\ex_i\ey_i} \in [0, \tau]$ is fidelity between the eigenvalues $\ex$ and $\ey$ and $F(\ex, \ey) = \tau$ if and only if $\ex = \ey$.
-\end{cor}
+    where $F(\ex,\ey)$ is fidelity between the eigenvalues $\ex$ and $\ey$ and $F(\ex, \ey) = \tau$ if and only if $\ex = \ey$.
+\end{lem}
+\begin{proof}
+    We may assume that $\ex, \ey$ are non-zero and thus $\tau > 0$.
+    The left-hand side of \cref{eq:eig_sep} is the equal to the unnormalized fidelity between $\vp_{\yx}(\ex)$ and $\vp_{\yx}(\ey)$.
+    As $\vp_{\yx}(\ex)$ is proportional to the Schur-Weyl distribution $p_{\ex}(\yx)$ by definition (\cref{eq:schur_weyl}), we have
+    \begin{equation}
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} = \frac{\tau^k}{k!}\sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)} = \frac{\tau^k}{k!}F_k(p_{\ex},p_{\ey})
+    \end{equation}
+    where $F_k(p_{\ex},p_{\ey})$ denotes the normalized fidelity between the Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ over Young diagrams of size $k$.
+    From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound}, we have
+    \begin{equation}
+        F_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} F_k(m_x,m_y).
+    \end{equation}
+    where $F_k(m_\ex,m_\ey)$ is the fidelity between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
+    Since fidelities are multiplicative with respect to multinomial distributions, i.e.,
+    \begin{equation}
+        F_k(m_x, m_y) = F\left(\frac{\ex}{\tau}, \frac{\ey}{\tau}\right)^{k} = \frac{F(\ex, \ey)^k}{\tau^k},
+    \end{equation}
+    we conclude
+    \begin{equation}
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \frac{\tau^k}{k!}\polyk{\binom{n}{2}}\frac{F(\ex, \ey)^k}{\tau^k}
+    \end{equation}
+    which is equal to\cref{eq:eig_sep}.
+\end{proof}
 In subsequent sections we will frequently use of the \textit{weaker} bound
 \begin{equation}
     \label{eq:weak_eig_sep}
     \forall \yx \vdash k: \qquad \sqrt{\vp_{\yx}(x)\vp_{\yx}(y)} \leq \polyk{\binom{n}{2}} \frac{F(x,y)^{k}}{k!},
 \end{equation}
-which follows from \cref{cor:eig_sep} because $\vp_{\yx}(x), \vp_{\yx}(y) \geq 0$ whenever the eigenvalues $x,y$ are non-negative.
+which follows from \cref{lem:eig_sep} because $\vp_{\yx}(x), \vp_{\yx}(y) \geq 0$ whenever the eigenvalues $x,y$ are non-negative.
 \begin{rem}[Fidelities \& Distances]
-    In order to quantify the separation between distributions more geometrically, consider the Kolmogorov (or total variation) distance between two probabibility distributions $p$ and $q$:
+    In order to quantify the separation between distributions more geometrically, consider the Kolmogorov (or total variation) distance between two normalized probabibility distributions $p$ and $q$:
     \begin{equation}
         K(p,q) \coloneqq \frac{1}{2}\norm{p-q}_1.
     \end{equation}
-    The fidelity $F(p,q)$ and Kolmogorov distance $K(p,q)$ are related by the inequalities
+    The normalized fidelity $F(p,q)$ and Kolmogorov distance $K(p,q)$ are related by the inequalities
     \begin{equation}
         1-F(p,q) \leq K(p,q) \leq \sqrt{1-F(p,q)^2}
     \end{equation}
     For a proof, see for example \cite[Proposition 5, Equation (41)]{fuchs2002cryptographic}.
-    For the purposes of this paper, we only need the bound $K(p,q) \leq \sqrt{1-F(p,q)}^2$ which is equivalent to $F(p,q) \leq \sqrt{1-K(p,q)}^2$ which can be relaxed to obtain\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
+    For the purposes of this paper, we only need the bound $K(p,q) \leq \sqrt{1-F(p,q)^2}$ which is equivalent to $F(p,q) \leq \sqrt{1-K(p,q)^2}$ which can be relaxed to obtain\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
+    \begin{equation}
+        F(p,q) \leq \exp\left(-\frac{1}{2}K(p,q)^2\right) = \exp\left(-\frac{1}{8}\norm{p-q}_1^2\right).
+    \end{equation}
+    Stated in terms of the unnormalized fidelity $F(p,q)$ between unnormalized distributions $p,q$ with the same total $\tau$, this inequality is equivalent to
     \begin{equation}
         \label{eq:fidelity_vs_distance}
-        F(p,q) \leq \exp\left(-\frac{1}{2}K(p,q)^2\right) = \exp\left(-\frac{1}{8}\norm{p-q}_1^2\right).
+        \frac{F(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
     \end{equation}
     In subsequent sections we will use \cref{eq:fidelity_vs_distance} to convert lower bounds on fidelities $F(p,q)$ into upper bounds on distances $\norm{p-q}_1$.
 \end{rem}
@@ -1680,50 +1688,53 @@ The first two propositions follow from standard applications of Schur's lemma, a
         \expect_{X \sim \orbit_{\ex}} \pi_{\yx}(X) = s_{\yx}(\ex)\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
     \end{equation}
 \end{prop}
-Moreover in our proof of \cref{cor:asym_6j}, we will use another measure, known as the Hilbert-Schmidt measure, over the compact space of trace $\tau$ positive semidefinite Hermitian matrices \cite{zyczkowski2001induced}.
-This measure is a product measure with respect to eigenvalues and eigenvectors and uses the $\U(n)$ Haar measure for the eigenvectors and the unique probability measure for the eigenvalues $x$ with density proportional to the squared Vandermonde determinant $\Delta(x)^2$ \cite{zyczkowski2001induced}.
-It can equivalently be characterized in terms of the pushforward of applying the map $\psi \mapsto \tau \Tr_{n}(\psi\psi^{\dagger})$ to $\U(n^2)$-Haar random unit vectors $\psi$ in $\mathbb C^{n} \ot \mathbb C^{n}$ \cite{zyczkowski2001induced}.
-\begin{prop}
-    Given a positive real number $\tau > 0$, let $X \sim \mathrm{HS}_{\tau}$ denote a random Hermitian matrix with coefficients $X_{ij} = \tau \sum_{k=1}^{n}U_{ik;11}U^{*}_{jk;11}$ where $U \in \U(n^2)$ is a $n^2 \times n^2$ unitary matrix sampled uniformly with respect to the normalized Haar measure on $\U(n^2)$.
-    Then for any Young diagram $\yx$,
-    \begin{equation}
-        \expect_{X \sim \mathrm{HS}_{\tau} } \pi_{\yx}(X) = \tau^{\syx}q_{n,\yx}\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
-    \end{equation}
-    where $q_{n,\yx}$ is the dimension ratio
-    \begin{equation}
-        q_{n,\yx} \coloneqq \frac{(\dim V_{\yx}^{n})^{2}}{\dim V_{(\syx)}^{n^2}}.
-    \end{equation}
-\end{prop}
 \begin{cor}
     \label{cor:random_sum}
     Let $(\ex,\ey)$ be a pair of eigenvalues. Then
     \begin{equation}
-        \expect_{X \sim \orbit_{\ex}} 
-        \expect_{Y \sim \orbit_{\ey}} 
+        \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}} 
         \frac{\vp^{\ya\yb}_{\yc}(X,Y)}{\dim V_{\yc}^{n}} = c^{\yc}_{\ya\yb} \frac{\vp_{\ya}(\ex)}{\dim V_{\ya}^{n}}\frac{\vp_{\yb}(\ey)}{\dim V_{\yb}^{n}} .
-    \end{equation}
-
-    \begin{equation}
-        \expect_{X \sim \mathrm{HS}_{\tex}} 
-        \expect_{Y \sim \mathrm{HS}_{\tex}} 
-        \vp^{\ya\yb}_{\yc}(X,Y) 
-        = \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!} q_{n,\ya}q_{n,\yb}\frac{c^{\yc}_{\ya\yb}\dim V_{\yc}^{n}}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
     \end{equation}
 \end{cor}
 \begin{cor}
     \label{cor:random_matrices_tet}
     Let $(x,y,z)$ be a triple of eigenvalues. Then
     \begin{equation} 
-        \expect_{X \sim \orbit_{x}} \expect_{Y \sim \orbit_{y}} \expect_{Z \sim \orbit_{z}} \frac{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}{\dim V_{\ye}^{n}} 
+        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ex}\times \orbit_{\ey} \times \orbit_{\ez}}} \frac{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}{\dim V_{\ye}^{n}} 
         = \norm{\abcdefsymbol}_{2}^{2} \frac{\vp_{\ya}(x)}{\dim V_{\ya}^{n}}\frac{\vp_{\yb}(y)}{\dim V_{\yb}^{n}}\frac{\vp_{\yd}(z)}{\dim V_{\yd}^{n}}.
     \end{equation}
-    \begin{equation}
-        \expect_{X \sim \mathrm{HS}_{\tex}} \expect_{Y \sim \mathrm{HS}_{\tex}} \expect_{Z \sim \mathrm{HS}_{\tez}} 
-        \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
-        =
-        \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!}\frac{\tez^{\syd}}{\syd!} q_{n,\ya}q_{n,\yb}q_{n,\yd}\frac{\dim V_\ye^n\norm{\abcdefsymbol}_{2}^{2}}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}.
-    \end{equation}
 \end{cor}
+% Moreover in our proof of \cref{cor:asym_6j}, we will use another measure, known as the Hilbert-Schmidt measure, over the compact space of trace $\tau$ positive semidefinite Hermitian matrices \cite{zyczkowski2001induced}.
+% This measure is a product measure with respect to eigenvalues and eigenvectors and uses the $\U(n)$ Haar measure for the eigenvectors and the unique probability measure for the eigenvalues $x$ with density proportional to the squared Vandermonde determinant $\Delta(x)^2$ \cite{zyczkowski2001induced}.
+% It can equivalently be characterized in terms of the pushforward of applying the map $\psi \mapsto \tau \Tr_{n}(\psi\psi^{\dagger})$ to $\U(n^2)$-Haar random unit vectors $\psi$ in $\mathbb C^{n} \ot \mathbb C^{n}$ \cite{zyczkowski2001induced}.
+% \begin{prop}
+%     Given a positive real number $\tau > 0$, let $X \sim \mathrm{HS}_{\tau}$ denote a random Hermitian matrix with coefficients $X_{ij} = \tau \sum_{k=1}^{n}U_{ik;11}U^{*}_{jk;11}$ where $U \in \U(n^2)$ is a $n^2 \times n^2$ unitary matrix sampled uniformly with respect to the normalized Haar measure on $\U(n^2)$.
+%     Then for any Young diagram $\yx$,
+%     \begin{equation}
+%         \expect_{X \sim \mathrm{HS}_{\tau} } \pi_{\yx}(X) = \tau^{\syx}q_{n,\yx}\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
+%     \end{equation}
+%     where $q_{n,\yx}$ is the dimension ratio
+%     \begin{equation}
+%         q_{n,\yx} \coloneqq \frac{(\dim V_{\yx}^{n})^{2}}{\dim V_{(\syx)}^{n^2}}.
+%     \end{equation}
+% \end{prop}
+% \begin{cor}
+% 
+% 
+%     \begin{equation}
+%         \expect_{X \sim \mathrm{HS}_{\tex}} 
+%         \expect_{Y \sim \mathrm{HS}_{\tex}} 
+%         \vp^{\ya\yb}_{\yc}(X,Y) 
+%         = \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!} q_{n,\ya}q_{n,\yb}\frac{c^{\yc}_{\ya\yb}\dim V_{\yc}^{n}}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
+%     \end{equation}
+% 
+%     \begin{equation}
+%         \expect_{X \sim \mathrm{HS}_{\tex}} \expect_{Y \sim \mathrm{HS}_{\tex}} \expect_{Z \sim \mathrm{HS}_{\tez}} 
+%         \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
+%         =
+%         \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!}\frac{\tez^{\syd}}{\syd!} q_{n,\ya}q_{n,\yb}q_{n,\yd}\frac{\dim V_\ye^n\norm{\abcdefsymbol}_{2}^{2}}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}.
+%     \end{equation}
+% \end{cor}
 
 \subsection{Distance bound for the original Horn problem}
 \label{sec:dist_bound_for_orig_horn}
@@ -1760,8 +1771,7 @@ In this section, we prove the following proposition pertaining to the original H
     \begin{equation}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb) 
         = \frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}}
-        \expect_{X \sim \orbit_{\ex}} 
-        \expect_{Y \sim \orbit_{\ey}} 
+        \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}} 
         \vp^{\ya\yb}_{\yc}(X,Y).
     \end{equation}
     To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}} \leq \dim (V_{\ya}^{n} \ot V_{\yb}^{n}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
@@ -1842,14 +1852,17 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     \begin{equation}
         \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         =
-        R^{\ya\yb\yd}_{\ye} \expect_{X \sim \orbit_{\ea}} \expect_{Y \sim \orbit_{\eb}} \expect_{Z \sim \orbit_{\ed}}  \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z),
+        \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\epsilon}^{n})}
+        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}
+        \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z),
     \end{equation}
-    where $R^{\ya\yb\yd}_{\ye} = \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\epsilon}^{n})}$.
-    To obtain the necessary bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ we make a series of relaxations.
-    First we upper bound the average of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $(X,Y,Z) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}$ with the maximum of the absolute value:
+    To obtain our desired bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ we make a series of relaxations.
+    First we bound the dimensions of the representations by $\frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\epsilon}^{n})} \leq \dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}) \leq \polyk{3\binom{n}{2}}$.
+    Then we upper bound the average of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $(X,Y,Z) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}$ with the maximum of the absolute value.
+    Together this gives
     \begin{equation} 
         \label{eq:max_abs_value_bound}
-        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq R^{\ya\yb\yd}_{\ye} \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
+        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z) \\\in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
     \end{equation}
     Furthermore, applying \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} to the absolute value $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces
     \begin{equation} 
@@ -1857,7 +1870,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
         \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}
         \left(\vp_{\ya}(X)\vp_{\yf}(Y+Z)\vp_{\yc}(X+Y)\vp_{\yd}(Z)\vp_{\ye}(X+Y+Z)\right)^{\frac{1}{3}}.
     \end{equation}
-    Applying \cref{eq:sup_bound} to \cref{eq:max_abs_value_bound} and relaxing the dimension factors with $R^{\ya\yb\yd}_{\ye} \leq \polyk{3\binom{n}{2}}$ gives
+    Applying \cref{eq:sup_bound} to \cref{eq:max_abs_value_bound} gives 
     \begin{align} 
         \label{eq:second_abd_bound}
         \begin{split}
@@ -1938,7 +1951,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     \begin{equation}
         \frac{1}{\tee}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{1}{3}} \geq \left(\frac{1}{\polyk{\frac{7n^2+11n+6}{4}}}\right)^{\frac{1}{k}}.
     \end{equation}
-    Finally, using \cref{eq:fidelity_vs_distance}, we can substitute the maximum normalized product of fidelities here with minimum normalized sum of distances (as in \cref{defn:tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
+    Finally, using \cref{eq:fidelity_vs_distance}, we can substitute the maximum normalized product of fidelities here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
 
 \subsection{Asymptotics of the \texorpdfstring{$6j$}{6j} symbols}
@@ -1952,10 +1965,15 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
         \label{eq:yd_k_sizes}
         k = \sye = \sya + \syb + \syd = \sya + \syf = \syc + \syd,
     \end{equation}
-    we have (assuming $\tee \neq 0$)
-    \begin{equation}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \min\{\norm{\abcdefsymbol}_{\infty}, \polyk{n(n-1)} \exp(-\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}) \},
-    \end{equation}
+    we have (assuming $\tee \neq 0$) the following bounds
+    \begin{align}
+        \label{eq:hex_6j_bound}
+        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
+        &\leq \norm{\abcdefsymbol}_{\infty}, \\
+        \label{eq:hex_rel_ent_bound}
+        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
+        &\leq \polyk{n(n-1)} \exp\left(-\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}\right),
+    \end{align}
     where
     \begin{equation}
         R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} = \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}} 
@@ -1972,13 +1990,9 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
         \leq \norm{\abcdefsymbol}_{\infty} \left(\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \times \vp_{\yc}(\ec)\vp_{\yd}(\ed) \times \vp_{\ye}(\ee) \times \vp_{\ya}(\ea)\vp_{\yf}(\ef)\right)^{\frac{1}{4}},
     \end{equation}
     From here we note that each of $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$, $\vp_{\yc}(\ec)\vp_{\yd}(\ed)$, $\vp_{\ye}(\ee)$, and $\vp_{\ya}(\ea)\vp_{\yf}(\ef)$ is upper bounded by $\frac{\tee^k}{k!}$ because they each sum to $\frac{\tee^k}{k!}$ when summing over  the corresponding sets of Young diagrams with sizes given by \cref{eq:yd_k_sizes} (see \cref{eq:binomial_trace}).
-    Applying these upper bounds to \cref{eq:abs_quad_bound} (and multiplying by $\frac{k!}{\tee^k}$) gives
-    \begin{equation}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}.
-    \end{equation}
-    This establishes one half of the claim.
+    Applying these upper bounds to \cref{eq:abs_quad_bound} (and multiplying by $\frac{k!}{\tee^k}$) gives \cref{eq:hex_6j_bound}.
 
-    For the other half of the claim, consider the relative entropy bounds arising from eigenvalue estimation \cref{prop:eig_est}:
+    For the proof if \cref{eq:hex_rel_ent_bound}, consider the relative entropy bounds arising from eigenvalue estimation \cref{prop:eig_est}:
     \begin{align}
         \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)}
         &\leq \polyk{3\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}\right], \\
@@ -1989,13 +2003,12 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
         \frac{k!}{\tee^k}{\vp_{\ye}(\ee)}
         &\leq\polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}\right].
     \end{align}
-    Since the product of the four distributions on the left-hand side above is at most the minimum of one or the product of relative entropy bounds on the right-hand side above (and the product of the dimensions to the fourth root is at most $[\polyk{\binom{n}{2}}]^{\frac{8}{4}} = \polyk{n(n-1)}$), we obtain
-    \begin{equation}
-        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \polyk{n(n-1)} \exp(-\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf})
-    \end{equation}
+    Applying these bounds to \cref{eq:abs_quad_bound} and using $\norm{\abcdefsymbol}_{\infty} \leq 1$, we obtain \cref{eq:hex_rel_ent_bound}
 \end{proof}
-\begin{proof}[Proof of \cref{cor:asym_6j} ]
-    To begin we use \cref{lem:asym_sixj_helper} to prove the claimed inverse polynomial lower bound.
+
+\begin{proof}[Proof of \cref{cor:asym_6j}]
+    First we prove the claimed inverse polynomial lower bound, and then afterwards prove the exponential decay.
+
     Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
     Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all sextuples of Young diagrams satisfying \cref{eq:yd_k_sizes} produces
     \begin{equation}
@@ -2003,19 +2016,20 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
     Therefore, the sextuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over this $k$-dependent domain of summation, which we denote by $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$, must satisfy
     \begin{equation}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \geq \frac{1}{(k+1)^{6(\rank[\ee]-1)}}
+        \frac{k!}{\tee^k}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \geq \frac{1}{(k+1)^{6\rank[\ee]}}
     \end{equation}
-    where $(k+1)^{6(\rank[\ee]-1)}$ is a crude upper bound on the number of terms in the above summation which are non-zero as there are at most $(k+1)^{r-1}$ Young diagrams of size at most $k$ and depth at most $r$ (note that each of $\vp_{\ya}(\ea), \vp_{\yb}(\eb), \vp_{\yd}(\ed),\vp_{\yf}(\ef), \vp_{\yc}(\ec)$ and $\vp_{\ye}(\ee)$ are respectively only non-zero if the depth of the corresponding Young diagram is at most the rank of the corresponding set of eigenvalues and $\rank[\ee]$ is always the maximum possible rank).
-    Therefore, \cref{lem:asym_sixj_helper} immediately implies both
+    where $(k+1)^{6\rank[\ee]}$ is a crude upper bound on the number of terms in the above summation which are non-zero as there are at most $(k+1)^{r}$ Young diagrams with size at most $k$ and depth at most $r$ (note that each of $\vp_{\ya}(\ea), \vp_{\yb}(\eb), \vp_{\yd}(\ed),\vp_{\yf}(\ef), \vp_{\yc}(\ec)$ and $\vp_{\ye}(\ee)$ are respectively only non-zero if the depth of the corresponding Young diagram is at most the rank of the corresponding set of eigenvalues and $\rank[\ee]$ is always the maximum possible rank).
+    Therefore, applying \cref{eq:hex_6j_bound} in \cref{lem:asym_sixj_helper} gives
     \begin{equation}
         \label{eq:n_independent_inverse_poly}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \geq \frac{1}{(k+1)^{6(\rank[\ee]-1)}},
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \geq \frac{1}{(k+1)^{6\rank[\ee]}},
     \end{equation}
-    as well as
+    while \cref{eq:hex_rel_ent_bound} in \cref{lem:asym_sixj_helper} gives
     \begin{equation}
-        \exp( - \frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}) \geq \frac{1}{(k+1)^{n(n-1)}}\frac{1}{(k+1)^{6(\rank[\ee]-1)}}.
+        \exp\left( -\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right) 
+        \geq \frac{1}{(k+1)^{n(n-1)}}\frac{1}{(k+1)^{6\rank[\ee]}}.
     \end{equation}
-    Thus we have demonstrated the existence of a sequence of sextuples of Young diagrams for which (i) $\norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty}$ satisfies the claimed inverse polynomial lower bound (which is actually independent of $n$), and (ii) $R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \to 0$ which implies the convergence claim:
+    Thus we have demonstrated the existence of a sequence of sextuples of Young diagrams for which (i) $\norm{\abcdefsymbolk}_{\infty}$ satisfies the claimed inverse polynomial lower bound, and also (ii) $R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \to 0$ which implies the convergence claim:
     \begin{equation}
         \frac{\ya_k}{k} \to \frac{a}{\tee}, \quad
         \frac{\yb_k}{k} \to \frac{b}{\tee}, \quad
@@ -2024,28 +2038,49 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
         \frac{\ye_k}{k} \to \frac{e}{\tee}, \quad
         \frac{\yf_k}{k} \to \frac{f}{\tee}.
     \end{equation}
-    \\
-    To prove the exponential decay on $\norm{\abcdefsymbol}_{\infty}$ the case where $(\ea,\eb,\ec,\ed,\ee,\ef)$ are not tetrahedral, it will be slightly easier to prove the exponential decay of $\norm{\abcdefsymbol}_{2}$ which is actually a bit stronger than necessary.
-    Let $(a,b,c,d,e,f)$ be the set of non-tetrahedral eigenvalues to which the sequence of Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ is converging in proportion. 
-    We can henceforth assume the Young diagrams satisfy the size constraints \cref{eq:yd_k_sizes} as before.
-    Then from \cref{cor:random_matrices_tet}, we conclude
+    
+    We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ when $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ converges to some non-tetrahedral eigenvalues.
+    It will be slightly easier to prove the exponential decay of $\norm{\abcdefsymbolk}_{2}$ which is actually a bit stronger than necessary.
+    Without loss of generality, we can assume the Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ satisfy the size constraints \cref{eq:yd_k_sizes} as before (since otherwise $\abcdefsymbolk = 0$).
+    Then from \cref{cor:random_matrices_tet}, we conclude that for \textit{any} eigenvalues $(\ea,\eb,\ed)$,
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{2}^{2}
-        \leq \max_{\substack{X,Y,Z\\\Tr(X)=\tea\\\Tr(Y)=\teb\\\Tr(Z)=\ted}}
-        (k+1)^{\frac{3n^2(n^2-1)}{2}}\frac{\abs{\ya_k}!\abs{\yb_k}!\abs{\yd_k}!}{\tea^{\abs{\ya_k}}\teb^{\abs{\yb_k}}\ted^{\abs{\yd_k}}} \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{2}^{2} \vp_{\ya_k}(a)\vp_{\yb_k}(b)\vp_{\yd_k}(d)
+        = \frac{\dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n})}{\dim (V_{\epsilon_k}^{n})}
+        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
+            \vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z).
     \end{equation}
-    Now because $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ we can assume that the sizes are such that the following multinomial distribution bound holds:
+    As in the proof of \cref{thm:approx_tet} we first we bound the dimensions of the representations by $\frac{\dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n})}{\dim (V_{\epsilon_k}^{n})} \leq \dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n}) \leq \polyk{3\binom{n}{2}}$.
+    Then we upper bound the average of $\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)$ with the maximum of the absolute value.
+    Together this gives
+    \begin{equation} 
+        \norm{\abcdefsymbolk}_{2}^{2} \vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z)\in  \\\orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+    \end{equation}
+    As this bound holds for all eigenvalues $(\ea,\eb,\ed)$, we can freely choose, for each $k$, a particular triple of eigenvalues $(\ea^*,\eb^*,\ed^*)$ which ensures
     \begin{equation}
-        \frac{\abs{\ye_k}!}{\tee^{\abs{\ye_k}}}\frac{\tea^{\abs{\ya_k}}\teb^{\abs{\yb_k}}\ted^{\abs{\yd_k}}}{\abs{\ya_k}!\abs{\yb_k}!\abs{\yd_k}!} \geq \frac{1}{\mathrm{poly}(k)}.
+        \frac{k!}{\Tr[\ee^{*}]^k} \vp_{\ya_k}(\ea^*)\vp_{\yb_k}(\eb^*)\vp_{\yd_k}(\ed^*) \geq \frac{1}{\polyk{3n}}.
     \end{equation}
-    Using \cref{lem:asym_sixj_helper} then gives
+    where we are denoting the sum $\Tr[\ea^{*}]+\Tr[\eb^*]+\Tr[\ed^*]$ with $\Tr[\ee^{*}]$ by a slight abuse of notation as no eigenvalues $\ee^*$ have been choosen here.
+    That such a choice can always be made follows from the normalization condition
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{2}^{2}
-        \leq 
-        \mathrm{poly}(k)\exp( - \frac{k}{4} \min R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}).
+        \sum_{\substack{\ya,\yb,\yd \\ \sya+\syb+\syd = k}}\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) = \frac{(\tea+\teb+\ted)^k}{k!},
     \end{equation}
-    where the minimum is taken over all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$ with matching traces.
-    However, since $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, there must exist a sufficiently large $K$ such that for all $k \geq K$, $\min R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq \delta$ for some positive constant $\delta > 0$ which proves the claim.
+    and noting that there are at most $\polyk{3n}$ such triples $(\ya,\yb,\yd)$ of Young diagrams in the sum (indeed it suffices to choose $(\ea^*,\eb^*,\ed^*)$ to maximize $\vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed)$).
+    After this choice is made, we obtain the upper bound
+    \begin{equation} 
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n} \frac{\Tr[\ee^{*}]^k}{k!} \max_{\substack{(X,Y,Z) \in \\\orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+    \end{equation}
+    Applying \cref{eq:hex_rel_ent_bound} from \cref{lem:asym_sixj_helper} here produces
+    \begin{equation} 
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4} \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
+    \end{equation}
+    where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
+
+    Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq \delta$ for some positive constant $\delta > 0$. 
+    Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq \delta$ and therefore
+    \begin{equation} 
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4}\delta\right),
+    \end{equation}
+    which proves the desired exponential decay.
 \end{proof}
 
 

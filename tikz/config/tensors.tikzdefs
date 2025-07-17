@@ -22,8 +22,9 @@
 \end{array}\!\right)
 \endgroup
 }
-\newcommand{\abcdefsymbol}{\tightcurlysixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
 \newcommand{\emptyyoung}{\emptyset}
+\newcommand{\abcdefsymbol}{\tightcurlysixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
+\newcommand{\abcdefsymbolk}{\tightcurlysixj{\alpha_k & \beta_k & \gamma_k \\ \delta_k & \epsilon_k & \phi_k}}
 \newcommand{\abcdefsymboldempty}{\tightcurlysixj{\alpha & \beta & \gamma \\ \emptyyoung & \gamma & \beta}}
 \newcommand{\abcdefsymbolprimed}{\tightcurlysixj{\alpha' & \beta' & \gamma' \\ \delta' & \epsilon' & \phi'}}
 \newcommand{\abcdefsymbolcefstarred}{\tightcurlysixj{\alpha & \beta & \gamma^* \\ \delta & \epsilon^* & \phi^*}}
