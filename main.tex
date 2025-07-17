@@ -2075,10 +2075,10 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
     where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
 
-    Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq \delta$ for some positive constant $\delta > 0$. 
-    Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq \delta$ and therefore
+    Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$. 
+    Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ and therefore
     \begin{equation} 
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4}\delta\right),
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4}r\right),
     \end{equation}
     which proves the desired exponential decay.
 \end{proof}
