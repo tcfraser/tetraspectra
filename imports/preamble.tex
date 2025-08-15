@@ -173,9 +173,9 @@
     \mathinner{\left|\mkern-2mu\left|{#1}\right\rangle\kern-0.25\ht\mstrut\right\rangle}%
 }
 
-\newcommand{\herm}[1]{\mathcal H(#1)}
+\newcommand{\herm}[1]{\mathcal H_{#1}}
 \newcommand{\eigs}[1]{\mathrm{Eig}(#1)}
-\newcommand{\hermp}[1]{\mathcal H_{+}(#1)}
+\newcommand{\hermp}[1]{\mathcal H^{+}_{#1}}
 \newcommand{\eigsp}[1]{\mathrm{Eig}^{+}(#1)}
 \newcommand{\weights}[1]{\mathbb Z^{#1}}
 \newcommand{\domweights}[1]{\mathbb Z_{\mathrm{dec}}^{#1}}
@@ -236,6 +236,13 @@
 
 % --- More compact arrays below ---
 % NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
+\newcommand{\tightoctuple}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\begin{array}{@{}c@{}cccccc@{}c@{}}#1\end{array}
+\endgroup
+}
 \newcommand{\tightsextuple}[1]{
 \begingroup
 \arraycolsep=1.5pt
