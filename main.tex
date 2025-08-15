@@ -175,7 +175,7 @@ For the aforementioned case of $\SU(2)$, the coadjoint orbits can be identified 
 
 \vspace{1em}
 \textbf{$\boldsymbol{6j}$-symbols for $\boldsymbol{\U(n)}$:}
-One application of the techniques developed in this paper is to provide estimates for the asymptotics of the $6j$ symbols for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}^n$ are labelled by highest-weights which can also be identified with Young diagrams $\lambda$.
+One application of the techniques developed in this paper is to provide estimates for the asymptotics of the $6j$ symbols for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}^n$ are labelled by highest-weights which can also be identified with Young diagrams $\yx$.
 One of the primary difficulties in proving statements about $6j$ symbols for $\U(n)$ for $n\geq 3$ is the presence of non-trivial multiplicity spaces, meaning the dimensions of tensor-product multiplicity spaces for $\U(n)$, also known as Littlewood-Richardson coefficients, can be greater than one.
 Because of these difficulties, over the years, considerable attention has been placed on the study of $\U(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which are multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is at most one \cite{nawata2013multiplicity, alekseev2020multiplicity, alcock2023wigner}. 
 Indeed, as stated by \citeauthor{coquereaux2023integer}, ``apart from very few special cases (low dimension of irreps and no multiplicity), $\ldots$ we are not aware of any published general result.'' \cite{coquereaux2023integer}.
@@ -637,7 +637,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     %    \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
     %\end{equation}
 
-    We further remark that these symmetries also corresponding to symmetries of the Wigner $6j$ operator $\abcdefsymbol$ in \cref{defn:sixj} with the involution $\lambda \mapsto \lambda^{*}$ corresponding taking the dual representation $V_{\lambda}^{n} \mapsto (V_{\lambda}^{n})^{*}$.
+    We further remark that these symmetries also corresponding to symmetries of the Wigner $6j$ operator $\abcdefsymbol$ in \cref{defn:sixj} with the involution $\yx \mapsto \yx^{*}$ corresponding taking the dual representation $V_{\yx}^{n} \mapsto (V_{\yx}^{n})^{*}$.
     In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $\SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
 \end{rem}
 \begin{prop}[Shifting symmetry]
@@ -769,7 +769,7 @@ Even though we will primarily deal with $G=U(n)$, we start with a more general s
 
 \subsubsection{\texorpdfstring{$\boldsymbol{G}$}{G} compact}
 Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\mathfrak{t} ={\rm Lie}(T)$ its Lie algebra, $\Lambda = {\rm ker}(\exp) \subset \mathfrak{t}$ the integral lattice, $\Lambda^* \subset \mathfrak{t}^*$ the weight lattice, and $\Lambda^*_+ \subset \Lambda^*$ the set of dominant weights of $G$. 
-For $\lambda \in \Lambda^*$, we denote by $\pi_\lambda: G \to {\rm End}(V_\lambda)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\lambda$ is equipped with an invariant Hermitian structure such that $\pi_\lambda$ becomes a unitary representation. All representations $\pi_\lambda$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
+For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to {\rm End}(V_\yx)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
 
 The tensor product of two irreducible representations admits a unique decomposition of the form
 %
@@ -777,7 +777,7 @@ The tensor product of two irreducible representations admits a unique decomposit
     V_\ya \ot V_\yb = \bigoplus_\yc C_{\ya \yb}^\yc \ot V_\yc,
 \end{equation}
 where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions 
-$c_{\ya \yb}^\yc = \dim \, C_{\ya \yb}^\yc$. Hermitian structures on $V_\lambda$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition \eqref{eq:tensor product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
+$c_{\ya \yb}^\yc = \dim \, C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition \eqref{eq:tensor product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
 %
 \begin{equation}\label{eq:operator product}
     \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc (\id \ot \pi_\yc(g)) P_{\ya \yb}^\yc,
@@ -787,7 +787,7 @@ where on the left hand side we use the tensor product $V_\ya \ot V_\yb$, and on 
 Characters of irreducible representations are denoted by
 %
 \begin{equation}\label{eq:character}
-    \chi_\lambda(g)= \Tr_{V_\lambda}[\pi_\lambda(g)].
+    \chi_\yx(g)= \Tr_{V_\yx}[\pi_\yx(g)].
 \end{equation}
 Taking a trace of equation \eqref{eq:operator product} we obtain the standard product rule for characters:
 %
@@ -876,20 +876,20 @@ For future use, we will need the following fact:
 
 For $G=U(n)$, dominant weights are parametrized by non-increasing arrays of integers
 \begin{equation}
-    \lambda=(\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n).
+    \yx=(\yx_1 \geq \yx_2 \geq \dots \geq \yx_n).
 \end{equation}
 In particular, the first fundamental weight $\varpi_1=(1, 0, \dots, 0)$ corresponds to the defining representation of $U(n)$ on $V_{\varpi_1} = \mathbb{C}^n$.
 
-We say that a dominant weight $\lambda$ is positive if $\lambda_n \geq 0$,and we denote the set of positive weights by $\Lambda^*_{++}$. We will use the notation
+We say that a dominant weight $\yx$ is positive if $\yx_n \geq 0$,and we denote the set of positive weights by $\Lambda^*_{++}$. We will use the notation
 \begin{equation}
-|\lambda| = \sum_{i=1}^n \lambda_i,
+\syx = \sum_{i=1}^n \yx_i,
 \quad
-l(\lambda)=|\{i; \lambda_i \neq 0\}|,
+l(\yx)=|\{i; \yx_i \neq 0\}|,
 \end{equation}
-where $l(\lambda)$ is called the depth of $\lambda$. Positive weights $\lambda$ can be viewed as partitions of $|\lambda|$ into $l \leq n$ parts, or as Young diagrams with $|\lambda|$ boxes and at most $n$ rows. 
-Representations $\pi_\lambda(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and they extend to matrix algebras ${\rm Mat}_n(\mathbb{C})$. That is,
+where $l(\yx)$ is called the depth of $\yx$. Positive weights $\yx$ can be viewed as partitions of $\syx$ into $l \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $n$ rows. 
+Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and they extend to matrix algebras ${\rm Mat}_n(\mathbb{C})$. That is,
 \begin{equation}
-\pi_\lambda(X) \pi_\lambda(Y) = \pi_\lambda(XY)
+\pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
 \end{equation}
 for all $X,Y \in {\rm Mat}_n(\mathbb{C})$.
 Tensor products of representations with positive weights decompose into direct sums of representations of the same type. Note that in the decomposition \eqref{eq:tensor product} one has only terms with 
@@ -899,57 +899,57 @@ Tensor products of representations with positive weights decompose into direct s
 \end{equation}
 We will sometimes refer to equation \eqref{eq:trace representations} as to a trace equality (in fact, one of many trace equalities in this paper).
 
-Recall that for a fixed $|\lambda|=k$ Young diagrams (or partitions) $\lambda$ label isomorphism classes of irreducible representations $W_\lambda$ of the symmetric group $S_k$. Dimensions of these representations are given by formula
+Recall that for a fixed $\syx=k$ Young diagrams (or partitions) $\yx$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$. Dimensions of these representations are given by formula
 %
 \begin{equation}
-    \dim(W_\lambda) = \frac{|\lambda|!}{H_{\yx}}, 
+    \dim(W_\yx) = \frac{\syx!}{H_{\yx}}, 
     \quad
-    H_{\yx} = \prod_{b \in \lambda} h_\lambda(b),
+    H_{\yx} = \prod_{b \in \yx} h_\yx(b),
 \end{equation}
-where the product is over the boxes in the Young diagram associated to $\lambda$, 
-and $h_\lambda(b)$ is hook length of $b$ which is equal to the number of boxes in the hook with the corner at $b$, and with the arms extending to the right of $b$ and downwards from $b$. 
+where the product is over the boxes in the Young diagram associated to $\yx$, 
+and $h_\yx(b)$ is hook length of $b$ which is equal to the number of boxes in the hook with the corner at $b$, and with the arms extending to the right of $b$ and downwards from $b$. 
 For the future use, we introduce rescaled operators
 %
 \begin{equation}
-    \Phi_\lambda(X) = \frac{1}{H_{\yx}} \pi_\lambda(X),
+    \Phi_\yx(X) = \frac{1}{H_{\yx}} \pi_\yx(X),
 \end{equation}
 and rescaled characters
 %
 \begin{equation}
-    \varphi_\lambda(X) = \Tr_{V_\lambda} \, \Phi_\lambda(X) = \frac{1}{H_{\yx}} \, \chi_\lambda(X). 
+    \varphi_\yx(X) = \Tr_{V_\yx} \, \Phi_\yx(X) = \frac{1}{H_{\yx}} \, \chi_\yx(X). 
 \end{equation}
 Note that 
 %
 \begin{equation}       \label{eq:sum lambda}
-\sum_{|\lambda|=k} \varphi_\lambda(X) = \frac{1}{k!} [\Tr(X)]^k, \quad
-\sum_\lambda \varphi_\lambda(X) = \exp(\Tr(X)).
+\sum_{\syx=k} \varphi_\yx(X) = \frac{1}{k!} [\Tr(X)]^k, \quad
+\sum_\yx \varphi_\yx(X) = \exp(\Tr(X)).
 \end{equation}
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-modules
 %
 \begin{equation} \label{eq:schur-weyl}
-    (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{|\lambda| =k} W_\lambda \ot V_\lambda,
+    (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\syx =k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in 
 $(\mathbb{C}^n)^{\ot k}$. Since all $U(n)$ representations entering the decomposition \eqref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
 Applying it to an element $X \in {\rm Mat}_n(\mathbb{C})$, we obtain
 \begin{equation} \label{eq:X^k}
-    X^{\ot k}  = \oplus_{|\lambda| =k} \, {\rm Id}_{W_\lambda} \ot \pi_\lambda(X),
+    X^{\ot k}  = \oplus_{\syx =k} \, {\rm Id}_{W_\yx} \ot \pi_\yx(X),
 \end{equation}
 where on the right hand side we a have a direct sum of operators acting on the subspaces of the Schur-Weyl decomposition. Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields
 \begin{equation}
-    [\Tr(X)]^k = \Tr(X^{\ot k}) = \sum_{|\lambda|=k} {\dim}(W_\lambda)\, \chi_\lambda(X) =
-    k! \sum_{|\lambda|=k} H_{\yx}^{-1} \chi_\lambda(X) =
-    k! \sum_{|\lambda|=k} \varphi_\lambda(X),
+    [\Tr(X)]^k = \Tr(X^{\ot k}) = \sum_{\syx=k} {\dim}(W_\yx)\, \chi_\yx(X) =
+    k! \sum_{\syx=k} H_{\yx}^{-1} \chi_\yx(X) =
+    k! \sum_{\syx=k} \varphi_\yx(X),
 \end{equation}
 as required. The second identity in \eqref{eq:sum lambda} follows by taking a sum over $k$ in the first one.
 
 We denote the space of non-negative Hermitian matrices of size $n$ by $\mathcal{H}_n^+$ (or $\mathcal{H}^+$ if the size of matrices is clear from the context).
 \begin{prop}
-    For $X \in \mathcal{H}_n^+, \lambda \in \Lambda^*_{++}$, operators $\pi_\lambda(X)$ and $\Phi_\lambda(X)$ are non-negative Hermitian operators, and functions $\varphi_\lambda(X)$ take non-negative real values on $\mathcal{H}_n^+$.   
+    For $X \in \mathcal{H}_n^+, \yx \in \Lambda^*_{++}$, operators $\pi_\yx(X)$ and $\Phi_\yx(X)$ are non-negative Hermitian operators, and functions $\varphi_\yx(X)$ take non-negative real values on $\mathcal{H}_n^+$.   
 \end{prop}
 
 \begin{proof}
-    By \eqref{eq:X^k}, operators $\id_{W_\lambda} \ot \pi_\lambda(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$. Hence, they are also non-negative Hermitian operators, and so are $\pi_\lambda(X)$ and $\Phi_\lambda(X)$. Since $\varphi_\lambda(X)$ is the trace of $\Phi_\lambda(X)$, it takes values in $\mathbb{R}_{\geq 0}$.
+    By \eqref{eq:X^k}, operators $\id_{W_\yx} \ot \pi_\yx(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$. Hence, they are also non-negative Hermitian operators, and so are $\pi_\yx(X)$ and $\Phi_\yx(X)$. Since $\varphi_\yx(X)$ is the trace of $\Phi_\yx(X)$, it takes values in $\mathbb{R}_{\geq 0}$.
 \end{proof}
 
 \subsubsection{Functions \texorpdfstring{$\boldsymbol{\varphi^{\ya \yb}_\yc}$}{phiabc} and \texorpdfstring{$\boldsymbol{\varphi^{\ya \yb \yd}_{\yc \ye \yf}}$}{phiabcdef}}
@@ -1123,22 +1123,22 @@ One can associate to $x \in \mathbb{R}_n^+$ a probability measure $p^x$ on the s
     p^x_i = \frac{x_i}{|x|}, \quad \text{where} \quad |x| = \sum_{i=1}^n x_i.
 \end{equation}
 Let $X= {\rm diag}(x_1, \dots, x_n)$ be a diagonal non-negative Hermitian matrix with $x_i$'s on the diagonal.
-By abuse of notation, we write $\varphi_\lambda(x)=\varphi_\lambda(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the the set of positive weights of $U(n)$ with $|\lambda| =k$:
+By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the the set of positive weights of $U(n)$ with $\syx =k$:
 %
 \begin{equation} 
 \label{eq:P_x(lambda)}
-    P_x(\lambda) = \frac{k!}{|x|^k} \, \varphi_\lambda(x).
+    P_x(\yx) = \frac{k!}{|x|^k} \, \varphi_\yx(x).
 \end{equation}
 The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}:
 %
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
-    For, $x \in \mathbb{R}_+^n, \lambda \in \Lambda^*_{++}$, we have 
+    For, $x \in \mathbb{R}_+^n, \yx \in \Lambda^*_{++}$, we have 
     \begin{equation}
-        P_{x}(\lambda) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^\lambda}{p^x}\right).
+        P_{x}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^\yx}{p^x}\right).
     \end{equation}
 \end{prop}
-Proposition \ref{prop:eig_est} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\lambda$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
+Proposition \ref{prop:eig_est} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\yx$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
 \begin{prop}
 For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \begin{equation}
@@ -1149,12 +1149,12 @@ For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
 \begin{proof}
     First, we estimate
     \begin{equation}
-        P_x(\lambda) = \frac{k!}{|x|^k H_{\yx}} \chi_\lambda(x)  \\
-        \leq \frac{k!}{|x|^k} \dim(V_\lambda) \prod_{i=1}^n \frac{x_i^{\lambda_i }}{\lambda_i!} \\
-        \leq\frac{k!}{|x|^k} \polyk{\binom{n}{2}} \prod_{i=1}^n \frac{x_i^{\lambda_i }}{\lambda_i!}.
+        P_x(\yx) = \frac{k!}{|x|^k H_{\yx}} \chi_\yx(x)  \\
+        \leq \frac{k!}{|x|^k} \dim(V_\yx) \prod_{i=1}^n \frac{x_i^{\yx_i }}{\yx_i!} \\
+        \leq\frac{k!}{|x|^k} \polyk{\binom{n}{2}} \prod_{i=1}^n \frac{x_i^{\yx_i }}{\yx_i!}.
     \end{equation}
-    Here we have used that $H_{\yx} \geq \prod_{i=1}^n \lambda_i!$, that 
-    $\prod_{i=1}^n x_i^{\lambda_i}$ is the maximal monomial in the Schur-polynomial $\chi_\lambda(x)$, and 
+    Here we have used that $H_{\yx} \geq \prod_{i=1}^n \yx_i!$, that 
+    $\prod_{i=1}^n x_i^{\yx_i}$ is the maximal monomial in the Schur-polynomial $\chi_\yx(x)$, and 
     the estimate
     \begin{equation}
         \label{eq:unitary_irrep_dim_bound}
@@ -1162,11 +1162,11 @@ For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \end{equation}
     Next, we compute
     \begin{equation}
-    F(P_x, P_y)=\sum_{|\lambda|=k} \left(P_x(\lambda) P_y(\lambda)\right)^{\frac{1}{2}}
-    \leq \frac{k!}{|x|^k} (k+1)^{\frac{n(n-1)}{2}} \sum_{|\lambda|=k}\prod_{i=1}^n\frac{(x_iy_i)^{\frac{\lambda_i}{2} }}{\lambda_i!}
+    F(P_x, P_y)=\sum_{\syx=k} \left(P_x(\yx) P_y(\yx)\right)^{\frac{1}{2}}
+    \leq \frac{k!}{|x|^k} (k+1)^{\frac{n(n-1)}{2}} \sum_{\syx=k}\prod_{i=1}^n\frac{(x_iy_i)^{\frac{\yx_i}{2} }}{\yx_i!}
     \leq \polyk{\binom{n}{2}} F(p^x,p^y)^k.
     \end{equation}
-    Here in the last inequality we have replaces the sum over positive weight with $|\lambda|=k$ by a sum over all arrays $(\lambda_1, \dots, \lambda_n)$ with $\lambda_i \geq 0$ and $\sum_i \lambda_i =k$ which allows to use the binomial formula.
+    Here in the last inequality we have replaces the sum over positive weight with $\syx=k$ by a sum over all arrays $(\yx_1, \dots, \yx_n)$ with $\yx_i \geq 0$ and $\sum_i \yx_i =k$ which allows to use the binomial formula.
 \end{proof}
 
 \subsubsection{Measures on conjugacy classes}
@@ -1182,7 +1182,7 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
     We have,
     \begin{equation}
         \begin{array}{lll}
-            \mathbb{E}_x \, \Phi_\lambda(X) &=& \frac{\varphi_\lambda(x)}{\dim V_\lambda} \, \id_{V_\lambda}, \\
+            \mathbb{E}_x \, \Phi_\yx(X) &=& \frac{\varphi_\yx(x)}{\dim V_\yx} \, \id_{V_\yx}, \\
             \mathbb{E}_{x,y} \, \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc} &=&
             c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}, \\
             \mathbb{E}_{x,y, z} \, \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye} &=& \norm{\abcdefsymbol}_2^2 \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
@@ -1194,13 +1194,13 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
 \begin{proof}
     For the first equality, by Schur's Lemma we have
     \begin{equation}
-        \mathbb{E}_x \, \Phi_\lambda(X) = \int_{O_x} \Phi_\lambda(X) d\mu_x = c(x) \, {\rm Id}_{V_\lambda}
+        \mathbb{E}_x \, \Phi_\yx(X) = \int_{O_x} \Phi_\yx(X) d\mu_x = c(x) \, {\rm Id}_{V_\yx}
     \end{equation}
 
     
     for some $c(x) \in \mathbb{C}$. By taking a trace of the equality above, we obtain
     \begin{equation}
-\varphi_\lambda(x) = c(x) \, \dim V_\lambda \, \Rightarrow \, c(x) = \frac{\varphi_\lambda(x)}{\dim V_\lambda},
+\varphi_\yx(x) = c(x) \, \dim V_\yx \, \Rightarrow \, c(x) = \frac{\varphi_\yx(x)}{\dim V_\yx},
     \end{equation}
     as required. For the second equality, we compute
     \begin{equation}
@@ -1692,7 +1692,7 @@ For any positive integer $k$, the $k$-th tensor power of $X$ then admits a decom
     X^{\ot k} = \sum_{\yx \vdash_n k} \iota_{\yx} ( \pi_{\yx}(X) \ot \id_{W_{\yx}} ) \iota_{\yx}^{\dagger}.
 \end{equation}
 As a special case, when $\yx = \ydiagram{1}$, then $\pi_{\ydiagram{1}}(X) = X$.
-Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\lambda}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
+Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\yx}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
 \begin{equation}
     \pi_{\yx}(sX) = s^{{\syx}} \pi_{\yx}(X).
 \end{equation}
@@ -3167,7 +3167,7 @@ TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jac
 %Unfortunately, these generalized matrix functions and generally not invariant under unitary conjugation and thus depend on more just eigenvalues; the only exception is the determinant which is already a special case of \cref{cor:schur_ineq}.}
 %\begin{cor}
 %    \label{cor:schur_ineq}
-%    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $s_{\lambda}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$.
+%    Let $X,Y,Z \geq 0$ be positive semidefinite matrices and let $s_{\yx}$ be the Schur polynomial indexed by the Young diagram $\yx = (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$.
 %    Then
 %    \begin{equation}
 %        \label{eq:schur_ineq}
@@ -3178,9 +3178,9 @@ TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jac
 %    Given a Young diagram $\yx$, let $P_{\yx}$ be the Hermitian projection operator onto the isotypic subspace $V_{\yx}^{n} \ot W_{\yx} \subseteq (\mathbb C^{d})^{\ot k}$ (see \cref{sec:schur_weyl} for more details).
 %    Given positive semidefinite matrix $X \geq 0$, one can show that
 %    \begin{equation}
-%        \Tr(P_{\lambda}X^{\ot k}) = \Tr(P_{\lambda}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
+%        \Tr(P_{\yx}X^{\ot k}) = \Tr(P_{\yx}\diag(\eig(X))^{\ot k}) = \dim(W_{\yx}) s_{\ex}(\eig(X)) \geq 0.
 %    \end{equation}
-%    Now we apply the positivity preserving map $\Tr(P_{\lambda} \cdot )$ to \cref{prop:operator_ineq} to obtain
+%    Now we apply the positivity preserving map $\Tr(P_{\yx} \cdot )$ to \cref{prop:operator_ineq} to obtain
 %    \begin{equation}
 %        \Tr[P_{\ex}(X+Y+Z)^{\ot k}] + \Tr[P_{\ex}Y^{\ot k}] \geq \Tr[P_{\ex}(X+Y)^{\ot k}] + \Tr[P_{\ex}(Y+Z)^{\ot k}]
 %    \end{equation}
