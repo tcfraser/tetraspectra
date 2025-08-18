@@ -1086,28 +1086,30 @@ estimate how close they are. First, there are standard distances in $\mathbb{R}^
 \end{equation}
 where $K(p,q)$ is the Kolmogorov distance.
 As usual, each of these norms vanishes if and only if $p=q$. 
-Another measure of similarity between $p$ and $q$ is the fidelity
-\begin{equation} \label{eq:fidelity}
-    F(p, q) = \sum_{i=1}^r \sqrt{p_iq_i}. 
+Another measure of similarity between distributions $p$ and $q$ is the Bhattacharyya coefficient \cite{bhattacharyya1946measure,fuchs2002cryptographic}:
+\begin{equation} \label{eq:Bhattacharyya_coefficient}
+    \BC(p,q) = \sum_{i=1}^r \sqrt{p_iq_i}. 
 \end{equation}
-For all $p, q$, the fidelity $ 0 \leq F(p, q) \leq 1$ is contained between $0$ and $1$, and $F(p, q)=1$ if and only if $p=q$.  Recall the following relation between
-the Kolmogorov distance and the fidelity (see {\em e.g.} \cite[Proposition 5, Equation (41)]{fuchs2002cryptographic}):
+For all distributions $p, q$, the Bhattacharyya coefficient $\BC(p,q)$ lies in the interval $[0,1]$, and $\BC(p,q)=1$ if and only if $p=q$.
+Recall the following relation between
+the Kolmogorov distance and the Bhattacharyya coefficient (see {\em e.g.} \cite[Proposition 5, Equation (41)]{fuchs2002cryptographic}):
 \begin{equation}
-    1-F(p,q) \leq K(p,q) \leq \sqrt{1-F(p,q)^2}.
+    1-\BC(p,q) \leq K(p,q) \leq \sqrt{1-\BC(p,q)^2}.
 \end{equation}
 This implies\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
-\begin{equation} \label{eq:F norm estimate}
-    F(p,q) \leq \sqrt{1-K(p,q)^2} \leq \exp\left(- \frac{1}{2} K(p,q)^2\right)=
+\begin{equation} \label{eq:BC norm estimate}
+    \BC(p,q) \leq \sqrt{1-K(p,q)^2} \leq \exp\left(- \frac{1}{2} K(p,q)^2\right)=
     \exp\left(- \frac{1}{8} \norm{p-q}_1^2\right).
 \end{equation} 
-We extend the notion of fidelity to non-normalized non-negative tuples with $\sum_i p_i = \sum_i q_i = \tau >0$. In that case,
+We extend the Bhattacharyya coefficient to non-normalized non-negative tuples with $\sum_i p_i = \sum_i q_i = \tau >0$. 
+In that case, the \textit{unnormalized} Bhattacharyya coefficient is also denoted by
 \begin{equation}
-    F(p,q) = \tau \, F\left(\frac{p}{\tau}, \frac{q}{\tau}\right),
+    \BC(p,q) = \tau \, B\left(\frac{p}{\tau}, \frac{q}{\tau}\right),
 \end{equation}
-and the estimate \eqref{eq:F norm estimate} reads
+and the estimate \eqref{eq:BC norm estimate} then reads
 \begin{equation}
-    \label{eq:fidelity_vs_distance}
-    \frac{F(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
+    \label{eq:bhattacharyya_vs_distance}
+    \frac{\BC(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
 \end{equation}
 Finally, the Kullback-Leibler (KL) divergence is defined as
 \begin{equation} \label{eq:KL divergence}
@@ -1127,7 +1129,7 @@ One can associate to $x \in \mathbb{R}_n^+$ a probability measure $p^x$ on the s
     p^x_i = \frac{x_i}{|x|}, \quad \text{where} \quad |x| = \sum_{i=1}^n x_i.
 \end{equation}
 Let $X= {\rm diag}(x_1, \dots, x_n)$ be a diagonal non-negative Hermitian matrix with $x_i$'s on the diagonal.
-By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the the set of positive weights of $U(n)$ with $\syx =k$:
+By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the set of positive weights of $U(n)$ with $\syx =k$:
 %
 \begin{equation} 
 \label{eq:P_x(lambda)}
@@ -1146,7 +1148,7 @@ Proposition \ref{prop:eig_est} shows that for $k$ large the measure $P_x$ is con
 \begin{prop}
 For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \begin{equation}
-        F(P_x, P_y) \leq \polyk{\binom{n}{2}} \, F(p^x,p^y)^k
+        \BC(P_x, P_y) \leq \polyk{\binom{n}{2}} \, \BC(p^x,p^y)^k
     \end{equation}
 \end{prop}
 
@@ -1166,9 +1168,9 @@ For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \end{equation}
     Next, we compute
     \begin{equation}
-    F(P_x, P_y)=\sum_{\yx:\syx=k} \left(P_x(\yx) P_y(\yx)\right)^{\frac{1}{2}}
-    \leq \frac{k!}{|x|^k} (k+1)^{\frac{n(n-1)}{2}} \sum_{\yx:\syx=k}\prod_{i=1}^n\frac{(x_iy_i)^{\frac{\yx_i}{2} }}{\yx_i!}
-    \leq \polyk{\binom{n}{2}} F(p^x,p^y)^k.
+        \BC(P_x, P_y)=\sum_{\yx:\syx=k} \left(P_x(\yx) P_y(\yx)\right)^{\frac{1}{2}}
+        \leq \frac{k!}{|x|^k} (k+1)^{\frac{n(n-1)}{2}} \sum_{\yx:\syx=k}\prod_{i=1}^n\frac{(x_iy_i)^{\frac{\yx_i}{2} }}{\yx_i!}
+        \leq \polyk{\binom{n}{2}} \BC(p^x,p^y)^k.
     \end{equation}
     Here in the last inequality we have replaces the sum over positive weight with $\yx:\syx=k$ by a sum over all arrays $(\yx_1, \dots, \yx_n)$ with $\yx_i \geq 0$ and $\sum_i \yx_i =k$ which allows to use the binomial formula.
 \end{proof}
@@ -1563,38 +1565,38 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     For each Young diagram $\yx \in \{\ya, \yd, \yc, \ye, \yf\}$ we apply \cref{eq:weak_eig_sep} (noting $\syx \leq k$ for each) to conclude
     \begin{align}
         \sqrt{\vp_{\ya}(\ea)\vp_{\ya}(X)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ea, \eig(X))^{\sya}}{\sya!} \\%= \polyk{\binom{n}{2}} \frac{\tea^\sya}{\sya!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ea, \eig(X))^{\sya}}{\sya!} \\%= \polyk{\binom{n}{2}} \frac{\tea^\sya}{\sya!}, \\
         \sqrt{\vp_{\yd}(\ed)\vp_{\yd}(Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ed, \eig(Z))^{\syd}}{\syd!} \\%= \polyk{\binom{n}{2}} \frac{\ted^\syd}{\syd!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ed, \eig(Z))^{\syd}}{\syd!} \\%= \polyk{\binom{n}{2}} \frac{\ted^\syd}{\syd!}, \\
         \sqrt{\vp_{\yc}(\ec)\vp_{\yc}(X+Y)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ec, \eig(X+Y))^{\syc}}{\syc!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ec, \eig(X+Y))^{\syc}}{\syc!}, \\
         \sqrt{\vp_{\yf}(\ef)\vp_{\yf}(Y+Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
         \sqrt{\vp_{\ye}(\ee)\vp_{\ye}(X+Y+Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ee, \eig(X+Y+Z))^{\sye}}{\sye!}.
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ee, \eig(X+Y+Z))^{\sye}}{\sye!}.
     \end{align}
     At this stage, we can can combine the bounds for $\ya$ and $\yf$ to obtain an expression involving the same power of $k$:
     \begin{align}
         \sqrt{\vp_{\ya}(\ea)\vp_{\ya}(X)} \sqrt{\vp_{\yf}(\ef)\vp_{\yf}(Y+Z)} 
-        &\leq \polyk{n(n-1)} \frac{F(\ea, \eig(X))^{\sya}}{\sya!}\frac{F(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
-        &\leq \polyk{n(n-1)} \frac{[F(\ea, \eig(X)) + F(\ef, \eig(Y+Z))]^{k}}{k!}, \\
-        &= \polyk{n(n-1)} \frac{F(\ea\oplus \ef, \eig(X\oplus Y+Z))^{k}}{k!},
+        &\leq \polyk{n(n-1)} \frac{\BC(\ea, \eig(X))^{\sya}}{\sya!}\frac{\BC(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
+        &\leq \polyk{n(n-1)} \frac{[\BC(\ea, \eig(X)) + \BC(\ef, \eig(Y+Z))]^{k}}{k!}, \\
+        &= \polyk{n(n-1)} \frac{\BC(\ea\oplus \ef, \eig(X\oplus Y+Z))^{k}}{k!},
     \end{align}
     because $\sya + \syf = \sye = k$.
     A similar bound also follows from combining $\yc$ with $\yd$.
-    Define the maximum product fidelity as
+    Define the maximum product Bhattacharyya coefficient by
     \begin{align}
-        F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} 
+        \BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} 
         &\coloneqq
         \max_{\substack{(X,Y,Z) \in\\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
-        F(\ea\oplus \ef, \eig(X\oplus Y+Z))
-        F(\ec\oplus \ed, \eig(X+Y\oplus Z))
-        F(\ee, \eig(X+Y+Z)).
+        \BC(\ea\oplus \ef, \eig(X\oplus Y+Z))
+        \BC(\ec\oplus \ed, \eig(X+Y\oplus Z))
+        \BC(\ee, \eig(X+Y+Z)).
     \end{align}
-    From \cref{eq:third_abd_bound} and the above fidelity bounds we obtain
+    From \cref{eq:third_abd_bound} and the above bounds we obtain
     \begin{equation}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1)} \frac{1}{k!}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
+        \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1)} \frac{1}{k!}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
     \end{equation}
 
     Now that we have established an upper bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ which is uniform in the triple $(\ya,\yb,\yd)$, the next step is to sum this expression over all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$.
@@ -1606,13 +1608,13 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
 
     As there are at most $\polyk{3n}$ triples Young diagrams $(\ya,\yb,\yd)$ with total size $\sya+\syb+\syd=k$ being summed here, we finally conclude
     \begin{equation}
-        \frac{\tee^k}{k!} \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1) + 3n} \frac{1}{k!}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
+        \frac{\tee^k}{k!} \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1) + 3n} \frac{1}{k!}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
     \end{equation}
     or equivalently
     \begin{equation}
-        \frac{1}{\tee}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{1}{3}} \geq \left(\frac{1}{\polyk{\frac{7n^2+11n+6}{4}}}\right)^{\frac{1}{k}}.
+        \frac{1}{\tee}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{1}{3}} \geq \left(\frac{1}{\polyk{\frac{7n^2+11n+6}{4}}}\right)^{\frac{1}{k}}.
     \end{equation}
-    Finally, using \cref{eq:fidelity_vs_distance}, we can substitute the maximum normalized product of fidelities here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
+    Finally, using \cref{eq:bhattacharyya_vs_distance}, we can substitute the maximum normalized product of Bhattacharyya coefficients here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
 
 \clearpage
@@ -2464,17 +2466,17 @@ The Kullback-Leibler divergence, $\kl{p}{q}$, is a non-negative quantity which v
 Consequently, eigenvalue estimation captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_{\ex}(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\yx/k$, is similar to the eigenvalue distribution $\ex/\tex$.
 
 For our purposes, it will instead be useful to derive a result which compares the eigenvalues of a pair of positive semidefinite matrices $X,Y \geq 0$ directly.
-Recall that the \textit{fidelity} $F(p,q) \in [0,1]$ between two probability distributions $p$ and $q$ over a common set $\{1,\ldots,r\}$ is defined by $F(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i}$ and is equal one if and only if $p = q$.
-For notational convenient, we will extend this definition of fidelity to consider unnormalized distributions in the following way.
+Recall that the \textit{Bhattacharyya coefficient} $\BC(p,q) \in [0,1]$ between two probability distributions $p$ and $q$ over a common set $\{1,\ldots,r\}$ is defined by $\BC(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i}$ and is equal one if and only if $p = q$.
+For notational convenient, we will extend this definition of Bhattachara coefficient to consider unnormalized distributions in the following way.
 Suppose $p = (p_1, \ldots, p_r)$ and $q = (q_1, \ldots, q_r)$ are non-negative tuples over the set $\{1,\ldots,r\}$ which are not necessarily normalized, but nevertheless have the same total $\tau = \sum_{i=1}^{r} p_i = \sum_{i=1}^{r} q_i$.
-Then we define the \textit{unnormalized fidelity} $F(p,q) \in [0,\tau]$ between $p$ and $q$ by
+Then we define the \textit{unnormalized Bhattachara coefficient} $\BC(p,q) \in [0,\tau]$ between $p$ and $q$ by
 \begin{equation}
-    F(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i},
+    \BC(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i},
 \end{equation}
-where $F(p,q) = \tau$ if and only if $p=q$.
-The unnormalized fidelity inherits all of its properties from the normalized fidelity by homogeneity:
+where $\BC(p,q) = \tau$ if and only if $p=q$.
+The unnormalized Bhattachara coefficient inherits all of its properties from the normalized Bhattachara coefficient by homogeneity:
 \begin{equation}
-    F(p,q) = \tau F\left( \frac{p}{\tau}, \frac{q}{\tau} \right).
+    \BC(p,q) = \tau \BC\left( \frac{p}{\tau}, \frac{q}{\tau} \right).
 \end{equation}
 
 \begin{lem}[Eigenvalue separation]
@@ -2483,59 +2485,59 @@ The unnormalized fidelity inherits all of its properties from the normalized fid
     For any non-negative integer $k\geq 1$,
     \begin{equation}
         \label{eq:eig_sep}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \polyk{\binom{n}{2}} \frac{F(\ex,\ey)^{k}}{k!},
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \polyk{\binom{n}{2}} \frac{\BC(\ex,\ey)^{k}}{k!},
     \end{equation}
-    where $F(\ex,\ey)$ is fidelity between the eigenvalues $\ex$ and $\ey$ and $F(\ex, \ey) = \tau$ if and only if $\ex = \ey$.
+    where $\BC(\ex,\ey)$ is unnormalized Bhattacharyya coefficient between the eigenvalues $\ex$ and $\ey$ and $\BC(\ex, \ey) = \tau$ if and only if $\ex = \ey$.
 \end{lem}
 \begin{proof}
     We may assume that $\ex, \ey$ are non-zero and thus $\tau > 0$.
-    The left-hand side of \cref{eq:eig_sep} is the equal to the unnormalized fidelity between $\vp_{\yx}(\ex)$ and $\vp_{\yx}(\ey)$.
+    The left-hand side of \cref{eq:eig_sep} is the equal to the unnormalized Bhattacharyya coefficient between $\vp_{\yx}(\ex)$ and $\vp_{\yx}(\ey)$.
     As $\vp_{\yx}(\ex)$ is proportional to the Schur-Weyl distribution $p_{\ex}(\yx)$ by definition (\cref{eq:schur_weyl}), we have
     \begin{equation}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} = \frac{\tau^k}{k!}\sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)} = \frac{\tau^k}{k!}F_k(p_{\ex},p_{\ey})
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} = \frac{\tau^k}{k!}\sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)} = \frac{\tau^k}{k!}\BC_k(p_{\ex},p_{\ey})
     \end{equation}
-    where $F_k(p_{\ex},p_{\ey})$ denotes the normalized fidelity between the Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ over Young diagrams of size $k$.
+    where $\BC_k(p_{\ex},p_{\ey})$ denotes the normalized Bhattacharyya coefficient between the Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ over Young diagrams of size $k$.
     From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound}, we have
     \begin{equation}
-        F_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} F_k(m_x,m_y).
+        \BC_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
     \end{equation}
-    where $F_k(m_\ex,m_\ey)$ is the fidelity between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
-    Since fidelities are multiplicative with respect to multinomial distributions, i.e.,
+    where $\BC_k(m_\ex,m_\ey)$ is the Bhattacharyya coefficient between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
+    Since Bhattacharyya coefficients are multiplicative with respect to multinomial distributions, i.e.,
     \begin{equation}
-        F_k(m_x, m_y) = F\left(\frac{\ex}{\tau}, \frac{\ey}{\tau}\right)^{k} = \frac{F(\ex, \ey)^k}{\tau^k},
+        \BC_k(m_x, m_y) = \BC\left(\frac{\ex}{\tau}, \frac{\ey}{\tau}\right)^{k} = \frac{\BC(\ex, \ey)^k}{\tau^k},
     \end{equation}
     we conclude
     \begin{equation}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \frac{\tau^k}{k!}\polyk{\binom{n}{2}}\frac{F(\ex, \ey)^k}{\tau^k}
+        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \frac{\tau^k}{k!}\polyk{\binom{n}{2}}\frac{\BC(\ex, \ey)^k}{\tau^k}
     \end{equation}
     which is equal to \cref{eq:eig_sep}.
 \end{proof}
 In subsequent sections we will frequently use of the \textit{weaker} bound
 \begin{equation}
     \label{eq:weak_eig_sep}
-    \forall \yx \vdash k: \qquad \sqrt{\vp_{\yx}(x)\vp_{\yx}(y)} \leq \polyk{\binom{n}{2}} \frac{F(x,y)^{k}}{k!},
+    \forall \yx \vdash k: \qquad \sqrt{\vp_{\yx}(x)\vp_{\yx}(y)} \leq \polyk{\binom{n}{2}} \frac{\BC(x,y)^{k}}{k!},
 \end{equation}
 which follows from \cref{lem:eig_sep} because $\vp_{\yx}(x), \vp_{\yx}(y) \geq 0$ whenever the eigenvalues $x,y$ are non-negative.
-\begin{rem}[Fidelities \& Distances]
+\begin{rem}[Distances between distributions]
     In order to quantify the separation between distributions more geometrically, consider the Kolmogorov (or total variation) distance between two normalized probabibility distributions $p$ and $q$:
     \begin{equation}
         K(p,q) \coloneqq \frac{1}{2}\norm{p-q}_1.
     \end{equation}
-    The normalized fidelity $F(p,q)$ and Kolmogorov distance $K(p,q)$ are related by the inequalities
+    The normalized Bhattacharyya coefficient $\BC(p,q)$ and Kolmogorov distance $K(p,q)$ are related by the inequalities
     \begin{equation}
-        1-F(p,q) \leq K(p,q) \leq \sqrt{1-F(p,q)^2}
+        1-\BC(p,q) \leq K(p,q) \leq \sqrt{1-\BC(p,q)^2}
     \end{equation}
     For a proof, see for example \cite[Proposition 5, Equation (41)]{fuchs2002cryptographic}.
-    For the purposes of this paper, we only need the bound $K(p,q) \leq \sqrt{1-F(p,q)^2}$ which is equivalent to $F(p,q) \leq \sqrt{1-K(p,q)^2}$ which can be relaxed to obtain\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
+    For the purposes of this paper, we only need the bound $K(p,q) \leq \sqrt{1-\BC(p,q)^2}$ which is equivalent to $\BC(p,q) \leq \sqrt{1-K(p,q)^2}$ which can be relaxed to obtain\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
     \begin{equation}
-        F(p,q) \leq \exp\left(-\frac{1}{2}K(p,q)^2\right) = \exp\left(-\frac{1}{8}\norm{p-q}_1^2\right).
+        \BC(p,q) \leq \exp\left(-\frac{1}{2}K(p,q)^2\right) = \exp\left(-\frac{1}{8}\norm{p-q}_1^2\right).
     \end{equation}
-    Stated in terms of the unnormalized fidelity $F(p,q)$ between unnormalized distributions $p,q$ with the same total $\tau$, this inequality is equivalent to
+    Stated in terms of the unnormalized Bhattacharyya coefficient $\BC(p,q)$ between unnormalized distributions $p,q$ with the same total $\tau$, this inequality is equivalent to
     \begin{equation}
-        \label{eq:fidelity_vs_distance}
-        \frac{F(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
+        \label{eq:Bhattacharyya_vs_distance}
+        \frac{\BC(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
     \end{equation}
-    In subsequent sections we will use \cref{eq:fidelity_vs_distance} to convert lower bounds on fidelities $F(p,q)$ into upper bounds on distances $\norm{p-q}_1$.
+    In subsequent sections we will use \cref{eq:Bhattacharyya_vs_distance} to convert lower bounds on Bhattacharyya coefficients $\BC(p,q)$ into upper bounds on distances $\norm{p-q}_1$.
 \end{rem}
 
 \subsection{Results for random matrices}
@@ -2645,18 +2647,18 @@ In this section, we prove the following proposition pertaining to the original H
     \begin{align}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb) 
         &\leq \sqrt{\polyk{2\binom{n}{2}} \polyk{n-1} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
-        &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{F(\eig(X+Y), c)^k}{k!}, \\
+        &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{\BC(\eig(X+Y), c)^k}{k!}, \\
         \label{eq:ab_intermediate_bound}
-        &= \polyk{2\binom{n}{2}+\frac{n-1}{2}}\frac{F(a,b;c)^k}{k!},
+        &= \polyk{2\binom{n}{2}+\frac{n-1}{2}}\frac{\BC(a,b;c)^k}{k!},
     \end{align}
-    where $F(a,b;c)$ is defined as the maximum fidelity
+    where $\BC(a,b;c)$ is defined as the maximum Bhattacharyya coefficient
     \begin{equation}
-        F(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} F(\eig(X+Y),c).
+        \BC(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \BC(\eig(X+Y),c).
     \end{equation}
 
     Now we sum both sides of \cref{eq:ab_intermediate_bound} over \textit{all} pairs $(\ya,\yb)$ with total size $\sya+\syb=k$ to obtain
     \begin{equation}
-        \frac{\tec^k}{k!} \leq \polyk{2\binom{n}{2}+\frac{n-1}{2} + 2n} \frac{F(a,b;c)^{k}}{k!},
+        \frac{\tec^k}{k!} \leq \polyk{2\binom{n}{2}+\frac{n-1}{2} + 2n} \frac{\BC(a,b;c)^{k}}{k!},
     \end{equation}
     where the left-hand side follows from the trace condition $\tec=\tea+\teb$ and
     \begin{equation}
@@ -2664,11 +2666,11 @@ In this section, we prove the following proposition pertaining to the original H
         \sum_{\ell=0}^{k} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k-\ell}} \vp_{\ya}(\ea)\vp_{\yb}(\eb) = \sum_{\ell=0}^{k} \frac{\tea^\ell}{\ell!} \frac{\teb^{k-\ell}}{(k-\ell)!} = \frac{(\tea+\teb)^k}{k!},
     \end{equation}
     whereas the extra factor of $2n$ in the exponent on the right-hand side is obtained because there are at most $\polyk{n}$ Young diagrams with $n$ rows and size at most $k$ and we are summing over a pair $(\ya,\yb)$ with total size $\sya+\syb=k$.
-    This establishes a lower bound on $F(a,b;c)$ of the form
+    This establishes a lower bound on $\BC(a,b;c)$ of the form
     \begin{equation}
-        \frac{F(a,b;c)}{\Tr[c]} \geq \left( \frac{1}{\polyk{\frac{2n^2+3n-1}{2}}} \right)^{\frac{1}{k}}
+        \frac{\BC(a,b;c)}{\Tr[c]} \geq \left( \frac{1}{\polyk{\frac{2n^2+3n-1}{2}}} \right)^{\frac{1}{k}}
     \end{equation}
-    Finally, using \cref{eq:fidelity_vs_distance}, we substitute the maximum normalized fidelity $\frac{F(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_ab_c_dist_bound} which completes the proof.
+    Finally, using \cref{eq:Bhattacharyya_vs_distance}, we substitute the maximum normalized Bhattacharyya coefficient $\frac{\BC(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_ab_c_dist_bound} which completes the proof.
 \end{proof}
 
 \subsection{Distance bound for the tetrahedral Horn problem}
@@ -2764,38 +2766,38 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     For each Young diagram $\yx \in \{\ya, \yd, \yc, \ye, \yf\}$ we apply \cref{eq:weak_eig_sep} (noting $\syx \leq k$ for each) to conclude
     \begin{align}
         \sqrt{\vp_{\ya}(\ea)\vp_{\ya}(X)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ea, \eig(X))^{\sya}}{\sya!} \\%= \polyk{\binom{n}{2}} \frac{\tea^\sya}{\sya!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ea, \eig(X))^{\sya}}{\sya!} \\%= \polyk{\binom{n}{2}} \frac{\tea^\sya}{\sya!}, \\
         \sqrt{\vp_{\yd}(\ed)\vp_{\yd}(Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ed, \eig(Z))^{\syd}}{\syd!} \\%= \polyk{\binom{n}{2}} \frac{\ted^\syd}{\syd!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ed, \eig(Z))^{\syd}}{\syd!} \\%= \polyk{\binom{n}{2}} \frac{\ted^\syd}{\syd!}, \\
         \sqrt{\vp_{\yc}(\ec)\vp_{\yc}(X+Y)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ec, \eig(X+Y))^{\syc}}{\syc!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ec, \eig(X+Y))^{\syc}}{\syc!}, \\
         \sqrt{\vp_{\yf}(\ef)\vp_{\yf}(Y+Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
         \sqrt{\vp_{\ye}(\ee)\vp_{\ye}(X+Y+Z)}
-        &\leq \polyk{\binom{n}{2}} \frac{F(\ee, \eig(X+Y+Z))^{\sye}}{\sye!}.
+        &\leq \polyk{\binom{n}{2}} \frac{\BC(\ee, \eig(X+Y+Z))^{\sye}}{\sye!}.
     \end{align}
     At this stage, we can can combine the bounds for $\ya$ and $\yf$ to obtain an expression involving the same power of $k$:
     \begin{align}
         \sqrt{\vp_{\ya}(\ea)\vp_{\ya}(X)} \sqrt{\vp_{\yf}(\ef)\vp_{\yf}(Y+Z)} 
-        &\leq \polyk{n(n-1)} \frac{F(\ea, \eig(X))^{\sya}}{\sya!}\frac{F(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
-        &\leq \polyk{n(n-1)} \frac{[F(\ea, \eig(X)) + F(\ef, \eig(Y+Z))]^{k}}{k!}, \\
-        &= \polyk{n(n-1)} \frac{F(\ea\oplus \ef, \eig(X\oplus Y+Z))^{k}}{k!},
+        &\leq \polyk{n(n-1)} \frac{\BC(\ea, \eig(X))^{\sya}}{\sya!}\frac{\BC(\ef, \eig(Y+Z))^{\syf}}{\syf!}, \\
+        &\leq \polyk{n(n-1)} \frac{[\BC(\ea, \eig(X)) + \BC(\ef, \eig(Y+Z))]^{k}}{k!}, \\
+        &= \polyk{n(n-1)} \frac{\BC(\ea\oplus \ef, \eig(X\oplus Y+Z))^{k}}{k!},
     \end{align}
     because $\sya + \syf = \sye = k$.
     A similar bound also follows from combining $\yc$ with $\yd$.
-    Define the maximum product fidelity as
+    Define the maximum product Bhattacharyya coefficient as
     \begin{align}
-        F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} 
+        \BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} 
         &\coloneqq
         \max_{\substack{(X,Y,Z) \in\\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
-        F(\ea\oplus \ef, \eig(X\oplus Y+Z))
-        F(\ec\oplus \ed, \eig(X+Y\oplus Z))
-        F(\ee, \eig(X+Y+Z)).
+        \BC(\ea\oplus \ef, \eig(X\oplus Y+Z))
+        \BC(\ec\oplus \ed, \eig(X+Y\oplus Z))
+        \BC(\ee, \eig(X+Y+Z)).
     \end{align}
-    From \cref{eq:third_abd_bound} and the above fidelity bounds we obtain
+    From \cref{eq:third_abd_bound} and the above Bhattacharyya coefficient bounds we obtain
     \begin{equation}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1)} \frac{1}{k!}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
+        \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1)} \frac{1}{k!}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
     \end{equation}
 
     Now that we have established an upper bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ which is uniform in the triple $(\ya,\yb,\yd)$, the next step is to sum this expression over all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$.
@@ -2807,13 +2809,13 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
 
     As there are at most $\polyk{3n}$ triples Young diagrams $(\ya,\yb,\yd)$ with total size $\sya+\syb+\syd=k$ being summed here, we finally conclude
     \begin{equation}
-        \frac{\tee^k}{k!} \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1) + 3n} \frac{1}{k!}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
+        \frac{\tee^k}{k!} \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)+ \frac{3}{3}n(n-1) + 3n} \frac{1}{k!}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{k}{3}}
     \end{equation}
     or equivalently
     \begin{equation}
-        \frac{1}{\tee}F\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{1}{3}} \geq \left(\frac{1}{\polyk{\frac{7n^2+11n+6}{4}}}\right)^{\frac{1}{k}}.
+        \frac{1}{\tee}\BC\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}^{\frac{1}{3}} \geq \left(\frac{1}{\polyk{\frac{7n^2+11n+6}{4}}}\right)^{\frac{1}{k}}.
     \end{equation}
-    Finally, using \cref{eq:fidelity_vs_distance}, we can substitute the maximum normalized product of fidelities here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
+    Finally, using \cref{eq:Bhattacharyya_vs_distance}, we can substitute the maximum normalized product of Bhattacharyya coefficients here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
 
 \subsection{Asymptotics of the \texorpdfstring{$6j$}{6j} symbols}
