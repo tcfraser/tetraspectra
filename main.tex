@@ -118,14 +118,6 @@ Note this theorem actually implies the ``if'' portion of \cref{thm:iff_tet} as o
 Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{prop:approx_tri}).
 
 \vspace{1em}
-\textbf{Eigenvalue estimation:}
-Our approach to proving the above theorems relies on the concept of \textit{eigenvalue estimation}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of positive semidefinite matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2008quantum,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
-These techniques rely heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
-Given a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
-The concept of eigenvalue estimation relies on the fact that the Schur-Weyl distribution concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration strengthens as the sizes of the Young diagrams grow to infinity.
-
-
-\vspace{1em}
 \textbf{$\boldsymbol{6j}$-symbols:}
 Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \ot V_\yb) \ot V_\yc \cong V_\ya \ot (V_\yb \ot V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
 Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
@@ -210,27 +202,40 @@ Perhaps a different approach for deriving the Ponzano-Regge formula, such as tho
 %\citeauthor{taylor2006sixj} (see also \cite{chen1999asymptotics}) to prove asymptotics for the $6j$-symbol for $U_q(\mathfrak{sl}_2)$ using recursion relations \cite{taylor2006sixj} (see also the formulas for the $6j$-symbols for $\mathrm{gl}_n$ in terms of generalized hypergeometric functions due to \cite{artamonov2024calculation} \cite{artamonov2023classical,artamonov2024calculation}).
 
 \vspace{1em}
-\textbf{Related works:}
+\textbf{Eigenvalue estimation:}
+Our approach to proving the above theorems relies on the technique of \textit{eigenvalue estimation}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of positive semidefinite matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
+The eigenvalue estimation technique relies heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
+Given a positive semidefinite matrix $X$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
+The technique of eigenvalue estimation relies on the fact that the Schur-Weyl distribution concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration strengthens as the sizes of the Young diagrams grow to infinity \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient}.
+Applying the eigenvalue estimation technique to the original Horn problem was first done by \citeauthor{christandl2008quantum} \cite{christandl2008quantum}.
+In this paper, we develop a technique called \textit{eigenvalue separation} which relates the similarity between two Schur-Weyl distributions, $p_{\ex}(\yx)$ and $p_{\ey}(\yx)$, to the similarity of the underlying eigenvalues, $x$ and $y$, and apply this technique to tetrahedral Horn problem and obtain \cref{thm:iff_tet}.
+In addition, our approach produces new results for the original Horn problem, analogous to \cref{thm:iff_tet}, beyond those obtained in \cite{christandl2008quantum}.
+
+\vspace{1em}
+\textbf{Quantum marginals \& the $\boldsymbol{6j}$-symbol for the symmetric group $\boldsymbol{S_k}$:}
+Our method for proving \cref{cor:asym_6j} is closely related to techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
+Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
+In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (referred to as the recoupling coefficients) in the limit as $k \to \infty$ either decay exponentially or can be bounded from below by a polynomial factor depending on whether there exists a density matrix with the prescribed marginal spectra \cite{christandl2018recoupling}.
+Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
+While the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem, the approach taken by this paper differs from \cite{christandl2018recoupling} as it tackles the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:iff_tet} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions previously obtained in \cite{christandl2018recoupling}.
+We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
+
+\vspace{1em}
+\textbf{Multiple Horn problems:}
+More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem and are referred to as \textit{multiple} Horn problems in \cite{alekseev2025multiple}.
+Specifically, \citeauthor{alekseev2025multiple} focus on two variants, the \textit{multiplicative multiple Horn problem} concerning the singular values of products of invertible matrices, and the \textit{tropical multiple Horn problem} concernining singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
+The tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
+
+\vspace{1em}
+\textbf{Other inequalities:}
 It is worth highlighting that there exists related results constraining the eigenvalues of sums of Hermitian matrices which are already readily applicable to the tetrahedral Horn problem.
 In addition to the aforementioned Horn's inequalities \cite{horn1962eigenvalues}, which contraint the eigenvalues of any triple of Hermitian matrices $(A,B,A+B)$, there exists a myriad of inequalities which constrain the eigenvalues of the quadruple of Hermitian matrices $(Y,X+Y,Y+Z,X+Y+Z)$ whenever $X,Y,Z \geq 0$ are positive semidefinite matrices (see for example \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}).
 These inequalities are readily applicable to the tetrahedral Horn problem under the identification ($X=A$, $Y=B$ and $Z=D$) wherein they constrain, respectively, the eigenvalues $(b,c,e,f)$ of the matrices $(B,C,E,F)$ while ignoring the eigenvalues of $A$ and $D$.
 More scarce are inequalities which additionally incorporate the eigenvalues $(a,d)$ of the matrices $(A,D)$ such as Minkowski-like determinant inequality \cite[Section 6.2]{niculescu2023functions} (originally due to \citeauthor{courtade2016strengthening}\cite{courtade2016strengthening,sra2016reverseoverflow}), or applications of Ptolemny's inequality \cite{schoenberg1952remark} or the Cayley-Menger determinant inequality \cite[Equation 5.2]{sitharam2018handbook} to the space of $n\times n$ Hermitian matrices equipped with the Hilbert-Schmit inner product.
 While each of these previously known inequalities can be viewed as necessary conditions for the tetrahedral Horn problem, to the best of our knowledge, they remain insufficient for the tetrahedral Horn problem when $n\geq 3$.
 Our contribution, theorefore, is to provide a family of necessary and sufficient inequalities in the form of \cref{thm:iff_tet} which is applicable to all dimensions $n$.
-
-More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem concerning either the singular values of products of invertible matrices or the tropical singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
-These variants are termed \textit{multiple} Horn problems in \cite{alekseev2025multiple}; the tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
-
-\vspace{1em}
-\textbf{Quantum marginals \& the $\boldsymbol{6j}$-symbol for the symmetric group $\boldsymbol{S_k}$:}
-The techniques used in this paper to derive bounds on the $6j$ symbol for the unitary group $\U(n)$ are closely related to the techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
-In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
-Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
-In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (referred to as the recoupling coefficients) in the limit as $k \to \infty$ either decay exponentially or can be bounded from below by a polynomial factor depending on whether there exists a density matrix with the prescribed marginal spectra \cite{christandl2018recoupling}.
-Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
-This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
-While the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem, the approach taken by this paper differs from \cite{christandl2018recoupling} as it tackles the tetrahedral Horn problem directly, and consequently, we obtain \cite{thm:iff_tet} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions previously obtained in \cite{christandl2018recoupling}.
-We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
 
 \vspace{1em}
 \textbf{Organization of the paper:}
@@ -1090,7 +1095,7 @@ the Kolmogorov distance and the fidelity (see {\em e.g.} \cite[Proposition 5, Eq
 \begin{equation}
     1-F(p,q) \leq K(p,q) \leq \sqrt{1-F(p,q)^2}.
 \end{equation}
-This implies
+This implies\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
 \begin{equation} \label{eq:F norm estimate}
     F(p,q) \leq \sqrt{1-K(p,q)^2} \leq \exp\left(- \frac{1}{2} K(p,q)^2\right)=
     \exp\left(- \frac{1}{8} \norm{p-q}_1^2\right).
@@ -1128,7 +1133,7 @@ By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and
 \label{eq:P_x(lambda)}
     P_x(\yx) = \frac{k!}{|x|^k} \, \varphi_\yx(x).
 \end{equation}
-The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}:
+The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}:
 %
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
@@ -1657,13 +1662,7 @@ The so-called Schur-Weyl decomposition of $(V_{\ydiagram{1}}^{n})^{\ot k} \simeq
     \end{equation}
     where the direct summands are indexed by Young diagrams $\yx$ of size $k$ and depth at most $n$ rows, and where $W_{\yx}$ supports an irreducible representation of $S_k$ and $V_{\yx}^{n}$ supports the irreducible representation of $\U(n)$.
 \end{prop}
-The dimension $W_{\yx}$ can be computed using the Frobenius dimension formula \cite[Corollaries 9.1.5]{goodman2000representations},
-\begin{equation}
-    \label{eq:frob_dim}
-    \dim(W_{\yx}) = \frac{{\syx}!\Delta(\yx + \rho)}{\prod_{i=1}^{n}(\yx+\rho)_i!}.
-\end{equation}
-While this formula is useful for comparisons with $\dim(V_{\yx}^n)$, it is not obviously independent of $n$ for $n \geq \ell(\yx)$.
-Indeed, the right hand side of \cref{eq:frob_dim} does not depend on $n$ for $n \geq \ell(\yx)$ and coincides with the Hook-length formula \cite[Corollary 9.1.6]{goodman2000representations}, in this case
+The dimension of the irreducible representation $W_{\yx}$ of $S_k$ is given by
 \begin{equation}
     \label{eq:hook_dim}
     \dim(W_{\yx}) = \frac{\syx!}{H_\yx}, \qquad H_{\yx} = \prod_{b \in \yx} h_{\yx}(b),
@@ -1704,13 +1703,13 @@ The corresponding character $\chi_{\yx}(X) = \Tr(\pi_{\yx}(X))$ of a representat
     \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot {\syx}}]}{\dim(W_{\yx})} = s_{\yx}(\ex),
 \end{equation*}
 where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace, and
-where $s_{\yx}(\ex) = s_{\yx}(\ex_1, \ldots, \ex_n)$ Schur-polynomial associated to $\yx$.
+where $s_{\yx}(\ex) = s_{\yx}(\ex_1, \ldots, \ex_n)$ is known as the Schur-polynomial associated to $\yx$.
 
-There are various formulas for the Schur-polynomial $s_{\yx}(\ex_1, \ldots, \ex_n)$.
-Here we present the Jacobi's bialternant formula
-\begin{equation}
-    s_{\yx}(\ex) = \frac{\det[\ex_i^{\yx_j+n-j}]}{\det[\ex_i^{n-j}]} = \frac{1}{\Delta(\ex)}\det[\ex_i^{(\yx+\rho)_j}].
-\end{equation}
+% There are various formulas for the Schur-polynomial $s_{\yx}(\ex_1, \ldots, \ex_n)$.
+% Here we present the Jacobi's bialternant formula
+% \begin{equation}
+%     s_{\yx}(\ex) = \frac{\det[\ex_i^{\yx_j+n-j}]}{\det[\ex_i^{n-j}]} = \frac{1}{\Delta(\ex)}\det[\ex_i^{(\yx+\rho)_j}].
+% \end{equation}
 
 
 \subsection{The binomial theorem}
@@ -2335,7 +2334,7 @@ This observation provides us with an opportunity to optimize the above bound by 
 In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
 In general, for fixed $\yx$, the function $n \mapsto V_{\yx}^{n}$ can grow at an exponential rate with increasing $n$.
 One can find estimates for $\dim(V_{\yx}^{n})$ in the regime where $n$ is large compared to ${\syx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
-Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\yx}^{n})$ to the value of $\dim(W_{\yx})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}.
+Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\yx}^{n})$ to the value of $\dim(W_{\yx})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}).
 \begin{prop}
     \label{prop:harrow_formula}
     Let $\yx$ be a Young diagram with depth at most $n$. Then
@@ -2344,7 +2343,13 @@ Here we use an elegant presentation of this scaling, which relates the asymptoti
     \end{equation}
 \end{prop}
 \begin{proof}
-    The statement follows from the dimension formulas for $\dim(V_{\yx}^{n})$ and $\dim(W_{\yx})$ in \cref{eq:weyl_dim} and \cref{eq:frob_dim}. See also \cite[Appendix A]{harrow2023approximate}.
+    The statement follows from comparing the the Weyl dimension formula for $\dim(V_{\yx}^{n})$ given in \cref{eq:frob_dim} with the Frobenius dimension formula for $\dim(W_{\yx})$ given in \cite[Corollaries 9.1.5]{goodman2000representations}:
+    \begin{equation}
+        \label{eq:frob_dim}
+        \dim(W_{\yx}) = \frac{{\syx}!\Delta(\yx + \rho)}{\prod_{i=1}^{n}(\yx+\rho)_i!}.
+    \end{equation}
+    That this formula for $\dim(W_{\yx})$ does not depend on $n$ for $n \geq \ell(\yx)$ and coincides with the Hook-length formula given earlier is proved by \cite[Corollary 9.1.6]{goodman2000representations}.
+    For additional details, see also \cite[Appendix A]{harrow2023approximate}.
 \end{proof}
 From \cref{prop:harrow_formula} we obtain the following corollary.
 \begin{cor}
@@ -2442,7 +2447,7 @@ A key property of the Schur-Weyl distribution $p_{\ex}(\yx)$ is that it behaves 
         \dim V_{\yx}^{n} \leq \polyk{\binom{n}{2}} \coloneqq (k+1)^{\frac{n(n-1)}{2}}.
     \end{equation}
 \end{rem}
-The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum}.
+The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}.
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
     Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
