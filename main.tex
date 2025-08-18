@@ -240,9 +240,16 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 \vspace{1em}
 \textbf{Organization of the paper:}
 In \cref{sec:tet_horn_prob} we formally define the tetrahedral Horn problem, describe some of its symmetries, and provide a solution for the case of $2\times 2$ matrices.
+
+{\color{red!50!black} Anton's:
+    TODO:
+}
+
+{\color{blue!50!black} TC's:
 Then, in \cref{sec:ineqs_from_schur_weyl}, we develop the mathematical machinery needed to prove the \textit{necessity} of the inequalities in \cref{thm:iff_tet}, specifically the binomial theorem for representations (\cref{thm:binomial}).
 Afterwards, \cref{sec:distance_bounds} is dedicated to proving the distance bound in \cref{thm:approx_tet} and thus the \textit{sufficiency} of the inequalities in \cref{thm:iff_tet}.
 The results in \cref{sec:distance_bounds} rely on the results of \cref{sec:ineqs_from_schur_weyl}, the aforementioned eigenvalue concentration bounds (\cref{sec:eig_est_and_sep}), and some standard results from random matrix theory (\cref{sec:random_matrices}).
+}
 % Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 
 \section{The tetrahedral Horn problem}
@@ -874,7 +881,7 @@ Foe future use, we will needowing fact:
     This completes the proof.   
 \end{proof}
 
-\subsubsection{\texorpdfstring{$\boldsymbol{G=U(n)}$}{G=U(n)}}
+\subsubsection{\texorpdfstring{$\boldsymbol{G=U(n)}$}{G=U(n)} and the function \texorpdfstring{$\boldsymbol{\varphi_\yx}$}{philambda}}
 
 For $G=U(n)$, dominant weights are parametrized by non-increasing arrays of integers
 \begin{equation}
@@ -1303,8 +1310,9 @@ We will split the proof of Theorem \ref{thm:iff_tet} into several steps.
 
 \subsection{Necessary conditions}
 
-First, we assume that there are matrices \eqref{eq: 6 matrices} with eigenvalues
-$(\ea,\eb,\ec,\ed,\ee,\ef)$. We compute,
+First, we assume that there are matrices $(A,B,C,D,E,F)$ with eigenvalues
+$(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq: 6 matrices}. 
+We then compute,
 \begin{equation}
     \begin{array}{lll}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) 
@@ -1313,83 +1321,88 @@ $(\ea,\eb,\ec,\ed,\ee,\ef)$. We compute,
         & = &
         \sum_{\yc,\ye,\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D), \\
         & \leq & 
-        \sum_{\yc,\ye,\yf} \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,B)\right|, \\
-        & \leq & 
-        \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}, \\
+        \sum_{\yc,\ye,\yf} \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right|, \\
         & \leq &
         \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
-        \left( \vp_{\ya}(A) \vp_{\yd}(D)
-        \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}, \\
-        & = &
+        \left( \vp_{\ya}(A) \vp_{\yd}(D) \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}, \\
+        & \leq &
         \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
-        \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
-        \vp_{\yf}(\ef)\vp_{\yc}(\ec)\vp_{\ye}(\ee)\right)^{\frac{1}{3}}.
+        \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed) \vp_{\yf}(\ef)\vp_{\yc}(\ec)\vp_{\ye}(\ee)\right)^{\frac{1}{3}}.
     \end{array}
 \end{equation}
-Here in the second line we are using the fact that 
+% Here in the second line we are using the fact that 
+% \begin{equation}
+% \sum_{\yc\ye\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) =
+% \Tr \, \Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D) =
+% \vp_{\ya}(A)\vp_{\yb}(B)\vp_{\yd}(D).
+% \end{equation}
+This calculation follows from the estimate:
 \begin{equation}
-\sum_{\yc\ye\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) =
-\Tr \, \Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D) =
-\vp_{\ya}(A)\vp_{\yb}(B)\vp_{\yd}(D).
+    \label{eq:vp_ABD_abs_bound}
+    \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right| 
+    \leq \norm{\abcdefsymbol}_{\infty} 
+    \left( \vp_{\ya}(A) \vp_{\yd}(D) \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}.
 \end{equation}
-In the fourth line, we are using Proposition \ref{prop: Pi Omega Pi} to obtain
+To prove this inequality, use Proposition \ref{prop: Pi Omega Pi} to obtain
 \begin{equation}
-\begin{array}{lll}
-  \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,B)\right| & = & 
-  \left|\Tr \,  
-    \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D))\Pi_{\ya \yb \yd}^{\ye ; \yc}\right| \\
-    & \leq & \, \, \norm{\Pi_{\ya \yb \yd}^{\ye ; \yf}\Pi_{\ya \yb \yd}^{\ye ; \yc}}_\infty (\Tr \, \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)))^{\frac{1}{2}} \\
-    & \times &
-    (\Tr \, (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)) \Pi_{\ya \yb \yd}^{\ye ; \yc})^{\frac{1}{2}} \\
-    & = & 
-    \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D))^{\frac{1}{2}}.
+    \begin{array}{lll}
+        \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right| 
+        & = & 
+        \left|\Tr \,  
+        \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D))\Pi_{\ya \yb \yd}^{\ye ; \yc}\right| \\
+        & \leq & \, \, \norm{\Pi_{\ya \yb \yd}^{\ye ; \yf}\Pi_{\ya \yb \yd}^{\ye ; \yc}}_\infty (\Tr \, \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)))^{\frac{1}{2}} \\
+        & \times &
+        (\Tr \, (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)) \Pi_{\ya \yb \yd}^{\ye ; \yc})^{\frac{1}{2}} \\
+        & = & 
+        \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}.
     \end{array}
 \end{equation}
-Finally, in the fifth line we are using the following estimates:
+Then we have the following upper bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)$:
 \begin{equation}
-\begin{array}{lll}
-\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq &
-\sum_{\ye \yb \yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
-& = &
-\sum_{\ye} \Tr \,P^\ye\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
-& = &
- \Tr \, \Phi_\ya(A) \ot \Phi_\yf(B+D) 
-\\
-& = & 
-\varphi_\ya(A) \varphi_\yf(B+D),
-\end{array}
+    \begin{array}{lll}
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq &
+        \sum_{\ye \yb \yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
+        & = &
+        \sum_{\ye} \Tr \,P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
+        & = &
+         \Tr \, \Phi_\ya(A) \ot \Phi_\yf(B+D) 
+        \\
+        & = & 
+        \varphi_\ya(A) \varphi_\yf(B+D),
+    \end{array}
 \end{equation}
 and 
 \begin{equation}
-\begin{array}{lll}
-\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq & 
-\sum_{\ya \yb \yd \yf} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
-& = & \sum_{\ya \yf} \Tr \,P^\ye\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
-& = &
-\sum_{\ya \yf} \Tr \, P^\ye \left(\Phi_\ya(A) \ot \Phi_\yf(B+D)\right) \\
-& = & \sum_{\ya \yf} \varphi^{\ya \yf}_\ye(A, B+D) \\
-& = & \varphi_\ye(A+B+D).
-\end{array}
+    \begin{array}{lll}
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq & 
+        \sum_{\ya \yb \yd \yf} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
+        & = & \sum_{\ya \yf} \Tr \,P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
+        & = &
+        \sum_{\ya \yf} \Tr \, P^\ye_{\ya\yb\yd} \left(\Phi_\ya(A) \ot \Phi_\yf(B+D)\right) \\
+        & = & \sum_{\ya \yf} \varphi^{\ya \yf}_\ye(A, B+D) \\
+        & = & \varphi_\ye(A+B+D).
+    \end{array}
 \end{equation}
-In both estimates, we are using the fact that $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \geq 0$.  Together, they imply
+In both estimates, we are using the fact that $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \geq 0$.  
+Together, they imply
 \begin{equation}
-\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \leq 
-\left(\varphi_\ya(A) \varphi_\yf(B+D)\right)^{\frac{2}{3}} 
-\varphi_\ye(A+B+D)^{\frac{1}{3}} =
-\left(\varphi_\ya(A) \varphi_\yf(F)\right)^{\frac{2}{3}} 
-\varphi_\ye(E)^{\frac{1}{3}}.
+    \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \leq 
+    \left(\varphi_\ya(A) \varphi_\yf(B+D)\right)^{\frac{2}{3}} 
+    \varphi_\ye(A+B+D)^{\frac{1}{3}} =
+    \left(\varphi_\ya(A) \varphi_\yf(F)\right)^{\frac{2}{3}} 
+    \varphi_\ye(E)^{\frac{1}{3}}.
 \end{equation}
-Similarly, we have
+In an analogous fashion, we conclude the following bound on $\vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)$:
 \begin{equation}
-\vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D) \leq 
-\left( \varphi_\yc(C) \varphi_\yd(D)\right)^{\frac{2}{3}} 
-\varphi_\ye(E)^{\frac{1}{3}},
+    \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D) \leq 
+    \left( \varphi_\yc(C) \varphi_\yd(D)\right)^{\frac{2}{3}} 
+    \varphi_\ye(E)^{\frac{1}{3}}.
 \end{equation}
-and this completes the proof.
+and this completes the proof for \cref{eq:vp_ABD_abs_bound}.
 
 \subsection{Distance bound}
 
-Let $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ which satisfy the trace conditions and
+Let $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ which satisfy the trace conditions and also
 %
 \begin{equation}
     \label{eq:abd_multiplied}
@@ -1401,7 +1414,10 @@ Let $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ which satisfy the trace conditions an
         \vp_{\ye}(\ee)
     \right)^{\frac{1}{3}}
 \end{equation}
-for all $(\ya, \yb, \yd) \in (\Lambda^*_{++})^3$. We will consider triples with $\sya + \syb + \syc =k$ for some fixed integer $k$. Denote by $(\yc^*, \ye^*, \yf^*)$ the triple for which the corresponding term on the right hand side is maximal. We have,
+for all $(\ya, \yb, \yd) \in (\Lambda^*_{++})^3$. 
+We will consider triples with $\sya + \syb + \syc = k$ for some fixed integer $k$. 
+Denote by $(\yc^*, \ye^*, \yf^*)$ the triple for which the corresponding term on the right hand side is maximal. 
+We have,
 \begin{equation}
     \label{eq:first_abd_bound}
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
@@ -1413,9 +1429,10 @@ for all $(\ya, \yb, \yd) \in (\Lambda^*_{++})^3$. We will consider triples with 
     \right)^{\frac{1}{3}}
     ,
 \end{equation}
-where we use an estimate $\polyk{3(n-1)}$ on the number of terms in the sum in \eqref{eq:abd_multiplied}. Equation \eqref{eq:first_ab_bound} implies
+where $\polyk{3(n-1)}$ serves as an upper bound on the number of terms in the sum in \eqref{eq:abd_multiplied}.
+\Cref{eq:first_ab_bound} then implies
 \begin{equation}
-    \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) >0 \Rightarrow \norm{\abcdefsymbolcefstarred}_{\infty} >0.
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0 \implies \norm{\abcdefsymbolcefstarred}_{\infty} >0.
 \end{equation}
 Next, consider the bound
 \begin{equation}\label{eq: second_abd_bound}
@@ -1430,18 +1447,18 @@ Next, consider the bound
         & \leq &
          \polyk{3\binom{n}{2}} 
          \norm{\abcdefsymbolcefstarred}_{\infty} 
-        \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D)\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
+         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
     \end{array}
 \end{equation}
 Here in the first line we have used Proposition \ref{prop: estimate E_x,y,z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
 $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$, and we estimate the dimensions of representations by \cref{eq:unitary_irrep_dim_bound}. In the third line, we denote $C^*=A^*+B^*, E^*=A^*+B^*+D^*, F^*=B^*+D^*$, and
-use the estimate \eqref{eq: ???}.
+use the estimate in \cref{eq:vp_ABD_abs_bound}.
 
 By multiplying the estimates \eqref{eq:first_abd_bound} and \eqref{eq: second_abd_bound}, we obtain
 \begin{equation}
     \begin{array}{lll}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} (\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed))^2 
-        & \leq & \polyk{3\binom{n}{2}+3(n-1)} \norm{\abcdefsymbolcefstarred}_{\infty}^2 \\
+        & \leq & \polyk{3\binom{n}{2}+3n} \norm{\abcdefsymbolcefstarred}_{\infty}^2 \\
         & \times & \left(
         \vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
         \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
@@ -1451,11 +1468,14 @@ By multiplying the estimates \eqref{eq:first_abd_bound} and \eqref{eq: second_ab
         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
 \end{array}
 \end{equation}
-This implies
+This then implies
 \begin{equation}
     \begin{array}{lll}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) & \leq & 
-        \polyk{\frac{3}{2}\binom{n}{2}+\frac{3}{2}(n-1)} \left(
+        \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) 
+        & \leq & 
+        \polyk{\frac{3}{2}\binom{n}{2}+\frac{3}{2}n} \\
+        & \times & 
+        \left(
         \vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
         \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
         \vp_{\ye^*}(\ee)
@@ -1467,14 +1487,7 @@ This implies
 Indeed, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) =0$ the inequality is verified since the right hand side is non-negative. 
 Otherwise, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0$, then the norms of the $6j$-symbol are nonvanishing and we can use the standard operator norm estimates from \cref{eq:norm_estimates}.
 
-
-   
-   Here in the first line we have used Proposition \ref{prop: estimate E_x,y,z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
-   $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$, and we estimate the dimensions of representations by \cref{eq:unitary_irrep_dim_bound}. In the third line, we use the estimate \eqref{eq: ???}.
-   
-
-such that 
-
+{\color{red!50!black} TC: COPIED FROM LATER SECTIONS
 The purpose of this section is to prove our main distance bound, \cref{thm:approx_tet}.
 Note that \cref{thm:approx_tet} then immediately implies the ``if'' portion of the claim of \cref{thm:iff_tet} by taking $k \to\infty$. 
 The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenvalue_cubic}.
@@ -1616,6 +1629,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     \end{equation}
     Finally, using \cref{eq:bhattacharyya_vs_distance}, we can substitute the maximum normalized product of Bhattacharyya coefficients here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
+}
 
 \clearpage
 \color{blue!50!black} TC: THE FOLLOWING IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
