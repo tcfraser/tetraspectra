@@ -478,10 +478,10 @@ These symmetries can, in many cases, be used to simplify the problem by selectin
 \begin{prop}[Scaling]
     \label{prop:scaling}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $s \in (0, \infty)$ be a positive real number.
-    Then the scaled eigenvalues, $(s\ea, s\eb, s\ec, s\ed, s\ee, s\ef)$, are tetrahedral if and only if the original, original eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
+    Then the scaled eigenvalues, $(s\ea, s\eb, s\ec, s\ed, s\ee, s\ef)$, are tetrahedral if and only if the unscaled eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
 \end{prop}
 \begin{proof}
-    The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_linear_constraints} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$; for example, we have $sA+sB-sC=0$ if and only if $s(A+B-C)=0$ if and only if $A+B-C=0$.
+    The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_linear_constraints} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$, e.g., we have $sA+sB-sC=0$ if and only if $A+B-C=0$ because $s \neq 0$.
 \end{proof}
 
 One may wonder whether it is possible to extend the scaling symmetry to negative values for $s$.
@@ -659,7 +659,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
             &&\tilde \ef_i \coloneqq \ef_i + y + z.
         \end{alignedat}
     \end{equation}
-    Then shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the original eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
+    Then shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
 \end{prop}
 \begin{proof}
     Given a Hermitian matrix $A$ with eigenvalues $\eig(A) = \ea$ and a constant $w \in \mathbb R$, the eigenvalues of $A+wI$ (where $I$ is the identity matrix) are
@@ -1263,7 +1263,7 @@ On the space of such 6-tuples, we introduce a function
     \min_{\substack{(A,B,D) \in \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}} 
     \left( \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2\right).
 \end{equation}
-Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ vanishes if and only if there are non-negative Hermitian matrices
+Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if there exists non-negative Hermitian matrices
 \begin{equation} \label{eq: 6 matrices}
     (A, B, C=A+B, D, E=A+B+C, F=B+D) \in (\hermp{n})^6
 \end{equation}
@@ -1284,7 +1284,7 @@ We denote $\sye=k$.
     Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
     Then, Hermitian matrices \eqref{eq: 6 matrices}  with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
-    if and only if for all triples of positive wieghts $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$, the following inequalities hold true
+    if and only if for all triples of positive wieghts $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$, the following inequalities are satisfied
     \begin{equation}
         \label{eq:nec_tet}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
