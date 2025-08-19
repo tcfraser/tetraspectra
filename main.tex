@@ -88,7 +88,6 @@ These inequalities are presented in the following theorem.
     Then there exists Hermitian matrices $(A,B,C,D,E,F)$ with satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
     if and only if for all triples of Young diagrams $(\ya,\yb,\yd)$,
     \begin{equation}
-        \label{eq:nec_tet}
         \vp_{\ya}(\ea)^{\frac{2}{3}}\vp_{\yb}(\eb)\vp_{\yd}(\ed)^{\frac{2}{3}}
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
         \vp_{\yf}(\ef)^{\frac{1}{3}}\vp_{\yc}(\ec)^{\frac{1}{3}}\vp_{\ye}(\ee)^{\frac{1}{3}}.
@@ -100,7 +99,7 @@ it does so using an infinite number of inequalities.
 Nevertheless, we prove the finite subset of such inequalities of fixed degree $k = \sya + \syb + \syd$ is sufficient to characterize the set of sextuples of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, which are \textit{approximately} tetrahedral in the sense that their distance, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, to the set of tetrahedral eigenvalues is small.
 \begin{thm}
     \label{thm:approx_tet}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:trace_conditions} and also the inequality i the inequality inn \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then 
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:trace_conditions} and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then 
     \begin{equation}
         \label{eq:tri_abd_cef_dist_bound}
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right),
@@ -778,8 +777,8 @@ In this section, we review material on the representation theory of compact conn
 Even though we will primarily deal with $G=U(n)$, we start with a more general story.
 
 \subsubsection{\texorpdfstring{$\boldsymbol{G}$}{G} compact}
-Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\mathfrak{t} ={\rm Lie}(T)$ its Lie algebra, $\Lambda = {\rm ker}(\exp) \subset \mathfrak{t}$ the integral lattice, $\Lambda^* \subset \mathfrak{t}^*$ the weight lattice, and $\Lambda^*_+ \subset \Lambda^*$ the set of dominant weights of $G$. 
-For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to {\rm End}(V_\yx)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
+Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\mathfrak{t} ={\rm Lie}(T)$ its Lie algebra, $\Lambda = \ker(\exp) \subset \mathfrak{t}$ the integral lattice, $\Lambda^* \subset \mathfrak{t}^*$ the weight lattice, and $\Lambda^*_+ \subset \Lambda^*$ the set of dominant weights of $G$. 
+For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to \End(V_\yx)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
 
 The tensor product of two irreducible representations admits a unique decomposition of the form
 %
@@ -787,7 +786,7 @@ The tensor product of two irreducible representations admits a unique decomposit
     V_\ya \ot V_\yb = \bigoplus_\yc C_{\ya \yb}^\yc \ot V_\yc,
 \end{equation}
 where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions 
-$c_{\ya \yb}^\yc = \dim \, C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition \eqref{eq:tensor product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
+$c_{\ya \yb}^\yc = \dim \, C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition in \cref{eq:tensor product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
 %
 \begin{equation}\label{eq:operator product}
     \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc (\id \ot \pi_\yc(g)) P_{\ya \yb}^\yc,
@@ -799,7 +798,7 @@ Characters of irreducible representations are denoted by
 \begin{equation}\label{eq:character}
     \chi_\yx(g)= \Tr_{V_\yx}[\pi_\yx(g)].
 \end{equation}
-Taking a trace of equation \eqref{eq:operator product} we obtain the standard product rule for characters:
+Taking a trace of \cref{eq:operator product} we obtain the standard product rule for characters:
 %
 \begin{equation}\label{eq:product rule}
     \chi_\ya(g) \chi_\yb(g) = \sum_\yc c_{\ya \yb}^\yc \, \chi_\yc(g).
@@ -867,7 +866,7 @@ Foe future use, we will needowing fact:
             (\Tr \, \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega)^{\frac{1}{2}},
         \end{array}
     \end{equation}
-    where in the third line we have used the Cauchy inequality for the Hilbert-Schmidt norm. Let $U = {\rm im}(\Pi_2)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $\Pi_2 \Omega \Pi_2$ with eigenvalues $\omega_j \geq 0$. Then,
+    where in the third line we have used the Cauchy inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(\Pi_2)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $\Pi_2 \Omega \Pi_2$ with eigenvalues $\omega_j \geq 0$. Then,
     \begin{equation}
         \begin{array}{lll}
             \Tr(\Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1) & = & 
@@ -896,17 +895,17 @@ We say that a dominant weight $\yx$ is positive if $\yx_n \geq 0$,and we denote 
 l(\yx)=|\{i; \yx_i \neq 0\}|,
 \end{equation}
 where $l(\yx)$ is called the depth of $\yx$. Positive weights $\yx$ can be viewed as partitions of $\syx$ into $l \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $n$ rows. 
-Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and they extend to matrix algebras ${\rm Mat}_n(\mathbb{C})$. That is,
+Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and they extend to matrix algebras $\Mat_n(\mathbb{C})$. That is,
 \begin{equation}
 \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
 \end{equation}
-for all $X,Y \in {\rm Mat}_n(\mathbb{C})$.
-Tensor products of representations with positive weights decompose into direct sums of representations of the same type. Note that in the decomposition \eqref{eq:tensor product} one has only terms with 
-%
-\begin{equation}       \label{eq:trace representations}
-\syc = \sya + \syb.
+for all $X,Y \in \Mat_n(\mathbb{C})$.
+Tensor products of representations with positive weights decompose into direct sums of representations of the same type. 
+Note the decomposition in \cref{eq:tensor product} one has only terms with 
+\begin{equation} \label{eq:trace representations}
+    \syc = \sya + \syb.
 \end{equation}
-We will sometimes refer to equation \eqref{eq:trace representations} as to a trace equality (in fact, one of many trace equalities in this paper).
+We will sometimes refer to \cref{eq:trace representations} as to a trace equality (in fact, one of many trace equalities in this paper).
 
 Recall that for Young diagrams (or partitions) $\yx$ with fixed size $\sya=k$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$. 
 The dimensions of these representations are given by formula
@@ -940,7 +939,7 @@ Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-m
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\syx =k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in 
-$(\mathbb{C}^n)^{\ot k}$. Since all $U(n)$ representations entering the decomposition \eqref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
+$(\mathbb{C}^n)^{\ot k}$. Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
 Applying it to an element $X \in {\rm Mat}_n(\mathbb{C})$, we obtain
 \begin{equation} \label{eq:X^k}
     X^{\ot k}  = \oplus_{\syx =k} \, {\rm Id}_{W_\yx} \ot \pi_\yx(X),
@@ -951,7 +950,7 @@ where on the right hand side we a have a direct sum of operators acting on the s
     k! \sum_{\yx:\syx=k} H_{\yx}^{-1} \chi_\yx(X) =
     k! \sum_{\yx:\syx=k} \varphi_\yx(X),
 \end{equation}
-as required. The second identity in \eqref{eq:sum lambda} follows by taking a sum over $k$ in the first one.
+as required. The second identity in \cref{eq:sum lambda} follows by taking a sum over $k$ in the first one.
 
 % TC: defined earlier!:: We denote the space of non-negative Hermitian matrices of size $n$ by $\hermp{n}$.
 \begin{prop}
@@ -959,7 +958,7 @@ as required. The second identity in \eqref{eq:sum lambda} follows by taking a su
 \end{prop}
 
 \begin{proof}
-    By \eqref{eq:X^k}, operators $\id_{W_\yx} \ot \pi_\yx(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$. Hence, they are also non-negative Hermitian operators, and so are $\pi_\yx(X)$ and $\Phi_\yx(X)$. Since $\varphi_\yx(X)$ is the trace of $\Phi_\yx(X)$, it takes values in $\mathbb{R}_{\geq 0}$.
+    By \cref{eq:X^k}, operators $\id_{W_\yx} \ot \pi_\yx(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$. Hence, they are also non-negative Hermitian operators, and so are $\pi_\yx(X)$ and $\Phi_\yx(X)$. Since $\varphi_\yx(X)$ is the trace of $\Phi_\yx(X)$, it takes values in $\mathbb{R}_{\geq 0}$.
 \end{proof}
 
 \subsubsection{Functions \texorpdfstring{$\boldsymbol{\varphi^{\ya \yb}_\yc}$}{phiabc} and \texorpdfstring{$\boldsymbol{\varphi^{\ya \yb \yd}_{\yc \ye \yf}}$}{phiabcdef}}
@@ -1001,7 +1000,7 @@ It is  convenient to introduce the following functions of two matrices,
     \end{equation}
     Hence, $\varphi^{\ya \yb}_\yc(X, Y)$ is the trace of the orthogonal restriction of  $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ to $(C_{\ya \yb} \ot V_\yc) \subset V_\ya \ot V_\yb$. Since $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ is a non-negative Hermitian operator, so is its restriction. It has non-negative real eigenvalues, and a non-negative real trace, as required.
 \end{proof}
-\begin{thm}
+\begin{thm}[Binomial theorem]
     For $X,Y \in {\rm Mat}_n(\mathbb{C})$ and $\yc \in \Lambda^*_{++}$, we have
     \begin{equation} \label{eq:varphi sum}
         \varphi_\yc(X+Y)=\sum_{\ya, \yb} \varphi^{\ya \yb}_\yc(X, Y).
@@ -1009,7 +1008,7 @@ It is  convenient to introduce the following functions of two matrices,
 \end{thm}
 
 \begin{proof}
-    Let $k=\syc$, $\rho_k$ the natural representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $C_k=(\mathbb{C}^n)^{\ot k}$, and $P^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \eqref{eq:schur-weyl}. 
+    Let $k=\syc$, $\rho_k$ the natural representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $C_k=(\mathbb{C}^n)^{\ot k}$, and $P^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}. 
     We compute,
     \begin{equation}
         \begin{array}{lll}
@@ -1027,13 +1026,13 @@ It is  convenient to introduce the following functions of two matrices,
     \begin{equation}
      (X+Y)^{\ot k} = \sum_{l=0}^k \frac{k!}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
     \end{equation}
-    which is a non-commutative counterpart of the binomial decomposition. In the fifth line, we have used the Schur-Weyl duality for representations $_k\rho_l$ and 
+    which is a non-commutative counterpart of the binomial decomposition. In the fifth line, we have used the Schur-Weyl duality for representations $\rho_l$ and 
     $\rho_{k-l}$, and the fact that $P^\yc = \sum_{\ya, \yb} P_{\ya \yb}^\yc$. 
 \end{proof}
 
-\begin{rem}
-    While equation \eqref{eq:product varphi} is a generalization of the product rule for characters \eqref{eq:product rule}, equation \eqref{eq:varphi sum} uses the Schur-Weyl duality, and it is a specific feature of $G=U(n)$, and of the corresponding matrix algebra ${\rm Mat}_n(\mathbb{C})$.
-\end{rem}
+%\begin{rem}
+%    \Cref{eq:varphi sum} uses the Schur-Weyl duality, and it is a specific feature of $G=U(n)$, and of the corresponding matrix algebra ${\rm Mat}_n(\mathbb{C})$.
+%\end{rem}
 
 For a 6-tuple of positive weights, we introduce a function of three matrices,
 %
@@ -1113,7 +1112,7 @@ In that case, the \textit{unnormalized} Bhattacharyya coefficient is also denote
 \begin{equation}
     \BC(p,q) = \tau \, B\left(\frac{p}{\tau}, \frac{q}{\tau}\right),
 \end{equation}
-and the estimate \eqref{eq:BC norm estimate} then reads
+and the estimate in \cref{eq:BC norm estimate} then reads
 \begin{equation}
     \label{eq:bhattacharyya_vs_distance}
     \frac{\BC(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
@@ -1145,13 +1144,13 @@ By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and
 The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}:
 %
 \begin{prop}[Eigenvalue estimation]
-    \label{prop:eig_est}
+    \label{prop:eig_est_2}
     For, $x \in \mathbb{R}_+^n, \yx \in \Lambda^*_{++}$, we have 
     \begin{equation}
         P_{x}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^\yx}{p^x}\right).
     \end{equation}
 \end{prop}
-Proposition \ref{prop:eig_est} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\yx$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
+\Cref{prop:eig_est_2} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\yx$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
 \begin{prop}
 For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \begin{equation}
@@ -1187,11 +1186,11 @@ For $x \in \mathbb{R}_+^n$, we define the conjugacy class $\orbit_x$ of the diag
 $[x]={\rm diag}(x_1, \dots, x_n)$ under the action of the unitary group $U(n)$:
 %
 \begin{equation}
-\orbit_x =\{ X= u[x]u^{-1}; u \in U(n)\} \subset \hermp{n}.
+    \orbit_x =\{ X= u[x]u^{-1}; u \in U(n)\} \subset \hermp{n}.
 \end{equation}
 Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$. This measure can be constructed as the pushforward of the probability Haar measure on $U(n)$. Also, conjugacy classes are isomorphic to coadjoint orbits of $U(n)$ and they carry canonical Duistermaat-Heckman measure proportional to $\mu_x$. In what follows, we will need expectation values $\mathbb{E}_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\mathbb{E}_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\mathbb{E}_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
 
-\begin{prop}\label{prop: estimate E_x,y,z}
+\begin{prop}\label{prop: estimate E_x_y_z}
     We have,
     \begin{equation}
         \begin{array}{lll}
@@ -1207,7 +1206,7 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
 \begin{proof}
     For the first equality, by Schur's Lemma we have
     \begin{equation}
-        \mathbb{E}_x \, \Phi_\yx(X) = \int_{O_x} \Phi_\yx(X) d\mu_x = c(x) \, {\rm Id}_{V_\yx}
+        \mathbb{E}_x \, \Phi_\yx(X) = \int_{O_x} \Phi_\yx(X) d\mu_x = c(x) \, \id_{V_\yx}
     \end{equation}
 
     
@@ -1265,7 +1264,6 @@ satisfying the trace conditions
 \end{equation}
 On the space of such 6-tuples, we introduce a function
 \begin{equation}
-    \label{eq:defn_tet_deviation}
     D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq 
     \min_{\substack{(A,B,D) \in \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}} 
     \left( \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2\right).
@@ -1286,11 +1284,11 @@ satisfying the size conditions
 \sya + \syb + \syd = \sye.
 \end{equation}
 We denote $\sye=k$.
+The following is a restatement of \cref{thm:iff_tet} from the introduction.
 \begin{thm}
-    \label{thm:iff_tet}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
-    Then, Hermitian matrices \eqref{eq: 6 matrices}  with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
+    Then, Hermitian matrices satisfting \cref{eq: 6 matrices} with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
     if and only if for all triples of positive wieghts $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$, the following inequalities are satisfied
     \begin{equation}
         \label{eq:nec_tet}
@@ -1299,14 +1297,13 @@ We denote $\sye=k$.
         \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
         \vp_{\yf}(\ef)\vp_{\yc}(\ec)\vp_{\ye}(\ee)\right)^{\frac{1}{3}}.
     \end{equation}
-    Furthermore, if inequalities \cref{eq:nec_tet} hold true for all triples $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ with $\sya + \syb + \syd = k$, then 
+    Furthermore, if inequalities \cref{eq:nec_tet} hold true for all triples $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ with $\sya + \syb + \syd = k$, then
     \begin{equation}
-        \label{eq:tri_abd_cef_dist_bound}
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right).
     \end{equation}
 \end{thm}
 
-We will split the proof of Theorem \ref{thm:iff_tet} into several steps.
+We will split the proof of \cref{thm:iff_tet} into several steps.
 
 \subsection{Necessary conditions}
 
@@ -1343,7 +1340,7 @@ This calculation follows from the estimate:
     \leq \norm{\abcdefsymbol}_{\infty} 
     \left( \vp_{\ya}(A) \vp_{\yd}(D) \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}.
 \end{equation}
-To prove this inequality, use Proposition \ref{prop: Pi Omega Pi} to obtain
+To prove this inequality, use \cref{prop: Pi Omega Pi} to obtain
 \begin{equation}
     \begin{array}{lll}
         \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right| 
@@ -1405,7 +1402,7 @@ and this completes the proof for \cref{eq:vp_ABD_abs_bound}.
 Let $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ which satisfy the trace conditions and also
 %
 \begin{equation}
-    \label{eq:abd_multiplied}
+    \label{eq:abd_multiplied_2}
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
     \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
     \left(
@@ -1419,7 +1416,7 @@ We will consider triples with $\sya + \syb + \syc = k$ for some fixed integer $k
 Denote by $(\yc^*, \ye^*, \yf^*)$ the triple for which the corresponding term on the right hand side is maximal. 
 We have,
 \begin{equation}
-    \label{eq:first_abd_bound}
+    \label{eq:first_abd_bound_2}
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
     \leq \polyk{3(n-1)} \norm{\abcdefsymbolcefstarred}_{\infty}
     \left(
@@ -1429,7 +1426,7 @@ We have,
     \right)^{\frac{1}{3}}
     ,
 \end{equation}
-where $\polyk{3(n-1)}$ serves as an upper bound on the number of terms in the sum in \eqref{eq:abd_multiplied}.
+where $\polyk{3(n-1)}$ serves as an upper bound on the number of terms in the sum in \cref{eq:abd_multiplied_2}.
 \Cref{eq:first_ab_bound} then implies
 \begin{equation}
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0 \implies \norm{\abcdefsymbolcefstarred}_{\infty} >0.
@@ -1450,11 +1447,11 @@ Next, consider the bound
          \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
     \end{array}
 \end{equation}
-Here in the first line we have used Proposition \ref{prop: estimate E_x,y,z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
+Here in the first line we have used \cref{prop: estimate E_x_y_z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
 $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$, and we estimate the dimensions of representations by \cref{eq:unitary_irrep_dim_bound}. In the third line, we denote $C^*=A^*+B^*, E^*=A^*+B^*+D^*, F^*=B^*+D^*$, and
 use the estimate in \cref{eq:vp_ABD_abs_bound}.
 
-By multiplying the estimates \eqref{eq:first_abd_bound} and \eqref{eq: second_abd_bound}, we obtain
+By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \cref{eq: second_abd_bound}, we obtain
 \begin{equation}
     \begin{array}{lll}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} (\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed))^2 
@@ -1500,7 +1497,6 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ is obtained from relaxing the assumption of the claim that $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfies \cref{eq:nec_tet} for all triples of Young diagrams $(\ya,\yb,\yd)$.
     By multiplying both sides of \cref{eq:nec_tet} by $\vp_{\ya}(\ea)^{\frac{1}{3}}\vp_{\yd}(\ed)^{\frac{1}{3}}$ we conclude
     \begin{equation}
-        \label{eq:abd_multiplied}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left(
@@ -1514,7 +1510,6 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     Note that the summand is only non-zero if the size constraints $\sya+\syb+\syd=\sya + \syf = \syc + \syd = \sye = k$ are satisfied.
     As there are at most $\polyk{3(n-1)}$ such triples satisfying the size constraints (remember $\ya,\yb,\yd$ are fixed), we conclude that
     \begin{equation}
-        \label{eq:first_abd_bound}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         \leq \polyk{3(n-1)} \norm{\abcdefsymbolcefstarred}_{\infty}
         \left(
@@ -1537,18 +1532,15 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     Then we upper bound the average of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over $(X,Y,Z) \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}$ with the maximum of the absolute value.
     Together this gives
     \begin{equation} 
-        \label{eq:max_abs_value_bound}
         \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z) \in \\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
     \end{equation}
     Furthermore, applying \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} to the absolute value $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ on the right-hand side above produces
     \begin{equation} 
-        \label{eq:sup_bound}
         \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} \leq \norm{\abcdefsymbol}_{\infty}
         \left(\vp_{\ya}(X)\vp_{\yf}(Y+Z)\vp_{\yc}(X+Y)\vp_{\yd}(Z)\vp_{\ye}(X+Y+Z)\right)^{\frac{1}{3}}.
     \end{equation}
     Applying \cref{eq:sup_bound} to \cref{eq:max_abs_value_bound} gives 
     \begin{align} 
-        \label{eq:second_abd_bound}
         \begin{split}
             &\norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \leq \polyk{3\binom{n}{2}} \norm{\abcdefsymbol}_{\infty} 
             \times \cdots \\ &\qquad\cdots \times 
@@ -1558,7 +1550,6 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     \end{align}
     Now we choose $(\yc,\ye,\ef)$ in the above bound to be equal to the optimal choice from $(\yc^*, \ye^*, \yf^*)$ from \cref{eq:first_abd_bound} and multiply the result with \cref{eq:first_abd_bound} and then take a square root to obtain
     \begin{align}
-        \label{eq:third_abd_bound}
         \begin{split}
             &\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
             \leq \polyk{\frac{3}{2}\binom{n}{2} + \frac{3}{2}(n-1)}
@@ -2459,7 +2450,7 @@ A key property of the Schur-Weyl distribution $p_{\ex}(\yx)$ is that it behaves 
 \begin{rem}
     We will henceforth relax the dimension prefactor $\dim V_{\yx}^{n}$ using the following dimension bound which holds for all Young diagrams with $k$ boxes:
     \begin{equation}
-        \label{eq:unitary_irrep_dim_bound}
+        \label{eq:unitary_irrep_dim_bound_2}
         \dim V_{\yx}^{n} \leq \polyk{\binom{n}{2}} \coloneqq (k+1)^{\frac{n(n-1)}{2}}.
     \end{equation}
 \end{rem}
@@ -2511,7 +2502,7 @@ The unnormalized Bhattachara coefficient inherits all of its properties from the
         \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} = \frac{\tau^k}{k!}\sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)} = \frac{\tau^k}{k!}\BC_k(p_{\ex},p_{\ey})
     \end{equation}
     where $\BC_k(p_{\ex},p_{\ey})$ denotes the normalized Bhattacharyya coefficient between the Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ over Young diagrams of size $k$.
-    From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound}, we have
+    From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound_2}, we have
     \begin{equation}
         \BC_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
     \end{equation}
