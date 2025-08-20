@@ -64,13 +64,85 @@ For this reason, we refer to this eigenvalue problem as the \textit{tetrahedral}
     \caption{(Left) Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}%
     \label{fig:tetrahedron_labelling_scheme}%
 \end{figure}%
+It is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to \textit{additional} matching constraints.
+Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
+\begin{equation}
+    \label{eq:four_faces}
+    (\ea,\eb,\ec), \qquad
+    (\eb,\ed,\ef), \qquad
+    (\ec,\ed,\ee), \qquad
+    (\ea,\ef,\ee).
+\end{equation}
+If each of the above triplets are separately compatible in the sense of the original Horn problem, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
+\begin{equation}
+    \label{eq:four_faces_matrices}
+    A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
+\end{equation}
+The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the corresponding pairs of primed and unprimed Hermitian matrices above must coincide.
+
+\vspace{1em}
+\textbf{The case of $\boldsymbol{2 \times 2}$ matrices:}
 Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
-It is well-known that the space of admissible eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is equivalent to the moduli space of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
-This correspondence generalizes to the tetrahedral case in the sense that the space of admissible eigenvalues for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is equivalent to the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
-While these correspondences are straightforward to prove and also well-known, this geometric knowledge about the solution space leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices;
-specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is described by the conjunction of the triangle inequalities for each of the four faces (these inequalities coincide with the solution to Horn's original problem) together with the positivity of so-called Cayley-Menger determinants which are polynomial inequalities in the side-lengths $(a,b,c,d,e,f)$ \cite{sitharam2018handbook}.
-Even for $n=2$, we remark that there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
-In particular, while the Horn's problem is completely characterized by a \textit{finite} number of \textit{linear} inequalities in the eigenvalues (indeed the solution space is an instance of a moment polytope known as \textit{Horn's polytope}), the solution space for the tetrahedral Horn's problem is not convex nor a polytope.
+Without loss of generality, it is always possible to restrict attention to the case of \textit{traceless} Hermitian matrices (see \cref{sec:symmetries}).
+Moreover, every $2\times 2$ traceless Hermitian matrix can be identified by a three-dimensional vector $v = (v_1, v_2, v_3) \in \mathbb R^{3}$ using the formula:
+\begin{equation}
+    X = \begin{pmatrix} v_3 & v_1-iv_2 \\ v_1+iv_2 & -v_3 \end{pmatrix},
+\end{equation}
+in which case, the eigenvalues of $X$ are given by
+\begin{equation}
+    \eig(X) = (\ell_x, -\ell_x),
+\end{equation}
+where $\ell_x = \norm{v}_{2} = \sqrt{v_1^2 + v_2^2 + v_3^2}$ is the Euclident length of the vector $v$.
+As a consequence, the eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is isomorphic to the moduli space of sidelengths of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
+This correspondence generalizes to the tetrahedral case in the sense that the space of admissible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is equivalent to the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
+This geometric knowledge about the solution space then leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices \cite{richardson1902trigonometry,wirth2009edge};
+specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is described by the conjunction of the triangle inequalities for each of the four faces,
+\begin{equation}
+    \label{eq:quadruplet_triangle_constraints}
+    \abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b, \qquad
+    \abs{\ell_b-\ell_d} \leq \ell_f \leq \ell_b+\ell_d, \qquad
+    \abs{\ell_d-\ell_c} \leq \ell_e \leq \ell_d+\ell_c, \qquad
+    \abs{\ell_a-\ell_f} \leq \ell_e \leq \ell_a+\ell_f,
+\end{equation}
+together with a non-linear inequality \cite{sitharam2018handbook}:
+\begin{equation}
+    \label{eq:volume_positive_constraint}
+    \mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f) = \frac{1}{288}\det
+    \begin{pmatrix}
+        0 & \ell_a^2 & \ell_c^2 & \ell_e^2 & 1 \\
+        \ell_a^2 & 0 & b^2 & \ell_f^2 & 1 \\
+        \ell_c^2 & \ell_b^2 & 0 & \ell_d^2 & 1 \\
+        \ell_e^2 & \ell_f^2 & \ell_d^2 & 0 & 1 \\
+        1 & 1 & 1 & 1       & 0
+    \end{pmatrix}
+    \geq 0.
+\end{equation}
+The quantity $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is known as a Cayley-Menger determinant; if $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is positive and if the triangle inequalities above are satisfied, the value of $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}\footnotemark{}.
+\footnotetext{The triangle inequalities $\abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b$ are also equivalent to the non-negativity of the \textit{area}, $\mathrm{CM}(\ell_a,\ell_b,\ell_c)$, of the triangle with side-lengths $\ell_a,\ell_b$ and $\ell_c$ where 
+    $\mathrm{CM}(\ell_a,\ell_b,\ell_c)^2 = -\frac{1}{16}\det
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 \\
+        1 & 0 & \ell_a^2 & \ell_c^2 \\
+        1 & \ell_a^2 & 0 & \ell_b^2 \\
+        1 & \ell_c^2 & \ell_b^2 & 0 \\
+    \end{pmatrix}$ is equivalent to Heron's formula.
+}
+\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
+        \qquad
+        \includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
+    \end{center}
+    \caption{
+        A comparison between the values for $(\ell_c,\ell_e,\ell_f)$ with fixed $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ which (left) merely satisfy the triangle inequalities applied to each face the tetrahedron (\cref{eq:quadruplet_triangle_constraints}) and (right) those which additionally satisfy the Cayley-Menger determinant inequality (\cref{eq:volume_positive_constraint}).
+        The figure on the right depicts (a slice of) the moduli space of Euclidean tetahedra with side lengths $(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ and thus depicts the solution to the tetrahedral Horn problem for $2\times 2$ traceless Hermitian matrices; remark that it is neither a polytope or convex.
+        The figure on the left depicts (a slice of) a polytope, formed by the triangle inequalities (\cref{eq:quadruplet_triangle_constraints}) which forms a loose outer approximation to the figure on the right.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+\end{figure}
+Before proceeding, we remark that even for the case of $2\times 2$ matrices, there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
+In particular, while the solution to the original Horn problem is completely characterized by a convex polytope (i.e., by a finite number of linear inequalities in the eigenvalues), the solution space for the tetrahedral Horn's problem is neither convex nor a polytope.
 
 \vspace{1em}
 \textbf{Our contributions:}
@@ -82,7 +154,7 @@ These inequalities are presented in the following theorem.
     \label{thm:iff_tet}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of non-negative eigenvalues of length $n$ satisfying the trace conditions:
     \begin{equation}
-        \label{eq:trace_conditions}
+        \label{eq:tet_trace_cond}
         \tea+\teb=\tec, \teb+\ted=\tef, \tec+\ted=\tee, \text{and} \tea+\tef=\tee.
     \end{equation}
     Then there exists Hermitian matrices $(A,B,C,D,E,F)$ with satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
@@ -99,7 +171,7 @@ it does so using an infinite number of inequalities.
 Nevertheless, we prove the finite subset of such inequalities of fixed degree $k = \sya + \syb + \syd$ is sufficient to characterize the set of sextuples of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, which are \textit{approximately} tetrahedral in the sense that their distance, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, to the set of tetrahedral eigenvalues is small.
 \begin{thm}
     \label{thm:approx_tet}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:trace_conditions} and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then 
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:tet_trace_cond} and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then 
     \begin{equation}
         \label{eq:tri_abd_cef_dist_bound}
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right),
@@ -238,7 +310,6 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 
 \vspace{1em}
 \textbf{Organization of the paper:}
-In \cref{sec:tet_horn_prob} we formally define the tetrahedral Horn problem, describe some of its symmetries, and provide a solution for the case of $2\times 2$ matrices.
 
 {\color{red!50!black} Anton's:
     TODO:
@@ -251,521 +322,6 @@ The results in \cref{sec:distance_bounds} rely on the results of \cref{sec:ineqs
 }
 % Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
 
-\section{The tetrahedral Horn problem}
-\label{sec:tet_horn_prob}
-
-\subsection{Eigenvalue problems for matrix sums}
-
-Throughout this paper, we consider the relationship between $n \times n$ Hermitian matrices and their real-valued tuples of eigenvalues.
-To denote the set of $n\times n$ Hermitian matrices, we use
-\begin{equation}
-    \herm{n} \coloneqq \{ X \in M_{n}(\mathbb C) \mid X^{\dagger} = X \},
-\end{equation}
-and to denote the set of possible eigenvalues of $n \times n$ matrices, we use
-\begin{equation}
-    \eigs{n} \coloneqq \{ \ex = (\ex_1, \ldots, \ex_n) \in \mathbb R^{n} \mid \ex_1 \geq \cdots \geq \ex_n \}.
-\end{equation}
-Let $\hermp{n}$ be the subset of positive semidefinite $n\times n$ Hermitian matrices and $\eigsp{n}$ the corresponding set of non-negative eigenvalues.
-Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of $X$.
-The set of Hermitian matrices with eigenvalues $\ex \in \eigs{n}$ is denoted by
-\begin{equation}
-    \orbit_{\ex} \coloneqq \{ X \in \herm{n} \mid \eig(X) = \ex \},
-\end{equation}
-and $[\ex]$ denotes the diagonal matrix with entries $(\ex_1, \ldots, \ex_n)$ along the diagonal:
-\begin{equation}
-    [\ex] \coloneqq \diag(x_1, \ldots, x_n).
-\end{equation}
-The set of Hermitian matrices with eigenvalues $\ex$ can then be identified with the unitary orbit of the diagonal matrix $[\ex]$, i.e., $\orbit_{\ex} = \{ U [\ex] U^{-1} \mid U \in \U(n) \}$.
-Moreover, for any function of Hermitian matrices, $f$, which unitarily invariant in the sense that $f(X) = f(UXU^{-1})$ holds for all $X \in \herm{n}$ and $U\in \U(n)$, we let $f[\ex]$ be shorthand for $f([x])$.
-For example,
-\begin{equation}
-    \Tr[\ex] \coloneqq \Tr([\ex]), \qquad \text{and} \qquad \rank[\ex] \coloneqq \rank([\ex]).
-\end{equation}
-
-\begin{defn}[Trigonal Horn problem]
-    \label{prob:tri_problem}
-    A triple $(\ea,\eb,\ec) \in \eigs{n}^{3}$ of candidate eigenvalues are said to be \defnsty{trigonal} if there exists a corresponding triple $(A,B,C) \in \herm{n}^{3}$ of $n\times n$ Hermitian matrices satisfying (i) the linear constraint
-    \begin{equation}
-        \label{eq:tri_linear_constraints}
-        A + B = C,
-    \end{equation}
-    and (ii) the three eigenvalue constraints
-    \begin{equation}
-        \label{eq:tri_eigenvalue_constraints}
-        \eig(A) = \ea, \quad
-        \eig(B) = \eb, \quad
-        \eig(C) = \ec.
-    \end{equation}
-    The problem of determining the set of trigonal eigenvalues $(\ea,\eb,\ec)$ is known as \defnsty{Horn's problem} or the \defnsty{original Horn problem}.
-\end{defn}
-
-\begin{defn}[Tetrahedral Horn problem]
-    \label{prob:tet_problem}
-    A sextuple $(\ea,\eb,\ec,\ed,\ee,\ef) \in \eigs{n}^{6}$ of candidate eigenvalues are said to be \defnsty{tetrahedral} if there exists a corresponding sextuple $(A,B,C,D,E,F) \in \herm{n}^{6}$ of $n\times n$ Hermitian matrices satisfying (i) the four linear constraints
-    \begin{equation}
-        \label{eq:tet_linear_constraints}
-        A + B = C, \quad
-        B + D = F, \quad
-        C + D = E, \quad
-        A + F = E,
-    \end{equation}
-    and (ii) the six eigenvalue constraints
-    \begin{equation}
-        \label{eq:tet_eigenvalue_constraints}
-        \eig(A) = \ea, \quad
-        \eig(B) = \eb, \quad
-        \eig(C) = \ec, \quad
-        \eig(D) = \ed, \quad
-        \eig(E) = \ee, \quad
-        \eig(F) = \ef.
-    \end{equation}
-    The problem of determining the set of tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ will be referred to as the \defnsty{tetrahedral Horn problem}.
-\end{defn}
-
-The tetrahedral Horn problem can be viewed as a generalization of the Horn's problem in a variety of ways.
-For instance, a triplet $(\ea,\eb,\ec)$ of eigenvalues is trigonal if and only if the sextuple $(\ea,\eb,\ec,0,\ec,\eb)$ is tetrahedral.
-More generally, it is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to additional matching constraints.
-Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
-\begin{equation}
-    \label{eq:four_faces}
-    (\ea,\eb,\ec), \qquad
-    (\eb,\ed,\ef), \qquad
-    (\ec,\ed,\ee), \qquad
-    (\ea,\ef,\ee).
-\end{equation}
-If each of the above triplets are trigonal, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
-\begin{equation}
-    \label{eq:four_faces_matrices}
-    A+B=C, \qquad \tilde B+D=F, \qquad \tilde C+\tilde D=E, \qquad \tilde A+\tilde F=\tilde E.
-\end{equation}
-The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the corresponding pairs of primed and unprimed Hermitian matrices above must coincide.
-%\footnote{Note that by conjugating the third and fourth conditions in \cref{eq:four_faces_matrices} by unitaries $U$ and $V$ respectively, it is possible to set $\tilde C \mapsto U^{-1} \tilde C U = C$ and $\tilde F \mapsto V^{-1} \tilde F V = F$. Therefore, one can could assume without loss of generality that $C=\tilde C$ and $F=\tilde F$, but this does not eliminate remaining requirements .}
-%\begin{equation}
-%    A = \tilde A, \quad
-%    B = \tilde B, \quad
-%    C = \tilde C, \quad
-%    D = \tilde D, \quad
-%    E = \tilde E, \quad
-%    F = \tilde F.
-%\end{equation}
-
-%\subsection{Deviation Measures}
-%
-%In order to quantify the degree to which a candidate collection of eigenvalues is compatible, either in the case of Horn's original problem or in the case of the tetrahedral Horn problem, it will be helpful to define some measures of deviation or distance which are non-negative and vanish if and only if the eigenvalues are compatible.
-%
-%\begin{prop}
-%    Let $1 \leq p \leq \infty$.
-%    Then for pairs of Hermitian matrices $X,Y \in \herm{n}$ with eigenvalues $\eig (X) = \ex = (\ex_1 \geq \cdots \geq \ex_n)$ and $\eig(Y) = \ey = (\ey_1 \geq \cdots \geq \ey_n)$, one has
-%    \begin{equation}
-%        \norm{X-Y}_{p} \geq \norm{x-y}_{p}.
-%    \end{equation}
-%    Moreover, if $S \subseteq \herm{n}$ is a unitarily invariant and closed subset of Hermitian matrices.
-%    Then 
-%    \begin{equation}
-%        \min_{Y \in S} \norm{X - Y}_p = \min_{\ey \in \eig(S)} \norm{\ex - \ey}_p,
-%    \end{equation}
-%\end{prop}
-%
-%In terms of Horn's original problem, we can consider the set $S$ of Hermitian matrices which are of the form $A+B$ for some $(A,B) \in \orbit_{\ea} \times \orbit_{\eb}$.
-%\begin{prop}
-%    For a given triple of eigenvalues, $(\ea,\eb,\ec)$, and $1 \leq p \leq \infty$, let
-%    \begin{equation}
-%        D_p(\ea,\eb,\ec) \coloneqq \min_{U,V \in \U(n)} \norm{ \eig(U\!\cdot\![\ea] + V\!\cdot\![\eb]) - \ec }_{p}.
-%    \end{equation}
-%    Then $D_p(\ea,\eb,\ec) \geq 0$ with equality holding if and only if $(\ea,\eb,\ec)$ are trigonal.
-%    Moreover,
-%    \begin{equation}
-%        D_p(\ea,\eb,\ec) = \min_{A,B,C \in \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ec}} \norm{ A + B - C }_{p}.
-%    \end{equation}
-%\end{prop}
-
-
-\subsection{Low dimensional solutions}
-
-In the original Horn problem, the eigenvalues $(\ea, \eb, \ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ necessarily must satisfy a basic equality condition known as the \textit{trace condition}:
-\begin{equation}
-    \label{eq:tri_trace_cond}
-    {\tea}+{\teb}={\tec},
-\end{equation}
-where ${\tex} \coloneqq \sum_{i} \ex_i$ is shorthand for the sum of the eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$.
-This condition must hold because $A+B=C$ implies $\Tr(C) = \Tr(A+B) = \Tr(A)+\Tr(B)$ and $\Tr(X) = {\tex}$ for any Hermitian matrix $X$ with eigenvalues $\ex$.
-For the tetrahedral Horn problem, a set of tetrahedral eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ necessarily satisfy four \textit{trace conditions}:
-\begin{equation}
-    \label{eq:tet_trace_conds}
-    {\tea} + {\teb} = {\tec}, \quad
-    {\teb} + {\ted} = {\tef}, \quad
-    {\ted} + {\tec} = {\tee}, \quad
-    {\tea} + {\tef} = {\tee}.
-\end{equation}
-Furthermore, for the trivial case where $n=1$, the above trace constraints are both necessary and sufficient for the tetrahedral Horn problem.
-
-\begin{exam}[Tetrahedral Horn problem for \texorpdfstring{$n=2$}{n=2}]
-    \label{exam:n_2}
-    Here we articulate the solution to the tetrahedral Horn problem for $2\times 2$ Hermitian matrices.
-    We restrict our focus to the case of \textit{traceless} $2 \times 2$ Hermitian matrices\footnote{In \cref{sec:symmetries}, \cref{cor:traceless}, we will see that this restriction can be made without loss of generality.}.
-    In this context, the sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ can be identified with a sextuple of non-negative real numbers $(a,b,c,d,e,f) \in \mathbb R_{\geq 0}^{6}$ such that the sextuple of traceless eigenvalues are
-    \begin{equation}
-        \label{eq:traceless_two_dim_tetra}
-        (a, -a), \quad
-        (b, -b), \quad
-        (c, -c), \quad
-        (d, -d), \quad
-        (e, -e), \quad
-        (f, -f).
-    \end{equation}
-    Moreover, each traceless $2 \times 2$ Hermitian matrix, $X$, may be identified with a three-dimensional vector $(x_1, x_2, x_3) \in \mathbb R^{3}$ using the standard Pauli-matrix basis $\{\sigma_1, \sigma_2, \sigma_3\}$ according to the formula:
-    \begin{equation}
-        X = x_1 \sigma_1 + x_2 \sigma_2 + x_3 \sigma_3 = \begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix}.
-    \end{equation}
-    Under this identification, the eigenvalues of $X$ are determined by the Euclidean length of the vector $(x_1, x_2, x_3)$:
-    \begin{equation}
-        \eig(X) = \eig\begin{pmatrix} x_3 & x_1-ix_2 \\ x_1+ix_2 & -x_3 \end{pmatrix} = (\norm{x}_2, -\norm{x}_2), \qquad \text{where}, \qquad \norm{x}_2 = \sqrt{x_1^2 + x_2^2 + x_3^2}.
-    \end{equation}
-    Furthermore, if $A$ is determined by the coordinates $(a_1,a_2,a_3)$ and $B$ by the coordinates $(b_1,b_2,b_3)$, then their sum $C=A+B$ is determined by the coordinates $(c_1, c_2, c_3) = (a_1 + b_1, a_2 + b_2, a_3 + b_3)$.
-    Consequently, in this setting, the tetrahedral Horn problem reduces to problem of describing the space of all possible edge-lengths $(a,b,c,d,e,f)$ of a Euclidean tetrahedron in $\mathbb R^{3}$.
-    This problem admits of a well-studied solution \cite{richardson1902trigonometry,wirth2009edge}, namely, the conjunction of a quadruplet of triangle-inequalities
-
-    \begin{equation}
-        \label{eq:quadruplet_triangle_constraints}
-        \abs{a-b} \leq c \leq a+b, \qquad
-        \abs{b-d} \leq f \leq b+d, \qquad
-        \abs{d-c} \leq e \leq d+c, \qquad
-        \abs{a-f} \leq e \leq a+f,
-    \end{equation}
-    (which ensure the possibility of forming a Euclidean triangle for each of the four faces),
-    together with a single non-linear inequality of the form
-    \begin{equation}
-        \label{eq:volume_positive_constraint}
-        \mathrm{CM}(a,b,c,d,e,f) = \frac{1}{288}\det
-        \begin{pmatrix}
-            0 & a^2 & c^2 & e^2 & 1 \\
-            a^2 & 0 & b^2 & f^2 & 1 \\
-            c^2 & b^2 & 0 & d^2 & 1 \\
-            e^2 & f^2 & d^2 & 0 & 1 \\
-            1 & 1 & 1 & 1       & 0
-        \end{pmatrix}
-        \geq 0.
-    \end{equation}
-    The quantity $\mathrm{CM}(a,b,c,d,e,f)$ is known as a Cayley-Menger determinant and, when $\mathrm{CM}(a,b,c,d,e,f)$ is positive and when the triangle inequalities above are also satisfied, $\mathrm{CM}(a,b,c,d,e,f)$ is always equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}\footnotemark{}.
-    \Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
-    \footnotetext{The triangle inequalities $\abs{a-b} \leq c \leq a+b$ are also equivalent to the non-negativity of the \textit{area}, $\mathrm{CM}(a,b,c)$, of the triangle with side-lengths $a,b$ and $c$ where
-        $\mathrm{CM}(a,b,c)^2 = -\frac{1}{16}\det
-    \begin{pmatrix}
-        0 & 1 & 1 & 1 \\
-        1 & 0 & a^2 & c^2 \\
-        1 & a^2 & 0 & b^2 \\
-        1 & c^2 & b^2 & 0 \\
-    \end{pmatrix}$ is equivalent to Heron's formula.
-    }
-
-    \begin{figure}
-    \begin{center}
-        \includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
-        \qquad
-        \includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
-    \end{center}
-    \caption{
-        A comparison between the values for $(c,e,f)$ with fixed $(a,b,d) = (5,7,6)$ which (left) merely satisfy the triangle inequalities applied to each face the tetrahedron (\cref{eq:quadruplet_triangle_constraints}) and (right) those which additionally satisfy the Cayley-Menger determinant inequality (\cref{eq:volume_positive_constraint}).
-        The figure on the right depicts (a slice of) the moduli space of Euclidean tetahedra with side lengths $(a,b,c,d,e,f)$ and thus depicts the solution to the tetrahedral Horn problem for $2\times 2$ traceless Hermitian matrices; remark that it is neither a polytope or convex.
-        The figure on the left depicts (a slice of) a polytope, formed by the triangle inequalities (\cref{eq:quadruplet_triangle_constraints}) which forms a loose outer approximation to the figure on the right.
-    }
-    \label{fig:tetrahedron_moduli_space_example}
-    \end{figure}
-\end{exam}
-
-\subsection{Symmetries of tetrahedral eigenvalues}
-\label{sec:symmetries}
-
-There are numerous types of symmetries present in the statement of \cref{prob:tet_problem}.
-The purpose of this section is to describe the scaling, inversion, tetrahedral, and shifting symmetries of the problem.
-These symmetries can, in many cases, be used to simplify the problem by selecting a canonical representative of the corresponding equivalence class; in other cases, it will be useful to leave \cref{prob:tet_problem} as stated.
-%Later we will comment on the possibility of additional hidden symmetries not previously mentioned.
-
-\begin{prop}[Scaling]
-    \label{prop:scaling}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $s \in (0, \infty)$ be a positive real number.
-    Then the scaled eigenvalues, $(s\ea, s\eb, s\ec, s\ed, s\ee, s\ef)$, are tetrahedral if and only if the unscaled eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
-\end{prop}
-\begin{proof}
-    The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_linear_constraints} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$, e.g., we have $sA+sB-sC=0$ if and only if $A+B-C=0$ because $s \neq 0$.
-\end{proof}
-
-One may wonder whether it is possible to extend the scaling symmetry to negative values for $s$.
-Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrix both negates and reverses the sorting order of its eigenvalues.
-\begin{prop}[Inversion]
-    \label{prop:inversion}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues.
-    Given any list of non-increasing eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{*}$ denote the inverted list of resorted and negated eigenvalues: $\ex^{*} = (-\ex_n \geq \cdots \geq - \ex_1)$.
-    Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if $(\ea^{*}, \eb^{*}, \ec^{*}, \ed^{*}, \ee^{*}, \ef^{*})$ are tetrahedral.
-\end{prop}
-\begin{proof}
-    The statement holds because $\eig(-X) = \ex^{*}$ whenever $\eig(X) = \ex$ and moreover the sextuple of matrices $(A,B,C,D,E,F)$ satisfies \cref{eq:tet_linear_constraints} if and only if the sextuple of negated matrices $(-A,-B,-C,-D,-E,-F)$ satisfies \cref{eq:tet_linear_constraints}.
-\end{proof}
-
-The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
-
-\begin{prop}[Oriented]
-    \label{prop:tet_symmetry}
-    The sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ of eigenvalues are tetrahedral if and only if the following sextuples of eigenvalues are tetrahedral:
-    \begin{equation}
-        \label{eq:gens_of_tet_sym}
-        \tightoctuple{( & \ea & \ef  & \ee  & \ed^{*}  & \ec  & \eb & )}
-        \qquad
-        \tightoctuple{( & \ec  & \ee^*  & \ed^{*}  & \ef  & \eb  & \ea^* & )}
-    \end{equation}
-    Moreover, these two operations generate a finite group of order $48$ whose action, grouped by conjugacy classes, produces:
-    \begin{equation}
-        \label{eq:all_of_tet_sym}
-        \tightoctuple{
-            ( & \ea  & \eb  & \ec  & \ed  & \ee  & \ef  & )\\[1em]
-            ( & \ed  & \eb  & \ef  & \ea  & \ee  & \ec  & )\\
-            ( & \ed^* & \ee  & \ec  & \ea^* & \eb  & \ef  & )\\
-            ( & \ea  & \ee^* & \ef^* & \ed  & \eb^* & \ec^* & )\\[1em]
-            ( & \eb  & \ef^* & \ed^* & \ee  & \ec  & \ea  & )\\
-            ( & \ec  & \ea^* & \eb  & \ef^* & \ed^* & \ee^* & )\\
-            ( & \ee  & \ec^* & \ed  & \eb  & \ef  & \ea^* & )\\
-            ( & \ef  & \ea  & \ee  & \ec^* & \ed  & \eb^* & )\\
-            ( & \ef^* & \ed  & \eb^* & \ec  & \ea  & \ee  & )\\
-            ( & \ee^* & \ef  & \ea^* & \eb^* & \ec^* & \ed  & )\\
-            ( & \ec^* & \ed^* & \ee^* & \ef  & \ea^* & \eb  & )\\
-            ( & \eb^* & \ec  & \ea  & \ee^* & \ef^* & \ed^* & )\\
-        }
-        \quad
-        \tightoctuple{
-            ( & \ea ^* & \ec  & \eb  & \ed  & \ef  & \ee  & )\\
-            ( & \eb ^* & \ea ^* & \ec ^* & \ee  & \ed  & \ef  & )\\
-            ( & \ef ^* & \eb  & \ed ^* & \ec ^* & \ee ^* & \ea ^* & )\\
-            ( & \ee  & \ed ^* & \ec  & \eb ^* & \ea  & \ef ^* & )\\
-            ( & \ec  & \eb ^* & \ea  & \ef  & \ee  & \ed  & )\\
-            ( & \ea  & \ef  & \ee  & \ed ^* & \ec  & \eb  & )\\[2em]
-            ( & \eb  & \ed  & \ef  & \ee^* & \ea^* & \ec^* & )\\
-            ( & \ed  & \ef^* & \eb^* & \ea^* & \ec^* & \ee^* & )\\
-            ( & \ef  & \ee^* & \ea^* & \ec  & \eb  & \ed^* & )\\
-            ( & \ee^* & \ea  & \ef^* & \eb  & \ed^* & \ec  & )\\
-            ( & \ed^* & \ec^* & \ee^* & \ea  & \ef^* & \eb^* & )\\
-            ( & \ec^* & \ee  & \ed  & \ef^* & \eb^* & \ea  & )\\
-        }
-        \quad
-        \tightoctuple{
-            ( & \ea  & \ec ^* & \eb ^* & \ed ^* & \ef ^* & \ee ^* & )\\
-            ( & \eb  & \ea  & \ec  & \ee ^* & \ed ^* & \ef ^* & )\\
-            ( & \ef  & \eb ^* & \ed  & \ec  & \ee  & \ea  & )\\
-            ( & \ee ^* & \ed  & \ec ^* & \eb  & \ea ^* & \ef  & )\\
-            ( & \ec ^* & \eb  & \ea ^* & \ef ^* & \ee ^* & \ed ^* & )\\
-            ( & \ea ^* & \ef ^* & \ee ^* & \ed  & \ec ^* & \eb ^* & )\\[2em]
-            ( & \eb^* & \ed^* & \ef^* & \ee  & \ea  & \ec  & )\\
-            ( & \ed^* & \ef  & \eb  & \ea  & \ec  & \ee  & )\\
-            ( & \ef^* & \ee  & \ea  & \ec^* & \eb^* & \ed  & )\\
-            ( & \ee  & \ea^* & \ef  & \eb^* & \ed  & \ec^* & )\\
-            ( & \ed  & \ec  & \ee  & \ea^* & \ef  & \eb  & )\\
-            ( & \ec  & \ee^* & \ed^* & \ef  & \eb  & \ea^* & )\\
-        }
-        \quad
-        \tightoctuple{
-            ( & \ea^* & \eb^* & \ec^* & \ed^* & \ee^* & \ef^* & )\\[1em]
-            ( & \ed^* & \eb^* & \ef^* & \ea^* & \ee^* & \ec^* & )\\
-            ( & \ed  & \ee^* & \ec^* & \ea  & \eb^* & \ef^* & )\\
-            ( & \ea^* & \ee  & \ef  & \ed^* & \eb  & \ec  & )\\[1em]
-            ( & \eb^* & \ef  & \ed  & \ee^* & \ec^* & \ea^* & )\\
-            ( & \ec^* & \ea  & \eb^* & \ef  & \ed  & \ee  & )\\
-            ( & \ee^* & \ec  & \ed^* & \eb^* & \ef^* & \ea  & )\\
-            ( & \ef^* & \ea^* & \ee^* & \ec  & \ed^* & \eb  & )\\
-            ( & \ef  & \ed^* & \eb  & \ec^* & \ea^* & \ee^* & )\\
-            ( & \ee  & \ef^* & \ea  & \eb  & \ec  & \ed^* & )\\
-            ( & \ec  & \ed  & \ee  & \ef^* & \ea  & \eb^* & )\\
-            ( & \eb  & \ec^* & \ea^* & \ee  & \ef  & \ed  & )\\
-        }
-    \end{equation}
-\end{prop}
-\begin{proof}
-    To begin, notice that each of the operations on $(\ea,\eb,\ec,\ed,\ee,\ef)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
-    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software.
-    Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_linear_constraints}.
-    Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
-    \begin{align}
-        \label{eq:signed_perm_rows}
-        \begin{split}
-            A'+B'-C' &= (A+F-E) = 0,  \\
-            B'+D'-F' &= -(B+D-F) = 0, \\
-            C'+D'-E' &= -(C+D-E) = 0, \\
-            A'+F'-E' &= (A+B-C) = 0.
-        \end{split}
-    \end{align}
-    Moreover, as the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ea^*, \ec, \eb, \ed, \ef, \ee)$ is invertible, one also has that if $(\ea,\eb,\ec,\ed,\ee,\ef)$ is not tetrahedral, then neither is $(\ea^*, \ec, \eb, \ed, \ef, \ee)$.
-    An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
-\end{proof}
-\begin{rem}
-    The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_linear_constraints}.
-    The group $G$ is isomorphic to both the direct product $S_2 \times S_4$ and to the signed permutation group of three elements, i.e., $(S_2 \times S_2 \times S_2) \rtimes S_3$.
-
-    The first isomorphism, $G \simeq S_2 \times S_4$, can be understood as $S_2$ acting by the inversion of all eigenvalues,
-    \begin{equation}
-        (\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ea^*,\eb^*,\ec^*,\ed^*,\ee^*,\ef^*),
-    \end{equation}
-    while $S_4$ acts by permutation of the \textit{vertices} of the tetrahedron in \cref{fig:tetrahedron_labelling_scheme}:
-    each vertex permutation induces a permutation of the six directed edges with the possibility of inverting the orientation of a subset of the edges (such edge orientation reversals can be accounted for a corresponding inversion of eigenvalues).
-
-    The second isomorphism, $G \simeq (S_2 \times S_2 \times S_2) \rtimes S_3$, can be understood by considering the triplet $(A,D), (B,E), (C,F)$ of non-adjacent pairs of edges in \cref{fig:tetrahedron_labelling_scheme}.
-    Accordingly, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
-    \begin{equation}
-        \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
-        \cong
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right).
-    \end{equation}
-    Then one can see that each $S_2$ factor in the direct product $S_2 \times S_2 \times S_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
-    \begin{equation}
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ea & \ee^* & \ef^* \\ \ed & \eb^* & \ec^*}\right),
-        \qquad
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ed & \eb & \ef \\ \ea & \ee & \ec}\right),
-        \qquad
-        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-        \leftrightarrow
-        \left(\tightsextuple{\ed^* & \ee & \ec \\ \ea^* & \eb & \ef}\right).
-    \end{equation}
-    The symmetric group $S_3$ of order $3! = 6$ acts instead by permuting the columns and negating a subset of the entries in the top row, producing a subgroup of order $6$ of the form:
-    \begin{equation}
-        \begin{alignedat}{3}
-            &\left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
-            \quad
-            &&\left(\tightsextuple{\eb & \ec^* & \ea^* \\ \ee & \ef & \ed}\right)
-            \quad
-            &&\left(\tightsextuple{\ec^* & \ea & \eb^*  \\ \ef & \ed & \ee }\right)\\[0.5em]
-            &\left(\tightsextuple{\ea^* & \ec & \eb \\ \ed & \ef & \ee}\right)
-            \quad
-            &&\left(\tightsextuple{\eb^* & \ea^*  & \ec^* \\ \ee & \ed & \ef}\right)
-            \quad
-            &&\left(\tightsextuple{\ec & \eb^* & \ea \\ \ef & \ee & \ed}\right)\\
-        \end{alignedat}
-    \end{equation}
-
-    %Moreover, the above group of symmetries admits a finite presentation with respect to generators $g_1 \simeq (\ea, \ef, \ee, \ed^{*}, \ec, \eb)$ and $g_2 \simeq (\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ as a free group over $g_1, g_2$ subject to the relations
-    %\begin{equation}
-    %    \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
-    %\end{equation}
-
-    We further remark that these symmetries also corresponding to symmetries of the Wigner $6j$ operator $\abcdefsymbol$ in \cref{defn:sixj} with the involution $\yx \mapsto \yx^{*}$ corresponding taking the dual representation $V_{\yx}^{n} \mapsto (V_{\yx}^{n})^{*}$.
-    In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $\SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
-\end{rem}
-\begin{prop}[Shifting symmetry]
-    \label{prop:shifting}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
-    Define shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ by
-    \begin{equation}
-        \label{eq:shifted_tet_eigenvalues}
-        \begin{alignedat}{3}
-             &\tilde \ea_i \coloneqq \ea_i + x, \qquad
-            &&\tilde \eb_i \coloneqq \eb_i + y, \qquad
-            &&\tilde \ec_i \coloneqq \ec_i + x + y, \\
-             &\tilde \ed_i \coloneqq \ed_i + z, \qquad
-            &&\tilde \ee_i \coloneqq \ee_i + x + y + z, \qquad
-            &&\tilde \ef_i \coloneqq \ef_i + y + z.
-        \end{alignedat}
-    \end{equation}
-    Then shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
-\end{prop}
-\begin{proof}
-    Given a Hermitian matrix $A$ with eigenvalues $\eig(A) = \ea$ and a constant $w \in \mathbb R$, the eigenvalues of $A+wI$ (where $I$ is the identity matrix) are
-    \begin{equation}
-        \eig(A+wI) = (\ea_1 + w \geq \cdots \geq \ea_n + w).
-    \end{equation}
-    The statement then follows because the sextuple of matrices $(\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F)$, where
-    \begin{equation}
-        \begin{alignedat}{3}
-             &\tilde A \coloneqq A + xI, \qquad
-            &&\tilde B \coloneqq B + yI, \qquad
-            &&\tilde C \coloneqq C + (x + y)I, \\
-             &\tilde D \coloneqq D + zI, \qquad
-            &&\tilde E \coloneqq E + (x + y + z)I, \qquad
-            &&\tilde F \coloneqq F + (y + z)I,
-        \end{alignedat}
-    \end{equation}
-    have the shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ and satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_linear_constraints}.
-\end{proof}
-As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn problem, in a certain sense, it suffices to solve the tetrahedral Horn problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
-\begin{cor}[Traceless eigenvalues]
-    \label{cor:traceless}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - {\tex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-{\tex}/n$.
-    Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if (i) their traces $({\tea}, {\teb}, {\tec}, {\ted}, {\tee}, {\tef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_conds}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0)$ are tetrahedral.
-\end{cor}
-\begin{proof}
-    This ``only if'' portion of the statement follows from both the tetrahedral trace conditions (\cref{eq:tet_trace_conds}) and applications of the shifting symmetry \cref{prop:shifting} with $(x,y,z)$ values
-    \begin{equation}
-        x = - n^{-1}\Tr(A), \qquad
-        y = - n^{-1}\Tr(B) \qquad
-        z = - n^{-1}\Tr(D).
-    \end{equation}
-    The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
-\end{proof}
-The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn problem it suffices to solve the tetrahedral Horn problem for non-negative (or positive) eigenvalues only.
-Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
-The following corollary establishes, in a certain sense, the minimum shifting required to ensure non-negative (or positive) eigenvalues for all six Hermitian matrices.
-\begin{cor}[Non-negativity]
-    \label{cor:psd}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tetrahedral sextuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
-    \begin{equation}
-        \label{eq:min_eig_ineqs}
-        \ec_n \geq \ea_n + \eb_n, \qquad \ef_n \geq \eb_n + \ed_n, \qquad \ee_n \geq \ed_n + \ec_n, \qquad \ee_n \geq \ea_n + \ef_n.
-    \end{equation}
-    Moreover, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a sextuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
-    \begin{equation}
-        \label{eq:positive_shift}
-        x \geq -\ea_n, \qquad
-        y \geq -\eb_n, \qquad
-        z \geq -\ed_n,
-    \end{equation}
-    the resulting shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all non-negative.
-\end{cor}
-\begin{proof}
-    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_n \geq \ea_n + \eb_n$ for the original Horn problem where $C=A+B$ \cite{bhatia2001linear}.
-    As a reminder, the smallest eigenvalue $\ex_n$ of a matrix $X$ is characterized by a minimization: $\ex_n = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
-    \begin{equation}
-        \ec_n = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \ea_n + \eb_n.
-    \end{equation}
-    Four applications of this inequality produces \cref{eq:min_eig_ineqs}.
-    Now if $(x,y,z)$ satisfy \cref{eq:positive_shift}, we have for all non-negativity of the shifted eigenvalues, e.g.,
-    \begin{equation}
-        \forall j : \qquad \tilde \ea_j = \ea_j + x \geq \ea_n + x \geq 0,
-    \end{equation}
-    Similar statements hold for $\eb,\ec,\ed, \ee$ and $\ef$.
-\end{proof}
-As a consequence of \cref{cor:psd}, we will, without loss of generality, henceforth only consider candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ed)$ which are non-negative in the sense that they are associated to positive semidefinite Hermitian matrices.
-\begin{rem}
-    Although this section listed a handful of symmetries of the tetrahedral Horn problem, there remains the possibility of additional symmetries which are unknown at this time.
-    For example, in the case of $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,boalch2007regge,ponzano1968semiclassical}.
-    If there exists a tetrahedron with edge lengths $(a,b,c,d,e,f)$, then there also exists a tetrahedron with edge lengths
-    \begin{equation}
-        (s_1-a,s_1-b,c,s_1-d,s_1-e,f) \quad \text{where} \quad s_1 = \frac{a+b+d+e}{2}.
-    \end{equation}
-    Combining this symmetry with the permutational symmetries given by \cref{prop:tet_symmetry} (noting eigenvalues of traceless $2 \times 2$ Hermitian matrices are invariant under negation) one concludes the co-existence of a family of six tetrahedra with edge lengths given by \cite[Chapter 9]{varshalovich1988quantum}:
-    \begin{equation}
-        \begin{alignedat}{2}
-            &(a,b,c,d,e,f) \quad
-            &&(s_1-a,s_1-b,c,s_1-d,s_1-e,f) \\
-            &(a,s_3-b,s_3-c,d,s_3-e,s_3-f) \quad
-            &&(s_2-a,b,s_2-c,s_2-d,e,s_2-f) \\
-            &(s_2-d,s_1-e,s_3-f,s_2-a,s_1-b,s_3-c) \quad
-            &&(s_1-d,s_3-e,s_2-f,s_1-a,s_3-b,s_2-c)
-        \end{alignedat}
-    \end{equation}
-    where
-    \begin{equation}
-        s_1 = \frac{a+b+d+e}{2}, \quad
-        s_2 = \frac{a+c+d+f}{2}, \quad
-        s_3 = \frac{b+c+e+f}{2}.
-    \end{equation}
-\end{rem}
-\begin{rem}
-    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a surprising symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry}.
-    The paper due to \citeauthor{boalch2007regge} provides a comprehensive and modern treatment of the Regge symmetry for the $6j$ symbol for $\SU(2)$ by viewing it as a consequence of a symmetry of multiplicity-free $6j$-symbols for $\SU(3)$ \cite{boalch2007regge}.
-    That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
-    It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
-    At the moment, it remains unclear if analogous symmetries for the generalized Wigner $6j$ symbol exist for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
-    It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
-\end{rem}
 
 \section{Background material}
 \label{sec:background}
@@ -952,7 +508,28 @@ where on the right hand side we a have a direct sum of operators acting on the s
 \end{equation}
 as required. The second identity in \cref{eq:sum lambda} follows by taking a sum over $k$ in the first one.
 
-% TC: defined earlier!:: We denote the space of non-negative Hermitian matrices of size $n$ by $\hermp{n}$.
+Henceforth we denote the space of Hermitian matrices of size $n$ by $\herm{n}$ and the space of positive-semidefinite Hermitian matrices by $\hermp{n}$.
+Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of $X$.
+%The set of possible eigenvalues of $n \times n$ Hermitian matrices is denoted by 
+%\begin{equation}
+%    \eigs{n} \coloneqq \{ \ex = (\ex_1, \ldots, \ex_n) \in \mathbb R^{n} \mid \ex_1 \geq \cdots \geq \ex_n \}.
+%\end{equation}
+%whereas the set of non-negative eigenvalues is denoed by $\eigsp{n}$.
+%The set of all Hermitian matrices with prescribed eigenvalues $\ex \in \eigs{n}$ is denoted by
+%\begin{equation}
+%    \orbit_{\ex} \coloneqq \{ X \in \herm{n} \mid \eig(X) = \ex \},
+%\end{equation}
+%and $[\ex]$ denotes the diagonal matrix with entries $(\ex_1, \ldots, \ex_n)$ along the diagonal:
+%\begin{equation}
+%    [\ex] \coloneqq \diag(x_1, \ldots, x_n).
+%\end{equation}
+%The set of Hermitian matrices with eigenvalues $\ex$ can then be identified with the unitary orbit of the diagonal matrix $[\ex]$, i.e., $\orbit_{\ex} = \{ U [\ex] U^{-1} \mid U \in \U(n) \}$.
+%Moreover, for any function of Hermitian matrices, $f$, which unitarily invariant in the sense that $f(X) = f(UXU^{-1})$ holds for all $X \in \herm{n}$ and $U\in \U(n)$, we let $f[\ex]$ be shorthand for $f([x])$.
+%For example,
+%\begin{equation}
+%    \Tr[\ex] \coloneqq \Tr([\ex]), \qquad \text{and} \qquad \rank[\ex] \coloneqq \rank([\ex]).
+%\end{equation}
+
 \begin{prop}
     For $X \in \hermp{n}, \yx \in \Lambda^*_{++}$, operators $\pi_\yx(X)$ and $\Phi_\yx(X)$ are non-negative Hermitian operators, and functions $\varphi_\yx(X)$ take non-negative real values on $\hermp{n}$.   
 \end{prop}
@@ -3758,6 +3335,299 @@ TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jac
 %See also \citeauthor{khovanskii1984analogues} \cite{khovanskii1984analogues} for inequalities mirroring the Aleksandrov-Fenchel type inequalities for hyperbolic polynomials (i.e., the mixed discriminant inequalities of Aleksandrov... see \citeauthor{shenfeld2019mixed} for proofs \cite{shenfeld2019mixed}.)
 %See \cite{kozhasov2019positivity} for representation theorems and other results concerning complete montonicity.
 %}
+
+
+\section{Symmetries of tetrahedral eigenvalues}
+\label{sec:symmetries}
+
+There are numerous types of symmetries present in the statement of the tetrahedral Horn problem.
+The purpose of this section is to describe the scaling, inversion, tetrahedral, and shifting symmetries of the problem.
+
+\begin{prop}[Scaling]
+    \label{prop:scaling}
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $s \in (0, \infty)$ be a positive real number.
+    Then the scaled eigenvalues, $(s\ea, s\eb, s\ec, s\ed, s\ee, s\ef)$, are tetrahedral if and only if the unscaled eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    The statement follows from the fact that $\eig(s X) = s \eig(X)$ holds for all Hermitian matrices $X$ and positive scalars $s$ and that each of the constraints in \cref{eq:tet_cond} are homogeneous in the six Hermitian matrices $(A,B,C,D,E,F)$, e.g., we have $sA+sB-sC=0$ if and only if $A+B-C=0$ because $s \neq 0$.
+\end{proof}
+
+One may wonder whether it is possible to extend the scaling symmetry to negative values for $s$.
+Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrix both negates and reverses the sorting order of its eigenvalues.
+\begin{prop}[Inversion]
+    \label{prop:inversion}
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues.
+    Given any list of non-increasing eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{*}$ denote the inverted list of resorted and negated eigenvalues: $\ex^{*} = (-\ex_n \geq \cdots \geq - \ex_1)$.
+    Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if $(\ea^{*}, \eb^{*}, \ec^{*}, \ed^{*}, \ee^{*}, \ef^{*})$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    The statement holds because $\eig(-X) = \ex^{*}$ whenever $\eig(X) = \ex$ and moreover the sextuple of matrices $(A,B,C,D,E,F)$ satisfies \cref{eq:tet_cond} if and only if the sextuple of negated matrices $(-A,-B,-C,-D,-E,-F)$ satisfies \cref{eq:tet_cond}.
+\end{proof}
+
+The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+
+\begin{prop}[Oriented]
+    \label{prop:tet_symmetry}
+    The sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ of eigenvalues are tetrahedral if and only if the following sextuples of eigenvalues are tetrahedral:
+    \begin{equation}
+        \label{eq:gens_of_tet_sym}
+        \tightoctuple{( & \ea & \ef  & \ee  & \ed^{*}  & \ec  & \eb & )}
+        \qquad
+        \tightoctuple{( & \ec  & \ee^*  & \ed^{*}  & \ef  & \eb  & \ea^* & )}
+    \end{equation}
+    Moreover, these two operations generate a finite group of order $48$ whose action, grouped by conjugacy classes, produces:
+    \begin{equation}
+        \label{eq:all_of_tet_sym}
+        \tightoctuple{
+            ( & \ea  & \eb  & \ec  & \ed  & \ee  & \ef  & )\\[1em]
+            ( & \ed  & \eb  & \ef  & \ea  & \ee  & \ec  & )\\
+            ( & \ed^* & \ee  & \ec  & \ea^* & \eb  & \ef  & )\\
+            ( & \ea  & \ee^* & \ef^* & \ed  & \eb^* & \ec^* & )\\[1em]
+            ( & \eb  & \ef^* & \ed^* & \ee  & \ec  & \ea  & )\\
+            ( & \ec  & \ea^* & \eb  & \ef^* & \ed^* & \ee^* & )\\
+            ( & \ee  & \ec^* & \ed  & \eb  & \ef  & \ea^* & )\\
+            ( & \ef  & \ea  & \ee  & \ec^* & \ed  & \eb^* & )\\
+            ( & \ef^* & \ed  & \eb^* & \ec  & \ea  & \ee  & )\\
+            ( & \ee^* & \ef  & \ea^* & \eb^* & \ec^* & \ed  & )\\
+            ( & \ec^* & \ed^* & \ee^* & \ef  & \ea^* & \eb  & )\\
+            ( & \eb^* & \ec  & \ea  & \ee^* & \ef^* & \ed^* & )\\
+        }
+        \quad
+        \tightoctuple{
+            ( & \ea ^* & \ec  & \eb  & \ed  & \ef  & \ee  & )\\
+            ( & \eb ^* & \ea ^* & \ec ^* & \ee  & \ed  & \ef  & )\\
+            ( & \ef ^* & \eb  & \ed ^* & \ec ^* & \ee ^* & \ea ^* & )\\
+            ( & \ee  & \ed ^* & \ec  & \eb ^* & \ea  & \ef ^* & )\\
+            ( & \ec  & \eb ^* & \ea  & \ef  & \ee  & \ed  & )\\
+            ( & \ea  & \ef  & \ee  & \ed ^* & \ec  & \eb  & )\\[2em]
+            ( & \eb  & \ed  & \ef  & \ee^* & \ea^* & \ec^* & )\\
+            ( & \ed  & \ef^* & \eb^* & \ea^* & \ec^* & \ee^* & )\\
+            ( & \ef  & \ee^* & \ea^* & \ec  & \eb  & \ed^* & )\\
+            ( & \ee^* & \ea  & \ef^* & \eb  & \ed^* & \ec  & )\\
+            ( & \ed^* & \ec^* & \ee^* & \ea  & \ef^* & \eb^* & )\\
+            ( & \ec^* & \ee  & \ed  & \ef^* & \eb^* & \ea  & )\\
+        }
+        \quad
+        \tightoctuple{
+            ( & \ea  & \ec ^* & \eb ^* & \ed ^* & \ef ^* & \ee ^* & )\\
+            ( & \eb  & \ea  & \ec  & \ee ^* & \ed ^* & \ef ^* & )\\
+            ( & \ef  & \eb ^* & \ed  & \ec  & \ee  & \ea  & )\\
+            ( & \ee ^* & \ed  & \ec ^* & \eb  & \ea ^* & \ef  & )\\
+            ( & \ec ^* & \eb  & \ea ^* & \ef ^* & \ee ^* & \ed ^* & )\\
+            ( & \ea ^* & \ef ^* & \ee ^* & \ed  & \ec ^* & \eb ^* & )\\[2em]
+            ( & \eb^* & \ed^* & \ef^* & \ee  & \ea  & \ec  & )\\
+            ( & \ed^* & \ef  & \eb  & \ea  & \ec  & \ee  & )\\
+            ( & \ef^* & \ee  & \ea  & \ec^* & \eb^* & \ed  & )\\
+            ( & \ee  & \ea^* & \ef  & \eb^* & \ed  & \ec^* & )\\
+            ( & \ed  & \ec  & \ee  & \ea^* & \ef  & \eb  & )\\
+            ( & \ec  & \ee^* & \ed^* & \ef  & \eb  & \ea^* & )\\
+        }
+        \quad
+        \tightoctuple{
+            ( & \ea^* & \eb^* & \ec^* & \ed^* & \ee^* & \ef^* & )\\[1em]
+            ( & \ed^* & \eb^* & \ef^* & \ea^* & \ee^* & \ec^* & )\\
+            ( & \ed  & \ee^* & \ec^* & \ea  & \eb^* & \ef^* & )\\
+            ( & \ea^* & \ee  & \ef  & \ed^* & \eb  & \ec  & )\\[1em]
+            ( & \eb^* & \ef  & \ed  & \ee^* & \ec^* & \ea^* & )\\
+            ( & \ec^* & \ea  & \eb^* & \ef  & \ed  & \ee  & )\\
+            ( & \ee^* & \ec  & \ed^* & \eb^* & \ef^* & \ea  & )\\
+            ( & \ef^* & \ea^* & \ee^* & \ec  & \ed^* & \eb  & )\\
+            ( & \ef  & \ed^* & \eb  & \ec^* & \ea^* & \ee^* & )\\
+            ( & \ee  & \ef^* & \ea  & \eb  & \ec  & \ed^* & )\\
+            ( & \ec  & \ed  & \ee  & \ef^* & \ea  & \eb^* & )\\
+            ( & \eb  & \ec^* & \ea^* & \ee  & \ef  & \ed  & )\\
+        }
+    \end{equation}
+\end{prop}
+\begin{proof}
+    To begin, notice that each of the operations on $(\ea,\eb,\ec,\ed,\ee,\ef)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
+    The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software.
+    Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_cond}.
+    Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
+    \begin{align}
+        \label{eq:signed_perm_rows}
+        \begin{split}
+            A'+B'-C' &= (A+F-E) = 0,  \\
+            B'+D'-F' &= -(B+D-F) = 0, \\
+            C'+D'-E' &= -(C+D-E) = 0, \\
+            A'+F'-E' &= (A+B-C) = 0.
+        \end{split}
+    \end{align}
+    Moreover, as the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ea^*, \ec, \eb, \ed, \ef, \ee)$ is invertible, one also has that if $(\ea,\eb,\ec,\ed,\ee,\ef)$ is not tetrahedral, then neither is $(\ea^*, \ec, \eb, \ed, \ef, \ee)$.
+    An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
+\end{proof}
+\begin{rem}
+    The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_cond}.
+    The group $G$ is isomorphic to both the direct product $S_2 \times S_4$ and to the signed permutation group of three elements, i.e., $(S_2 \times S_2 \times S_2) \rtimes S_3$.
+
+    The first isomorphism, $G \simeq S_2 \times S_4$, can be understood as $S_2$ acting by the inversion of all eigenvalues,
+    \begin{equation}
+        (\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ea^*,\eb^*,\ec^*,\ed^*,\ee^*,\ef^*),
+    \end{equation}
+    while $S_4$ acts by permutation of the \textit{vertices} of the tetrahedron in \cref{fig:tetrahedron_labelling_scheme}:
+    each vertex permutation induces a permutation of the six directed edges with the possibility of inverting the orientation of a subset of the edges (such edge orientation reversals can be accounted for a corresponding inversion of eigenvalues).
+
+    The second isomorphism, $G \simeq (S_2 \times S_2 \times S_2) \rtimes S_3$, can be understood by considering the triplet $(A,D), (B,E), (C,F)$ of non-adjacent pairs of edges in \cref{fig:tetrahedron_labelling_scheme}.
+    Accordingly, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
+    \begin{equation}
+        \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
+        \cong
+        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right).
+    \end{equation}
+    Then one can see that each $S_2$ factor in the direct product $S_2 \times S_2 \times S_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
+    \begin{equation}
+        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\ea & \ee^* & \ef^* \\ \ed & \eb^* & \ec^*}\right),
+        \qquad
+        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\ed & \eb & \ef \\ \ea & \ee & \ec}\right),
+        \qquad
+        \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+        \leftrightarrow
+        \left(\tightsextuple{\ed^* & \ee & \ec \\ \ea^* & \eb & \ef}\right).
+    \end{equation}
+    The symmetric group $S_3$ of order $3! = 6$ acts instead by permuting the columns and negating a subset of the entries in the top row, producing a subgroup of order $6$ of the form:
+    \begin{equation}
+        \begin{alignedat}{3}
+            &\left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
+            \quad
+            &&\left(\tightsextuple{\eb & \ec^* & \ea^* \\ \ee & \ef & \ed}\right)
+            \quad
+            &&\left(\tightsextuple{\ec^* & \ea & \eb^*  \\ \ef & \ed & \ee }\right)\\[0.5em]
+            &\left(\tightsextuple{\ea^* & \ec & \eb \\ \ed & \ef & \ee}\right)
+            \quad
+            &&\left(\tightsextuple{\eb^* & \ea^*  & \ec^* \\ \ee & \ed & \ef}\right)
+            \quad
+            &&\left(\tightsextuple{\ec & \eb^* & \ea \\ \ef & \ee & \ed}\right)\\
+        \end{alignedat}
+    \end{equation}
+
+    %Moreover, the above group of symmetries admits a finite presentation with respect to generators $g_1 \simeq (\ea, \ef, \ee, \ed^{*}, \ec, \eb)$ and $g_2 \simeq (\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ as a free group over $g_1, g_2$ subject to the relations
+    %\begin{equation}
+    %    \{ g_1^2, g_2^4, (g_1 g_2)^6, (g_2g_1g_2g_1g_2)^2 \}.
+    %\end{equation}
+
+    We further remark that these symmetries also corresponding to symmetries of the Wigner $6j$ operator $\abcdefsymbol$ in \cref{defn:sixj} with the involution $\yx \mapsto \yx^{*}$ corresponding taking the dual representation $V_{\yx}^{n} \mapsto (V_{\yx}^{n})^{*}$.
+    In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $\SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
+\end{rem}
+\begin{prop}[Shifting symmetry]
+    \label{prop:shifting}
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
+    Define shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ by
+    \begin{equation}
+        \label{eq:shifted_tet_eigenvalues}
+        \begin{alignedat}{3}
+             &\tilde \ea_i \coloneqq \ea_i + x, \qquad
+            &&\tilde \eb_i \coloneqq \eb_i + y, \qquad
+            &&\tilde \ec_i \coloneqq \ec_i + x + y, \\
+             &\tilde \ed_i \coloneqq \ed_i + z, \qquad
+            &&\tilde \ee_i \coloneqq \ee_i + x + y + z, \qquad
+            &&\tilde \ef_i \coloneqq \ef_i + y + z.
+        \end{alignedat}
+    \end{equation}
+    Then shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
+\end{prop}
+\begin{proof}
+    Given a Hermitian matrix $A$ with eigenvalues $\eig(A) = \ea$ and a constant $w \in \mathbb R$, the eigenvalues of $A+wI$ (where $I$ is the identity matrix) are
+    \begin{equation}
+        \eig(A+wI) = (\ea_1 + w \geq \cdots \geq \ea_n + w).
+    \end{equation}
+    The statement then follows because the sextuple of matrices $(\tilde A, \tilde B, \tilde C, \tilde D, \tilde E, \tilde F)$, where
+    \begin{equation}
+        \begin{alignedat}{3}
+             &\tilde A \coloneqq A + xI, \qquad
+            &&\tilde B \coloneqq B + yI, \qquad
+            &&\tilde C \coloneqq C + (x + y)I, \\
+             &\tilde D \coloneqq D + zI, \qquad
+            &&\tilde E \coloneqq E + (x + y + z)I, \qquad
+            &&\tilde F \coloneqq F + (y + z)I,
+        \end{alignedat}
+    \end{equation}
+    have the shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ and satisfy the tetrahedral constraints in \cref{eq:tet_cond} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_cond}.
+\end{proof}
+As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn problem, in a certain sense, it suffices to solve the tetrahedral Horn problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
+\begin{cor}[Traceless eigenvalues]
+    \label{cor:traceless}
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - {\tex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-{\tex}/n$.
+    Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if (i) their traces $({\tea}, {\teb}, {\tec}, {\ted}, {\tee}, {\tef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_cond}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0)$ are tetrahedral.
+\end{cor}
+\begin{proof}
+    This ``only if'' portion of the statement follows from both the tetrahedral trace conditions (\cref{eq:tet_trace_cond}) and applications of the shifting symmetry \cref{prop:shifting} with $(x,y,z)$ values
+    \begin{equation}
+        x = - n^{-1}\Tr(A), \qquad
+        y = - n^{-1}\Tr(B) \qquad
+        z = - n^{-1}\Tr(D).
+    \end{equation}
+    The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
+\end{proof}
+The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn problem it suffices to solve the tetrahedral Horn problem for non-negative (or positive) eigenvalues only.
+Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
+The following corollary establishes, in a certain sense, the minimum shifting required to ensure non-negative (or positive) eigenvalues for all six Hermitian matrices.
+\begin{cor}[Non-negativity]
+    \label{cor:psd}
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tetrahedral sextuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
+    \begin{equation}
+        \label{eq:min_eig_ineqs}
+        \ec_n \geq \ea_n + \eb_n, \qquad \ef_n \geq \eb_n + \ed_n, \qquad \ee_n \geq \ed_n + \ec_n, \qquad \ee_n \geq \ea_n + \ef_n.
+    \end{equation}
+    Moreover, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a sextuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
+    \begin{equation}
+        \label{eq:positive_shift}
+        x \geq -\ea_n, \qquad
+        y \geq -\eb_n, \qquad
+        z \geq -\ed_n,
+    \end{equation}
+    the resulting shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all non-negative.
+\end{cor}
+\begin{proof}
+    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_n \geq \ea_n + \eb_n$ for the original Horn problem where $C=A+B$ \cite{bhatia2001linear}.
+    As a reminder, the smallest eigenvalue $\ex_n$ of a matrix $X$ is characterized by a minimization: $\ex_n = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
+    \begin{equation}
+        \ec_n = \min_{\norm{v} = 1} \braket{v, C v} = \min_{\norm{v} = 1} \left(\braket{v, A v} + \braket{v, B v}\right) \geq \min_{\norm{v} = 1} \braket{v, A v} + \min_{\norm{w} = 1}\braket{w, B w} = \ea_n + \eb_n.
+    \end{equation}
+    Four applications of this inequality produces \cref{eq:min_eig_ineqs}.
+    Now if $(x,y,z)$ satisfy \cref{eq:positive_shift}, we have for all non-negativity of the shifted eigenvalues, e.g.,
+    \begin{equation}
+        \forall j : \qquad \tilde \ea_j = \ea_j + x \geq \ea_n + x \geq 0,
+    \end{equation}
+    Similar statements hold for $\eb,\ec,\ed, \ee$ and $\ef$.
+\end{proof}
+As a consequence of \cref{cor:psd}, we will, without loss of generality, henceforth only consider candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ed)$ which are non-negative in the sense that they are associated to positive semidefinite Hermitian matrices.
+\begin{rem}
+    Although this section listed a handful of symmetries of the tetrahedral Horn problem, there remains the possibility of additional symmetries which are unknown at this time.
+    For example, in the case of $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite[Theorem 1.1]{akopyan2019regge,boalch2007regge,ponzano1968semiclassical}.
+    If there exists a tetrahedron with edge lengths $(a,b,c,d,e,f)$, then there also exists a tetrahedron with edge lengths
+    \begin{equation}
+        (s_1-a,s_1-b,c,s_1-d,s_1-e,f) \quad \text{where} \quad s_1 = \frac{a+b+d+e}{2}.
+    \end{equation}
+    Combining this symmetry with the permutational symmetries given by \cref{prop:tet_symmetry} (noting eigenvalues of traceless $2 \times 2$ Hermitian matrices are invariant under negation) one concludes the co-existence of a family of six tetrahedra with edge lengths given by \cite[Chapter 9]{varshalovich1988quantum}:
+    \begin{equation}
+        \begin{alignedat}{2}
+            &(a,b,c,d,e,f) \quad
+            &&(s_1-a,s_1-b,c,s_1-d,s_1-e,f) \\
+            &(a,s_3-b,s_3-c,d,s_3-e,s_3-f) \quad
+            &&(s_2-a,b,s_2-c,s_2-d,e,s_2-f) \\
+            &(s_2-d,s_1-e,s_3-f,s_2-a,s_1-b,s_3-c) \quad
+            &&(s_1-d,s_3-e,s_2-f,s_1-a,s_3-b,s_2-c)
+        \end{alignedat}
+    \end{equation}
+    where
+    \begin{equation}
+        s_1 = \frac{a+b+d+e}{2}, \quad
+        s_2 = \frac{a+c+d+f}{2}, \quad
+        s_3 = \frac{b+c+e+f}{2}.
+    \end{equation}
+\end{rem}
+\begin{rem}
+    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a surprising symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry}.
+    The paper due to \citeauthor{boalch2007regge} provides a comprehensive and modern treatment of the Regge symmetry for the $6j$ symbol for $\SU(2)$ by viewing it as a consequence of a symmetry of multiplicity-free $6j$-symbols for $\SU(3)$ \cite{boalch2007regge}.
+    That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
+    It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
+    At the moment, it remains unclear if analogous symmetries for the generalized Wigner $6j$ symbol exist for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
+    It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
+\end{rem}
 
 
 \printbibliography
