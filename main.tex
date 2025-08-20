@@ -36,6 +36,201 @@
 
 \section{Introduction}
 
+Denote by
+%
+$$
+{\rm eig}: \mathcal{H}_n=\{ A \in {\rm Mat}_n(\mathbb{C}); A^\dagger = A\}
+\to \mathbb{R}_{\rm ord}^n = \{ (a_1 \geq a_2 \dots \geq a_n) \in \mathbb{R}^n\}
+$$
+the map assigning to a Hermitian matrix the set of its ordered eigenvalues. 
+For $a \in \mathbb{R}_{\rm ord}^n$, it is convenient to use notation 
+$
+{\rm Tr}[a]=\sum_{i=1}^n a_i
+$,
+where ${\rm Tr}[a]$ coincides with the trace of a diagonal matrix with eigenvalues $a_i$.
+
+The Horn problem is a classical Linear Algebra problem asking to determine the set
+%
+$$
+{\rm Horn}(n) = \{ (a,b,c) \in (\mathbb{R}_{\rm ord}^n)^3; 
+\exists \, A, B \in \mathcal{H}_n, {\rm eig}(A) =a, {\rm eig}(B)=b,
+{\rm eig}(A+B)=c\}.
+$$
+The necessary and sufficient conditions for $(a,b,c) \in {\rm Horn}(n)$ consists of the trace equality
+%
+$$
+{\rm Tr}[c] = {\rm Tr}[a] + {\rm Tr}[b],
+$$
+and of a system of linear inequalities on $(a,b,c)$. These inequalities were first conjectured by Horn \cite{horn1962eigenvalues}, and they were established by Klyachko \cite{klyachko1998stable}, and by Knutson-Tao 
+\cite{knutson1999honeycomb}. In the case of $n=2$, the Horn problem reduces to the question of existence of triangles with given length sides in $\mathbb{R}^3$,
+and Horn inequalities reduce to triangle inequalities.
+
+The fact that Horn inequalities are linear in 
+$(a,b,c)$ has several explanations stemming from different fields in Mathematics. 
+One approach is as follows: for fixed $(a,b)$, the possible values of $c$ such that$(a,b,c) \in {\rm Horn}(n)$ form a convex polytope, and this follows from the Kirwan Convexity Theorem in symplectic geometry \cite{kirwan???}. Another approach \cite{alekseev2017symplectic} is by relating the Horn problem to a similar problem for weighted planar network, in which case the counterpart of the eigenvalue map is piece-wise linear. Yet another approach is through representation theory of the group $U(n)$ {\bf to complete}.
+
+In this paper, we consider the following generalization of the set ${\rm Horn}(n)$:
+%
+$$
+\begin{array}{lll}
+{\rm Tetra}(n) & = & \{ (a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6; \exists \,
+A, B, D \in \mathcal{H}_n, {\rm eig}(A) =a, {\rm eig}(B)=b, {\rm eig}(D) = d,\\
+& & {\rm eig}(A+B)=c, {\rm eig}(A+B+D)=e, {\rm eig}(B+D)=f\}.
+\end{array}
+$$
+We say that 6-tuples $(a,b,c,d,e,f) \in {\rm Tetra}(n)$ are tetrahedral, and we refer to the problem of determining ${\rm Tetra}(n)$ as the tetrahedral Horn problem. This name is motivated by the fact that for $n=2$ the set ${\rm Tetra}(2)$ is closely related to the set of tetrahedra in $\mathbb{R}^3$. 
+The tetrahedral Horn problem was stated in \cite{christandl2018recoupling} (see Section 6, Problem 8) motivated by the quantum martingale problem in quantum information theory {\bf (is it true?)}.
+
+As for the Horn problem, there are necessary trace conditions for the tetrahedral Horn problem:
+%
+$$
+{\rm Tr}[c] = {\rm Tr}[a] + {\rm Tr}[b], \hskip 0.3cm
+{\rm Tr}[e] = {\rm Tr}[a] + {\rm Tr}[b] + {\rm Tr}[d], \hskip 0.3cm
+{\rm Tr}[f] = {\rm Tr}[b] + {\rm Tr}[d].
+$$
+Denote by $\mathcal{H}_n^+ \subset \mathcal{H}_n$ the set of non-negative Hermitian matrices, and by $\mathbb{R}^n_+ =\{ a \in \mathbb{R}^n_{\rm ord}; a_n \geq 0\}$ the set of non-negative ordered arrays. It is clear that 
+${\rm eig}(\mathcal{H}_n^+) = \mathbb{R}^n_+$. One can define the non-negative tetrahedral Horn problem as
+%
+$$
+\begin{array}{lll}
+{\rm Tetra}^+(n) & = & \{ (a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6; \exists \,
+A, B, D \in \mathcal{H}^+_n, {\rm eig}(A) =a, {\rm eig}(B)=b, {\rm eig}(D) = d,\\
+& & {\rm eig}(A+B)=c, {\rm eig}(A+B+D)=e, {\rm eig}(B+D)=f\}.
+\end{array}
+$$
+In fact, the two problems are equivalent: an element $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ belongs to ${\rm Tetra}^+(n)$ if an only if it is tetrahedral.
+And an element $(a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6$ is tetrahedral if and only if there is a real number $s$ such that after shifting all components of 
+$(a,b,c,d,e,f)$ by $s$ one obtains an element $(a',b',c',d',e',f') \in {\rm Tetra}^+(n)$. For this reason, from now one we will focus on the set ${\rm Tetra}^+(n)$, and we will refer to its elements as tetrahedral.
+
+Besides the trace conditions, other necessary conditions for the tetrahedral Horn problem are available in literature. First, observe that the ordinary Horn inequalities apply to triples $(a,b,c), (b,d,f), (a, f, e), (c, d, e)$. In addition to these linear inequalities, there are many non-linear ones, see
+{\em e.g.}  \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}, \cite[Section 6.2]{niculescu2023functions}, \cite{schoenberg1952remark}, \cite[Equation 5.2]{sitharam2018handbook}. As an example, we will single out the following entropic inequality \cite{????}:
+%
+$$
+s(c) + s(f) \geq s(b) + s(e), \hskip 0.3cm
+s(x) = - \sum_{i=1}^n x_i \log \, x_i.
+$$
+
+The non-linear inequalities are needed in the description of the set ${\rm Tetra}^+(n)$ since this set is not a polyhedral cone (in contrast to the set ${\rm Horn}(n)$). We illustrate this fact by the \Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the space ${\rm Tetra}^+(2)$ for fixed values of $a, b, d$.  
+%described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
+        \qquad
+        \includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
+    \end{center}
+    \caption{
+        A comparison between the values for $(\ell_c,\ell_e,\ell_f)$ with fixed $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ which (left) merely satisfy the triangle inequalities applied to each face the tetrahedron (\cref{eq:quadruplet_triangle_constraints}) and (right) those which additionally satisfy the Cayley-Menger determinant inequality (\cref{eq:volume_positive_constraint}).
+        The figure on the right depicts (a slice of) the moduli space of Euclidean tetahedra with side lengths $(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ and thus depicts the solution to the tetrahedral Horn problem for $2\times 2$ traceless Hermitian matrices; remark that it is neither a polytope or convex.
+        The figure on the left depicts (a slice of) a polytope, formed by the triangle inequalities (\cref{eq:quadruplet_triangle_constraints}) which forms a loose outer approximation to the figure on the right.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+\end{figure}
+
+In order to describe our main results, we will need the following notation. 
+For $a \in \mathbb{R}^n_+$, we denote by $O_a=\{ A \in \mathcal{H}^+_n; {\rm eig}(A)=a\}$ the set of non-negative Hermitian matrices with eigenvalues $a$.
+We denote by $\Lambda^*_+=\{ (\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n); 
+\lambda_i \in \mathbb{Z}\}$ the set of dominant weights for $G=U(n)$, and 
+by $\Lambda^*_{++}=\{ \lambda \in \Lambda^*_+; \lambda_n \geq 0\}$ the set of positive dominant weights. The irreducible representations $\pi_\lambda$ corresponding to positive weights are polynomial, and they extend to the 
+matrix algebra ${\rm Mat}_n(\mathbb{C})$. 
+For $\lambda \in \Lambda^*_{++}$, we denote by $|\lambda| = \sum_{i=1}^n \lambda_i$, and by $H_\lambda$ the dimension of the representation fo the symmetric group $S_{|\lambda|}$ associated to $\lambda$ by the Schur-Weyl duality. It will be convenient to use rescaled characters of representations
+%
+$$
+\varphi_\lambda(X) = \frac{1}{H_\lambda} \, \chi_\lambda(X)
+$$
+extended to $X \in {\rm Mat}_n(\mathbb{C})$.
+Irreducible representations $V_\lambda$ of $U(n)$ are equipped with Hermitian structures, and the decomposition of their tensor products
+%
+$$
+V_\alpha \otimes V_\beta = \oplus_\gamma C_{\alpha \beta }^\gamma \otimes V_\gamma
+$$
+induces Hermitian structures of multiplicity spaces $C_{\alpha \beta }^\gamma$. The isomorphism between triple tensor products
+%
+$$
+(V_\alpha \otimes V_\beta) \otimes V_\delta \cong V_\alpha \otimes (V_\beta \otimes V_\delta)
+$$
+induces maps
+$$
+   \abcdefsymbol : C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye \to C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf
+$$
+called Wigner's $6j$-symbols.
+
+Our first result is a necessary and sufficient condition for tetrahedral 6-tuplues:
+
+\begin{thm}      \label{thm: intro1}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
+    %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
+    Then, $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral 
+    if and only if for all triples of positive weights $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ the following inequalities are satisfied
+    \begin{equation} \label{eq: intro1}
+        \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty} 
+        \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
+        \vp_{\yf}(\ef)\vp_{\yc}(\ec)\vp_{\ye}(\ee)\right)^{\frac{1}{3}}.
+    \end{equation}
+    Furthermore, if inequalities \cref{eq:nec_tet} hold true for all triples $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ with $\sya + \syb + \syd = k$, then
+   %
+   $$
+\frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq 36n(n+1)\sqrt{\frac{\log (k+1)}{k}},
+   $$
+   where
+   %
+   $$
+ D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq 
+    \min_{\substack{(A,B,D) \in \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}} 
+    \left( \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2\right).
+   $$
+\end{thm}
+
+Note that in equation \eqref{eq: intro1} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
+Theorem \ref{thm: intro1} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for 
+$(\ea,\eb,\ec,\ed,\ee,\ef) \in {\rm Tetra}^+(n)$. Furthermore, for each integer $k$ we provide a finite set of inequalities, and the set defined by these inequalities is getting arbitrarily close to ${\rm Tetra}^+(n)$ with the increase of $k$.
+
+Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasing weights:
+%
+\begin{thm}      \label{thm: intro2}
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in {\rm Tetra}^+(n)$. Then, there is a sequence of 6-tuples of positive weights 
+    $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with $\abs{\ye_k} = k$ such that
+    %
+    \begin{equation}     \label{eq: intro converge}
+    \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \to _{k \to \infty}
+    \frac{1}{{\rm Tr}[e]} \ea, \eb, \ec, \ed, \ee, \ef),
+    \end{equation}
+    and
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \geq \frac{1}{\mathrm{poly}(k)}.
+    \end{equation}
+    for some positive polynomial of $k$.
+Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with the property \eqref{eq: intro converge} we have 
+    %
+    $$
+\norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}} \leq C e^{-kr}
+    $$
+    for some $C, r >0$.
+\end{thm}
+
+Theorem \ref{thm: intro2} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of Theorem \ref{thm: intro2} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence 
+%
+$$
+(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) = k (\ya_1, \yb_1, \yc_1, \yd_1, \ye_1, \yf_1).
+$$
+While being a weaker statement for $G=SU(2)$, Theorem \ref{thm: intro2} applies to all $n$.
+Implicitly, Theorem \ref{thm: intro2} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
+
+The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows that positive functions $\varphi_\alpha(a)$ are small outside the region near
+%
+$$
+\alpha \sim a \Leftrightarrow \frac{1}{|\alpha|} \, \alpha = \frac{1}{{\rm Tr}[a]}\, a.
+$$
+This observation together with Theorem \ref{thm: intro2} explain the meaning of mysterious inequalities \eqref{eq: intro1} in Theorem \ref{thm: intro1}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
+%
+$
+\alpha \sim a, \beta \sim b, \delta \sim d$
+we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
+maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the 6j-symbol is exponentially decaying, and \eqref{eq: intro1} is unlikely to hold for all $k$.
+
+\section{Introduction}
+
 \textbf{Horn's problem:}
 The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
 In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
@@ -436,7 +631,7 @@ Foe future use, we will needowing fact:
     This completes the proof.   
 \end{proof}
 
-\subsubsection{\texorpdfstring{$\boldsymbol{G=U(n)}$}{G=U(n)} and the function \texorpdfstring{$\boldsymbol{\varphi_\yx}$}{philambda}}
+\subsubsection{\texorpdfstring{$\boldsymbol{G=U(n)}$}{G=U(n)} and  functions \texorpdfstring{$\boldsymbol{\varphi_\yx}$}{philambda}}
 
 For $G=U(n)$, dominant weights are parametrized by non-increasing arrays of integers
 \begin{equation}
