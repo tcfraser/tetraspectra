@@ -1184,8 +1184,6 @@ $(A^*, B^*, C^*, D^*, E^*, F^*)$ has eigenvalues
 $(\ea, \eb, \ec, \ed, \ee, \ef)$, and this completes the proof.
 
 
-
-
 {\color{red!50!black} TC: COPIED FROM LATER SECTIONS
 The purpose of this section is to prove our main distance bound, \cref{thm:approx_tet}.
 Note that \cref{thm:approx_tet} then immediately implies the ``if'' portion of the claim of \cref{thm:iff_tet} by taking $k \to\infty$. 
@@ -1195,7 +1193,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     In the first stage, we fix an arbitrary triple $(\ya,\yb,\yd)$ with total size $\sya + \syb + \syd = k$ and derive multiple bounds on the product $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$.
     Then in the second stage, we sum over all such triples $(\ya,\yb,\yd)$ and obtain the bound on $D\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$.
 
-    We begin by bounding $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ in two seperate ways and then afterward combine them to apply the eigenvalue separation lemma (specifically \cref{eq:weak_eig_sep}).
+    We begin by bounding $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ in two separate ways and then afterward combine them to apply the eigenvalue separation lemma (specifically \cref{eq:weak_eig_sep}).
     The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$ is obtained from relaxing the assumption of the claim that $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfies \cref{eq:nec_tet} for all triples of Young diagrams $(\ya,\yb,\yd)$.
     By multiplying both sides of \cref{eq:nec_tet} by $\vp_{\ya}(\ea)^{\frac{1}{3}}\vp_{\yd}(\ed)^{\frac{1}{3}}$ we conclude
     \begin{equation}
@@ -2168,8 +2166,29 @@ The following is known result is known as eigenvalue or spectrum estimation \cit
     \begin{equation}
         \kl{p}{q} = \sum_{i=1}^{n} p_i \log \frac{p_i}{q_i}.
     \end{equation}
+    Note $\kl{p}{q} \geq 0$ with equality if and only if $p=q$.
 \end{prop}
-The Kullback-Leibler divergence, $\kl{p}{q}$, is a non-negative quantity which vanishes if and only if $p=q$.
+\begin{proof}
+    From \cref{prop:multinomial_bound} we have the bound $p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx)$.
+    What remains is to bound the multinomial distribution $m_{\ex}(\yx)$ using the Kullback-Leibler divergence.
+    To this end, note that $k = \syx = \yx_1 + \cdots + \yd_n$ which implies
+    \begin{align}
+        \begin{split}
+            m_{\ex}(\yx) 
+            &= \frac{k!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}, \\
+            &= \left(\frac{k!}{k^{k}} \frac{\yx_1^{\yx_1}}{\yx_1!} \cdots \frac{\yx_n^{\yx_n}}{\yx_n!}\right)
+            \left(\frac{k^{k}}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1^{\yx_1}}\cdots \frac{\ex_n^{\yx_n}}{\yx_n^{\yx_n}}\right), \\
+            &= m_{\yx}(\yx)
+            \exp\left[ - k \sum_{i=1}^{n} \frac{\yx_i}{k} \log \left(\frac{\yx_i}{k} \frac{\tex}{\ex_i}\right)  \right], \\
+            &= m_{\yx}(\yx)
+            \exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
+        \end{split}
+    \end{align}
+    Since $m_{\yx}(\yx) \in [0,1]$ is a probability, we have the bound $m_{\yx}(\yx) \leq 1$ and therefore we obtain the claimed result:
+    \begin{equation}
+        p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx) \leq \polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
+    \end{equation}
+\end{proof}
 Consequently, eigenvalue estimation captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_{\ex}(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\yx/k$, is similar to the eigenvalue distribution $\ex/\tex$.
 
 For our purposes, it will instead be useful to derive a result which compares the eigenvalues of a pair of positive semidefinite matrices $X,Y \geq 0$ directly.
@@ -2525,7 +2544,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     Finally, using \cref{eq:Bhattacharyya_vs_distance}, we can substitute the maximum normalized product of Bhattacharyya coefficients here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
 
-\subsection{Asymptotics of the \texorpdfstring{$6j$}{6j} symbols}
+\subsection{Asymptotics of the \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
 
 In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the quantity $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which directly relates the sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ to the eigenvalues of $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
 \begin{lem}
@@ -2547,26 +2566,39 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{align}
     where
     \begin{equation}
-        R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} = \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}} 
+        R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} = \frac{1}{4}\left[\kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}} 
         + \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}
         + \kl{\frac{\ya \oplus \yf}{k}}{\frac{\ea\oplus \ef}{\tee}}
-        + \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}.
+        + \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}\right].
     \end{equation}
 \end{lem}
 \begin{proof}
-    A combination of \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} implies
+    A combination of \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} implies the bound
     \begin{equation}
         \label{eq:abs_quad_bound}
         \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
-        \leq \norm{\abcdefsymbol}_{\infty} \left(\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \times \vp_{\yc}(\ec)\vp_{\yd}(\ed) \times \vp_{\ye}(\ee) \times \vp_{\ya}(\ea)\vp_{\yf}(\ef)\right)^{\frac{1}{4}},
+        \leq \norm{\abcdefsymbol}_{\infty} \left(\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \times \vp_{\yc}(\ec)\vp_{\yd}(\ed) \times \vp_{\ye}(\ee) \times \vp_{\ya}(\ea)\vp_{\yf}(\ef)\right)^{\frac{1}{4}}.
     \end{equation}
-    From here we note that each of $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$, $\vp_{\yc}(\ec)\vp_{\yd}(\ed)$, $\vp_{\ye}(\ee)$, and $\vp_{\ya}(\ea)\vp_{\yf}(\ef)$ is upper bounded by $\frac{\tee^k}{k!}$ because they each sum to $\frac{\tee^k}{k!}$ when summing over  the corresponding sets of Young diagrams with sizes given by \cref{eq:yd_k_sizes} (see \cref{eq:binomial_trace}).
+    To prove \cref{eq:hex_6j_bound}, note that each of $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$, $\vp_{\yc}(\ec)\vp_{\yd}(\ed)$, $\vp_{\ye}(\ee)$, and $\vp_{\ya}(\ea)\vp_{\yf}(\ef)$ is upper bounded by $\frac{\tee^k}{k!}$ because they each sum to $\frac{\tee^k}{k!}$ when summing over the corresponding sets of Young diagrams with sizes fixed by \cref{eq:yd_k_sizes} (see also \cref{eq:binomial_trace}).
     Applying these upper bounds to \cref{eq:abs_quad_bound} (and multiplying by $\frac{k!}{\tee^k}$) gives \cref{eq:hex_6j_bound}.
 
-    For the proof if \cref{eq:hex_rel_ent_bound}, consider the relative entropy bounds arising from eigenvalue estimation \cref{prop:eig_est}:
+    For the proof of \cref{eq:hex_rel_ent_bound}, we use the multinomial distribution bound from \cref{prop:multinomial_bound} to obtain
+    \begin{equation}
+        \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
+        \leq \polyk{3\binom{n}{2}} 
+        \frac{\ea_1^{\ya_1}}{\ya_1!}\cdots\frac{\ea_n^{\ya_n}}{\ya_n!}
+        \frac{\eb_1^{\yb_1}}{\yb_1!}\cdots\frac{\eb_n^{\yb_n}}{\yb_n!}
+        \frac{\ed_1^{\yd_1}}{\yd_1!}\cdots\frac{\ed_n^{\yd_n}}{\yd_n!}
+        = \polyk{3\binom{n}{2}} \frac{\tee^{k}}{k!}
+        m_{\ya \oplus \yb \oplus \yd}(\ea \oplus \eb \oplus \ed).
+    \end{equation}
+    Then applying the relative entropy bound from the proof of \cref{prop:eig_est} yields
     \begin{align}
         \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)}
-        &\leq \polyk{3\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}\right], \\
+        &\leq \polyk{3\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}\right].
+    \end{align}
+    Analogously, we obtain
+    \begin{align}
         \frac{k!}{\tee^k}{\vp_{\yc}(\ec)\vp_{\yd}(\ed)}
         &\leq\polyk{2\binom{n}{2}} \exp\left[ - k \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}\right], \\
         \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yf}(\ef)}
@@ -2597,7 +2629,7 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
     while \cref{eq:hex_rel_ent_bound} in \cref{lem:asym_sixj_helper} gives
     \begin{equation}
-        \exp\left( -\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right) 
+        \exp\left( -kR_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right) 
         \geq \frac{1}{(k+1)^{n(n-1)}}\frac{1}{(k+1)^{6\rank[\ee]}}.
     \end{equation}
     Thus we have demonstrated the existence of a sequence of sextuples of Young diagrams for which (i) $\norm{\abcdefsymbolk}_{\infty}$ satisfies the claimed inverse polynomial lower bound, and also (ii) $R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \to 0$ which implies the convergence claim:
@@ -2642,14 +2674,14 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
     Applying \cref{eq:hex_rel_ent_bound} from \cref{lem:asym_sixj_helper} here produces
     \begin{equation} 
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4} \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
     \end{equation}
     where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
 
     Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$. 
     Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ and therefore
     \begin{equation} 
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - \frac{k}{4}r\right),
+        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k r\right),
     \end{equation}
     which proves the desired exponential decay.
 \end{proof}
