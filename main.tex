@@ -189,12 +189,12 @@ Our first result is a necessary and sufficient condition for tetrahedral 6-tuplu
     \end{equation}
 \end{thm}
 
-Note that in equation \eqref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
-Theorem \ref{thm:tet_iff_intro} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for
+Note that in \cref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
+\Cref{thm:tet_iff_intro} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for
 $(\ea,\eb,\ec,\ed,\ee,\ef) \in {\rm Tetra}^+(n)$. Furthermore, for each integer $k$ we provide a finite set of inequalities, and the set defined by these inequalities is getting arbitrarily close to ${\rm Tetra}^+(n)$ with the increase of $k$.
 
 Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasing weights:
-\begin{thm}      \label{thm: intro2}
+\begin{thm} \label{thm: intro2}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in {\rm Tetra}^+(n)$. Then, there is a sequence of 6-tuples of positive weights
     $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with $\abs{\ye_k} = k$ such that
         \begin{equation} \label{eq: intro converge}
@@ -207,25 +207,25 @@ Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasin
         \geq \frac{1}{\mathrm{poly}(k)}.
     \end{equation}
     for some positive polynomial of $k$.
-Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with the property \eqref{eq: intro converge} we have
+Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ converging to $(\ea, \eb, \ec, \ed, \ee, \ef)$ we have
     \begin{equation}
         \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}} \leq C e^{-kr}
     \end{equation}
     for some $C, r >0$.
 \end{thm}
 
-Theorem \ref{thm: intro2} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of Theorem \ref{thm: intro2} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
+\Cref{thm: intro2} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of \Cref{thm: intro2} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
 \begin{equation}
     (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) = k (\ya_1, \yb_1, \yc_1, \yd_1, \ye_1, \yf_1).
 \end{equation}
-While being a weaker statement for $G=SU(2)$, Theorem \ref{thm: intro2} applies to all $n$.
-Implicitly, Theorem \ref{thm: intro2} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
+While being a weaker statement for $G=SU(2)$, \Cref{thm: intro2} applies to all $n$.
+Implicitly, \Cref{thm: intro2} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
 
 The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows that positive functions $\varphi_\alpha(a)$ are small outside the region near
 \begin{equation}
     \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|}  \alpha = \frac{1}{\Tr[a]} a.
 \end{equation}
-This observation together with Theorem \ref{thm: intro2} explain the meaning of mysterious inequalities \eqref{eq:tet_iff_intro} in Theorem \ref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
+This observation together with \Cref{thm: intro2} explain the meaning of mysterious inequalities in \cref{eq:tet_iff_intro} in \Cref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
 $
 \alpha \sim a, \beta \sim b, \delta \sim d$
 we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
@@ -966,7 +966,7 @@ Next, we consider
         &\leq (k+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|}.
     \end{split}
 \end{align}
-Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \leq k$. Putting two estimates above together, we arrive at
+Here we have used \cref{prop: BC estimate} and the fact that $|\yf| \leq k$. Putting two estimates above together, we arrive at
 \begin{align}
     \begin{split}
         \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}}
@@ -1005,7 +1005,7 @@ Here we have used the fact that
     \norm{\ef- \eig(F^*)}_1^2 + \norm{\ee- \eig(E^*)}_1^2
     + \norm{\ee- \eig(E^*)}_1^2 \geq D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}.
 \end{equation}
-Combining with the inequality \eqref{eq: 10varphi}, this implies
+Combining with the inequality in \cref{eq: 10varphi}, this implies
 \begin{equation}
     \vp_{\ya}(\ea) \vp_{\yb}(\eb) \vp_{\yd}(\ed) \leq
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
