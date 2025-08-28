@@ -214,293 +214,6 @@ $
 we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
 maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the 6j-symbol is exponentially decaying, and \eqref{eq: intro1} is unlikely to hold for all $k$.
 
-\section{Introduction}
-
-\textbf{Horn's problem:}
-The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
-In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
-These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec)$.
-Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\ec$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\ea$ and $\eb$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
-For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
-See also the article by \citeauthor{daftuar2005quantum} for an account of applications to topics in quantum information theory \cite{daftuar2005quantum}.
-
-In parallel to Horn's problem, variations and extensions of Horn's problem have been explored by numerous authors.
-For example, \citeauthor{agnihotri1997eigenvalues}, \citeauthor{belkale2008quantum}, and \cite{belkale2016multiplicative} have studied the eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
-In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random, alekseev2001linearization}.
-
-\vspace{1em}
-\textbf{The tetrahedral Horn problem:}
-In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
-While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the possible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints:
-\begin{equation}\label{eq:tet_cond}
-    A+B=C, \qquad B+D=F, \qquad D+C=E, \qquad \text{and} \qquad A+F=E.
-\end{equation}
-These constraints arise naturally from building a tetrahedral arrangement of $n\times n$ Hermitian matrices inside the vector space of such Hermitian matrices with edges labelled according to \cref{fig:tetrahedron_labelling_scheme}.
-For this reason, we refer to this eigenvalue problem as the \textit{tetrahedral} Horn problem and we say a sextuple of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, is \textit{tetrahedral} if such matrices exist, and not tetrahedral otherwise.
-\begin{figure}[ht]%
-    \centering
-    \ctikzfig{tikz/triangle-tetrahedral-problem}%
-    \caption{(Left) Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}%
-    \label{fig:tetrahedron_labelling_scheme}%
-\end{figure}%
-It is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to \textit{additional} matching constraints.
-Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
-\begin{equation}
-    \label{eq:four_faces}
-    (\ea,\eb,\ec), \qquad
-    (\eb,\ed,\ef), \qquad
-    (\ec,\ed,\ee), \qquad
-    (\ea,\ef,\ee).
-\end{equation}
-If each of the above triplets are separately compatible in the sense of the original Horn problem, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
-\begin{equation}\label{eq:four_faces_matrices}
-    A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
-\end{equation}
-The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the corresponding pairs of primed and unprimed Hermitian matrices above must coincide.
-
-\vspace{1em}
-\textbf{The case of $\boldsymbol{2 \times 2}$ matrices:}
-Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
-Without loss of generality, it is always possible to restrict attention to the case of \textit{traceless} Hermitian matrices (see \cref{sec:symmetries}).
-Moreover, every $2\times 2$ traceless Hermitian matrix can be identified by a three-dimensional vector $v = (v_1, v_2, v_3) \in \mathbb R^{3}$ using the formula:
-\begin{equation}
-    X = \begin{pmatrix} v_3 & v_1-iv_2 \\ v_1+iv_2 & -v_3 \end{pmatrix},
-\end{equation}
-in which case, the eigenvalues of $X$ are given by
-\begin{equation}
-    \eig(X) = (\ell_x, -\ell_x),
-\end{equation}
-where $\ell_x = \norm{v}_{2} = \sqrt{v_1^2 + v_2^2 + v_3^2}$ is the Euclident length of the vector $v$.
-As a consequence, the eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is isomorphic to the moduli space of sidelengths of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
-This correspondence generalizes to the tetrahedral case in the sense that the space of admissible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is equivalent to the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
-This geometric knowledge about the solution space then leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices \cite{richardson1902trigonometry,wirth2009edge};
-specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is described by the conjunction of the triangle inequalities for each of the four faces,
-\begin{equation}
-    \label{eq:quadruplet_triangle_constraints}
-    \abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b, \qquad
-    \abs{\ell_b-\ell_d} \leq \ell_f \leq \ell_b+\ell_d, \qquad
-    \abs{\ell_d-\ell_c} \leq \ell_e \leq \ell_d+\ell_c, \qquad
-    \abs{\ell_a-\ell_f} \leq \ell_e \leq \ell_a+\ell_f,
-\end{equation}
-together with a non-linear inequality \cite{sitharam2018handbook}:
-\begin{equation}
-    \label{eq:volume_positive_constraint}
-    \mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f) = \frac{1}{288}\det
-    \begin{pmatrix}
-        0 & \ell_a^2 & \ell_c^2 & \ell_e^2 & 1 \\
-        \ell_a^2 & 0 & b^2 & \ell_f^2 & 1 \\
-        \ell_c^2 & \ell_b^2 & 0 & \ell_d^2 & 1 \\
-        \ell_e^2 & \ell_f^2 & \ell_d^2 & 0 & 1 \\
-        1 & 1 & 1 & 1       & 0
-    \end{pmatrix}
-    \geq 0.
-\end{equation}
-The quantity $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is known as a Cayley-Menger determinant; if $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is positive and if the triangle inequalities above are satisfied, the value of $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}\footnotemark{}.
-\footnotetext{The triangle inequalities $\abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b$ are also equivalent to the non-negativity of the \textit{area}, $\mathrm{CM}(\ell_a,\ell_b,\ell_c)$, of the triangle with side-lengths $\ell_a,\ell_b$ and $\ell_c$ where
-    $\mathrm{CM}(\ell_a,\ell_b,\ell_c)^2 = -\frac{1}{16}\det
-    \begin{pmatrix}
-        0 & 1 & 1 & 1 \\
-        1 & 0 & \ell_a^2 & \ell_c^2 \\
-        1 & \ell_a^2 & 0 & \ell_b^2 \\
-        1 & \ell_c^2 & \ell_b^2 & 0 \\
-    \end{pmatrix}$ is equivalent to Heron's formula.
-}
-\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
-\begin{figure}
-    \begin{center}
-        %\includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
-        %\qquad
-        %\includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
-        \includegraphics[width=0.75\textwidth]{figures/triangle_vs_cayley_menger}
-    \end{center}
-    \caption{
-        A comparison between the values for $(\ell_c,\ell_e,\ell_f)$ with fixed $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ which merely satisfy the triangle inequalities (exterior blue polytope) and those which additionally satisfy the Cayley-Menger determinant inequality (interior green).
-        The interior green region depicts (a slice of) the space of Euclidean tetahedra with side lengths $(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ and thus depicts the solution to the tetrahedral Horn problem for $2\times 2$ traceless Hermitian matrices; remark that it is neither a polytope or convex.
-    }
-    \label{fig:tetrahedron_moduli_space_example}
-\end{figure}
-Before proceeding, we remark that even for the case of $2\times 2$ matrices, there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
-In particular, while the solution to the original Horn problem is completely characterized by a convex polytope (i.e., by a finite number of linear inequalities in the eigenvalues), the solution space for the tetrahedral Horn's problem is neither convex nor a polytope.
-
-\vspace{1em}
-\textbf{Our contributions:}
-Regarding the tetrahedral Horn problem, we derive a new family of inequalities constraining the set of tetrahedral eigenvalues.
-These inequalities are expressed in terms of Schur polynomials $s_{\yx}(x)$ of the involved eigenvalues which are homogeneous symmetric polynomials indexed by Young diagrams $\yx$.
-More accurately, we find our inequalities are best articulated in terms of a simple rescaling of the Schur polynomials, $\vp_{\yx}(\ex) \coloneqq s_{\yx}(\ex)/H_{\yx}$, where $H_{\yx}$ is a positive integer equal to the product of the hook-lengths of all boxes in the Young diagram $\yx$.
-These inequalities are presented in the following theorem.
-\begin{thm}
-    \label{thm:iff_tet}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of non-negative eigenvalues of length $n$ satisfying the trace conditions:
-    \begin{equation}
-        \label{eq:tet_trace_cond}
-        \tea+\teb=\tec, \teb+\ted=\tef, \tec+\ted=\tee, \text{and} \tea+\tef=\tee.
-    \end{equation}
-    Then there exists Hermitian matrices $(A,B,C,D,E,F)$ with satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
-    if and only if for all triples of Young diagrams $(\ya,\yb,\yd)$,
-    \begin{equation}
-        \vp_{\ya}(\ea)^{\frac{2}{3}}\vp_{\yb}(\eb)\vp_{\yd}(\ed)^{\frac{2}{3}}
-        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
-        \vp_{\yf}(\ef)^{\frac{1}{3}}\vp_{\yc}(\ec)^{\frac{1}{3}}\vp_{\ye}(\ee)^{\frac{1}{3}}.
-    \end{equation}
-\end{thm}
-The expression $\abcdefsymbol$ appearing above is an operator known as the $6j$-symbol for the group of unitary $n\times n$ matrices $\U(n)$ whose significance will be explained shortly.
-While \cref{thm:iff_tet} provides a complete characterization of the set of tetrahedral eigenvalues,
-it does so using an infinite number of inequalities.
-Nevertheless, we prove the finite subset of such inequalities of fixed degree $k = \sya + \syb + \syd$ is sufficient to characterize the set of sextuples of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, which are \textit{approximately} tetrahedral in the sense that their distance, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, to the set of tetrahedral eigenvalues is small.
-\begin{thm}
-    \label{thm:approx_tet}
-    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:tet_trace_cond} and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then
-    \begin{equation}
-        \label{eq:tri_abd_cef_dist_bound}
-        \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right),
-    \end{equation}
-    where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ is the distance measure
-    \begin{equation}
-        \label{eq:defn_tet_deviation}
-        D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq
-        \min_{\substack{(A,B,D) \sim \\ \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}}
-        \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2.
-    \end{equation}
-    Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
-\end{thm}
-Note this theorem actually implies the ``if'' portion of \cref{thm:iff_tet} as one can take $k \to \infty$.
-Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{prop:approx_tri}).
-
-\vspace{1em}
-\textbf{$\boldsymbol{6j}$-symbols:}
-Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \ot V_\yb) \ot V_\yc \cong V_\ya \ot (V_\yb \ot V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
-Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
-\begin{equation*}
-    \abcdefsymbol
-    :
-    M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc} \to M^{\ye}_{\ya, \yf} \ot M^{\yf}_{\yb,\yd},
-\end{equation*}
-corresponding to the block-wise components of the canonical isomorphism from $\bigotimes_{\yc} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$ to $\bigotimes_{\yf} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$.
-Whenever the group $G$ is multiplicity-free, in the sense that the dimensions of all multiplicity spaces, $m^{\yc}_{\ya,\yb} \coloneqq \dim M^{\yc}_{\ya,\yb}$, are either zero or one, the corresponding $6j$-symbol is merely a scalar quantity.
-
-\vspace{1em}
-\textbf{Wigner's $\boldsymbol{6j}$-symbol for $\boldsymbol{\SU(2)}$:}
-The group $\SU(2)$ is multiplicity-free and the $6j$-symbols for $\SU(2)$ are, depending on the normalization and/or phase convention, are also referred to as Wigner $6j$-symbols or Wigner $6j$-coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory}.
-The $6j$-symbols for $\SU(2)$ play a foundational role in the quantum theory of angular momentum, modelling the recoupling theory of three angular momenta, and thus they are used frequently in calculations involving the scattering of multiple particles in nuclear, atomic and molecular physics \cite{varshalovich1988quantum,edmonds1996angular,aquilanti2012semiclassical}.
-Beyond the direct application to the theory of angular momenta, the $6j$-symbols for $\SU(2)$ also constitute a primitive object in the theory of spin networks \cite{penrose1971applications, baez2010physics}, representing a minimal non-trivial closed spin network.
-General spin networks are networks of trivalent vertices and connections labelled by irreps (spins) of $\SU(2)$ which provide a discrete/combinatorial and manifestly invariant model with applications to gauge theories on graphs or manifolds \cite{baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, elementary gates in spin network models for quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and various aspects of proposed models for quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum,moussouris1984quantum}.
-
-Throughout this paper, by the \textit{asymptotics} of $6j$-symbols, we are referring to their behaviour in the regime wherein the six highest weights, $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, are becoming larger and larger in a suitable sense.
-The asymptotics of the $6j$-symbol for $\SU(2)$, wherein the irreps of dimension $\ell + 1$ may be identified either by integers $\ell \in \{0, 1, \ldots, \}$ or half-integers $j=\frac{\ell}{2}\in\{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots \}$, were initially investigated by \citeauthor{wigner1960group} \cite[Chapter 27]{wigner1960group}.
-In the context of the quantum theory of angular momenta, the limit of large $\ell$, or equivalently large spins $j$, may also be interpreted as the limit wherein Planck's constant tends to zero, $\hbar \propto \frac{1}{k} \to 0$, which suppresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as \textit{semiclassical} limits.
-Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ and total spin $\frac{e}{2}$, the $6j$-symbol, $\tightcurlysixj{a & b & c \\ d & e & f}$, can be interpreted as the quantum mechanical amplitude to observe the first and second particles to have combined spin $\frac{c}{2}$ given the second and third have combined spin $\frac{f}{2}$ \cite{wigner1960group,roberts1999classical}.
-\Citeauthor{wigner1960group} considered the probability for this event to occur in the asymptotic limit of large spins, i.e., the square of the $6j$-symbol, and conjectured the estimate:
-\begin{equation*}
-    \tightcurlysixj{a & b & c \\ d & e & f}^2 \approx \frac{1}{3 \pi V}
-\end{equation*}
-where $V$ is the volume of the Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$.
-Building upon the work of Wigner, \citeauthor{ponzano1968semiclassical} conjectured a formula for the amplitude of the $6j$-symbol itself in the limit of large spins \cite{ponzano1968semiclassical}.
-Later, using techniques from geometric quantization theory, \citeauthor{roberts1999classical} rigorously proved an asymptotic formula which is equivalent to the conjecture of \citeauthor{ponzano1968semiclassical} (up to minor differences) \cite{roberts1999classical}.
-\begin{thm}[\citeauthor{roberts1999classical}]
-    If $(a,b,c,d,e,f)$ are integer side-lengths of a Euclidean tetrahedron with volume $V$ and corresponding exterior dihedral angles\footnotemark{} $(\theta_a, \theta_b, \theta_c, \theta_d, \theta_e, \theta_f)$, then
-    \begin{equation*}
-        \tightcurlysixj{ka & kb & kc \\ kd & ke & kf} \stackrel{k\to \infty}{\sim} \sqrt{\frac{2}{3 \pi V k^3}} \cos\left({\sum}_{\ell} (k \ell + 1) \frac{\theta_{\ell}}{2} + \frac{\pi}{4}\right),
-    \end{equation*}
-    where the sum is over the six sides $\ell$.
-    Otherwise, if there does not exist a Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$, then $\tightcurlysixj{ka & kb & kc \\ kd & ke & kf}$ decays to zero at an exponential rate as $k\to\infty$.
-\end{thm}
-\footnotetext{For example, the exterior dihedral angle $\theta_a$ is the outside angle between the two faces of the tetrahedron sharing the common edge with side-length $a$.}
-A proof of the Ponzano-Regge asymptotic formula was also obtained by \citeauthor{chen1999asymptotics} \cite{chen1999asymptotics} (with a correction by \citeauthor{watson1999asymptotic} \cite{watson1999asymptotic}) using estimates from the theory of hypergeometric functions.
-Additional proofs of this asymptotic correspondence between $6j$-symbols for $\SU(2)$ and Euclidean tetrahedra have emerged in recent years including the elementary proof by \citeauthor{gurau2008ponzano} which applies Stirling's approximation directly to Racah's single-sum formula \cite{gurau2008ponzano} as well as group integral approach to evaluate so-called simple spin networks as Feynman graphs \cite{freidel2000simple,freidel2003asymptotics}.
-See also the paper by \citeauthor{bartlett2023coherent} for an accessible presentation of these kinds of calculations \cite{bartlett2023coherent}.
-Analogous asymptotic formulas have also been obtained by \citeauthor{taylor2006sixj} for the $6j$-symbol associated to the quantum group $U_q(\mathfrak{sl}_2)$ for a particular $k$-dependent parameter $q$ \cite{taylor2006sixj}.
-In this generalized setting, the asymptotics calculated by \citeauthor{taylor2006sixj} encode (i) the existence of a spherical tetrahedron on the unit sphere with prescribed edge-lengths whenever $q=\exp(i\pi/r(k))$ is an $r(k)$th root of unity or (ii) the existence of a hyperbolic tetrahedron with prescribed edge-lengths when $q=\exp(\pi/r(k))$ is positive real (here $r(k) = k(r-2) + 2$ for $r > 2$ a fixed integer) \cite{taylor2006sixj}.
-
-More generally, that the asymptotics of representation-theoretic quantities (such as $6j$-symbols) are controlled by the existence of some critical geometric object is explained by the theory of geometric quantization \cite{roberts2002asymptotics}.
-Geometric quantization, broadly speaking, associates classical phase spaces modelled by symplectic manifolds to quantum phase spaces modelled by Hilbert spaces \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
-In particular, \citeauthor{kirillov2004lectures}'s orbit principle \cite{kirillov2004lectures} proposes an association between (i) the coadjoint orbits of a compact Lie group $G$ passing through an integral weight $\yx$ to (ii) the corresponding unitary irreps of $G$ of highest weight $\yx$.
-Furthermore, products of coadjoint orbits correspond to tensor products of irreps and moreover symplectic quotients of the resulting products of orbits are identified with invariant vectors in the resulting tensor products of irreps \cite{roberts2002asymptotics, guillemin1982geometric}.
-For the aforementioned case of $\SU(2)$, the coadjoint orbits can be identified the $\mathrm{SO}(3)$ rotations of vectors in Euclidean $\mathbb R^3$ (i.e., spheres of fixed radius), and thus the asymptotics of representation-theoretic quantities for $\SU(2)$ are controlled by the existence of corresponding geometric objects in Euclidean $\mathbb R^3$ with prescribed edge-lengths \cite{roberts2002asymptotics}.
-
-\vspace{1em}
-\textbf{$\boldsymbol{6j}$-symbols for $\boldsymbol{\U(n)}$:}
-One application of the techniques developed in this paper is to provide estimates for the asymptotics of the $6j$ symbols for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}^n$ are labelled by highest-weights which can also be identified with Young diagrams $\yx$.
-One of the primary difficulties in proving statements about $6j$ symbols for $\U(n)$ for $n\geq 3$ is the presence of non-trivial multiplicity spaces, meaning the dimensions of tensor-product multiplicity spaces for $\U(n)$, also known as Littlewood-Richardson coefficients, can be greater than one.
-Because of these difficulties, over the years, considerable attention has been placed on the study of $\U(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which are multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is at most one \cite{nawata2013multiplicity, alekseev2020multiplicity, alcock2023wigner}.
-Indeed, as stated by \citeauthor{coquereaux2023integer}, ``apart from very few special cases (low dimension of irreps and no multiplicity), $\ldots$ we are not aware of any published general result.'' \cite{coquereaux2023integer}.
-
-Our approach bypasses the difficulties presented by multiplicities by focusing only on the \textit{norms} of the $6j$ symbol for $\U(n)$.
-Following the procedure provided by geometric quantization, one expects the asymptotics of the $6j$-symbol for $\U(n)$ to be controlled by existence of some kind of tetrahedral object in space of coadjoint orbits for $\U(n)$.
-In particular, the coadjoint orbits of $\U(n)$ can be identified with the orbits of $n\times n$ Hermitian matrices, $X$, under the conjugation action, $X \mapsto U^{-1} X U$, by unitary $n \times n$ matrices $U \in \U(n)$; in other words, coadjoint orbits are associated to sets of $n\times n$ Hermitian matrices sharing a common set of eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$.
-Using our methods we are able to prove the following inverse polynomial lower bound.
-\begin{cor}
-    \label{cor:asym_6j}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$,
-    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ (with $\abs{\ye_k} = k$) converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
-    such that
-    \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
-        \geq \frac{1}{\mathrm{poly}(k)}.
-    \end{equation}
-    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any such matrices, then for any sequence of Young diagrams converging in proportion to $(\ea, \eb, \ec, \ed, \ee, \ef)$, we have exponential decay in the value of $\norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}$.
-\end{cor}
-Before continuing, it is worth emphasizing the similarities and differences between our result and the asymptotic formula proven by \citeauthor{roberts1999classical} above \cite{roberts1999classical}.
-First and foremost, our result goes beyond that of \citeauthor{roberts1999classical} in the sense that it applies to the higher-rank Lie group $\U(n)$ for $n \geq 3$.
-Moreover, our result, even when restricted to the case for $\SU(2)$, goes beyond the statement proven by \citeauthor{roberts1999classical} in the sense our result is applicable to \textit{irrational} eigenvalues/edge-lengths, whereas the former is only applicable to \textit{integer}, or with a minor re-scaling, \textit{rational} eigenvalues/edge-lengths.
-ike the Pozano-Regge formula, our result is different in that it merely promises the \textit{existence} of a sextuple of sequences of Young diagrams, $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$, converging to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, whereas the result of \citeauthor{roberts1999classical} provides a concrete statement about the particular sequence of \textit{scaled} Young diagrams $(k\ya, k\yb, k\yc, k\yd, k\ye, k\yf)$.
-Moreover, our result provides a polynomial lower bound on the value of the $\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}$ and does not provide an asymptotic formula which would serve as the proper generalization of the \citeauthor{ponzano1968semiclassical} formula above \cite{ponzano1968semiclassical}.
-The \citeauthor{ponzano1968semiclassical} formula for $\SU(2)$ was traditionally obtained using the method of \textit{stationary phases} which relies on both an integral formula for the $6j$-symbol with exponential integrand along with a geometric understanding of the \textit{isolated} critical points for the exponential phase \cite{ponzano1968semiclassical,gurau2008ponzano}.
-In the case of $\SU(2)$ with generic edge-lengths, there is a formulation involving exactly \textit{two} isolated critical points corresponding the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with given edge-lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
-Generalizing this type of criticality analysis to $\U(n)$ for $n\geq 3$ appears to be a significant challenge, and even if an analysis was performed, one would still need to compute a corresponding Hessian for each critical point and evaluate the total contribution \cite{roberts2002asymptotics}.
-Perhaps a different approach for deriving the Ponzano-Regge formula, such as those based on recursion relations or estimates of hypergeometric functions appearing in \cite{chen1999asymptotics,taylor2006sixj,artamonov2023classical,artamonov2024calculation} would better suited for the case where $n\geq 3$.
-%\citeauthor{taylor2006sixj} (see also \cite{chen1999asymptotics}) to prove asymptotics for the $6j$-symbol for $U_q(\mathfrak{sl}_2)$ using recursion relations \cite{taylor2006sixj} (see also the formulas for the $6j$-symbols for $\mathrm{gl}_n$ in terms of generalized hypergeometric functions due to \cite{artamonov2024calculation} \cite{artamonov2023classical,artamonov2024calculation}).
-
-\vspace{1em}
-\textbf{Eigenvalue estimation:}
-Our approach to proving the above theorems relies on the technique of \textit{eigenvalue estimation}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of positive semidefinite matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
-The eigenvalue estimation technique relies heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
-Given a positive semidefinite matrix $X$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
-The technique of eigenvalue estimation relies on the fact that the Schur-Weyl distribution concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration strengthens as the sizes of the Young diagrams grow to infinity \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient}.
-Applying the eigenvalue estimation technique to the original Horn problem was first done by \citeauthor{christandl2008quantum} \cite{christandl2008quantum}.
-In this paper, we develop a technique called \textit{eigenvalue separation} which relates the similarity between two Schur-Weyl distributions, $p_{\ex}(\yx)$ and $p_{\ey}(\yx)$, to the similarity of the underlying eigenvalues, $x$ and $y$, and apply this technique to tetrahedral Horn problem and obtain \cref{thm:iff_tet}.
-In addition, our approach produces new results for the original Horn problem, analogous to \cref{thm:iff_tet}, beyond those obtained in \cite{christandl2008quantum}.
-
-\vspace{1em}
-\textbf{Quantum marginals \& the $\boldsymbol{6j}$-symbol for the symmetric group $\boldsymbol{S_k}$:}
-Our method for proving \cref{cor:asym_6j} is closely related to techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
-In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
-Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
-In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (referred to as the recoupling coefficients) in the limit as $k \to \infty$ either decay exponentially or can be bounded from below by a polynomial factor depending on whether there exists a density matrix with the prescribed marginal spectra \cite{christandl2018recoupling}.
-Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
-This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
-While the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem, the approach taken by this paper differs from \cite{christandl2018recoupling} as it tackles the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:iff_tet} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions previously obtained in \cite{christandl2018recoupling}.
-We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
-
-\vspace{1em}
-\textbf{Multiple Horn problems:}
-More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem and are referred to as \textit{multiple} Horn problems in \cite{alekseev2025multiple}.
-Specifically, \citeauthor{alekseev2025multiple} focus on two variants, the \textit{multiplicative multiple Horn problem} concerning the singular values of products of invertible matrices, and the \textit{tropical multiple Horn problem} concernining singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
-The tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
-
-\vspace{1em}
-\textbf{Other inequalities:}
-It is worth highlighting that there exists related results constraining the eigenvalues of sums of Hermitian matrices which are already readily applicable to the tetrahedral Horn problem.
-In addition to the aforementioned Horn's inequalities \cite{horn1962eigenvalues}, which contraint the eigenvalues of any triple of Hermitian matrices $(A,B,A+B)$, there exists a myriad of inequalities which constrain the eigenvalues of the quadruple of Hermitian matrices $(Y,X+Y,Y+Z,X+Y+Z)$ whenever $X,Y,Z \geq 0$ are positive semidefinite matrices (see for example \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}).
-These inequalities are readily applicable to the tetrahedral Horn problem under the identification ($X=A$, $Y=B$ and $Z=D$) wherein they constrain, respectively, the eigenvalues $(b,c,e,f)$ of the matrices $(B,C,E,F)$ while ignoring the eigenvalues of $A$ and $D$.
-More scarce are inequalities which additionally incorporate the eigenvalues $(a,d)$ of the matrices $(A,D)$ such as Minkowski-like determinant inequality \cite[Section 6.2]{niculescu2023functions} (originally due to \citeauthor{courtade2016strengthening}\cite{courtade2016strengthening,sra2016reverseoverflow}), or applications of Ptolemny's inequality \cite{schoenberg1952remark} or the Cayley-Menger determinant inequality \cite[Equation 5.2]{sitharam2018handbook} to the space of $n\times n$ Hermitian matrices equipped with the Hilbert-Schmit inner product.
-While each of these previously known inequalities can be viewed as necessary conditions for the tetrahedral Horn problem, to the best of our knowledge, they remain insufficient for the tetrahedral Horn problem when $n\geq 3$.
-Our contribution, theorefore, is to provide a family of necessary and sufficient inequalities in the form of \cref{thm:iff_tet} which is applicable to all dimensions $n$.
-
-\vspace{1em}
-\textbf{Organization of the paper:}
-
-{\color{red!50!black} Anton's:
-    TODO:
-}
-
-{\color{blue!50!black} TC's:
-Then, in \cref{sec:ineqs_from_schur_weyl}, we develop the mathematical machinery needed to prove the \textit{necessity} of the inequalities in \cref{thm:iff_tet}, specifically the binomial theorem for representations (\cref{thm:binomial}).
-Afterwards, \cref{sec:distance_bounds} is dedicated to proving the distance bound in \cref{thm:approx_tet} and thus the \textit{sufficiency} of the inequalities in \cref{thm:iff_tet}.
-The results in \cref{sec:distance_bounds} rely on the results of \cref{sec:ineqs_from_schur_weyl}, the aforementioned eigenvalue concentration bounds (\cref{sec:eig_est_and_sep}), and some standard results from random matrix theory (\cref{sec:random_matrices}).
-}
-% Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
-
-
 \section{Background material}
 \label{sec:background}
 
@@ -1485,9 +1198,307 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
 \end{proof}
 }
 
+% ===== [@OLD] ====
+
+% To place references in table of contents, need the option "heading=bibintoc"
+% https://tex.stackexchange.com/questions/67153/bibliography-not-in-toc-when-using-biblatex-biber
+\printbibliography[heading=bibintoc]
+
+\cleardoublepage
+
+\section{[tc] Introduction}
+
+\textbf{Horn's problem:}
+The problem of determining the set of eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying $A+B=C$ has been investigated for over a century \cite{weyl1912asymptotische,fan1949theorem,lidskii1953proper,wielandt1955extremum,thompson1971eigenvalues,thompson1970eigenvalues} and has come to be known as \textit{Horn's problem} after \citeauthor{horn1962eigenvalues} who, in \citeyear{horn1962eigenvalues}, conjectured a solution to the problem in the form of an inductively defined, finite set of homogeneous linear inequalities.
+In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to Horn's problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constitutes a proof of Horn's original conjecture \cite{fulton1998eigenvalues}.
+These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec)$.
+Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\ec$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\ea$ and $\eb$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
+For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
+See also the article by \citeauthor{daftuar2005quantum} for an account of applications to topics in quantum information theory \cite{daftuar2005quantum}.
+
+In parallel to Horn's problem, variations and extensions of Horn's problem have been explored by numerous authors.
+For example, \citeauthor{agnihotri1997eigenvalues}, \citeauthor{belkale2008quantum}, and \cite{belkale2016multiplicative} have studied the eigenvalues of unitary matrices and their product \cite{agnihotri1997eigenvalues,belkale2008quantum,belkale2016multiplicative}, or the admissible singular values of matrices and their product \cite{speyer2005horn,thompson1971eigenvaluesviii}.
+In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that \textit{logarithms} of the admissible singular values of non-singular matrices and their product are identical to the admissible eigenvalues of Hermitian matrices and their sum, thus proving a conjecture due to Thompson \cite{klyachko2000random, alekseev2001linearization}.
+
+\vspace{1em}
+\textbf{The tetrahedral Horn problem:}
+In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
+While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the possible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints:
+\begin{equation}\label{eq:tet_cond}
+    A+B=C, \qquad B+D=F, \qquad D+C=E, \qquad \text{and} \qquad A+F=E.
+\end{equation}
+These constraints arise naturally from building a tetrahedral arrangement of $n\times n$ Hermitian matrices inside the vector space of such Hermitian matrices with edges labelled according to \cref{fig:tetrahedron_labelling_scheme}.
+For this reason, we refer to this eigenvalue problem as the \textit{tetrahedral} Horn problem and we say a sextuple of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, is \textit{tetrahedral} if such matrices exist, and not tetrahedral otherwise.
+\begin{figure}[ht]%
+    \centering
+    \ctikzfig{tikz/triangle-tetrahedral-problem}%
+    \caption{(Left) Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}%
+    \label{fig:tetrahedron_labelling_scheme}%
+\end{figure}%
+It is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to \textit{additional} matching constraints.
+Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
+\begin{equation}
+    \label{eq:four_faces}
+    (\ea,\eb,\ec), \qquad
+    (\eb,\ed,\ef), \qquad
+    (\ec,\ed,\ee), \qquad
+    (\ea,\ef,\ee).
+\end{equation}
+If each of the above triplets are separately compatible in the sense of the original Horn problem, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
+\begin{equation}\label{eq:four_faces_matrices}
+    A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
+\end{equation}
+The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the corresponding pairs of primed and unprimed Hermitian matrices above must coincide.
+
+\vspace{1em}
+\textbf{The case of $\boldsymbol{2 \times 2}$ matrices:}
+Beyond the superficial connection between the imposed constraints and the resulting shape formed in the vector space of Hermitian matrices (as in \cref{fig:tetrahedron_labelling_scheme}), in the special case of $2\times 2$ Hermitian matrices, this connection is much deeper.
+Without loss of generality, it is always possible to restrict attention to the case of \textit{traceless} Hermitian matrices (see \cref{sec:symmetries}).
+Moreover, every $2\times 2$ traceless Hermitian matrix can be identified by a three-dimensional vector $v = (v_1, v_2, v_3) \in \mathbb R^{3}$ using the formula:
+\begin{equation}
+    X = \begin{pmatrix} v_3 & v_1-iv_2 \\ v_1+iv_2 & -v_3 \end{pmatrix},
+\end{equation}
+in which case, the eigenvalues of $X$ are given by
+\begin{equation}
+    \eig(X) = (\ell_x, -\ell_x),
+\end{equation}
+where $\ell_x = \norm{v}_{2} = \sqrt{v_1^2 + v_2^2 + v_3^2}$ is the Euclident length of the vector $v$.
+As a consequence, the eigenvalues for a triangular arrangement of $2\times 2$ traceless Hermitian matrices is isomorphic to the moduli space of sidelengths of Euclidean \textit{triangles} in $\mathbb R^{3}$ \cite{hausmann1996polygon,freidel2010holomorphic,knutson2000symplectic}.
+This correspondence generalizes to the tetrahedral case in the sense that the space of admissible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ for a tetrahedral arrangements of $2\times 2$ traceless Hermitian matrices is equivalent to the moduli space of Euclidean \textit{tetrahedra} in $\mathbb R^{3}$.
+This geometric knowledge about the solution space then leads to a complete solution to the tetrahedral Horn's problem for $2\times 2$ matrices \cite{richardson1902trigonometry,wirth2009edge};
+specifically, the moduli space of Euclidean tetrahedra in $\mathbb R^3$ is described by the conjunction of the triangle inequalities for each of the four faces,
+\begin{equation}
+    \label{eq:quadruplet_triangle_constraints}
+    \abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b, \qquad
+    \abs{\ell_b-\ell_d} \leq \ell_f \leq \ell_b+\ell_d, \qquad
+    \abs{\ell_d-\ell_c} \leq \ell_e \leq \ell_d+\ell_c, \qquad
+    \abs{\ell_a-\ell_f} \leq \ell_e \leq \ell_a+\ell_f,
+\end{equation}
+together with a non-linear inequality \cite{sitharam2018handbook}:
+\begin{equation}
+    \label{eq:volume_positive_constraint}
+    \mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f) = \frac{1}{288}\det
+    \begin{pmatrix}
+        0 & \ell_a^2 & \ell_c^2 & \ell_e^2 & 1 \\
+        \ell_a^2 & 0 & b^2 & \ell_f^2 & 1 \\
+        \ell_c^2 & \ell_b^2 & 0 & \ell_d^2 & 1 \\
+        \ell_e^2 & \ell_f^2 & \ell_d^2 & 0 & 1 \\
+        1 & 1 & 1 & 1       & 0
+    \end{pmatrix}
+    \geq 0.
+\end{equation}
+The quantity $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is known as a Cayley-Menger determinant; if $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is positive and if the triangle inequalities above are satisfied, the value of $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is equal to \textit{square} of the volume of the corresponding tetrahedron \cite[Equation 5.2]{sitharam2018handbook}\footnotemark{}.
+\footnotetext{The triangle inequalities $\abs{\ell_a-\ell_b} \leq \ell_c \leq \ell_a+\ell_b$ are also equivalent to the non-negativity of the \textit{area}, $\mathrm{CM}(\ell_a,\ell_b,\ell_c)$, of the triangle with side-lengths $\ell_a,\ell_b$ and $\ell_c$ where
+    $\mathrm{CM}(\ell_a,\ell_b,\ell_c)^2 = -\frac{1}{16}\det
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 \\
+        1 & 0 & \ell_a^2 & \ell_c^2 \\
+        1 & \ell_a^2 & 0 & \ell_b^2 \\
+        1 & \ell_c^2 & \ell_b^2 & 0 \\
+    \end{pmatrix}$ is equivalent to Heron's formula.
+}
+\Cref{fig:tetrahedron_moduli_space_example} depicts a three-dimensional projection of the solution space described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
+\begin{figure}
+    \begin{center}
+        %\includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
+        %\qquad
+        %\includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
+        \includegraphics[width=0.75\textwidth]{figures/triangle_vs_cayley_menger}
+    \end{center}
+    \caption{
+        A comparison between the values for $(\ell_c,\ell_e,\ell_f)$ with fixed $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ which merely satisfy the triangle inequalities (exterior blue polytope) and those which additionally satisfy the Cayley-Menger determinant inequality (interior green).
+        The interior green region depicts (a slice of) the space of Euclidean tetahedra with side lengths $(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ and thus depicts the solution to the tetrahedral Horn problem for $2\times 2$ traceless Hermitian matrices; remark that it is neither a polytope or convex.
+    }
+    \label{fig:tetrahedron_moduli_space_example}
+\end{figure}
+Before proceeding, we remark that even for the case of $2\times 2$ matrices, there is a strong qualitative difference between the tetrahedral Horn problem and the original Horn problem.
+In particular, while the solution to the original Horn problem is completely characterized by a convex polytope (i.e., by a finite number of linear inequalities in the eigenvalues), the solution space for the tetrahedral Horn's problem is neither convex nor a polytope.
+
+\vspace{1em}
+\textbf{Our contributions:}
+Regarding the tetrahedral Horn problem, we derive a new family of inequalities constraining the set of tetrahedral eigenvalues.
+These inequalities are expressed in terms of Schur polynomials $s_{\yx}(x)$ of the involved eigenvalues which are homogeneous symmetric polynomials indexed by Young diagrams $\yx$.
+More accurately, we find our inequalities are best articulated in terms of a simple rescaling of the Schur polynomials, $\vp_{\yx}(\ex) \coloneqq s_{\yx}(\ex)/H_{\yx}$, where $H_{\yx}$ is a positive integer equal to the product of the hook-lengths of all boxes in the Young diagram $\yx$.
+These inequalities are presented in the following theorem.
+\begin{thm}
+    \label{thm:iff_tet}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of non-negative eigenvalues of length $n$ satisfying the trace conditions:
+    \begin{equation}
+        \label{eq:tet_trace_cond}
+        \tea+\teb=\tec, \teb+\ted=\tef, \tec+\ted=\tee, \text{and} \tea+\tef=\tee.
+    \end{equation}
+    Then there exists Hermitian matrices $(A,B,C,D,E,F)$ with satisfying $A+B=C$, $B+D=F$, $C+D=E$ and $A+F=E$ with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
+    if and only if for all triples of Young diagrams $(\ya,\yb,\yd)$,
+    \begin{equation}
+        \vp_{\ya}(\ea)^{\frac{2}{3}}\vp_{\yb}(\eb)\vp_{\yd}(\ed)^{\frac{2}{3}}
+        \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
+        \vp_{\yf}(\ef)^{\frac{1}{3}}\vp_{\yc}(\ec)^{\frac{1}{3}}\vp_{\ye}(\ee)^{\frac{1}{3}}.
+    \end{equation}
+\end{thm}
+The expression $\abcdefsymbol$ appearing above is an operator known as the $6j$-symbol for the group of unitary $n\times n$ matrices $\U(n)$ whose significance will be explained shortly.
+While \cref{thm:iff_tet} provides a complete characterization of the set of tetrahedral eigenvalues,
+it does so using an infinite number of inequalities.
+Nevertheless, we prove the finite subset of such inequalities of fixed degree $k = \sya + \syb + \syd$ is sufficient to characterize the set of sextuples of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, which are \textit{approximately} tetrahedral in the sense that their distance, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, to the set of tetrahedral eigenvalues is small.
+\begin{thm}
+    \label{thm:approx_tet}
+    If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are non-negative eigenvalues satisfying the trace conditions in \cref{eq:tet_trace_cond} and also \cref{eq:nec_tet} for all triples $(\ya,\yb,\yd)$ such that $\sya + \syb + \syd = k$ for some positive integer $k$, then
+    \begin{equation}
+        \label{eq:tri_abd_cef_dist_bound}
+        \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right),
+    \end{equation}
+    where $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$ is the distance measure
+    \begin{equation}
+        \label{eq:defn_tet_deviation}
+        D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq
+        \min_{\substack{(A,B,D) \sim \\ \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}}
+        \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2.
+    \end{equation}
+    Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
+\end{thm}
+Note this theorem actually implies the ``if'' portion of \cref{thm:iff_tet} as one can take $k \to \infty$.
+Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{prop:approx_tri}).
+
+\vspace{1em}
+\textbf{$\boldsymbol{6j}$-symbols:}
+Given a complex reductive group $G$ with unitary irreducible representations (irreps) $V_{\yx}$ labelled by highest weights $\yx$ along with tensor-product multiplicity spaces, $M^{\yc}_{\ya,\yb} \coloneqq \Hom_G(V_{\yc}, V_{\ya}\ot V_{\yb})$, the $6j$-symbols are maps between these multiplicity spaces which encode the associativity constraint $(V_\ya \ot V_\yb) \ot V_\yc \cong V_\ya \ot (V_\yb \ot V_\yc)$ between a triple of irreps, $V_\ya, V_\yb$, and $V_\yd$ of $G$.
+Specifically, a $6j$-symbol depends on six irreps, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
+\begin{equation*}
+    \abcdefsymbol
+    :
+    M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc} \to M^{\ye}_{\ya, \yf} \ot M^{\yf}_{\yb,\yd},
+\end{equation*}
+corresponding to the block-wise components of the canonical isomorphism from $\bigotimes_{\yc} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$ to $\bigotimes_{\yf} M^{\yc}_{\ya,\yb} \ot M^{\ye}_{\yd,\yc}$.
+Whenever the group $G$ is multiplicity-free, in the sense that the dimensions of all multiplicity spaces, $m^{\yc}_{\ya,\yb} \coloneqq \dim M^{\yc}_{\ya,\yb}$, are either zero or one, the corresponding $6j$-symbol is merely a scalar quantity.
+
+\vspace{1em}
+\textbf{Wigner's $\boldsymbol{6j}$-symbol for $\boldsymbol{\SU(2)}$:}
+The group $\SU(2)$ is multiplicity-free and the $6j$-symbols for $\SU(2)$ are, depending on the normalization and/or phase convention, are also referred to as Wigner $6j$-symbols or Wigner $6j$-coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory}.
+The $6j$-symbols for $\SU(2)$ play a foundational role in the quantum theory of angular momentum, modelling the recoupling theory of three angular momenta, and thus they are used frequently in calculations involving the scattering of multiple particles in nuclear, atomic and molecular physics \cite{varshalovich1988quantum,edmonds1996angular,aquilanti2012semiclassical}.
+Beyond the direct application to the theory of angular momenta, the $6j$-symbols for $\SU(2)$ also constitute a primitive object in the theory of spin networks \cite{penrose1971applications, baez2010physics}, representing a minimal non-trivial closed spin network.
+General spin networks are networks of trivalent vertices and connections labelled by irreps (spins) of $\SU(2)$ which provide a discrete/combinatorial and manifestly invariant model with applications to gauge theories on graphs or manifolds \cite{baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, elementary gates in spin network models for quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and various aspects of proposed models for quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum,moussouris1984quantum}.
+
+Throughout this paper, by the \textit{asymptotics} of $6j$-symbols, we are referring to their behaviour in the regime wherein the six highest weights, $\yx \in \{\ya, \yb, \yc, \yd, \ye, \yf\}$, are becoming larger and larger in a suitable sense.
+The asymptotics of the $6j$-symbol for $\SU(2)$, wherein the irreps of dimension $\ell + 1$ may be identified either by integers $\ell \in \{0, 1, \ldots, \}$ or half-integers $j=\frac{\ell}{2}\in\{0, \frac{1}{2}, 1, \frac{3}{2}, \ldots \}$, were initially investigated by \citeauthor{wigner1960group} \cite[Chapter 27]{wigner1960group}.
+In the context of the quantum theory of angular momenta, the limit of large $\ell$, or equivalently large spins $j$, may also be interpreted as the limit wherein Planck's constant tends to zero, $\hbar \propto \frac{1}{k} \to 0$, which suppresses the effects of quantizing angular momentum; therefore, these asymptotic limits are also known as \textit{semiclassical} limits.
+Given three particles with spins $\frac{a}{2}$, $\frac{b}{2}$ and $\frac{d}{2}$ and total spin $\frac{e}{2}$, the $6j$-symbol, $\tightcurlysixj{a & b & c \\ d & e & f}$, can be interpreted as the quantum mechanical amplitude to observe the first and second particles to have combined spin $\frac{c}{2}$ given the second and third have combined spin $\frac{f}{2}$ \cite{wigner1960group,roberts1999classical}.
+\Citeauthor{wigner1960group} considered the probability for this event to occur in the asymptotic limit of large spins, i.e., the square of the $6j$-symbol, and conjectured the estimate:
+\begin{equation*}
+    \tightcurlysixj{a & b & c \\ d & e & f}^2 \approx \frac{1}{3 \pi V}
+\end{equation*}
+where $V$ is the volume of the Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$.
+Building upon the work of Wigner, \citeauthor{ponzano1968semiclassical} conjectured a formula for the amplitude of the $6j$-symbol itself in the limit of large spins \cite{ponzano1968semiclassical}.
+Later, using techniques from geometric quantization theory, \citeauthor{roberts1999classical} rigorously proved an asymptotic formula which is equivalent to the conjecture of \citeauthor{ponzano1968semiclassical} (up to minor differences) \cite{roberts1999classical}.
+\begin{thm}[\citeauthor{roberts1999classical}]
+    If $(a,b,c,d,e,f)$ are integer side-lengths of a Euclidean tetrahedron with volume $V$ and corresponding exterior dihedral angles\footnotemark{} $(\theta_a, \theta_b, \theta_c, \theta_d, \theta_e, \theta_f)$, then
+    \begin{equation*}
+        \tightcurlysixj{ka & kb & kc \\ kd & ke & kf} \stackrel{k\to \infty}{\sim} \sqrt{\frac{2}{3 \pi V k^3}} \cos\left({\sum}_{\ell} (k \ell + 1) \frac{\theta_{\ell}}{2} + \frac{\pi}{4}\right),
+    \end{equation*}
+    where the sum is over the six sides $\ell$.
+    Otherwise, if there does not exist a Euclidean tetrahedron with side-lengths $(a,b,c,d,e,f)$, then $\tightcurlysixj{ka & kb & kc \\ kd & ke & kf}$ decays to zero at an exponential rate as $k\to\infty$.
+\end{thm}
+\footnotetext{For example, the exterior dihedral angle $\theta_a$ is the outside angle between the two faces of the tetrahedron sharing the common edge with side-length $a$.}
+A proof of the Ponzano-Regge asymptotic formula was also obtained by \citeauthor{chen1999asymptotics} \cite{chen1999asymptotics} (with a correction by \citeauthor{watson1999asymptotic} \cite{watson1999asymptotic}) using estimates from the theory of hypergeometric functions.
+Additional proofs of this asymptotic correspondence between $6j$-symbols for $\SU(2)$ and Euclidean tetrahedra have emerged in recent years including the elementary proof by \citeauthor{gurau2008ponzano} which applies Stirling's approximation directly to Racah's single-sum formula \cite{gurau2008ponzano} as well as group integral approach to evaluate so-called simple spin networks as Feynman graphs \cite{freidel2000simple,freidel2003asymptotics}.
+See also the paper by \citeauthor{bartlett2023coherent} for an accessible presentation of these kinds of calculations \cite{bartlett2023coherent}.
+Analogous asymptotic formulas have also been obtained by \citeauthor{taylor2006sixj} for the $6j$-symbol associated to the quantum group $U_q(\mathfrak{sl}_2)$ for a particular $k$-dependent parameter $q$ \cite{taylor2006sixj}.
+In this generalized setting, the asymptotics calculated by \citeauthor{taylor2006sixj} encode (i) the existence of a spherical tetrahedron on the unit sphere with prescribed edge-lengths whenever $q=\exp(i\pi/r(k))$ is an $r(k)$th root of unity or (ii) the existence of a hyperbolic tetrahedron with prescribed edge-lengths when $q=\exp(\pi/r(k))$ is positive real (here $r(k) = k(r-2) + 2$ for $r > 2$ a fixed integer) \cite{taylor2006sixj}.
+
+More generally, that the asymptotics of representation-theoretic quantities (such as $6j$-symbols) are controlled by the existence of some critical geometric object is explained by the theory of geometric quantization \cite{roberts2002asymptotics}.
+Geometric quantization, broadly speaking, associates classical phase spaces modelled by symplectic manifolds to quantum phase spaces modelled by Hilbert spaces \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
+In particular, \citeauthor{kirillov2004lectures}'s orbit principle \cite{kirillov2004lectures} proposes an association between (i) the coadjoint orbits of a compact Lie group $G$ passing through an integral weight $\yx$ to (ii) the corresponding unitary irreps of $G$ of highest weight $\yx$.
+Furthermore, products of coadjoint orbits correspond to tensor products of irreps and moreover symplectic quotients of the resulting products of orbits are identified with invariant vectors in the resulting tensor products of irreps \cite{roberts2002asymptotics, guillemin1982geometric}.
+For the aforementioned case of $\SU(2)$, the coadjoint orbits can be identified the $\mathrm{SO}(3)$ rotations of vectors in Euclidean $\mathbb R^3$ (i.e., spheres of fixed radius), and thus the asymptotics of representation-theoretic quantities for $\SU(2)$ are controlled by the existence of corresponding geometric objects in Euclidean $\mathbb R^3$ with prescribed edge-lengths \cite{roberts2002asymptotics}.
+
+\vspace{1em}
+\textbf{$\boldsymbol{6j}$-symbols for $\boldsymbol{\U(n)}$:}
+One application of the techniques developed in this paper is to provide estimates for the asymptotics of the $6j$ symbols for the group $\U(n)$ (or equivalently for $\SU(n)$) wherein the polynomial irreps $V_{\yx}^n$ are labelled by highest-weights which can also be identified with Young diagrams $\yx$.
+One of the primary difficulties in proving statements about $6j$ symbols for $\U(n)$ for $n\geq 3$ is the presence of non-trivial multiplicity spaces, meaning the dimensions of tensor-product multiplicity spaces for $\U(n)$, also known as Littlewood-Richardson coefficients, can be greater than one.
+Because of these difficulties, over the years, considerable attention has been placed on the study of $\U(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which are multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is at most one \cite{nawata2013multiplicity, alekseev2020multiplicity, alcock2023wigner}.
+Indeed, as stated by \citeauthor{coquereaux2023integer}, ``apart from very few special cases (low dimension of irreps and no multiplicity), $\ldots$ we are not aware of any published general result.'' \cite{coquereaux2023integer}.
+
+Our approach bypasses the difficulties presented by multiplicities by focusing only on the \textit{norms} of the $6j$ symbol for $\U(n)$.
+Following the procedure provided by geometric quantization, one expects the asymptotics of the $6j$-symbol for $\U(n)$ to be controlled by existence of some kind of tetrahedral object in space of coadjoint orbits for $\U(n)$.
+In particular, the coadjoint orbits of $\U(n)$ can be identified with the orbits of $n\times n$ Hermitian matrices, $X$, under the conjugation action, $X \mapsto U^{-1} X U$, by unitary $n \times n$ matrices $U \in \U(n)$; in other words, coadjoint orbits are associated to sets of $n\times n$ Hermitian matrices sharing a common set of eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$.
+Using our methods we are able to prove the following inverse polynomial lower bound.
+\begin{cor}
+    \label{cor:asym_6j}
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are the eigenvalues of $n\times n$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$,
+    then there exists a sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ (with $\abs{\ye_k} = k$) converging in proportion to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$
+    such that
+    \begin{equation}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
+        \geq \frac{1}{\mathrm{poly}(k)}.
+    \end{equation}
+    Otherwise, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are not the eigenvalues of any such matrices, then for any sequence of Young diagrams converging in proportion to $(\ea, \eb, \ec, \ed, \ee, \ef)$, we have exponential decay in the value of $\norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}$.
+\end{cor}
+Before continuing, it is worth emphasizing the similarities and differences between our result and the asymptotic formula proven by \citeauthor{roberts1999classical} above \cite{roberts1999classical}.
+First and foremost, our result goes beyond that of \citeauthor{roberts1999classical} in the sense that it applies to the higher-rank Lie group $\U(n)$ for $n \geq 3$.
+Moreover, our result, even when restricted to the case for $\SU(2)$, goes beyond the statement proven by \citeauthor{roberts1999classical} in the sense our result is applicable to \textit{irrational} eigenvalues/edge-lengths, whereas the former is only applicable to \textit{integer}, or with a minor re-scaling, \textit{rational} eigenvalues/edge-lengths.
+ike the Pozano-Regge formula, our result is different in that it merely promises the \textit{existence} of a sextuple of sequences of Young diagrams, $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$, converging to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, whereas the result of \citeauthor{roberts1999classical} provides a concrete statement about the particular sequence of \textit{scaled} Young diagrams $(k\ya, k\yb, k\yc, k\yd, k\ye, k\yf)$.
+Moreover, our result provides a polynomial lower bound on the value of the $\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}$ and does not provide an asymptotic formula which would serve as the proper generalization of the \citeauthor{ponzano1968semiclassical} formula above \cite{ponzano1968semiclassical}.
+The \citeauthor{ponzano1968semiclassical} formula for $\SU(2)$ was traditionally obtained using the method of \textit{stationary phases} which relies on both an integral formula for the $6j$-symbol with exponential integrand along with a geometric understanding of the \textit{isolated} critical points for the exponential phase \cite{ponzano1968semiclassical,gurau2008ponzano}.
+In the case of $\SU(2)$ with generic edge-lengths, there is a formulation involving exactly \textit{two} isolated critical points corresponding the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with given edge-lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
+Generalizing this type of criticality analysis to $\U(n)$ for $n\geq 3$ appears to be a significant challenge, and even if an analysis was performed, one would still need to compute a corresponding Hessian for each critical point and evaluate the total contribution \cite{roberts2002asymptotics}.
+Perhaps a different approach for deriving the Ponzano-Regge formula, such as those based on recursion relations or estimates of hypergeometric functions appearing in \cite{chen1999asymptotics,taylor2006sixj,artamonov2023classical,artamonov2024calculation} would better suited for the case where $n\geq 3$.
+%\citeauthor{taylor2006sixj} (see also \cite{chen1999asymptotics}) to prove asymptotics for the $6j$-symbol for $U_q(\mathfrak{sl}_2)$ using recursion relations \cite{taylor2006sixj} (see also the formulas for the $6j$-symbols for $\mathrm{gl}_n$ in terms of generalized hypergeometric functions due to \cite{artamonov2024calculation} \cite{artamonov2023classical,artamonov2024calculation}).
+
+\vspace{1em}
+\textbf{Eigenvalue estimation:}
+Our approach to proving the above theorems relies on the technique of \textit{eigenvalue estimation}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of positive semidefinite matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
+The eigenvalue estimation technique relies heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
+Given a positive semidefinite matrix $X$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
+The technique of eigenvalue estimation relies on the fact that the Schur-Weyl distribution concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration strengthens as the sizes of the Young diagrams grow to infinity \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient}.
+Applying the eigenvalue estimation technique to the original Horn problem was first done by \citeauthor{christandl2008quantum} \cite{christandl2008quantum}.
+In this paper, we develop a technique called \textit{eigenvalue separation} which relates the similarity between two Schur-Weyl distributions, $p_{\ex}(\yx)$ and $p_{\ey}(\yx)$, to the similarity of the underlying eigenvalues, $x$ and $y$, and apply this technique to tetrahedral Horn problem and obtain \cref{thm:iff_tet}.
+In addition, our approach produces new results for the original Horn problem, analogous to \cref{thm:iff_tet}, beyond those obtained in \cite{christandl2008quantum}.
+
+\vspace{1em}
+\textbf{Quantum marginals \& the $\boldsymbol{6j}$-symbol for the symmetric group $\boldsymbol{S_k}$:}
+Our method for proving \cref{cor:asym_6j} is closely related to techniques used in an earlier paper by \citeauthor{christandl2018recoupling} which derived analogous bounds on the $6j$ symbol for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+In that paper, the authors considered the problem of determining whether there exists a density matrix $\rho_{ABC}$ with partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$ with a given sextuple of eigenvalues \cite{christandl2018recoupling}.
+Such problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginals problems \cite{christandl2018recoupling,fraser2022sufficient}.
+In particular, they proved the $6j$ symbols for the symmetric group $S_k$ (referred to as the recoupling coefficients) in the limit as $k \to \infty$ either decay exponentially or can be bounded from below by a polynomial factor depending on whether there exists a density matrix with the prescribed marginal spectra \cite{christandl2018recoupling}.
+Moreover, they also demonstrated how the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, furthermore demonstrated how, by restricting to the subgroup $S_k \subset \U(k)$ of permutation matrices and applying \citeauthor{nishiyama2000restriction}'s restriction theorem \cite{nishiyama2000restriction}, the $6j$ symbols for unitary group $\U(n)$ may be viewed as a special case of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+This latter result obtained by \cite{christandl2018recoupling} is a generalizes how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
+While the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem, the approach taken by this paper differs from \cite{christandl2018recoupling} as it tackles the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:iff_tet} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions previously obtained in \cite{christandl2018recoupling}.
+We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
+
+\vspace{1em}
+\textbf{Multiple Horn problems:}
+More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem and are referred to as \textit{multiple} Horn problems in \cite{alekseev2025multiple}.
+Specifically, \citeauthor{alekseev2025multiple} focus on two variants, the \textit{multiplicative multiple Horn problem} concerning the singular values of products of invertible matrices, and the \textit{tropical multiple Horn problem} concernining singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
+The tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
+
+\vspace{1em}
+\textbf{Other inequalities:}
+It is worth highlighting that there exists related results constraining the eigenvalues of sums of Hermitian matrices which are already readily applicable to the tetrahedral Horn problem.
+In addition to the aforementioned Horn's inequalities \cite{horn1962eigenvalues}, which contraint the eigenvalues of any triple of Hermitian matrices $(A,B,A+B)$, there exists a myriad of inequalities which constrain the eigenvalues of the quadruple of Hermitian matrices $(Y,X+Y,Y+Z,X+Y+Z)$ whenever $X,Y,Z \geq 0$ are positive semidefinite matrices (see for example \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}).
+These inequalities are readily applicable to the tetrahedral Horn problem under the identification ($X=A$, $Y=B$ and $Z=D$) wherein they constrain, respectively, the eigenvalues $(b,c,e,f)$ of the matrices $(B,C,E,F)$ while ignoring the eigenvalues of $A$ and $D$.
+More scarce are inequalities which additionally incorporate the eigenvalues $(a,d)$ of the matrices $(A,D)$ such as Minkowski-like determinant inequality \cite[Section 6.2]{niculescu2023functions} (originally due to \citeauthor{courtade2016strengthening}\cite{courtade2016strengthening,sra2016reverseoverflow}), or applications of Ptolemny's inequality \cite{schoenberg1952remark} or the Cayley-Menger determinant inequality \cite[Equation 5.2]{sitharam2018handbook} to the space of $n\times n$ Hermitian matrices equipped with the Hilbert-Schmit inner product.
+While each of these previously known inequalities can be viewed as necessary conditions for the tetrahedral Horn problem, to the best of our knowledge, they remain insufficient for the tetrahedral Horn problem when $n\geq 3$.
+Our contribution, theorefore, is to provide a family of necessary and sufficient inequalities in the form of \cref{thm:iff_tet} which is applicable to all dimensions $n$.
+
+\vspace{1em}
+\textbf{Organization of the paper:}
+
+{\color{red!50!black} Anton's:
+    TODO:
+}
+
+{\color{blue!50!black} TC's:
+Then, in \cref{sec:ineqs_from_schur_weyl}, we develop the mathematical machinery needed to prove the \textit{necessity} of the inequalities in \cref{thm:iff_tet}, specifically the binomial theorem for representations (\cref{thm:binomial}).
+Afterwards, \cref{sec:distance_bounds} is dedicated to proving the distance bound in \cref{thm:approx_tet} and thus the \textit{sufficiency} of the inequalities in \cref{thm:iff_tet}.
+The results in \cref{sec:distance_bounds} rely on the results of \cref{sec:ineqs_from_schur_weyl}, the aforementioned eigenvalue concentration bounds (\cref{sec:eig_est_and_sep}), and some standard results from random matrix theory (\cref{sec:random_matrices}).
+}
+% Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
+
+\section*{Acknowledgments}
+MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality.
+TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
+
 \clearpage
 \color{blue!50!black} TC: THE FOLLOWING IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
-\section{Inequalities for tetrahedral eigenvalues}
+\section{[tc] Inequalities for tetrahedral eigenvalues}
 \label{sec:ineqs_from_schur_weyl}
 
 The purpose of this section is to develop the technical machinery used to prove numerous new inequalities constraining the set of tetrahedral eigenvalues.
@@ -1498,7 +1509,7 @@ Building upon this machinery, in \cref{sec:binomial_theorem}, we state and prove
 Using the binomial theorem, in \cref{sec:new_ineq_horn_orig}, we will derive new inequalities constraining the set of eigenvalue triples $(\ya,\yb,\yc)$ of positive semidefinite matrices $(A,B,C)$ satisfying $A+B=C$ relevant for Horn's original eigenvalue problem.
 Afterwards, in \cref{sec:new_ineq_horn_tet}, we again leverage the binomial theorem (or rather its multinomial generalization) to derive new inequalities constraining the set of eigenvalue sextuples $(\ea,\eb,\ec,\ed,\ee,\ef)$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$ relevant for the tetrahedral Horn problem.
 
-\subsection{Schur-Weyl duality}
+\subsection{[tc] Schur-Weyl duality}
 \label{sec:schur_weyl}
 
 The purpose of this section is to review the representation theory of $\U(n)$, or equivalently, the polynomial representation theory of $\GL(n)$.
@@ -1582,7 +1593,7 @@ where $s_{\yx}(\ex) = s_{\yx}(\ex_1, \ldots, \ex_n)$ is known as the Schur-polyn
 % \end{equation}
 
 
-\subsection{The binomial theorem}
+\subsection{[tc] The binomial theorem}
 \label{sec:binomial_theorem}
 
 The purpose of this section is to state and prove the binomial theorem, which serves as the foundation for all subsequent results in this paper.
@@ -1742,7 +1753,7 @@ Taking the trace of the operators in \cref{thm:binomial} produces the following 
     which is the operator version of the character product formula $\chi_{\ya}(X)\chi_{\yb}(X) = \sum_{\yc} c^{\yc}_{\ya\yb} \chi_{\yc}(X)$.
 \end{rem}
 
-\subsection{Inequalities for Horn's original problem}
+\subsection{[tc] Inequalities for Horn's original problem}
 \label{sec:new_ineq_horn_orig}
 
 In \cref{sec:binomial_theorem} we introduced to the quantity $\vp^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}) and saw in \cref{cor:bisummation} that it satisfied two summation identities.
@@ -1850,7 +1861,7 @@ These observations imply the following necessary condition for compatibility of 
 
 
 
-\subsection{The \texorpdfstring{$\boldsymbol{6j}$}{6j} symbol for \texorpdfstring{$\boldsymbol{\U(n)}$}{U(n)}}
+\subsection{[tc] The \texorpdfstring{$\boldsymbol{6j}$}{6j} symbol for \texorpdfstring{$\boldsymbol{\U(n)}$}{U(n)}}
 \label{sec:sixj_tet}
 
 The purpose of this section is to introduce a representation theoretic object, namely the $6j$ symbol, and then in the subsequent sections show how it places constraints on whether a given sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral in a manner which generalizes how the Littlewood-Richardson coefficient encodes whether a given triple $(\ea,\eb,\ec)$ is trigonal.
@@ -1941,7 +1952,7 @@ For any operator $O : V_1 \to V_2$ between Hermitian vector spaces $V_1$ and $V_
 \end{proof}
 
 
-\subsection{Inequalities for the tetrahedral Horn problem}
+\subsection{[tc] Inequalities for the tetrahedral Horn problem}
 \label{sec:new_ineq_horn_tet}
 
 In \cref{sec:new_ineq_horn_orig}, we saw how the quantity $\vp^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}) could be used to produce inequalities applicable to the original Horn problem.
@@ -2148,7 +2159,7 @@ We can now immediately prove the ``only if'' portion of the claim of \cref{thm:i
 \end{proof}
 The proof of the ``if'' portion of \cref{thm:iff_tet} can be found in \cref{sec:dist_bound_for_tet_horn} which proves the distance bound of \cref{thm:approx_tet} (this implies the ``if'' portion of \cref{thm:iff_tet} after sending $k \to \infty$).
 
-\subsection{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
+\subsection{[tc] The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
 \label{sec:large_n}
 
 The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} to derive inequalities on the entropies of the eigenvalues.
@@ -2264,7 +2275,7 @@ We are now in a position to prove the main result of this section.
 \end{proof}
 \clearpage
 \color{red!50!black}TC: THE FOLLOWING SECTION IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
-\section{Distance bounds via eigenvalue concentration}
+\section{[tc] Distance bounds via eigenvalue concentration}
 \label{sec:distance_bounds}
 
 The purpose of this section is to provide a proof of the distance bound in \cref{thm:approx_tet}.
@@ -2275,7 +2286,7 @@ These bounds make use of eigenvalue concentration techniques, which we review fi
 As a warm-up exercise, in \cref{sec:dist_bound_for_orig_horn} we demonstrate how these techniques can be applied to obtain a distance bound for the original Horn problem.
 Then we generalize the proof technique in \cref{sec:dist_bound_for_tet_horn} to prove \cref{thm:approx_tet}.
 
-\subsection{Eigenvalue estimation \& separation}
+\subsection{[tc] Eigenvalue estimation \& separation}
 \label{sec:eig_est_and_sep}
 
 In this section we show how the representations $\pi_{\yx}(X)$ of Hermitian matrices $X$ encode useful information about the eigenvalues of $X$.
@@ -2429,7 +2440,7 @@ which follows from \cref{lem:eig_sep} because $\vp_{\yx}(x), \vp_{\yx}(y) \geq 0
     In subsequent sections we will use \cref{eq:Bhattacharyya_vs_distance} to convert lower bounds on Bhattacharyya coefficients $\BC(p,q)$ into upper bounds on distances $\norm{p-q}_1$.
 \end{rem}
 
-\subsection{Results for random matrices}
+\subsection{[tc] Results for random matrices}
 \label{sec:random_matrices}
 
 The purpose of this section is record some results concerning sums of random Hermitian matrices with fixed eigenvalues sampled uniformly from their respective orbits.
@@ -2489,7 +2500,7 @@ The first two propositions follow from standard applications of Schur's lemma, a
 %     \end{equation}
 % \end{cor}
 
-\subsection{Distance bound for the original Horn problem}
+\subsection{[tc] Distance bound for the original Horn problem}
 \label{sec:dist_bound_for_orig_horn}
 
 In this section, we prove the following proposition pertaining to the original Horn problem as a warm-up exercise before we prove its generalization for the tetrahedral Horn problem (\cref{thm:approx_tet}) in \cref{sec:dist_bound_for_tet_horn}.
@@ -2562,7 +2573,7 @@ In this section, we prove the following proposition pertaining to the original H
     Finally, using \cref{eq:Bhattacharyya_vs_distance}, we substitute the maximum normalized Bhattacharyya coefficient $\frac{\BC(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_ab_c_dist_bound} which completes the proof.
 \end{proof}
 
-\subsection{Distance bound for the tetrahedral Horn problem}
+\subsection{[tc] Distance bound for the tetrahedral Horn problem}
 \label{sec:dist_bound_for_tet_horn}
 
 The purpose of this section is to prove our main distance bound, \cref{thm:approx_tet}.
@@ -2707,7 +2718,7 @@ The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenv
     Finally, using \cref{eq:Bhattacharyya_vs_distance}, we can substitute the maximum normalized product of Bhattacharyya coefficients here with minimum normalized sum of distances (as in \cref{eq:defn_tet_deviation}) to obtain \cref{eq:tri_abd_cef_dist_bound} which completes the proof.
 \end{proof}
 
-\subsection{Asymptotics of the \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
+\subsection{[tc] Asymptotics of the \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
 
 In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the quantity $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which directly relates the sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ to the eigenvalues of $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
 \begin{lem}
@@ -2848,12 +2859,11 @@ In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the qu
     \end{equation}
     which proves the desired exponential decay.
 \end{proof}
-\color{black}
-\section*{Acknowledgments}
-MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality.
-TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
-\appendix
 
+\color{black}
+
+
+\appendix
 %\section{Review of previous work of eigenvalues of sums}
 %\label{sec:review}
 %
@@ -3823,8 +3833,4 @@ As a consequence of \cref{cor:psd}, we will, without loss of generality, hencefo
     At the moment, it remains unclear if analogous symmetries for the generalized Wigner $6j$ symbol exist for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
     It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
 \end{rem}
-
-
-\printbibliography
-
 \end{document}
