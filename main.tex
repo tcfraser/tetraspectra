@@ -171,7 +171,8 @@ Our first result is a necessary and sufficient condition for tetrahedral 6-tuplu
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
     Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral
     if and only if for all triples of positive weights $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ the following inequalities are satisfied
-    \begin{equation} \label{eq:tet_iff_intro}
+    \begin{equation}
+        \label{eq:tet_iff_intro}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
@@ -194,10 +195,11 @@ Note that in \cref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right h
 $(\ea,\eb,\ec,\ed,\ee,\ef) \in {\rm Tetra}^+(n)$. Furthermore, for each integer $k$ we provide a finite set of inequalities, and the set defined by these inequalities is getting arbitrarily close to ${\rm Tetra}^+(n)$ with the increase of $k$.
 
 Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasing weights:
-\begin{thm} \label{thm: intro2}
+\begin{thm} \label{thm:6j_estimates}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in {\rm Tetra}^+(n)$. Then, there is a sequence of 6-tuples of positive weights
     $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with $\abs{\ye_k} = k$ such that
-        \begin{equation} \label{eq: intro converge}
+    \begin{equation} 
+        \label{eq:intro converge}
         \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \to _{k \to \infty}
         \frac{1}{\Tr[e]} (\ea, \eb, \ec, \ed, \ee, \ef),
     \end{equation}
@@ -214,18 +216,18 @@ Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then f
     for some $C, r >0$.
 \end{thm}
 
-\Cref{thm: intro2} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of \Cref{thm: intro2} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
+\Cref{thm:6j_estimates} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of \Cref{thm:6j_estimates} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
 \begin{equation}
     (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) = k (\ya_1, \yb_1, \yc_1, \yd_1, \ye_1, \yf_1).
 \end{equation}
-While being a weaker statement for $G=SU(2)$, \Cref{thm: intro2} applies to all $n$.
-Implicitly, \Cref{thm: intro2} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
+While being a weaker statement for $G=SU(2)$, \Cref{thm:6j_estimates} applies to all $n$.
+Implicitly, \Cref{thm:6j_estimates} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
 
 The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows that positive functions $\varphi_\alpha(a)$ are small outside the region near
 \begin{equation}
     \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|}  \alpha = \frac{1}{\Tr[a]} a.
 \end{equation}
-This observation together with \Cref{thm: intro2} explain the meaning of mysterious inequalities in \cref{eq:tet_iff_intro} in \Cref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
+This observation together with \Cref{thm:6j_estimates} explain the meaning of mysterious inequalities in \cref{eq:tet_iff_intro} in \Cref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
 $
 \alpha \sim a, \beta \sim b, \delta \sim d$
 we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
@@ -245,22 +247,26 @@ Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\math
 For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to \End(V_\yx)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
 
 The tensor product of two irreducible representations admits a unique decomposition of the form
-\begin{equation}\label{eq:tensor product}
+\begin{equation}
+    \label{eq:tensor_product}
     V_\ya \ot V_\yb = \bigoplus_\yc C_{\ya \yb}^\yc \ot V_\yc,
 \end{equation}
 where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions
-$c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition in \cref{eq:tensor product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
-\begin{equation}\label{eq:operator product}
+$c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition in \cref{eq:tensor_product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
+\begin{equation}
+    \label{eq:operator product}
     \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc (\id \ot \pi_\yc(g)) P_{\ya \yb}^\yc,
 \end{equation}
 where on the left hand side we use the tensor product $V_\ya \ot V_\yb$, and on the right hand side $C_{\ya \yb}^\yc \ot V_\yc$.
 
 Characters of irreducible representations are denoted by
-\begin{equation}\label{eq:character}
+\begin{equation}
+    \label{eq:character}
     \chi_\yx(g)= \Tr_{V_\yx}[\pi_\yx(g)].
 \end{equation}
 Taking a trace of \cref{eq:operator product} we obtain the standard product rule for characters:
-\begin{equation}\label{eq:product rule}
+\begin{equation}
+    \label{eq:product rule}
     \chi_\ya(g) \chi_\yb(g) = \sum_\yc c_{\ya \yb}^\yc  \chi_\yc(g).
 \end{equation}
 
@@ -294,7 +300,8 @@ Recall that for Hermitian vector spaces $V_{1}, V_{2}$ and an operator $O: V_{1}
     \end{split}
 \end{align}
 which satisfy the following estimates:
-\begin{equation} \label{eq:norm_estimates}
+\begin{equation}
+    \label{eq:norm_estimates}
     \norm{O}_{\infty}^2 \leq \norm{O}_{2}^2 \leq \dim(V_1) \norm{O}_{\infty}^2.
 \end{equation}
 In particular, for $6j$-symbols, we have
@@ -310,7 +317,8 @@ In the above formula, we have used the fact that for two orthogonal Hermitian pr
 Foe future use, we will needowing fact:
 \begin{prop}\label{prop: Pi Omega Pi}
     Let $\Pi_1, \Pi_2$ be two orthogonal projections, and $\Omega$ be a non-negative Hermitian operator. Then,
-    \begin{equation}\label{eq: Pi Omega Pi}
+    \begin{equation}
+        \label{eq:Pi Omega Pi}
         \abs{\Tr(\Pi_1 \Omega \Pi_2)} \leq \norm{\Pi_1\Pi_2}_{\infty} (\Tr  \Pi_1\Omega)^{\frac{1}{2}}(\Tr  \Omega \Pi_2)^{\frac{1}{2}}.
     \end{equation}
 \end{prop}
@@ -360,11 +368,12 @@ Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in
 \end{equation}
 for all $X,Y \in \Mat_n(\mathbb{C})$.
 Tensor products of representations with positive weights decompose into direct sums of representations of the same type.
-Note the decomposition in \cref{eq:tensor product} one has only terms with
-\begin{equation} \label{eq:trace representations}
+Note the decomposition in \cref{eq:tensor_product} one has only terms with
+\begin{equation}
+    \label{eq:trace_representations}
     \syc = \sya + \syb.
 \end{equation}
-We will sometimes refer to \cref{eq:trace representations} as to a trace equality (in fact, one of many trace equalities in this paper).
+We will sometimes refer to \cref{eq:trace_representations} as to a trace equality (in fact, one of many trace equalities in this paper).
 
 Recall that for Young diagrams (or partitions) $\yx$ with fixed size $\sya=k$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$.
 The dimensions of these representations are given by formula
@@ -385,27 +394,32 @@ and rescaled characters
     \varphi_\yx(X) = \Tr_{V_\yx}  \Phi_\yx(X) = \frac{1}{H_{\yx}}  \chi_\yx(X).
 \end{equation}
 Note that
-\begin{equation}\label{eq:sum lambda}
+\begin{equation}
+    \label{eq:varphi_normalization}
     \sum_{\yx:\syx=k} \varphi_\yx(X) = \frac{1}{k!} [\Tr(X)]^k, \quad
     \sum_\yx \varphi_\yx(X) = \exp(\Tr(X)).
 \end{equation}
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-modules
-\begin{equation} \label{eq:schur-weyl}
+\begin{equation}
+    \label{eq:schur-weyl}
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\syx =k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in
 $(\mathbb{C}^n)^{\ot k}$. Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
 Applying it to an element $X \in {\rm Mat}_n(\mathbb{C})$, we obtain
-\begin{equation} \label{eq:X^k}
+\begin{equation}
+    \label{eq:X^k}
     X^{\ot k}  = \oplus_{\syx =k}  {\rm Id}_{W_\yx} \ot \pi_\yx(X),
 \end{equation}
-where on the right hand side we a have a direct sum of operators acting on the subspaces of the Schur-Weyl decomposition. Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields
+where on the right hand side we a have a direct sum of operators acting on the subspaces of the Schur-Weyl decomposition.
+Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields
 \begin{equation}
     [\Tr(X)]^k = \Tr(X^{\ot k}) = \sum_{\yx:\syx=k} {\dim}(W_\yx) \chi_\yx(X) =
     k! \sum_{\yx:\syx=k} H_{\yx}^{-1} \chi_\yx(X) =
     k! \sum_{\yx:\syx=k} \varphi_\yx(X),
 \end{equation}
-as required. The second identity in \cref{eq:sum lambda} follows by taking a sum over $k$ in the first one.
+as required. 
+The second identity in \cref{eq:varphi_normalization} follows by taking a sum over $k$ in the first one.
 
 Henceforth we denote the space of Hermitian matrices of size $n$ by $\herm{n}$ and the space of positive-semidefinite Hermitian matrices by $\hermp{n}$.
 Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of $X$.
@@ -448,7 +462,8 @@ It is  convenient to introduce the following functions of two matrices,
 
 \begin{prop}
     For $\ya, \yb \in \Lambda^*_{++}$ and $X,Y \in {\rm Mat}_n(\mathbb{C})$, we have
-    \begin{equation} \label{eq:product varphi}
+    \begin{equation}
+        \label{eq:varphi_product_sum}
         \varphi_\ya(X) \varphi_\yb(Y) = \sum_\yc \varphi^{\ya \yb}_\yc(X, Y).
     \end{equation}
     For $X,Y \in \hermp{n}$, the function $\varphi^{\ya \yb}_\yc(X, Y)$ takes non-negative real values.
@@ -472,7 +487,8 @@ It is  convenient to introduce the following functions of two matrices,
 \end{proof}
 \begin{thm}[Binomial theorem]
     For $X,Y \in {\rm Mat}_n(\mathbb{C})$ and $\yc \in \Lambda^*_{++}$, we have
-    \begin{equation} \label{eq:varphi sum}
+    \begin{equation}
+        \label{eq:varphi_sum_sum}
         \varphi_\yc(X+Y)=\sum_{\ya, \yb} \varphi^{\ya \yb}_\yc(X, Y).
     \end{equation}
 \end{thm}
@@ -500,10 +516,6 @@ It is  convenient to introduce the following functions of two matrices,
     which is a non-commutative counterpart of the binomial decomposition. In the fifth line, we have used the Schur-Weyl duality for representations $\rho_l$ and
     $\rho_{k-l}$, and the fact that $P^\yc = \sum_{\ya, \yb} P_{\ya \yb}^\yc$.
 \end{proof}
-
-%\begin{rem}
-%    \Cref{eq:varphi sum} uses the Schur-Weyl duality, and it is a specific feature of $G=U(n)$, and of the corresponding matrix algebra ${\rm Mat}_n(\mathbb{C})$.
-%\end{rem}
 
 For a 6-tuple of positive weights, we introduce a function of three matrices,
 \begin{equation}
@@ -565,7 +577,8 @@ estimate how close they are. First, there are standard distances in $\mathbb{R}^
 where $K(p,q)$ is the Kolmogorov distance.
 As usual, each of these norms vanishes if and only if $p=q$.
 Another measure of similarity between distributions $p$ and $q$ is the Bhattacharyya coefficient \cite{bhattacharyya1946measure,fuchs2002cryptographic}:
-\begin{equation} \label{eq:Bhattacharyya_coefficient}
+\begin{equation}
+    \label{eq:Bhattacharyya_coefficient}
     \BC(p,q) = \sum_{i=1}^r \sqrt{p_iq_i}.
 \end{equation}
 For all distributions $p, q$, the Bhattacharyya coefficient $\BC(p,q)$ lies in the interval $[0,1]$, and $\BC(p,q)=1$ if and only if $p=q$.
@@ -575,7 +588,8 @@ the Kolmogorov distance and the Bhattacharyya coefficient (see {\em e.g.} \cite[
     1-\BC(p,q) \leq K(p,q) \leq \sqrt{1-\BC(p,q)^2}.
 \end{equation}
 This implies\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
-\begin{equation} \label{eq:BC norm estimate}
+\begin{equation}
+    \label{eq:BC_norm_estimate}
     \BC(p,q) \leq \sqrt{1-K(p,q)^2} \leq \exp\left(- \frac{1}{2} K(p,q)^2\right)=
     \exp\left(- \frac{1}{8} \norm{p-q}_1^2\right).
 \end{equation}
@@ -584,14 +598,15 @@ In that case, the \textit{unnormalized} Bhattacharyya coefficient is also denote
 \begin{equation}
     \BC(p,q) = \tau  B\left(\frac{p}{\tau}, \frac{q}{\tau}\right),
 \end{equation}
-and the estimate in \cref{eq:BC norm estimate} then reads
+and the estimate in \cref{eq:BC_norm_estimate} then reads
 \begin{equation}
     \label{eq:bhattacharyya_vs_distance}
     \frac{\BC(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
 \end{equation}
 Finally, the Kullback-Leibler (KL) divergence is defined as
-\begin{equation} \label{eq:KL divergence}
-   \kl{p}{q} = \sum_{i=1}^{n} p_i \log \frac{p_i}{q_i}.
+\begin{equation}
+    \label{eq:KL_divergence}
+    \kl{p}{q} = \sum_{i=1}^{n} p_i \log \frac{p_i}{q_i}.
 \end{equation}
 It takes values between $0$ and $+\infty$, and it is equal to zero if and only if $p=q$.
 
@@ -609,7 +624,7 @@ One can associate to $x \in \mathbb{R}_n^+$ a probability measure $p^x$ on the s
 Let $X= {\rm diag}(x_1, \dots, x_n)$ be a diagonal non-negative Hermitian matrix with $x_i$'s on the diagonal.
 By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the set of positive weights of $U(n)$ with $\syx =k$:
 \begin{equation}
-\label{eq:P_x(lambda)}
+    \label{eq:schur_weyl_dist}
     P_x(\yx) = \frac{k!}{|x|^k}  \varphi_\yx(x).
 \end{equation}
 The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}:
@@ -621,8 +636,9 @@ The following result is known as eigenvalue or spectrum estimation \cite{alicki1
     \end{equation}
 \end{prop}
 \Cref{prop:eig_est_2} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\yx$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
-\begin{prop}     \label{prop: BC estimate}
-For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
+\begin{prop}
+    \label{prop: BC estimate}
+    For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
     \begin{equation}
         \BC(P_x, P_y) \leq \polyk{\binom{n}{2}}  \BC(p^x,p^y)^k
     \end{equation}
@@ -659,7 +675,7 @@ $[x]={\rm diag}(x_1, \dots, x_n)$ under the action of the unitary group $U(n)$:
 \end{equation}
 Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$. This measure can be constructed as the pushforward of the probability Haar measure on $U(n)$. Also, conjugacy classes are isomorphic to coadjoint orbits of $U(n)$ and they carry canonical Duistermaat-Heckman measure proportional to $\mu_x$. In what follows, we will need expectation values $\mathbb{E}_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\mathbb{E}_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\mathbb{E}_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
 
-\begin{prop}\label{prop: estimate E_x_y_z}
+\begin{prop}\label{prop:estimate E_x_y_z}
     We have,
     \begin{align}
         \begin{split}
@@ -737,7 +753,8 @@ On the space of such 6-tuples, we introduce a function
     \left( \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2\right).
 \end{equation}
 Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if there exists non-negative Hermitian matrices
-\begin{equation} \label{eq: 6 matrices}
+\begin{equation}
+    \label{eq:six_matrices}
     (A, B, C=A+B, D, E=A+B+C, F=B+D) \in (\hermp{n})^6
 \end{equation}
 with ordered eigenvalues given by $(\ea,\eb,\ec,\ed,\ee,\ef)$.
@@ -757,7 +774,7 @@ The following is a restatement of \cref{thm:iff_tet} from the introduction.
     \label{thm:tet_iff_body}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
-    Then, Hermitian matrices satisfting \cref{eq: 6 matrices} with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
+    Then, Hermitian matrices satisfting \cref{eq:six_matrices} with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
     if and only if for all triples of positive wieghts $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$, the following inequalities are satisfied
     \begin{equation}
         \label{eq:tet_iff_body}
@@ -782,7 +799,7 @@ Providing proofs for these two claims yields the whole theorem because the satis
 \label{sec:tet_necess}
 
 First, we assume that there are matrices $(A,B,C,D,E,F)$ with eigenvalues
-$(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq: 6 matrices}.
+$(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq:six_matrices}.
 We then compute,
 \begin{align}
     \begin{split}
@@ -891,7 +908,7 @@ where $\polyk{3(n-1)}$ serves as an upper bound on the number of terms in the su
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0 \implies \norm{\abcdefsymbolcefstarred}_{\infty} >0.
 \end{equation}
 Next, consider the bound
-\begin{align}\label{eq: second_abd_bound}
+\begin{align}\label{eq:second_abd_bound}
     \begin{split}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         &=
@@ -906,11 +923,11 @@ Next, consider the bound
         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
     \end{split}
 \end{align}
-Here in the first line we have used \cref{prop: estimate E_x_y_z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
+Here in the first line we have used \cref{prop:estimate E_x_y_z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
 $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$, and we estimate the dimensions of representations by \cref{eq:unitary_irrep_dim_bound}. In the third line, we denote $C^*=A^*+B^*, E^*=A^*+B^*+D^*, F^*=B^*+D^*$, and
 use the estimate in \cref{eq:vp_ABD_abs_bound}.
 
-By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \cref{eq: second_abd_bound}, we obtain
+By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \cref{eq:second_abd_bound}, we obtain
 \begin{align}
     \begin{split}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} (\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed))^2
@@ -926,7 +943,7 @@ By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \c
     \end{split}
 \end{align}
 This then implies
-\begin{align}\label{eq: 10varphi}
+\begin{align}\label{eq:10varphi}
     \begin{split}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         &\leq \polyk{\frac{3}{2}\binom{n}{2}+\frac{3}{2}n} \\
@@ -990,7 +1007,7 @@ and
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
     \exp\left( - \frac{k}{8|\ee|^2} \norm{\ee- \eig(E^*)}_1^2\right).
 \end{equation}
-Putting things together, we obtain the following estimate for the right hand side of the \cref{eq: 10varphi}:
+Putting things together, we obtain the following estimate for the right hand side of the \cref{eq:10varphi}:
 \begin{align}
     \begin{split}
         \left(\vp_{\ya}(\ea)\vp_{\yf^*}(\ef)\vp_{\yc^*}(\ec)\vp_{\yd}(\ed)\vp_{\ye^*}(\ee)\right)^{\frac{1}{6}}
@@ -1005,7 +1022,7 @@ Here we have used the fact that
     \norm{\ef- \eig(F^*)}_1^2 + \norm{\ee- \eig(E^*)}_1^2
     + \norm{\ee- \eig(E^*)}_1^2 \geq D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}.
 \end{equation}
-Combining with the inequality in \cref{eq: 10varphi}, this implies
+Combining with the inequality in \cref{eq:10varphi}, this implies
 \begin{equation}
     \vp_{\ya}(\ea) \vp_{\yb}(\eb) \vp_{\yd}(\ed) \leq
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
@@ -1020,7 +1037,8 @@ $|\ya|+|\yb|+|\yd|=k$ yields
     \exp\left( - \frac{k}{24|\ee|^2} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \right),
 \end{equation}
 where we have estimated by $(k+1)^3n$ the number of summands. This implies
-\begin{equation}\label{eq: final estimate}
+\begin{equation}
+    \label{eq:final_estimate}
     \frac{1}{|\ee|^2} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq 36n(n+1) \frac{\log(k+1)}{k},
 \end{equation}
 as required.
@@ -1051,13 +1069,18 @@ In \citeyear{klyachko2000random}, it was shown by \cite{klyachko2000random} that
 \textbf{The tetrahedral Horn problem:}
 In this paper, we consider a generalization of Horn's problem investigated previously only briefly in \cite{christandl2018recoupling}.
 While Horn's problem aims to characterize the eigenvalues $(\ea, \eb, \ec)$ of a triple of $n\times n$ Hermitian matrices $(A,B,C)$ which are subjected to the constraint $A+B=C$, the generalization we consider here aims to characterize the possible eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of a \textit{sextuple} of $n\times n$ matrices $(A,B,C,D,E,F)$ subject to four constraints:
-\begin{equation}\label{eq:tet_cond}
+\begin{equation}
+    \label{eq:tet_cond}
     A+B=C, \qquad B+D=F, \qquad D+C=E, \qquad \text{and} \qquad A+F=E.
 \end{equation}
 These constraints arise naturally from building a tetrahedral arrangement of $n\times n$ Hermitian matrices inside the vector space of such Hermitian matrices with edges labelled according to \cref{fig:tetrahedron_labelling_scheme}.
 For this reason, we refer to this eigenvalue problem as the \textit{tetrahedral} Horn problem and we say a sextuple of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, is \textit{tetrahedral} if such matrices exist, and not tetrahedral otherwise.
-\begin{figure}[ht]    \centering
-    \ctikzfig{tikz/triangle-tetrahedral-problem}    \caption{(Left) Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}    \label{fig:tetrahedron_labelling_scheme}\end{figure}It is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to \textit{additional} matching constraints.
+\begin{figure}[ht]
+    \centering
+    \ctikzfig{tikz/triangle-tetrahedral-problem}\caption{(Left) Horn's problem subjects three Hermitian matrices, $(A,B,C)$, to the constraint $A+B=C$ forming a triangle in the vector space of Hermitian matrices. (Right) The \textit{tetrahedral} Horn problem subjects six Hermitian matrices, $(A,B,C,D,E,F)$, to a quadruple of constraints forming a tetrahedron in the vector space of Hermitian matrices.}
+    \label{fig:tetrahedron_labelling_scheme}
+\end{figure}
+It is possible to view the tetrahedral Horn problem as the conjunction of four separate instances of the original Horn original problem subject to \textit{additional} matching constraints.
 Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral only if each of the following four triplets are trigonal:
 \begin{equation}
     \label{eq:four_faces}
@@ -1067,7 +1090,8 @@ Specifically, a sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedr
     (\ea,\ef,\ee).
 \end{equation}
 If each of the above triplets are separately compatible in the sense of the original Horn problem, then there exists a set of twelve Hermitian matrices with the corresponding eigenvalues satisfying
-\begin{equation}\label{eq:four_faces_matrices}
+\begin{equation}
+    \label{eq:four_faces_matrices}
     A+B=C, \qquad B'+D=F, \qquad C'+D'=E, \qquad A'+F'=E'.
 \end{equation}
 The tetrahedral Horn problem goes beyond four separate instances of Horn's original problem in that it additionally requires the corresponding pairs of primed and unprimed Hermitian matrices above must coincide.
