@@ -479,21 +479,22 @@ It is  convenient to introduce the following functions of two matrices,
 \begin{proof}
     Let $k=\syc$, $\rho_k$ the natural representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $C_k=(\mathbb{C}^n)^{\ot k}$, and $P^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
     We compute,
-    \begin{equation}
-        \begin{array}{lll}
-            \varphi_\yc(X+Y) & = & h_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y) \\
-            & = &  (h_\yc d_\yc)^{-1} \Tr_{C_k} P^\yc   \rho_k(X+Y) \\
-            & = & k!^{-1} \Tr_{C_k} P^\yc  (X+Y)^{\ot m} \\
-            & = & k!^{-1} \Tr_{C_k}  P^\yc \sum_{l=0}^k \sum_{\sigma \in S_k} \frac{k!}{l! (k-l)!}\rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}) \\
-            & = & \sum_{\ya, \yb}  (\sya! \syb!)^{-1} \Tr_{(W_\ya \ot V_\ya) \ot (W_\yb \ot V_\yb)}  P_{\ya \yb}^\yc  \pi_\ya(X) \ot \pi_\yb(Y) \\
-            & = & \sum_{\ya, \yb}  (h_\ya h_\yb)^{-1} \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)) \\
-            & = & \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\varphi_\ya(X) \ot \varphi_\yb(Y)) \\
-            & = & \sum_{\ya, \yb}  \yf_{\ya \yb}^\yc(X,Y).
-        \end{array}
-    \end{equation}
+    \begin{align}
+        \begin{split}
+            \varphi_\yc(X+Y) 
+            &= h_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y), \\
+            &= (h_\yc d_\yc)^{-1} \Tr_{C_k} P^\yc \rho_k(X+Y), \\
+            &= k!^{-1} \Tr_{C_k} P^\yc  (X+Y)^{\ot m}, \\
+            &= k!^{-1} \Tr_{C_k}  P^\yc \sum_{l=0}^k \sum_{\sigma \in S_k} \frac{k!}{l! (k-l)!}\rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
+            &= \sum_{\ya, \yb}  (\sya! \syb!)^{-1} \Tr_{(W_\ya \ot V_\ya) \ot (W_\yb \ot V_\yb)}  P_{\ya \yb}^\yc  \pi_\ya(X) \ot \pi_\yb(Y), \\
+            &= \sum_{\ya, \yb}  (h_\ya h_\yb)^{-1} \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)), \\
+            &= \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\varphi_\ya(X) \ot \varphi_\yb(Y)), \\
+            &= \sum_{\ya, \yb}  \yf_{\ya \yb}^\yc(X,Y).
+        \end{split}
+    \end{align}
     Here in the fourth line we have used the fact that
     \begin{equation}
-     (X+Y)^{\ot k} = \sum_{l=0}^k \frac{k!}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
+        (X+Y)^{\ot k} = \sum_{l=0}^k \frac{k!}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
     \end{equation}
     which is a non-commutative counterpart of the binomial decomposition. In the fifth line, we have used the Schur-Weyl duality for representations $\rho_l$ and
     $\rho_{k-l}$, and the fact that $P^\yc = \sum_{\ya, \yb} P_{\ya \yb}^\yc$.
@@ -530,16 +531,18 @@ Even when restricted to $(\hermp{n})^{\times 3}$,  functions $\varphi^{\ya \yb \
 
 \begin{proof}
     We compute,
-    \begin{equation}
-        \begin{array}{lll}
-            \vp^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) & = & \sum_{\yc}\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) \\
-            & = & \sum_\yc \Tr_{V_\ya \ot V_\yb \ot V_\yd}
-            \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc} \\
-            & = &
+    \begin{align}
+        \begin{split}
+            \vp^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) 
+            &= \sum_{\yc}\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z), \\
+            &= 
+            \sum_\yc \Tr_{V_\ya \ot V_\yb \ot V_\yd}
+            \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            &=
             \Tr_{V_\ya \ot V_\yb \ot V_\yd}
             \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z)).
-        \end{array}
-    \end{equation}
+        \end{split}
+    \end{align}
     Here we have used the fact that $\sum_\yc \Pi_{\ya \yb \yd}^{\ye ; \yc} = P^\ye_{\ya \yb \yd}$, where $P^\ye_{\ya \yb \yd}$ is the orthogonal projector to the isotypical component of $\ye$ in the triple tensor product. We have also used the fact that $P^\ye_{\ya \yb \yd} \Pi_{\ya \yb \yd}^{\ye ; \yf} = \Pi_{\ya \yb \yd}^{\ye ; \yf}$. The right hand side in the equation above is the trace of the orthogonal restriction of the non-negative Hermitian operator
     $(\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))$ to the image of the projector $\Pi_{\ya \yb \yd}^{\ye ; \yf}$. Hence, it is a non-negative real number. The proof for functions $\vp^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z)$ is similar.
 \end{proof}
@@ -657,15 +660,17 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
 
 \begin{prop}\label{prop: estimate E_x_y_z}
     We have,
-    \begin{equation}
-        \begin{array}{lll}
-            \mathbb{E}_x  \Phi_\yx(X) &=& \frac{\varphi_\yx(x)}{\dim V_\yx}  \id_{V_\yx}, \\
-            \mathbb{E}_{x,y}  \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc} &=&
-            c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}, \\
-            \mathbb{E}_{x,y, z}  \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye} &=& \norm{\abcdefsymbol}_2^2 \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
+    \begin{align}
+        \begin{split}
+            \mathbb{E}_x \Phi_\yx(X) 
+            &= \frac{\varphi_\yx(x)}{\dim V_\yx}  \id_{V_\yx}, \\
+            \mathbb{E}_{x,y}  \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc} 
+            &= c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}, \\
+            \mathbb{E}_{x,y, z} \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye} 
+            &= \norm{\abcdefsymbol}_2^2 \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
             \frac{\varphi_\yd(y)}{\dim V_\yd}.
-        \end{array}
-    \end{equation}
+        \end{split}
+    \end{align}
 \end{prop}
 
 \begin{proof}
@@ -680,33 +685,32 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
         \varphi_\yx(x) = c(x)  \dim V_\yx  \Rightarrow  c(x) = \frac{\varphi_\yx(x)}{\dim V_\yx},
     \end{equation}
     as required. For the second equality, we compute
-    \begin{equation}
-        \begin{array}{lll}
-            \mathbb{E}_{x,y}  \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
-            & =& \frac{1}{\dim V_\yc} \mathbb{E}_{x,y}   \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) P_{\ya \yb}^\yc \\
-            &= & \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb} \frac{1}{\dim V_\yc} \Tr P_{\ya \yb}^\yc\\
-            & = & c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}.
-        \end{array}
-    \end{equation}
+    \begin{align}
+        \begin{split}
+            \mathbb{E}_{x,y} \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
+            &= \frac{1}{\dim V_\yc} \mathbb{E}_{x,y}   \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) P_{\ya \yb}^\yc, \\
+            &= \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb} \frac{1}{\dim V_\yc} \Tr P_{\ya \yb}^\yc, \\
+            &= c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}.
+        \end{split}
+    \end{align}
 
     Finally, for the third equality we compute
-    \begin{equation}
-        \begin{array}{lll}
-            \mathbb{E}_{x,y, z}  \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
-            & = &
-            \frac{1}{{\dim V_\ye}} \mathbb{E}_{x,y, z}
-            \Tr 
-                \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc} \\
-                & = &
-             \frac{1}{{\dim V_\ye}}  \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
-            \frac{\varphi_\yd(y)}{\dim V_\yd}   \Tr   \Pi_{\ya \yb \yd}^{\ye ; \yf} \Pi_{\ya \yb \yd}^{\ye ; \yc} \\
-            & = &
+    \begin{align}
+        \begin{split}
+            \mathbb{E}_{x,y,z} \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
+            &=
+            \frac{1}{{\dim V_\ye}} \mathbb{E}_{x,y,z}
+            \Tr\Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            &=
+            \frac{1}{{\dim V_\ye}}  \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
+            \frac{\varphi_\yd(y)}{\dim V_\yd}   \Tr   \Pi_{\ya \yb \yd}^{\ye ; \yf} \Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            &=
             \norm{\abcdefsymbol}_2^2 \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
             \frac{\varphi_\yd(y)}{\dim V_\yd}.
-        \end{array}
-    \end{equation}
-    \end{proof}
-    Note that even though functions $\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)$ are complex values, their expectation values are real and positive.
+        \end{split}
+    \end{align}
+\end{proof}
+Note that even though functions $\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)$ are complex values, their expectation values are real and positive.
 
 \section{Inequalities for tetrahedral eigenvalues}
 
@@ -773,23 +777,18 @@ We will split the proof of \cref{thm:iff_tet} into several steps.
 First, we assume that there are matrices $(A,B,C,D,E,F)$ with eigenvalues
 $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq: 6 matrices}.
 We then compute,
-\begin{equation}
-    \begin{array}{lll}
+\begin{align}
+    \begin{split}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        & = &
-        \vp_{\ya}(A)\vp_{\yb}(B)\vp_{\yd}(D), \\
-        & = &
-        \sum_{\yc,\ye,\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D), \\
-        & \leq &
-        \sum_{\yc,\ye,\yf} \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right|, \\
-        & \leq &
-        \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
+        &= \vp_{\ya}(A)\vp_{\yb}(B)\vp_{\yd}(D), \\
+        &= \sum_{\yc,\ye,\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D), \\
+        &\leq \sum_{\yc,\ye,\yf} \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right|, \\
+        &\leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left( \vp_{\ya}(A) \vp_{\yd}(D) \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}, \\
-        & \leq &
-        \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
+        &= \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed) \vp_{\yf}(\ef)\vp_{\yc}(\ec)\vp_{\ye}(\ee)\right)^{\frac{1}{3}}.
-    \end{array}
-\end{equation}
+    \end{split}
+\end{align}
 % Here in the second line we are using the fact that
 % \begin{equation}
 % \sum_{\yc\ye\yf}\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) =
@@ -804,45 +803,36 @@ This calculation follows from the estimate:
     \left( \vp_{\ya}(A) \vp_{\yd}(D) \vp_{\yf}(F)\vp_{\yc}(C)\vp_{\ye}(E)\right)^{\frac{1}{3}}.
 \end{equation}
 To prove this inequality, use \cref{prop: Pi Omega Pi} to obtain
-\begin{equation}
-    \begin{array}{lll}
+\begin{align}
+    \begin{split}
         \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right|
-        & = &
-        \left|\Tr 
-        \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D))\Pi_{\ya \yb \yd}^{\ye ; \yc}\right| \\
-        & \leq &   \norm{\Pi_{\ya \yb \yd}^{\ye ; \yf}\Pi_{\ya \yb \yd}^{\ye ; \yc}}_\infty (\Tr  \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)))^{\frac{1}{2}} \\
-        & \times &
-        (\Tr  (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)) \Pi_{\ya \yb \yd}^{\ye ; \yc})^{\frac{1}{2}} \\
-        & = &
-        \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}.
-    \end{array}
-\end{equation}
+        &= \left|\Tr \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D))\Pi_{\ya \yb \yd}^{\ye ; \yc}\right| \\
+        &\leq \norm{\Pi_{\ya \yb \yd}^{\ye ; \yf}\Pi_{\ya \yb \yd}^{\ye ; \yc}}_\infty (\Tr  \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)))^{\frac{1}{2}} \\
+        &\hspace{8em}\times (\Tr (\Phi_\ya(A) \ot \Phi_\yb(B) \ot \Phi_\yd(D)) \Pi_{\ya \yb \yd}^{\ye ; \yc})^{\frac{1}{2}} \\
+        &= \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}.
+    \end{split}
+\end{align}
 Then we have the following upper bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)$:
-\begin{equation}
-    \begin{array}{lll}
-        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq &
-        \sum_{\ye \yb \yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
-        & = &
-        \sum_{\ye} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
-        & = &
-         \Tr  \Phi_\ya(A) \ot \Phi_\yf(B+D)
-        \\
-        & = &
-        \varphi_\ya(A) \varphi_\yf(B+D),
-    \end{array}
-\end{equation}
+\begin{align}
+    \begin{split}
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) 
+        &\leq \sum_{\ye \yb \yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D), \\
+        &= \sum_{\ye} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right), \\
+        &= \Tr \Phi_\ya(A) \ot \Phi_\yf(B+D), \\
+        &= \varphi_\ya(A) \varphi_\yf(B+D),
+    \end{split}
+\end{align}
 and
-\begin{equation}
-    \begin{array}{lll}
-        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) & \leq &
-        \sum_{\ya \yb \yd \yf} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \\
-        & = & \sum_{\ya \yf} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right) \\
-        & = &
-        \sum_{\ya \yf} \Tr  P^\ye_{\ya\yb\yd} \left(\Phi_\ya(A) \ot \Phi_\yf(B+D)\right) \\
-        & = & \sum_{\ya \yf} \varphi^{\ya \yf}_\ye(A, B+D) \\
-        & = & \varphi_\ye(A+B+D).
-    \end{array}
-\end{equation}
+\begin{align}
+    \begin{split}
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) 
+        &\leq \sum_{\ya \yb \yd \yf} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D), \\
+        &= \sum_{\ya \yf} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right), \\
+        &= \sum_{\ya \yf} \Tr  P^\ye_{\ya\yb\yd} \left(\Phi_\ya(A) \ot \Phi_\yf(B+D)\right), \\
+        &= \sum_{\ya \yf} \varphi^{\ya \yf}_\ye(A, B+D), \\
+        &= \varphi_\ye(A+B+D).
+    \end{split}
+\end{align}
 In both estimates, we are using the fact that $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) \geq 0$.
 Together, they imply
 \begin{equation}
@@ -894,55 +884,55 @@ where $\polyk{3(n-1)}$ serves as an upper bound on the number of terms in the su
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0 \implies \norm{\abcdefsymbolcefstarred}_{\infty} >0.
 \end{equation}
 Next, consider the bound
-\begin{equation}\label{eq: second_abd_bound}
-    \begin{array}{lll}
+\begin{align}\label{eq: second_abd_bound}
+    \begin{split}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        & = &
+        &=
         \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\ye^*}^{n})}
         \expect_{\substack{(A,B,D) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}}}
         \vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A,B,D), \\
-        & \leq &
-        \polyk{3\binom{n}{2}} \abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A^*,B^*,D^*)} \\
-        & \leq &
-         \polyk{3\binom{n}{2}}
-         \norm{\abcdefsymbolcefstarred}_{\infty}
-         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
-    \end{array}
-\end{equation}
+        &\leq
+        \polyk{3\binom{n}{2}} \abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A^*,B^*,D^*)}, \\
+        &\leq
+        \polyk{3\binom{n}{2}}
+        \norm{\abcdefsymbolcefstarred}_{\infty}
+        \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
+    \end{split}
+\end{align}
 Here in the first line we have used \cref{prop: estimate E_x_y_z}. In the second line we denote by $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ a triple of matrices which realizes a maximum of the functions
 $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$, and we estimate the dimensions of representations by \cref{eq:unitary_irrep_dim_bound}. In the third line, we denote $C^*=A^*+B^*, E^*=A^*+B^*+D^*, F^*=B^*+D^*$, and
 use the estimate in \cref{eq:vp_ABD_abs_bound}.
 
 By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \cref{eq: second_abd_bound}, we obtain
-\begin{equation}
-    \begin{array}{lll}
+\begin{align}
+    \begin{split}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} (\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed))^2
-        & \leq & \polyk{3\binom{n}{2}+3n} \norm{\abcdefsymbolcefstarred}_{\infty}^2 \\
-        & \times & \left(
+        &\leq \polyk{3\binom{n}{2}+3n} \norm{\abcdefsymbolcefstarred}_{\infty}^2 \\
+        &\hspace{4em}\times 
+        \left(
         \vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
         \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
         \vp_{\ye^*}(\ee)
         \right)^{\frac{1}{3}} \\
-        & \times &
+        &\hspace{4em}\times
         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
-\end{array}
-\end{equation}
+    \end{split}
+\end{align}
 This then implies
-\begin{equation}\label{eq: 10varphi}
-    \begin{array}{lll}
+\begin{align}\label{eq: 10varphi}
+    \begin{split}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        & \leq &
-        \polyk{\frac{3}{2}\binom{n}{2}+\frac{3}{2}n} \\
-        & \times &
+        &\leq \polyk{\frac{3}{2}\binom{n}{2}+\frac{3}{2}n} \\
+        &\hspace{4em}\times
         \left(
         \vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
         \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
         \vp_{\ye^*}(\ee)
         \right)^{\frac{1}{6}} \\
-        & \times &
-        \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{6}}
-    \end{array}
-\end{equation}
+        &\hspace{4em}\times
+        \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{6}}.
+    \end{split}
+\end{align}
 Indeed, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) =0$ the inequality is verified since the right hand side is non-negative.
 Otherwise, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0$, then the norms of the $6j$-symbol are nonvanishing and we can use the standard operator norm estimates from \cref{eq:norm_estimates}.
 
@@ -960,39 +950,32 @@ Similarly, we obtain
     \frac{|\ed|^{|\yd|}}{|\yd|!}.
 \end{equation}
 Next, we consider
-\begin{equation}
-    \begin{array}{lll}
+\begin{align}
+    \begin{split}
         \left(\vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}}
-        & \leq &  \sum_\yf \sqrt{\vp_{\yf}(\ef) \vp_{\yf}(F^*)}  \\
-        & = &
-        \frac{|\ef|^{|\yf|}}{|\yf|!} \BC(P_{\ef}, P_{\eig(F^*)}) \\
-        & \leq &
-        (|\yf|+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|} \\
-        & \leq &
-        (k+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|}.
-    \end{array}
-\end{equation}
+        &\leq \sum_\yf \sqrt{\vp_{\yf}(\ef) \vp_{\yf}(F^*)}, \\
+        &= \frac{|\ef|^{|\yf|}}{|\yf|!} \BC(P_{\ef}, P_{\eig(F^*)}), \\
+        &\leq (|\yf|+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|}, \\
+        &\leq (k+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|}.
+    \end{split}
+\end{align}
 Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \leq k$. Putting two estimates above together, we arrive at
-\begin{equation}
-    \begin{array}{lll}
-        \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}} &\leq &
-        \frac{1}{|\ya|!
-        |\yf|!}
-        (k+1)^{\binom{n}{2}} |\ea|^{|\ya|} \BC(\ef, \eig(F^*))^{|\yf|} \\
-        & \leq &
-        \frac{1}{k!}
-        (k+1)^{\binom{n}{2}} (|\ea| + \BC(\ef, \eig(F^*))^{|\yf|}) \\
-        & = &
-        \frac{1}{k!} (k+1)^{\binom{n}{2}} \BC(\ea \oplus \ef, \ea \oplus \eig(F^*))^k \\
-        & \leq & \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-        \exp\left( - \frac{k}{8|\ee|^2} \norm{\ef- \eig(F^*)}_1^2\right).
-    \end{array}
-\end{equation}
+\begin{align}
+    \begin{split}
+        \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}} 
+        &\leq \frac{1}{|\ya|!|\yf|!}
+        (k+1)^{\binom{n}{2}} |\ea|^{|\ya|} \BC(\ef, \eig(F^*))^{|\yf|}, \\
+        &\leq
+        \frac{1}{k!} (k+1)^{\binom{n}{2}} (|\ea| + \BC(\ef, \eig(F^*))^{|\yf|}), \\
+        &= \frac{1}{k!} (k+1)^{\binom{n}{2}} \BC(\ea \oplus \ef, \ea \oplus \eig(F^*))^k, \\
+        &\leq \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k \exp\left( - \frac{k}{8|\ee|^2} \norm{\ef- \eig(F^*)}_1^2\right).
+    \end{split}
+\end{align}
 Similarly, we obtain
 \begin{equation}
-    \left( \vp_\ya(\ed) \vp_{\ya}(D^*) \vp_{\yc^*}(\ec) \vp_{\yc^*}(C^*)\right)^{\frac{1}{2}} \leq
-    \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-    \exp\left( - \frac{k}{8|\ee|^2} \norm{\ec- \eig(C^*)}_1^2\right),
+    \left( \vp_\ya(\ed) \vp_{\ya}(D^*) \vp_{\yc^*}(\ec) \vp_{\yc^*}(C^*)\right)^{\frac{1}{2}} 
+    \leq
+    \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k \exp\left(-\frac{k}{8|\ee|^2} \norm{\ec - \eig(C^*)}_1^2\right),
 \end{equation}
 and
 \begin{equation}
@@ -1001,20 +984,15 @@ and
     \exp\left( - \frac{k}{8|\ee|^2} \norm{\ee- \eig(E^*)}_1^2\right).
 \end{equation}
 Putting things together, we obtain the following estimate for the right hand side of the equation \eqref{eq: 10varphi}:
-\begin{equation}
-    \begin{array}{lll}
-        \left(\vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
-                \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
-                \vp_{\ye^*}(\ee)
-                \right)^{\frac{1}{6}}
-                & \times &  \\
-         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{6}}
-         & \leq &
-        \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-        \exp\left( - \frac{k}{24|\ee|^2}
-        D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \right).
-    \end{array}
-\end{equation}
+\begin{align}
+    \begin{split}
+        \left(\vp_{\ya}(\ea)\vp_{\yf^*}(\ef)\vp_{\yc^*}(\ec)\vp_{\yd}(\ed)\vp_{\ye^*}(\ee)\right)^{\frac{1}{6}}
+        &\times \\
+        \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^*)\vp_{\ye^*}(E^*)\right)^{\frac{1}{6}}
+        &\leq \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
+        \exp\left(-\frac{k}{24|\ee|^2} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \right).
+    \end{split}
+\end{align}
 Here we have used the fact that
 \begin{equation}
     \norm{\ef- \eig(F^*)}_1^2 + \norm{\ee- \eig(E^*)}_1^2
