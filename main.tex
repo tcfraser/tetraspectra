@@ -38,25 +38,34 @@
 
 Denote by
 \begin{equation}
-    {\rm eig}: \mathcal{H}_n=\{ A \in {\rm Mat}_n(\mathbb{C}); A^\dagger = A\}
+    \eig: \mathcal{H}_n=\{ A \in {\rm Mat}_n(\mathbb{C}); A^\dagger = A\}
     \to \mathbb{R}_{\rm ord}^n = \{ (a_1 \geq a_2 \dots \geq a_n) \in \mathbb{R}^n\}
 \end{equation}
 the map assigning to a Hermitian matrix the set of its ordered eigenvalues.
 For $a \in \mathbb{R}_{\rm ord}^n$, it is convenient to use notation
 $
-{\rm Tr}[a]=\sum_{i=1}^n a_i
+\Tr[a]=\sum_{i=1}^n a_i
 $,
-where ${\rm Tr}[a]$ coincides with the trace of a diagonal matrix with eigenvalues $a_i$.
+where $\Tr[a]$ coincides with the trace of a diagonal matrix with eigenvalues $a_i$.
 
 The Horn problem is a classical Linear Algebra problem asking to determine the set
-\begin{equation}
-    {\rm Horn}(n) = \{ (a,b,c) \in (\mathbb{R}_{\rm ord}^n)^3;
-    \exists \, A, B \in \mathcal{H}_n, {\rm eig}(A) =a, {\rm eig}(B)=b,
-    {\rm eig}(A+B)=c\}.
-\end{equation}
+
+\begin{align}
+    {\rm Horn}(n)
+    \coloneqq
+    \left\{
+        (a,b,c) \in (\mathbb{R}_{\rm ord}^n)^3
+    \middle|
+        \begin{array}{c}
+            \exists (A, B, C) \in (\mathcal{H}_n)^{3}, \\
+            \eig(A)=a, \eig(B)=b, \eig(C)=c, \\
+            A+B=C
+        \end{array}
+    \right\}.
+\end{align}
 The necessary and sufficient conditions for $(a,b,c) \in {\rm Horn}(n)$ consists of the trace equality
 \begin{equation}
-    {\rm Tr}[c] = {\rm Tr}[a] + {\rm Tr}[b],
+    \Tr[c] = {\rm Tr}[a] + {\rm Tr}[b],
 \end{equation}
 and of a system of linear inequalities on $(a,b,c)$. These inequalities were first conjectured by Horn \cite{horn1962eigenvalues}, and they were established by Klyachko \cite{klyachko1998stable}, and by Knutson-Tao
 \cite{knutson1999honeycomb}. In the case of $n=2$, the Horn problem reduces to the question of existence of triangles with given length sides in $\mathbb{R}^3$,
@@ -64,37 +73,47 @@ and Horn inequalities reduce to triangle inequalities.
 
 The fact that Horn inequalities are linear in
 $(a,b,c)$ has several explanations stemming from different fields in Mathematics.
-One approach is as follows: for fixed $(a,b)$, the possible values of $c$ such that$(a,b,c) \in {\rm Horn}(n)$ form a convex polytope, and this follows from the Kirwan Convexity Theorem in symplectic geometry \cite{kirwan???}. Another approach \cite{alekseev2017symplectic} is by relating the Horn problem to a similar problem for weighted planar network, in which case the counterpart of the eigenvalue map is piece-wise linear. Yet another approach is through representation theory of the group $U(n)$ {\bf to complete}.
+One approach is as follows: for fixed $(a,b)$, the possible values of $c$ such that $(a,b,c) \in {\rm Horn}(n)$ form a convex polytope, and this follows from the Kirwan Convexity Theorem in symplectic geometry \cite{kirwan???}. Another approach \cite{alekseev2017symplectic} is by relating the Horn problem to a similar problem for weighted planar network, in which case the counterpart of the eigenvalue map is piece-wise linear. Yet another approach is through representation theory of the group $U(n)$ {\bf to complete}.
 
 In this paper, we consider the following generalization of the set ${\rm Horn}(n)$:
-\begin{equation}
-    \begin{array}{lll}
-        {\rm Tetra}(n) & = & \{ (a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6; \exists \,
-        A, B, D \in \mathcal{H}_n, {\rm eig}(A) =a, {\rm eig}(B)=b, {\rm eig}(D) = d,\\
-        & & {\rm eig}(A+B)=c, {\rm eig}(A+B+D)=e, {\rm eig}(B+D)=f\}.
-    \end{array}
-\end{equation}
+%\begin{align}
+%    \begin{split}
+%        {\rm Tetra}(n)
+%        = \{ (a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6 \mid &\exists (A, B, C, D, E, F) \in (\mathcal{H}_n)^{6}, \\
+%        &\eig(A) =a, \eig(B)=b, \eig(C)=c, \eig(D) = d, \eig(E)=e, \eig(F)=f, \\
+%        &A+B=C, B+D=F, C+D=E, A+F=E\}.
+%    \end{split}
+%\end{align}
+\begin{align}
+    {\rm Tetra}(n)
+    \coloneqq
+    \left\{
+        (a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6
+    \middle|
+        \begin{array}{c}
+            \exists (A, B, C, D, E, F) \in (\mathcal{H}_n)^{6}, \\
+            \eig(A)=a, \eig(B)=b, \eig(C)=c, \\
+            \eig(D)=d, \eig(E)=e, \eig(F)=f, \\
+            A+B=C, B+D=F, C+D=E, A+F=E
+        \end{array}
+    \right\}.
+\end{align}
 We say that 6-tuples $(a,b,c,d,e,f) \in {\rm Tetra}(n)$ are tetrahedral, and we refer to the problem of determining ${\rm Tetra}(n)$ as the tetrahedral Horn problem. This name is motivated by the fact that for $n=2$ the set ${\rm Tetra}(2)$ is closely related to the set of tetrahedra in $\mathbb{R}^3$.
 The tetrahedral Horn problem was stated in \cite{christandl2018recoupling} (see Section 6, Problem 8) motivated by the quantum marginal problem in quantum information theory {\bf (is it true?)}.
 
 As for the Horn problem, there are necessary trace conditions for the tetrahedral Horn problem:
 \begin{equation}
-    {\rm Tr}[c] = {\rm Tr}[a] + {\rm Tr}[b], \hskip 0.3cm
-    {\rm Tr}[e] = {\rm Tr}[a] + {\rm Tr}[b] + {\rm Tr}[d], \hskip 0.3cm
-    {\rm Tr}[f] = {\rm Tr}[b] + {\rm Tr}[d].
+    \Tr[c] = {\rm Tr}[a] + {\rm Tr}[b], \hskip 0.3cm
+    \Tr[e] = {\rm Tr}[a] + {\rm Tr}[b] + {\rm Tr}[d], \hskip 0.3cm
+    \Tr[f] = {\rm Tr}[b] + {\rm Tr}[d].
 \end{equation}
-Denote by $\mathcal{H}_n^+ \subset \mathcal{H}_n$ the set of non-negative Hermitian matrices, and by $\mathbb{R}^n_+ =\{ a \in \mathbb{R}^n_{\rm ord}; a_n \geq 0\}$ the set of non-negative ordered arrays. It is clear that
-${\rm eig}(\mathcal{H}_n^+) = \mathbb{R}^n_+$. One can define the non-negative tetrahedral Horn problem as
+Denote by $\mathcal{H}_n^+ \subset \mathcal{H}_n$ the set of non-negative Hermitian matrices, and by $\mathbb{R}^n_+ =\{ a \in \mathbb{R}^n_{\rm ord}; a_n \geq 0\}$ the corresponding set of non-negative ordered tuples of non-negative real numbers.
+One can then define
 \begin{equation}
-    \begin{array}{lll}
-        {\rm Tetra}^+(n) & = & \{ (a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6; \exists \,
-        A, B, D \in \mathcal{H}^+_n, {\rm eig}(A) =a, {\rm eig}(B)=b, {\rm eig}(D) = d,\\
-        & & {\rm eig}(A+B)=c, {\rm eig}(A+B+D)=e, {\rm eig}(B+D)=f\}.
-    \end{array}
+    {\rm Tetra}^+(n) \coloneqq \{ (a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6 \cap {\rm Tetra}(n) \}.
 \end{equation}
-In fact, the two problems are equivalent: an element $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ belongs to ${\rm Tetra}^+(n)$ if an only if it is tetrahedral.
-And an element $(a,b,c,d,e,f) \in (\mathbb{R}_{\rm ord}^n)^6$ is tetrahedral if and only if there is a real number $s$ such that after shifting all components of
-$(a,b,c,d,e,f)$ by $s$ one obtains an element $(a',b',c',d',e',f') \in {\rm Tetra}^+(n)$. For this reason, from now one we will focus on the set ${\rm Tetra}^+(n)$, and we will refer to its elements as tetrahedral.
+Without loss of generality, the tetrahedral Horn problem can be reduced to the problem of characterizing ${\rm Tetra}^+(n)$.
+The reason for this is because $(a,b,c,d,e,f) \in {\rm Tetra}(n)$ if and only if $(\tilde a, \tilde b, \tilde c, \tilde d, \tilde e, \tilde f) \in {\rm Tetra}^{+}(n)$ where $(\tilde a, \tilde b, \tilde c, \tilde d, \tilde e, \tilde f)$ is obtained by a shifting of the components of $(a,b,c,d,e,f)$ by particular positive real numbers (for more details see \cref{cor:psd} in \cref{sec:symmetries}).
 
 Besides the trace conditions, other necessary conditions for the tetrahedral Horn problem are available in literature. First, observe that the ordinary Horn inequalities apply to triples $(a,b,c), (b,d,f), (a, f, e), (c, d, e)$. In addition to these linear inequalities, there are many non-linear ones, see
 {\em e.g.}  \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}, \cite[Section 6.2]{niculescu2023functions}, \cite{schoenberg1952remark}, \cite[Equation 5.2]{sitharam2018handbook}. As an example, we will single out the following entropic inequality \cite{????}:
@@ -120,7 +139,7 @@ The non-linear inequalities are needed in the description of the set ${\rm Tetra
 \end{figure}
 
 In order to describe our main results, we will need the following notation.
-For $a \in \mathbb{R}^n_+$, we denote by $O_a=\{ A \in \mathcal{H}^+_n; {\rm eig}(A)=a\}$ the set of non-negative Hermitian matrices with eigenvalues $a$.
+For $a \in \mathbb{R}^n_+$, we denote by $O_a=\{ A \in \mathcal{H}^+_n; \eig(A)=a\}$ the set of non-negative Hermitian matrices with eigenvalues $a$.
 We denote by $\Lambda^*_+=\{ (\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n);
 \lambda_i \in \mathbb{Z}\}$ the set of dominant weights for $G=U(n)$, and
 by $\Lambda^*_{++}=\{ \lambda \in \Lambda^*_+; \lambda_n \geq 0\}$ the set of positive dominant weights. The irreducible representations $\pi_\lambda$ corresponding to positive weights are polynomial, and they extend to the
@@ -181,7 +200,7 @@ Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasin
     %
     \begin{equation} \label{eq: intro converge}
         \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \to _{k \to \infty}
-        \frac{1}{{\rm Tr}[e]} \ea, \eb, \ec, \ed, \ee, \ef),
+        \frac{1}{\Tr[e]} \ea, \eb, \ec, \ed, \ee, \ef),
     \end{equation}
     and
     \begin{equation}
@@ -205,7 +224,7 @@ Implicitly, Theorem \ref{thm: intro2} is contained in \cite{christandl2018recoup
 
 The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows that positive functions $\varphi_\alpha(a)$ are small outside the region near
 \begin{equation}
-    \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|} \, \alpha = \frac{1}{{\rm Tr}[a]}\, a.
+    \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|} \, \alpha = \frac{1}{\Tr[a]}\, a.
 \end{equation}
 This observation together with Theorem \ref{thm: intro2} explain the meaning of mysterious inequalities \eqref{eq: intro1} in Theorem \ref{thm: intro1}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
 %
@@ -304,15 +323,15 @@ Foe future use, we will needowing fact:
 
 \begin{proof}
     We compute,
-    \begin{equation}
-        \begin{array}{lll}
-            \abs{\Tr(\Pi_1 \Omega \Pi_2)} & = & |\Tr(\Pi_1 \Pi_2 \Omega \Pi_1)| \\
-            & = & |\Tr(\Pi_1 \Pi_2 \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}}  \Pi_1)| \\
-            & \leq & (\Tr \, \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega \Pi_1)^{\frac{1}{2}} \\
-            & = &
-            (\Tr \, \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega)^{\frac{1}{2}},
-        \end{array}
-    \end{equation}
+    \begin{align}
+        \begin{split}
+            \abs{\Tr(\Pi_1 \Omega \Pi_2)}
+            &= |\Tr(\Pi_1 \Pi_2 \Omega \Pi_1)|, \\
+            &= |\Tr(\Pi_1 \Pi_2 \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}}  \Pi_1)|, \\
+            &\leq (\Tr \, \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega \Pi_1)^{\frac{1}{2}}, \\
+            &= (\Tr \, \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega)^{\frac{1}{2}},
+        \end{split}
+    \end{align}
     where in the third line we have used the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(\Pi_2)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $\Pi_2 \Omega \Pi_2$ with eigenvalues $\omega_j \geq 0$. Then,
     \begin{equation}
         \begin{array}{lll}
@@ -947,7 +966,7 @@ This then implies
 Indeed, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) =0$ the inequality is verified since the right hand side is non-negative.
 Otherwise, if $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0$, then the norms of the $6j$-symbol are nonvanishing and we can use the standard operator norm estimates from \cref{eq:norm_estimates}.
 
-Since ${\rm eig}(A^*)=a$, we have $\vp_{\ya}(A^*)=\vp_\ya(\ea)$, and
+Since $\eig(A^*)=a$, we have $\vp_{\ya}(A^*)=\vp_\ya(\ea)$, and
 \begin{equation}
     \left( \vp_\ya(\ea) \vp_{\ya}(A^*)\right)^{\frac{1}{2}} =
     \vp_\ya(\ea)^{\frac{1}{3}} \leq
@@ -966,11 +985,11 @@ Next, we consider
         \left(\vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}}
         & \leq &  \sum_\yf \sqrt{\vp_{\yf}(\ef) \vp_{\yf}(F^*)}  \\
         & = &
-        \frac{|\ef|^{|\yf|}}{|\yf|!} \BC(P_{\ef}, P_{{\rm eig}(F^*)}) \\
+        \frac{|\ef|^{|\yf|}}{|\yf|!} \BC(P_{\ef}, P_{\eig(F^*)}) \\
         & \leq &
-        (|\yf|+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, {\rm eig}(F^*))^{|\yf|} \\
+        (|\yf|+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|} \\
         & \leq &
-        (k+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, {\rm eig}(F^*))^{|\yf|}.
+        (k+1)^{\binom{n}{2}} \frac{1}{|\yf|!} \BC(\ef, \eig(F^*))^{|\yf|}.
     \end{array}
 \end{equation}
 Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \leq k$. Putting two estimates above together, we arrive at
@@ -979,27 +998,27 @@ Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \
         \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}} &\leq &
         \frac{1}{|\ya|!
         |\yf|!}
-        (k+1)^{\binom{n}{2}} |\ea|^{|\ya|} \BC(\ef, {\rm eig}(F^*))^{|\yf|} \\
+        (k+1)^{\binom{n}{2}} |\ea|^{|\ya|} \BC(\ef, \eig(F^*))^{|\yf|} \\
         & \leq &
         \frac{1}{k!}
-        (k+1)^{\binom{n}{2}} (|\ea| + \BC(\ef, {\rm eig}(F^*))^{|\yf|}) \\
+        (k+1)^{\binom{n}{2}} (|\ea| + \BC(\ef, \eig(F^*))^{|\yf|}) \\
         & = &
-        \frac{1}{k!} (k+1)^{\binom{n}{2}} \BC(\ea \oplus \ef, \ea \oplus {\rm eig}(F^*))^k \\
+        \frac{1}{k!} (k+1)^{\binom{n}{2}} \BC(\ea \oplus \ef, \ea \oplus \eig(F^*))^k \\
         & \leq & \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-        \exp\left( - \frac{k}{8|\ee|^2} \norm{\ef- {\rm eig}(F^*)}_1^2\right).
+        \exp\left( - \frac{k}{8|\ee|^2} \norm{\ef- \eig(F^*)}_1^2\right).
     \end{array}
 \end{equation}
 Similarly, we obtain
 \begin{equation}
     \left( \vp_\ya(\ed) \vp_{\ya}(D^*) \vp_{\yc^*}(\ec) \vp_{\yc^*}(C^*)\right)^{\frac{1}{2}} \leq
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-    \exp\left( - \frac{k}{8|\ee|^2} \norm{\ec- {\rm eig}(C^*)}_1^2\right),
+    \exp\left( - \frac{k}{8|\ee|^2} \norm{\ec- \eig(C^*)}_1^2\right),
 \end{equation}
 and
 \begin{equation}
     \left( \vp_\ye(\ee) \vp_{\ye}(E^*) \right)^{\frac{1}{2}} \leq
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
-    \exp\left( - \frac{k}{8|\ee|^2} \norm{\ee- {\rm eig}(E^*)}_1^2\right).
+    \exp\left( - \frac{k}{8|\ee|^2} \norm{\ee- \eig(E^*)}_1^2\right).
 \end{equation}
 Putting things together, we obtain the following estimate for the right hand side of the equation \eqref{eq: 10varphi}:
 \begin{equation}
@@ -1018,8 +1037,8 @@ Putting things together, we obtain the following estimate for the right hand sid
 \end{equation}
 Here we have used the fact that
 \begin{equation}
-    \norm{\ef- {\rm eig}(F^*)}_1^2 + \norm{\ee- {\rm eig}(E^*)}_1^2
-    + \norm{\ee- {\rm eig}(E^*)}_1^2 \geq D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}.
+    \norm{\ef- \eig(F^*)}_1^2 + \norm{\ee- \eig(E^*)}_1^2
+    + \norm{\ee- \eig(E^*)}_1^2 \geq D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}.
 \end{equation}
 Combining with the inequality \eqref{eq: 10varphi}, this implies
 \begin{equation}
@@ -1051,9 +1070,9 @@ $\lim_{k \to \infty} \log(k+1)/k =0$, we conclude that
 \end{equation}
 and this implies
 \begin{equation}
-    {\rm eig}(C^*) = \ec, \hskip 0.3cm
-    {\rm eig}(E^*) = \ee, \hskip 0.3cm
-    {\rm eig}(F^*)= \ef.
+    \eig(C^*) = \ec, \hskip 0.3cm
+    \eig(E^*) = \ee, \hskip 0.3cm
+    \eig(F^*)= \ef.
 \end{equation}
 Therefore, the 6-tuple of Hermitian matrices
 $(A^*, B^*, C^*, D^*, E^*, F^*)$ has eigenvalues
