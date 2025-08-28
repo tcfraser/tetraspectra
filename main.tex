@@ -165,12 +165,13 @@ called Wigner's $6j$-symbols.
 
 Our first result is a necessary and sufficient condition for tetrahedral 6-tuplues:
 
-\begin{thm}      \label{thm: intro1}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
+\begin{thm}
+    \label{thm:tet_iff_intro}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6$ be a 6-tuple satisfying the trace conditions.
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
-    Then, $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral
+    Then $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral
     if and only if for all triples of positive weights $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ the following inequalities are satisfied
-    \begin{equation} \label{eq: intro1}
+    \begin{equation} \label{eq:tet_iff_intro}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
@@ -188,8 +189,8 @@ Our first result is a necessary and sufficient condition for tetrahedral 6-tuplu
     \end{equation}
 \end{thm}
 
-Note that in equation \eqref{eq: intro1} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
-Theorem \ref{thm: intro1} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for
+Note that in equation \eqref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
+Theorem \ref{thm:tet_iff_intro} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for
 $(\ea,\eb,\ec,\ed,\ee,\ef) \in {\rm Tetra}^+(n)$. Furthermore, for each integer $k$ we provide a finite set of inequalities, and the set defined by these inequalities is getting arbitrarily close to ${\rm Tetra}^+(n)$ with the increase of $k$.
 
 Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasing weights:
@@ -224,11 +225,11 @@ The methods used in the proofs include the Schur-Weyl duality and the non-commut
 \begin{equation}
     \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|}  \alpha = \frac{1}{\Tr[a]} a.
 \end{equation}
-This observation together with Theorem \ref{thm: intro2} explain the meaning of mysterious inequalities \eqref{eq: intro1} in Theorem \ref{thm: intro1}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
+This observation together with Theorem \ref{thm: intro2} explain the meaning of mysterious inequalities \eqref{eq:tet_iff_intro} in Theorem \ref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
 $
 \alpha \sim a, \beta \sim b, \delta \sim d$
 we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
-maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the 6j-symbol is exponentially decaying, and \eqref{eq: intro1} is unlikely to hold for all $k$.
+maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the 6j-symbol is exponentially decaying, and \cref{eq:tet_iff_intro} is unlikely to hold for all $k$.
 
 \section{Background material}
 \label{sec:background}
@@ -328,7 +329,7 @@ Foe future use, we will needowing fact:
     where in the third line we have used the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(\Pi_2)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $\Pi_2 \Omega \Pi_2$ with eigenvalues $\omega_j \geq 0$. Then,
     \begin{align}
         \begin{split}
-            \Tr(\Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1) 
+            \Tr(\Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)
             &= \Tr  (\Pi_2 \Pi_1^2 \Pi_2)(\Pi_2 \Omega \Pi_2), \\
             &= \sum_j \omega_j \norm{\Pi_1 \Pi_2 e_j}^2, \\
             &\leq \norm{\Pi_1 \Pi_2}_\infty^2  \Tr(\Pi_2 \Omega \Pi_2), \\
@@ -481,7 +482,7 @@ It is  convenient to introduce the following functions of two matrices,
     We compute,
     \begin{align}
         \begin{split}
-            \varphi_\yc(X+Y) 
+            \varphi_\yc(X+Y)
             &= h_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y), \\
             &= (h_\yc d_\yc)^{-1} \Tr_{C_k} P^\yc \rho_k(X+Y), \\
             &= k!^{-1} \Tr_{C_k} P^\yc  (X+Y)^{\ot m}, \\
@@ -533,9 +534,9 @@ Even when restricted to $(\hermp{n})^{\times 3}$,  functions $\varphi^{\ya \yb \
     We compute,
     \begin{align}
         \begin{split}
-            \vp^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z) 
+            \vp^{\ya\yb\yd}_{\_ \ye\yf}(X,Y,Z)
             &= \sum_{\yc}\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z), \\
-            &= 
+            &=
             \sum_\yc \Tr_{V_\ya \ot V_\yb \ot V_\yd}
             \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
             &=
@@ -662,11 +663,11 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
     We have,
     \begin{align}
         \begin{split}
-            \mathbb{E}_x \Phi_\yx(X) 
+            \mathbb{E}_x \Phi_\yx(X)
             &= \frac{\varphi_\yx(x)}{\dim V_\yx}  \id_{V_\yx}, \\
-            \mathbb{E}_{x,y}  \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc} 
+            \mathbb{E}_{x,y}  \frac{\varphi^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
             &= c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}, \\
-            \mathbb{E}_{x,y, z} \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye} 
+            \mathbb{E}_{x,y, z} \frac{\varphi^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
             &= \norm{\abcdefsymbol}_2^2 \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}
             \frac{\varphi_\yd(y)}{\dim V_\yd}.
         \end{split}
@@ -753,12 +754,13 @@ satisfying the size conditions
 We denote $\sye=k$.
 The following is a restatement of \cref{thm:iff_tet} from the introduction.
 \begin{thm}
+    \label{thm:tet_iff_body}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in (\mathbb{R}_+^n)^6 $ be a 6-tuple satisfying the trace conditions.
     %$\tea+\teb=\tec$, $\teb+\ted=\tef$, $\tec+\ted=\tee$ and $\tea+\tef=\tee$.
     Then, Hermitian matrices satisfting \cref{eq: 6 matrices} with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ exist
     if and only if for all triples of positive wieghts $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$, the following inequalities are satisfied
     \begin{equation}
-        \label{eq:nec_tet}
+        \label{eq:tet_iff_body}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
         \leq \sum_{\yc,\ye,\yf} \norm{\abcdefsymbol}_{\infty}
         \left( \vp_{\ya}(\ea) \vp_{\yd}(\ed)
@@ -766,13 +768,18 @@ The following is a restatement of \cref{thm:iff_tet} from the introduction.
     \end{equation}
     Furthermore, if inequalities \cref{eq:nec_tet} hold true for all triples $(\ya,\yb,\yd) \in (\Lambda^*_{++})^3$ with $\sya + \syb + \syd = k$, then
     \begin{equation}
+        \label{eq:tet_dist_bound_body}
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq O\left(n \sqrt{\frac{\log k}{k}}\right).
     \end{equation}
 \end{thm}
 
-We will split the proof of \cref{thm:iff_tet} into several steps.
+Our proof of \cref{thm:iff_tet_body} is divided into two parts.
+First we prove the necessity of \cref{eq:tet_iff_body} in \cref{sec:tet_necess}.
+Then afterwards we prove the distance bound in \cref{eq:tet_dist_bound_body}.
+Providing proofs for these two claims yields the whole theorem because the satisfication of \cref{eq:tet_iff_body} for all $(\ya,\yb,\yd)$ with $\sya + \syb + \syd = k$ implies \cref{eq:tet_dist_bound_body} holds for all $k$, and thus the $k \to \infty$ limit implies $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}=0$ (because $\lim_{k \to \infty} \log(k+1)/k =0$) which means $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
 
 \subsection{Necessary conditions}
+\label{sec:tet_necess}
 
 First, we assume that there are matrices $(A,B,C,D,E,F)$ with eigenvalues
 $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq: 6 matrices}.
@@ -815,7 +822,7 @@ To prove this inequality, use \cref{prop: Pi Omega Pi} to obtain
 Then we have the following upper bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)$:
 \begin{align}
     \begin{split}
-        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) 
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)
         &\leq \sum_{\ye \yb \yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D), \\
         &= \sum_{\ye} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right), \\
         &= \Tr \Phi_\ya(A) \ot \Phi_\yf(B+D), \\
@@ -825,7 +832,7 @@ Then we have the following upper bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)$
 and
 \begin{align}
     \begin{split}
-        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D) 
+        \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D)
         &\leq \sum_{\ya \yb \yd \yf} \vp^{\ya\yb\yd}_{\_\ye\yf}(A, B, D), \\
         &= \sum_{\ya \yf} \Tr P^\ye_{\ya\yb\yd}\left( \Phi_\ya(A) \ot \sum_{\yb \yd} \Phi^{\yb \yd}_\yf (B, D)\right), \\
         &= \sum_{\ya \yf} \Tr  P^\ye_{\ya\yb\yd} \left(\Phi_\ya(A) \ot \Phi_\yf(B+D)\right), \\
@@ -850,7 +857,7 @@ In an analogous fashion, we conclude the following bound on $\vp^{\ya\yb\yd}_{\y
 \end{equation}
 and this completes the proof for \cref{eq:vp_ABD_abs_bound}.
 
-\subsection{Distance bound}
+\subsection{Distance bound \& sufficiency}
 
 Let $(a,b,c,d,e,f) \in (\mathbb{R}_+^n)^6$ which satisfy the trace conditions and also
 \begin{equation}
@@ -908,7 +915,7 @@ By multiplying the estimate in \cref{eq:first_abd_bound_2} by the estimate in \c
     \begin{split}
         \norm{\abcdefsymbolcefstarred}_{2}^{2} (\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed))^2
         &\leq \polyk{3\binom{n}{2}+3n} \norm{\abcdefsymbolcefstarred}_{\infty}^2 \\
-        &\hspace{4em}\times 
+        &\hspace{4em}\times
         \left(
         \vp_{\ya}(\ea)\vp_{\yf^*}(\ef)
         \vp_{\yc^*}(\ec)\vp_{\yd}(\ed)
@@ -962,7 +969,7 @@ Next, we consider
 Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \leq k$. Putting two estimates above together, we arrive at
 \begin{align}
     \begin{split}
-        \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}} 
+        \left( \vp_\ya(\ea) \vp_{\ya}(A^*) \vp_{\yf^*}(\ef) \vp_{\yf^*}(F^*)\right)^{\frac{1}{2}}
         &\leq \frac{1}{|\ya|!|\yf|!}
         (k+1)^{\binom{n}{2}} |\ea|^{|\ya|} \BC(\ef, \eig(F^*))^{|\yf|}, \\
         &\leq
@@ -973,7 +980,7 @@ Here we have used Proposition \ref{prop: BC estimate} and the fact that $|\yf| \
 \end{align}
 Similarly, we obtain
 \begin{equation}
-    \left( \vp_\ya(\ed) \vp_{\ya}(D^*) \vp_{\yc^*}(\ec) \vp_{\yc^*}(C^*)\right)^{\frac{1}{2}} 
+    \left( \vp_\ya(\ed) \vp_{\ya}(D^*) \vp_{\yc^*}(\ec) \vp_{\yc^*}(C^*)\right)^{\frac{1}{2}}
     \leq
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k \exp\left(-\frac{k}{8|\ee|^2} \norm{\ec - \eig(C^*)}_1^2\right),
 \end{equation}
@@ -983,7 +990,7 @@ and
     \frac{1}{k!} (k+1)^{\binom{n}{2}} |\ee|^k
     \exp\left( - \frac{k}{8|\ee|^2} \norm{\ee- \eig(E^*)}_1^2\right).
 \end{equation}
-Putting things together, we obtain the following estimate for the right hand side of the equation \eqref{eq: 10varphi}:
+Putting things together, we obtain the following estimate for the right hand side of the \cref{eq: 10varphi}:
 \begin{align}
     \begin{split}
         \left(\vp_{\ya}(\ea)\vp_{\yf^*}(\ef)\vp_{\yc^*}(\ec)\vp_{\yd}(\ed)\vp_{\ye^*}(\ee)\right)^{\frac{1}{6}}
@@ -1017,24 +1024,6 @@ where we have estimated by $(k+1)^3n$ the number of summands. This implies
     \frac{1}{|\ee|^2} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq 36n(n+1) \frac{\log(k+1)}{k},
 \end{equation}
 as required.
-
-\subsection{Sufficient conditions}
-Assuming that conditions \eqref{eq:abd_multiplied_2} are satisfied for all $k$, we obtain equations \eqref{eq: final estimate} for all $k$. Since
-$\lim_{k \to \infty} \log(k+1)/k =0$, we conclude that
-\begin{equation}
-    D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}=0,
-\end{equation}
-and this implies
-\begin{equation}
-    \eig(C^*) = \ec, \hskip 0.3cm
-    \eig(E^*) = \ee, \hskip 0.3cm
-    \eig(F^*)= \ef.
-\end{equation}
-Therefore, the 6-tuple of Hermitian matrices
-$(A^*, B^*, C^*, D^*, E^*, F^*)$ has eigenvalues
-$(\ea, \eb, \ec, \ed, \ee, \ef)$, and this completes the proof.
-
-\textcolor{red}{[TODO] Complete this section}
 
 % ===== [@OLD] ====
 
@@ -1154,7 +1143,7 @@ These inequalities are expressed in terms of Schur polynomials $s_{\yx}(x)$ of t
 More accurately, we find our inequalities are best articulated in terms of a simple rescaling of the Schur polynomials, $\vp_{\yx}(\ex) \coloneqq s_{\yx}(\ex)/H_{\yx}$, where $H_{\yx}$ is a positive integer equal to the product of the hook-lengths of all boxes in the Young diagram $\yx$.
 These inequalities are presented in the following theorem.
 \begin{thm}
-    \label{thm:iff_tet}
+    \label{thm:tet_iff}
     Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of non-negative eigenvalues of length $n$ satisfying the trace conditions:
     \begin{equation}
         \label{eq:tet_trace_cond}
@@ -1169,7 +1158,7 @@ These inequalities are presented in the following theorem.
     \end{equation}
 \end{thm}
 The expression $\abcdefsymbol$ appearing above is an operator known as the $6j$-symbol for the group of unitary $n\times n$ matrices $\U(n)$ whose significance will be explained shortly.
-While \cref{thm:iff_tet} provides a complete characterization of the set of tetrahedral eigenvalues,
+While \cref{thm:tet_iff} provides a complete characterization of the set of tetrahedral eigenvalues,
 it does so using an infinite number of inequalities.
 Nevertheless, we prove the finite subset of such inequalities of fixed degree $k = \sya + \syb + \syd$ is sufficient to characterize the set of sextuples of eigenvalues, $(\ea,\eb,\ec,\ed,\ee,\ef)$, which are \textit{approximately} tetrahedral in the sense that their distance, $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$, to the set of tetrahedral eigenvalues is small.
 \begin{thm}
@@ -1189,7 +1178,7 @@ Nevertheless, we prove the finite subset of such inequalities of fixed degree $k
     Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ if and only if $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral.
 \end{thm}
 Note this theorem actually implies the ``if'' portion of \cref{thm:iff_tet} as one can take $k \to \infty$.
-Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound (see \cref{prop:approx_tri}).
+Along the way, we derive an analogous set of inequalities for the original Horn problem along with an accompanying distance bound.
 
 \vspace{1em}
 \textbf{$\boldsymbol{6j}$-symbols:}
@@ -1314,20 +1303,11 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 \vspace{1em}
 \textbf{Organization of the paper:}
 
-{\color{red!50!black} Anton's:
-    TODO:
-}
-
-{\color{blue!50!black} TC's:
-Then, in \cref{sec:ineqs_from_schur_weyl}, we develop the mathematical machinery needed to prove the \textit{necessity} of the inequalities in \cref{thm:iff_tet}, specifically the binomial theorem for representations (\cref{thm:binomial}).
-Afterwards, \cref{sec:distance_bounds} is dedicated to proving the distance bound in \cref{thm:approx_tet} and thus the \textit{sufficiency} of the inequalities in \cref{thm:iff_tet}.
-The results in \cref{sec:distance_bounds} rely on the results of \cref{sec:ineqs_from_schur_weyl}, the aforementioned eigenvalue concentration bounds (\cref{sec:eig_est_and_sep}), and some standard results from random matrix theory (\cref{sec:random_matrices}).
-}
-% Finally, we prove an upper bound on general $6j$ symbols using the Cauchy-Schwarz inequality which, in the $n\to \infty$ asymptotic limit, gives rise to a novel proof of a known strongly subadditive inequality involving unnormalized entropies.
+{\color{red} TODO }
 
 \section*{Acknowledgments}
+TCF thanks Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
 MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality.
-TCF would also like to thank Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
 
 \clearpage
 \color{blue!50!black} TC: THE FOLLOWING IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
@@ -1556,144 +1536,6 @@ With these definitions in place, we are in a position to state the binomial theo
     See preceding discussion.
 \end{proof}
 
-Taking the trace of the operators in \cref{thm:binomial} produces the following corollary which pertains to sums of the quantity $\vp^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}).
-\begin{cor}
-    \label{cor:bisummation}
-    Let $X,Y$ be $n\times n$ matrices. Then the following identities hold:
-    \begin{align}
-        \forall \ya,\yb : \quad \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y) &= \vp_{\ya}(X)\vp_{\yb}(Y), \\
-        \forall \yc : \quad \sum_{\ya,\yb} \vp^{\ya\yb}_{\yc}(X,Y) &= \vp_{\yc}(X+Y).
-    \end{align}
-\end{cor}
-\begin{proof}
-    The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:binomial}.
-    For the second identity, involving a summation over $\yc$, follows from the resolution of the identity $\sum_{\yc \vdash \sya+\syb} P^{\yc}_{\ya\yb} = \id_{V_{\ya}^{n}\ot V_{\yb}^{n}}$:
-    \begin{equation}
-        \vp_{\ya}(X)\vp_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y),
-    \end{equation}
-    where the last equality is just the definition of $\vp^{\ya\yb}_{\yc}(X,Y)$.
-    Once again, the condition that $\syc = \sya + \syb$ is implicitly present.
-\end{proof}
-
-\begin{rem}
-    One might consider what happens to the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ when one sums over $\yc$ instead of $(\ya,\yb)$.
-    However, an analogous identity concerning a sum over $\yc$ of the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ does not immediately follow because the tensor product $\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)$ is not necessarily block diagonalizable into $\yc$-isotypic subspaces in any obvious way.
-    One exception occurs when $X = Y$, in which case,
-    \begin{equation}
-        \pi_{\ya}(X) \ot \pi_{\yb}(X)
-        = \sum_{\yc} \iota_{\ya\yb}^{\yc} (\pi_{\yc}(X) \ot \id_{C^{\yc}_{\ya\yb}}) \iota_{\ya\yb}^{\yc;\dagger},
-    \end{equation}
-    which is the operator version of the character product formula $\chi_{\ya}(X)\chi_{\yb}(X) = \sum_{\yc} c^{\yc}_{\ya\yb} \chi_{\yc}(X)$.
-\end{rem}
-
-\subsection{[tc] Inequalities for Horn's original problem}
-\label{sec:new_ineq_horn_orig}
-
-In \cref{sec:binomial_theorem} we introduced to the quantity $\vp^{\ya\yb}_{\yc}(X,Y)$ (\cref{eq:varphi_double}) and saw in \cref{cor:bisummation} that it satisfied two summation identities.
-Under the assumption that the matrices $X$, and $Y$ are positive semidefinite, we can conclude that $\vp^{\ya\yb}_{\yc}(X,Y)$ is non-negative also because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $P^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
-Moreover, we note that $\vp^{\ya\yb}_{\yc}(X,Y) = 0$ whenever the Littlewood-Richardson coefficient $c^{\yc}_{\ya\yb}$ vanishes.
-These observations imply the following necessary condition for compatibility of eigenvalues.
-\begin{prop}
-    \label{prop:coupling_condition}
-    Let $(a,b,c)$ be a triple of non-negative eigenvalues.
-    Then there exists positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$ with eigenvalues $(a,b,c)$ only if for every triple of Young diagrams $(\ya,\yb,\yc)$ there exists a non-negative $\Gamma^{\yc}_{\ya\yb} \geq 0$ such that $\Gamma^{\yc}_{\ya\yb} = 0$ whenever $c^{\yc}_{\ya\yb} = 0$ and
-    \begin{align}
-        \forall \ya,\yb : \quad \sum_{\yc} \Gamma^{\yc}_{\ya\yb} = \vp_{\ya}(\ea)\vp_{\yb}(\eb),
-        \qquad \text{and} \qquad
-        \forall \yc : \quad \sum_{\ya,\yb} \Gamma^{\yc}_{\ya\yb} = \vp_{\yc}(\ec).
-    \end{align}
-\end{prop}
-\begin{proof}
-    The claim follows directly from \cref{cor:bisummation} after identifying $\Gamma^{\yc}_{\ya\yb} = \vp^{\ya\yb}_{\yc}(A,B) \geq 0$.
-\end{proof}
-\begin{cor}
-    \label{cor:row_col_horn_ineqs}
-    Let $(a,b,c)$ be the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$. Then,
-    \begin{align}
-        \forall \ya,\yb : \quad \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \sum_{\substack{\yc\\c^{\yc}_{\ya\yb} > 0}}\vp_{\yc}(\ec),
-        \qquad \text{and} \qquad
-        \forall \yc : \quad \vp_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\vp_{\ya}(\ea)\vp_{\yb}(\eb).
-    \end{align}
-\end{cor}
-\begin{proof}
-    The claim follows from \cref{prop:coupling_condition} and noting that whenever $\Gamma^{\yc}_{\ya\yb} > 0$ (only when $c^{\yc}_{\ya\yb} > 0$) we have the bound $\Gamma^{\yc}_{\ya\yb} \leq \min\{\vp_{\ya}(\ea)\vp_{\yb}(\eb), \vp_{\yc}(\ec)\}$ for all triples $(\ya,\yb,\yc)$.
-\end{proof}
-
-\begin{rem}
-    Using \cref{prop:coupling_condition}, it is possible to prove even stronger inequalities than those appearing in \cref{cor:row_col_horn_ineqs} by examining the set of triples of Young diagrams $(\ya, \yb, \yc)$ where $c^{\yc}_{\ya,\yb} \neq 0$.
-    We illustrate this point with an example.
-    Let $k = \sya + \syb = \syc = 4$, then the following is the table of values for $c^{\yc}_{\ya\yb}$.
-    \begin{center}
-        \newcommand{\zero}{\cellcolor{white}{\color{gray}$0$}}
-        \newcommand{\numb}[1]{\cellcolor{black!80!white}{\color{white}$#1$}}
-        \begin{tabular}{|cc||c|c|c|c|c||c|c|c||c|c|c|c||c|c|c||c|c|c|c|c|}
-            \hline
-            $c^{\yc}_{\ya\yb}$ & $\ya$ &
-            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ &
-            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
-            $\ydiagram{2}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{1,1}$ &
-            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
-            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ \\
-            $\yc$ & $\yb$ &
-            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ &
-            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
-            $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ &
-            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
-            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ \\ \hline\hline
-            $\ydiagram{4}$ & &
-            \numb{1} & \zero & \zero & \zero & \zero &
-            \numb{1} & \zero & \zero &
-            \numb{1} & \zero & \zero & \zero &
-            \numb{1} & \zero & \zero &
-            \numb{1} & \zero & \zero & \zero & \zero
-            \\\hline
-            $\ydiagram{3,1}$ &  &
-            \zero & \numb{1} & \zero & \zero & \zero &
-            \numb{1} & \numb{1} & \zero &
-            \numb{1} & \numb{1} & \numb{1} & \zero &
-            \numb{1} & \numb{1} & \zero &
-            \zero & \numb{1} & \zero & \zero & \zero
-            \\\hline
-            $\ydiagram{2,2}$ &  &
-            \zero & \zero & \numb{1} & \zero & \zero &
-            \zero & \numb{1} & \zero &
-            \numb{1} & \zero & \zero & \numb{1} &
-            \zero & \numb{1} & \zero &
-            \zero & \zero & \numb{1} & \zero & \zero
-            \\\hline
-            $\ydiagram{2,1,1}$ &  &
-            \zero & \zero & \zero & \numb{1} & \zero &
-            \zero & \numb{1} & \numb{1} &
-            \zero & \numb{1} & \numb{1} & \numb{1} &
-            \zero & \numb{1} & \numb{1} &
-            \zero & \zero & \zero & \numb{1} & \zero
-            \\\hline
-            $\ydiagram{1,1,1,1}$ &  &
-            \zero & \zero & \zero & \zero & \numb{1} &
-            \zero & \zero & \numb{1} &
-            \zero & \zero & \zero & \numb{1} &
-            \zero & \zero & \numb{1} &
-            \zero & \zero & \zero & \zero & \numb{1}
-            \\\hline
-        \end{tabular}
-    \end{center}
-    Using this table, one sees the inequalities in \cref{cor:row_col_horn_ineqs} are associated to single columns or single rows, e.g., along the $(\ya,\yb) = (\ydiagram{2}, \ydiagram{1,1})$, we obtain
-    \begin{equation}
-        \vp_{\ydiagram{2}}(X)\vp_{\ydiagram{1,1}}(Y) \leq \vp_{\ydiagram{3,1}}(X+Y) + \vp_{\ydiagram{2,1,1}}(X+Y).
-    \end{equation}
-    However, using \cref{prop:coupling_condition}, a stronger inequality is obtained by including all columns covered by the rows associated to the right-hand side of the above inequality, e.g.,
-    \begin{equation}
-        \vp_{\ydiagram{3,1}}(X) + \vp_{\ydiagram{2,1,1}}(X) +
-        \vp_{\ydiagram{2}}(X)\vp_{\ydiagram{1,1}}(Y) + \vp_{\ydiagram{1,1}}(X)\vp_{\ydiagram{2}}(Y) +
-        \vp_{\ydiagram{3,1}}(Y) + \vp_{\ydiagram{2,1,1}}(Y)
-        \leq \vp_{\ydiagram{3,1}}(X+Y) + \vp_{\ydiagram{2,1,1}}(X+Y).
-    \end{equation}
-    In general, \cref{prop:coupling_condition} describes a linear system of inequality constraints in the variables $\Gamma^{\yc}_{\ya\yb}, \vp_{\ya}(\ea)\vp_{\yb}(\eb),$ and $\vp_{\yc}(\ec)\}$ which, in principle, be solved for $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ and $\vp_{\yc}(\ec)$ by standard linear quantifier elimination techniques such as Fourier-Motzkin elimination \cite{dantzig1972fourier}.
-    While these additional inequalities are certainly interesting to explore, for the purposes of the original Horn problem, we will later prove, in \cref{prop:approx_tri}, that it is sufficient to restrict our attention to inequalities of the form \cref{cor:row_col_horn_ineqs}.
-\end{rem}
-
-
-
 \subsection{[tc] The \texorpdfstring{$\boldsymbol{6j}$}{6j} symbol for \texorpdfstring{$\boldsymbol{\U(n)}$}{U(n)}}
 \label{sec:sixj_tet}
 
@@ -1911,7 +1753,7 @@ Our next proposition enables us to place bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(X
             = \vp_{\ya}(X)\vp_{\yf}^{\yb\yd}(Y,Z).
         \end{split}
     \end{align}
-    Further summing over $\yb$ and $\yd$ and applying \cref{cor:bisummation} produces
+    Further summing over $\yb$ and $\yd$ and applying \cref{prop:bisummation} produces
     \begin{align}
         \begin{split}
             \sum_{\ye\yb\yd} \vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)
@@ -1935,8 +1777,8 @@ Our next proposition enables us to place bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(X
         \end{split}
     \end{align}
     Therefore, from the non-negativity of $\vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$, we obtain $\vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z) \leq \vp^{\ya\yb\yd}_{\ye}(X,Y,Z)$ which establishes one half of the lower bound on $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z)$ in \cref{eq:psum_yc_ye_uniform}; the other half of the lower bound follows analogously from summing $\vp^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ over $\yc$.
-    Finally, for the upper bounds on $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z)$ in \cref{eq:psum_yc_ye_uniform}, we remark that \cref{cor:bisummation} can be extended to handle more than two matrices by repeated application of \cref{cor:bisummation};
-    specifically, by starting with \cref{eq:psum_yf_over_ye} and further summing over $\yf$ and applying \cref{eq:psum_yf_over_yf} and \cref{cor:bisummation}, we obtain
+    Finally, for the upper bounds on $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z)$ in \cref{eq:psum_yc_ye_uniform}, we remark that \cref{prop:bisummation} can be extended to handle more than two matrices by repeated application of \cref{prop:bisummation};
+    specifically, by starting with \cref{eq:psum_yf_over_ye} and further summing over $\yf$ and applying \cref{eq:psum_yf_over_yf} and \cref{prop:bisummation}, we obtain
     \begin{align}
         \begin{split}
             \sum_{\ye} \vp^{\ya\yb\yd}_{\ye}(X,Y,Z)
@@ -1945,8 +1787,8 @@ Our next proposition enables us to place bounds on $\vp^{\ya\yb\yd}_{\_\ye\yf}(X
             &= \vp_{\ya}(X)\vp_{\yb}(Y)\vp_{\yd}(Z),
         \end{split}
     \end{align}
-    which is three matrix analogue of one half of \cref{cor:bisummation} and establishes the bound $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \vp_{\ya}(X)\vp_{\yb}(Y)\vp_{\yd}(Z)$ because $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z) \geq 0$.
-    For the other half of the three matrix analogue of \cref{cor:bisummation}, we can again use \cref{eq:psum_yf_over_yf} and apply \cref{cor:bisummation} twice to obtain
+    which is three matrix analogue of one half of \cref{prop:bisummation} and establishes the bound $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z) \leq \vp_{\ya}(X)\vp_{\yb}(Y)\vp_{\yd}(Z)$ because $\vp^{\ya\yb\yd}_{\ye}(X,Y,Z) \geq 0$.
+    For the other half of the three matrix analogue of \cref{prop:bisummation}, we can again use \cref{eq:psum_yf_over_yf} and apply \cref{prop:bisummation} twice to obtain
     \begin{align}
         \begin{split}
             \sum_{\ya\yb\yd} \vp^{\ya\yb\yd}_{\ye}(X,Y,Z)
@@ -2330,79 +2172,6 @@ The first two propositions follow from standard applications of Schur's lemma, a
 %     \end{equation}
 % \end{cor}
 
-\subsection{[tc] Distance bound for the original Horn problem}
-\label{sec:dist_bound_for_orig_horn}
-
-In this section, we prove the following proposition pertaining to the original Horn problem as a warm-up exercise before we prove its generalization for the tetrahedral Horn problem (\cref{thm:approx_tet}) in \cref{sec:dist_bound_for_tet_horn}.
-\begin{prop}
-    \label{prop:approx_tri}
-    Let $(\ea,\eb,\ec)$ be a triple of non-negative eigenvalues satisfying trace condition $\tea + \teb = \tec$.
-    If for all pairs of Young diagrams $(\ya,\yb)$ of total size $\sya + \syb = k$,
-    \begin{equation}
-        \label{eq:tri_ab_c_nec_ineq}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}} \vp_{\yc}(\ec),
-    \end{equation}
-    then
-    \begin{equation}
-        \label{eq:tri_ab_c_dist_bound}
-        \frac{D(\ea,\eb;\ec)}{\tec} \leq O\left(n\sqrt{\frac{\log k}{k}}\right).
-    \end{equation}
-    where $D(\ea,\eb;\ec)\coloneqq \min_{(A,B) \in \orbit_\ea \times \orbit_\eb} \norm{\eig(A+B)-\ec}_{1}$.
-\end{prop}
-\begin{proof}[Proof of \cref{prop:approx_tri}]
-    The proof proceeds is two stages.
-    In the first stage we fix an \textit{arbitrary} pair $(\ya,\yb)$ with total size $\sya + \syb = k$ and derive multiple bounds on the product $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$.
-    Then in the second stage, we sum over all such pairs and then obtain the claimed bound on $D(\ea,\eb;\ec)$.
-
-    To begin, we will bound $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ in two ways and then apply the eigenvalue separation lemma (specifically \cref{eq:weak_eig_sep}).
-    The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from relaxing the assumption in \cref{eq:tri_ab_c_nec_ineq} by considering a Young diagram $\yc^{*}$ of size $k$ which maximizes $\vp_{\yc^{*}}(\ec)$ amoung those $\yc$ such that $c^{\yc}_{\ya\yb }> 0$ for the given $(a,b,c)$.
-    As there are at most $\polyk{n-1}$ Young diagrams of size $k$, we conclude
-    \begin{equation}
-        \label{eq:first_ab_bound}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{n-1} \vp_{\yc^{*}}(\ec).
-    \end{equation}
-    The second bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained by considering \cref{cor:random_sum} which states that for any $\yc$ such that $c^{\yc}_{\ya\yb} > 0$,
-    \begin{equation}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb)
-        = \frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}}
-        \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}}
-        \vp^{\ya\yb}_{\yc}(X,Y).
-    \end{equation}
-    To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}} \leq \dim (V_{\ya}^{n} \ot V_{\yb}^{n}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
-    \begin{equation}
-        \label{eq:second_ab_bound}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y).
-    \end{equation}
-    Then we combine the two bounds on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ from \cref{eq:first_ab_bound} and \cref{eq:second_ab_bound} and apply the eigenvalue separation bound \cref{eq:weak_eig_sep} to obtain
-    \begin{align}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb)
-        &\leq \sqrt{\polyk{2\binom{n}{2}} \polyk{n-1} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
-        &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{\BC(\eig(X+Y), c)^k}{k!}, \\
-        \label{eq:ab_intermediate_bound}
-        &= \polyk{2\binom{n}{2}+\frac{n-1}{2}}\frac{\BC(a,b;c)^k}{k!},
-    \end{align}
-    where $\BC(a,b;c)$ is defined as the maximum Bhattacharyya coefficient
-    \begin{equation}
-        \BC(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \BC(\eig(X+Y),c).
-    \end{equation}
-
-    Now we sum both sides of \cref{eq:ab_intermediate_bound} over \textit{all} pairs $(\ya,\yb)$ with total size $\sya+\syb=k$ to obtain
-    \begin{equation}
-        \frac{\tec^k}{k!} \leq \polyk{2\binom{n}{2}+\frac{n-1}{2} + 2n} \frac{\BC(a,b;c)^{k}}{k!},
-    \end{equation}
-    where the left-hand side follows from the trace condition $\tec=\tea+\teb$ and
-    \begin{equation}
-        \label{eq:binomial_trace}
-        \sum_{\ell=0}^{k} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k-\ell}} \vp_{\ya}(\ea)\vp_{\yb}(\eb) = \sum_{\ell=0}^{k} \frac{\tea^\ell}{\ell!} \frac{\teb^{k-\ell}}{(k-\ell)!} = \frac{(\tea+\teb)^k}{k!},
-    \end{equation}
-    whereas the extra factor of $2n$ in the exponent on the right-hand side is obtained because there are at most $\polyk{n}$ Young diagrams with $n$ rows and size at most $k$ and we are summing over a pair $(\ya,\yb)$ with total size $\sya+\syb=k$.
-    This establishes a lower bound on $\BC(a,b;c)$ of the form
-    \begin{equation}
-        \frac{\BC(a,b;c)}{\Tr[c]} \geq \left( \frac{1}{\polyk{\frac{2n^2+3n-1}{2}}} \right)^{\frac{1}{k}}
-    \end{equation}
-    Finally, using \cref{eq:Bhattacharyya_vs_distance}, we substitute the maximum normalized Bhattacharyya coefficient $\frac{\BC(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_ab_c_dist_bound} which completes the proof.
-\end{proof}
-
 \subsection{[tc] Distance bound for the tetrahedral Horn problem}
 \label{sec:dist_bound_for_tet_horn}
 
@@ -2410,7 +2179,6 @@ The purpose of this section is to prove our main distance bound, \cref{thm:appro
 Note that \cref{thm:approx_tet} then immediately implies the ``if'' portion of the claim of \cref{thm:iff_tet} by taking $k \to\infty$.
 The ``only if'' portion of \cref{thm:iff_tet} was proven in \cref{cor:tet_eigenvalue_cubic}.
 \begin{proof}[Proof of \cref{thm:approx_tet}]
-    The proof of \cref{thm:approx_tet} mimics the structure of the proof of \cref{prop:approx_tri}.
     In the first stage, we fix an arbitrary triple $(\ya,\yb,\yd)$ with total size $\sya + \syb + \syd = k$ and derive multiple bounds on the product $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$.
     Then in the second stage, we sum over all such triples $(\ya,\yb,\yd)$ and obtain the bound on $D\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}$.
 
@@ -3623,4 +3391,225 @@ As a consequence of \cref{cor:psd}, we will, without loss of generality, hencefo
     At the moment, it remains unclear if analogous symmetries for the generalized Wigner $6j$ symbol exist for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
     It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
 \end{rem}
+
+
+\section{Results for the original Horn problem}
+\label{sec:new_ineq_horn_orig}
+
+The purpose of this section is to describe how our methods can also be used to prove the following result which pertains to the original Horn problem.
+
+\begin{thm}
+    \label{thm:tri_iff}
+    Let $(\ea,\eb,\ec) \in (\mathbb{R}_+^n)^3$ be a triple satisfying the trace conditions.
+    Then $(\ea,\eb,\ec) \in {\rm Horn}^{+}(n)$ if and only if for all pairs of positive weights $(\ya,\yb) \in (\Lambda^*_{++})^2$ the following inequality is satisfied
+    \begin{equation}
+        \label{eq:tri_iff}
+        \vp_{\ya}(\ea)\vp_{\yb}(\eb)
+        \leq \sum_{\substack{\yc\\c^{\yc}_{\ya\yb} > 0}} \vp_{\yc}(\ec).
+    \end{equation}
+    Furthermore, if these inequalities are satisfied for all pairs $(\ya,\yb) \in (\Lambda^*_{++})^2$ with $\sya + \syb = k$, then
+    \begin{equation}
+        \label{eq:tri_dist_bound}
+        \frac{D(\ea,\eb;\ec)}{\tec} \leq O\left(n\sqrt{\frac{\log k}{k}}\right).
+    \end{equation}
+    where $D(\ea,\eb;\ec)\coloneqq \min_{(A,B) \in \orbit_\ea \times \orbit_\eb} \norm{\eig(A+B)-\ec}_{1}$.
+\end{thm}
+
+The proof of this theorem is divided into two parts.
+First we prove the necessity of \cref{eq:tri_iff} in \cref{sec:tri_necess}.
+Then afterwards we prove the distance bound in \cref{eq:tri_dist_bound} which in turn implies the sufficiency of \cref{eq:tri_iff} upon taking the limit as $k \to \infty$.
+
+\subsection{Necessary conditions}
+\label{sec:tri_necess}
+
+The following proposition follows directly from the binomial theorem (\cref{thm:binomial}) and pertains to sums of the quantity $\vp^{\ya\yb}_{\yc}(X,Y)$.
+
+\begin{prop}
+    \label{prop:bisummation}
+    Let $X,Y$ be $n\times n$ matrices. Then the following identities hold:
+    \begin{align}
+        \forall \ya,\yb : \quad \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y) &= \vp_{\ya}(X)\vp_{\yb}(Y), \\
+        \forall \yc : \quad \sum_{\ya,\yb} \vp^{\ya\yb}_{\yc}(X,Y) &= \vp_{\yc}(X+Y).
+    \end{align}
+\end{prop}
+\begin{proof}
+    The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:binomial}.
+    For the second identity, involving a summation over $\yc$, follows from the resolution of the identity $\sum_{\yc \vdash \sya+\syb} P^{\yc}_{\ya\yb} = \id_{V_{\ya}^{n}\ot V_{\yb}^{n}}$:
+    \begin{equation}
+        \vp_{\ya}(X)\vp_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y),
+    \end{equation}
+    where the last equality is just the definition of $\vp^{\ya\yb}_{\yc}(X,Y)$.
+    Once again, the condition that $\syc = \sya + \syb$ is implicitly present.
+\end{proof}
+
+\begin{rem}
+    One might consider what happens to the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ when one sums over $\yc$ instead of $(\ya,\yb)$.
+    However, an analogous identity concerning a sum over $\yc$ of the operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ does not immediately follow because the tensor product $\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)$ is not necessarily block diagonalizable into $\yc$-isotypic subspaces in any obvious way.
+    One exception occurs when $X = Y$, in which case,
+    \begin{equation}
+        \pi_{\ya}(X) \ot \pi_{\yb}(X)
+        = \sum_{\yc} \iota_{\ya\yb}^{\yc} (\pi_{\yc}(X) \ot \id_{C^{\yc}_{\ya\yb}}) \iota_{\ya\yb}^{\yc;\dagger},
+    \end{equation}
+    which is the operator version of the character product formula $\chi_{\ya}(X)\chi_{\yb}(X) = \sum_{\yc} c^{\yc}_{\ya\yb} \chi_{\yc}(X)$.
+\end{rem}
+
+Under the assumption that the matrices $X$ and $Y$ are positive semidefinite, we can conclude that the real number $\vp^{\ya\yb}_{\yc}(X,Y)$ is also non-negative because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $P^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
+Moreover, we note that $\vp^{\ya\yb}_{\yc}(X,Y) = 0$ whenever the Littlewood-Richardson coefficient $c^{\yc}_{\ya\yb}$ vanishes.
+These observations imply the following necessary condition for compatibility of eigenvalues for the original Horn problem.
+\begin{prop}
+    \label{prop:coupling_condition}
+    Let $(a,b,c)$ be a triple of non-negative eigenvalues.
+    Then there exists positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$ with eigenvalues $(a,b,c)$ only if for every triple of Young diagrams $(\ya,\yb,\yc)$ there exists a non-negative $\Gamma^{\yc}_{\ya\yb} \geq 0$ such that $\Gamma^{\yc}_{\ya\yb} = 0$ whenever $c^{\yc}_{\ya\yb} = 0$ and
+    \begin{align}
+        \forall \ya,\yb : \quad \sum_{\yc} \Gamma^{\yc}_{\ya\yb} = \vp_{\ya}(\ea)\vp_{\yb}(\eb),
+        \qquad \text{and} \qquad
+        \forall \yc : \quad \sum_{\ya,\yb} \Gamma^{\yc}_{\ya\yb} = \vp_{\yc}(\ec).
+    \end{align}
+\end{prop}
+\begin{proof}
+    The claim follows directly from \cref{prop:bisummation} after identifying $\Gamma^{\yc}_{\ya\yb} = \vp^{\ya\yb}_{\yc}(A,B) \geq 0$.
+\end{proof}
+\begin{cor}
+    \label{cor:row_col_horn_ineqs}
+    Let $(a,b,c)$ be the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$. Then,
+    \begin{align}
+        \forall \ya,\yb : \quad \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \sum_{\substack{\yc\\c^{\yc}_{\ya\yb} > 0}}\vp_{\yc}(\ec),
+        \qquad \text{and} \qquad
+        \forall \yc : \quad \vp_{\yc}(\ec) \leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\vp_{\ya}(\ea)\vp_{\yb}(\eb).
+    \end{align}
+\end{cor}
+\begin{proof}
+    The claim follows from \cref{prop:coupling_condition} and noting that whenever $\Gamma^{\yc}_{\ya\yb} > 0$ (only when $c^{\yc}_{\ya\yb} > 0$) we have the bound $\Gamma^{\yc}_{\ya\yb} \leq \min\{\vp_{\ya}(\ea)\vp_{\yb}(\eb), \vp_{\yc}(\ec)\}$ for all triples $(\ya,\yb,\yc)$.
+\end{proof}
+
+\begin{rem}
+    Using \cref{prop:coupling_condition}, it is possible to prove even stronger inequalities than those appearing in \cref{cor:row_col_horn_ineqs} by examining the set of triples of Young diagrams $(\ya, \yb, \yc)$ where $c^{\yc}_{\ya,\yb} \neq 0$.
+    We illustrate this point with an example.
+    Let $k = \sya + \syb = \syc = 4$, then the following is the table of values for $c^{\yc}_{\ya\yb}$.
+    \begin{center}
+        \newcommand{\zero}{\cellcolor{white}{\color{gray}$0$}}
+        \newcommand{\numb}[1]{\cellcolor{black!80!white}{\color{white}$#1$}}
+        \begin{tabular}{|cc||c|c|c|c|c||c|c|c||c|c|c|c||c|c|c||c|c|c|c|c|}
+            \hline
+            $c^{\yc}_{\ya\yb}$ & $\ya$ &
+            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ &
+            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
+            $\ydiagram{2}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{1,1}$ &
+            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
+            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ \\
+            $\yc$ & $\yb$ &
+            $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ & $\ydiagram{}$ &
+            $\ydiagram{1}$ & $\ydiagram{1}$ & $\ydiagram{1}$ &
+            $\ydiagram{2}$ & $\ydiagram{1,1}$ & $\ydiagram{2}$ & $\ydiagram{1,1}$ &
+            $\ydiagram{3}$ & $\ydiagram{2,1}$ & $\ydiagram{1,1,1}$ &
+            $\ydiagram{4}$ & $\ydiagram{3,1}$ & $\ydiagram{2,2}$ & $\ydiagram{2,1,1}$ & $\ydiagram{1,1,1,1}$ \\ \hline\hline
+            $\ydiagram{4}$ & &
+            \numb{1} & \zero & \zero & \zero & \zero &
+            \numb{1} & \zero & \zero &
+            \numb{1} & \zero & \zero & \zero &
+            \numb{1} & \zero & \zero &
+            \numb{1} & \zero & \zero & \zero & \zero
+            \\\hline
+            $\ydiagram{3,1}$ &  &
+            \zero & \numb{1} & \zero & \zero & \zero &
+            \numb{1} & \numb{1} & \zero &
+            \numb{1} & \numb{1} & \numb{1} & \zero &
+            \numb{1} & \numb{1} & \zero &
+            \zero & \numb{1} & \zero & \zero & \zero
+            \\\hline
+            $\ydiagram{2,2}$ &  &
+            \zero & \zero & \numb{1} & \zero & \zero &
+            \zero & \numb{1} & \zero &
+            \numb{1} & \zero & \zero & \numb{1} &
+            \zero & \numb{1} & \zero &
+            \zero & \zero & \numb{1} & \zero & \zero
+            \\\hline
+            $\ydiagram{2,1,1}$ &  &
+            \zero & \zero & \zero & \numb{1} & \zero &
+            \zero & \numb{1} & \numb{1} &
+            \zero & \numb{1} & \numb{1} & \numb{1} &
+            \zero & \numb{1} & \numb{1} &
+            \zero & \zero & \zero & \numb{1} & \zero
+            \\\hline
+            $\ydiagram{1,1,1,1}$ &  &
+            \zero & \zero & \zero & \zero & \numb{1} &
+            \zero & \zero & \numb{1} &
+            \zero & \zero & \zero & \numb{1} &
+            \zero & \zero & \numb{1} &
+            \zero & \zero & \zero & \zero & \numb{1}
+            \\\hline
+        \end{tabular}
+    \end{center}
+    Using this table, one sees the inequalities in \cref{cor:row_col_horn_ineqs} are associated to single columns or single rows, e.g., along the $(\ya,\yb) = (\ydiagram{2}, \ydiagram{1,1})$, we obtain
+    \begin{equation}
+        \vp_{\ydiagram{2}}(X)\vp_{\ydiagram{1,1}}(Y) \leq \vp_{\ydiagram{3,1}}(X+Y) + \vp_{\ydiagram{2,1,1}}(X+Y).
+    \end{equation}
+    However, using \cref{prop:coupling_condition}, a stronger inequality is obtained by including all columns covered by the rows associated to the right-hand side of the above inequality, e.g.,
+    \begin{equation}
+        \vp_{\ydiagram{3,1}}(X) + \vp_{\ydiagram{2,1,1}}(X) +
+        \vp_{\ydiagram{2}}(X)\vp_{\ydiagram{1,1}}(Y) + \vp_{\ydiagram{1,1}}(X)\vp_{\ydiagram{2}}(Y) +
+        \vp_{\ydiagram{3,1}}(Y) + \vp_{\ydiagram{2,1,1}}(Y)
+        \leq \vp_{\ydiagram{3,1}}(X+Y) + \vp_{\ydiagram{2,1,1}}(X+Y).
+    \end{equation}
+    In general, \cref{prop:coupling_condition} describes a linear system of inequality constraints in the variables $\Gamma^{\yc}_{\ya\yb}, \vp_{\ya}(\ea)\vp_{\yb}(\eb),$ and $\vp_{\yc}(\ec)\}$ which, in principle, be solved for $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ and $\vp_{\yc}(\ec)$ by standard linear quantifier elimination techniques such as Fourier-Motzkin elimination \cite{dantzig1972fourier}.
+    While these additional inequalities are certainly interesting to explore, \cref{thm:tri_iff} establishes that for the purposes of resolving the original Horn problem, it is sufficient to restrict our attention to inequalities of the form \cref{cor:row_col_horn_ineqs}.
+\end{rem}
+
+\subsection{Distance bound \& sufficiency}
+\label{sec:dist_bound_for_orig_horn}
+
+Here we prove the distance bound stated in \cref{thm:tri_iff}.
+To begin we fix an \textit{arbitrary} pair $(\ya,\yb)$ with total size $\sya + \syb = k$ and derive multiple bounds on the product $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$.
+Afterwards, we will sum over all such pairs and then obtain the claimed bound on $D(\ea,\eb;\ec)$.
+
+First we bound $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ in two ways and then apply the eigenvalue separation lemma (specifically \cref{eq:weak_eig_sep}).
+The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from relaxing \cref{eq:tri_iff} by considering a Young diagram $\yc^{*}$ of size $k$ which maximizes $\vp_{\yc^{*}}(\ec)$ amoung those $\yc$ such that $c^{\yc}_{\ya\yb}> 0$ for the given $(a,b,c)$.
+As there are at most $\polyk{n-1}$ Young diagrams of size $k$, we conclude
+\begin{equation}
+    \label{eq:first_ab_bound}
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{n-1} \vp_{\yc^{*}}(\ec).
+\end{equation}
+The second bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained by considering \cref{cor:random_sum} which states that for any $\yc$ such that $c^{\yc}_{\ya\yb} > 0$,
+\begin{equation}
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb)
+    = \frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}}
+    \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}}
+    \vp^{\ya\yb}_{\yc}(X,Y).
+\end{equation}
+To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya}^{n} \ot V_{\yb}^{n}}{c^{\yc}_{\ya\yb} \dim V_{\yc}^{n}} \leq \dim (V_{\ya}^{n} \ot V_{\yb}^{n}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
+\begin{equation}
+    \label{eq:second_ab_bound}
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y).
+\end{equation}
+Then we combine the two bounds on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ from \cref{eq:first_ab_bound} and \cref{eq:second_ab_bound} and apply the eigenvalue separation bound \cref{eq:weak_eig_sep} to obtain
+\begin{align}
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb)
+    &\leq \sqrt{\polyk{2\binom{n}{2}} \polyk{n-1} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
+    &\leq \sqrt{\polyk{2\binom{n}{2}}\polyk{n-1}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{\BC(\eig(X+Y), c)^k}{k!}, \\
+    \label{eq:ab_intermediate_bound}
+    &= \polyk{2\binom{n}{2}+\frac{n-1}{2}}\frac{\BC(a,b;c)^k}{k!},
+\end{align}
+where $\BC(a,b;c)$ is defined as the maximum Bhattacharyya coefficient
+\begin{equation}
+    \BC(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \BC(\eig(X+Y),c).
+\end{equation}
+
+Now we sum both sides of \cref{eq:ab_intermediate_bound} over \textit{all} pairs $(\ya,\yb)$ with total size $\sya+\syb=k$ to obtain
+\begin{equation}
+    \frac{\tec^k}{k!} \leq \polyk{2\binom{n}{2}+\frac{n-1}{2} + 2n} \frac{\BC(a,b;c)^{k}}{k!},
+\end{equation}
+where the left-hand side follows from the trace condition $\tec=\tea+\teb$ and
+\begin{equation}
+    \label{eq:binomial_trace}
+    \sum_{\ell=0}^{k} \sum_{\substack{\ya\vdash \ell\\\yb\vdash k-\ell}} \vp_{\ya}(\ea)\vp_{\yb}(\eb) = \sum_{\ell=0}^{k} \frac{\tea^\ell}{\ell!} \frac{\teb^{k-\ell}}{(k-\ell)!} = \frac{(\tea+\teb)^k}{k!},
+\end{equation}
+whereas the extra factor of $2n$ in the exponent on the right-hand side is obtained because there are at most $\polyk{n}$ Young diagrams with $n$ rows and size at most $k$ and we are summing over a pair $(\ya,\yb)$ with total size $\sya+\syb=k$.
+This establishes a lower bound on $\BC(a,b;c)$ of the form
+\begin{equation}
+    \frac{\BC(a,b;c)}{\Tr[c]} \geq \left( \frac{1}{\polyk{\frac{2n^2+3n-1}{2}}} \right)^{\frac{1}{k}}
+\end{equation}
+Finally, using \cref{eq:Bhattacharyya_vs_distance}, we substitute the maximum normalized Bhattacharyya coefficient $\frac{\BC(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_dist_bound} which completes the proof.
+
+
+
 \end{document}
