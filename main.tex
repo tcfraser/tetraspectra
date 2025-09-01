@@ -237,28 +237,36 @@ maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f
 \section{Background material}
 \label{sec:background}
 
-In this section, we review material on the representation theory of compact connected Lie groups, specifically $U(n)$, some probability theory and also the polynomial functions $\vp_{\yx}(X)$, $\vp^{\ya\yb}_{\yc}(X,Y)$ and $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ of one, two and three $n\times n$ matrices respectively.
-
+In \cref{sec:background_rep_theory}, we review material on the representation theory of compact connected Lie groups,
+specifically the group $U(n)$, and in \cref{sec:background_probability} we review some measure theory associated to Haar integrals of such groups.
+Along the way, we introduce a series of the polynomial functions $\vp_{\yx}(X)$, $\vp^{\ya\yb}_{\yc}(X,Y)$ and $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ of one, two and three $n\times n$ matrices respectively,
+and provide a formula for the representation of a matrix sum $X+Y$ which we refer to as the binomial theorem.
+ 
 \subsection{Representation theory}
+\label{sec:background_rep_theory}
 
 Even though we will primarily deal with $G=U(n)$, we start with a more general story.
 
 \subsubsection{\texorpdfstring{$\boldsymbol{G}$}{G} compact}
 Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\mathfrak{t} ={\rm Lie}(T)$ its Lie algebra, $\Lambda = \ker(\exp) \subset \mathfrak{t}$ the integral lattice, $\Lambda^* \subset \mathfrak{t}^*$ the weight lattice, and $\Lambda^*_+ \subset \Lambda^*$ the set of dominant weights of $G$.
-For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to \End(V_\yx)$ the corresponding irreducible representation of $G$. We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
+For $\yx \in \Lambda^*$, we denote by $\pi_\yx: G \to \End(V_\yx)$ the corresponding irreducible representation of $G$. 
+We will always assume that the space $V_\yx$ is equipped with an invariant Hermitian structure such that $\pi_\yx$ becomes a unitary representation. 
+All representations $\pi_\yx$ extend to the corresponding complex Lie group $G^\mathbb{C}$.
 
 The tensor product of two irreducible representations admits a unique decomposition of the form
 \begin{equation}
     \label{eq:tensor_product}
     V_\ya \ot V_\yb = \bigoplus_\yc C_{\ya \yb}^\yc \ot V_\yc,
 \end{equation}
-where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions
-$c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$. Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$. In particular, the decomposition in \cref{eq:tensor_product} is an orthogonal decomposition. We will denote the corresponding orthogonal projectors by $P_{\ya \yb}^\yc$. Note that
+where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions $c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$. 
+Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$.
+In particular, the decomposition in \cref{eq:tensor_product} is an orthogonal decomposition. 
+We let $\iota_{\ya\yb}^{\yc} : C_{\ya \yb}^\yc \ot V_\yc \to V_{\ya} \ot V_{\yb}$ denote the corresponding isometry and $P_{\ya \yb}^\yc = \iota_{\ya\yb}^{\yc} \iota_{\ya\yb}^{\yc;\dagger}$ the corresponding orthogonal projection operator.
+Using this notation, we have for all $g \in G$
 \begin{equation}
     \label{eq:operator product}
-    \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc (\id \ot \pi_\yc(g)) P_{\ya \yb}^\yc,
+    \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc \iota_{\ya \yb}^{\yc} (\id_{C_{\ya \yb}^\yc} \ot \pi_\yc(g)) \iota_{\ya \yb}^{\yc ; \dagger},
 \end{equation}
-where on the left hand side we use the tensor product $V_\ya \ot V_\yb$, and on the right hand side $C_{\ya \yb}^\yc \ot V_\yc$.
 
 Characters of irreducible representations are denoted by
 \begin{equation}
@@ -283,7 +291,7 @@ Triple tensor products can be decomposed in two alternative ways:
 We will denote the corresponding orthogonal projectors by $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$, respectively (the letters $\yc$ and $\yf$ will always be associated to these decompositions).
 %TC: This never happens, I think. %When $\ya, \yb, \yd$ are clear from the context, we will use the shorthand notation $\Pi^{\ye ; \yc}, \Pi^{\ye ; \yf}$.
 For fixed $\ya,\yb,\yd$ and $\yc, \yf, \ye$, consider the composition of these two projectors $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$.
-It induces a $G$-equivariant linear map:
+This composition induces a $G$-equivariant linear map of the type
 \begin{equation}
     (C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye) \ot V_\ye \to (C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf)\ot V_\ye.
 \end{equation}
@@ -291,7 +299,20 @@ Since $\pi_\ye$ is an irreducible representation, by Schur's Lemma this map is a
 \begin{equation}
    \abcdefsymbol : C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye \to C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf
 \end{equation}
-called Wigner's $6j$-symbol.
+called the $6j$-symbol for $G$.
+Our normalization convention for the $6j$-symbol is given by
+\begin{equation}
+    \label{eq:sixj}
+    \abcdefsymbol
+    \coloneqq
+    \frac{1}{\dim(V_{\ye})}
+    \Tr_{V_{\ye}}[
+    (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})^{\dagger}
+    (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}
+    (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})
+    (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})
+    ].
+\end{equation}
 
 Recall that for Hermitian vector spaces $V_{1}, V_{2}$ and an operator $O: V_{1} \to V_{2}$ one can introduce the norms
 \begin{align}
@@ -315,7 +336,7 @@ In the above formula, we have used the fact that for two orthogonal Hermitian pr
     \norm{\Pi_1 \Pi_2}_2^2=\Tr((\Pi_1 \Pi_2)(\Pi_1\Pi_2)^\dagger) = \Tr(\Pi_1 \Pi_2^2\Pi_1)=
     \Tr(\Pi_1 \Pi_2).
 \end{equation}
-Foe future use, we will needowing fact:
+For future use, we will need the following fact:
 \begin{prop}\label{prop: Pi Omega Pi}
     Let $\Pi_1, \Pi_2$ be two orthogonal projections, and $\Omega$ be a non-negative Hermitian operator. Then,
     \begin{equation}
@@ -350,43 +371,52 @@ Foe future use, we will needowing fact:
 
 \subsubsection{\texorpdfstring{$\boldsymbol{G=U(n)}$}{G=U(n)} and  functions \texorpdfstring{$\boldsymbol{\varphi_\yx}$}{philambda}}
 
-For $G=U(n)$, dominant weights are parametrized by non-increasing arrays of integers
-\begin{equation}
-    \yx=(\yx_1 \geq \yx_2 \geq \dots \geq \yx_n).
-\end{equation}
+For $G=U(n)$, dominant weights are parametrized by non-increasing arrays of integers, $\yx=(\yx_1 \geq \yx_2 \geq \dots \geq \yx_n)$, where $\yx_i \in \mathbb Z$ and $\yx_i \geq \yx_{i+1}$ for all $i$.
 In particular, the first fundamental weight $\varpi_1=(1, 0, \dots, 0)$ corresponds to the defining representation of $U(n)$ on $V_{\varpi_1} = \mathbb{C}^n$.
 
-We say that a dominant weight $\yx$ is positive if $\yx_n \geq 0$,and we denote the set of positive weights by $\Lambda^*_{++}$. We will use the notation
+We say that a dominant weight $\yx$ is positive if each of its components is positive (i.e., $\yx_n \geq 0$), and we denote the set of positive weights by $\Lambda^*_{++}$. 
+For positive weights, we let
 \begin{equation}
-    \syx = \sum_{i=1}^n \yx_i,
+    \syx \coloneqq \sum_{i=1}^n \yx_i,
     \quad
-    l(\yx)=|\{i; \yx_i \neq 0\}|,
+    \ell(\yx) \coloneqq |\{i; \yx_i \neq 0\}|,
 \end{equation}
-where $l(\yx)$ is called the depth of $\yx$. Positive weights $\yx$ can be viewed as partitions of $\syx$ into $l \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $n$ rows.
-Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and they extend to matrix algebras $\Mat_n(\mathbb{C})$. That is,
+where $\syx$ is called the size of $\yx$ and $\ell(\yx)$ is called the depth of $\yx$.
+Henceforth we use the notation $\yx \vdash_{n} k$ to denote the set of positive weights with size $k$ and length at most $n$.
+Positive weights $\yx$ are then equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $\ell(\yx)$ rows.
+For each positive weight, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
+\begin{equation}
+    \label{eq:weyl_dim}
+    \dim(V_{\yx}^{n}) = \frac{\Delta(\yx + \rho)}{\Delta(\rho)} = \frac{\prod_{1 \leq i<j \leq n}(\yx_i - i - \yx_j + j)}{\prod_{1 \leq i<j \leq n}(j-i)},
+\end{equation}
+where $\rho \simeq (n-1, n-2, \ldots, 1, 0)$ is known as the Weyl vector and where
+\begin{equation}
+    \Delta(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j).
+\end{equation}
+is known as the Vandermonde determinant.
+Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$. 
+That is,
 \begin{equation}
     \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
 \end{equation}
 for all $X,Y \in \Mat_n(\mathbb{C})$.
 Tensor products of representations with positive weights decompose into direct sums of representations of the same type.
-Note the decomposition in \cref{eq:tensor_product} one has only terms with
+Note that in the decomposition of the tensor product representation $V_{\ya}\ot V_{\yb}$ appearing in \cref{eq:tensor_product}, the only positive weights $\syc$ which appear are those which satisfy the size condition
 \begin{equation}
-    \label{eq:trace_representations}
+    \label{eq:size_condition_tri}
     \syc = \sya + \syb.
 \end{equation}
-We will sometimes refer to \cref{eq:trace_representations} as to a trace equality (in fact, one of many trace equalities in this paper).
 
-Recall that for Young diagrams (or partitions) $\yx$ with fixed size $\sya=k$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$.
-The dimensions of these representations are given by formula
+Recall that for Young diagrams (or partitions) $\yx$ with fixed size $\syx=k$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$.
+The dimensions of these representations are given by the formula
 \begin{equation}
     \label{eq:dim_W_hook_product}
     \dim(W_\yx) = \frac{\syx!}{H_{\yx}},
     \quad
     H_{\yx} = \prod_{b \in \yx} h_\yx(b),
 \end{equation}
-where the product is over the boxes in the Young diagram associated to $\yx$,
-and $h_\yx(b)$ is hook length of $b$ which is equal to the number of boxes in the hook with the corner at $b$, and with the arms extending to the right of $b$ and downwards from $b$.
-For the future use, we introduce rescaled operators
+where $h_\yx(b)$ is the hook length of box $b$ and is defined as the number of boxes to the right and below $b$ in $\yx$ plus one for itself, and $H_{\yx}$ is referred to as the hook product of $\yx$.
+For the future use, we introduce rescaled representations
 \begin{equation}
     \Phi_\yx(X) = \frac{1}{H_{\yx}} \pi_\yx(X),
 \end{equation}
@@ -403,14 +433,14 @@ Note that
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-modules
 \begin{equation}
     \label{eq:schur-weyl}
-    (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\syx =k} W_\yx \ot V_\yx,
+    (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_\yx \ot V_\yx,
 \end{equation}
-where the symmetric group $S_k$ acts by permutations of tensor factors in
-$(\mathbb{C}^n)^{\ot k}$. Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
+where the symmetric group $S_k$ acts by permutations of tensor factors in $(\mathbb{C}^n)^{\ot k}$. 
+Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
 Applying it to an element $X \in {\rm Mat}_n(\mathbb{C})$, we obtain
 \begin{equation}
     \label{eq:X^k}
-    X^{\ot k}  = \oplus_{\syx =k}  {\rm Id}_{W_\yx} \ot \pi_\yx(X),
+    X^{\ot k}  = \oplus_{\yx \vdash_{n} k}\id_{W_\yx} \ot \pi_\yx(X),
 \end{equation}
 where on the right hand side we a have a direct sum of operators acting on the subspaces of the Schur-Weyl decomposition.
 Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields
@@ -486,14 +516,15 @@ It is  convenient to introduce the following functions of two matrices,
     \end{equation}
     Hence, $\varphi^{\ya \yb}_\yc(X, Y)$ is the trace of the orthogonal restriction of  $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ to $(C_{\ya \yb} \ot V_\yc) \subset V_\ya \ot V_\yb$. Since $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ is a non-negative Hermitian operator, so is its restriction. It has non-negative real eigenvalues, and a non-negative real trace, as required.
 \end{proof}
+
 \begin{thm}[Binomial theorem]
+    \label{thm:the_binomial_theorem}
     For $X,Y \in {\rm Mat}_n(\mathbb{C})$ and $\yc \in \Lambda^*_{++}$, we have
     \begin{equation}
         \label{eq:varphi_sum_sum}
         \varphi_\yc(X+Y)=\sum_{\ya, \yb} \varphi^{\ya \yb}_\yc(X, Y).
     \end{equation}
 \end{thm}
-
 \begin{proof}
     Let $k=\syc$, $\rho_k$ the natural representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $C_k=(\mathbb{C}^n)^{\ot k}$, and $P^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
     We compute,
@@ -562,6 +593,7 @@ Even when restricted to $(\hermp{n})^{\times 3}$,  functions $\varphi^{\ya \yb \
 \end{proof}
 
 \subsection{Probability measures}
+\label{sec:background_probability}
 
 In this Section, we collect information about probability measures on finite sets and on conjugacy classes of Hermitian matrices needed later in the paper.
 
@@ -1337,60 +1369,9 @@ MC and TCF acknowledge financial support from the European Research Council (ERC
 \section{[tc] Inequalities for tetrahedral eigenvalues}
 \label{sec:ineqs_from_schur_weyl}
 
-The purpose of this section is to develop the technical machinery used to prove numerous new inequalities constraining the set of tetrahedral eigenvalues.
-Our approach relies heavily on the theory of irreducible representations of the group $\U(n)$ of unitary $n\times n$ matrices, or equivalently, the theory of polynomial irreducible representations of the group $\GL(n, \mathbb C)$ of invertible $n\times n$ matrices with complex entries.
-More specifically, our approach relies on the decomposition of tensor powers $X^{\ot k}$ of $n\times n$ matrices provided by Schur-Weyl duality.
-In \cref{sec:schur_weyl} we review this prerequisite representation theory and provide elementary results regarding the decomposition of tensor powers $X^{\ot k}$ and then afterwards, in \cref{sec:eig_est_and_sep}, we describe how these decompositions of $X^{\ot k}$ encode information about the eigenvalues $\ex$ of $X$.
-Building upon this machinery, in \cref{sec:binomial_theorem}, we state and prove a binomial theorem concerning various decompositions of tensors powers of matrix sums $(X+Y)^{\ot k}$.
-Using the binomial theorem, in \cref{sec:new_ineq_horn_orig}, we will derive new inequalities constraining the set of eigenvalue triples $(\ya,\yb,\yc)$ of positive semidefinite matrices $(A,B,C)$ satisfying $A+B=C$ relevant for Horn's original eigenvalue problem.
-Afterwards, in \cref{sec:new_ineq_horn_tet}, we again leverage the binomial theorem (or rather its multinomial generalization) to derive new inequalities constraining the set of eigenvalue sextuples $(\ea,\eb,\ec,\ed,\ee,\ef)$ of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying $A+B=C$, $B+D=F$, $C+D=E$, and $A+F=E$ relevant for the tetrahedral Horn problem.
-
 \subsection{[tc] Schur-Weyl duality}
 \label{sec:schur_weyl}
 
-The purpose of this section is to review the representation theory of $\U(n)$, or equivalently, the polynomial representation theory of $\GL(n)$.
-The isomorphism classes of irreducible polynomial representations of $\GL(n)$ are indexed by Young diagrams.
-
-A Young diagram $\yx$ of size $k$ is a collection of $k$ boxes arranged in rows of sorted length and can be identified with its sequence of non-zero row-lengths, $\yx \simeq (\yx_1, \ldots, \yx_\ell)$, where $\yx_i$ counts the number of boxes in the $i$th row, $\yx_1 \geq \cdots \geq \yx_\ell > 0$, and where $\sum_{i}\yx_i = k$.
-The number of non-zero rows in $\yx$ is called the depth or length of $\yx$ and is denoted by $\ell(\yx)$ and the size of $\yx$ is denoted by $\syx$.
-As a shorthand, we write $\yx \vdash_{n} k$ to denote a Young diagram $\yx$ of size $\syx = k$ with depth at most $\ell(\yx) \leq n$.
-For example, $\yx = \ydiagram{4,2,1} \simeq (4,2,1)$ is a Young diagram of size $\syx = 4+2+1 = 7$ and depth $3$.
-
-For each Young diagram $\ell$ of size $k$ with depth at most $n$, there is an irreducible polynomial representation of $\U(n)$ (or $\GL(n, \mathbb C)$), denoted by $(\pi_\yx, V_\yx^n)$, whose matrix coefficients are polynomials of homogeneous degree $k$ in the entries of $U \in \U(n)$.
-The dimension of the $V_{\yx}^n$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
-\begin{equation}
-    \label{eq:weyl_dim}
-    \dim(V_{\yx}^{n}) = \frac{\Delta(\yx + \rho)}{\Delta(\rho)} = \frac{\prod_{1 \leq i<j \leq n}(\yx_i - i - \yx_j + j)}{\prod_{1 \leq i<j \leq n}(j-i)},
-\end{equation}
-where $\rho \simeq (n-1, n-2, \ldots, 1, 0)$ is known as the Weyl vector and where
-\begin{equation}
-    \Delta(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j).
-\end{equation}
-is known as the Vandermonde determinant.
-The defining representation of $\U(n)$, wherein $U \in \U(n)$ acts via matrix-vector multiplication on $\mathbb C^{n}$, is associated to the Young diagram with one box, $\yx = \ydiagram{1} \simeq (1)$, and as dimension $\dim(V_{\ydiagram{1}}^{n}) = n$ as $V_{\ydiagram{1}}^{n} \simeq \mathbb C^{n}$.
-
-The so-called Schur-Weyl decomposition of $(V_{\ydiagram{1}}^{n})^{\ot k} \simeq (\mathbb C^{n})^{\ot k}$ into irreducible representations of $\U(n)$ is as follows.
-\begin{prop}[Schur-Weyl duality]
-    Let $k$ and $n$ be positive integers.
-    Then the decomposition of $(\mathbb C^{n})^{\ot k}$ into irreducible subrepresentations of $S_k \times \U(n)$, known as the \textit{Schur-Weyl} decomposition, is given by
-    \begin{equation}
-        \label{eq:schur_weyl_decomp}
-        (\mathbb C^{n})^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_{\yx} \ot V_{\yx}^{n}
-    \end{equation}
-    where the direct summands are indexed by Young diagrams $\yx$ of size $k$ and depth at most $n$ rows, and where $W_{\yx}$ supports an irreducible representation of $S_k$ and $V_{\yx}^{n}$ supports the irreducible representation of $\U(n)$.
-\end{prop}
-The dimension of the irreducible representation $W_{\yx}$ of $S_k$ is given by
-\begin{equation}
-    \label{eq:hook_dim}
-    \dim(W_{\yx}) = \frac{\syx!}{H_\yx}, \qquad H_{\yx} = \prod_{b \in \yx} h_{\yx}(b),
-\end{equation}
-where the hook length, $h_{\yx}(b)$, of $b$ counts the number of boxes to the right and below $b$ plus one for itself.
-We refer to $H_{\yx}$ as the hook-product for $\yx$.
-
-Now let $(\pi_{\yx}, V_{\yx}^n)$ be an irreducible representation of $\U(n)$ labelled by the Young diagram $\yx$ with depth at most $n$.
-Throughout this paper, the representation spaces $V_{\yx}^n$ are assumed to be equipped with respective Hermitian inner products making $\pi_{\yx}$ \textit{unitary} representations of $\U(n)$.
-Similarly, if $(\sigma_{\yx}, W_{\yx})$ denotes the irreducible representation of $S_k$ labelled by $\yx$, we assume $W_{\yx}$ is equipped with a real inner product making $\sigma_{\yx}$ an \textit{orthogonal} representation of $S_k$.
-In particular, the defining representation $V_{\ydiagram{1}} \simeq \mathbb C^{n}$ of $\U(n)$ is equipped with the standard Hermitian inner product on $\mathbb C^{n}$ making the standard basis $\{e_1, \ldots, e_n\}$ orthonormal.
 Then for each $\yx$-isotypic subspace of $V_{\ydiagram{1}}^{\ot {\syx}} \simeq (\mathbb C^{n})^{\ot \syx}$, we let
 \begin{equation}
     \iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{\ydiagram{1}}^{\ot {\syx}},
