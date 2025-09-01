@@ -288,7 +288,18 @@ Triple tensor products can be decomposed in two alternative ways:
         \bigoplus_{\yf, \ye} (C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf)\ot V_\ye.
     \end{split}
 \end{align}
-We will denote the corresponding orthogonal projectors by $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$, respectively (the letters $\yc$ and $\yf$ will always be associated to these decompositions).
+We will denote the corresponding orthogonal projectors by $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$, respectively (the letters $\yc$ and $\yf$ will always be associated to these decompositions):
+\begin{align}
+    \begin{split}
+        \label{eq:double_projs}
+        \Pi_{\ya\yb\yd}^{\ye;\yc}
+        &\coloneqq P^{\ye}_{\ya\yb\yd} (P^{\yc}_{\ya\yb} \ot \id_{V_{\yd}^{n}})
+        = (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})(P^{\ye}_{\yc\yd} \ot \id_{C^{\yc}_{\ya\yb}})(\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}, \\
+        \Pi_{\ya\yb\yd}^{\ye;\yf}
+        &\coloneqq P^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd})
+        = (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})(P^{\ye}_{\ya\yf} \ot \id_{C^{\yf}_{\yb\yd}})(\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}. \\
+    \end{split}
+\end{align}
 %TC: This never happens, I think. %When $\ya, \yb, \yd$ are clear from the context, we will use the shorthand notation $\Pi^{\ye ; \yc}, \Pi^{\ye ; \yf}$.
 For fixed $\ya,\yb,\yd$ and $\yc, \yf, \ye$, consider the composition of these two projectors $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$.
 This composition induces a $G$-equivariant linear map of the type
@@ -300,7 +311,7 @@ Since $\pi_\ye$ is an irreducible representation, by Schur's Lemma this map is a
    \abcdefsymbol : C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye \to C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf
 \end{equation}
 called the $6j$-symbol for $G$.
-Our normalization convention for the $6j$-symbol is given by
+Concretely, we will define $\abcdefsymbol$ by the formula
 \begin{equation}
     \label{eq:sixj}
     \abcdefsymbol
@@ -311,7 +322,16 @@ Our normalization convention for the $6j$-symbol is given by
     (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}
     (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})
     (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})
-    ].
+    ],
+\end{equation}
+which ensures
+\begin{equation}
+    \Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf} =
+    (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})
+    (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})
+    (\abcdefsymbol \ot V_{\ye}^{n})
+    (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})^{\dagger}
+    (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}.
 \end{equation}
 
 Recall that for Hermitian vector spaces $V_{1}, V_{2}$ and an operator $O: V_{1} \to V_{2}$ one can introduce the norms
@@ -382,9 +402,16 @@ For positive weights, we let
     \ell(\yx) \coloneqq |\{i; \yx_i \neq 0\}|,
 \end{equation}
 where $\syx$ is called the size of $\yx$ and $\ell(\yx)$ is called the depth of $\yx$.
-Henceforth we use the notation $\yx \vdash_{n} k$ to denote the set of positive weights with size $k$ and length at most $n$.
+Henceforth we use the notation $\yx \vdash_{n} k$ to denote the set of positive weights with size $k$ and length at most $n$, and $\yx \vdash k$ to denote the set of positive weights with size $k$ and arbitrary length.
 Positive weights $\yx$ are then equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $\ell(\yx)$ rows.
-For each positive weight, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
+Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$. 
+That is,
+\begin{equation}
+    \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
+\end{equation}
+for all $X,Y \in \Mat_n(\mathbb{C})$.
+If $X$ is a Hermitian matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$ then the character of $X$ for the representation $\pi_{\yx}$, denoted by $\chi_{\yx}(X)$, is equal to the Schur-polynomial of its eigenvalues $\ex$, denotd by $s_{\yx}(\ex)$.
+Moreover, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
 \begin{equation}
     \label{eq:weyl_dim}
     \dim(V_{\yx}^{n}) = \frac{\Delta(\yx + \rho)}{\Delta(\rho)} = \frac{\prod_{1 \leq i<j \leq n}(\yx_i - i - \yx_j + j)}{\prod_{1 \leq i<j \leq n}(j-i)},
@@ -394,12 +421,6 @@ where $\rho \simeq (n-1, n-2, \ldots, 1, 0)$ is known as the Weyl vector and whe
     \Delta(x_1, \ldots, x_n) = \prod_{1 \leq i < j \leq n} (x_i-x_j).
 \end{equation}
 is known as the Vandermonde determinant.
-Representations $\pi_\yx(g)$ corresponding to positive weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$. 
-That is,
-\begin{equation}
-    \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
-\end{equation}
-for all $X,Y \in \Mat_n(\mathbb{C})$.
 Tensor products of representations with positive weights decompose into direct sums of representations of the same type.
 Note that in the decomposition of the tensor product representation $V_{\ya}\ot V_{\yb}$ appearing in \cref{eq:tensor_product}, the only positive weights $\syc$ which appear are those which satisfy the size condition
 \begin{equation}
@@ -427,7 +448,7 @@ and rescaled characters
 Note that
 \begin{equation}
     \label{eq:varphi_normalization}
-    \sum_{\yx:\syx=k} \varphi_\yx(X) = \frac{1}{k!} [\Tr(X)]^k, \quad
+    \sum_{\yx \vdash k} \varphi_\yx(X) = \frac{[\Tr(X)]^k}{k!} , \quad
     \sum_\yx \varphi_\yx(X) = \exp(\Tr(X)).
 \end{equation}
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-modules
@@ -436,21 +457,18 @@ Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-m
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in $(\mathbb{C}^n)^{\ot k}$. 
+For each $\yx$, we let
+\begin{equation}
+    \iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to (\mathbb{C}^n)^{\ot k},
+\end{equation}
+denote the unique isometric $S_k \times \U(n)$-equivariant map from $W_{\yx} \ot V_{\yx}^{n}$ to $(\mathbb{C}^n)^{\ot k}$.
 Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot {\rm Mat}_n(\mathbb{C}))$.
 Applying it to an element $X \in {\rm Mat}_n(\mathbb{C})$, we obtain
 \begin{equation}
     \label{eq:X^k}
-    X^{\ot k}  = \oplus_{\yx \vdash_{n} k}\id_{W_\yx} \ot \pi_\yx(X),
+    X^{\ot k} = \bigoplus_{\yx \vdash_{n} k} \iota_{\yx} (\id_{W_\yx} \ot \pi_\yx(X)) \iota_{\yx}^{\dagger},
 \end{equation}
-where on the right hand side we a have a direct sum of operators acting on the subspaces of the Schur-Weyl decomposition.
-Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields
-\begin{equation}
-    [\Tr(X)]^k = \Tr(X^{\ot k}) = \sum_{\yx:\syx=k} {\dim}(W_\yx) \chi_\yx(X) =
-    k! \sum_{\yx:\syx=k} H_{\yx}^{-1} \chi_\yx(X) =
-    k! \sum_{\yx:\syx=k} \varphi_\yx(X),
-\end{equation}
-as required. 
-The second identity in \cref{eq:varphi_normalization} follows by taking a sum over $k$ in the first one.
+Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields \cref{eq:varphi_normalization}.
 
 Henceforth we denote the space of Hermitian matrices of size $n$ by $\herm{n}$ and the space of positive-semidefinite Hermitian matrices by $\hermp{n}$.
 Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of $X$.
@@ -488,7 +506,7 @@ Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of 
 It is  convenient to introduce the following functions of two matrices,
 \begin{equation}
     \varphi^{\ya \yb}_\yc(X, Y) =
-    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc.
+    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\yb(Y))P_{\ya\yb}^\yc.
 \end{equation}
 
 \begin{prop}
@@ -501,20 +519,28 @@ It is  convenient to introduce the following functions of two matrices,
 \end{prop}
 
 \begin{proof}
-    For the first statement, we compute
+    For the first statement, note that
     \begin{equation}
-        \sum_\yc \varphi^{\ya \yb}_\yc(X, Y) =
-        \sum_\yc \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc =
-        \Tr_{V_\ya \ot V_\yb} (\Phi_\ya(X) \ot \Phi_\ya(Y)) =
-        \varphi_\ya(X) \varphi_\yb(Y).
+        \sum_{\yc} P_{\ya\yb}^\yc = \id_{V_{\ya}} \ot \id_{V_{\yb}},
     \end{equation}
-    Here we have used the fact that $\sum_\yc P_{\ya\yb}^\yc = \id_{V_{\ya} \ot V_{\yb}}$. For the second statement, we have
-    \begin{equation}
-        \varphi^{\ya \yb}_\yc(X, Y)=
-        \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc =
-        \Tr_{V_\ya \ot V_\yb}  P_{\ya\yb}^\yc (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc.
-    \end{equation}
-    Hence, $\varphi^{\ya \yb}_\yc(X, Y)$ is the trace of the orthogonal restriction of  $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ to $(C_{\ya \yb} \ot V_\yc) \subset V_\ya \ot V_\yb$. Since $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ is a non-negative Hermitian operator, so is its restriction. It has non-negative real eigenvalues, and a non-negative real trace, as required.
+    which then implies
+    \begin{align}
+        \begin{split}
+            \sum_\yc \varphi^{\ya \yb}_\yc(X, Y) 
+            &= \sum_\yc \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc, \\
+            &= \Tr_{V_\ya \ot V_\yb} (\Phi_\ya(X) \ot \Phi_\ya(Y)), \\
+            &= \varphi_\ya(X) \varphi_\yb(Y).
+        \end{split}
+    \end{align}
+    For the second statement, we have
+    \begin{align}
+        \begin{split}
+            \varphi^{\ya \yb}_\yc(X, Y)
+            &= \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc, \\
+            &= \Tr_{V_\ya \ot V_\yb}  P_{\ya\yb}^\yc (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc.
+        \end{split}
+    \end{align}
+    Hence, $\varphi^{\ya \yb}_\yc(X, Y)$ is the trace of the orthogonal restriction of the non-negative Hermitian operator $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ to the subspace $(C_{\ya \yb} \ot V_\yc) \subseteq V_\ya \ot V_\yb$, meaning $\varphi^{\ya \yb}_\yc(X, Y) \geq 0$ as claimed.
 \end{proof}
 
 \begin{thm}[Binomial theorem]
@@ -526,27 +552,28 @@ It is  convenient to introduce the following functions of two matrices,
     \end{equation}
 \end{thm}
 \begin{proof}
-    Let $k=\syc$, $\rho_k$ the natural representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $C_k=(\mathbb{C}^n)^{\ot k}$, and $P^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
-    We compute,
-    \begin{align}
-        \begin{split}
-            \varphi_\yc(X+Y)
-            &= h_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y), \\
-            &= (h_\yc d_\yc)^{-1} \Tr_{C_k} P^\yc \rho_k(X+Y), \\
-            &= k!^{-1} \Tr_{C_k} P^\yc  (X+Y)^{\ot m}, \\
-            &= k!^{-1} \Tr_{C_k}  P^\yc \sum_{l=0}^k \sum_{\sigma \in S_k} \frac{k!}{l! (k-l)!}\rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
-            &= \sum_{\ya, \yb}  (\sya! \syb!)^{-1} \Tr_{(W_\ya \ot V_\ya) \ot (W_\yb \ot V_\yb)}  P_{\ya \yb}^\yc  \pi_\ya(X) \ot \pi_\yb(Y), \\
-            &= \sum_{\ya, \yb}  (h_\ya h_\yb)^{-1} \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)), \\
-            &= \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\varphi_\ya(X) \ot \varphi_\yb(Y)), \\
-            &= \sum_{\ya, \yb}  \yf_{\ya \yb}^\yc(X,Y).
-        \end{split}
-    \end{align}
-    Here in the fourth line we have used the fact that
+    Let $k=\syc$ and let $\rho_k$ denote the representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $(\mathbb{C}^n)^{\ot k}$, and $P^\yc = \iota_{\yc}\iota_{\yc}^{\dagger}$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
+    Here we use the fact that
     \begin{equation}
         (X+Y)^{\ot k} = \sum_{l=0}^k \frac{k!}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
     \end{equation}
-    which is a non-commutative counterpart of the binomial decomposition. In the fifth line, we have used the Schur-Weyl duality for representations $\rho_l$ and
-    $\rho_{k-l}$, and the fact that $P^\yc = \sum_{\ya, \yb} P_{\ya \yb}^\yc$.
+    which is a non-commutative counterpart of the binomial decomposition. 
+    Recalling that $\dim(W_{\yx}) = \syx! / H_{\yx}$, we compute
+    \begin{align}
+        \begin{split}
+            &\varphi_\yc(X+Y) \\
+            &\quad= H_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y), \\
+            &\quad= (H_\yc \dim(W_\yc))^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc \rho_k(X+Y), \\
+            &\quad= k!^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc  (X+Y)^{\ot k}, \\
+            &\quad= k!^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}}  P^\yc \sum_{l=0}^k \sum_{\sigma \in S_k} \frac{k!}{l! (k-l)!}\rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
+            &\quad= \sum_{l=0}^k \sum_{\sigma \in S_k} (l! (k-l)!)^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
+            &\quad= \sum_{l=0}^k \sum_{\sigma \in S_k} (l! (k-l)!)^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc (X^{\ot l} \ot Y^{\ot (k-l)}), \\
+            &\quad= \sum_{\ya, \yb}  (\sya! \syb!)^{-1} \Tr_{(W_\ya \ot V_\ya) \ot (W_\yb \ot V_\yb)}  P_{\ya \yb}^\yc  \pi_\ya(X) \ot \pi_\yb(Y), \\
+            &\quad= \sum_{\ya, \yb}  (H_\ya H_\yb)^{-1} \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)), \\
+            &\quad= \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\varphi_\ya(X) \ot \varphi_\yb(Y)), \\
+            &\quad= \sum_{\ya, \yb}  \yf_{\ya \yb}^\yc(X,Y).
+        \end{split}
+    \end{align}
 \end{proof}
 
 For a 6-tuple of positive weights, we introduce a function of three matrices,
@@ -555,14 +582,14 @@ For a 6-tuple of positive weights, we introduce a function of three matrices,
     \Tr_{V_\ya \ot V_\yb \ot V_\yd}
     \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}.
 \end{equation}
-Note that the following trace equalities are necessary conditions for $\varphi^{\ya \yb \yd}_{\yc \ye \yf}$ being non-zero:
+Note that the following size equalities are necessary conditions for $\abcdefsymbol$ being non-zero and thus $\varphi^{\ya \yb \yd}_{\yc \ye \yf}$ being non-zero:
 \begin{equation}
     \sya + \syb = \syc, \quad
     \syb + \syd = \syf, \quad
     \sya + \syf = \sye, \quad
     \syc + \syd = \sye.
 \end{equation}
-Even when restricted to $(\hermp{n})^{\times 3}$,  functions $\varphi^{\ya \yb \yd}_{\yc \ye \yf}$ take complex values, in general. However, the following is true:
+Even when restricted to $(\hermp{n})^{\times 3}$, functions $\varphi^{\ya \yb \yd}_{\yc \ye \yf}$ take complex values, in general. However, the following is true:
 
 \begin{prop}
     For $X,Y,Z \in \hermp{n}$, the functions
@@ -599,16 +626,12 @@ In this Section, we collect information about probability measures on finite set
 
 \subsubsection{Measures on finite sets}
 
-Recall that for a finite set $[r]=\{ 1, \dots, r\}$ a probability measure is defined by an array of non-negative real numbers $(p_1, \dots, p_r)$ such that
-$\sum_{i=1}^r p_i =1$. For two measures $p$ and $q$ on $[r]$, there are several ways
-estimate how close they are. First, there are standard distances in $\mathbb{R}^n$:
+Recall that for a finite set $[r]=\{ 1, \dots, r\}$ a probability measure is defined by an array of non-negative real numbers $(p_1, \dots, p_r)$ such that $\sum_{i=1}^r p_i =1$. 
+For two measures $p$ and $q$ on $[r]$, the Kolmogorov distance $K(p,q)$ between them is defined by:
 \begin{equation}
     K(p,q) \coloneqq \frac{1}{2}\norm{p-q}_1
-    = \frac{1}{2} \sum_{i=1}^r |p_i - q_i|, \hskip 0.2cm
-    \norm{p-q}_2^2 = \sum_{i=1}^r (p_i - q_i)^2,
+    = \frac{1}{2} \sum_{i=1}^r |p_i - q_i|.
 \end{equation}
-where $K(p,q)$ is the Kolmogorov distance.
-As usual, each of these norms vanishes if and only if $p=q$.
 Another measure of similarity between distributions $p$ and $q$ is the Bhattacharyya coefficient \cite{bhattacharyya1946measure,fuchs2002cryptographic}:
 \begin{equation}
     \label{eq:Bhattacharyya_coefficient}
@@ -655,56 +678,108 @@ One can associate to $x \in \mathbb{R}_n^+$ a probability measure $p^x$ on the s
     p^x_i = \frac{x_i}{|x|}, \quad \text{where} \quad |x| = \sum_{i=1}^n x_i.
 \end{equation}
 Let $X= {\rm diag}(x_1, \dots, x_n)$ be a diagonal non-negative Hermitian matrix with $x_i$'s on the diagonal.
-By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. For each $x$ and each $k \geq 1$, one can define a probability measure on the set of positive weights of $U(n)$ with $\syx =k$:
+By abuse of notation, we write $\varphi_\yx(x)=\varphi_\yx(X)$. 
+For each $x$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive weights of $U(n)$ with size $\syx =k$:
 \begin{equation}
     \label{eq:schur_weyl_dist}
-    P_x(\yx) = \frac{k!}{|x|^k}  \varphi_\yx(x).
+    P_\ex(\yx) \coloneqq \frac{k!}{|x|^k} \varphi_\yx(x) = \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]}.
 \end{equation}
-The following result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}:
-\begin{prop}[Eigenvalue estimation]
-    \label{prop:eig_est_2}
-    For, $x \in \mathbb{R}_+^n, \yx \in \Lambda^*_{++}$, we have
-    \begin{equation}
-        P_{x}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^\yx}{p^x}\right).
-    \end{equation}
-\end{prop}
-\Cref{prop:eig_est_2} shows that for $k$ large the measure $P_x$ is concentrated on  positive weights $\yx$ which have a shape close to the one of $x \in \mathbb{R}^n_+$. The following proposition compares measures $P_x$ and $P_y$ for different $x, y \in \mathbb{R}_n^+$.
+This probability distribution is known as the \textit{Schur-Weyl} distribution for $x$ of degree $k = \syx$ \cite{odonnell2016efficient}.
+A key property of the Schur-Weyl distribution $P_{\ex}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
+\begin{equation}
+    m_{\ex}(\yx) \coloneqq \frac{\syx!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
+\end{equation}
 \begin{prop}
-    \label{prop: BC estimate}
-    For $k \geq 1$ and $x, y \in \mathbb{R}_n^+$ with $|x|=|y|=\tau$, one has
+    \label{prop:multinomial_bound}
+    Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
     \begin{equation}
-        \BC(P_x, P_y) \leq \polyk{\binom{n}{2}}  \BC(p^x,p^y)^k
+        P_{\ex}(\yx) \leq \dim V_{\yx}^{n} m_{\ex}(\yx).
     \end{equation}
 \end{prop}
-
 \begin{proof}
-    First, we estimate
+    The proof follows from (i) an upper bound on the Schur-polynomial $s_{\yx}(\ex)$,
     \begin{equation}
-        P_x(\yx) = \frac{k!}{|x|^k H_{\yx}} \chi_\yx(x)  \\
-        \leq \frac{k!}{|x|^k} \dim(V_\yx) \prod_{i=1}^n \frac{x_i^{\yx_i }}{\yx_i!} \\
-        \leq\frac{k!}{|x|^k} \polyk{\binom{n}{2}} \prod_{i=1}^n \frac{x_i^{\yx_i }}{\yx_i!}.
+        s_{\yx}(\ex) \leq \dim V_{\yx}^{n} \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n},
     \end{equation}
-    Here we have used that $H_{\yx} \geq \prod_{i=1}^n \yx_i!$, that
-    $\prod_{i=1}^n x_i^{\yx_i}$ is the maximal monomial in the Schur-polynomial $\chi_\yx(x)$, and
-    the estimate
+    which follows because $s_{\yx}(\ex)$ can be expressed as a sum over $\dim V_{\yx}^{n}$ multinomials of the form $\ex_1^{\mu_1}\ex_2^{\mu_2}\cdots \ex_n^{\mu_n}$ with $\ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n}$ the largest, and (ii) a lower bound on the Hook-product,
     \begin{equation}
-        \label{eq:unitary_irrep_dim_bound}
-        \dim V_{\yx}^{n} \leq \polyk{\binom{n}{2}}.
+        H_{\yx} \geq \yx_1!\cdots \yx_n!,
     \end{equation}
-    Next, we compute
-    \begin{equation}
-        \BC(P_x, P_y)=\sum_{\yx:\syx=k} \left(P_x(\yx) P_y(\yx)\right)^{\frac{1}{2}}
-        \leq \frac{k!}{|x|^k} (k+1)^{\frac{n(n-1)}{2}} \sum_{\yx:\syx=k}\prod_{i=1}^n\frac{(x_iy_i)^{\frac{\yx_i}{2} }}{\yx_i!}
-        \leq \polyk{\binom{n}{2}} \BC(p^x,p^y)^k.
-    \end{equation}
-    Here in the last inequality we have replaces the sum over positive weight with $\yx:\syx=k$ by a sum over all arrays $(\yx_1, \dots, \yx_n)$ with $\yx_i \geq 0$ and $\sum_i \yx_i =k$ which allows to use the binomial formula.
+    which follows because $h_{\yx}(b) \geq \yx_i - j + 1$ holds for the box $b$ in row $i$ and column $j$.
 \end{proof}
+\begin{rem}
+    We will henceforth relax the dimension prefactor $\dim V_{\yx}^{n}$ using the following dimension bound which holds for all Young diagrams with $k$ boxes:
+    \begin{equation}
+        \label{eq:unitary_irrep_dim_bound_2}
+        \dim V_{\yx}^{n} \leq \polyk{\binom{n}{2}} \coloneqq (k+1)^{\frac{n(n-1)}{2}}.
+    \end{equation}
+\end{rem}
+The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}.
+\begin{prop}[Eigenvalue estimation]
+    \label{prop:eig_est}
+    Let $x \in \mathbb{R}_+^n, \yx \in \Lambda^*_{++}$ with $\syx = k$.
+    Then the Schur-Weyl distribution $P_{\ex}(\yx)$ satisfies
+    \begin{equation}
+        P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^{\yx}}{p^\ex}\right).
+    \end{equation}
+\end{prop}
+\begin{proof}
+    From \cref{prop:multinomial_bound} we have the bound $P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx)$.
+    What remains is to bound the multinomial distribution $m_{\ex}(\yx)$ using the Kullback-Leibler divergence.
+    To this end, note that $k = \syx = \yx_1 + \cdots + \yd_n$ which implies
+    \begin{align}
+        \begin{split}
+            m_{\ex}(\yx)
+            &= \frac{k!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}, \\
+            &= \left(\frac{k!}{k^{k}} \frac{\yx_1^{\yx_1}}{\yx_1!} \cdots \frac{\yx_n^{\yx_n}}{\yx_n!}\right)
+            \left(\frac{k^{k}}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1^{\yx_1}}\cdots \frac{\ex_n^{\yx_n}}{\yx_n^{\yx_n}}\right), \\
+            &= m_{\yx}(\yx)
+            \exp\left[ - k \sum_{i=1}^{n} \frac{\yx_i}{k} \log \left(\frac{\yx_i}{k} \frac{\tex}{\ex_i}\right)  \right], \\
+            &= m_{\yx}(\yx)
+            \exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
+        \end{split}
+    \end{align}
+    Since $m_{\yx}(\yx) \in [0,1]$ is a probability, we have the bound $m_{\yx}(\yx) \leq 1$ and therefore we obtain the claimed result:
+    \begin{equation}
+        P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx) \leq \polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
+    \end{equation}
+\end{proof}
+In summary, the eigenvalue estimation result captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $P_{\ex}(\yx)$ for large $k$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $p^{\yx} = \yx/\syx$, is similar to the eigenvalue distribution $p^{\ex} = \ex/\tex$.
+
+The following proposition compares Schur-Weyl measures $P_\ex$ and $P_\ey$ for different $\ex, \ey \in \mathbb{R}_n^+$.
+\begin{lem}[Eigenvalue separation]
+    \label{lem:eig_sep}
+    Let $\ex, \ey \in \mathbb R_n^{+}$ satisfy $\tau = \tex = \tey$.
+    For any non-negative integer $k\geq 1$,
+    \begin{equation}
+        \label{eq:eig_sep}
+        \BC(P_\ex, P_\ey) \leq \polyk{\binom{n}{2}} \BC(p^\ex,p^\ey)^{k}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound_2}, we have
+    \begin{equation}
+        \BC(P_{\ex},P_{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
+    \end{equation}
+    where $\BC_k(m_\ex,m_\ey)$ is the Bhattacharyya coefficient between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
+    Since Bhattacharyya coefficients are multiplicative with respect to multinomial distributions, i.e.,
+    \begin{equation}
+        \BC_k(m_x, m_y) = \BC\left(p^{\ex}, p^{\ey}\right)^{k},
+    \end{equation}
+    we conclude \cref{eq:eig_sep}.
+\end{proof}
+In subsequent sections we will frequently use of the \textit{weaker} bound
+\begin{equation}
+    \label{eq:weak_eig_sep}
+    \forall \yx \vdash k: \qquad \sqrt{P_{\ex}(\yx)P_{\ey}(\yx)} \leq \polyk{\binom{n}{2}} \BC(p^{\ex},p^{\ey})^{k},
+\end{equation}
+which follows from \cref{lem:eig_sep} because $\sqrt{P_{\ex}(\yx)P_{\ey}(\yx)} \leq \BC(P_\ex, P_\ey)$ by definition.
 
 \subsubsection{Measures on conjugacy classes}
 For $x \in \mathbb{R}_+^n$, we define the conjugacy class $\orbit_x$ of the diagonal matrix
 $[x]={\rm diag}(x_1, \dots, x_n)$ under the action of the unitary group $U(n)$:
 \begin{equation}
-    \orbit_x =\{ X= u[x]u^{-1}; u \in U(n)\} \subset \hermp{n}.
+    \orbit_x =\{ X= U[x]U^{-1}; U \in U(n)\} \subset \hermp{n}.
 \end{equation}
 Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$. This measure can be constructed as the pushforward of the probability Haar measure on $U(n)$. Also, conjugacy classes are isomorphic to coadjoint orbits of $U(n)$ and they carry canonical Duistermaat-Heckman measure proportional to $\mu_x$. In what follows, we will need expectation values $\mathbb{E}_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\mathbb{E}_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\mathbb{E}_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
 
@@ -728,8 +803,6 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
     \begin{equation}
         \mathbb{E}_x  \Phi_\yx(X) = \int_{O_x} \Phi_\yx(X) d\mu_x = c(x)  \id_{V_\yx}
     \end{equation}
-
-
     for some $c(x) \in \mathbb{C}$. By taking a trace of the equality above, we obtain
     \begin{equation}
         \varphi_\yx(x) = c(x)  \dim V_\yx  \Rightarrow  c(x) = \frac{\varphi_\yx(x)}{\dim V_\yx},
@@ -743,7 +816,6 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
             &= c_{\ya \yb}^\yc \frac{\varphi_\ya(x)}{\dim V_\ya}\frac{\varphi_\yb(y)}{\dim V_\yb}.
         \end{split}
     \end{align}
-
     Finally, for the third equality we compute
     \begin{align}
         \begin{split}
@@ -1369,268 +1441,6 @@ MC and TCF acknowledge financial support from the European Research Council (ERC
 \section{[tc] Inequalities for tetrahedral eigenvalues}
 \label{sec:ineqs_from_schur_weyl}
 
-\subsection{[tc] Schur-Weyl duality}
-\label{sec:schur_weyl}
-
-Then for each $\yx$-isotypic subspace of $V_{\ydiagram{1}}^{\ot {\syx}} \simeq (\mathbb C^{n})^{\ot \syx}$, we let
-\begin{equation}
-    \iota_{\yx} : W_{\yx} \ot V_{\yx}^{n} \to V_{\ydiagram{1}}^{\ot {\syx}},
-\end{equation}
-denote the unique $S_k \times \U(n)$-equivariant map from $W_{\yx} \ot V_{\yx}^{n}$ to $V_{\ydiagram{1}}^{\ot {\syx}}$ which is additionally an isometry with respect to the choosen inner products on $W_{\yx}$, $V_{\yx}^{n}$ and $V_{\ydiagram{1}}$.
-
-Then given an $n \times n$ matrix $X$, viewed as a linear operator on the defining representation $V_{\ydiagram{1}}^{n} \simeq \mathbb C^{n}$, let $\pi_{\yx}(X)$ be defined by
-\begin{equation*}
-    \pi_{\yx}(X) \coloneqq \frac{\Tr_{W_{\yx}}[\iota_{\yx}^{\dagger} X^{\ot {\syx}} \iota_{\yx}]}{\dim(W_{\yx})}.
-\end{equation*}
-Note that when $X$ is invertible, i.e. $X \in \GL(n,\mathbb C)$, the operator $\pi_{\yx}(X)$ as defined above coincides with the representation of $X$ on $V_{\yx}^{n}$, so this abuse of notation is permitted.
-For any positive integer $k$, the $k$-th tensor power of $X$ then admits a decomposition as $X^{\ot k} \simeq \bigoplus_{\yx \vdash_n k} \pi_{\yx}(X)^{\oplus W_{\yx}}$, or more precisely,
-\begin{equation}
-    X^{\ot k} = \sum_{\yx \vdash_n k} \iota_{\yx} ( \pi_{\yx}(X) \ot \id_{W_{\yx}} ) \iota_{\yx}^{\dagger}.
-\end{equation}
-As a special case, when $\yx = \ydiagram{1}$, then $\pi_{\ydiagram{1}}(X) = X$.
-Note also that the matrix coefficients of $\pi_{\yx}(X)$ are homogeneous degree $\abs{\yx}$ polynomials in the matrix coefficients of $X$ meaning for any scalar $s \in \mathbb C$,
-\begin{equation}
-    \pi_{\yx}(sX) = s^{{\syx}} \pi_{\yx}(X).
-\end{equation}
-Additionally, if $X,Y$ are two matrices, we have
-\begin{equation}
-    \pi_{\yx}(XY) = \pi_{\yx}(X)\pi_{\yx}(Y).
-\end{equation}
-The corresponding character $\chi_{\yx}(X) = \Tr(\pi_{\yx}(X))$ of a representation of a Hermitian matrix $X$ with eigenvalues $\ex$ is equal to
-\begin{equation*}
-    \chi_{\yx}(X) \coloneqq \Tr(\pi_{\yx}(X)) = \frac{\Tr[P_{\yx} X^{\ot {\syx}}]}{\dim(W_{\yx})} = s_{\yx}(\ex),
-\end{equation*}
-where $P_{\yx} \coloneqq \iota_{\yx}^{\dagger} \iota_{\yx}$ is the orthogonal projection operator onto the $\yx$-isotypic subspace, and
-where $s_{\yx}(\ex) = s_{\yx}(\ex_1, \ldots, \ex_n)$ is known as the Schur-polynomial associated to $\yx$.
-
-% There are various formulas for the Schur-polynomial $s_{\yx}(\ex_1, \ldots, \ex_n)$.
-% Here we present the Jacobi's bialternant formula
-% \begin{equation}
-%     s_{\yx}(\ex) = \frac{\det[\ex_i^{\yx_j+n-j}]}{\det[\ex_i^{n-j}]} = \frac{1}{\Delta(\ex)}\det[\ex_i^{(\yx+\rho)_j}].
-% \end{equation}
-
-
-\subsection{[tc] The binomial theorem}
-\label{sec:binomial_theorem}
-
-The purpose of this section is to state and prove the binomial theorem, which serves as the foundation for all subsequent results in this paper.
-The binomial theorem expresses any polynomial irreducible representation of a matrix sum $X+Y$ as a sum over the polynomial irreducible representations of the summands $X$ and $Y$.
-
-The theorem inherits its name from the non-commutative binomial expansion of the $k$-th tensor power of the sum $X+Y$,
-\begin{equation}
-    (X+Y)^{\ot k} = \sum_{\ell=0}^{k} \binom{k}{\ell} \left[\frac{1}{k!} \sum_{\sigma \in S_{k}} T(\sigma) (X^{\ot \ell} \ot Y^{\ot (k - \ell)})T(\sigma^{-1})\right]
-\end{equation}
-where $T(\sigma)$ denotes the operator which acts on $(\mathbb C^{n})^{\ot k}$ by a $\sigma$-permutation of the $k$ tensor factors of $\mathbb C^{n}$
-For an example, consider the case where $k=3$:
-\begin{align}
-    \begin{split}
-        (X+Y)^{\ot 3}
-        &= \underbrace{X \ot X \ot X}_{\ell=3} + \underbrace{X \ot X \ot Y + X \ot Y \ot X + Y \ot X \ot X}_{\ell=2} + \\
-        &\qquad + \underbrace{X \ot Y \ot Y + Y \ot X \ot Y + Y \ot Y \ot X}_{\ell=1}  + \underbrace{Y \ot Y \ot Y}_{\ell=0}.
-    \end{split}
-\end{align}
-As we have seen previously, the $k$-th tensor power of a matrix can also be decomposed into a sum over polynomial irreducible representations labelled by Young diagrams $\yc$ with sizes $\syc = k$.
-Combining this formula with the non-commutative binomial expansion yields
-\begin{equation}
-    (X+Y)^{\ot k} = \sum_{\yc \vdash k} \iota_{\yc} (\pi_{\yc}(X+Y) \ot \id_{W_{\yc}}) \iota_{\yc}^{\dagger}
-\end{equation}
-where
-\begin{equation}
-    \dim (W_{\yc}) \pi_{\yc}(X+Y) = \sum_{\ell=0}^{k} \binom{k}{\ell} \Tr_{W_{\yc}}[\iota_{\yc}^{\dagger} (X^{\ot \ell} \ot Y^{\ot (k - \ell)}) \iota_{\yc}],
-\end{equation}
-where we have eliminated the symmetrization operation over $\sigma \in S_k$ because the partial trace over $W_{\yc}$ is $S_k$-invariant.
-At this stage, for each summand indexed by $0 \leq \ell \leq k$, we can decompose $X^{\ot \ell}$ into representations of $X$ labelled by $\ya$ with sizes $\sya = \ell$ and $Y^{\ot \ell}$ into representations of $Y$ labelled by $\yb$ with sizes $\syb = k-\ell$.
-\begin{align}
-    X^{\ot \ell} = \sum_{\ya \vdash \ell} \iota_{\ya} (\pi_{\ya}(X) \ot \id_{W_{\ya}}) \iota_{\ya}^{\dagger}, \qquad
-    Y^{\ot k-\ell} = \sum_{\yb \vdash k-\ell} \iota_{\yb} (\pi_{\yb}(Y) \ot \id_{W_{\yb}}) \iota_{\yb}^{\dagger}.
-\end{align}
-Upon doing so, one encounters the composite operator $\iota_{\yc}^{\dagger}(\iota_{\ya} \ot \iota_{\yb})$ which maps from $(V_{\ya}^{n} \ot W_{\ya}) \ot (V_{\yb}^{n} \ot W_{\yb})$ to $(V_{\yc}^{n} \ot W_{\yc})$ in an $S_\ell \times S_{k-\ell}$-equivariant and $\U(n)$-equivariant manner.
-At this stage define multiplicity spaces $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$ by
-\begin{align}
-    C^{\yc}_{\ya\yb} &\coloneqq \Hom_{\U(n)}(V_{\yc}^{n}, V_{\ya}^{n} \ot V_{\yb}^{n}), \\
-    \tilde C^{\yc}_{\ya\yb} &\coloneqq \Hom_{S_\ell \times S_{k-\ell}}(W_{\ya} \ot W_{\yb}, W_{\yc}),
-\end{align}
-where $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$ are equipped with Hermitian inner products induced by the corresponding inner products on each of the representation spaces.
-Furthermore, let $\iota^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ be the $\U(n)$-equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n}\ot V_{\yb}^{n}$ and $\omega^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot W_{\ya} \ot W_{\yb} \to W_{\yc}$ the $S_\ell \times S_{k-\ell}$-equivariant isometry for the $(\ya,\yb)$-isotypic subspace of $W_{\yc}$.
-
-An important consequence of Schur-Weyl duality is an identification between $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$\footnote{At least whenever $\syc = k$, $\sya = \ell$ and $\syc = k - \ell$ and $\ell(\ya), \ell(\yb), \ell(\yc) \leq n$.} given by the map $T^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \to \tilde C^{\yc}_{\ya\yb}$, where
-\begin{equation}
-    T^{\yc}_{\ya\yb} \coloneqq
-    \frac{\Tr_{W_{\ya} \ot W_{\yb} \ot V_{\yc}^{n}}\left[
-        (\omega^{\yc;\dagger}_{\ya\yb} \ot \id_{V_{\yc}^{n}})
-        \circ (\iota_{\yc}^{\dagger})
-        \circ (\iota_{\ya} \ot \iota_{\yb})
-        \circ (\iota^{\yc}_{\ya\yb} \ot \id_{W_{\ya} \ot W_{\yb}})
-    \right]}{\dim(W_{\ya} \ot W_{\yb} \ot V_{\yc}^{n})}.
-\end{equation}
-Using Schur's lemma, one can show that $T^{\yc}_{\ya\yb}$ is actually an isometric and bijective map from $C^{\yc}_{\ya\yb}$ and $\tilde C^{\yc}_{\ya\yb}$.
-Combining everything together, we obtain
-\begin{equation}
-    \label{eq:proto_binomial_theorem}
-    \frac{\dim W_{\yc} \pi_{\yc}(X+Y)}{\syc!} = \sum_{\ya,\yb} \Tr_{C^{\yc}_{\ya,\yb}} \left[ (\iota^{\yc}_{\ya,\yb})^{\dagger} \frac{\dim W_{\ya} \pi_{\ya}(X)}{\sya!} \ot \frac{\dim W_{\ya} \pi_{\yb}(Y)}{\syb!} (\iota^{\yc}_{\ya,\yb})\right],
-\end{equation}
-where we leave the summation over all pairs $(\ya,\yb)$ such that $\sya = \ell$, $\syb = k -\ell$ for $\syc = k$ implicit simply because the multiplicity space $C^{\yc}_{\ya\yb}$ is empty if $\sya + \syb \neq \syc$ and thus the corresponding summand is taken to be zero.
-
-In the remaining of the paper, we will use the above formula, \cref{eq:proto_binomial_theorem}, to prove numerous results concerning the eigenvalues of Hermitian matrices and their sums.
-In order to simplify the presentation of our results considerably, we introduce the following definitions.
-\begin{defn}[Hook-rescaled representations]
-    Given an $n\times n$ matrix $X$ and a Young diagram $\yx$, define an operator $\Phi_{\yx}(X)$ acting on the representation space $V_{\yx}^{n}$ as:
-    \begin{equation}
-        \Phi_{\yx}(X) \coloneqq \frac{\pi_{\yx}(X)}{H_{\yx}},
-    \end{equation}
-    where $H_{\yx} = \prod_{b\in\yx} h_{\yx}(b)$ is the product of the Hook-lengths of the boxes in the Young diagram $\yx$.
-    Furthermore, the trace of $\Phi_{\yx}(X)$ be
-    \begin{equation}
-        \vp_{\yx}(X) = \Tr[\Phi_{\yx}(X)] = \frac{s_{\yx}(x)}{H_{\yx}}.
-    \end{equation}
-\end{defn}
-
-\begin{rem}
-    The operator $\Phi_{\yx}(X)$ and trace $\vp_{\yx}(X)$ are simply rescalings of the representation matrix $\pi_{\yx}(X)$ of $X$ and the character $\chi_{\yx}(X)$ of $X$ respectively.
-    This normalization scheme is such that summing the rescaled character over all Young diagrams $\yx$ with fixed size $k$ or over all sizes yields respectively
-    \begin{equation}
-        \sum_{\yx \vdash k} \vp_{\yx}(X) = \frac{\Tr(X)^k}{k!},
-        \qquad
-        \sum_{\yx} \vp_{\yx}(X) = \exp(\Tr(X)).
-    \end{equation}
-\end{rem}
-
-Before stating the main result of this section, we first generalize the quantities $\Phi_{\yx}(X)$ and $\vp_{\yx}(X)$ to consider arguments involving more than one matrix.
-
-\begin{defn}
-    Given a pair $(X,Y)$ of $n\times n$ matrices and a triple of Young diagrams $(\ya,\yb,\yc)$, define an operator $\Phi^{\ya\yb}_{\yc}(X,Y)$ acting on the representation space $V_{\yc}^{n}$ as
-    \begin{equation}
-        \Phi^{\ya\yb}_{\yc}(X,Y) \coloneqq \Tr_{C^{\yc}_{\ya,\yb}} [\iota^{\yc;\dagger}_{\ya,\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)) \iota^{\yc}_{\ya,\yb}],
-    \end{equation}
-    where $\iota^{\yc}_{\ya\yb} : C^{\yc}_{\ya\yb} \ot V_{\yc}^{n} \to V_{\ya}^{n} \ot V_{\yb}^{n}$ is the $\U(n)$-equivariant isometry for the $\yc$-isotypic subspace of $V_{\ya}^{n} \ot V_{\yb}^{n}$.
-    Note the sum over Young diagrams $\ya$, and $\yb$ is implicitly restricted to those satisfying $\sya+\syb=\syc$, since otherwise the multiplicity space $C^{\yc}_{\ya\yb}$ is zero-dimensional and thus the  summand is taken to be zero.
-    Analogously, let the trace of $\Phi^{\ya\yb}_{\yc}(X,Y)$ be denoted by
-    \begin{equation}
-        \label{eq:varphi_double}
-        \vp^{\ya\yb}_{\yc}(X,Y) \coloneqq \Tr[\Phi^{\ya\yb}_{\yc}(X,Y)] = \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))],
-    \end{equation}
-    where $P^{\yc}_{\ya\yb} = \iota^{\yc}_{\ya,\yb}\iota^{\yc;\dagger}_{\ya,\yb}$ is the projection operator onto the $\yc$-isotypic subspace of $V_{\ya}^{n}\ot V_{\yb}^{n}$.
-\end{defn}
-
-\begin{rem}
-    While $\Phi_{\yx}(X)$ is a homogeneous polynomial in the matrix coefficients of $X$ of degree $\syx$ in the sense that $\Phi_{\yx}(sX) = s^{\syx} \Phi_{\yx}(X)$ holds for any $s \in \mathbb R$, $\Phi^{\ya\yb}_{\yc}(X,Y)$ is a bihomogeneous polynomial in $X$ and $Y$ of degrees $\sya$ and $\syb$ respectively in the sense that for any $s,t \in \mathbb R$,
-    \begin{equation}
-        \Phi^{\ya\yb}_{\yc}(s X, t Y) = s^{\sya} t^{\syb} \Phi^{\ya\yb}_{\yc}(X,Y).
-    \end{equation}
-\end{rem}
-
-\begin{rem}
-    \label{rem:trivial_yd}
-    The quantity $\Phi^{\ya\yb}_{\yc}(X,Y)$ generalizes $\Phi_{\yx}(X)$ in the sense that one can take the triple $(\ya,\yb,\yc) = (\yx,\yempty,\yx)$ (where $\yempty$ denotes the Young diagram with zero boxes), in which case $V_{\yempty}^{n}$ supports the trivial one-dimensional representation with $\Phi_{\yempty}(Y) = 1$ and because $\dim(C^{\yx}_{\yx,\yempty}) = 1$,
-    \begin{equation}
-        \forall Y : \quad  \Phi^{\yx, \yempty}_{\yx}(X,Y) = \Phi_{\yx}(X).
-    \end{equation}
-\end{rem}
-
-With these definitions in place, we are in a position to state the binomial theorem.
-\begin{thm}[Binomial theorem]
-    \label{thm:binomial}
-    For all $n\times n$ matrices $X,Y$, and all Young diagrams $\yc$,
-    \begin{equation}
-        \Phi_{\yc}(X+Y) = \sum_{\ya,\yb} \Phi^{\ya\yb}_{\yc}(X,Y),
-    \end{equation}
-    where the sum is implicitly taken over all Young diagrams such that $\sya + \syb = \syc$.
-\end{thm}
-\begin{proof}
-    See preceding discussion.
-\end{proof}
-
-\subsection{[tc] The \texorpdfstring{$\boldsymbol{6j}$}{6j} symbol for \texorpdfstring{$\boldsymbol{\U(n)}$}{U(n)}}
-\label{sec:sixj_tet}
-
-The purpose of this section is to introduce a representation theoretic object, namely the $6j$ symbol, and then in the subsequent sections show how it places constraints on whether a given sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ is tetrahedral in a manner which generalizes how the Littlewood-Richardson coefficient encodes whether a given triple $(\ea,\eb,\ec)$ is trigonal.
-For the case where $n=2$, this correspondence is well-known \cite{roberts1999classical,ponzano1968semiclassical,backens2010sixjsymbols}, while for the case where $n \geq 3$, this correspondence was already established indirectly by \citeauthor{christandl2018recoupling} \cite{christandl2018recoupling}.
-Here we establish this correspondence directly.
-
-As we discussed in the introduction, the $6j$ symbol emerges naturally when considering successive decompositions of the triple tensor product $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$.
-\begin{defn}
-    \label{defn:sixj}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams with sizes satisfying
-    \begin{equation}
-        \sya + \syb = \syc, \qquad \syb + \syd = \syf, \qquad \syc + \syd = \sye, \qquad \sya + \syf = \sye.
-    \end{equation}
-    The \defnsty{$\U(n)$-$6j$ operator} is the operator
-    \begin{equation}
-        \abcdefsymbol
-        :
-        C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
-    \end{equation}
-    defined by
-    \begin{equation}
-        \label{eq:sixj}
-        \abcdefsymbol
-        \coloneqq
-        \frac{1}{\dim(V_{\ye})}
-        \Tr_{V_{\ye}}[
-        (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})^{\dagger}
-        (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}
-        (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})
-        (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})
-        ].
-    \end{equation}
-    %and depicted diagrammatically by
-    %\begin{equation}
-    %    \tikzfig{tikz/final/sixj_defn}.
-    %\end{equation}
-    %\footnotetext{It is important to note that there does not seem to exist a universal convention concerning how $6j$ symbols are normalized; \citeauthor{coquereaux2023integer} discusses is problem in \cite{coquereaux2023integer}.}.
-\end{defn}
-To illustrate the situation more concretely, consider the following three projection operators on the triple tensor product $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$:
-\begin{equation}
-    P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}, \qquad P^{\ee}_{\ya\yb\yd}, \qquad \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}.
-\end{equation}
-In general, $P^{\yc}_{\ya\yb}$ and $P^{\yf}_{\yb\yd}$ do not necessarily commute with each other in the sense that for some values of $\ya,\yb,\yd,\yc,$ and $\yf$, one observes
-\begin{equation}
-    [P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}, \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}] \neq 0.
-\end{equation}
-Nevertheless, the projection operators $P^{\yc}_{\ya\yb}$ and $P^{\yf}_{\yb\yd}$ each respectively commute with $P^{\ye}_{\ya\yb\yd}$ in the sense that for all $\ya,\yb,\yc,\yd,\ye,$ and $\yf$,
-\begin{equation}
-    [P^{\ye}_{\ya\yb\yd}, P^{\yc}_{\ya\yb}\ot \id_{V_{\yd}^{n}}] = 0, \qquad
-    [P^{\ye}_{\ya\yb\yd}, \id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd}] = 0.
-\end{equation}
-Let $\Pi_{\ya\yb\yd}^{\ye;\yc}$, and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ be Hermitian projection operators $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$ given by
-\begin{align}
-    \begin{split}
-        \label{eq:double_projs}
-        \Pi_{\ya\yb\yd}^{\ye;\yc}
-        &\coloneqq P^{\ye}_{\ya\yb\yd} (P^{\yc}_{\ya\yb} \ot \id_{V_{\yd}^{n}})
-        = (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})(P^{\ye}_{\yc\yd} \ot \id_{C^{\yc}_{\ya\yb}})(\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}, \\
-        \Pi_{\ya\yb\yd}^{\ye;\yf}
-        &\coloneqq P^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd})
-        = (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})(P^{\ye}_{\ya\yf} \ot \id_{C^{\yf}_{\yb\yd}})(\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}, \\
-    \end{split}
-\end{align}
-
-For any operator $O : V_1 \to V_2$ between Hermitian vector spaces $V_1$ and $V_2$, we define operator norms $\norm{O}_{\infty} = \max_{v \in V_1, \norm{v}_{V_1} = 1} \norm{Ov}_{V_2}$ and $\norm{O}_{2} = \Tr_1[O^{\dagger} O]^{\frac{1}{2}} = \Tr_2[O O^{\dagger}]^{\frac{1}{2}}$.
-\begin{prop}
-    \label{prop:6j_norm_double_proj}
-    For any sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$,
-    \begin{equation}
-        \label{eq:6j_norm_equivalences}
-        \norm{\abcdefsymbol}_{\infty} = \norm{\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}}_{\infty}, \qquad
-        \norm{\abcdefsymbol}_{2}^{2} = \frac{1}{\dim V_{\ye}^{n}}\Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}].
-    \end{equation}
-    %where $\Pi_{\ya\yb\yd}^{\ye;\yc}$ and $\Pi_{\ya\yb\yd}^{\ye;\yf}$ defined in \cref{eq:double_projs}.
-\end{prop}
-\begin{proof}
-    By definition, the product $\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}$ is an $\U(n)$-equivariant map on $V_{\ya}^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n}$ supported on the $\ye$-isotypic subspace $V_{\ye}^{n} \ot C^{\ye}_{\ya\yb\yd}$.
-    By Schur's lemma and \cref{defn:sixj}, we conclude
-    \begin{equation}
-        \Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf} =
-        (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})
-        (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})
-        (\abcdefsymbol \ot V_{\ye}^{n})
-        (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})^{\dagger}
-        (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}.
-    \end{equation}
-    The norm conditions in \cref{eq:6j_norm_equivalences} then follow because the norms $\norm{O}_{\infty}$ and $\norm{O}_{2}$ are invariant under embedding $O$ into larger spaces using isometries and moreover that $\norm{O\ot \id_V}_{\infty} = \norm{O}_{\infty}$ for any vector space $V$.
-\end{proof}
-
-
 \subsection{[tc] Inequalities for the tetrahedral Horn problem}
 \label{sec:new_ineq_horn_tet}
 
@@ -1838,343 +1648,10 @@ We can now immediately prove the ``only if'' portion of the claim of \cref{thm:i
 \end{proof}
 The proof of the ``if'' portion of \cref{thm:iff_tet} can be found in \cref{sec:dist_bound_for_tet_horn} which proves the distance bound of \cref{thm:approx_tet} (this implies the ``if'' portion of \cref{thm:iff_tet} after sending $k \to \infty$).
 
-\subsection{[tc] The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
-\label{sec:large_n}
-
-The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} to derive inequalities on the entropies of the eigenvalues.
-Our strategy will be to prove an upper bound on the $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
-By combining this upper bound with the lower bound provided by \cref{cor:asym_6j} (specifically the $n$-independent bound in \cref{eq:n_independent_inverse_poly}), we will prove the following.
-\begin{thm}
-    \label{thm:entropic_ineq}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be tetrahedral eigenvalues.
-    Then
-    \begin{equation}
-        \label{eq:entropic_ineq}
-        s(\ec) + s(\ef) - s(\eb) - s(\ee) \geq 0,
-    \end{equation}
-    where
-    \begin{equation}
-        \label{eq:little_s_defn}
-        s(\ex) \coloneqq - \sum_{i=1}^{n} \ex_i \log \ex_i.
-    \end{equation}
-\end{thm}
-
-We begin with our upper bound on the $6j$ symbol.
-\begin{lem}
-    \label{lem:sixj_ssa_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
-    Then
-    \begin{equation}
-        \norm{\abcdefsymbol}_{2}^{2}
-        \leq \left(c_{\ya,\yf}^{\ye}c_{\yb,\yd}^{\yf}c_{\ya,\yb}^{\yc}c_{\yc,\yd}^{\ye}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)}.
-    \end{equation}
-\end{lem}
-\begin{proof}
-    Here we provide a diagrammatic proof of the claimed inequality.
-    For the sake of clarity, we abbreviate the irreducible representation labels, $V_{\yx}^{n}$, and omit the multiplicity space labels on the intermediate steps.
-    \begin{equation}
-        \tikzfig{tikz/final/sixj_upper}
-    \end{equation}
-    The first equality follows from \cref{defn:sixj}.
-    The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
-    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}^{n}$ to itself on the left and $V_{\ye}^{n}$ to itself on the right.
-    Note that the factors of $\dim(V_{\ye}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
-\end{proof}
-
-An immediate application of \cref{lem:sixj_ssa_bound} is to combine it with \cref{eq:n_independent_inverse_poly}.
-If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:asym_6j} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
-\begin{equation}
-    \label{eq:combined_bound}
-    \frac{1}{q(k)} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{2}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
-\end{equation}
-where $q(k)$ is some polynomial in $k$ independent of the dimension $n$ (see \cref{eq:n_independent_inverse_poly}).
-Remarkably, the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}, c_{\yb_k,\yd_k}^{\yf_k}, c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are also \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams.
-This observation provides us with an opportunity to optimize the above bound by varying the value of $n$.
-
-In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
-In general, for fixed $\yx$, the function $n \mapsto V_{\yx}^{n}$ can grow at an exponential rate with increasing $n$.
-One can find estimates for $\dim(V_{\yx}^{n})$ in the regime where $n$ is large compared to ${\syx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
-Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\yx}^{n})$ to the value of $\dim(W_{\yx})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}).
-\begin{prop}
-    \label{prop:harrow_formula}
-    Let $\yx$ be a Young diagram with depth at most $n$. Then
-    \begin{equation}
-        \frac{\dim(V_{\yx}^{n})}{n^{{\syx}}} = \frac{\dim(W_{\yx})}{{\syx}!}\prod_{(i,j) \in \yx} \left(1 + \frac{j-i}{n}\right).
-    \end{equation}
-\end{prop}
-\begin{proof}
-    The statement follows from comparing the the Weyl dimension formula for $\dim(V_{\yx}^{n})$ given in \cref{eq:frob_dim} with the Frobenius dimension formula for $\dim(W_{\yx})$ given in \cite[Corollaries 9.1.5]{goodman2000representations}:
-    \begin{equation}
-        \label{eq:frob_dim}
-        \dim(W_{\yx}) = \frac{{\syx}!\Delta(\yx + \rho)}{\prod_{i=1}^{n}(\yx+\rho)_i!}.
-    \end{equation}
-    That this formula for $\dim(W_{\yx})$ does not depend on $n$ for $n \geq \ell(\yx)$ and coincides with the Hook-length formula given earlier is proved by \cite[Corollary 9.1.6]{goodman2000representations}.
-    For additional details, see also \cite[Appendix A]{harrow2023approximate}.
-\end{proof}
-From \cref{prop:harrow_formula} we obtain the following corollary.
-\begin{cor}
-    \label{cor:harrow_ssa_lim}
-    Let $\yc,\yf,\yb,\ye$ be a quadruple of Young diagrams such that
-    \begin{equation}
-        \label{eq:balanced_sizes}
-        {\syc}+{\syf} = {\syb}+{\sye}.
-    \end{equation}
-    Then
-    \begin{equation}
-        \lim_{n\to\infty}
-        \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)} =
-        \frac{{\syb}!{\sye}!}{{\syc}!{\syf}!}
-        \frac{\dim(W_{\yc}) \dim(W_{\yf})}{\dim(W_{\yb}) \dim(W_{\ye})}
-        = \frac{H_{\yb}H_{\ye}}{H_{\yc}H_{\yf}}
-    \end{equation}
-\end{cor}
-\begin{proof}
-    From \cref{prop:harrow_formula} one evidently has for any Young diagram $\yx$ the limit
-    \begin{equation}
-        \lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{{\syx}}} = \frac{\dim(W_{\yx})}{{\syx}!} = \frac{1}{H_{\yx}}
-    \end{equation}
-    where $H_{\yx}$ is the product of the hook lengths in $\yx$ as defined by \cref{eq:dim_W_hook_product}.
-    The claim then follows because the missing prefactor, $\frac{n^{{\syb}}n^{{\sye}}}{n^{{\syc}}n^{{\syf}}}$, is equal to one by \cref{eq:balanced_sizes}.
-\end{proof}
-We are now in a position to prove the main result of this section.
-\begin{proof}[Proof of \cref{thm:entropic_ineq}]
-    As $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral, the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} implies it must at least be non-zero and thus \cref{eq:balanced_sizes} holds.
-    Therefore, by \cref{cor:harrow_ssa_lim} and the discussion surrounding the bound in \cref{eq:combined_bound} we conclude that along the convergent sequence of Young diagrams,
-    \begin{equation}
-        \label{eq:hook_ratio_limit}
-        \lim_{k\to\infty} \frac{1}{k} \log \left(\frac{H_{\yb_k}H_{\ye_k}}{H_{\yc_k}H_{\yf_k}}\right) \geq 0
-    \end{equation}
-    provided the limit.
-    To prove the limit exists, an application of Stirling's approximation, $\log n! \approx n \log n - n$ \cite{robbins1955remark}, to the approximation formula $H_{\yx} \approx \prod_{i=1}^{n}\yx_i!$ produces for any constant $\eta$ the formula
-    \begin{equation}
-        \frac{1}{\eta}\log H_{\yx} \approx (\log \eta - 1) \syx + \sum_{i=1}^{n} \frac{\yx_i}{\eta}\log \frac{\yx_i}{\eta}
-    \end{equation}
-    Because ${\syc}+{\syf} = {\syb}+{\sye}$ (\cref{eq:balanced_sizes}), the $(\log \eta - 1)$ terms will cancel in \cref{eq:hook_ratio_limit}.
-    Then using the fact that that $(\yb_k, \yc_k, \ye_k, \yf_k)$ converge in proportion to the eigenvalues $(\eb,\ec,\ee,\ef)$ (with proportionality constant $\eta = \frac{k}{\tee}$), we conclude that \cref{eq:hook_ratio_limit} has a limit and moreover it equals the left-hand side of \cref{eq:entropic_ineq}.
-\end{proof}
 \clearpage
 \color{red!50!black}TC: THE FOLLOWING SECTION IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
 \section{[tc] Distance bounds via eigenvalue concentration}
 \label{sec:distance_bounds}
-
-The purpose of this section is to provide a proof of the distance bound in \cref{thm:approx_tet}.
-With \cref{thm:approx_tet} established, the ``if'' portion of \cref{thm:iff_tet} follows immediately.
-Note that ``only if'' portion of \cref{thm:iff_tet} is just a restatement of \cref{cor:tet_eigenvalue_cubic} proven in the previous sections.
-
-These bounds make use of eigenvalue concentration techniques, which we review first in \cref{sec:eig_est_and_sep}, as well as formulas from random matrix theory, which we review afterwards in \cref{sec:random_matrices}.
-As a warm-up exercise, in \cref{sec:dist_bound_for_orig_horn} we demonstrate how these techniques can be applied to obtain a distance bound for the original Horn problem.
-Then we generalize the proof technique in \cref{sec:dist_bound_for_tet_horn} to prove \cref{thm:approx_tet}.
-
-\subsection{[tc] Eigenvalue estimation \& separation}
-\label{sec:eig_est_and_sep}
-
-In this section we show how the representations $\pi_{\yx}(X)$ of Hermitian matrices $X$ encode useful information about the eigenvalues of $X$.
-These results apply to the case where $X \geq 0$ is a positive semidefinite matrix, in which case the representation $\pi_{\yx}(X) \geq 0$ is positive semidefinite also.
-Thus whenever $X \geq 0$, one can define a probability distribution known as the \textit{Schur-Weyl} distribution \cite{odonnell2016efficient}.
-\begin{defn}
-    The Schur-Weyl distribution of order $k$ for a positive semidefinite matrix $X \geq 0$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$ is defined as the probability distribution over Young diagrams $\yx$ with $k$ boxes with probability
-    \begin{equation}
-        \label{eq:schur_weyl}
-        p_{\ex}(\yx) \coloneqq \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]} = \frac{\dim W_{\yx} s_{\yx}(\ex)}{\tex^{k}} = \frac{\syx! }{\tex^{k}}\vp_{\yx}(\ex).
-    \end{equation}
-\end{defn}
-A key property of the Schur-Weyl distribution $p_{\ex}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
-\begin{equation}
-    m_{\ex}(\yx) \coloneqq \frac{\syx!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
-\end{equation}
-\begin{prop}
-    \label{prop:multinomial_bound}
-    Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
-    \begin{equation}
-        p_{\ex}(\yx) \leq \dim V_{\yx}^{n} m_{\ex}(\yx).
-    \end{equation}
-\end{prop}
-\begin{proof}
-    The proof follows from (i) an upper bound on the Schur-polynomial $s_{\yx}(\ex)$,
-    \begin{equation}
-        s_{\yx}(\ex) \leq \dim V_{\yx}^{n} \ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n},
-    \end{equation}
-    which follows because $s_{\yx}(\ex)$ can be expressed as a sum over $\dim V_{\yx}^{n}$ multinomials of the form $\ex_1^{\mu_1}\ex_2^{\mu_2}\cdots \ex_n^{\mu_n}$ with $\ex_1^{\yx_1}\ex_2^{\yx_2}\cdots \ex_n^{\yx_n}$ the largest, and (ii) a lower bound on the Hook-product,
-    \begin{equation}
-        H_{\yx} \geq \yx_1!\cdots \yx_n!,
-    \end{equation}
-    which follows because $h_{\yx}(b) \geq \yx_i - j + 1$ holds for the box $b$ in row $i$ and column $j$.
-\end{proof}
-\begin{rem}
-    We will henceforth relax the dimension prefactor $\dim V_{\yx}^{n}$ using the following dimension bound which holds for all Young diagrams with $k$ boxes:
-    \begin{equation}
-        \label{eq:unitary_irrep_dim_bound_2}
-        \dim V_{\yx}^{n} \leq \polyk{\binom{n}{2}} \coloneqq (k+1)^{\frac{n(n-1)}{2}}.
-    \end{equation}
-\end{rem}
-The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}.
-\begin{prop}[Eigenvalue estimation]
-    \label{prop:eig_est}
-    Let $X \geq 0$ be a positive semidefinite $n\times n$ matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n \geq 0)$
-    Then the Schur-Weyl distribution $p_{\ex}(\yx)$ for $\yx \vdash k$ satisfies
-    \begin{equation}
-        p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}}\right)
-    \end{equation}
-    where $\kl{p}{q}$ denotes the Kullback-Leibler divergence of a distribution $q$ from a distribution $p$:
-    \begin{equation}
-        \kl{p}{q} = \sum_{i=1}^{n} p_i \log \frac{p_i}{q_i}.
-    \end{equation}
-    Note $\kl{p}{q} \geq 0$ with equality if and only if $p=q$.
-\end{prop}
-\begin{proof}
-    From \cref{prop:multinomial_bound} we have the bound $p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx)$.
-    What remains is to bound the multinomial distribution $m_{\ex}(\yx)$ using the Kullback-Leibler divergence.
-    To this end, note that $k = \syx = \yx_1 + \cdots + \yd_n$ which implies
-    \begin{align}
-        \begin{split}
-            m_{\ex}(\yx)
-            &= \frac{k!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}, \\
-            &= \left(\frac{k!}{k^{k}} \frac{\yx_1^{\yx_1}}{\yx_1!} \cdots \frac{\yx_n^{\yx_n}}{\yx_n!}\right)
-            \left(\frac{k^{k}}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1^{\yx_1}}\cdots \frac{\ex_n^{\yx_n}}{\yx_n^{\yx_n}}\right), \\
-            &= m_{\yx}(\yx)
-            \exp\left[ - k \sum_{i=1}^{n} \frac{\yx_i}{k} \log \left(\frac{\yx_i}{k} \frac{\tex}{\ex_i}\right)  \right], \\
-            &= m_{\yx}(\yx)
-            \exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
-        \end{split}
-    \end{align}
-    Since $m_{\yx}(\yx) \in [0,1]$ is a probability, we have the bound $m_{\yx}(\yx) \leq 1$ and therefore we obtain the claimed result:
-    \begin{equation}
-        p_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx) \leq \polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
-    \end{equation}
-\end{proof}
-Consequently, eigenvalue estimation captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $p_{\ex}(\yx)$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $\yx/k$, is similar to the eigenvalue distribution $\ex/\tex$.
-
-For our purposes, it will instead be useful to derive a result which compares the eigenvalues of a pair of positive semidefinite matrices $X,Y \geq 0$ directly.
-Recall that the \textit{Bhattacharyya coefficient} $\BC(p,q) \in [0,1]$ between two probability distributions $p$ and $q$ over a common set $\{1,\ldots,r\}$ is defined by $\BC(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i}$ and is equal one if and only if $p = q$.
-For notational convenient, we will extend this definition of Bhattachara coefficient to consider unnormalized distributions in the following way.
-Suppose $p = (p_1, \ldots, p_r)$ and $q = (q_1, \ldots, q_r)$ are non-negative tuples over the set $\{1,\ldots,r\}$ which are not necessarily normalized, but nevertheless have the same total $\tau = \sum_{i=1}^{r} p_i = \sum_{i=1}^{r} q_i$.
-Then we define the \textit{unnormalized Bhattachara coefficient} $\BC(p,q) \in [0,\tau]$ between $p$ and $q$ by
-\begin{equation}
-    \BC(p,q) = \sum_{i=1}^{r}\sqrt{p_iq_i},
-\end{equation}
-where $\BC(p,q) = \tau$ if and only if $p=q$.
-The unnormalized Bhattachara coefficient inherits all of its properties from the normalized Bhattachara coefficient by homogeneity:
-\begin{equation}
-    \BC(p,q) = \tau \BC\left( \frac{p}{\tau}, \frac{q}{\tau} \right).
-\end{equation}
-
-\begin{lem}[Eigenvalue separation]
-    \label{lem:eig_sep}
-    Let $\ex$ and $\ey$ non-negative eigenvalues of length $n$ with the same trace $\tau = \tex = \tey$.
-    For any non-negative integer $k\geq 1$,
-    \begin{equation}
-        \label{eq:eig_sep}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \polyk{\binom{n}{2}} \frac{\BC(\ex,\ey)^{k}}{k!},
-    \end{equation}
-    where $\BC(\ex,\ey)$ is unnormalized Bhattacharyya coefficient between the eigenvalues $\ex$ and $\ey$ and $\BC(\ex, \ey) = \tau$ if and only if $\ex = \ey$.
-\end{lem}
-\begin{proof}
-    We may assume that $\ex, \ey$ are non-zero and thus $\tau > 0$.
-    The left-hand side of \cref{eq:eig_sep} is the equal to the unnormalized Bhattacharyya coefficient between $\vp_{\yx}(\ex)$ and $\vp_{\yx}(\ey)$.
-    As $\vp_{\yx}(\ex)$ is proportional to the Schur-Weyl distribution $p_{\ex}(\yx)$ by definition (\cref{eq:schur_weyl}), we have
-    \begin{equation}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} = \frac{\tau^k}{k!}\sum_{\yx \vdash k} \sqrt{p_{\ex}(\yx)p_{\ex}(\yx)} = \frac{\tau^k}{k!}\BC_k(p_{\ex},p_{\ey})
-    \end{equation}
-    where $\BC_k(p_{\ex},p_{\ey})$ denotes the normalized Bhattacharyya coefficient between the Schur-Weyl distributions $p_{\ex}$ and $p_{\ey}$ over Young diagrams of size $k$.
-    From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound_2}, we have
-    \begin{equation}
-        \BC_k(p_{\ex},p_{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
-    \end{equation}
-    where $\BC_k(m_\ex,m_\ey)$ is the Bhattacharyya coefficient between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
-    Since Bhattacharyya coefficients are multiplicative with respect to multinomial distributions, i.e.,
-    \begin{equation}
-        \BC_k(m_x, m_y) = \BC\left(\frac{\ex}{\tau}, \frac{\ey}{\tau}\right)^{k} = \frac{\BC(\ex, \ey)^k}{\tau^k},
-    \end{equation}
-    we conclude
-    \begin{equation}
-        \sum_{\yx \vdash k}\sqrt{\vp_{\yx}(\ex)\vp_{\yx}(\ey)} \leq \frac{\tau^k}{k!}\polyk{\binom{n}{2}}\frac{\BC(\ex, \ey)^k}{\tau^k}
-    \end{equation}
-    which is equal to \cref{eq:eig_sep}.
-\end{proof}
-In subsequent sections we will frequently use of the \textit{weaker} bound
-\begin{equation}
-    \label{eq:weak_eig_sep}
-    \forall \yx \vdash k: \qquad \sqrt{\vp_{\yx}(x)\vp_{\yx}(y)} \leq \polyk{\binom{n}{2}} \frac{\BC(x,y)^{k}}{k!},
-\end{equation}
-which follows from \cref{lem:eig_sep} because $\vp_{\yx}(x), \vp_{\yx}(y) \geq 0$ whenever the eigenvalues $x,y$ are non-negative.
-\begin{rem}[Distances between distributions]
-    In order to quantify the separation between distributions more geometrically, consider the Kolmogorov (or total variation) distance between two normalized probabibility distributions $p$ and $q$:
-    \begin{equation}
-        K(p,q) \coloneqq \frac{1}{2}\norm{p-q}_1.
-    \end{equation}
-    The normalized Bhattacharyya coefficient $\BC(p,q)$ and Kolmogorov distance $K(p,q)$ are related by the inequalities
-    \begin{equation}
-        1-\BC(p,q) \leq K(p,q) \leq \sqrt{1-\BC(p,q)^2}
-    \end{equation}
-    For a proof, see for example \cite[Proposition 5, Equation (41)]{fuchs2002cryptographic}.
-    For the purposes of this paper, we only need the bound $K(p,q) \leq \sqrt{1-\BC(p,q)^2}$ which is equivalent to $\BC(p,q) \leq \sqrt{1-K(p,q)^2}$ which can be relaxed to obtain\footnote{Here we used the inequality $\sqrt{1-x^2} \leq \exp(-x^2/2)$ which holds for all $x \in [0,1]$.}
-    \begin{equation}
-        \BC(p,q) \leq \exp\left(-\frac{1}{2}K(p,q)^2\right) = \exp\left(-\frac{1}{8}\norm{p-q}_1^2\right).
-    \end{equation}
-    Stated in terms of the unnormalized Bhattacharyya coefficient $\BC(p,q)$ between unnormalized distributions $p,q$ with the same total $\tau$, this inequality is equivalent to
-    \begin{equation}
-        \label{eq:Bhattacharyya_vs_distance}
-        \frac{\BC(p,q)}{\tau} \leq \exp\left(-\frac{1}{8\tau^2}\norm{p-q}_1^2\right).
-    \end{equation}
-    In subsequent sections we will use \cref{eq:Bhattacharyya_vs_distance} to convert lower bounds on Bhattacharyya coefficients $\BC(p,q)$ into upper bounds on distances $\norm{p-q}_1$.
-\end{rem}
-
-\subsection{[tc] Results for random matrices}
-\label{sec:random_matrices}
-
-The purpose of this section is record some results concerning sums of random Hermitian matrices with fixed eigenvalues sampled uniformly from their respective orbits.
-The first two propositions follow from standard applications of Schur's lemma, and are used to prove the others.
-\begin{prop}
-    Let $\ex = (\ex_1 \geq \cdots \geq \ex_n)$ be a set of eigenvalues and let $X \sim \orbit_{\ex}$ denote a random Hermitian matrix of the form $X = U[\ex]U^{-1}$ where $U \in \U(n)$ is sampled uniformly with respect to the normalized Haar measure on $\U(n)$.
-    Then for any Young diagram $\yx$,
-    \begin{equation}
-        \expect_{X \sim \orbit_{\ex}} \pi_{\yx}(X) = s_{\yx}(\ex)\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
-    \end{equation}
-\end{prop}
-\begin{cor}
-    \label{cor:random_sum}
-    Let $(\ex,\ey)$ be a pair of eigenvalues. Then
-    \begin{equation}
-        \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}}
-        \frac{\vp^{\ya\yb}_{\yc}(X,Y)}{\dim V_{\yc}^{n}} = c^{\yc}_{\ya\yb} \frac{\vp_{\ya}(\ex)}{\dim V_{\ya}^{n}}\frac{\vp_{\yb}(\ey)}{\dim V_{\yb}^{n}} .
-    \end{equation}
-\end{cor}
-\begin{cor}
-    \label{cor:random_matrices_tet}
-    Let $(x,y,z)$ be a triple of eigenvalues. Then
-    \begin{equation}
-        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ex}\times \orbit_{\ey} \times \orbit_{\ez}}} \frac{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}{\dim V_{\ye}^{n}}
-        = \norm{\abcdefsymbol}_{2}^{2} \frac{\vp_{\ya}(x)}{\dim V_{\ya}^{n}}\frac{\vp_{\yb}(y)}{\dim V_{\yb}^{n}}\frac{\vp_{\yd}(z)}{\dim V_{\yd}^{n}}.
-    \end{equation}
-\end{cor}
-% Moreover in our proof of \cref{cor:asym_6j}, we will use another measure, known as the Hilbert-Schmidt measure, over the compact space of trace $\tau$ positive semidefinite Hermitian matrices \cite{zyczkowski2001induced}.
-% This measure is a product measure with respect to eigenvalues and eigenvectors and uses the $\U(n)$ Haar measure for the eigenvectors and the unique probability measure for the eigenvalues $x$ with density proportional to the squared Vandermonde determinant $\Delta(x)^2$ \cite{zyczkowski2001induced}.
-% It can equivalently be characterized in terms of the pushforward of applying the map $\psi \mapsto \tau \Tr_{n}(\psi\psi^{\dagger})$ to $\U(n^2)$-Haar random unit vectors $\psi$ in $\mathbb C^{n} \ot \mathbb C^{n}$ \cite{zyczkowski2001induced}.
-% \begin{prop}
-%     Given a positive real number $\tau > 0$, let $X \sim \mathrm{HS}_{\tau}$ denote a random Hermitian matrix with coefficients $X_{ij} = \tau \sum_{k=1}^{n}U_{ik;11}U^{*}_{jk;11}$ where $U \in \U(n^2)$ is a $n^2 \times n^2$ unitary matrix sampled uniformly with respect to the normalized Haar measure on $\U(n^2)$.
-%     Then for any Young diagram $\yx$,
-%     \begin{equation}
-%         \expect_{X \sim \mathrm{HS}_{\tau} } \pi_{\yx}(X) = \tau^{\syx}q_{n,\yx}\frac{\id_{V_{\yx}^{n}}}{\dim V_{\yx}^{n}}.
-%     \end{equation}
-%     where $q_{n,\yx}$ is the dimension ratio
-%     \begin{equation}
-%         q_{n,\yx} \coloneqq \frac{(\dim V_{\yx}^{n})^{2}}{\dim V_{(\syx)}^{n^2}}.
-%     \end{equation}
-% \end{prop}
-% \begin{cor}
-%     \begin{equation}
-%         \expect_{X \sim \mathrm{HS}_{\tex}}
-%         \expect_{Y \sim \mathrm{HS}_{\tex}}
-%         \vp^{\ya\yb}_{\yc}(X,Y)
-%         = \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!} q_{n,\ya}q_{n,\yb}\frac{c^{\yc}_{\ya\yb}\dim V_{\yc}^{n}}{\dim (V_{\ya}^{n} \ot V_{\yb}^{n})}.
-%     \end{equation}
-%     \begin{equation}
-%         \expect_{X \sim \mathrm{HS}_{\tex}} \expect_{Y \sim \mathrm{HS}_{\tex}} \expect_{Z \sim \mathrm{HS}_{\tez}}
-%         \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
-%         =
-%         \frac{\tex^{\sya}}{\sya!}\frac{\tey^{\syb}}{\syb!}\frac{\tez^{\syd}}{\syd!} q_{n,\ya}q_{n,\yb}q_{n,\yd}\frac{\dim V_\ye^n\norm{\abcdefsymbol}_{2}^{2}}{\dim(V_{\ya}^n \ot V_{\yb}^n \ot V_{\yd}^n)}.
-%     \end{equation}
-% \end{cor}
 
 \subsection{[tc] Distance bound for the tetrahedral Horn problem}
 \label{sec:dist_bound_for_tet_horn}
@@ -3614,6 +3091,120 @@ This establishes a lower bound on $\BC(a,b;c)$ of the form
 \end{equation}
 Finally, using \cref{eq:Bhattacharyya_vs_distance}, we substitute the maximum normalized Bhattacharyya coefficient $\frac{\BC(a,b;c)}{\Tr[c]}$ with a minimum normalized distance to obtain \cref{eq:tri_dist_bound} which completes the proof.
 
+\section{The large \texorpdfstring{$\boldsymbol{n}$}{n} limit \& an entropic inequality}
+\label{sec:large_n}
+
+The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} to derive inequalities on the entropies of the eigenvalues.
+Our strategy will be to prove an upper bound on the $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
+By combining this upper bound with the lower bound provided by \cref{cor:asym_6j} (specifically the $n$-independent bound in \cref{eq:n_independent_inverse_poly}), we will prove the following.
+\begin{thm}
+    \label{thm:entropic_ineq}
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be tetrahedral eigenvalues.
+    Then
+    \begin{equation}
+        \label{eq:entropic_ineq}
+        s(\ec) + s(\ef) - s(\eb) - s(\ee) \geq 0,
+    \end{equation}
+    where
+    \begin{equation}
+        \label{eq:little_s_defn}
+        s(\ex) \coloneqq - \sum_{i=1}^{n} \ex_i \log \ex_i.
+    \end{equation}
+\end{thm}
+
+We begin with our upper bound on the $6j$ symbol.
+\begin{lem}
+    \label{lem:sixj_ssa_bound}
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
+    Then
+    \begin{equation}
+        \norm{\abcdefsymbol}_{2}^{2}
+        \leq \left(c_{\ya,\yf}^{\ye}c_{\yb,\yd}^{\yf}c_{\ya,\yb}^{\yc}c_{\yc,\yd}^{\ye}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Here we provide a diagrammatic proof of the claimed inequality.
+    For the sake of clarity, we abbreviate the irreducible representation labels, $V_{\yx}^{n}$, and omit the multiplicity space labels on the intermediate steps.
+    \begin{equation}
+        \tikzfig{tikz/final/sixj_upper}
+    \end{equation}
+    The first equality follows from \cref{defn:sixj}.
+    The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
+    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}^{n}$ to itself on the left and $V_{\ye}^{n}$ to itself on the right.
+    Note that the factors of $\dim(V_{\ye}^{n})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
+\end{proof}
+
+An immediate application of \cref{lem:sixj_ssa_bound} is to combine it with \cref{eq:n_independent_inverse_poly}.
+If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{cor:asym_6j} there exists a converging sequence of Young diagrams $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$ such that
+\begin{equation}
+    \label{eq:combined_bound}
+    \frac{1}{q(k)} \leq \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k & \ye_k & \yf_k}}_{2}^2 \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
+\end{equation}
+where $q(k)$ is some polynomial in $k$ independent of the dimension $n$ (see \cref{eq:n_independent_inverse_poly}).
+Remarkably, the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}, c_{\yb_k,\yd_k}^{\yf_k}, c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are also \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams.
+This observation provides us with an opportunity to optimize the above bound by varying the value of $n$.
+
+In particular, it will useful to better understand how the dimension, $\dim(V_{\yx}^{n})$, of the irreducible representation $V_{\yx}^{n}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
+In general, for fixed $\yx$, the function $n \mapsto V_{\yx}^{n}$ can grow at an exponential rate with increasing $n$.
+One can find estimates for $\dim(V_{\yx}^{n})$ in the regime where $n$ is large compared to ${\syx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
+Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\yx}^{n})$ to the value of $\dim(W_{\yx})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}).
+\begin{prop}
+    \label{prop:harrow_formula}
+    Let $\yx$ be a Young diagram with depth at most $n$. Then
+    \begin{equation}
+        \frac{\dim(V_{\yx}^{n})}{n^{{\syx}}} = \frac{\dim(W_{\yx})}{{\syx}!}\prod_{(i,j) \in \yx} \left(1 + \frac{j-i}{n}\right).
+    \end{equation}
+\end{prop}
+\begin{proof}
+    The statement follows from comparing the the Weyl dimension formula for $\dim(V_{\yx}^{n})$ given in \cref{eq:frob_dim} with the Frobenius dimension formula for $\dim(W_{\yx})$ given in \cite[Corollaries 9.1.5]{goodman2000representations}:
+    \begin{equation}
+        \label{eq:frob_dim}
+        \dim(W_{\yx}) = \frac{{\syx}!\Delta(\yx + \rho)}{\prod_{i=1}^{n}(\yx+\rho)_i!}.
+    \end{equation}
+    That this formula for $\dim(W_{\yx})$ does not depend on $n$ for $n \geq \ell(\yx)$ and coincides with the Hook-length formula given earlier is proved by \cite[Corollary 9.1.6]{goodman2000representations}.
+    For additional details, see also \cite[Appendix A]{harrow2023approximate}.
+\end{proof}
+From \cref{prop:harrow_formula} we obtain the following corollary.
+\begin{cor}
+    \label{cor:harrow_ssa_lim}
+    Let $\yc,\yf,\yb,\ye$ be a quadruple of Young diagrams such that
+    \begin{equation}
+        \label{eq:balanced_sizes}
+        {\syc}+{\syf} = {\syb}+{\sye}.
+    \end{equation}
+    Then
+    \begin{equation}
+        \lim_{n\to\infty}
+        \frac{\dim(V_{\yc}^n) \dim(V_{\yf}^n)}{\dim(V_{\yb}^n) \dim(V_{\ye}^n)} =
+        \frac{{\syb}!{\sye}!}{{\syc}!{\syf}!}
+        \frac{\dim(W_{\yc}) \dim(W_{\yf})}{\dim(W_{\yb}) \dim(W_{\ye})}
+        = \frac{H_{\yb}H_{\ye}}{H_{\yc}H_{\yf}}
+    \end{equation}
+\end{cor}
+\begin{proof}
+    From \cref{prop:harrow_formula} one evidently has for any Young diagram $\yx$ the limit
+    \begin{equation}
+        \lim_{n\to\infty} \frac{\dim(V_{\yx}^{n})}{n^{{\syx}}} = \frac{\dim(W_{\yx})}{{\syx}!} = \frac{1}{H_{\yx}}
+    \end{equation}
+    where $H_{\yx}$ is the product of the hook lengths in $\yx$ as defined by \cref{eq:dim_W_hook_product}.
+    The claim then follows because the missing prefactor, $\frac{n^{{\syb}}n^{{\sye}}}{n^{{\syc}}n^{{\syf}}}$, is equal to one by \cref{eq:balanced_sizes}.
+\end{proof}
+We are now in a position to prove the main result of this section.
+\begin{proof}[Proof of \cref{thm:entropic_ineq}]
+    As $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral, the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{cor:asym_6j} implies it must at least be non-zero and thus \cref{eq:balanced_sizes} holds.
+    Therefore, by \cref{cor:harrow_ssa_lim} and the discussion surrounding the bound in \cref{eq:combined_bound} we conclude that along the convergent sequence of Young diagrams,
+    \begin{equation}
+        \label{eq:hook_ratio_limit}
+        \lim_{k\to\infty} \frac{1}{k} \log \left(\frac{H_{\yb_k}H_{\ye_k}}{H_{\yc_k}H_{\yf_k}}\right) \geq 0
+    \end{equation}
+    provided the limit.
+    To prove the limit exists, an application of Stirling's approximation, $\log n! \approx n \log n - n$ \cite{robbins1955remark}, to the approximation formula $H_{\yx} \approx \prod_{i=1}^{n}\yx_i!$ produces for any constant $\eta$ the formula
+    \begin{equation}
+        \frac{1}{\eta}\log H_{\yx} \approx (\log \eta - 1) \syx + \sum_{i=1}^{n} \frac{\yx_i}{\eta}\log \frac{\yx_i}{\eta}
+    \end{equation}
+    Because ${\syc}+{\syf} = {\syb}+{\sye}$ (\cref{eq:balanced_sizes}), the $(\log \eta - 1)$ terms will cancel in \cref{eq:hook_ratio_limit}.
+    Then using the fact that that $(\yb_k, \yc_k, \ye_k, \yf_k)$ converge in proportion to the eigenvalues $(\eb,\ec,\ee,\ef)$ (with proportionality constant $\eta = \frac{k}{\tee}$), we conclude that \cref{eq:hook_ratio_limit} has a limit and moreover it equals the left-hand side of \cref{eq:entropic_ineq}.
+\end{proof}
 
 
 \end{document}
