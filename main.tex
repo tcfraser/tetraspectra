@@ -122,10 +122,7 @@ The non-linear inequalities are needed in the description of the set ${\rm Tetra
 %described by \cref{eq:quadruplet_triangle_constraints} and \cref{eq:volume_positive_constraint}.
 \begin{figure}
     \begin{center}
-        %\includegraphics[width=0.45\textwidth]{figures/triangle-faces-moduli-space-example}
-        %\qquad
-        %\includegraphics[width=0.45\textwidth]{figures/tetrahedron-moduli-space-example}
-        \includegraphics[width=0.75\textwidth]{figures/triangle_vs_cayley_menger}
+        \includegraphics[width=0.8\textwidth]{figures/triangle_vs_cayley_menger}
     \end{center}
     \caption{
         A comparison between the values for $(\ell_c,\ell_e,\ell_f)$ with fixed $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ which merely satisfy the triangle inequalities (exterior blue polytope) and those which additionally satisfy the Cayley-Menger determinant inequality (interior green).
@@ -181,53 +178,54 @@ Our first result is a necessary and sufficient condition for tetrahedral 6-tuplu
    where
     \begin{equation}
         D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq
-        \min_{\substack{(A,B,D) \in \orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}}
+        \min_{\substack{(A,B,D) \in \\\orbit_{\ea}\times \orbit_{\eb} \times \orbit_{\ed}}}
         \left( \norm{ \eig(A\!+\! B) - \ec }_{1}^2 + \norm{ \eig(B\!+\!D) - \ef }_{1}^2 + \norm{ \eig(A\!+\!B\!+\!D) - \ee }_{1}^2\right).
     \end{equation}
 \end{thm}
 
-Note that in \cref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the 6j-symbol is nonvanishing.
+Note that in \cref{eq:tet_iff_intro} the sum over $\yc, \ye, \ef$ on the right hand side is finite since there is only a finite number of triples $(\yc, \ye, \ef)$ for which the $6j$-symbol is nonvanishing.
 \Cref{thm:tet_iff_intro} establishes an infinite set of polynomial (up to taking power $1/3$) inequalities which characterize the set ${\rm Tetra}^+(n)$. To the best of our knowledge, this the first system of polynomial inequalities which provides not only necessary but also sufficient conditions for
 $(\ea,\eb,\ec,\ed,\ee,\ef) \in {\rm Tetra}^+(n)$. Furthermore, for each integer $k$ we provide a finite set of inequalities, and the set defined by these inequalities is getting arbitrarily close to ${\rm Tetra}^+(n)$ with the increase of $k$.
 
-Our second result concerns the behavior of 6j-symbols for $G=U(n)$ for increasing weights:
-\begin{thm} \label{thm:6j_estimates}
+Our second result concerns the behavior of $6j$-symbols for $G=U(n)$ for increasing weights:
+\begin{thm} 
+    \label{thm:6j_estimates}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in {\rm Tetra}^+(n)$. Then, there is a sequence of 6-tuples of positive weights
     $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ with $\abs{\ye_k} = k$ such that
     \begin{equation} 
-        \label{eq:intro converge}
-        \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \to _{k \to \infty}
+        \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) 
+        \stackrel{k \to \infty}{\longrightarrow} 
         \frac{1}{\Tr[e]} (\ea, \eb, \ec, \ed, \ee, \ef),
     \end{equation}
     and
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}
-        \geq \frac{1}{\mathrm{poly}(k)}.
+        \label{eq:n_independent_inverse_poly}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \geq \frac{1}{(k+1)^{6\rank[\ee]}},
     \end{equation}
-    for some positive polynomial of $k$.
-Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ converging to $(\ea, \eb, \ec, \ed, \ee, \ef)$ we have
+    Furthermore, if $(\ea, \eb, \ec, \ed, \ee, \ef) \notin {\rm Tetra}^+(n)$, then for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\Lambda^*_{++})^6$ converging to $(\ea, \eb, \ec, \ed, \ee, \ef)$ we have for all sufficiently large $k$, the bound
     \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}} \leq C e^{-kr}
+        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \leq C e^{-kr}
     \end{equation}
-    for some $C, r >0$.
+    for some $C, r > 0$.
 \end{thm}
 
-\Cref{thm:6j_estimates} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects (6j-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of \Cref{thm:6j_estimates} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
+\Cref{thm:6j_estimates} is an instance of a correspondence between geometry and representation theory. Indeed, the asymptotic behavior of representation theoretic objects ($6j$-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem). The statement of \Cref{thm:6j_estimates} should be compared with a similar statement available for $G=SU(2)$, see \cite{roberts1999classical}. There, the exponential decay statement is similar to our statement, but the polynomial bound statement is more precise with the sequence
 \begin{equation}
     (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) = k (\ya_1, \yb_1, \yc_1, \yd_1, \ye_1, \yf_1).
 \end{equation}
 While being a weaker statement for $G=SU(2)$, \Cref{thm:6j_estimates} applies to all $n$.
 Implicitly, \Cref{thm:6j_estimates} is contained in \cite{christandl2018recoupling}. In this paper, we give a direct proof.
 
-The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows that positive functions $\vp_\alpha(a)$ are small outside the region near
-\begin{equation}
-    \alpha \sim a \Leftrightarrow \frac{1}{|\alpha|}  \alpha = \frac{1}{\Tr[a]} a.
-\end{equation}
+The methods used in the proofs include the Schur-Weyl duality and the non-commutative binomial formula based on it. These features distinguish the case of $G=U(n)$ discussed in this paper and versions of the tetrahedral Horn problem that one may define for other compact groups. Another key observation used in the proofs is the eigenvalue estimation which shows the positive functions $\yx \mapsto \vp_\yx(\ex)$ are small outside the region where $\yx$ is proportional to $\ex$.
 This observation together with \Cref{thm:6j_estimates} explain the meaning of mysterious inequalities in \cref{eq:tet_iff_intro} in \Cref{thm:tet_iff_intro}. Indeed, by choosing $(\alpha, \beta, \delta)$ such that
 $
 \alpha \sim a, \beta \sim b, \delta \sim d$
 we maximize the left hand side. The choice of $(\gamma, \epsilon, \phi)$ with $\gamma \sim c, \epsilon \sim e, \phi \sim f$
-maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the 6j-symbol is exponentially decaying, and \cref{eq:tet_iff_intro} is unlikely to hold for all $k$.
+maximizes the second factor on the right hand side. If the 6-tuple $(a,b,c,d,e,f)$ is not tetrahedral, the $6j$-symbol is exponentially decaying, and \cref{eq:tet_iff_intro} is unlikely to hold for all $k$.
+
+\subsection*{Acknowledgments}
+TCF thanks Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
+MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality.
 
 \section{Background material}
 \label{sec:background}
@@ -396,7 +394,8 @@ and rescaled characters
 Note that
 \begin{equation}
     \label{eq:varphi_normalization}
-    \sum_{\yx \vdash k} \vp_\yx(X) = \frac{[\Tr(X)]^k}{k!} , \quad
+    \sum_{\yx \vdash k} \vp_\yx(X) = \frac{[\Tr(X)]^k}{k!}, 
+    \quad \text{and} \quad
     \sum_\yx \vp_\yx(X) = \exp(\Tr(X)).
 \end{equation}
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot U(n))$-modules
@@ -454,7 +453,7 @@ Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of 
 It is  convenient to introduce the following functions of two matrices,
 \begin{equation}
     \vp^{\ya \yb}_\yc(X, Y) =
-    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\yb(Y))P_{\ya\yb}^\yc.
+    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\yb(Y)) P_{\ya\yb}^\yc.
 \end{equation}
 
 \begin{prop}
@@ -535,6 +534,7 @@ For a 6-tuple of positive weights, we introduce a function of three matrices,
 \end{equation}
 Note that the following size equalities are necessary conditions for $\abcdefsymbol$ being non-zero and thus $\vp^{\ya \yb \yd}_{\yc \ye \yf}$ being non-zero:
 \begin{equation}
+    \label{eq:size_conditions_tet}
     \sya + \syb = \syc, \quad
     \syb + \syd = \syf, \quad
     \sya + \syf = \sye, \quad
@@ -849,7 +849,8 @@ $[x]={\rm diag}(x_1, \dots, x_n)$ under the action of the unitary group $U(n)$:
 \end{equation}
 Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$. This measure can be constructed as the pushforward of the probability Haar measure on $U(n)$. Also, conjugacy classes are isomorphic to coadjoint orbits of $U(n)$ and they carry canonical Duistermaat-Heckman measure proportional to $\mu_x$. In what follows, we will need expectation values $\mathbb{E}_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\mathbb{E}_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\mathbb{E}_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
 
-\begin{prop}\label{prop:estimate_E_x_y_z}
+\begin{prop}
+    \label{prop:estimate_E_x_y_z}
     We have,
     \begin{align}
         \begin{split}
@@ -863,7 +864,6 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
         \end{split}
     \end{align}
 \end{prop}
-
 \begin{proof}
     For the first equality, by Schur's Lemma we have
     \begin{equation}
@@ -899,6 +899,32 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
     \end{align}
 \end{proof}
 Note that even though functions $\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)$ are complex values, their expectation values are real and positive.
+We will not use \cref{prop:estimate_E_x_y_z} in subsequent proofs directly; rather we will use the following consequence of \cref{prop:estimate_E_x_y_z}.
+\begin{lem}
+    \label{lem:estimate_E_x_y_z_bound}
+    For all $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\Lambda^*_{++})^{\times 6}$ and all $(x,y,z) \in \mathbb R_n^{+}$,
+    \begin{equation}
+        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ex)\vp_{\yb}(\ey)\vp_{\yd}(\ez) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z)\in \\\orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    By \cref{prop:estimate_E_x_y_z}, we have
+    \begin{align}
+        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ex)\vp_{\yb}(\ey)\vp_{\yd}(\ez)
+        &=
+        \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\ye}^{n})}
+        \expect_{\substack{(X,Y,Z) \in \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}
+            \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z).
+    \end{align}
+    Then claim then follows from the bound
+    \begin{align}
+        \expect_{\substack{(X,Y,Z) \in \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}
+        \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
+        &\leq
+        \max_{\substack{(X,Y,Z)\in \\\orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
+    \end{align}
+    along with the dimension estimates $\dim (V_\yx^{n}) \leq (\syx + 1)^{\binom{n}{2}} \leq \polyk{\binom{n}{2}}$ for $\yx \in \{\ya,\yb,\yd\}$ from \cref{eq:unitary_irrep_dim_bound_2} and $\dim (V_{\ye}^{n}) \geq 1$.
+\end{proof}
 
 \section{Inequalities for tetrahedral eigenvalues}
 
@@ -975,11 +1001,11 @@ The following is a restatement of \cref{thm:iff_tet} from the introduction.
 
 First, we assume that there exists matrices $(A,B,C,D,E,F)$ with eigenvalues
 $(\ea,\eb,\ec,\ed,\ee,\ef)$ satisfying \cref{eq:six_matrices}.
-The result of \cref{prop:cauchy_schwarz_ineq_double_proj} applied to $X \mapsto A, Y \mapsto B$, and $Z \mapsto D$ produces
+The result of \cref{prop:varphi_tet_main_ineq} applied to $X \mapsto A, Y \mapsto B$, and $Z \mapsto D$ produces
 \begin{align}
     \begin{split}
         \left|\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)\right|
-        &= \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}.
+        &\leq \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(A,B,D)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(A,B,D)^{\frac{1}{2}}.
     \end{split}
 \end{align}
 Then four applications of \cref{prop:tet_psum_ineq} produces
@@ -1045,23 +1071,16 @@ where $\polyk{3n}$ serves as an upper bound on the number of terms in the sum in
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) > 0 \implies \norm{\abcdefsymbolcefstarred}_{\infty} >0,
 \end{equation}
 which will enable us to divide by $\norm{\abcdefsymbolcefstarred}$ momentarily.
-By \cref{prop:estimate_E_x_y_z}, we have
+
+At the same time, by \cref{lem:estimate_E_x_y_z_bound}, we have
 \begin{align}
     \norm{\abcdefsymbolcefstarred}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-    &=
-    \frac{\dim (V_\ya^{n} \ot V_{\yb}^{n} \ot V_{\yd}^{n})}{\dim (V_{\ye^*}^{n})}
-    \expect_{\substack{(A,B,D) \in \\ \orbit_{a} \times \orbit_{b} \times \orbit_{d}}}
-        \vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A,B,D).
-\end{align}
-Then consider the bound
-\begin{align}
-    \expect_{\substack{(A,B,D) \in \\ \orbit_{a} \times \orbit_{b} \times \orbit_{d}}}
-    \vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A,B,D)
     &\leq
-    \abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A^*,B^*,D^*)},
+    \polyk{3\binom{n}{2}}
+    \abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A^*,B^*,D^*)}
 \end{align}
 where $(A^*, B^*, D^*) \in \orbit_{a} \times \orbit_{b} \times \orbit_{d}$ is a triple of matrices which realizes a maximum of $\abs{\vp^{\ya\yb\yd}_{\yc^*\ye^*\yf^*}(A, B, D)}$.
-Combined, we conclude
+Then, applying \cref{eq:vp_ABD_abs_bound} here yields
 \begin{align}\label{eq:second_abd_bound}
     \begin{split}
         &\norm{\abcdefsymbolcefstarred}_{2}^{2} \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)\\
@@ -1071,7 +1090,7 @@ Combined, we conclude
         \left(\vp_{\ya}(A^*)\vp_{\yf^*}(F^*)\vp_{\yc^*}(C^*)\vp_{\yd}(D^{*})\vp_{\ye^*}(E^*)\right)^{\frac{1}{3}}.
     \end{split}
 \end{align}
-where the dimensions of representations have been bounded by \cref{eq:unitary_irrep_dim_bound} and where $C^*\coloneqq A^*+B^*, E^*\coloneqq A^*+B^*+D^*, F^*\coloneqq B^*+D^*$.
+where $C^*\coloneqq A^*+B^*, E^*\coloneqq A^*+B^*+D^*, F^*\coloneqq B^*+D^*$.
 
 Now we (i) multiply the estimate in \cref{eq:first_abd_bound_2} by the estimate in \cref{eq:second_abd_bound}, (ii) divide by $\norm{\abcdefsymbol}_{2}^{2}$ and use the operator norm estimate from \cref{eq:norm_estimates} to obtain $\norm{\abcdefsymbol}_{2}^{2} \leq \norm{\abcdefsymbol}_{\infty}^{2}$, and (iii) take a square root to obtain:
 \begin{align}\label{eq:varphi_sixth_root}
@@ -1147,6 +1166,139 @@ Altogether, this implies
     \frac{1}{\tee^2} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq n(30n+78) \frac{\log(k+1)}{k},
 \end{equation}
 as required.
+
+
+\section{Asymptotics of \texorpdfstring{$U(n)$ $6j$}{U(n) 6j} symbols}
+
+In this section we provide a proof of \cref{thm:6j_estimates},
+specifically, \cref{sec:6j_inverse_poly} provides the proof of the inverse polynomial lower bound while \cref{sec:6j_exp} provides the proof of the exponential upper bound.
+Before proceeding, we prove the following lemma which will be used in both portions of the proof.
+\begin{lem}
+    \label{lem:asym_sixj_helper}
+    Let $X,Y,Z \in \hermp{n}$ and let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of the matrices $(X, Y, X+Y, Z, X+Y+Z,Y+Z)$.
+    Then for all $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\Lambda^*_{++})^{\times 6}$ satisfying the size conditions of \cref{eq:size_conditions_tet} with $\abs{\ye_k} = k$, we have
+    \begin{align}
+        \label{eq:hex_rel_ent_bound}
+        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
+        &\leq \polyk{n(n-1)} \exp\left(- k R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}\right),
+    \end{align}
+    where
+    \begin{align}
+        \begin{split}
+            R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} 
+            = \frac{1}{4}\bigg[
+            \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}
+            &+ \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}+ \\
+            \cdots + \kl{\frac{\ya \oplus \yf}{k}}{\frac{\ea\oplus \ef}{\tee}}
+            &+ \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}
+            \bigg].
+        \end{split}
+    \end{align}
+    Note that $R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} \geq 0$ with equality holding only if
+    \begin{equation} 
+        \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) 
+        =
+        \frac{1}{\tee} (\ea, \eb, \ec, \ed, \ee, \ef).
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Using \cref{prop:varphi_tet_main_ineq}, \cref{prop:tet_psum_ineq} and $\norm{\abcdefsymbol}_{\infty} \leq 1$, we obtain
+    \begin{equation}
+        \label{eq:abs_quad_bound}
+        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
+        \leq
+        \left(\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \times \vp_{\yc}(\ec)\vp_{\yd}(\ed) \times \vp_{\ye}(\ee) \times \vp_{\ya}(\ea)\vp_{\yf}(\ef)\right)^{\frac{1}{4}}.
+    \end{equation}
+    Using the multinomial distribution bound from \cref{prop:multinomial_bound}, we observe
+    \begin{align}
+        \begin{split}
+            \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
+            &\leq \polyk{3\binom{n}{2}}
+            \frac{\ea_1^{\ya_1}}{\ya_1!}\cdots\frac{\ea_n^{\ya_n}}{\ya_n!}
+            \frac{\eb_1^{\yb_1}}{\yb_1!}\cdots\frac{\eb_n^{\yb_n}}{\yb_n!}
+            \frac{\ed_1^{\yd_1}}{\yd_1!}\cdots\frac{\ed_n^{\yd_n}}{\yd_n!}, \\
+            &= \polyk{3\binom{n}{2}} \frac{\tee^{k}}{k!}
+            m_{\ya \oplus \yb \oplus \yd}(\ea \oplus \eb \oplus \ed).
+        \end{split}
+    \end{align}
+    Then applying the relative entropy bound from the proof of \cref{prop:eig_est} yields
+    \begin{align}
+        \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)}
+        &\leq \polyk{3\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}\right].
+    \end{align}
+    Analogously, we obtain
+    \begin{align}
+        \frac{k!}{\tee^k}{\vp_{\yc}(\ec)\vp_{\yd}(\ed)}
+        &\leq\polyk{2\binom{n}{2}} \exp\left[ - k \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}\right], \\
+        \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yf}(\ef)}
+        &\leq\polyk{2\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yf}{k}}{\frac{\ea\oplus \ef}{\tee}}\right], \\
+        \frac{k!}{\tee^k}{\vp_{\ye}(\ee)}
+        &\leq\polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}\right].
+    \end{align}
+    Applying these bounds to \cref{eq:abs_quad_bound} we obtain \cref{eq:hex_rel_ent_bound}.
+\end{proof}
+
+\subsection{Inverse polynomial lower bound}
+\label{sec:6j_inverse_poly}
+
+Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
+Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all sextuples of Young diagrams satisfying the size conditions \cref{eq:size_conditions_tet} produces
+\begin{equation}
+    \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) = \frac{\tee^k}{k!}.
+\end{equation}
+Let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ denote the sextuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ in the above sum.
+As there are at most $\polyk{6\rank[\ee]}$ terms in the above summation which are non-zero, we conclude
+\begin{equation}
+    \label{eq:inverse_poly_varphi_lower}
+    \frac{k!}{\tee^k}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \geq \frac{1}{\polyk{6\rank[\ee]}}
+\end{equation}
+Then by \cref{prop:varphi_tet_main_ineq}, \cref{prop:tet_psum_ineq} and \cref{eq:varphi_normalization}, we conclude
+\begin{equation}
+    \label{eq:inverse_poly_varphi_upper}
+    \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \leq \frac{\tee^k}{k!} \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty}.
+\end{equation}
+Combining \cref{eq:inverse_poly_varphi_lower} and \cref{eq:inverse_poly_varphi_upper} then gives \cref{eq:n_independent_inverse_poly}.
+To prove the convergence portion of the claim, we combine \cref{lem:asym_sixj_helper} with \cref{eq:inverse_poly_varphi_lower} to obtain
+\begin{equation}
+    \exp\left(- k R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}\right) \leq \frac{1}{\polyk{6\rank[\ee] + n(n-1)}},
+\end{equation}
+which implies $\lim_{k\to \infty} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} = 0$ which implies the convergence claim of \cref{thm:6j_estimates}.
+
+\subsection{Exponential upper bound}
+\label{sec:6j_exp}
+
+We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ when $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ converges to some non-tetrahedral eigenvalues.
+Without loss of generality, we can assume the Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ satisfy the size constraints \cref{eq:size_conditions_tet} as before (since otherwise $\abcdefsymbolk = 0$).
+To begin, \cref{lem:estimate_E_x_y_z_bound} gives
+\begin{equation}
+    \norm{\abcdefsymbolk}_{2}^{2} \vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z)\in  \\\orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+\end{equation}
+Now we freely choose, for each $k$, a particular triple of eigenvalues $(\ea^*,\eb^*,\ed^*)$ which ensures
+\begin{equation}
+    \frac{k!}{\Tr[\ee^{*}]^k} \vp_{\ya_k}(\ea^*)\vp_{\yb_k}(\eb^*)\vp_{\yd_k}(\ed^*) \geq \frac{1}{\polyk{3n}}.
+\end{equation}
+where we are denoting the sum $\Tr[\ea^{*}]+\Tr[\eb^*]+\Tr[\ed^*]$ with $\Tr[\ee^{*}]$ by a slight abuse of notation as no eigenvalues $\ee^*$ have been choosen here.
+That such a choice can always be made follows from the normalization condition
+\begin{equation}
+    \sum_{\substack{\ya,\yb,\yd \\ \sya+\syb+\syd = k}}\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) = \frac{(\tea+\teb+\ted)^k}{k!},
+\end{equation}
+and noting that there are at most $\polyk{3n}$ such triples $(\ya,\yb,\yd)$ of Young diagrams in the sum (indeed it suffices to choose $(\ea^*,\eb^*,\ed^*)$ to maximize $\vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed)$).
+Therefore, we obtain the upper bound
+\begin{equation}
+    \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n} \frac{\Tr[\ee^{*}]^k}{k!} \max_{\substack{(X,Y,Z) \in \\\orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+\end{equation}
+Then applying \cref{lem:asym_sixj_helper} produces
+\begin{equation}
+    \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
+\end{equation}
+where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
+
+Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$.
+Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ and therefore
+\begin{equation}
+    \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k r\right),
+\end{equation}
+which proves the desired exponential decay on the operator norm because of the standard norm estimate $\norm{\abcdefsymbolk}_{\infty} \leq \norm{\abcdefsymbolk}_{2}$.
 
 % ===== [@OLD] ====
 
@@ -1431,160 +1583,6 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 \textbf{Organization of the paper:}
 
 {\color{red} TODO }
-
-\section*{Acknowledgments}
-TCF thanks Suvrit Sra, Harold Nieuwboer, Marco Fanizza and Jack Davis for helpful discussions.
-MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the National Center for Competence in Research SwissMAP of the Swiss National Science Foundation and the Section of Mathematics at the University of Geneva for their hospitality.
-
-\clearpage
-\color{red!50!black}TC: THE FOLLOWING SECTION IS CURRENTLY BEING RE-REWRITTEN INTO PREVIOUS SECTIONS
-\section{[tc] Distance bounds via eigenvalue concentration}
-\label{sec:distance_bounds}
-
-\subsection{[tc] Asymptotics of the \texorpdfstring{$\boldsymbol{6j}$}{6j} symbols}
-
-In order to prove \cref{cor:asym_6j} is will be useful to have a bound on the quantity $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which directly relates the sextuple of Young diagrams $(\ya,\yb,\yc,\yd,\ye,\yf)$ to the eigenvalues of $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
-\begin{lem}
-    \label{lem:asym_sixj_helper}
-    To begin let $X,Y,Z \geq 0$ be positive semidefinite $n\times n$ matrices and let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of the matrices $(X, Y, X+Y, Z, X+Y+Z,Y+Z)$.
-    Then for all sextuples of Young diagrams, $(\ya,\yb,\yc,\yd,\ye,\yf)$, with sizes satisfying
-    \begin{equation}
-        \label{eq:yd_k_sizes}
-        k = \sye = \sya + \syb + \syd = \sya + \syf = \syc + \syd,
-    \end{equation}
-    we have (assuming $\tee \neq 0$) the following bounds
-    \begin{align}
-        \label{eq:hex_6j_bound}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
-        &\leq \norm{\abcdefsymbol}_{\infty}, \\
-        \label{eq:hex_rel_ent_bound}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
-        &\leq \polyk{n(n-1)} \exp\left(-\frac{k}{4} R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}\right),
-    \end{align}
-    where
-    \begin{equation}
-        R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} = \frac{1}{4}\left[\kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}
-        + \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}
-        + \kl{\frac{\ya \oplus \yf}{k}}{\frac{\ea\oplus \ef}{\tee}}
-        + \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}\right].
-    \end{equation}
-\end{lem}
-\begin{proof}
-    A combination of \cref{lem:varphi_tet_main_ineq} and \cref{prop:tet_psum_ineq} implies the bound
-    \begin{equation}
-        \label{eq:abs_quad_bound}
-        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
-        \leq \norm{\abcdefsymbol}_{\infty} \left(\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) \times \vp_{\yc}(\ec)\vp_{\yd}(\ed) \times \vp_{\ye}(\ee) \times \vp_{\ya}(\ea)\vp_{\yf}(\ef)\right)^{\frac{1}{4}}.
-    \end{equation}
-    To prove \cref{eq:hex_6j_bound}, note that each of $\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)$, $\vp_{\yc}(\ec)\vp_{\yd}(\ed)$, $\vp_{\ye}(\ee)$, and $\vp_{\ya}(\ea)\vp_{\yf}(\ef)$ is upper bounded by $\frac{\tee^k}{k!}$ because they each sum to $\frac{\tee^k}{k!}$ when summing over the corresponding sets of Young diagrams with sizes fixed by \cref{eq:yd_k_sizes} (see also \cref{eq:binomial_trace}).
-    Applying these upper bounds to \cref{eq:abs_quad_bound} (and multiplying by $\frac{k!}{\tee^k}$) gives \cref{eq:hex_6j_bound}.
-
-    For the proof of \cref{eq:hex_rel_ent_bound}, we use the multinomial distribution bound from \cref{prop:multinomial_bound} to obtain
-    \begin{equation}
-        \vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)
-        \leq \polyk{3\binom{n}{2}}
-        \frac{\ea_1^{\ya_1}}{\ya_1!}\cdots\frac{\ea_n^{\ya_n}}{\ya_n!}
-        \frac{\eb_1^{\yb_1}}{\yb_1!}\cdots\frac{\eb_n^{\yb_n}}{\yb_n!}
-        \frac{\ed_1^{\yd_1}}{\yd_1!}\cdots\frac{\ed_n^{\yd_n}}{\yd_n!}
-        = \polyk{3\binom{n}{2}} \frac{\tee^{k}}{k!}
-        m_{\ya \oplus \yb \oplus \yd}(\ea \oplus \eb \oplus \ed).
-    \end{equation}
-    Then applying the relative entropy bound from the proof of \cref{prop:eig_est} yields
-    \begin{align}
-        \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed)}
-        &\leq \polyk{3\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yb \oplus \yd}{k}}{\frac{\ea\oplus \eb \oplus \ed}{\tee}}\right].
-    \end{align}
-    Analogously, we obtain
-    \begin{align}
-        \frac{k!}{\tee^k}{\vp_{\yc}(\ec)\vp_{\yd}(\ed)}
-        &\leq\polyk{2\binom{n}{2}} \exp\left[ - k \kl{\frac{\yc \oplus \yd}{k}}{\frac{\ec \oplus \ed}{\tee}}\right], \\
-        \frac{k!}{\tee^k}{\vp_{\ya}(\ea)\vp_{\yf}(\ef)}
-        &\leq\polyk{2\binom{n}{2}}\exp\left[ - k \kl{\frac{\ya \oplus \yf}{k}}{\frac{\ea\oplus \ef}{\tee}}\right], \\
-        \frac{k!}{\tee^k}{\vp_{\ye}(\ee)}
-        &\leq\polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\ye}{k}}{\frac{\ee}{\tee}}\right].
-    \end{align}
-    Applying these bounds to \cref{eq:abs_quad_bound} and using $\norm{\abcdefsymbol}_{\infty} \leq 1$, we obtain \cref{eq:hex_rel_ent_bound}
-\end{proof}
-
-\begin{proof}[Proof of \cref{cor:asym_6j}]
-    First we prove the claimed inverse polynomial lower bound, and then afterwards prove the exponential decay.
-
-    Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
-    Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all sextuples of Young diagrams satisfying \cref{eq:yd_k_sizes} produces
-    \begin{equation}
-        \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) = \frac{\tee^k}{k!}.
-    \end{equation}
-    Therefore, the sextuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over this $k$-dependent domain of summation, which we denote by $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$, must satisfy
-    \begin{equation}
-        \frac{k!}{\tee^k}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \geq \frac{1}{(k+1)^{6\rank[\ee]}}
-    \end{equation}
-    where $(k+1)^{6\rank[\ee]}$ is a crude upper bound on the number of terms in the above summation which are non-zero as there are at most $(k+1)^{r}$ Young diagrams with size at most $k$ and depth at most $r$ (note that each of $\vp_{\ya}(\ea), \vp_{\yb}(\eb), \vp_{\yd}(\ed),\vp_{\yf}(\ef), \vp_{\yc}(\ec)$ and $\vp_{\ye}(\ee)$ are respectively only non-zero if the depth of the corresponding Young diagram is at most the rank of the corresponding set of eigenvalues and $\rank[\ee]$ is always the maximum possible rank).
-    Therefore, applying \cref{eq:hex_6j_bound} in \cref{lem:asym_sixj_helper} gives
-    \begin{equation}
-        \label{eq:n_independent_inverse_poly}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \geq \frac{1}{(k+1)^{6\rank[\ee]}},
-    \end{equation}
-    while \cref{eq:hex_rel_ent_bound} in \cref{lem:asym_sixj_helper} gives
-    \begin{equation}
-        \exp\left( -kR_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right)
-        \geq \frac{1}{(k+1)^{n(n-1)}}\frac{1}{(k+1)^{6\rank[\ee]}}.
-    \end{equation}
-    Thus we have demonstrated the existence of a sequence of sextuples of Young diagrams for which (i) $\norm{\abcdefsymbolk}_{\infty}$ satisfies the claimed inverse polynomial lower bound, and also (ii) $R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \to 0$ which implies the convergence claim:
-    \begin{equation}
-        \frac{\ya_k}{k} \to \frac{a}{\tee}, \quad
-        \frac{\yb_k}{k} \to \frac{b}{\tee}, \quad
-        \frac{\yc_k}{k} \to \frac{c}{\tee}, \quad
-        \frac{\yd_k}{k} \to \frac{d}{\tee}, \quad
-        \frac{\ye_k}{k} \to \frac{e}{\tee}, \quad
-        \frac{\yf_k}{k} \to \frac{f}{\tee}.
-    \end{equation}
-
-    We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ when $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ converges to some non-tetrahedral eigenvalues.
-    It will be slightly easier to prove the exponential decay of $\norm{\abcdefsymbolk}_{2}$ which is actually a bit stronger than necessary.
-    Without loss of generality, we can assume the Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ satisfy the size constraints \cref{eq:yd_k_sizes} as before (since otherwise $\abcdefsymbolk = 0$).
-    Then from \cref{cor:random_matrices_tet}, we conclude that for \textit{any} eigenvalues $(\ea,\eb,\ed)$,
-    \begin{equation}
-        \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{2}^{2} \vp_{\ya_k}(a)\vp_{\yb_k}(b)\vp_{\yd_k}(d)
-        = \frac{\dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n})}{\dim (V_{\ye_k}^{n})}
-        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}
-            \vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z).
-    \end{equation}
-    As in the proof of \cref{thm:approx_tet} we first we bound the dimensions of the representations by $\frac{\dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n})}{\dim (V_{\ye_k}^{n})} \leq \dim (V_{\ya_k}^{n} \ot V_{\yb_k}^{n} \ot V_{\yd_k}^{n}) \leq \polyk{3\binom{n}{2}}$.
-    Then we upper bound the average of $\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)$ with the maximum of the absolute value.
-    Together this gives
-    \begin{equation}
-        \norm{\abcdefsymbolk}_{2}^{2} \vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z)\in  \\\orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
-    \end{equation}
-    As this bound holds for all eigenvalues $(\ea,\eb,\ed)$, we can freely choose, for each $k$, a particular triple of eigenvalues $(\ea^*,\eb^*,\ed^*)$ which ensures
-    \begin{equation}
-        \frac{k!}{\Tr[\ee^{*}]^k} \vp_{\ya_k}(\ea^*)\vp_{\yb_k}(\eb^*)\vp_{\yd_k}(\ed^*) \geq \frac{1}{\polyk{3n}}.
-    \end{equation}
-    where we are denoting the sum $\Tr[\ea^{*}]+\Tr[\eb^*]+\Tr[\ed^*]$ with $\Tr[\ee^{*}]$ by a slight abuse of notation as no eigenvalues $\ee^*$ have been choosen here.
-    That such a choice can always be made follows from the normalization condition
-    \begin{equation}
-        \sum_{\substack{\ya,\yb,\yd \\ \sya+\syb+\syd = k}}\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) = \frac{(\tea+\teb+\ted)^k}{k!},
-    \end{equation}
-    and noting that there are at most $\polyk{3n}$ such triples $(\ya,\yb,\yd)$ of Young diagrams in the sum (indeed it suffices to choose $(\ea^*,\eb^*,\ed^*)$ to maximize $\vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed)$).
-    After this choice is made, we obtain the upper bound
-    \begin{equation}
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n} \frac{\Tr[\ee^{*}]^k}{k!} \max_{\substack{(X,Y,Z) \in \\\orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
-    \end{equation}
-    Applying \cref{eq:hex_rel_ent_bound} from \cref{lem:asym_sixj_helper} here produces
-    \begin{equation}
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
-    \end{equation}
-    where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
-
-    Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$.
-    Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*})$ are tetrahedral eigenvalues, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ and therefore
-    \begin{equation}
-        \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k r\right),
-    \end{equation}
-    which proves the desired exponential decay.
-\end{proof}
-
-\color{black}
-
 
 \appendix
 %\section{Review of previous work of eigenvalues of sums}
