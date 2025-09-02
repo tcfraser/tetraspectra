@@ -254,7 +254,7 @@ The tensor product of two irreducible representations admits a unique decomposit
 where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions $c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$. 
 Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$.
 In particular, the decomposition in \cref{eq:tensor_product} is an orthogonal decomposition. 
-We let $\iota_{\ya\yb}^{\yc} : C_{\ya \yb}^\yc \ot V_\yc \to V_{\ya} \ot V_{\yb}$ denote the corresponding isometry and $P_{\ya \yb}^\yc = \iota_{\ya\yb}^{\yc} \iota_{\ya\yb}^{\yc;\dagger}$ the corresponding orthogonal projection operator.
+We let $\iota_{\ya\yb}^{\yc} : C_{\ya \yb}^\yc \ot V_\yc \to V_{\ya} \ot V_{\yb}$ denote the corresponding isometry and $\Pi_{\ya \yb}^\yc = \iota_{\ya\yb}^{\yc} \iota_{\ya\yb}^{\yc;\dagger}$ the corresponding orthogonal projection operator.
 Using this notation, we have for all $g \in G$
 \begin{equation}
     \label{eq:operator product}
@@ -281,20 +281,19 @@ Triple tensor products can be decomposed in two alternative ways:
         \bigoplus_{\yf, \ye} (C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf)\ot V_\ye.
     \end{split}
 \end{align}
-We will denote the corresponding orthogonal projectors by $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$, respectively (the letters $\yc$ and $\yf$ will always be associated to these decompositions):
+We will denote the corresponding orthogonal projectors by $P_{\ya \yb \yd}^{\ye ; \yc}$ and $Q_{\ya \yb \yd}^{\ye ; \yf}$, respectively (the letters $\yc$ and $\yf$ will always be associated to these decompositions):
 \begin{align}
     \begin{split}
         \label{eq:double_projs}
-        \Pi_{\ya\yb\yd}^{\ye;\yc}
-        &\coloneqq P^{\ye}_{\ya\yb\yd} (P^{\yc}_{\ya\yb} \ot \id_{V_{\yd}^{n}})
-        = (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})(P^{\ye}_{\yc\yd} \ot \id_{C^{\yc}_{\ya\yb}})(\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}, \\
-        \Pi_{\ya\yb\yd}^{\ye;\yf}
-        &\coloneqq P^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot P^{\yf}_{\yb\yd})
-        = (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})(P^{\ye}_{\ya\yf} \ot \id_{C^{\yf}_{\yb\yd}})(\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}. \\
+        P_{\ya\yb\yd}^{\ye;\yc}
+        &\coloneqq \Pi^{\ye}_{\ya\yb\yd} (\Pi^{\yc}_{\ya\yb} \ot \id_{V_{\yd}^{n}})
+        = (\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})(\Pi^{\ye}_{\yc\yd} \ot \id_{C^{\yc}_{\ya\yb}})(\iota_{\ya\yb}^{\yc}\ot\id_{V_{\yd}^n})^{\dagger}, \\
+        Q_{\ya\yb\yd}^{\ye;\yf}
+        &\coloneqq \Pi^{\ye}_{\ya\yb\yd} (\id_{V_{\ya}^{n}} \ot \Pi^{\yf}_{\yb\yd})
+        = (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})(\Pi^{\ye}_{\ya\yf} \ot \id_{C^{\yf}_{\yb\yd}})(\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})^{\dagger}. \\
     \end{split}
 \end{align}
-%TC: This never happens, I think. %When $\ya, \yb, \yd$ are clear from the context, we will use the shorthand notation $\Pi^{\ye ; \yc}, \Pi^{\ye ; \yf}$.
-For fixed $\ya,\yb,\yd$ and $\yc, \yf, \ye$, consider the composition of these two projectors $\Pi_{\ya \yb \yd}^{\ye ; \yc}$ and $\Pi_{\ya \yb \yd}^{\ye ; \yf}$.
+For fixed $\ya,\yb,\yd$ and $\yc, \yf, \ye$, consider the composition of these two projectors $P_{\ya \yb \yd}^{\ye ; \yc}$ and $Q_{\ya \yb \yd}^{\ye ; \yf}$.
 This composition induces a $G$-equivariant linear map of the type
 \begin{equation}
     (C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye) \ot V_\ye \to (C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf)\ot V_\ye.
@@ -320,7 +319,7 @@ Concretely, we will define $\abcdefsymbol$ by the formula
 which ensures
 \begin{equation}
     \label{eq:prod_proj_6j}
-    \Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf} =
+    P_{\ya\yb\yd}^{\ye;\yc}Q_{\ya\yb\yd}^{\ye;\yf} =
     (\id_{V_{\ya}^n}\ot \iota_{\yb\yd}^{\yf})
     (\iota_{\ya\yf}^{\ye} \ot \id_{C^{\yf}_{\yb\yd}})
     (\abcdefsymbol \ot V_{\ye}^{n})
@@ -453,7 +452,7 @@ Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of 
 It is  convenient to introduce the following functions of two matrices,
 \begin{equation}
     \vp^{\ya \yb}_\yc(X, Y) =
-    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\yb(Y)) P_{\ya\yb}^\yc.
+    \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\yb(Y)) \Pi_{\ya\yb}^\yc.
 \end{equation}
 
 \begin{prop}
@@ -468,13 +467,13 @@ It is  convenient to introduce the following functions of two matrices,
 \begin{proof}
     For the first statement, note that
     \begin{equation}
-        \sum_{\yc} P_{\ya\yb}^\yc = \id_{V_{\ya}} \ot \id_{V_{\yb}},
+        \sum_{\yc} \Pi_{\ya\yb}^\yc = \id_{V_{\ya}} \ot \id_{V_{\yb}},
     \end{equation}
     which then implies
     \begin{align}
         \begin{split}
             \sum_\yc \vp^{\ya \yb}_\yc(X, Y) 
-            &= \sum_\yc \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc, \\
+            &= \sum_\yc \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))\Pi_{\ya\yb}^\yc, \\
             &= \Tr_{V_\ya \ot V_\yb} (\Phi_\ya(X) \ot \Phi_\ya(Y)), \\
             &= \vp_\ya(X) \vp_\yb(Y).
         \end{split}
@@ -483,8 +482,8 @@ It is  convenient to introduce the following functions of two matrices,
     \begin{align}
         \begin{split}
             \vp^{\ya \yb}_\yc(X, Y)
-            &= \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc, \\
-            &= \Tr_{V_\ya \ot V_\yb}  P_{\ya\yb}^\yc (\Phi_\ya(X) \ot \Phi_\ya(Y))P_{\ya\yb}^\yc.
+            &= \Tr_{V_\ya \ot V_\yb}  (\Phi_\ya(X) \ot \Phi_\ya(Y))\Pi_{\ya\yb}^\yc, \\
+            &= \Tr_{V_\ya \ot V_\yb}  \Pi_{\ya\yb}^\yc (\Phi_\ya(X) \ot \Phi_\ya(Y))\Pi_{\ya\yb}^\yc.
         \end{split}
     \end{align}
     Hence, $\vp^{\ya \yb}_\yc(X, Y)$ is the trace of the orthogonal restriction of the non-negative Hermitian operator $(\Phi_\ya(X) \ot \Phi_\ya(Y))$ to the subspace $(C_{\ya \yb} \ot V_\yc) \subseteq V_\ya \ot V_\yb$, meaning $\vp^{\ya \yb}_\yc(X, Y) \geq 0$ as claimed.
@@ -499,25 +498,32 @@ It is  convenient to introduce the following functions of two matrices,
     \end{equation}
 \end{thm}
 \begin{proof}
-    Let $k=\syc$ and let $\rho_k$ denote the representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $(\mathbb{C}^n)^{\ot k}$, and $P^\yc = \iota_{\yc}\iota_{\yc}^{\dagger}$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
-    Here we use the fact that
+    Let $k=\syc$ and let $\rho_k$ denote the representation of the monoid $(S_k \times {\rm Mat}_n(\mathbb{C}))$ on the space $(\mathbb{C}^n)^{\ot k}$, and $\Pi^\yc = \iota_{\yc}\iota_{\yc}^{\dagger}$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
+    Recall that $\dim(W_{\yx}) = \syx! / H_{\yx}$.
+    Then we have for all $k$ and $X \in {\rm Mat}_n(\mathbb{C}))$,
+    \begin{align}
+        \begin{split}
+            &\Tr_{(\mathbb{C}^n)^{\ot k}}[\Pi_{\yx} \rho_{k}(X)] 
+            = \Tr_{(\mathbb{C}^n)^{\ot k}}[\Pi_{\yx} X^{\ot k}] \\
+            &\qquad = \dim(W_{\yx}) \Tr_{V_\yx}[\pi_\yx(X)] = k! \vp_{\yx}(X).
+        \end{split}
+    \end{align}
+    Moreover, we have 
     \begin{equation}
-        (X+Y)^{\ot k} = \sum_{l=0}^k \frac{k!}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
+        (X+Y)^{\ot k} = \sum_{l=0}^k \frac{1}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
     \end{equation}
     which is a non-commutative counterpart of the binomial decomposition. 
-    Recalling that $\dim(W_{\yx}) = \syx! / H_{\yx}$, we compute
+    We compute
     \begin{align}
         \begin{split}
             &\vp_\yc(X+Y) \\
-            &\quad= H_\yc^{-1} \Tr_{V_{\yx}} \pi_\yc(X+Y), \\
-            &\quad= (H_\yc \dim(W_\yc))^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc \rho_k(X+Y), \\
-            &\quad= k!^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc  (X+Y)^{\ot k}, \\
-            &\quad= k!^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}}  P^\yc \sum_{l=0}^k \sum_{\sigma \in S_k} \frac{k!}{l! (k-l)!}\rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
-            &\quad= \sum_{l=0}^k \sum_{\sigma \in S_k} (l! (k-l)!)^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
-            &\quad= \sum_{l=0}^k \sum_{\sigma \in S_k} (l! (k-l)!)^{-1} \Tr_{(\mathbb{C}^n)^{\ot k}} P^\yc (X^{\ot l} \ot Y^{\ot (k-l)}), \\
-            &\quad= \sum_{\ya, \yb}  (\sya! \syb!)^{-1} \Tr_{(W_\ya \ot V_\ya) \ot (W_\yb \ot V_\yb)}  P_{\ya \yb}^\yc  \pi_\ya(X) \ot \pi_\yb(Y), \\
-            &\quad= \sum_{\ya, \yb}  (H_\ya H_\yb)^{-1} \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)), \\
-            &\quad= \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} P_{\ya \yb}^\yc  (\vp_\ya(X) \ot \vp_\yb(Y)), \\
+            &\quad= \frac{1}{k!} \Tr_{(\mathbb{C}^n)^{\ot k}} \Pi^\yc  (X+Y)^{\ot k}, \\
+            &\quad= \frac{1}{k!}\sum_{l=0}^k \sum_{\sigma \in S_k} \frac{1}{l! (k-l)!} \Tr_{(\mathbb{C}^n)^{\ot k}} \Pi^\yc \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1}), \\
+            &\quad= \frac{1}{k!}\sum_{l=0}^k \sum_{\sigma \in S_k} \frac{1}{l! (k-l)!} \Tr_{(\mathbb{C}^n)^{\ot k}} \Pi^\yc (X^{\ot l} \ot Y^{\ot (k-l)}), \\
+            &\quad= \sum_{l=0}^k \frac{1}{l! (k-l)!} \sum_{\substack{\ya\vdash l \\ \yb \vdash k-l}} \Tr_{(\mathbb{C}^n)^{\ot k}} \Pi^\yc (\Pi^{\ya}X^{\ot l} \ot \Pi^{\yb} Y^{\ot (k-l)}), \\
+            &\quad= \sum_{\ya, \yb}  \frac{1}{\sya! \syb!} \Tr_{(\mathbb{C}^n)^{\ot k}} \Pi^\yc (\Pi^{\ya}X^{\ot l} \ot \Pi^{\yb} Y^{\ot (k-l)}), \\
+            &\quad= \sum_{\ya, \yb}  \frac{1}{H_\ya H_\yb} \Tr_{V_\ya \ot V_\yb} \Pi_{\ya \yb}^\yc  (\pi_\ya(X) \ot \pi_\yb(Y)), \\
+            &\quad= \sum_{\ya, \yb}  \Tr_{V_\ya \ot V_\yb} \Pi_{\ya \yb}^\yc  (\Phi_\ya(X) \ot \Phi_\yb(Y)), \\
             &\quad= \sum_{\ya, \yb}  \yf_{\ya \yb}^\yc(X,Y).
         \end{split}
     \end{align}
@@ -530,7 +536,7 @@ For a 6-tuple of positive weights, we introduce a function of three matrices,
     \vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)
     \coloneqq
     \Tr_{V_\ya \ot V_\yb \ot V_\yd}
-    \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}.
+    P_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))Q_{\ya \yb \yd}^{\ye ; \yc}.
 \end{equation}
 Note that the following size equalities are necessary conditions for $\abcdefsymbol$ being non-zero and thus $\vp^{\ya \yb \yd}_{\yc \ye \yf}$ being non-zero:
 \begin{equation}
@@ -561,14 +567,15 @@ Even when restricted to $(\hermp{n})^{\times 3}$, functions $\vp^{\ya \yb \yd}_{
             &= \sum_{\yc}\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z), \\
             &=
             \sum_\yc \Tr_{V_\ya \ot V_\yb \ot V_\yd}
-            \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            Q_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))P_{\ya \yb \yd}^{\ye ; \yc}, \\
             &=
             \Tr_{V_\ya \ot V_\yb \ot V_\yd}
-            \Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z)).
+            Q_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z)).
         \end{split}
     \end{align}
-    Here we have used the fact that $\sum_\yc \Pi_{\ya \yb \yd}^{\ye ; \yc} = P^\ye_{\ya \yb \yd}$, where $P^\ye_{\ya \yb \yd}$ is the orthogonal projector to the isotypical component of $\ye$ in the triple tensor product. We have also used the fact that $P^\ye_{\ya \yb \yd} \Pi_{\ya \yb \yd}^{\ye ; \yf} = \Pi_{\ya \yb \yd}^{\ye ; \yf}$. The right hand side in the equation above is the trace of the orthogonal restriction of the non-negative Hermitian operator
-    $(\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))$ to the image of the projector $\Pi_{\ya \yb \yd}^{\ye ; \yf}$. Hence, it is a non-negative real number. The proof for functions $\vp^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z)$ is similar.
+    Here we have used the fact that $\sum_\yc P_{\ya \yb \yd}^{\ye ; \yc} = \Pi^\ye_{\ya \yb \yd}$, where $\Pi^\ye_{\ya \yb \yd}$ is the orthogonal projector to the isotypical component of $\ye$ in the triple tensor product. We have also used the fact that $\Pi^\ye_{\ya \yb \yd} Q_{\ya \yb \yd}^{\ye ; \yf} = Q_{\ya \yb \yd}^{\ye ; \yf}$. 
+    The right hand side in the equation above is the trace of the orthogonal restriction of the non-negative Hermitian operator $(\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))$ to the image of the projector $Q_{\ya \yb \yd}^{\ye ; \yf}$. 
+    Hence, it is a non-negative real number. The proof for functions $\vp^{\ya\yb\yd}_{\yc\ye \_}(X,Y,Z)$ is similar.
 \end{proof}
 
 \subsubsection{Estimates for \texorpdfstring{$\boldsymbol{\vp^{\ya \yb \yd}_{\yc \ye \yf}}$}{phiabcdef}}
@@ -576,31 +583,31 @@ Even when restricted to $(\hermp{n})^{\times 3}$, functions $\vp^{\ya \yb \yd}_{
 Here we derive bounds on the magnitude of $\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)$.
 To begin we need the following proposition.
 \begin{prop}\label{prop:cauchy_schwarz_ineq_double_proj}
-    Let $\Pi_1, \Pi_2$ be two orthogonal projections, and $\Omega$ be a non-negative Hermitian operator. Then,
+    Let $P, Q$ be two orthogonal projections, and $\Omega$ be a non-negative Hermitian operator. Then,
     \begin{equation}
         \label{eq:cauchy_schwarz_ineq_double_proj}
-        \abs{\Tr(\Pi_1 \Omega \Pi_2)} \leq \norm{\Pi_1\Pi_2}_{\infty} (\Tr  \Pi_1\Omega)^{\frac{1}{2}}(\Tr  \Omega \Pi_2)^{\frac{1}{2}}.
+        \abs{\Tr(P \Omega Q)} \leq \norm{PQ}_{\infty} (\Tr  P\Omega)^{\frac{1}{2}}(\Tr  \Omega Q)^{\frac{1}{2}}.
     \end{equation}
 \end{prop}
 \begin{proof}
     We compute,
     \begin{align}
         \begin{split}
-            \abs{\Tr(\Pi_1 \Omega \Pi_2)}
-            &= |\Tr(\Pi_1 \Pi_2 \Omega \Pi_1)|, \\
-            &= |\Tr(\Pi_1 \Pi_2 \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}}  \Pi_1)|, \\
-            &\leq (\Tr  \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega \Pi_1)^{\frac{1}{2}}, \\
-            &= (\Tr  \Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)^{\frac{1}{2}} (\Tr \Pi_1 \Omega)^{\frac{1}{2}},
+            \abs{\Tr(P \Omega Q)}
+            &= |\Tr(P Q \Omega P)|, \\
+            &= |\Tr(P Q \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}}  P)|, \\
+            &\leq (\Tr  P Q \Omega Q P)^{\frac{1}{2}} (\Tr P \Omega P)^{\frac{1}{2}}, \\
+            &= (\Tr  P Q \Omega Q P)^{\frac{1}{2}} (\Tr P \Omega)^{\frac{1}{2}},
         \end{split}
     \end{align}
-    where in the third line we have used the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(\Pi_2)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $\Pi_2 \Omega \Pi_2$ with eigenvalues $\omega_j \geq 0$. Then,
+    where in the third line we have used the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(Q)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $Q \Omega Q$ with eigenvalues $\omega_j \geq 0$. Then,
     \begin{align}
         \begin{split}
-            \Tr(\Pi_1 \Pi_2 \Omega \Pi_2 \Pi_1)
-            &= \Tr  (\Pi_2 \Pi_1^2 \Pi_2)(\Pi_2 \Omega \Pi_2), \\
-            &= \sum_j \omega_j \norm{\Pi_1 \Pi_2 e_j}^2, \\
-            &\leq \norm{\Pi_1 \Pi_2}_\infty^2  \Tr(\Pi_2 \Omega \Pi_2), \\
-            &= \norm{\Pi_1 \Pi_2}_\infty^2 \Tr(\Omega \Pi_2).
+            \Tr(P Q \Omega Q P)
+            &= \Tr  (Q P^2 Q)(Q \Omega Q), \\
+            &= \sum_j \omega_j \norm{P Q e_j}^2, \\
+            &\leq \norm{P Q}_\infty^2  \Tr(Q \Omega Q), \\
+            &= \norm{P Q}_\infty^2 \Tr(\Omega Q).
         \end{split}
     \end{align}
     This completes the proof.
@@ -618,8 +625,8 @@ Applying this proposition to the definition of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,
     Under the assumption that $X,Y,Z \geq 0$, we have that $\Omega_{\ya\yb\yd}^{X,Y,Z} \geq 0$.
     Therefore, \cref{prop:cauchy_schwarz_ineq_double_proj} implies
     \begin{equation}
-        \abs{\Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]}
-        \leq \norm{\Pi_{\ya\yb\yd}^{\ye;\yc}\Pi_{\ya\yb\yd}^{\ye;\yf}}_{\infty} \Tr[\Pi_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}\Tr[\Pi_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}
+        \abs{\Tr[P_{\ya\yb\yd}^{\ye;\yc}Q_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]}
+        \leq \norm{P_{\ya\yb\yd}^{\ye;\yc}Q_{\ya\yb\yd}^{\ye;\yf}}_{\infty} \Tr[P_{\ya\yb\yd}^{\ye;\yc}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}\Tr[Q_{\ya\yb\yd}^{\ye;\yf}\Omega_{\ya\yb\yd}^{X,Y,Z}]^{\frac{1}{2}}
     \end{equation}
     which is equivalent to the claim due to \cref{eq:prod_proj_6j}.
 \end{proof}
@@ -650,7 +657,7 @@ These bounds, in conjunction with \cref{prop:varphi_tet_main_ineq} will help us 
         \label{eq:psum_yf_over_ye}
         \begin{split}
             \sum_{\ye} \vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)
-            &= \sum_{\ye}\Tr[P^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))], \\
+            &= \sum_{\ye}\Tr[\Pi^{\ye}_{\ya\yf} (\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z))], \\
             &= \Tr[\Phi_{\ya}(X) \ot \Phi^{\yb\yd}_{\yf}(Y,Z)], \\
             &= \vp_{\ya}(X)\vp_{\yf}^{\yb\yd}(Y,Z).
         \end{split}
@@ -743,10 +750,10 @@ By abuse of notation, we write $\vp_\yx(x)=\vp_\yx(X)$.
 For each $x$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive weights of $U(n)$ with size $\syx =k$:
 \begin{equation}
     \label{eq:schur_weyl_dist}
-    P_\ex(\yx) \coloneqq \frac{k!}{|x|^k} \vp_\yx(x) = \frac{\Tr[P_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]}.
+    \SW{\ex}(\yx) \coloneqq \frac{k!}{|x|^k} \vp_\yx(x) = \frac{\Tr[\Pi_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]}.
 \end{equation}
 This probability distribution is known as the \textit{Schur-Weyl} distribution for $x$ of degree $k = \syx$ \cite{odonnell2016efficient}.
-A key property of the Schur-Weyl distribution $P_{\ex}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
+A key property of the Schur-Weyl distribution $\SW{\ex}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
 \begin{equation}
     m_{\ex}(\yx) \coloneqq \frac{\syx!}{\tex^{k}}\frac{\ex_1^{\yx_1}}{\yx_1!}\frac{\ex_2^{\yx_2}}{\yx_2!}\cdots \frac{\ex_n^{\yx_n}}{\yx_n!}.
 \end{equation}
@@ -754,7 +761,7 @@ A key property of the Schur-Weyl distribution $P_{\ex}(\yx)$ is that it behaves 
     \label{prop:multinomial_bound}
     Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
     \begin{equation}
-        P_{\ex}(\yx) \leq \dim V_{\yx}^{n} m_{\ex}(\yx).
+        \SW{\ex}(\yx) \leq \dim V_{\yx}^{n} m_{\ex}(\yx).
     \end{equation}
 \end{prop}
 \begin{proof}
@@ -779,13 +786,13 @@ The following is known result is known as eigenvalue or spectrum estimation \cit
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
     Let $x \in \mathbb{R}_+^n, \yx \in \Lambda^*_{++}$ with $\syx = k$.
-    Then the Schur-Weyl distribution $P_{\ex}(\yx)$ satisfies
+    Then the Schur-Weyl distribution $\SW{\ex}(\yx)$ satisfies
     \begin{equation}
-        P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^{\yx}}{p^\ex}\right).
+        \SW{\ex}(\yx) \leq \polyk{\binom{n}{2}} \exp\left(-k \kl{p^{\yx}}{p^\ex}\right).
     \end{equation}
 \end{prop}
 \begin{proof}
-    From \cref{prop:multinomial_bound} we have the bound $P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx)$.
+    From \cref{prop:multinomial_bound} we have the bound $\SW{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx)$.
     What remains is to bound the multinomial distribution $m_{\ex}(\yx)$ using the Kullback-Leibler divergence.
     To this end, note that $k = \syx = \yx_1 + \cdots + \yd_n$ which implies
     \begin{align}
@@ -802,25 +809,25 @@ The following is known result is known as eigenvalue or spectrum estimation \cit
     \end{align}
     Since $m_{\yx}(\yx) \in [0,1]$ is a probability, we have the bound $m_{\yx}(\yx) \leq 1$ and therefore we obtain the claimed result:
     \begin{equation}
-        P_{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx) \leq \polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
+        \SW{\ex}(\yx) \leq \polyk{\binom{n}{2}} m_{\ex}(\yx) \leq \polyk{\binom{n}{2}}\exp\left[ - k \kl{\frac{\yx}{k}}{\frac{\ex}{\tex}} \right].
     \end{equation}
 \end{proof}
-In summary, the eigenvalue estimation result captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $P_{\ex}(\yx)$ for large $k$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $p^{\yx} = \yx/\syx$, is similar to the eigenvalue distribution $p^{\ex} = \ex/\tex$.
+In summary, the eigenvalue estimation result captures the fact that, like the multinomial distribution $m_x(\yx)$, the Schur-Weyl distribution $\SW{\ex}(\yx)$ for large $k$ is sharply concentrated around Young diagrams $\yx$ whose distribution, $p^{\yx} = \yx/\syx$, is similar to the eigenvalue distribution $p^{\ex} = \ex/\tex$.
 
-The following proposition compares Schur-Weyl measures $P_\ex$ and $P_\ey$ for different $\ex, \ey \in \mathbb{R}_n^+$.
+The following proposition compares Schur-Weyl measures $\SW{\ex}$ and $\SW{\ey}$ for different $\ex, \ey \in \mathbb{R}_n^+$.
 \begin{lem}[Eigenvalue separation]
     \label{lem:eig_sep}
     Let $\ex, \ey \in \mathbb R_n^{+}$ satisfy $\tau = \tex = \tey$.
     For any non-negative integer $k\geq 1$,
     \begin{equation}
         \label{eq:eig_sep}
-        \BC(P_\ex, P_\ey) \leq \polyk{\binom{n}{2}} \BC(p^\ex,p^\ey)^{k}.
+        \BC(\SW{\ex}, \SW{\ey}) \leq \polyk{\binom{n}{2}} \BC(p^\ex,p^\ey)^{k}.
     \end{equation}
 \end{lem}
 \begin{proof}
     From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound_2}, we have
     \begin{equation}
-        \BC(P_{\ex},P_{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
+        \BC(\SW{\ex},\SW{\ey}) \leq \polyk{\binom{n}{2}} \BC_k(m_x,m_y).
     \end{equation}
     where $\BC_k(m_\ex,m_\ey)$ is the Bhattacharyya coefficient between the multinomial distributions $m_{\ex}$ and $m_{\ey}$.
     Since Bhattacharyya coefficients are multiplicative with respect to multinomial distributions, i.e.,
@@ -831,10 +838,10 @@ The following proposition compares Schur-Weyl measures $P_\ex$ and $P_\ey$ for d
 \end{proof}
 In subsequent sections we will frequently use a \textit{weaker} approximation which holds for all Young diagrams $\yx$ of size $k$:
 \begin{equation}
-    \sqrt{P_{\ex}(\yx)P_{\ey}(\yx)} \leq \polyk{\binom{n}{2}} \BC(p^{\ex},p^{\ey})^{k},
+    \sqrt{\SW{\ex}(\yx)\SW{\ey}(\yx)} \leq \polyk{\binom{n}{2}} \BC(p^{\ex},p^{\ey})^{k},
 \end{equation}
-which follows from \cref{lem:eig_sep} because $\sqrt{P_{\ex}(\yx)P_{\ey}(\yx)} \leq \BC(P_\ex, P_\ey)$ by definition.
-Restating this bound in terms of $\varphi_{\ya}(\ex) = \frac{\tex^{k}}{k!}P_{\ex}(\yx)$, we observe
+which follows from \cref{lem:eig_sep} because $\sqrt{\SW{\ex}(\yx)\SW{\ey}(\yx)} \leq \BC(\SW{\ex}, \SW{\ey})$ by definition.
+Restating this bound in terms of $\varphi_{\ya}(\ex) = \frac{\tex^{k}}{k!}\SW{\ex}(\yx)$, we observe
 \begin{equation}
     \label{eq:weak_eig_sep_varphi}
     \sqrt{\vp_{\ex}(\yx)\vp_{\ey}(\yx)} \leq \polyk{\binom{n}{2}} \frac{\BC(\ex,\ey)^{\syx}}{\syx!},
@@ -877,8 +884,8 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
     \begin{align}
         \begin{split}
             \mathbb{E}_{x,y} \frac{\vp^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
-            &= \frac{1}{\dim V_\yc} \mathbb{E}_{x,y}   \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) P_{\ya \yb}^\yc, \\
-            &= \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb} \frac{1}{\dim V_\yc} \Tr P_{\ya \yb}^\yc, \\
+            &= \frac{1}{\dim V_\yc} \mathbb{E}_{x,y}   \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) \Pi_{\ya \yb}^\yc, \\
+            &= \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb} \frac{1}{\dim V_\yc} \Tr \Pi_{\ya \yb}^\yc, \\
             &= c_{\ya \yb}^\yc \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}.
         \end{split}
     \end{align}
@@ -888,10 +895,10 @@ Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_
             \mathbb{E}_{x,y,z} \frac{\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
             &=
             \frac{1}{{\dim V_\ye}} \mathbb{E}_{x,y,z}
-            \Tr\Pi_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            \Tr Q_{\ya \yb \yd}^{\ye ; \yf} (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))P_{\ya \yb \yd}^{\ye ; \yc}, \\
             &=
             \frac{1}{{\dim V_\ye}}  \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}
-            \frac{\vp_\yd(y)}{\dim V_\yd}   \Tr   \Pi_{\ya \yb \yd}^{\ye ; \yf} \Pi_{\ya \yb \yd}^{\ye ; \yc}, \\
+            \frac{\vp_\yd(y)}{\dim V_\yd} \Tr Q_{\ya \yb \yd}^{\ye ; \yf} P_{\ya \yb \yd}^{\ye ; \yc}, \\
             &=
             \norm{\abcdefsymbol}_2^2 \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}
             \frac{\vp_\yd(y)}{\dim V_\yd}.
@@ -1547,7 +1554,7 @@ Perhaps a different approach for deriving the Ponzano-Regge formula, such as tho
 \textbf{Eigenvalue estimation:}
 Our approach to proving the above theorems relies on the technique of \textit{eigenvalue estimation}, a probabilistic technique developed in the context of quantum information theory for estimating the eigenvalues of positive semidefinite matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
 The eigenvalue estimation technique relies heavily on the concept of Schur-Weyl duality which describes the decomposition of the $k$-th tensor power of the $n$-dimensional complex vector space $\mathbb C^{n}$, which supports representations of both the symmetric group $S_k$ by permutation of tensor factors and the group of unitary matrices $\U(n)$ (or more generally invertible complex matrices $\GL(n,\mathbb C)$), into irreducible invariant subspaces indexed by Young diagrams $\yx = (\yx_1, \ldots, \yx_n)$ with $k$ boxes and at most $n$ rows.
-Given a positive semidefinite matrix $X$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[P_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
+Given a positive semidefinite matrix $X$ with eigenvalues $\ex = (\ex_1, \ldots, \ex_n)$, one can analogously decompose the $k$-th tensor power of $X$ into the same irreducible invariant subspaces indexed by $\yx$ and then investigate the aptly named Schur-Weyl distribution, $p_{\ex}(\yx) \coloneqq \Tr[\Pi_{\yx}X^{\ot k}]/\Tr[X^{\ot k}]$, which measures the relative proportion of the decomposed pieces of $X^{\ot k}$ and depends only on the  eigenvalues $\ex$ of $X$.
 The technique of eigenvalue estimation relies on the fact that the Schur-Weyl distribution concentrates strongly around those Young diagrams $\yx$ which are proportional to eigenvalues $\ex$ and that this concentration strengthens as the sizes of the Young diagrams grow to infinity \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient}.
 Applying the eigenvalue estimation technique to the original Horn problem was first done by \citeauthor{christandl2008quantum} \cite{christandl2008quantum}.
 In this paper, we develop a technique called \textit{eigenvalue separation} which relates the similarity between two Schur-Weyl distributions, $p_{\ex}(\yx)$ and $p_{\ey}(\yx)$, to the similarity of the underlying eigenvalues, $x$ and $y$, and apply this technique to tetrahedral Horn problem and obtain \cref{thm:iff_tet}.
@@ -1805,7 +1812,7 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 %    \end{equation}
 %    Now we apply the positivity preserving map $\Tr(P_{\yx} \cdot )$ to \cref{prop:operator_ineq} to obtain
 %    \begin{equation}
-%        \Tr[P_{\ex}(X+Y+Z)^{\ot k}] + \Tr[P_{\ex}Y^{\ot k}] \geq \Tr[P_{\ex}(X+Y)^{\ot k}] + \Tr[P_{\ex}(Y+Z)^{\ot k}]
+%        \Tr[\SW{\ex}(X+Y+Z)^{\ot k}] + \Tr[\SW{\ex}Y^{\ot k}] \geq \Tr[\SW{\ex}(X+Y)^{\ot k}] + \Tr[\SW{\ex}(Y+Z)^{\ot k}]
 %    \end{equation}
 %    and since $\yx$ has at most $n$ rows, we conclude $\dim(W_{\yx}) \neq 0$ and thus \cref{eq:schur_ineq} holds.
 %\end{proof}
@@ -2557,9 +2564,9 @@ The following proposition follows directly from the binomial theorem (\cref{thm:
 \end{prop}
 \begin{proof}
     The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:binomial}.
-    For the second identity, involving a summation over $\yc$, follows from the resolution of the identity $\sum_{\yc \vdash \sya+\syb} P^{\yc}_{\ya\yb} = \id_{V_{\ya}^{n}\ot V_{\yb}^{n}}$:
+    For the second identity, involving a summation over $\yc$, follows from the resolution of the identity $\sum_{\yc \vdash \sya+\syb} \Pi^{\yc}_{\ya\yb} = \id_{V_{\ya}^{n}\ot V_{\yb}^{n}}$:
     \begin{equation}
-        \vp_{\ya}(X)\vp_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[P^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y),
+        \vp_{\ya}(X)\vp_{\yb}(Y) = \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)] = \sum_{\yc} \Tr[\Pi^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))] = \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y),
     \end{equation}
     where the last equality is just the definition of $\vp^{\ya\yb}_{\yc}(X,Y)$.
     Once again, the condition that $\syc = \sya + \syb$ is implicitly present.
@@ -2576,7 +2583,7 @@ The following proposition follows directly from the binomial theorem (\cref{thm:
     which is the operator version of the character product formula $\chi_{\ya}(X)\chi_{\yb}(X) = \sum_{\yc} c^{\yc}_{\ya\yb} \chi_{\yc}(X)$.
 \end{rem}
 
-Under the assumption that the matrices $X$ and $Y$ are positive semidefinite, we can conclude that the real number $\vp^{\ya\yb}_{\yc}(X,Y)$ is also non-negative because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[P^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $P^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
+Under the assumption that the matrices $X$ and $Y$ are positive semidefinite, we can conclude that the real number $\vp^{\ya\yb}_{\yc}(X,Y)$ is also non-negative because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[\Pi^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $\Pi^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
 Moreover, we note that $\vp^{\ya\yb}_{\yc}(X,Y) = 0$ whenever the Littlewood-Richardson coefficient $c^{\yc}_{\ya\yb}$ vanishes.
 These observations imply the following necessary condition for compatibility of eigenvalues for the original Horn problem.
 \begin{prop}
