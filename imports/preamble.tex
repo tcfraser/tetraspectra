@@ -31,7 +31,8 @@
     pdfusetitle,
     bookmarks=true,
     bookmarksnumbered=true,
-    bookmarksopen=true
+    bookmarksopen=true,
+    breaklinks=true
 ]{hyperref}
 
 % authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
@@ -62,6 +63,8 @@
 \DeclareFieldFormat[article,incollection]{title}%
     {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
 % ===== AMSTHM CONFIG =================
+\usepackage{thmtools}
+\usepackage{thm-restate}
 \usepackage{amsthm}
 \usepackage[capitalise]{cleveref} % https://stackoverflow.com/questions/6499504/cleveref-fails-for-theorem-environments-sharing-the-same-counter
 \theoremstyle{plain}
@@ -113,7 +116,7 @@
   \let\cref\crtcref
 }
 % ===== LABELS FOR REFERENCES =========
-\usepackage[inline]{showlabels}
+\usepackage[inline, left]{showlabels} % use final to disable package
 \renewcommand{\showlabelfont}{\ttfamily\scriptsize} %https://tex.stackexchange.com/questions/472619/showlabels-change-of-font-size
 \def\showlabelsetlabel#1{\raise1ex\hbox{\showlabelfont \textcolor{blue}{#1}}}
 % ======== TIKZ & TIKZIT ==============
@@ -127,7 +130,9 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\proj}{\mathbb P} % projective space
 \DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\Herm}{Herm}
+\DeclareMathOperator{\Horn}{Horn}
+\DeclareMathOperator{\Tetra}{Tetra}
+\DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
@@ -179,12 +184,15 @@
 
 \newcommand{\herm}[1]{\mathcal H_{#1}}
 \newcommand{\hermp}[1]{\mathcal H^{+}_{#1}}
+\newcommand{\domweights}[1]{\Lambda^{\geq}_{#1}}
+\newcommand{\domweightsp}[1]{\Lambda^{+}_{#1}}
+\newcommand{\undomweights}[1]{\mathbb Z^{\geq}_{#1}}
+\newcommand{\undomweightsp}[1]{\mathbb Z^{+}_{#1}}
+\newcommand{\eigs}[1]{\mathbb R^{\geq}_{#1}}
 \newcommand{\eigsp}[1]{\mathbb R^{+}_{#1}}
-\newcommand{\weights}[1]{\mathbb Z^{#1}}
-\newcommand{\domweights}[1]{\mathbb Z_{\mathrm{dec}}^{#1}}
-\newcommand{\ydia}[2][\infty]{\Upsilon_{#2,#1}}
+
 \newcommand{\defnsty}[1]{\textit{#1}}
-\newcommand{\yaug}[2]{#1[#2]}
+
 \newcommand{\ot}{\otimes} % shorthand
 \newcommand{\vp}{\varphi} % shorthand
 
@@ -241,7 +249,7 @@
 % NOTE: There are also related commands located in the tikz/config/tensors.tikzdefs file which are also needed for the diagrams
 \newcommand{\tightoctuple}[1]{
 \begingroup
-\arraycolsep=1.5pt
+\arraycolsep=0.5pt
 \renewcommand{\arraystretch}{0.3}
 \begin{array}{@{}c@{}cccccc@{}c@{}}#1\end{array}
 \endgroup
