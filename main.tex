@@ -586,27 +586,28 @@ To begin we need the following proposition.
     Let $P, Q$ be two orthogonal projections, and $\Omega$ be a non-negative Hermitian operator. Then,
     \begin{equation}
         \label{eq:cauchy_schwarz_ineq_double_proj}
-        \abs{\Tr(P \Omega Q)} \leq \norm{PQ}_{\infty} (\Tr  P\Omega)^{\frac{1}{2}}(\Tr  \Omega Q)^{\frac{1}{2}}.
+        \abs{\Tr(P \Omega Q)} \leq \norm{PQ}_{\infty} (\Tr P\Omega)^{\frac{1}{2}}(\Tr Q\Omega )^{\frac{1}{2}}.
     \end{equation}
 \end{prop}
 \begin{proof}
-    We compute,
+    Using the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm, we obtain
     \begin{align}
         \begin{split}
             \abs{\Tr(P \Omega Q)}
-            &= |\Tr(P Q \Omega P)|, \\
-            &= |\Tr(P Q \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}}  P)|, \\
-            &\leq (\Tr  P Q \Omega Q P)^{\frac{1}{2}} (\Tr P \Omega P)^{\frac{1}{2}}, \\
-            &= (\Tr  P Q \Omega Q P)^{\frac{1}{2}} (\Tr P \Omega)^{\frac{1}{2}},
+            &= \abs{\Tr(P \Omega Q P)}, \\
+            &= \abs{\Tr(P \Omega^{\frac{1}{2}}) (\Omega^{\frac{1}{2}} Q P)}, \\
+            &\leq (\Tr P \Omega P)^{\frac{1}{2}} (\Tr P Q \Omega Q P)^{\frac{1}{2}}, \\
+            &\leq (\Tr P \Omega)^{\frac{1}{2}} (\Tr P Q \Omega Q)^{\frac{1}{2}}.
         \end{split}
     \end{align}
-    where in the third line we have used the Cauchy-Schwarz inequality for the Hilbert-Schmidt norm. Let $U = \mathrm{im}(Q)$ and choose a basis of eigenvectors $\{ e_j\}$ of the operator $Q \Omega Q$ with eigenvalues $\omega_j \geq 0$. Then,
+    Now let $\{ w_j \}_{j=1}^{n}$ denote a set of orthonormal eigenvectors for the operator $Q \Omega Q$ with eigenvalues $\omega_j \geq 0$. 
+    Then,
     \begin{align}
         \begin{split}
-            \Tr(P Q \Omega Q P)
-            &= \Tr  (Q P^2 Q)(Q \Omega Q), \\
-            &= \sum_j \omega_j \norm{P Q e_j}^2, \\
-            &\leq \norm{P Q}_\infty^2  \Tr(Q \Omega Q), \\
+            \Tr(P Q \Omega Q)
+            &= \Tr (Q P^2 Q)(Q \Omega Q), \\
+            &= \sum_j \omega_j \norm{P Q w_j}^2, \\
+            &\leq \norm{P Q}_\infty^2  \sum_{j} \omega_j, \\
             &= \norm{P Q}_\infty^2 \Tr(\Omega Q).
         \end{split}
     \end{align}
@@ -1313,6 +1314,7 @@ which proves the desired exponential decay on the operator norm because of the s
 
 \cleardoublepage
 
+{\color{blue!50!black}
 \section{[tc] Introduction}
 
 \textbf{Horn's problem:}
@@ -1590,6 +1592,8 @@ Our contribution, theorefore, is to provide a family of necessary and sufficient
 \textbf{Organization of the paper:}
 
 {\color{red} TODO }
+
+}
 
 \appendix
 %\section{Review of previous work of eigenvalues of sums}
