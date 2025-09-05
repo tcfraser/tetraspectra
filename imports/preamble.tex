@@ -16,7 +16,8 @@
 % biblatex
 \usepackage[
     backend=biber,
-    style=alphabetic,
+    style=numeric-comp,
+    sorting=none,
     doi=false,
     url=false,
     isbn=false
@@ -116,7 +117,7 @@
   \let\cref\crtcref
 }
 % ===== LABELS FOR REFERENCES =========
-\usepackage[inline, left]{showlabels} % use final to disable package
+\usepackage[inline, final]{showlabels} % use final to disable package
 \renewcommand{\showlabelfont}{\ttfamily\scriptsize} %https://tex.stackexchange.com/questions/472619/showlabels-change-of-font-size
 \def\showlabelsetlabel#1{\raise1ex\hbox{\showlabelfont \textcolor{blue}{#1}}}
 % ======== TIKZ & TIKZIT ==============
