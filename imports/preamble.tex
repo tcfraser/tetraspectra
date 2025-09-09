@@ -271,4 +271,23 @@
 \begin{array}{@{}ccc@{}}#1\end{array}
 \endgroup
 }
+
+\newcommand{\tightsinglesubstack}[2]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \end{array}
+\endgroup
+}
+\newcommand{\tightdoublesubstack}[3]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \\ {\scriptscriptstyle #3} \end{array}
+\endgroup
+}
+\newcommand{\tighttriplesubstack}[4]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \\ {\scriptscriptstyle #3} \\ {\scriptscriptstyle #4} \end{array}
+\endgroup
+}
 % =====================================

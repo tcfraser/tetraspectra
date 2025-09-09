@@ -91,7 +91,7 @@ there are additional inequalities necessarily satisfied by $(\ea,\eb,\ec,\ed,\ee
 First, observe that the Horn inequalities \cite{horn1962eigenvalues} apply to the eigenvalues of the triples of Hermitian matrices associated to each face: i.e., to $(\ea,\eb,\ec)$, $(\eb,\ed,\ef)$, $(\ea,\ef,\ee)$, and $(\ec,\ed,\ee)$.
 Second, there exists inequalities known as submodular or strongly subadditive inequalities which constrain the eigenvalues of the quadruple of Hermitian matrices $(Y,X+Y,Y+Z,X+Y+Z)$ whenever $X,Y,Z$ are taken to be non-negative Hermitian matrices \cite{berndt2015hlawka, tie2011rearrangement, sagnol2013approximation, bouhtou2008optimization, friedland2013submodular, lewin2014family, sra2017determinantoverflow}.
 These inequalities are readily applicable to the tetrahedral Horn problem under the identification ($X=A$, $Y=B$ and $Z=D$) wherein they constrain, respectively, the eigenvalues $(\eb,\ec,\ee,\ef)$ of the matrices $(B,C,E,F)$ while ignoring the eigenvalues of $A$ and $D$.
-More scarce are inequalities which additionally incorporate the eigenvalues $(\ea,\ed)$ of the matrices $(A,D)$ such as Minkowski-like determinant inequality \cite[Section 6.2]{niculescu2023functions} (originally due to \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening, sra2016reverseoverflow}), or applications of Ptolemny's inequality \cite{schoenberg1952remark} or the Cayley-Menger determinant inequality \cite[Equation 5.2]{sitharam2018handbook} to the space of $n\times n$ Hermitian matrices equipped with the Hilbert-Schmit inner product.
+More scarce are inequalities which additionally incorporate the eigenvalues $(\ea,\ed)$ of the matrices $(A,D)$ such as Minkowski-like determinant inequality \cite[Section 6.2]{niculescu2023functions} (originally due to \citeauthor{courtade2016strengthening} \cite{courtade2016strengthening, sra2016reverseoverflow}), or applications of Ptolemny's inequality \cite{schoenberg1952remark} or the Cayley-Menger determinant inequality \cite[Equation 5.2]{sitharam2018handbook} to the space of $n\times n$ Hermitian matrices equipped with the Hilbert-Schmidt inner product.
 While each of these previously known inequalities can be viewed as necessary conditions for the tetrahedral Horn problem, to the best of our knowledge, they remain insufficient for the tetrahedral Horn problem when $n\geq 3$.
 
 \subsubsection*{The case of \texorpdfstring{$2 \times 2$}{2 by 2} matrices}
@@ -170,8 +170,10 @@ Additionally, we define the following distance measure:
     D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq
     \min_{\substack{C=A+B \\ F=B+D \\ E = C+D \\ E = A+F}}
     \begin{array}{c}
-        [\norm{ \ea - \eig A }_{2}^2 + \norm{ \eb - \eig B }_{1}^2 + \norm{ \ec - \eig C }_{1}^2 + \\
-        \norm{ \ed - \eig D }_{1}^2 + \norm{ \ee - \eig E }_{1}^2 + \norm{ \ef - \eig F }_{1}^2]^{\frac{1}{2}},
+        [
+        \norm{ \ea - \eig A }_{1}^2 + \norm{ \eb - \eig B }_{1}^2 + \norm{ \ec - \eig C }_{1}^2 + \\
+        \norm{ \ed - \eig D }_{1}^2 + \norm{ \ee - \eig E }_{1}^2 + \norm{ \ef - \eig F }_{1}^2
+        ]^{\frac{1}{2}},
     \end{array}
 \end{equation}
 and note $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ only if $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$.
@@ -202,9 +204,9 @@ The associativity isomorphism between triple tensor products $(V_\ya \ot V_\yb) 
 Specifically, a $6j$-symbol depends on six irreducible representations, $V_{\ya}, V_{\yb}, V_{\yc}, V_{\yd}, V_{\ye}$, and $V_{\yf}$, and is the linear map between multiplicity spaces of the type
 \begin{equation*}
     \abcdefsymbol :
-    C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc} \to C^{\ye}_{\ya, \yf} \ot C^{\yf}_{\yb,\yd},
+    C^{\yc}_{\ya\yb} \ot C^{\ye}_{\yc\yd} \to C^{\ye}_{\ya\yf} \ot C^{\yf}_{\yb\yd},
 \end{equation*}
-corresponding to the block-wise components of the canonical isomorphism from $\bigoplus_{\yc} C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc}$ to $\bigoplus_{\yf} C^{\yc}_{\ya,\yb} \ot C^{\ye}_{\yd,\yc}$.
+corresponding to the block-wise components of the canonical isomorphism from $\bigoplus_{\yc} C^{\yc}_{\ya\yb} \ot C^{\ye}_{\yc\yd}$ to $\bigoplus_{\yf} C^{\ye}_{\ya\yf} \ot C^{\yf}_{\yb\yd}$.
 Here we note a necessary condition for $\abcdefsymbol \neq 0$ is the satisfaction of the following size conditions:
 \begin{align}
     \label{eq:size_conditions_tet}
@@ -236,7 +238,7 @@ Our first result is a necessary and sufficient condition for membership in $\Tet
         \frac{1}{\tee} D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \leq 6 \sqrt{3} n \sqrt{\frac{\ln \polyk{}}{k}}.
     \end{equation}
 \end{restatable}
-Note that in \cref{eq:tet_iff} the sum over $\yc, \ye, \yf$ on the right-hand side in \cref{eq:tet_iff} is finite since there are only a finite number of triples $(\yc, \ye, \yf)$ for which the size conditions in \cref{eq:size_conditions_tet} hold and thus for which the $6j$-symbol is nonvanishing.
+Note that in \cref{eq:tet_iff} the sum over $\yc, \ye, \yf$ on the right-hand side in \cref{eq:tet_iff} is finite since there are only a finite number of triples $(\yc, \ye, \yf)$ for which the size conditions in \cref{eq:size_conditions_tet} hold and thus for which the $6j$-symbol is non-vanishing.
 \Cref{thm:tet_iff} establishes an infinite set of inequalities which characterize the set $\Tetra^+(n)$.
 To the best of our knowledge, this the first system of inequalities which provides not only necessary but also sufficient conditions for $(\ea,\eb,\ec,\ed,\ee,\ef) \in \Tetra^+(n)$.
 Furthermore, for fixed $k = \sya + \syb + \syd$, the corresponding finite set of inequalities describes an outer approximation to $\Tetra^+(n)$ which becomes exact as $k \to \infty$.
@@ -247,7 +249,7 @@ where they play a foundational role in the quantum theory of angular momentum \c
 \begin{restatable}{thm}{sixjestimates}
     \label{thm:6j_estimates}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra^+(n)$.
-    Then, there exists a sequence of 6-tuples of Young diagrams
+    Then, there exists a sequence of $6$-tuples of Young diagrams
     $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\undomweightsp{n})^6$ with $\abs{\ya_k}+\abs{\yb_k}+\abs{\yd_k} = k$ such that
     \begin{equation}
         \label{eq:young_diagram_convergence}
@@ -266,7 +268,7 @@ where they play a foundational role in the quantum theory of angular momentum \c
     \end{equation}
     for some $C, r > 0$.
 \end{restatable}
-\Cref{thm:6j_estimates} is an instance of a the correspondence between geometry and representation theory in the sense of geometric quantization \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
+\Cref{thm:6j_estimates} is an instance of a correspondence between geometry and representation theory in the sense of geometric quantization \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
 Indeed, the asymptotic behavior of representation theoretic objects ($6j$-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem).
 The statement of \cref{thm:6j_estimates} should be compared with a similar statement available for $G=\SU(2)$, namely the proof of the \citeauthor{ponzano1968semiclassical} asymptotic formula \cite{ponzano1968semiclassical} by \citeauthor{roberts1999classical} \cite{roberts1999classical}.
 There, the exponential decay statement is similar to ours, but the polynomial bound statement is more precise for the sequence of scaled weights
@@ -304,7 +306,7 @@ Also, while the statement of \cref{thm:6j_estimates} is implicitly contained in 
 We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
 
 More recently, \citeauthor{alekseev2025multiple} have investigated a few variants of the tetrahedral Horn problem and are referred to as \textit{multiple} Horn problems in \cite{alekseev2025multiple}.
-Specifically, \citeauthor{alekseev2025multiple} focus on two variants, the \textit{multiplicative multiple Horn problem} concerning the singular values of products of invertible matrices, and the \textit{tropical multiple Horn problem} concernining singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
+Specifically, \citeauthor{alekseev2025multiple} focus on two variants, the \textit{multiplicative multiple Horn problem} concerning the singular values of products of invertible matrices, and the \textit{tropical multiple Horn problem} concerning singular values of concatenations of weighted planar networks \cite{alekseev2025multiple}.
 The tetrahedral Horn problem we consider here is termed the \textit{additive} multiple Horn problem in the language of \cite{alekseev2025multiple}.
 
 \subsubsection*{Organization of the paper}
@@ -372,7 +374,7 @@ MC and TCF acknowledge financial support from the European Research Council (ERC
 %Before continuing, it is worth emphasizing the similarities and differences between our result and the asymptotic formula proven by \citeauthor{roberts1999classical} above \cite{roberts1999classical}.
 %First and foremost, our result goes beyond that of \citeauthor{roberts1999classical} in the sense that it applies to the higher-rank Lie group $\U(n)$ for $n \geq 3$.
 %Moreover, our result, even when restricted to the case for $\SU(2)$, goes beyond the statement proven by \citeauthor{roberts1999classical} in the sense our result is applicable to \textit{irrational} eigenvalues/edge-lengths, whereas the former is only applicable to \textit{integer}, or with a minor re-scaling, \textit{rational} eigenvalues/edge-lengths.
-%ike the Pozano-Regge formula, our result is different in that it merely promises the \textit{existence} of a sextuple of sequences of Young diagrams, $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$, converging to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, whereas the result of \citeauthor{roberts1999classical} provides a concrete statement about the particular sequence of \textit{scaled} Young diagrams $(k\ya, k\yb, k\yc, k\yd, k\ye, k\yf)$.
+%ike the Pozano-Regge formula, our result is different in that it merely promises the \textit{existence} of a tuple of sequences of Young diagrams, $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)$, converging to the eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$, whereas the result of \citeauthor{roberts1999classical} provides a concrete statement about the particular sequence of \textit{scaled} Young diagrams $(k\ya, k\yb, k\yc, k\yd, k\ye, k\yf)$.
 %Moreover, our result provides a polynomial lower bound on the value of the $\norm{\tightcurlysixj{ \ya & \yb & \yc \\ \yd & \ye & \yf}}$ and does not provide an asymptotic formula which would serve as the proper generalization of the \citeauthor{ponzano1968semiclassical} formula above \cite{ponzano1968semiclassical}.
 %The \citeauthor{ponzano1968semiclassical} formula for $\SU(2)$ was traditionally obtained using the method of \textit{stationary phases} which relies on both an integral formula for the $6j$-symbol with exponential integrand along with a geometric understanding of the \textit{isolated} critical points for the exponential phase \cite{ponzano1968semiclassical,gurau2008ponzano}.
 %In the case of $\SU(2)$ with generic edge-lengths, there is a formulation involving exactly \textit{two} isolated critical points corresponding the $\mathrm{SO}(3)$-orbit $[\tau]$ of a Euclidean tetrahedron $\tau$ with given edge-lengths and (ii) the $\mathrm{SO}(3)$-orbit $[\tau']$ of the Euclidean tetrahedron $\tau'$ which is the mirror-image of the tetrahedron $\tau$ with the same fixed side lengths.
@@ -479,29 +481,30 @@ Recall that for Hermitian vector spaces $V_{1}, V_{2}$ and an operator $O: V_{1}
 %\end{equation}
 \subsubsection{\texorpdfstring{$G=\U(n)$}{G=U(n)} and  functions \texorpdfstring{$\vp_\yx$}{philambda}}
 
-For $G=\U(n)$, dominant weights are parametrized by non-increasing arrays of integers, $\yx=(\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$, where $\yx_i \in \mathbb Z$ and $\yx_i \geq \yx_{i+1}$ for all $i$.
+For $G=\U(n)$, dominant weights are parameterized by non-increasing arrays of integers, $\yx=(\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$, where $\yx_i \in \mathbb Z$ and $\yx_i \geq \yx_{i+1}$ for all $i$.
 In particular, the first fundamental weight $\varpi_1=(1, 0, \ldots, 0)$ corresponds to the defining representation of $\U(n)$ on $V_{\varpi_1} = \mathbb{C}^n$.
 
 We say that a dominant weight $\yx$ is positive if each of its components is positive (i.e., $\yx_n \geq 0$), and we denote the set of positive dominant weights by
 \begin{equation}
-    \undomweightsp{n} \coloneqq \{ \yx=(\yx_1, \yx_2, \ldots, \yx_n) | \yx_i \in \mathbb Z, \yx_i \geq \yx_{i+1}, \yx_n \geq 0. \}
+    \undomweightsp{n} \coloneqq \{ \yx=(\yx_1, \yx_2, \ldots, \yx_n) \mid \yx_i \in \mathbb Z, \yx_i \geq \yx_{i+1}, \yx_n \geq 0. \}
 \end{equation}
 For positive dominant weights, we let
 \begin{equation}
     \syx \coloneqq \sum_{i=1}^n \yx_i,
-    \quad
-    \ell(\yx) \coloneqq |\{i; \yx_i \neq 0\}|,
+    \qquad
+    \text{and}
+    \qquad
+    \ell(\yx) \coloneqq \card{\{i \mid \yx_i \neq 0\}},
 \end{equation}
 where $\syx$ is called the size of $\yx$ and $\ell(\yx)$ is called the depth of $\yx$.
 Henceforth we use the notation $\yx \vdash_{n} k$ to denote the set of positive dominant weights with size $k$ and length at most $n$, and $\yx \vdash k$ to denote the set of positive dominant weights with size $k$ and arbitrary length.
-Positive weights $\yx$ are then equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts, or as Young diagrams with $\syx$ boxes and at most $\ell(\yx)$ rows.
-Representations $\pi_\yx(g)$ corresponding to positive dominant weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$.
-That is,
+Positive dominant weights, $\yx \in \undomweightsp{n}$, are equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts and depicted as Young diagrams with $\syx$ boxes and at most $\ell(\yx)$ rows.
+Representations $\pi_\yx(g)$ corresponding to positive dominant weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$ such that
 \begin{equation}
     \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
 \end{equation}
 for all $X,Y \in \Mat_n(\mathbb{C})$.
-If $X$ is a Hermitian matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$ then the character of $X$ for the representation $\pi_{\yx}$, denoted by $\chi_{\yx}(X)$, is equal to the Schur-polynomial of its eigenvalues $\ex$, denotd by $s_{\yx}(\ex)$.
+If $X$ is a Hermitian matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$ then the character of $X$ for the representation $\pi_{\yx}$, denoted by $\chi_{\yx}(X)$, is equal to the Schur-polynomial of its eigenvalues $\ex$, denoted by $s_{\yx}(\ex)$.
 Moreover, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
 \begin{equation}
     \label{eq:weyl_dim}
@@ -514,15 +517,18 @@ Note that in the decomposition of the tensor product representation $V_{\ya}\ot 
     \syc = \sya + \syb.
 \end{equation}
 
-Recall that for Young diagrams (or partitions) $\yx$ with fixed size $\syx=k$ label isomorphism classes of irreducible representations $W_\yx$ of the symmetric group $S_k$.
+Recall that Young diagrams, $\yx$, with fixed size $\syx=k$ and at most $\ell(\yx) \leq k$ rows also label isomorphism classes of irreducible representations, $W_\yx$, of the symmetric group $S_k$.
 The dimensions of these representations are given by the formula
 \begin{equation}
     \label{eq:dim_W_hook_product}
     \dim(W_\yx) = \frac{\syx!}{H_{\yx}},
-    \quad
+    \qquad
+    \text{with}
+    \qquad
     H_{\yx} = \prod_{b \in \yx} h_\yx(b),
 \end{equation}
-where $h_\yx(b)$ is the hook length of box $b$ and is defined as the number of boxes to the right and below $b$ in $\yx$ plus one for itself, and $H_{\yx}$ is referred to as the hook product of $\yx$.
+where $h_\yx(b)$ is the hook length of box $b$ and is defined as the number of boxes to the right and below $b$ in $\yx$ plus one for itself.
+We refer to $H_{\yx}$ as the hook product of $\yx$.
 For the future use, we introduce rescaled representations
 \begin{equation}
     \Phi_\yx(X) = \frac{1}{H_{\yx}} \pi_\yx(X),
@@ -531,12 +537,12 @@ and rescaled characters
 \begin{equation}
     \vp_\yx(X) = \Tr_{V_\yx}  \Phi_\yx(X) = \frac{1}{H_{\yx}}  \chi_\yx(X).
 \end{equation}
-Note that
+This rescaling of characters produces the normalization conditions
 \begin{equation}
     \label{eq:varphi_normalization}
-    \sum_{\yx \vdash k} \vp_\yx(X) = \frac{[\Tr(X)]^k}{k!},
+    \sum_{\yx \vdash k} \vp_\yx(X) = \frac{(\Tr X)^k}{k!},
     \quad \text{and} \quad
-    \sum_\yx \vp_\yx(X) = \exp(\Tr(X)).
+    \sum_\yx \vp_\yx(X) = \exp(\Tr X).
 \end{equation}
 Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot \U(n))$-modules
 \begin{equation}
@@ -544,21 +550,20 @@ Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot \U(n))$-
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in $(\mathbb{C}^n)^{\ot k}$.
-For each $\yx$, we let
+For each Young diagram $\yx$ with $k$ boxes and at most $n$ rows, we let
 \begin{equation}
     \iota_{\yx} : W_{\yx} \ot V_{\yx} \to (\mathbb{C}^n)^{\ot k},
 \end{equation}
 denote the unique isometric $S_k \times \U(n)$-equivariant map from $W_{\yx} \ot V_{\yx}$ to $(\mathbb{C}^n)^{\ot k}$.
 Since all $\U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot \Mat_n(\mathbb{C}))$.
-Applying it to an element $X \in \Mat_n(\mathbb{C})$, we obtain
+Applying this isomorphism to an element $X \in \Mat_n(\mathbb{C})$, we obtain
 \begin{equation}
     \label{eq:X^k}
-    X^{\ot k} = \bigoplus_{\yx \vdash_{n} k} \iota_{\yx} (\id_{W_\yx} \ot \pi_\yx(X)) \iota_{\yx}^{\dagger},
+    X^{\ot k} = \bigoplus_{\yx \vdash_{n} k} \iota_{\yx} (\id_{W_\yx} \ot \pi_\yx(X)) \iota_{\yx}^{\dagger}.
 \end{equation}
-Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields \cref{eq:varphi_normalization}.
+Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields then yields the normalization condition in \cref{eq:varphi_normalization}.
 
-Henceforth we denote the space of Hermitian matrices of size $n$ by $\herm{n}$ and the space of positive-semidefinite Hermitian matrices by $\hermp{n}$.
-Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of $X$.
+Recall we denote the space of $n\times n$ Hermitian matrices by $\herm{n}$ and the subset of non-negative $n\times n$ Hermitian matrices by $\hermp{n}$ and given a Hermitian matrix $X \in \herm{n}$, $\eig X$ denotes the ordered tuple of eigenvalues of $X$.
 %The set of possible eigenvalues of $n \times n$ Hermitian matrices is denoted by
 %\begin{equation}
 %    \eigs{n} \coloneqq \{ \ex = (\ex_1, \ldots, \ex_n) \in \mathbb R^{n} \mid \ex_1 \geq \cdots \geq \ex_n \}.
@@ -580,12 +585,12 @@ Given a Hermitian matrix $X \in \herm{n}$, $\eig(X)$ denotes the eigenvalues of 
 %\end{equation}
 
 \begin{prop}
-    For $X \in \hermp{n}, \yx \in \undomweightsp{n}$, operators $\pi_\yx(X)$ and $\Phi_\yx(X)$ are non-negative Hermitian operators, and functions $\vp_\yx(X)$ take non-negative real values on $\hermp{n}$.
+    For $X \in \hermp{n}, \yx \in \undomweightsp{n}$, the operator $\Phi_\yx(X)$ is Hermitian and non-negative, and $\vp_\yx(X)$ is a non-negative real value.
 \end{prop}
 
 \begin{proof}
-    By \cref{eq:X^k}, operators $\id_{W_\yx} \ot \pi_\yx(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$.
-    Hence, they are also non-negative Hermitian operators, and so are $\pi_\yx(X)$ and $\Phi_\yx(X)$.
+    By \cref{eq:X^k}, the operators $\id_{W_\yx} \ot \pi_\yx(X)$ are orthogonal restrictions of the non-negative Hermitian operator $X^{\ot k}$.
+    Hence, they are also non-negative Hermitian operators, and thus so are $\pi_\yx(X)$ and its rescaling $\Phi_\yx(X)$.
     Since $\vp_\yx(X)$ is the trace of $\Phi_\yx(X)$, it takes values in $[0, \infty)$.
 \end{proof}
 
@@ -638,7 +643,7 @@ It is  convenient to introduce the following functions of two matrices,
     Then we have for all $k$ and $X \in \Mat_n(\mathbb{C}))$,
     \begin{align}
         \begin{split}
-            \vp_{\yx}(X) 
+            \vp_{\yx}(X)
             = \frac{\dim(W_{\yx})}{k!} \Tr_{V_\yx}[\pi_\yx(X)]
             = \frac{1}{k!} \Tr_{(\mathbb{C}^n)^{\ot k}}[\Pi_{\yx} \rho_{k}(X)].
         \end{split}
@@ -648,7 +653,7 @@ It is  convenient to introduce the following functions of two matrices,
         (X+Y)^{\ot k} = \sum_{l=0}^k \frac{1}{l!(k-l)!}\sum_{\sigma \in S_k} \rho_k(\sigma) (X^{\ot l} \ot Y^{\ot (k-l)})\rho_k(\sigma^{-1})
     \end{equation}
     which is a non-commutative counterpart of the binomial decomposition.
-    We then expand 
+    We then expand
     \begin{align}
         \begin{split}
             &\vp_\yc(X+Y) \\
@@ -685,7 +690,7 @@ For a given tuple of positive dominant weights $(\ya,\yb,\yc,\yd,\ye,\yf) \in \u
     \projr (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\projl.
 \end{equation}
 Note that $\vp^{\ya \yb \yd}_{\yc \ye \yf}(X,Y,Z) = 0$ whenever $\abcdefsymbol = 0$.
-Even when restricted to $(\hermp{n})^{\times 3}$, functions $\vp^{\ya \yb \yd}_{\yc \ye \yf}$ take complex values, in general. 
+Even when restricted to $(\hermp{n})^{\times 3}$, functions $\vp^{\ya \yb \yd}_{\yc \ye \yf}$ take complex values, in general.
 However, the following is true:
 \begin{prop}
     \label{prop:non_neg_partial}
@@ -980,23 +985,24 @@ where on the right-hand side we use the unnormalized Bhattacharyya coefficient f
 For $x \in \eigsp{n}$, we define the conjugacy class $\orbit_x$ of the diagonal matrix
 $\diag(x_1, \ldots, x_n)$ under the action of the unitary group $\U(n)$:
 \begin{equation}
-    \orbit_x =\{ X= U\diag(x_1, \ldots, x_n)U^{-1} \mid U \in \U(n)\} \subset \hermp{n}.
+    \orbit_x = \{ X = U\diag(x_1, \ldots, x_n)U^{-1} \mid U \in \U(n)\} \subset \hermp{n}.
 \end{equation}
 Each conjugacy class carries a unique $\U(n)$-invariant probability measure $\mu_x$.
-This measure can be constructed as the pushforward of the probability Haar measure on $\U(n)$.
-Also, conjugacy classes are isomorphic to coadjoint orbits of $\U(n)$ and they carry canonical Duistermaat-Heckman measure proportional to $\mu_x$.
-In what follows, we will need expectation values $\expect_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\expect_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\expect_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
+This measure can be constructed as the pushforward of the Haar probability measure on $\U(n)$.
+%Also, conjugacy classes are isomorphic to coadjoint orbits of $\U(n)$ and they carry a canonical Duistermaat-Heckman measure proportional to $\mu_x$.
+We write $X \sim \orbit_x$ to indicate $X$ distributed according to the measure $\mu_x$.
+%In what follows, we will need expectation values $\expect_x$ on conjugacy classes $\orbit_x$ with repsect to the measure $\mu_x$, $\expect_{x, y}$ on $\orbit_x \times \orbit_y$ with the measure $\mu_x \times \mu_y$, and $\expect_{x,y,z}$ on $\orbit_x \times \orbit_y \times \orbit_z$ with the measure $\mu_x \times \mu_y \times \mu_z$.
 
 \begin{prop}
     \label{prop:random_matrices}
     We have,
     \begin{align}
         \begin{split}
-            \expect_x \Phi_\yx(X)
+            \tightsinglesubstack{\expect}{X \sim \orbit_{\ex}}\, \Phi_\yx(X)
             &= \frac{\vp_\yx(x)}{\dim V_\yx}  \id_{V_\yx}, \\
-            \expect_{x,y}  \frac{\vp^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
+            \tightdoublesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}\,  \frac{\vp^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
             &= c_{\ya \yb}^\yc \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}, \\
-            \expect_{x,y, z} \frac{\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
+            \tighttriplesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}{Z \sim \orbit_{\ez}}\, \frac{\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}
             &= \norm{\abcdefsymbol}_2^2 \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}
             \frac{\vp_\yd(y)}{\dim V_\yd}.
         \end{split}
@@ -1005,14 +1011,14 @@ In what follows, we will need expectation values $\expect_x$ on conjugacy classe
 \begin{proof}
     For the first equality, by Schur's Lemma we have
     \begin{equation}
-        \expect_x \Phi_\yx(X) = \int_{O_x} \Phi_\yx(X) \diff\mu_x = \vp_\yx(x) \frac{\id_{V_\yx}}{\dim V_\yx},
+        \tightsinglesubstack{\expect}{X \sim \orbit_{\ex}}\, \Phi_\yx(X) = \int_{\orbit_x} \Phi_\yx(X) \diff\mu_x = \vp_\yx(x) \frac{\id_{V_\yx}}{\dim V_\yx},
     \end{equation}
     where the proportionality is fixed by taking traces and $\vp_\yx(x)  = \Tr[\Phi_\yx(X)]$ by definition.
     For the second equality, we compute
     \begin{align}
         \begin{split}
-            \expect_{x,y} \frac{\vp^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
-            &= \frac{1}{\dim V_\yc} \expect_{x,y}   \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) \Pi_{\ya \yb}^\yc, \\
+            \tightdoublesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}\, \frac{\vp^{\ya \yb}_\yc(X, Y)}{\dim V_\yc}
+            &= \frac{1}{\dim V_\yc} \tightdoublesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}\, \Tr (\Phi_\ya(X) \ot \Phi_\yb(Y)) \Pi_{\ya \yb}^\yc, \\
             &= \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb} \frac{1}{\dim V_\yc} \Tr \Pi_{\ya \yb}^\yc, \\
             &= c_{\ya \yb}^\yc \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}.
         \end{split}
@@ -1020,9 +1026,9 @@ In what follows, we will need expectation values $\expect_x$ on conjugacy classe
     Finally, for the third equality we compute
     \begin{align}
         \begin{split}
-            &\expect_{x,y,z} \frac{\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}\\
+            &\tighttriplesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}{Z \sim \orbit_{\ez}}\, \frac{\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)}{\dim V_\ye}\\
             &\qquad=
-            \frac{1}{{\dim V_\ye}} \expect_{x,y,z}
+            \frac{1}{{\dim V_\ye}} \tighttriplesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}{Z \sim \orbit_{\ez}}\,
             \Tr \projr (\Phi_\ya(X) \ot \Phi_\yb(Y) \ot \Phi_\yd(Z))\projl, \\
             &\qquad=
             \frac{1}{{\dim V_\ye}}  \frac{\vp_\ya(x)}{\dim V_\ya}\frac{\vp_\yb(y)}{\dim V_\yb}
@@ -1034,12 +1040,16 @@ In what follows, we will need expectation values $\expect_x$ on conjugacy classe
     \end{align}
 \end{proof}
 Note that even though functions $\vp^{\ya \yb \yd}_{\yc \ye \yf}(X, Y, Z)$ are complex values, their expectation values are real and positive.
-We will not use \cref{prop:random_matrices} in subsequent proofs directly; rather we will use the following consequence of \cref{prop:random_matrices}.
+We will not use \cref{prop:random_matrices} in subsequent proofs directly; rather we will use the following consequence of \cref{prop:random_matrices} which enables us to place lower bounds on $\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}$ which complement the upper bounds derived earlier.
 \begin{lem}
     \label{lem:estimate_E_x_y_z_bound}
     For all $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\undomweightsp{n})^{\times 6}$ and all $(x,y,z) \in \mathbb R_n^{+}$,
     \begin{equation}
-        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ex)\vp_{\yb}(\ey)\vp_{\yd}(\ez) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z) \in \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
+        \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ex)\vp_{\yb}(\ey)\vp_{\yd}(\ez)
+        \leq \polyk{3\binom{n}{2}}
+        %\max_{\substack{(X,Y,Z) \in \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}
+        \tighttriplesubstack{\mathrm{max}}{X \in \orbit_{\ex}}{Y \in \orbit_{\ey}}{Z \in \orbit_{\ez}}
+        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}.
     \end{equation}
 \end{lem}
 \begin{proof}
@@ -1048,15 +1058,17 @@ We will not use \cref{prop:random_matrices} in subsequent proofs directly; rathe
         \norm{\abcdefsymbol}_{2}^{2} \vp_{\ya}(\ex)\vp_{\yb}(\ey)\vp_{\yd}(\ez)
         &=
         \frac{d_\ya d_\yb d_\yd}{d_\ye}
-        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z),
+        \tighttriplesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}{Z \sim \orbit_{\ez}}\,
+        \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z),
     \end{align}
     where $d_{\yx} \coloneqq \dim V_{\yx}$.
     The claim then follows from the bound
     \begin{align}
-        \expect_{\substack{(X,Y,Z) \sim \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}
+        \tighttriplesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}{Z \sim \orbit_{\ez}}\,
         \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
         &\leq
-        \max_{\substack{(X,Y,Z) \in \\ \orbit_{\ex} \times \orbit_{\ey} \times \orbit_{\ez}}}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
+        \tighttriplesubstack{\mathrm{max}}{X \in \orbit_{\ex}}{Y \in \orbit_{\ey}}{Z \in \orbit_{\ez}}
+        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)},
     \end{align}
     along with the dimension estimates $\dim (V_\yx) \leq (\syx + 1)^{\binom{n}{2}} \leq \polyk{\binom{n}{2}}$ for $\yx \in \{\ya,\yb,\yd\}$ from \cref{eq:unitary_irrep_dim_bound_2} and $\dim (V_{\ye}) \geq 1$.
 \end{proof}
@@ -1072,7 +1084,7 @@ For convenience, we recall \cref{thm:tet_iff} from the introduction.
     Our proof of \cref{thm:tet_iff} is divided into two parts.
     First we prove the necessity of \cref{eq:tet_iff} in \cref{sec:tet_necess}.
     Then afterwards we prove the distance bound in \cref{eq:tet_dist_bound}.
-    Providing proofs for these two claims yields the whole theorem because the satisfication of \cref{eq:tet_iff} for all $(\ya,\yb,\yd)$ with $\sya + \syb + \syd = k$ implies \cref{eq:tet_dist_bound} holds for all $k$, and thus the $k \to \infty$ limit implies $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}=0$ (because $\lim_{k \to \infty} \ln \polyk{}/k =0$) which means $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$.
+    Providing proofs for these two claims yields the whole theorem because the satisfaction of \cref{eq:tet_iff} for all $(\ya,\yb,\yd)$ with $\sya + \syb + \syd = k$ implies \cref{eq:tet_dist_bound} holds for all $k$, and thus the $k \to \infty$ limit implies $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef}=0$ (because $\lim_{k \to \infty} \ln \polyk{}/k =0$) which means $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$.
 \end{proof}
 
 \subsection{Necessary conditions}
@@ -1329,11 +1341,11 @@ Before proceeding, we prove the following lemma which will be used in both porti
 \label{sec:6j_inverse_poly}
 
 Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
-Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all sextuples of Young diagrams satisfying the size conditions \cref{eq:size_conditions_tet} produces
+Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all tuples of Young diagrams satisfying the size conditions \cref{eq:size_conditions_tet} produces
 \begin{equation}
     \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) = \frac{\tee^k}{k!}.
 \end{equation}
-Let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ denote the sextuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ in the above sum.
+Let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ denote the tuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ in the above sum.
 As there are at most $\polyk{6\rank[\ee]}$ terms in the above summation which are non-zero, we conclude
 \begin{equation}
     \label{eq:inverse_poly_varphi_lower}
@@ -1347,7 +1359,7 @@ Then by \cref{prop:varphi_tet_main_ineq}, \cref{prop:tet_psum_ineq} and \cref{eq
 Combining \cref{eq:inverse_poly_varphi_lower} and \cref{eq:inverse_poly_varphi_upper} then gives \cref{eq:n_independent_inverse_poly}.
 To prove the convergence portion of the claim, we combine \cref{lem:asym_sixj_helper} with \cref{eq:inverse_poly_varphi_lower} to obtain
 \begin{equation}
-    \exp\left(- k R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf}\right) \leq \frac{1}{\polyk{6\rank[\ee] + n(n-1)}},
+    \exp\left(- k R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right) \leq \frac{1}{\polyk{6\rank[\ee] + n(n-1)}},
 \end{equation}
 which implies $\lim_{k\to \infty} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} = 0$ which implies the convergence claim of \cref{thm:6j_estimates}.
 
@@ -1358,13 +1370,17 @@ We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ when $(\y
 Without loss of generality, we can assume the Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ satisfy the size constraints \cref{eq:size_conditions_tet} as before (since otherwise $\abcdefsymbolk = 0$).
 To begin, \cref{lem:estimate_E_x_y_z_bound} gives
 \begin{equation}
-    \norm{\abcdefsymbolk}_{2}^{2} \vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed) \leq \polyk{3\binom{n}{2}} \max_{\substack{(X,Y,Z)\in  \\\orbit_{\ea} \times \orbit_{\eb} \times \orbit_{\ed}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+    \norm{\abcdefsymbolk}_{2}^{2} \vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed)
+    \leq
+    \polyk{3\binom{n}{2}}
+    \tighttriplesubstack{\mathrm{max}}{X \in \orbit_{\ea}}{Y \in \orbit_{\eb}}{Z \in \orbit_{\ed}}
+    \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
 \end{equation}
 Now we freely choose, for each $k$, a particular triple of eigenvalues $(\ea^*,\eb^*,\ed^*)$ which ensures
 \begin{equation}
     \frac{k!}{\Tr[\ee^{*}]^k} \vp_{\ya_k}(\ea^*)\vp_{\yb_k}(\eb^*)\vp_{\yd_k}(\ed^*) \geq \frac{1}{\polyk{3n}}.
 \end{equation}
-where we are denoting the sum $\Tr[\ea^{*}]+\Tr[\eb^*]+\Tr[\ed^*]$ with $\Tr[\ee^{*}]$ by a slight abuse of notation as no eigenvalues $\ee^*$ have been choosen here.
+where we are denoting the sum $\Tr[\ea^{*}]+\Tr[\eb^*]+\Tr[\ed^*]$ with $\Tr[\ee^{*}]$ by a slight abuse of notation as no eigenvalues $\ee^*$ have been chosen here.
 That such a choice can always be made follows from the normalization condition
 \begin{equation}
     \sum_{\substack{\ya,\yb,\yd \\ \sya+\syb+\syd = k}}\vp_{\ya}(\ea)\vp_{\yb}(\eb)\vp_{\yd}(\ed) = \frac{(\tea+\teb+\ted)^k}{k!},
@@ -1372,11 +1388,21 @@ That such a choice can always be made follows from the normalization condition
 and noting that there are at most $\polyk{3n}$ such triples $(\ya,\yb,\yd)$ of Young diagrams in the sum (indeed it suffices to choose $(\ea^*,\eb^*,\ed^*)$ to maximize $\vp_{\ya_k}(\ea)\vp_{\yb_k}(\eb)\vp_{\yd_k}(\ed)$).
 Therefore, we obtain the upper bound
 \begin{equation}
-    \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n} \frac{\Tr[\ee^{*}]^k}{k!} \max_{\substack{(X,Y,Z) \in \\\orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
+    \norm{\abcdefsymbolk}_{2}^{2}
+    \leq
+    \polyk{3\binom{n}{2}+3n} \frac{\Tr[\ee^{*}]^k}{k!}
+    \tighttriplesubstack{\mathrm{max}}{X \in \orbit_{\ea^{*}}}{Y \in \orbit_{\eb^{*}}}{Z \in \orbit_{\ed^{*}}}
+    \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)}.
 \end{equation}
 Then applying \cref{lem:asym_sixj_helper} produces
 \begin{equation}
-    \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k \min_{\substack{(X,Y,Z)\in \\ \orbit_{\ea^*} \times \orbit_{\eb^*} \times \orbit_{\ed^*}}} R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right).
+    \norm{\abcdefsymbolk}_{2}^{2}
+    \leq
+    \polyk{3\binom{n}{2}+3n + n(n-1)}
+    \exp\left( - k
+        \tighttriplesubstack{\mathrm{min}}{X \in \orbit_{\ea^{*}}}{Y \in \orbit_{\eb^{*}}}{Z \in \orbit_{\ed^{*}}}
+        R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}
+    \right).
 \end{equation}
 where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
 
@@ -1466,7 +1492,7 @@ which proves the desired exponential decay on the operator norm because of the s
 %    2 \sum_{j=1}^{n}\ea_j\ed_{d-j+1} \leq \norm{\eb}_2^2 + \norm{\ee}_2^2 - \norm{\ec}_2^2- \norm{\ef}_2^2 \leq 2 \sum_{j=1}^{n}\ea_j\ed_j.
 %\end{equation}
 %\subsection{Ptolemy \& Cayley-Menger inequalities}
-%In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral sextuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
+%In this section, we prove inequalities constraining the $2$-norms $\norm{\cdot}_{2}$ of a tetrahedral tuple of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ associated to the Hermitian matrices $(A,B,C,D,E,F)$.
 %These inequalities correspond to Ptolemy's inequality and the Cayley-Menger determinant inequality for the edge-lengths of a Euclidean tetrahedron in $\mathbb R^3$.
 %These results rely on the observation that the real vector space of $n \times n$ Hermitian matrices equipped with the Hilbert-Schmidt inner product $\braket{X,Y} = \Tr(X^{\dagger} Y)$ has norm $\norm{X}_2 = \sqrt{\braket{X,X}}$ which is a function of the \textit{eigenvalues} of $X$.
 %Specifically, for any Hermitian matrix $X$ with eigenvalues $\ex$, we have $\norm{X}_2 = \norm{\ex}_2 = \left(\sum_{j=1}^{n} {\ex_j}^2\right)^{\frac{1}{2}}$.
@@ -1796,7 +1822,7 @@ which proves the desired exponential decay on the operator norm because of the s
 %As a corollary of this correspondence between the Horn's problem and the eigenvalues of blocks of $2\times 2$ matrices, we obtain an equivalent formulation of the tetrahedral Horn problem.
 %\begin{thm}
 %    \label{thm:tetrahedral_block}
-%    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a sextuple of positive semidefinite eigenvalues of length at most $n$.
+%    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be a tuple of positive semidefinite eigenvalues of length at most $n$.
 %    Then $(\ea,\eb,\ec,\ed,\ee,\ef) \in \Tetra^{+}(n)$ if and only if there exists a $3n \times 3n$ matrix $E'$ of the form
 %    \begin{equation}
 %        \label{eq:block_3by3}
@@ -1830,7 +1856,7 @@ which proves the desired exponential decay on the operator norm because of the s
 %\begin{proof}
 %    The proof is analogous to the proofs of \cref{lem:trigonal_block} and \cref{thm:trigonal_block}.
 %    First we prove the ``only if'' portion of the claim which is a corollary of \cref{lem:trigonal_block}.
-%    Suppose $(A,B,C,D,E,F)$ is a tetrahedral sextuple of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+%    Suppose $(A,B,C,D,E,F)$ is a tetrahedral tuple of Hermitian matrices with eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$.
 %    Let $E'$ be a $3n\times 3n$ block matrix given by
 %    \begin{equation}
 %        E' =
@@ -2049,19 +2075,19 @@ One may wonder whether it is possible to extend the scaling symmetry to negative
 Indeed, this can be accomplished, provided one accounts for the fact that negating a Hermitian matrix both negates and reverses the sorting order of its eigenvalues.
 \begin{prop}[Inversion]
     \label{prop:inversion}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues.
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a tuple of candidate eigenvalues.
     Given any list of non-increasing eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{*}$ denote the inverted list of resorted and negated eigenvalues: $\ex^{*} = (-\ex_n \geq \cdots \geq - \ex_1)$.
     Then $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$ if and only if $(\ea^{*}, \eb^{*}, \ec^{*}, \ed^{*}, \ee^{*}, \ef^{*}) \in \Tetra(n)$.
 \end{prop}
 \begin{proof}
-    The statement holds because $\eig(-X) = \ex^{*}$ whenever $\eig(X) = \ex$ and moreover the sextuple of matrices $(A,B,C,D,E,F)$ satisfies \cref{eq:tet_cond} if and only if the sextuple of negated matrices $(-A,-B,-C,-D,-E,-F)$ satisfies \cref{eq:tet_cond}.
+    The statement holds because $\eig(-X) = \ex^{*}$ whenever $\eig(X) = \ex$ and moreover the tuple of matrices $(A,B,C,D,E,F)$ satisfies \cref{eq:tet_cond} if and only if the tuple of negated matrices $(-A,-B,-C,-D,-E,-F)$ satisfies \cref{eq:tet_cond}.
 \end{proof}
 
-The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
+The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the tuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
 
 \begin{prop}[Oriented]
     \label{prop:tet_symmetry}
-    The following transformations perserve the set $\Tetra(n)$:
+    The following transformations preserve the set $\Tetra(n)$:
     \begin{align}
         \label{eq:gens_of_tet_sym}
         \begin{split}
@@ -2140,8 +2166,8 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \begin{proof}
     To begin, notice that each of the operations on $(\ea,\eb,\ec,\ed,\ee,\ef)$ appearing in \cref{eq:gens_of_tet_sym} are invertible (indeed the first operation has order two, while the second operation has order four).
     The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software.
-    Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a sextuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_cond}.
-    Then, for example, the sextuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
+    Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a tuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_cond}.
+    Then, for example, the tuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
     \begin{align}
         \label{eq:signed_perm_rows}
         \begin{split}
@@ -2155,7 +2181,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
 \end{proof}
 \begin{rem}
-    The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the elements of the sextuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_cond}.
+    The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the elements of the tuple $(A,B,C,D,E,F)$ which preserves the set of linear constraints in \cref{eq:tet_cond}.
     The group $G$ is isomorphic to both the direct product $S_2 \times S_4$ and to the signed permutation group of three elements, i.e., $(S_2 \times S_2 \times S_2) \rtimes S_3$.
 
     The first isomorphism, $G \simeq S_2 \times S_4$, can be understood as $S_2$ acting by the inversion of all eigenvalues,
@@ -2166,13 +2192,13 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     each vertex permutation induces a permutation of the six directed edges with the possibility of inverting the orientation of a subset of the edges (such edge orientation reversals can be accounted for a corresponding inversion of eigenvalues).
 
     The second isomorphism, $G \simeq (S_2 \times S_2 \times S_2) \rtimes S_3$, can be understood by considering the triplet $(A,D), (B,E), (C,F)$ of non-adjacent pairs of edges in \cref{fig:tetrahedron_labelling_scheme}.
-    Accordingly, it is helpful to arrange the sextuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
+    Accordingly, it is helpful to arrange the tuple $(\ea,\eb,\ec,\ed,\ee,\ef)$ into a $2\times 3$ grid using the following identification:
     \begin{equation}
         \left(\tightsextuple{\ea & \eb & \ec & \ed & \ee & \ef}\right)
         \cong
         \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right).
     \end{equation}
-    Then one can see that each $S_2$ factor in the direct product $S_2 \times S_2 \times S_2$ acts faithfully on the sextuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
+    Then one can see that each $S_2$ factor in the direct product $S_2 \times S_2 \times S_2$ acts faithfully on the tuple by both negating a certain subset of the columns and permuting the upper and lower rows leaving just one column unchanged.
     \begin{equation}
         \left(\tightsextuple{\ea & \eb & \ec \\ \ed & \ee & \ef}\right)
         \leftrightarrow
@@ -2212,7 +2238,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \end{rem}
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a tuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
     Define shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ by
     \begin{equation}
         \label{eq:shifted_tet_eigenvalues}
@@ -2232,7 +2258,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     \begin{equation}
         \eig(A+wI) = (\ea_1 + w \geq \cdots \geq \ea_n + w).
     \end{equation}
-    The claim then follows because the sextuple of matrices
+    The claim then follows because the tuple of matrices
     \begin{equation}
         \begin{alignedat}{3}
              &\tilde A \coloneqq A + xI, \qquad
@@ -2248,7 +2274,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn problem, in a certain sense, it suffices to solve the tetrahedral Horn problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
 \begin{cor}[Traceless eigenvalues]
     \label{cor:traceless}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a sextuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - {\tex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-{\tex}/n$.
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a tuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - {\tex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-{\tex}/n$.
     Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if (i) their traces $({\tea}, {\teb}, {\tec}, {\ted}, {\tee}, {\tef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_cond}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0)$ are tetrahedral.
 \end{cor}
 \begin{proof}
@@ -2265,12 +2291,12 @@ Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref
 The following corollary establishes, in a certain sense, the minimum shifting required to ensure non-negative (or positive) eigenvalues for all six Hermitian matrices.
 \begin{cor}[Non-negativity]
     \label{cor:psd}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tetrahedral sextuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
+    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tetrahedral tuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
     \begin{equation}
         \label{eq:min_eig_ineqs}
         \ec_n \geq \ea_n + \eb_n, \qquad \ef_n \geq \eb_n + \ed_n, \qquad \ee_n \geq \ed_n + \ec_n, \qquad \ee_n \geq \ea_n + \ef_n.
     \end{equation}
-    Moreover, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a sextuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
+    Moreover, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
     \begin{equation}
         \label{eq:positive_shift}
         x \geq -\ea_n, \qquad
@@ -2372,10 +2398,10 @@ The following proposition follows directly from the binomial theorem (\cref{thm:
 \end{prop}
 \begin{proof}
     The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:the_binomial_theorem}.
-    For the second identity, involving a summation over $\yc$, follows from the the identity $\sum_{\yc \vdash \sya+\syb} \Pi^{\yc}_{\ya\yb} = \id_{V_{\ya}\ot V_{\yb}}$:
+    For the second identity, involving a summation over $\yc$, follows from the identity $\sum_{\yc \vdash \sya+\syb} \Pi^{\yc}_{\ya\yb} = \id_{V_{\ya}\ot V_{\yb}}$:
     \begin{align}
         \begin{split}
-            \vp_{\ya}(X)\vp_{\yb}(Y) 
+            \vp_{\ya}(X)\vp_{\yb}(Y)
             &= \Tr[\Phi_{\ya}(X) \ot \Phi_{\yb}(Y)], \\
             &= \sum_{\yc} \Tr[\Pi^{\yc}_{\ya\yb}(\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))], \\
             &= \sum_{\yc} \vp^{\ya\yb}_{\yc}(X,Y),
@@ -2511,7 +2537,7 @@ To begin we fix an \textit{arbitrary} pair $(\ya,\yb)$ with total size $\sya + \
 Afterwards, we will sum over all such pairs and then obtain the claimed bound on $D(\ea,\eb;\ec)$.
 
 First we bound $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ in two ways and then apply the eigenvalue separation lemma (specifically \cref{eq:weak_eig_sep_varphi}).
-The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from relaxing \cref{eq:tri_iff} by considering a Young diagram $\yc^{*}$ of size $k$ which maximizes $\vp_{\yc^{*}}(\ec)$ amoung those $\yc$ such that $c^{\yc}_{\ya\yb}> 0$ for the given $(a,b,c)$.
+The first bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from relaxing \cref{eq:tri_iff} by considering a Young diagram $\yc^{*}$ of size $k$ which maximizes $\vp_{\yc^{*}}(\ec)$ among those $\yc$ such that $c^{\yc}_{\ya\yb}> 0$ for the given $(a,b,c)$.
 As there are at most $\polyk{n}$ Young diagrams of size $k$, we conclude
 \begin{equation}
     \label{eq:first_ab_bound}
@@ -2521,7 +2547,7 @@ The second bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from \cref{prop:r
 \begin{equation}
     \vp_{\ya}(\ea)\vp_{\yb}(\eb)
     = \frac{\dim V_{\ya} \ot V_{\yb}}{c^{\yc}_{\ya\yb} \dim V_{\yc}}
-    \expect_{\substack{(X,Y) \sim \\ \orbit_{\ex} \times \orbit_{\ey}}}
+    \tightdoublesubstack{\expect}{X \sim \orbit_{\ex}}{Y \sim \orbit_{\ey}}\,
     \vp^{\ya\yb}_{\yc}(X,Y).
 \end{equation}
 To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya} \ot V_{\yb}}{c^{\yc}_{\ya\yb} \dim V_{\yc}} \leq \dim (V_{\ya} \ot V_{\yb}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
@@ -2584,7 +2610,7 @@ By combining this upper bound with the lower bound provided by \cref{thm:6j_esti
 We begin with our upper bound on the $6j$ symbol.
 \begin{lem}
     \label{lem:sixj_ssa_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a sextuple of Young diagrams.
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a tuple of Young diagrams.
     Then
     \begin{equation}
         \norm{\abcdefsymbol}_{2}^{2}
@@ -2625,7 +2651,7 @@ Here we use an elegant presentation of this scaling, which relates the asymptoti
     \end{equation}
 \end{prop}
 \begin{proof}
-    The statement follows from comparing the the Weyl dimension formula for $\dim(V_{\yx})$ given in \cref{eq:frob_dim} with the Frobenius dimension formula for $\dim(W_{\yx})$ given in \cite[Corollaries 9.1.5]{goodman2000representations}:
+    The statement follows from comparing the Weyl dimension formula for $\dim(V_{\yx})$ given in \cref{eq:frob_dim} with the Frobenius dimension formula for $\dim(W_{\yx})$ given in \cite[Corollaries 9.1.5]{goodman2000representations}:
     \begin{equation}
         \label{eq:frob_dim}
         \dim(W_{\yx}) = \frac{{\syx}!\Delta(\yx + \rho)}{\prod_{i=1}^{n}(\yx+\rho)_i!}.
