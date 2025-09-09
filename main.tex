@@ -2553,21 +2553,29 @@ The second bound on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ is obtained from \cref{prop:r
 To relax this into a usable bound we (i) bound the dimensions by $\frac{\dim V_{\ya} \ot V_{\yb}}{c^{\yc}_{\ya\yb} \dim V_{\yc}} \leq \dim (V_{\ya} \ot V_{\yb}) \leq \polyk{2\binom{n}{2}}$, then (ii) bound the average over $X \in \orbit_{\ex}$ and $Y \in \orbit_{\ey}$ with a maximum, then (iii) apply \cref{cor:row_col_horn_ineqs} to get $\vp^{\ya\yb}_{\yc}(X,Y) \leq \vp_{\yc}(X+Y)$ and then finally (iv) specialize to the optimal $\yc \mapsto \yc^{*}$ to produce
 \begin{equation}
     \label{eq:second_ab_bound}
-    \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y).
+    \vp_{\ya}(\ea)\vp_{\yb}(\eb) \leq \polyk{2\binom{n}{2}}
+    \tightdoublesubstack{\mathrm{max}}{X \in \orbit_{\ea}}{Y \in \orbit_{\eb}}
+    \vp_{\yc^{*}}(X+Y).
 \end{equation}
 Then we combine the two bounds on $\vp_{\ya}(\ea)\vp_{\yb}(\eb)$ from \cref{eq:first_ab_bound} and \cref{eq:second_ab_bound} and apply the eigenvalue separation bound \cref{eq:weak_eig_sep_varphi} to obtain
 \begin{align}
     \label{eq:ab_intermediate_bound}
     \begin{split}
         \vp_{\ya}(\ea)\vp_{\yb}(\eb)
-        &\leq \sqrt{\polyk{n^2} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
-        &\leq \polyk{\frac{n^2}{2}}\polyk{\binom{n}{2}} \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}}\frac{\BC(\eig(X+Y), c)^k}{k!}, \\
+        &\leq \sqrt{\polyk{n^2}
+        \tightdoublesubstack{\mathrm{max}}{X \in \orbit_{\ea}}{Y \in \orbit_{\eb}}
+        \vp_{\yc^{*}}(X+Y)\vp_{\yc^{*}}(\ec)},\\
+        &\leq \polyk{\frac{n^2}{2}}\polyk{\binom{n}{2}} o
+        \tightdoublesubstack{\mathrm{max}}{X \in \orbit_{\ea}}{Y \in \orbit_{\eb}}
+        \frac{\BC(\eig(X+Y), c)^k}{k!}, \\
         &= \polyk{n^2-\frac{n}{2}}\frac{\BC(a,b;c)^k}{k!},
     \end{split}
 \end{align}
 where $\BC(a,b;c)$ is defined as the maximum Bhattacharyya coefficient
 \begin{equation}
-    \BC(a,b;c) \coloneqq \max_{\substack{(X,Y) \in \\ \orbit_\ea \times \orbit_\eb}} \BC(\eig(X+Y),c).
+    \BC(a,b;c) \coloneqq
+    \tightdoublesubstack{\mathrm{max}}{X \in \orbit_{\ea}}{Y \in \orbit_{\eb}}
+    \BC(\eig(X+Y),c).
 \end{equation}
 
 Now we sum both sides of \cref{eq:ab_intermediate_bound} over all pairs $(\ya,\yb)$ with total size $\sya+\syb=k$ and use that there are at most $\polyk{2n}$ such pairs to obtain
