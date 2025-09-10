@@ -23,30 +23,32 @@
 % 4) CMP, Schweigert
 
 \begin{abstract}
+    {\color{blue!50!black}
+        Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$, and forming the edges of a triangle in the space of Hermitian matrices.  It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory, and the intersection theory of Schubert varieties.
+        This paper concerns the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$. Such tuples $(\ea,\eb,\ec,\ed,\ee,\ef)$ are called \textit{tetrahedral}.
 
-    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$, and forming the edges of a triangle in the space of Hermitian matrices.  It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory, and the intersection theory of Schubert varieties.
-    This paper concerns the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$. Such tuples $(\ea,\eb,\ec,\ed,\ee,\ef)$ are called \textit{tetrahedral}.
+        Our first main result is a necessary and sufficient condition for a tuple  to be tetrahedral. It is represented by 4 trace equalities (for each face of the tetrahedron), and by an infinite number of inequalities on Schur polynomials of $(\ea,\eb,\ec,\ed,\ee,\ef)$. 
+        Furthermore, using eigenvalue estimation techniques from quantum information theory, we prove that satisfaction of these inequalities up to degree $k$ implies the existence of approximate solutions with error $O(\ln k/k)$.
 
-    Our first main result is a necessary and sufficient condition for a tuple  to be tetrahedral. It is represented by 4 trace equalities (for each face of the tetrahedron), and by an infinite number of inequalities on Schur polynomials of $(\ea,\eb,\ec,\ed,\ee,\ef)$. 
-    Furthermore, using eigenvalue estimation techniques from quantum information theory, we prove that satisfaction of these inequalities up to degree $k$ implies the existence of approximate solutions with error $O(\ln k/k)$.
+        The tetrahedral Horn problem is intimately related to the semiclassical asymptotics of Wigner's $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces encoding the associativity constraint.
+        %$(V_\ya \ot V_\yb) \ot V_\yd \cong V_\ya \ot (V_\yb \ot V_\yd)$
+        %for irreducible representations.
+        Our second main result is the proof of the inverse polynomial in $k$ lower bound for the decay of $6j$-symbols for tetrahedral tuples,
+        %$(\ya,\yb,\yc,\yd,\ye,\yf)$, 
+        and the exponential upper bound for the non-tetrahedral ones. This result can be viewed as a manifestation of the quantization commutes with reduction principle. It sheds light on the nature of inequalities characterizing tetrahedral tuples.
+    }
 
-    The tetrahedral Horn problem is intimately related to the semiclassical asymptotics of Wigner's $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces encoding the associativity constraint.
-    %$(V_\ya \ot V_\yb) \ot V_\yd \cong V_\ya \ot (V_\yb \ot V_\yd)$
-    %for irreducible representations.
-    Our second main result is the proof of the inverse polynomial in $k$ lower bound for the decay of $6j$-symbols for tetrahedral tuples,
-    %$(\ya,\yb,\yc,\yd,\ye,\yf)$, 
-    and the exponential upper bound for the non-tetrahedral ones. This result can be viewed as a manifestation of the quantization commutes with reduction principle. It sheds light on the nature of inequalities characterizing tetrahedral tuples.
+    \vspace{1em}
 
-\vskip 1cm
-
-    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
-    This paper concerns a generalization of Horn's problem we call the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron in the space of Hermitian matrices and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
-    We derive new inequalities satisfied by the Schur-polynomials of such eigenvalues and, using eigenvalue estimation techniques from quantum information theory, prove their satisfaction up to degree $k$ implies the existence of approximate solutions with error $O(\sqrt{\frac{\ln k}{k}})$.
-    Moreover, the existence of such a matrices is connected to the semiclassical asymptotics of the $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces which encode the associativity constraint
-    $(V_\ya \ot V_\yb) \ot V_\yd \cong V_\ya \ot (V_\yb \ot V_\yd)$
-    between unitary irreducible representations.
-    Using our techniques, we prove the decay rate of the norms of such $6j$-symbols is either inverse-polynomial or exponential depending on whether there exists such tetrahedra of Hermitian matrices.
-    %Finally, we obtain a new proof of the strongly subadditive unnormalized entropy inequality for such tetrahedra.
+    {\color{red!50!black}
+        Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
+        This paper concerns a generalization of Horn's problem we call the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron in the space of Hermitian matrices and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+        We derive new inequalities satisfied by the Schur-polynomials of such eigenvalues and, using eigenvalue estimation techniques from quantum information theory, prove their satisfaction up to degree $k$ implies the existence of approximate solutions with error $O(\sqrt{\frac{\ln k}{k}})$.
+        Moreover, the existence of such a matrices is connected to the semiclassical asymptotics of the $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces which encode the associativity constraint
+        $(V_\ya \ot V_\yb) \ot V_\yd \cong V_\ya \ot (V_\yb \ot V_\yd)$
+        between unitary irreducible representations.
+        Using our techniques, we prove the decay rate of the norms of such $6j$-symbols is either inverse-polynomial or exponential depending on whether there exists such tetrahedra of Hermitian matrices.
+    }
 \end{abstract}
 
 \tableofcontents
@@ -65,7 +67,7 @@ Although the problem has been investigated by numerous authors for over a centur
 \end{equation}
 where $\tex \coloneqq \sum_{i=1}^{n} \ex_i$ for $\ex \in \eigs{n}$.
 In \citeyear{klyachko1998stable}, \citeauthor{klyachko1998stable} provided a solution to the Horn problem \cite{klyachko1998stable} which, when combined with a proof of the so-called saturation conjecture, due to \citeauthor{knutson1999honeycomb} \cite{knutson1999honeycomb}, constituted a proof of Horn's conjectured solution \cite{fulton1998eigenvalues} (see also \cite{alekseev2017symplectic}).
-These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polytope of admissible values for $(\ea,\eb,\ec) \in \Horn(n)$ \cite{bhatia2001linear,knutson2000symplectic,fulton2000eigenvalues,niculescu2006convex}.
+These linear inequalities, now known as the \textit{Horn inequalities} describe the convex polyhedral cone of admissible values for $(\ea,\eb,\ec) \in \Horn(n)$ \cite{bhatia2001linear,knutson2000symplectic,fulton2000eigenvalues,niculescu2006convex}.
 %For a pedagogical and historical introduction to Horn's problem, we recommend the review articles of \citeauthor{bhatia2001linear} \cite{bhatia2001linear}, \citeauthor{knutson2000symplectic} \cite{knutson2000symplectic}, and \citeauthor{fulton2000eigenvalues} \cite{fulton2000eigenvalues} or alternatively \cite[Appendix D]{niculescu2006convex}.
 
 \subsubsection*{The tetrahedral Horn problem}
@@ -159,7 +161,7 @@ The quantity $\mathrm{CM}(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ is known a
 %        1 & \ell_c^2 & \ell_b^2 & 0 \\
 %    \end{pmatrix}$ is equivalent to Heron's formula.
 %}
-Before proceeding, we emphasize the strong qualitative difference between the tetrahedral Horn problem and the original Horn problem; while $\Horn(n)$ is a convex polytope, $\Tetra(n)$ is neither convex nor a polytope.
+Before proceeding, we emphasize the strong qualitative difference between the tetrahedral Horn problem and the original Horn problem; while $\Horn(n)$ is a convex polyhedral cone, $\Tetra(n)$ is neither convex nor a polyhedral.
 \Cref{fig:tetrahedron_moduli_space_example} visualizes this distinction by depicting a three-dimensional slice of $\Tetra(2)$.
 \begin{figure}
     \begin{center}
@@ -278,7 +280,7 @@ where they play a foundational role in the quantum theory of angular momentum \c
         \label{eq:n_independent_inverse_poly}
         \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \geq \frac{1}{\polyk{6\rank[\ee]}}.
     \end{equation}
-    Furthermore, for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \in (\undomweightsp{n})^6$ converging to $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra^{+}(n)$ we have for all sufficiently large $k$, the bound
+    Furthermore, for any sequence $(\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) \not \in (\undomweightsp{n})^6$ converging to $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra^{+}(n)$ we have for all sufficiently large $k$, the bound
     \begin{equation}
         \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty} \leq C e^{-kr}
     \end{equation}
@@ -514,7 +516,7 @@ For positive dominant weights, we let
 \end{equation}
 where $\syx$ is called the size of $\yx$ and $\ell(\yx)$ is called the depth of $\yx$.
 Henceforth we use the notation $\yx \vdash_{n} k$ to denote the set of positive dominant weights with size $k$ and length at most $n$, and $\yx \vdash k$ to denote the set of positive dominant weights with size $k$ and arbitrary length.
-Positive dominant weights, $\yx \in \undomweightsp{n}$, are equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts and depicted as Young diagrams with $\syx$ boxes and at most $\ell(\yx)$ rows.
+Positive dominant weights, $\yx \in \undomweightsp{n}$, are equivalent to integer partitions of $\syx$ into $\ell(\yx) \leq n$ parts and depicted as Young diagrams with $\syx$ boxes and $\ell(\yx)$ rows.
 Representations $\pi_\yx(g)$ corresponding to positive dominant weights are polynomial in matrix elements of $g$, and thus they extend to matrix algebras $\Mat_n(\mathbb{C})$ such that
 \begin{equation}
     \pi_\yx(X) \pi_\yx(Y) = \pi_\yx(XY)
@@ -577,9 +579,9 @@ Applying this isomorphism to an element $X \in \Mat_n(\mathbb{C})$, we obtain
     \label{eq:X^k}
     X^{\ot k} = \bigoplus_{\yx \vdash_{n} k} \iota_{\yx} (\id_{W_\yx} \ot \pi_\yx(X)) \iota_{\yx}^{\dagger}.
 \end{equation}
-Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields then yields the normalization condition in \cref{eq:varphi_normalization}.
+Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields the normalization condition in \cref{eq:varphi_normalization}.
 
-Recall we denote the space of $n\times n$ Hermitian matrices by $\herm{n}$ and the subset of non-negative $n\times n$ Hermitian matrices by $\hermp{n}$ and given a Hermitian matrix $X \in \herm{n}$, $\eig X$ denotes the ordered tuple of eigenvalues of $X$.
+Recall the space of $n\times n$ Hermitian matrices is denoted by $\herm{n}$ and the subset of non-negative $n\times n$ Hermitian matrices by $\hermp{n}$ and given a Hermitian matrix $X \in \herm{n}$, $\eig X$ denotes the ordered tuple of eigenvalues of $X$.
 %The set of possible eigenvalues of $n \times n$ Hermitian matrices is denoted by
 %\begin{equation}
 %    \eigs{n} \coloneqq \{ \ex = (\ex_1, \ldots, \ex_n) \in \mathbb R^{n} \mid \ex_1 \geq \cdots \geq \ex_n \}.
@@ -885,21 +887,17 @@ It takes values between $0$ and $+\infty$, and it is equal to zero if and only i
 
 \subsubsection{Measures on partitions}
 
-We define the set
+Recall the set of eigenvalues of $n\times n$ non-negative Hermitian matrices is noted by $\eigsp{n}$.
+One can associate to each $\ex \in \eigsp{n}$ a probability measure $p^\ex$ on the set $[n]$ by normalization:
 \begin{equation}
-    \eigsp{n} = \{ x = (x_1 \geq x_2 \geq \cdots \geq x_n) \in \mathbb{R}^n;
-    x \neq 0, x_n \geq 0\}.
+    p^\ex_i = \frac{\ex_i}{\tex}, \quad \text{where} \quad \tex = \sum_{i=1}^n \ex_i.
 \end{equation}
-One can associate to $x \in \eigsp{n}$ a probability measure $p^x$ on the set $[n]$ by assigning
-\begin{equation}
-    p^x_i = \frac{x_i}{|x|}, \quad \text{where} \quad |x| = \sum_{i=1}^n x_i.
-\end{equation}
-Let $X = \diag(x_1, \ldots, x_n)$ be a diagonal non-negative Hermitian matrix with $x_i$'s on the diagonal.
-By abuse of notation, we write $\vp_\yx(x)=\vp_\yx(X)$.
-For each $x$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive dominant weights of $\U(n)$ with size $\syx =k$:
+Let $X = \diag(\ex_1, \ldots, \ex_n)$ be a diagonal non-negative Hermitian matrix with $\ex_i$'s on the diagonal.
+By abuse of notation, we write $\vp_\yx(\ex)=\vp_\yx(X)$.
+For each $\ex$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive dominant weights of $\U(n)$ with size $\syx = k$:
 \begin{equation}
     \label{eq:schur_weyl_dist}
-    \SW{\ex}(\yx) \coloneqq \frac{k!}{|x|^k} \vp_\yx(x) = \frac{\Tr[\Pi_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]}.
+    \SW{\ex}(\yx) \coloneqq \frac{k!}{\tex^k} \vp_\yx(x) = \frac{\Tr[\Pi_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]}.
 \end{equation}
 This probability distribution is known as the \textit{Schur-Weyl} distribution for $x$ of degree $k = \syx$ \cite{odonnell2016efficient}.
 A key property of the Schur-Weyl distribution $\SW{\ex}(\yx)$ is that it behaves similarly to the multinomial distribution $m_{\ex}(\yx)$ where
@@ -908,7 +906,8 @@ A key property of the Schur-Weyl distribution $\SW{\ex}(\yx)$ is that it behaves
 \end{equation}
 \begin{prop}
     \label{prop:multinomial_bound}
-    Given a Young diagram $\yx$ and non-negative eigenvalues $\ex$,
+    Let $\yx \in \undomweightsp{n}$ and $\ex \in \eigsp{n}$.
+    Then
     \begin{equation}
         \SW{\ex}(\yx) \leq \dim V_{\yx} m_{\ex}(\yx).
     \end{equation}
@@ -931,7 +930,7 @@ A key property of the Schur-Weyl distribution $\SW{\ex}(\yx)$ is that it behaves
         \dim V_{\yx} \leq \polyk{\binom{n}{2}}.
     \end{equation}
 \end{rem}
-The following is known result is known as eigenvalue or spectrum estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}.
+The following result is known as eigenvalue (or spectrum) estimation \cite{alicki1988symmetry,keyl2001estimating,hayashi2002quantum,christandl2006spectra,odonnell2016efficient}.
 \begin{prop}[Eigenvalue estimation]
     \label{prop:eig_est}
     Let $x \in \eigsp{n}, \yx \in \undomweightsp{n}$ with $\syx = k$.
@@ -1291,7 +1290,7 @@ Before proceeding, we prove the following lemma which will be used in both porti
 \begin{lem}
     \label{lem:asym_sixj_helper}
     Let $X,Y,Z \in \hermp{n}$ and let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be the eigenvalues of the matrices $(X, Y, X+Y, Z, X+Y+Z,Y+Z)$.
-    Then for all $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\undomweightsp{n})^{\times 6}$ satisfying the size conditions of \cref{eq:size_conditions_tet} with $\abs{\ye_k} = k$, we have
+    Then for all $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\undomweightsp{n})^{\times 6}$ satisfying the size conditions of \cref{eq:size_conditions_tet} with $\abs{\ye} = k$, we have
     \begin{align}
         \label{eq:hex_rel_ent_bound}
         \frac{k!}{\tee^k}\abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
@@ -1311,7 +1310,7 @@ Before proceeding, we prove the following lemma which will be used in both porti
     \end{align}
     Note that $R_{\ea\eb\ec\ed\ee\ef}^{\ya\yb\yc\yd\ye\yf} \geq 0$ with equality holding only if
     \begin{equation}
-        \frac{1}{k} (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k)
+        \frac{1}{k} (\ya, \yb, \yc, \yd, \ye, \yf)
         =
         \frac{1}{\tee} (\ea, \eb, \ec, \ed, \ee, \ef).
     \end{equation}
@@ -1356,24 +1355,40 @@ Before proceeding, we prove the following lemma which will be used in both porti
 \subsection{Inverse polynomial lower bound}
 \label{sec:6j_inverse_poly}
 
-Assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of positive semidefinite matrices $(A,B,C,D,E,F)$ satisfying the tetrahedral constraints.
-Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ over all tuples of Young diagrams satisfying the size conditions \cref{eq:size_conditions_tet} produces
+To begin we note that for all $(X,Y,Z) \in (\hermp{n})^{3}$ and $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\undomweights{n})^{6}$, we have the following bound between $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ and $\abcdefsymbol$:
+\begin{align}
+    \label{eq:vp_tet_bound_sixj}
+    \begin{split}
+        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
+        &\leq \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)^{\frac{1}{2}}, \\
+        &\leq \norm{\abcdefsymbol}_{\infty} \varphi_{\ye}(X+Y+Z), \\
+        &\leq \norm{\abcdefsymbol}_{\infty} \frac{\Tr(X+Y+Z)^k}{k!},
+    \end{split}
+\end{align}
+where the first inequality is \cref{prop:varphi_tet_main_ineq}, the second inequality is \cref{prop:tet_psum_ineq} and the third inequality follows from the normalization of $\varphi_{\ye}$ (\cref{eq:varphi_normalization}).
+
+Next we assume $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of non-negative Hermitian matrices $(X,Y,X+Y,Z,X+Y+Z,Y+Z)$.
+Summing $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ over all tuples of Young diagrams satisfying the size conditions in \cref{eq:size_conditions_tet} produces the normalization condition
 \begin{equation}
-    \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D) = \frac{\tee^k}{k!}.
+    \label{eq:size_conditions_tet_normalization}
+    \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) = \frac{\tee^k}{k!}.
 \end{equation}
-Let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ denote the tuple which maximizes the absolute value of $\vp^{\ya\yb\yd}_{\yc\ye\yf}(A,B,D)$ in the above sum.
-As there are at most $\polyk{6\rank[\ee]}$ terms in the above summation which are non-zero, we conclude
+Now for each positive integer $k$, let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k) \in (\undomweightsp{n})^{6}$ denote the tuple which maximizes the absolute value of the summand $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ in \cref{eq:size_conditions_tet_normalization} above.
+Using this maximum, we bound each summand to conclude
 \begin{equation}
     \label{eq:inverse_poly_varphi_lower}
-    \frac{k!}{\tee^k}\abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \geq \frac{1}{\polyk{6\rank[\ee]}}
+    \frac{\tee^k}{k!} 
+    = \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+    \leq \polyk{6\rank[\ee]} \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)},
 \end{equation}
-Then by \cref{prop:varphi_tet_main_ineq}, \cref{prop:tet_psum_ineq} and \cref{eq:varphi_normalization}, we conclude
+where $\polyk{6\rank[\ee]}$ is an upper bound the total number of terms in the summation for which $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) \neq 0$.
+
+Third we combine the lower bound in \cref{eq:inverse_poly_varphi_lower} with the upper bound in \cref{eq:vp_tet_bound_sixj} (noting that $\tee = \Tr(X+Y+Z)$) to obtain
 \begin{equation}
-    \label{eq:inverse_poly_varphi_upper}
-    \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(A,B,D)} \leq \frac{\tee^k}{k!} \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty}.
+    1 \leq \polyk{6\rank[\ee]} \norm{\tightcurlysixj{ \ya_k & \yb_k & \yc_k \\ \yd_k &  \ye_k &  \yf_k}}_{\infty},
 \end{equation}
-Combining \cref{eq:inverse_poly_varphi_lower} and \cref{eq:inverse_poly_varphi_upper} then gives \cref{eq:n_independent_inverse_poly}.
-To prove the convergence portion of the claim, we combine \cref{lem:asym_sixj_helper} with \cref{eq:inverse_poly_varphi_lower} to obtain
+as stated in \cref{eq:n_independent_inverse_poly}.
+Finally, to prove the convergence portion of the claim, we combine \cref{lem:asym_sixj_helper} with \cref{eq:inverse_poly_varphi_lower} to obtain
 \begin{equation}
     \exp\left(- k R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k}\right) \leq \frac{1}{\polyk{6\rank[\ee] + n(n-1)}},
 \end{equation}
