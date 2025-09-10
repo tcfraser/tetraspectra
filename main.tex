@@ -427,11 +427,11 @@ The tensor product of two irreducible representations admits a unique decomposit
 where $C_{\ya \yb}^\yc$ are multiplicity spaces with dimensions $c_{\ya \yb}^\yc = \dim  C_{\ya \yb}^\yc$.
 Hermitian structures on $V_\yx$'s induces  Hermitian structures on the multiplicity spaces $C_{\ya \yb}^\yc$.
 In particular, the decomposition in \cref{eq:tensor_product} is an orthogonal decomposition.
-We let $\iota_{\ya\yb}^{\yc} : C_{\ya \yb}^\yc \ot V_\yc \to V_{\ya} \ot V_{\yb}$ denote the corresponding isometry and $\Pi_{\ya \yb}^\yc = \iota_{\ya\yb}^{\yc} \iota_{\ya\yb}^{\yc;\dagger}$ the corresponding orthogonal projection operator.
+We let $\Pi_{\ya \yb}^\yc$ denote the corresponding orthogonal projection operator.
 Using this notation, we have for all $g \in G$ the identity
 \begin{equation}
     \label{eq:operator product}
-    \pi_\ya(g) \ot \pi_\yb(g) = \sum_\yc \iota_{\ya \yb}^{\yc} (\id_{C_{\ya \yb}^\yc} \ot \pi_\yc(g)) \iota_{\ya \yb}^{\yc ; \dagger},
+    \pi_\ya(g) \ot \pi_\yb(g) \cong \bigoplus_{\yc} \id_{C_{\ya \yb}^\yc} \ot \pi_\yc(g),
 \end{equation}
 Triple tensor products can be decomposed in two alternative ways:
 \begin{align}
@@ -443,7 +443,7 @@ Triple tensor products can be decomposed in two alternative ways:
         &\cong \bigoplus_{\yf, \ye} (C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf)\ot V_\ye.
     \end{split}
 \end{align}
-We let $\iota_{(\ya\yb)\yd}^{\yc,\ye}$ and $\iota_{\ya(\yb\yd)}^{\ye,\yf}$ denote the respective isometries and $\projl$ and $\projr$ denote the corresponding orthogonal projection operators.
+We let $\projl$ and $\projr$ denote the corresponding orthogonal projection operators.
 Since the composition of these two projectors is a $G$-equivariant linear map between $V_{\ye}$ and itself, Schur's Lemma implies $\projl \projr$ acts as the identity on $V_{\ye}$ and as the map
 \begin{equation}
    \abcdefsymbol : C_{\ya \yb}^\yc \ot C_{\yc \yd}^\ye \to C_{\ya \yf}^\ye \ot C_{\yb \yd}^\yf,
@@ -451,12 +451,18 @@ Since the composition of these two projectors is a $G$-equivariant linear map be
 called the $6j$-symbol for $G$, on the multiplicity spaces.
 Concretely, our normalization convention for $\abcdefsymbol$ is fixed by the formula
 \begin{equation}
-    \label{eq:sixj}
-    \abcdefsymbol
-    \coloneqq
-    \frac{1}{\dim(V_{\ye})}
-    \Tr_{V_{\ye}}[(\iota_{\ya(\yb\yd)}^{\ye,\yf})^{\dagger} (\iota_{(\ya\yb)\yd}^{\yc,\ye})],
+    \label{eq:prod_proj_6j}
+    \projl \projr \simeq
+    \abcdefsymbol \ot \id_{V_{\ye}}
 \end{equation}
+where $\cong$ denotes equivalence up to isometries.
+%\begin{equation}
+%    \label{eq:sixj}
+%    \abcdefsymbol
+%    \coloneqq
+%    \frac{1}{\dim(V_{\ye})}
+%    \Tr_{V_{\ye}}[(\iota_{\ya(\yb\yd)}^{\ye,\yf})^{\dagger} (\iota_{(\ya\yb)\yd}^{\yc,\ye})],
+%\end{equation}
 %\begin{equation}
 %    \label{eq:sixj}
 %    \abcdefsymbol
@@ -469,12 +475,13 @@ Concretely, our normalization convention for $\abcdefsymbol$ is fixed by the for
 %    (\id_{C^{\yc}_{\ya\yb}} \ot \iota_{\yc\yd}^{\ye})
 %    ],
 %\end{equation}
-which ensures
-\begin{equation}
-    \label{eq:prod_proj_6j}
-    \projl \projr =
-    (\iota_{(\ya\yb)\yd}^{\yc,\ye}) (\abcdefsymbol \ot \id_{V_{\ye}}) (\iota_{\ya(\yb\yd)}^{\ye,\yf})^{\dagger}
-\end{equation}
+%which ensures
+
+%\begin{equation}
+%    \label{eq:prod_proj_6j}
+%    \projl \projr =
+%    (\iota_{(\ya\yb)\yd}^{\yc,\ye}) (\abcdefsymbol \ot \id_{V_{\ye}}) (\iota_{\ya(\yb\yd)}^{\ye,\yf})^{\dagger}
+%\end{equation}
 %\begin{equation}
 %    \label{eq:prod_proj_6j}
 %    \projl \projr =
@@ -562,22 +569,22 @@ This rescaling of characters produces the normalization conditions
     \quad \text{and} \quad
     \sum_\yx \vp_\yx(X) = \exp(\Tr X).
 \end{equation}
-Indeed, by the Schur-Weyl duality, there is an isomorphism of $(S_k \ot \U(n))$-modules
+Indeed, by the Schur-Weyl duality, there is an isomorphism of $S_k \ot \U(n)$-modules
 \begin{equation}
     \label{eq:schur-weyl}
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in $(\mathbb{C}^n)^{\ot k}$.
-For each Young diagram $\yx$ with $k$ boxes and at most $n$ rows, we let
-\begin{equation}
-    \iota_{\yx} : W_{\yx} \ot V_{\yx} \to (\mathbb{C}^n)^{\ot k},
-\end{equation}
-denote the unique isometric $S_k \times \U(n)$-equivariant map from $W_{\yx} \ot V_{\yx}$ to $(\mathbb{C}^n)^{\ot k}$.
-Since all $\U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $(S_k \ot \Mat_n(\mathbb{C}))$.
+For each Young diagram $\yx$ with $k$ boxes and at most $n$ rows, we let $\Pi^{\yx}$
+%\begin{equation}
+%    \iota_{\yx} : W_{\yx} \ot V_{\yx} \to (\mathbb{C}^n)^{\ot k},
+%\end{equation}
+denote the unique $S_k \times \U(n)$-equivariant orthogonal projection $(\mathbb{C}^n)^{\ot k}$ into $W_{\yx} \ot V_{\yx}$.
+Since all $\U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $S_k \ot \Mat_n(\mathbb{C})$.
 Applying this isomorphism to an element $X \in \Mat_n(\mathbb{C})$, we obtain
 \begin{equation}
     \label{eq:X^k}
-    X^{\ot k} = \bigoplus_{\yx \vdash_{n} k} \iota_{\yx} (\id_{W_\yx} \ot \pi_\yx(X)) \iota_{\yx}^{\dagger}.
+    X^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} \id_{W_\yx} \ot \pi_\yx(X).
 \end{equation}
 Taking a trace of this equation over $(\mathbb{C}^n)^{\ot k}$ yields the normalization condition in \cref{eq:varphi_normalization}.
 
@@ -656,7 +663,7 @@ It is  convenient to introduce the following functions of two matrices,
     \end{equation}
 \end{thm}
 \begin{proof}
-    Let $k=\syc$ and let $\rho_k$ denote the representation of the monoid $(S_k \times \Mat_n(\mathbb{C}))$ on the space $(\mathbb{C}^n)^{\ot k}$, and $\Pi^\yc = \iota_{\yc}\iota_{\yc}^{\dagger}$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
+    Let $k=\syc$ and let $\rho_k$ denote the representation of the monoid $(S_k \times \Mat_n(\mathbb{C}))$ on the space $(\mathbb{C}^n)^{\ot k}$, and $\Pi^\yc$ the orthogonal projector to the summand $W_\yc \ot V_\yc$ in the Schur-Weyl decomposition \cref{eq:schur-weyl}.
     Recall that $\dim(W_{\yx}) = \syx! / H_{\yx}$.
     Then we have for all $k$ and $X \in \Mat_n(\mathbb{C}))$,
     \begin{align}
