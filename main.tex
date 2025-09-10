@@ -23,6 +23,22 @@
 % 4) CMP, Schweigert
 
 \begin{abstract}
+
+    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$, and forming the edges of a triangle in the space of Hermitian matrices.  It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory, and the intersection theory of Schubert varieties.
+    This paper concerns the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$. Such tuples $(\ea,\eb,\ec,\ed,\ee,\ef)$ are called \textit{tetrahedral}.
+
+    Our first main result is a necessary and sufficient condition for a tuple  to be tetrahedral. It is represented by 4 trace equalities (for each face of the tetrahedron), and by an infinite number of inequalities on Schur polynomials of $(\ea,\eb,\ec,\ed,\ee,\ef)$. 
+    Furthermore, using eigenvalue estimation techniques from quantum information theory, we prove that satisfaction of these inequalities up to degree $k$ implies the existence of approximate solutions with error $O(\ln k/k)$.
+
+    The tetrahedral Horn problem is intimately related to the semiclassical asymptotics of Wigner's $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces encoding the associativity constraint.
+    %$(V_\ya \ot V_\yb) \ot V_\yd \cong V_\ya \ot (V_\yb \ot V_\yd)$
+    %for irreducible representations.
+    Our second main result is the proof of the inverse polynomial in $k$ lower bound for the decay of $6j$-symbols for tetrahedral tuples,
+    %$(\ya,\yb,\yc,\yd,\ye,\yf)$, 
+    and the exponential upper bound for the non-tetrahedral ones. This result can be viewed as a manifestation of the quantization commutes with reduction principle. It sheds light on the nature of inequalities characterizing tetrahedral tuples.
+
+\vskip 1cm
+
     Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of a Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
     This paper concerns a generalization of Horn's problem we call the \textit{tetrahedral Horn problem} that aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron in the space of Hermitian matrices and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
     We derive new inequalities satisfied by the Schur-polynomials of such eigenvalues and, using eigenvalue estimation techniques from quantum information theory, prove their satisfaction up to degree $k$ implies the existence of approximate solutions with error $O(\sqrt{\frac{\ln k}{k}})$.
