@@ -38,31 +38,35 @@
 
 % authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
 \usepackage{authblk}
+% fallback if no eprinttype
+\DeclareFieldFormat{eprint}{#1}
+% when arxiv eprinttype is set 
+\DeclareFieldFormat{eprint:arxiv}{arXiv:\,#1}
 
 %%https://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
-\newbibmacro{string+doiurlisbn}[1]{%
-  \iffieldundef{doi}{%
-    \iffieldundef{url}{%
-      \iffieldundef{isbn}{%
-        \iffieldundef{issn}{%
-          #1%
-        }{%
-          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
-        }%
-      }{%
-        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
-      }%
-    }{%
-      \href{\thefield{url}}{#1}%
-    }%
-  }{%
-    \href{http://dx.doi.org/\thefield{doi}}{#1}%
-  }%
-}
-
-\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article,incollection]{title}%
-    {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
+%\newbibmacro{string+doiurlisbn}[1]{%
+%  \iffieldundef{doi}{%
+%    \iffieldundef{url}{%
+%      \iffieldundef{isbn}{%
+%        \iffieldundef{issn}{%
+%          #1%
+%        }{%
+%          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+%        }%
+%      }{%
+%        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+%      }%
+%    }{%
+%      \href{\thefield{url}}{#1}%
+%    }%
+%  }{%
+%    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+%  }%
+%}
+%
+%\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+%\DeclareFieldFormat[article,incollection]{title}%
+%{\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
 % ===== AMSTHM CONFIG =================
 \usepackage{thmtools}
 \usepackage{thm-restate}
