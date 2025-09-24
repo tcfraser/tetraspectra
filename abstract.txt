@@ -1,0 +1,7 @@
+Horn's problem is concerned with characterizing the eigenvalues $(a,b,c)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and forming the edges of a triangle in the space of Hermitian matrices.
+It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
+This paper concerns the tetrahedral Horn problem which aims to characterize the tuples of eigenvalues $(a,b,c,d,e,f)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
+
+Here we derive new inequalities satisfied by the Schur-polynomials of such eigenvalues and, using eigenvalue estimation techniques from quantum information theory, prove their satisfaction up to degree $k$ implies the existence of approximate solutions with error $O(\ln k / k)$.
+Moreover, the existence of these tetrahedra is related to the semiclassical asymptotics of the $6j$-symbols for the unitary group $U(n)$, which are maps between multiplicity spaces that encode the associativity relation for tensor products of irreducible representations.
+Using our techniques, we prove the asymptotics of norms of these $6j$-symbols are either inverse-polynomial or exponential depending on whether there exists such tetrahedra of Hermitian matrices.
