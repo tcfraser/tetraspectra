@@ -13,7 +13,7 @@
 \usepackage{braket}
 \usepackage{diagbox}
 \usepackage[aligntableaux=top,boxsize=0.2em]{ytableau} % for young diagrams
-
+\usepackage[foot]{amsaddr}
 % ===== BIBLIOGRAPHY SETTINGS =========
 \usepackage[
     backend=biber,
@@ -36,9 +36,6 @@
     bookmarksopen=true,
     breaklinks=true
 ]{hyperref}
-
-% authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
-\usepackage{authblk}
 % fallback if no eprinttype
 \DeclareFieldFormat{eprint}{#1}
 % when arxiv eprinttype is set 
@@ -134,12 +131,6 @@
 \newcommand{\vp}{\varphi} % shorthand
 \newcommand{\projl}{\Pi_{(\ya \yb) \yd}^{\yc, \ye}}
 \newcommand{\projr}{\Pi_{\ya (\yb \yd)}^{\ye, \yf}}
-
-% Groups and Lie algebras
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\U}{U}
 
 % Shorthands for eigenvalue labels 
 \newcommand{\ea}{a}
@@ -251,32 +242,35 @@
 }
 % ===== [END PREAMBLE] ================
 
-\author[1]{Anton Alekseev}
-\author[2]{Matthias Christandl}
-\author[2]{Thomas C. Fraser}
-\affil[1]{\small{Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}}
-\affil[2]{\small{Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}}
+\begin{document}
 
 \title[Tetrahedral Horn \& U(N) 6j asymptotics]%
-{The tetrahedral Horn problem and \\ asymptotics of \texorpdfstring{$\boldsymbol{\U(n)}$ $\boldsymbol{6j}$}{\U(n) 6j} symbols}
+{The tetrahedral Horn problem and \\ asymptotics of \texorpdfstring{$\boldsymbol{U(n)}$ $\boldsymbol{6j}$}{U(n) 6j} symbols}
+
+\author{Anton Alekseev\texorpdfstring{$^1$}{}}
+\email{anton.alekseev@unige.ch}
+\author{Matthias Christandl\texorpdfstring{$^2$}{}}
+\email{christandl@math.ku.dk}
+\author{Thomas C. Fraser\texorpdfstring{$^2$}{}}
+\email{tcf@math.ku.dk}
+
+\address{\texorpdfstring{$^1$}{}Department of Mathematics, University of Geneva, 7-9 rue du Conseil Général, 1211 Geneva 4, Switzerland}
+\address{\texorpdfstring{$^2$}{}Department of Mathematical Sciences, University of Copenhagen, Universitetsparken 5, 2100 Denmark}
 
 \date{\today}
 
-\begin{document}
 
-\maketitle
-
-\vspace{-1em}
 \begin{abstract}
     Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and forming the edges of a triangle in the space of Hermitian matrices.
     It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
     This paper concerns the \textit{tetrahedral Horn problem} which aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
 
     Here we derive new inequalities satisfied by the Schur-polynomials of such eigenvalues and, using eigenvalue estimation techniques from quantum information theory, prove their satisfaction up to degree $k$ implies the existence of approximate solutions with error $O(\ln k / k)$.
-    Moreover, the existence of these tetrahedra is related to the semiclassical asymptotics of the $6j$-symbols for the unitary group $\U(n)$, which are maps between multiplicity spaces that encode the associativity relation for tensor products of irreducible representations.
+    Moreover, the existence of these tetrahedra is related to the semiclassical asymptotics of the $6j$-symbols for the unitary group $U(n)$, which are maps between multiplicity spaces that encode the associativity relation for tensor products of irreducible representations.
     Using our techniques, we prove the asymptotics of norms of these $6j$-symbols are either inverse-polynomial or exponential depending on whether there exists such tetrahedra of Hermitian matrices.
 \end{abstract}
 
+\maketitle
 \tableofcontents
 
 \section{Introduction}
@@ -415,8 +409,8 @@ Additionally, we define the following distance measure:
 where $\norm{x}_{1} \coloneqq \sum_{i=1}^{n} \abs{x_i}$ is a distance measure which emerges naturally from the probabilistic techniques used in this paper.
 Note that $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \geq 0$ with $D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} = 0$ only if $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$.
 
-Our methods rely on the representation theory of the group $G = \U(n)$.
-We denote by $\undomweights{n} = \{ (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n) \mid \yx_i \in \mathbb{Z} \}$ the set of dominant weights for the group $G=\U(n)$, and
+Our methods rely on the representation theory of the group $G = U(n)$.
+We denote by $\undomweights{n} = \{ (\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n) \mid \yx_i \in \mathbb{Z} \}$ the set of dominant weights for the group $G=U(n)$, and
 by $\undomweightsp{n} = \{ \yx \in \undomweights{n} \mid \yx_n \geq 0\}$ the set of positive dominant weights, which can be regarded as Young diagrams.
 For $\yx \in \undomweightsp{n}$, we denote the size of $\yx$ by $\syx = \sum_{i=1}^n \yx_i$, and the product of the hook lengths of boxes in $\yx$ by $H_{\yx} = \prod_{b\in \yx} h_{\yx}(b)$ (the hook length of box $b$, $h_{\yx}(b)$, is defined as the number of boxes to the right and below $b$ plus one).
 The irreducible representations $V_{\yx}$ corresponding to positive dominant weights are polynomial, and they extend to the matrix algebra $\Mat_n(\mathbb{C})$.
@@ -426,7 +420,7 @@ It will be convenient to use rescaled characters of representations,
 \end{equation}
 extended to $X \in \Mat_n(\mathbb{C})$.
 Note that if $\ex = \eig X$ are the eigenvalues of $X$, then the character $\chi_\yx(X)$ is equal to the Schur-polynomial of the eigenvalues $s_{\yx}(\ex)$ and therefore, we also define $\vp_{\yx}(\ex) \coloneqq s_{\yx}(\ex)/H_\yx$ by a slight abuse of notation.
-Irreducible representations $V_\yx$ of $\U(n)$ are equipped with invariant Hermitian structures, and the decomposition of their tensor products,
+Irreducible representations $V_\yx$ of $U(n)$ are equipped with invariant Hermitian structures, and the decomposition of their tensor products,
 \begin{equation}
     V_\ya \otimes V_\yb \cong \bigoplus_\yc C_{\ya \yb}^\yc \otimes V_\yc,
 \end{equation}
@@ -449,8 +443,8 @@ Here we note a necessary condition for $\abcdefsymbol \neq 0$ is the satisfactio
         \syc + \syd = \sye.
     \end{split}
 \end{align}
-Before continuing, we emphasize that the representation theories of $G=\U(n)$ and $G=\SU(n)$, and thus the properties of their respective $6j$-symbols, are essentially the same up to a shifting of dominant weights, an reinterpretation of size conditions, and overall complex phases \cite{hall2008representations}.
-For the sake of concreteness, we work exclusively with the group $G=\U(n)$.
+Before continuing, we emphasize that the representation theories of $G=U(n)$ and $G=SU(n)$, and thus the properties of their respective $6j$-symbols, are essentially the same up to a shifting of dominant weights, an reinterpretation of size conditions, and overall complex phases \cite{hall2008representations}.
+For the sake of concreteness, we work exclusively with the group $G=U(n)$.
 
 Our first result is a necessary and sufficient condition for membership in $\Tetra^{+}(n)$.
 \begin{restatable}{thm}{tetiffthm}
@@ -475,8 +469,8 @@ Note that in \cref{eq:tet_iff} the sum over $\yc, \ye, \yf$ on the right-hand si
 To the best of our knowledge, this the first system of inequalities which provides not only necessary but also sufficient conditions for $(\ea,\eb,\ec,\ed,\ee,\ef) \in \Tetra^+(n)$.
 Furthermore, for fixed $k = \sya + \syb + \syd$, the corresponding finite set of inequalities describes an outer approximation to $\Tetra^+(n)$ which becomes exact as $k \to \infty$.
 
-Our second result concerns the behavior of $6j$-symbols for $G=\U(n)$ along convergent sequences of weights.
-Our interest in the $6j$-symbols for $G=\U(n)$ or $G=\SU(n)$ ultimately stems from the importance of the $6j$-symbols for $G=\SU(2)$, also referred to as Wigner $6j$-symbols/coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory},
+Our second result concerns the behavior of $6j$-symbols for $G=U(n)$ along convergent sequences of weights.
+Our interest in the $6j$-symbols for $G=U(n)$ or $G=SU(n)$ ultimately stems from the importance of the $6j$-symbols for $G=SU(2)$, also referred to as Wigner $6j$-symbols/coefficients \cite{wigner1993matrices} or the Racah $W$-coefficients \cite{racah1942theory},
 where they play a foundational role in the quantum theory of angular momentum \cite{varshalovich1988quantum,edmonds1996angular,aquilanti2012semiclassical}, the theory of spin networks \cite{penrose1971applications, baez2010physics, baez1996spin}, invariants of knots and manifolds \cite{reshetikhin1987quantized, turaev1992state}, topological quantum field theory \cite{durhuus1993topological}, elementary gates in spin network models for quantum computing \cite{marzuoli2005computing}, quantum change-point discrimination \cite{akimoto2011discrimination}, and models for quantum gravity \cite{baez1999introduction,barrett1998relativistic,barrett2003geometrical,rovelli2004quantum,moussouris1984quantum}.
 \begin{restatable}{thm}{sixjestimates}
     \label{thm:6j_estimates}
@@ -502,19 +496,19 @@ where they play a foundational role in the quantum theory of angular momentum \c
 \end{restatable}
 \Cref{thm:6j_estimates} is an instance of a correspondence between geometry and representation theory in the sense of geometric quantization \cite{roberts2002asymptotics,guillemin1982geometric,kirillov2004lectures}.
 Indeed, the asymptotic behavior of representation theoretic objects ($6j$-symbols) is controlled by solutions of a geometric problem (the tetrahedral Horn problem).
-The statement of \cref{thm:6j_estimates} should be compared with a similar statement available for $G=\SU(2)$, namely the proof of the \citeauthor{ponzano1968semiclassical} asymptotic formula \cite{ponzano1968semiclassical} by \citeauthor{roberts1999classical} \cite{roberts1999classical}.
+The statement of \cref{thm:6j_estimates} should be compared with a similar statement available for $G=SU(2)$, namely the proof of the \citeauthor{ponzano1968semiclassical} asymptotic formula \cite{ponzano1968semiclassical} by \citeauthor{roberts1999classical} \cite{roberts1999classical}.
 There, the exponential decay statement is similar to ours, but the polynomial bound statement is more precise for the sequence of scaled weights
 \begin{equation}
     (\ya_k, \yb_k, \yc_k, \yd_k, \ye_k, \yf_k) = k (\ya, \yb, \yc, \yd, \ye, \yf).
 \end{equation}
 While \cref{thm:6j_estimates} is a weaker statement than the full \citeauthor{ponzano1968semiclassical} formula for $n=2$ \cite{ponzano1968semiclassical,roberts1999classical}, it nevertheless applies for all dimensions $n$.
-The significant challenge in generalizing results for $n=2$ to $n > 2$ for $\U(n)$ $6j$ symbols is the presence of non-trivial multiplicity spaces where $\dim C^{\yc}_{\ya \yb} > 1$.
-Because of these difficulties, over the years, considerable attention has been placed on the study of specific $\U(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which happen to be multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is at most one \cite{nawata2013multiplicity, alekseev2020multiplicity, alcock2023wigner, coquereaux2023integer}.
-Our approach avoids the difficulties presented by these multiplicities by focusing only on the \textit{norms} of the $6j$-symbol for $\U(n)$.
+The significant challenge in generalizing results for $n=2$ to $n > 2$ for $U(n)$ $6j$ symbols is the presence of non-trivial multiplicity spaces where $\dim C^{\yc}_{\ya \yb} > 1$.
+Because of these difficulties, over the years, considerable attention has been placed on the study of specific $U(n)$ (or $U_q(\mathfrak{sl}_n)$) $6j$ symbols which happen to be multiplicity-free in the sense that the dimensions of each of the multiplicity spaces is at most one \cite{nawata2013multiplicity, alekseev2020multiplicity, alcock2023wigner, coquereaux2023integer}.
+Our approach avoids the difficulties presented by these multiplicities by focusing only on the \textit{norms} of the $6j$-symbol for $U(n)$.
 
 \subsubsection*{Methods}
 Central to our proofs is Schur-Weyl duality which is used to describe the decomposition of tensor powers $X^{\ot k}$ of a matrix $X$ into irreducible representations, along with the non-commutative binomial formula for the tensor powers of matrix sums.
-These features distinguish the case of $G=\U(n)$ discussed in this paper from alternate versions of the tetrahedral Horn problem that one may define for other compact groups.
+These features distinguish the case of $G=U(n)$ discussed in this paper from alternate versions of the tetrahedral Horn problem that one may define for other compact groups.
 Related is a probabilistic technique developed in the context of quantum information theory, called \textit{eigenvalue estimation}, used for estimating the eigenvalues of non-negative matrices which model the state of quantum systems \cite{keyl2001estimating,christandl2006spectra,odonnell2016efficient,hayashi2002quantum,childs2007weak,hayashi2017group}.
 Eigenvalue estimation describes how the function $\yx \mapsto \vp_\yx(X)$ is concentrated around those $\yx$ which are proportional to the eigenvalues $\ex$ of the matrix $X$ and how this concentration sharpens as $k$ grows.
 The method of eigenvalue estimation explains the relation between \cref{thm:tet_iff} and \cref{thm:6j_estimates};
@@ -537,8 +531,8 @@ The tetrahedral Horn problem we consider here is termed the \textit{additive} mu
 
 In \cite{christandl2018recoupling}, \citeauthor{christandl2018recoupling} investigated problem of determining the eigenvalues for a non-negative Hermitian matrix $\rho_{ABC}$ on a triple tensor product space along with its partial partial traces $\rho_{AB}, \rho_{BC}, \rho_{A}, \rho_{B}$, and $\rho_{C}$.
 Such eigenvalue problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginal problems \cite{klyachko2004quantum, daftuar2005quantum, christandl2006spectra, christandl2007nonzero, christandl2018recoupling, yu2021complete, fraser2022sufficient}.
-Using \citeauthor{nishiyama2000restriction}'s restriction theorem to the subgroup $S_k \subset \U(k)$ of permutation matrices \cite{nishiyama2000restriction}, they showed how the solution to their eigenvalue problem is associated to the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
-Moreover, they proved the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, explained how norms of the $6j$ symbols for unitary group $\U(n)$ are a special case of norms of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}, generalizing how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
+Using \citeauthor{nishiyama2000restriction}'s restriction theorem to the subgroup $S_k \subset U(k)$ of permutation matrices \cite{nishiyama2000restriction}, they showed how the solution to their eigenvalue problem is associated to the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
+Moreover, they proved the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, explained how norms of the $6j$ symbols for unitary group $U(n)$ are a special case of norms of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}, generalizing how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
 In this paper, we address the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:tet_iff} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions obtained in \cite{christandl2018recoupling}.
 Also, while the statement of \cref{thm:6j_estimates} is implicitly contained in \cite{christandl2018recoupling}, in this paper, we provide a direct proof.
 We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
@@ -561,14 +555,14 @@ MC and TCF acknowledge financial support from the European Research Council (ERC
 \label{sec:background}
 
 In \cref{sec:background_rep_theory}, we review material on the representation theory of compact connected Lie groups,
-specifically the group $\U(n)$, and in \cref{sec:background_probability} we review some measure theory associated to Haar integrals of such groups.
+specifically the group $U(n)$, and in \cref{sec:background_probability} we review some measure theory associated to Haar integrals of such groups.
 Along the way, we introduce a series of the polynomial functions $\vp_{\yx}(X)$, $\vp^{\ya\yb}_{\yc}(X,Y)$ and $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)$ of one, two and three $n\times n$ matrices respectively,
 and provide a formula for the representation of a matrix sum $X+Y$ which we refer to as the binomial theorem.
 
 \subsection{Representation theory}
 \label{sec:background_rep_theory}
 
-Even though we will primarily deal with $G=\U(n)$, we start with a more general story.
+Even though we will primarily deal with $G=U(n)$, we start with a more general story.
 
 \subsubsection{\texorpdfstring{$G$}{G} compact}
 Let $G$ be a compact connected Lie group, $T \subset G$  a maximal torus, $\mathfrak{t} = \Lie(T)$ its Lie algebra, $\Lambda = \ker(\exp) \subset \mathfrak{t}$ the integral lattice, $\Lambda^* \subset \mathfrak{t}^*$ the weight lattice, and $\Lambda^*_+ \subset \Lambda^*$ the set of dominant weights of $G$.
@@ -622,10 +616,10 @@ Recall that for Hermitian vector spaces $V_{1}, V_{2}$ and an operator $O: V_{1}
     \end{split}
 \end{align}
 
-\subsubsection{\texorpdfstring{$G=\U(n)$}{G=U(n)} and  functions \texorpdfstring{$\vp_\yx$}{philambda}}
+\subsubsection{\texorpdfstring{$G=U(n)$}{G=U(n)} and  functions \texorpdfstring{$\vp_\yx$}{philambda}}
 
-For $G=\U(n)$, dominant weights are parameterized by non-increasing arrays of integers, $\yx=(\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$, where $\yx_i \in \mathbb Z$ and $\yx_i \geq \yx_{i+1}$ for all $i$.
-In particular, the first fundamental weight $\varpi_1=(1, 0, \ldots, 0)$ corresponds to the defining representation of $\U(n)$ on $V_{\varpi_1} = \mathbb{C}^n$.
+For $G=U(n)$, dominant weights are parameterized by non-increasing arrays of integers, $\yx=(\yx_1 \geq \yx_2 \geq \cdots \geq \yx_n)$, where $\yx_i \in \mathbb Z$ and $\yx_i \geq \yx_{i+1}$ for all $i$.
+In particular, the first fundamental weight $\varpi_1=(1, 0, \ldots, 0)$ corresponds to the defining representation of $U(n)$ on $V_{\varpi_1} = \mathbb{C}^n$.
 
 We say that a dominant weight $\yx$ is positive if each of its components is positive (i.e., $\yx_n \geq 0$), and we denote the set of positive dominant weights by
 \begin{equation}
@@ -648,7 +642,7 @@ Representations $\pi_\yx(g)$ corresponding to positive dominant weights are poly
 \end{equation}
 for all $X,Y \in \Mat_n(\mathbb{C})$.
 If $X$ is a Hermitian matrix with eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$ then the character of $X$ for the representation $\pi_{\yx}$, denoted by $\chi_{\yx}(X)$, is equal to the Schur-polynomial of its eigenvalues $\ex$, denoted by $s_{\yx}(\ex)$.
-Moreover, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $\U(n)$ \cite{hall2008representations,itzykson1966unitary},
+Moreover, the dimension for the irreducible representation $V_{\yx}$ is given by Weyl's dimension formula for $U(n)$ \cite{hall2008representations,itzykson1966unitary},
 \begin{equation}
     \label{eq:weyl_dim}
     \dim(V_{\yx}) = \frac{\prod_{1 \leq i<j \leq n}(\yx_i - i - \yx_j + j)}{\prod_{1 \leq i<j \leq n}(j-i)}.
@@ -687,15 +681,15 @@ This rescaling of characters produces the normalization conditions
     \quad \text{and} \quad
     \sum_\yx \vp_\yx(X) = \exp(\Tr X).
 \end{equation}
-Indeed, by the Schur-Weyl duality, there is an isomorphism of $S_k \times \U(n)$-modules
+Indeed, by the Schur-Weyl duality, there is an isomorphism of $S_k \times U(n)$-modules
 \begin{equation}
     \label{eq:schur-weyl}
     (\mathbb{C}^n)^{\ot k} \cong \bigoplus_{\yx \vdash_{n} k} W_\yx \ot V_\yx,
 \end{equation}
 where the symmetric group $S_k$ acts by permutations of tensor factors in $(\mathbb{C}^n)^{\ot k}$.
 For each Young diagram $\yx$ with $k$ boxes and at most $n$ rows, we let $\Pi^{\yx}$
-denote the unique $S_k \times \U(n)$-equivariant orthogonal projection $(\mathbb{C}^n)^{\ot k}$ into $W_{\yx} \ot V_{\yx}$.
-Since all $\U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $S_k \times \Mat_n(\mathbb{C})$.
+denote the unique $S_k \times U(n)$-equivariant orthogonal projection $(\mathbb{C}^n)^{\ot k}$ into $W_{\yx} \ot V_{\yx}$.
+Since all $U(n)$ representations entering the decomposition in \cref{eq:schur-weyl} are positive, the Schur-Weyl duality extends to an isomorphism of modules for monoids $S_k \times \Mat_n(\mathbb{C})$.
 Applying this isomorphism to an element $X \in \Mat_n(\mathbb{C})$, we obtain
 \begin{equation}
     \label{eq:X^k}
@@ -993,7 +987,7 @@ One can associate to each $\ex \in \eigsp{n}$ a probability measure $p^\ex$ on t
 \begin{equation}
     p^\ex_i = \frac{\ex_i}{\tex}, \quad \text{where} \quad \tex = \sum_{i=1}^n \ex_i.
 \end{equation}
-For each $\ex$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive dominant weights of $\U(n)$ with size $\syx = k$:
+For each $\ex$ and each $k \geq 1$, using \cref{eq:varphi_normalization}, one can define a probability measure on the set of positive dominant weights of $U(n)$ with size $\syx = k$:
 \begin{equation}
     \label{eq:schur_weyl_dist}
     \SW{\ex}(\yx) \coloneqq \frac{k!}{\tex^k} \vp_\yx(x) = \frac{\Tr[\Pi_{\yx} X^{\ot k}]}{\Tr[X^{\ot k}]},
@@ -1105,12 +1099,12 @@ where on the right-hand side we use the unnormalized Bhattacharyya coefficient f
 
 \subsubsection{Measures on conjugacy classes}
 For $x \in \eigsp{n}$, we define the conjugacy class $\orbit_x$ of the diagonal matrix
-$\diag(x_1, \ldots, x_n)$ under the action of the unitary group $\U(n)$:
+$\diag(x_1, \ldots, x_n)$ under the action of the unitary group $U(n)$:
 \begin{equation}
-    \orbit_x = \{ X = U\diag(x_1, \ldots, x_n)U^{-1} \mid U \in \U(n)\} \subset \hermp{n}.
+    \orbit_x = \{ X = U\diag(x_1, \ldots, x_n)U^{-1} \mid U \in U(n)\} \subset \hermp{n}.
 \end{equation}
-Each conjugacy class carries a unique $\U(n)$-invariant probability measure $\mu_x$.
-This measure can be constructed as the pushforward of the Haar probability measure on $\U(n)$.
+Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$.
+This measure can be constructed as the pushforward of the Haar probability measure on $U(n)$.
 We write $X \sim \orbit_x$ to indicate $X$ distributed according to the measure $\mu_x$.
 
 \begin{prop}
@@ -1379,7 +1373,7 @@ Altogether, this implies%
 because $\sqrt{24(\frac{1}{4}n(5n+13))} \leq 6 \sqrt{3} n$ for all $n \geq 1$.
 
 
-\section{Asymptotics of \texorpdfstring{$\U(n)$ $6j$}{U(n) 6j} symbols}
+\section{Asymptotics of \texorpdfstring{$U(n)$ $6j$}{U(n) 6j} symbols}
 \label{sec:proof_6j_estimates}
 
 In this section we provide a proof of \cref{thm:6j_estimates},
@@ -1719,7 +1713,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
         \end{alignedat}
     \end{equation}
     The symmetries in \cref{prop:tet_symmetry} also coincide with certain symmetries of the $6j$ operator $\abcdefsymbol$ under the involution $\yx \mapsto \yx^{*}$ corresponding taking the dual representation $V_{\yx} \mapsto (V_{\yx})^{*}$.
-    In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $\SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
+    In the case where $n = 2$, the involution map becomes the identity map (as every irreducible representation of $SU(2)$ is self-dual, or the reversal of a pair $(x,-x)$ of traceless eigenvalues is trivial), and thus the symmetry group collapses to a group of order $\abs{S_4} = 4! = 24$.
 \end{rem}
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
@@ -1833,12 +1827,12 @@ As a consequence of \cref{cor:psd}, we will, without loss of generality, hencefo
     \end{equation}
 \end{rem}
 \begin{rem}
-    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a surprising symmetry of Wigner $6j$ symbol for $\SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry}.
-    The paper due to \citeauthor{boalch2007regge} provides a comprehensive and modern treatment of the Regge symmetry for the $6j$ symbol for $\SU(2)$ by viewing it as a consequence of a symmetry of multiplicity-free $6j$-symbols for $\SU(3)$ \cite{boalch2007regge}.
+    The Regge symmetry of a tetrahedron can be understood as a consequence of an earlier discovery of a surprising symmetry of Wigner $6j$ symbol for $SU(2)$ originally due to \citeauthor{regge1959symmetry} \cite{regge1959symmetry}.
+    The paper due to \citeauthor{boalch2007regge} provides a comprehensive and modern treatment of the Regge symmetry for the $6j$ symbol for $SU(2)$ by viewing it as a consequence of a symmetry of multiplicity-free $6j$-symbols for $SU(3)$ \cite{boalch2007regge}.
     That the Regge symmetry of a tetrahedron emerges from the Regge symmetry of the associated $6j$ symbols can be viewed as a consequence of the semiclassical limit of the latter \cite{ponzano1968semiclassical,roberts1999classical}.
     It has also be shown that the Regge symmetry of Euclidean tetrahedra is actually a scissors-congruence preserving both the volume and Dhen invariants \cite{akopyan2019regge}.
     At the moment, it remains unclear if analogous symmetries for the generalized Wigner $6j$ symbol exist for $n \geq 3$ (although there are conjectured symmetries for the $6j$ symbols for $U_q(\mathfrak{sl}_n)$ which would follow from the eigenvalue hypothesis \cite{morozov2018new,lanina2023tug}).
-    It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $\U(n)$.
+    It could also be possible for additional symmetries to be present in the tetrahedral Horn problem for $n \geq 3$ which are \textit{not} present in the $6j$ symbol for $U(n)$.
 \end{rem}
 
 
@@ -2114,10 +2108,10 @@ If $(\ea,\eb,\ec,\ed,\ee,\ef)$ are tetrahedral eigenvalues, then by \cref{lem:si
     \frac{1}{q(k)} \leq \left(c_{\ya_k,\yf_k}^{\ye_k}c_{\yb_k,\yd_k}^{\yf_k}c_{\ya_k,\yb_k}^{\yc_k}c_{\yc_k,\yd_k}^{\ye_k}\right)^{\frac{1}{2}} \frac{\dim(V_{\yc_k}^n) \dim(V_{\yf_k}^n)}{\dim(V_{\yb_k}^n) \dim(V_{\ye_k}^n)}.
 \end{equation}
 where $q(k)$ is some polynomial in $k$ independent of the dimension $n$ (see \cref{eq:n_independent_inverse_poly}).
-Remarkably, the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}$, $c_{\yb_k,\yd_k}^{\yf_k}$, $c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are also \textit{independent} of the dimension parameter $n$ defining the group $\U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams.
+Remarkably, the Littlewood-Richardson coefficients $c_{\ya_k,\yf_k}^{\ye_k}$, $c_{\yb_k,\yd_k}^{\yf_k}$, $c_{\ya_k,\yb_k}^{\yc_k}$, and $c_{\yc_k,\yd_k}^{\ye_k}$ are also \textit{independent} of the dimension parameter $n$ defining the group $U(n)$ (assuming $n$ is at least as large as the maximum depth of any of the involved Young diagrams.
 This observation provides us with an opportunity to optimize the above bound by varying the value of $n$.
 
-In particular, it will useful to better understand how the dimension, $\dim(V_{\yx})$, of the irreducible representation $V_{\yx}$ of $\U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
+In particular, it will useful to better understand how the dimension, $\dim(V_{\yx})$, of the irreducible representation $V_{\yx}$ of $U(n)$ grows as $n$ becomes much larger than the number of rows of $\yx$.
 In general, for fixed $\yx$, the function sending $n$ to $\dim V_{\yx}$ can grow at an exponential rate with increasing $n$.
 One can find estimates for $\dim(V_{\yx})$ in the regime where $n$ is large compared to ${\syx}$ and also the last row $\yx_{\min}$ is large compared to the depth of $\yx$ in paper by \Citeauthor{itzykson1966unitary} \cite[Section III]{itzykson1966unitary}.
 Here we use an elegant presentation of this scaling, which relates the asymptotics of $\dim(V_{\yx})$ to the value of $\dim(W_{\yx})$ (see \cite[Lemma 2]{harrow2023approximate} or \cite[Equations (25,26)]{childs2007weak}).
