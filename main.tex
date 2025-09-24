@@ -1,5 +1,255 @@
 \documentclass[notitlepage, 11pt, letterpaper]{amsart}
-\input{imports/preamble}
+
+% ===== [PREAMBLE] ================
+%\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage[table]{xcolor}
+\usepackage{latexsym}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{diagbox}
+\usepackage[aligntableaux=top,boxsize=0.2em]{ytableau} % for young diagrams
+
+% ===== BIBLIOGRAPHY SETTINGS =========
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    doi=false,
+    url=false,
+    isbn=false
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage[
+    unicode=true,
+    colorlinks=true,
+    urlcolor=blue!75!black,
+    linkcolor=blue!75!black,
+    citecolor=blue!75!black,
+    pdfusetitle,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    breaklinks=true
+]{hyperref}
+
+% authblk seems to need to be loaded after hyperref to avoid hyperref complaining about illegal parameter numbers (TC: not sure what's going on here)
+\usepackage{authblk}
+% fallback if no eprinttype
+\DeclareFieldFormat{eprint}{#1}
+% when arxiv eprinttype is set 
+\DeclareFieldFormat{eprint:arxiv}{arXiv:\,#1}
+
+% ===== AMSTHM CONFIG =================
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{amsthm}
+\usepackage[capitalise]{cleveref} % https://stackoverflow.com/questions/6499504/cleveref-fails-for-theorem-environments-sharing-the-same-counter
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}%[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}%[section]
+\newtheorem{prob}[thm]{Problem}%[section]
+\newtheorem{exam}[thm]{Example}%[section]
+\newtheorem{rem}[thm]{Remark}%[section]
+
+% https://tex.stackexchange.com/questions/126020/cleveref-doesnt-use-correct-capitalized-name-if-used-with-amsthm
+\makeatletter
+\if@cref@capitalise
+\Crefname{thm}{Theorem}{Theorems}
+\Crefname{lem}{Lemma}{Lemmas}
+\Crefname{cor}{Corollary}{Corollaries}
+\Crefname{conj}{Conjecture}{Conjectures}
+\Crefname{defn}{Definition}{Definitions}
+\Crefname{prop}{Proposition}{Propositions}
+\Crefname{exam}{Example}{Examples}
+\Crefname{prob}{Problem}{Problems}
+\Crefname{rem}{Remark}{Remarks}
+\else
+\crefname{thm}{theorem}{theorems}
+\crefname{lem}{lemma}{lemma}
+\crefname{cor}{corollary}{corollaries}
+\crefname{conj}{conjecture}{conjectures}
+\crefname{defn}{definition}{definitions}
+\crefname{prop}{proposition}{propositions}
+\crefname{exam}{example}{examples}
+\crefname{prob}{problem}{problems}
+\crefname{rem}{remark}{remarks}
+\fi
+\makeatother
+% ===== REFERENCES IN SECTION TITLES =========
+% https://tex.stackexchange.com/questions/485976/hide-cleveref-links-in-section-title
+\usepackage{crossreftools}
+\let\ORGhypersetup\hypersetup
+\protected\def\hypersetup{\ORGhypersetup}
+\pdfstringdefDisableCommands{%
+  \def\hypersetup#1{}%
+  \let\Cref\crtCref
+  \let\cref\crtcref
+}
+% ======== NOTATION MACROS ============
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Horn}{Horn}
+\DeclareMathOperator{\Tetra}{Tetra}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\BC}{BC} % Bhattacharyya coefficient 
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\eig}{eig}
+%\DeclareMathOperator{\ker}{kern}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator*{\expect}{\mathbb{E}}
+\newcommand{\card}[1]{\left|#1\right|}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\orbit}{\mathcal O}
+\newcommand{\polyk}[1]{(k\!+\!1)^{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\kl}[2]{D\!\left(#1\middle\|#2\right)} % KL divergence
+\newcommand{\ent}[1]{H\!\left(#1\right)} % shannon entropy
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\SW}[1]{P_{#1}}
+\newcommand{\herm}[1]{\mathcal H_{#1}}
+\newcommand{\hermp}[1]{\mathcal H^{+}_{#1}}
+\newcommand{\domweights}[1]{\Lambda^{\geq}_{#1}}
+\newcommand{\domweightsp}[1]{\Lambda^{+}_{#1}}
+\newcommand{\undomweights}[1]{\mathbb Z^{\geq}_{#1}}
+\newcommand{\undomweightsp}[1]{\mathbb Z^{+}_{#1}}
+\newcommand{\eigs}[1]{\mathbb R^{\geq}_{#1}}
+\newcommand{\eigsp}[1]{\mathbb R^{+}_{#1}}
+\newcommand{\ot}{\otimes} % shorthand
+\newcommand{\vp}{\varphi} % shorthand
+\newcommand{\projl}{\Pi_{(\ya \yb) \yd}^{\yc, \ye}}
+\newcommand{\projr}{\Pi_{\ya (\yb \yd)}^{\ye, \yf}}
+
+% Groups and Lie algebras
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\U}{U}
+
+% Shorthands for eigenvalue labels 
+\newcommand{\ea}{a}
+\newcommand{\eb}{b}
+\newcommand{\ec}{c}
+\newcommand{\ed}{d}
+\newcommand{\ee}{e}
+\newcommand{\ef}{f}
+\newcommand{\ex}{x}
+\newcommand{\ey}{y}
+\newcommand{\ez}{z}
+
+% eigenvalue traces
+\newcommand{\tea}{\Tr[\ea]}
+\newcommand{\teb}{\Tr[\eb]}
+\newcommand{\tec}{\Tr[\ec]}
+\newcommand{\ted}{\Tr[\ed]}
+\newcommand{\tee}{\Tr[\ee]}
+\newcommand{\tef}{\Tr[\ef]}
+\newcommand{\tex}{\Tr[\ex]}
+\newcommand{\tey}{\Tr[\ey]}
+\newcommand{\tez}{\Tr[\ez]}
+
+% Shorthands for young diagram labels
+\newcommand{\ya}{\alpha}
+\newcommand{\yb}{\beta}
+\newcommand{\yc}{\gamma}
+\newcommand{\yd}{\delta}
+\newcommand{\ye}{\epsilon}
+\newcommand{\yf}{\phi}
+\newcommand{\yx}{\lambda}
+\newcommand{\yn}{\eta}
+\newcommand{\yempty}{()}
+
+% sizes of young diagrams 
+\newcommand{\sya}{|\ya|}
+\newcommand{\syb}{|\yb|}
+\newcommand{\syc}{|\yc|}
+\newcommand{\syd}{|\yd|}
+\newcommand{\sye}{|\ye|}
+\newcommand{\syf}{|\yf|}
+\newcommand{\syx}{|\yx|}
+\newcommand{\syn}{|\yn|}
+
+% --- More compact arrays below ---
+\newcommand{\tightoctuple}[1]{
+\begingroup
+\arraycolsep=0.5pt
+\renewcommand{\arraystretch}{0.3}
+\begin{array}{@{}c@{}cccccc@{}c@{}}#1\end{array}
+\endgroup
+}
+\newcommand{\tightsextuple}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\begin{array}{@{}cccccc@{}}#1\end{array}
+\endgroup
+}
+\newcommand{\tighttriple}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\begin{array}{@{}ccc@{}}#1\end{array}
+\endgroup
+}
+
+% Custom spaced ABCDEF 6j recoupling symbol
+\newcommand{\tightcurlysixj}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\left\{\!\begin{array}{ccc}
+    #1
+\end{array}\!\right\}
+\endgroup
+}
+\newcommand{\tightparensixj}[1]{
+\begingroup
+\arraycolsep=1.5pt
+\renewcommand{\arraystretch}{0.3}
+\left(\!\begin{array}{ccc}
+    #1
+\end{array}\!\right)
+\endgroup
+}
+\newcommand{\emptyyoung}{\emptyset}
+\newcommand{\abcdefsymbol}{\tightcurlysixj{\alpha & \beta & \gamma \\ \delta & \epsilon & \phi}}
+\newcommand{\abcdefsymbolk}{\tightcurlysixj{\alpha_k & \beta_k & \gamma_k \\ \delta_k & \epsilon_k & \phi_k}}
+\newcommand{\abcdefsymbolcefstarred}{\tightcurlysixj{\alpha & \beta & \gamma^* \\ \delta & \epsilon^* & \phi^*}}
+
+\newcommand{\tightsinglesubstack}[2]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \end{array}
+\endgroup
+}
+\newcommand{\tightdoublesubstack}[3]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \\ {\scriptscriptstyle #3} \end{array}
+\endgroup
+}
+\newcommand{\tighttriplesubstack}[4]{
+\begingroup
+    \renewcommand{\arraystretch}{0.3}
+    \begin{array}{c@{}} #1 \\ {\scriptscriptstyle #2} \\ {\scriptscriptstyle #3} \\ {\scriptscriptstyle #4} \end{array}
+\endgroup
+}
+% ===== [END PREAMBLE] ================
 
 \author[1]{Anton Alekseev}
 \author[2]{Matthias Christandl}
@@ -18,7 +268,7 @@
 
 \vspace{-1em}
 \begin{abstract}
-    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and forming the edges of a triangle in the space of Hermitian matrices. 
+    Horn's problem is concerned with characterizing the eigenvalues $(\ea,\eb,\ec)$ of Hermitian matrices $(A,B,C)$ satisfying the constraint $A+B=C$ and forming the edges of a triangle in the space of Hermitian matrices.
     It has deep connections to tensor product invariants, Littlewood-Richardson coefficients, geometric invariant theory and the intersection theory of Schubert varieties.
     This paper concerns the \textit{tetrahedral Horn problem} which aims to characterize the tuples of eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ef)$ of Hermitian matrices $(A,B,C,D,E,F)$ forming the edges of a tetrahedron, and thus satisfying the constraints $A+B=C$, $B+D=F$, $D+C=E$ and $A+F=E$.
 
@@ -66,7 +316,8 @@ In this paper, we consider the problem of determining the set of possible eigenv
 We refer to this eigenvalue problem as the \textit{tetrahedral} Horn problem because these constraints are naturally associated to the four faces of a tetrahedron in the vector space $\herm{n}$, as depicted in \cref{fig:tetrahedron_labelling_scheme}.
 \begin{figure}[ht]
     \centering
-    \ctikzfig{tikz/triangle-tetrahedral-problem}\caption{(Left) The Horn problem concerns the eigenvalues of three Hermitian matrices, $A,B,$ and $C$, forming a triangle in $\herm{n}$.
+    \includegraphics[]{figures/triangle-tetrahedron-matrices}
+    \caption{(Left) The Horn problem concerns the eigenvalues of three Hermitian matrices, $A,B,$ and $C$, forming a triangle in $\herm{n}$.
     (Right) The tetrahedral Horn problem concerns the eigenvalues of six Hermitian matrices, $A,B,C,D,E,$ and $F$, forming a tetrahedron in $\herm{n}$.}
     \label{fig:tetrahedron_labelling_scheme}
 \end{figure}
@@ -132,7 +383,7 @@ Before proceeding, we emphasize the strong qualitative difference between the te
 \Cref{fig:tetrahedron_moduli_space_example} visualizes this distinction by depicting a three-dimensional slice of $\Tetra(2)$.
 \begin{figure}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{figures/triangle_vs_cayley_menger}
+        \includegraphics[width=0.7\textwidth]{figures/triangle-cayley-menger}
     \end{center}
     \caption{
         The interior green region depicts a slice of the space of side-lengths $(\ell_a,\ell_b,\ell_c,\ell_d,\ell_e,\ell_f)$ of tetrahedra where $(\ell_a,\ell_b,\ell_d) = (5,7,6)$ and thus depicts a slice of $\Tetra(2)$.
@@ -682,7 +933,7 @@ These bounds, in conjunction with \cref{prop:varphi_tet_main_ineq} will help us 
         \end{split}
     \end{align}
     Now using the non-negativity of $\vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$, we obtain the first claimed inequality in \cref{eq:psum_prod_bounds}.
-    Similarly, the second claimed inequality in \cref{eq:psum_prod_bounds} follows analogously from summing 
+    Similarly, the second claimed inequality in \cref{eq:psum_prod_bounds} follows analogously from summing
     $\vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ over $\ye$ and $\yf$,
     while the third claimed inequality in \cref{eq:psum_prod_bounds} follows from summing $\vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)$ over $\yf$, $\ya$, $\yb$ and $\yd$.
     The inequalities concerning $\vp^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)$ are proven in an analogous manner.
@@ -826,7 +1077,7 @@ The following proposition compares Schur-Weyl measures $\SW{\ex}$ and $\SW{\ey}$
     From \cref{prop:multinomial_bound} and \cref{eq:unitary_irrep_dim_bound}, we have
     \begin{align}
         \begin{split}
-            \BC(\SW{\ex},\SW{\ey}) 
+            \BC(\SW{\ex},\SW{\ey})
             &= \sum_{\yx \vdash k} \sqrt{\SW{\ex}(\yx)\SW{\ey}(\yx)}, \\
             &\leq \sum_{\yx \vdash k} \dim V_{\yx} \sqrt{m_\ex(\yx)m_\ey(\yx)}, \\
             &\leq \polyk{\binom{n}{2}} \sum_{\yx \vdash k}\sqrt{m_\ex(\yx)m_\ey(\yx)}, \\
@@ -1206,7 +1457,7 @@ To begin we note that for all $(X,Y,Z) \in (\hermp{n})^{3}$ and $(\ya,\yb,\yc,\y
 \begin{align}
     \label{eq:vp_tet_bound_sixj}
     \begin{split}
-        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)} 
+        \abs{\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)}
         &\leq \norm{\abcdefsymbol}_{\infty} \vp^{\ya\yb\yd}_{\_\ye\yf}(X,Y,Z)^{\frac{1}{2}} \vp^{\ya\yb\yd}_{\yc\ye\_}(X,Y,Z)^{\frac{1}{2}}, \\
         &\leq \norm{\abcdefsymbol}_{\infty} \varphi_{\ye}(X+Y+Z), \\
         &\leq \norm{\abcdefsymbol}_{\infty} \frac{\Tr(X+Y+Z)^k}{k!},
@@ -1224,8 +1475,8 @@ Now for each positive integer $k$, let $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k) \i
 Using this maximum, we bound each summand to conclude
 \begin{equation}
     \label{eq:inverse_poly_varphi_lower}
-    \frac{\tee^k}{k!} 
-    = \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) 
+    \frac{\tee^k}{k!}
+    = \sum_{\substack{\ya,\yb,\yd \\ \yc,\ye,\yf \\ \sye = k}} \vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z)
     \leq \polyk{6\rank[\ee]} \abs{\vp^{\ya_k\yb_k\yd_k}_{\yc_k\ye_k\yf_k}(X,Y,Z)},
 \end{equation}
 where $\polyk{6\rank[\ee]}$ is an upper bound the total number of terms in the summation for which $\vp^{\ya\yb\yd}_{\yc\ye\yf}(X,Y,Z) \neq 0$.
@@ -1848,11 +2099,11 @@ We begin with our upper bound on the $6j$ symbol.
     Here we provide a diagrammatic proof of the claimed inequality.
     For the sake of clarity, we abbreviate the irreducible representation labels, $V_{\yx}$, and omit the multiplicity space labels on the intermediate steps.
     \begin{equation}
-        \scalebox{0.76}{\tikzfig{tikz/final/sixj_upper}}
+        \includegraphics[width=\textwidth]{figures/sixj-upper-bound}
     \end{equation}
-    The first equality follows from the definition of the $6j$ symbol.
-    The inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
-    The final equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}$ to itself on the left and $V_{\ye}$ to itself on the right.
+    The left equality follows from the definition of the $6j$ symbol.
+    The middle inequality follows from an application of the Cauchy-Schwarz inequality with respect to the annotated contraction.
+    The right equality follows from applying Schur's lemma to components of the diagram mapping $V_{\yb}$ to itself on the left and $V_{\ye}$ to itself on the right.
     Note that the factors of $\dim(V_{\ye})^2$ appearing on left-most and right-most sides of the above inequality cancel producing the claimed inequality.
 \end{proof}
 
