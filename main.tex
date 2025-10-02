@@ -38,7 +38,7 @@
 ]{hyperref}
 % fallback if no eprinttype
 \DeclareFieldFormat{eprint}{#1}
-% when arxiv eprinttype is set 
+% when arxiv eprinttype is set
 \DeclareFieldFormat{eprint:arxiv}{arXiv:\,#1}
 
 % ===== AMSTHM CONFIG =================
@@ -101,7 +101,7 @@
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\BC}{BC} % Bhattacharyya coefficient 
+\DeclareMathOperator{\BC}{BC} % Bhattacharyya coefficient
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\eig}{eig}
 %\DeclareMathOperator{\ker}{kern}
@@ -132,7 +132,7 @@
 \newcommand{\projl}{\Pi_{(\ya \yb) \yd}^{\yc, \ye}}
 \newcommand{\projr}{\Pi_{\ya (\yb \yd)}^{\ye, \yf}}
 
-% Shorthands for eigenvalue labels 
+% Shorthands for eigenvalue labels
 \newcommand{\ea}{a}
 \newcommand{\eb}{b}
 \newcommand{\ec}{c}
@@ -165,7 +165,7 @@
 \newcommand{\yn}{\eta}
 \newcommand{\yempty}{()}
 
-% sizes of young diagrams 
+% sizes of young diagrams
 \newcommand{\sya}{|\ya|}
 \newcommand{\syb}{|\yb|}
 \newcommand{\syc}{|\yc|}
@@ -394,7 +394,7 @@ We claim that the tetrahedral Horn problem can be reduced to the problem of char
 \begin{equation}
     \Tetra^+(n) \coloneqq (\eigsp{n})^6 \cap \Tetra(n).
 \end{equation}
-This restriction to non-negative eigenvalues is justified because $\Tetra(n)$ is closed under certain affine transformations (for more details see \cref{cor:psd} in \cref{sec:symmetries}).
+This restriction to non-negative eigenvalues is justified because $\Tetra(n)$ is closed under certain affine transformations (for more details see \cref{cor:non_negativity} in \cref{sec:symmetries}).
 Additionally, we define the following distance measure:
 \begin{equation}
     D\!\tightparensixj{\ea & \eb & \ec \\ \ed & \ee & \ef} \coloneqq
@@ -533,7 +533,7 @@ In \cite{christandl2018recoupling}, \citeauthor{christandl2018recoupling} invest
 Such eigenvalue problems arise naturally in the context of quantum information theory and are typically referred to as quantum marginal problems \cite{klyachko2004quantum, daftuar2005quantum, christandl2006spectra, christandl2007nonzero, christandl2018recoupling, yu2021complete, fraser2022sufficient}.
 Using \citeauthor{nishiyama2000restriction}'s restriction theorem to the subgroup $S_k \subset U(k)$ of permutation matrices \cite{nishiyama2000restriction}, they showed how the solution to their eigenvalue problem is associated to the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}.
 Moreover, they proved the tetrahedral Horn problem may be viewed as a special case of the quantum marginals problem and, in a complementary manner, explained how norms of the $6j$ symbols for unitary group $U(n)$ are a special case of norms of the $6j$ symbols for the symmetric group $S_k$ \cite{christandl2018recoupling}, generalizing how the Littlewood-Richardson coefficients can be cast as a special case of the Kronecker coefficients \cite{littlewood1958products,murnaghan1955analysis,ikenmeyer2023all}.
-In this paper, we address the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:tet_iff} which provides stronger conditions for tetrahedral eigenvalues which go beyond the conditions obtained in \cite{christandl2018recoupling}.
+In this paper, we address the tetrahedral Horn problem directly, and consequently, we obtain \cref{thm:tet_iff} which provides stronger conditions eigenvalues of tetrahedra of Hermitian matrices which go beyond the conditions obtained in \cite{christandl2018recoupling}.
 Also, while the statement of \cref{thm:6j_estimates} is implicitly contained in \cite{christandl2018recoupling}, in this paper, we provide a direct proof.
 We note that this direct approach was initiated, for the $n=2$ case, by \citeauthor{backens2010sixjsymbols} \cite{backens2010sixjsymbols}.
 
@@ -546,7 +546,7 @@ We begin with \cref{sec:background} which provides all of the background materia
 \cref{sec:large_n} demonstrates how to recover an entropic inequality from the $n\to\infty$ limit.
 
 \subsubsection*{Acknowledgments}
-We are grateful to Jack Davis, Pavel Etingof, Marco Fanizza, Harold Nieuwboer, and Suvrit Sra for helpful discussions.
+We are grateful to Jack Davis, Pavel Etingof, Marco Fanizza, Harold Nieuwboer, Suvrit Sra, and Michèle Vergne for helpful discussions.
 
 Research of AA was supported in part by the grants 208235, 220040, and 236683, and by the National Center for Competence in Research (NCCR) SwissMAP of the Swiss National Science Foundation, and by the award of the Simons Foundation to the Hamilton Mathematics Institute of the Trinity College Dublin under the program ``Targeted Grants to Institutes''.
 MC and TCF acknowledge financial support from the European Research Council (ERC Grant Agreement No.~818761), VILLUM FONDEN via the QMATH Centre of Excellence (Grant No.~10059) and the Novo Nordisk Foundation (grant NNF20OC0059939 `Quantum for Life'). They also thank the NCCR SwissMAP and the Section of Mathematics at the University of Geneva for their hospitality.
@@ -1489,7 +1489,7 @@ which implies $\lim_{k\to \infty} R_{\ea\eb\ec\ed\ee\ef}^{\ya_k\yb_k\yc_k\yd_k\y
 \subsection{Exponential upper bound}
 \label{sec:6j_exp}
 
-We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ when $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ converges to some non-tetrahedral eigenvalues.
+We now prove the exponential decay on $\norm{\abcdefsymbolk}_{\infty}$ whenever $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ converges to eigenvalues which are not the eigenvalues of any tetrahedra of Hermitian matrices.
 Without loss of generality, we can assume the Young diagrams $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ satisfy the size constraints \cref{eq:size_conditions_tet} as before (since otherwise $\abcdefsymbolk = 0$).
 To begin, \cref{lem:estimate_E_x_y_z_bound} gives
 \begin{equation}
@@ -1529,7 +1529,7 @@ Then applying \cref{lem:asym_sixj_helper} produces
 \end{equation}
 where $\ec^{*} = \exp(X+Y), \ef^{*} = \eig(Y+Z)$, and $\ee^{*} = \eig(X+Y+Z)$.
 
-Finally, since it was assumed that $(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to non-tetrahedral eigenvalues, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all tetrahedral eigenvalues $(\ea',\eb',\ec',\ed',\ee',\ef')$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$.
+Finally, since it was assumed that $\frac{1}{k}(\ya_k,\yb_k,\yc_k,\yd_k,\ye_k,\yf_k)$ are converging to a point outside $\Tetra^{+}(n)$, there must exist a sufficiently large $K$ such that for all $k \geq K$ and all $(\ea',\eb',\ec',\ed',\ee',\ef') \in \Tetra^{+}(n)$, we have a separation $R_{\ea'\eb'\ec'\ed'\ee'\ef'}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ for some positive constant $r > 0$.
 Since $(\ea^{*},\eb^{*},\ec^{*},\ed^{*},\ee^{*},\ef^{*}) \in \Tetra(n)$, we can conclude for such sufficiently large $k \geq K$, $R_{\ea^{*}\eb^{*}\ec^{*}\ed^{*}\ee^{*}\ef^{*}}^{\ya_k\yb_k\yc_k\yd_k\ye_k\yf_k} \geq r$ and therefore
 \begin{equation}
     \norm{\abcdefsymbolk}_{2}^{2} \leq \polyk{3\binom{n}{2}+3n + n(n-1)}  \exp\left( - k r\right),
@@ -1567,18 +1567,18 @@ Indeed, this can be accomplished, provided one accounts for the fact that negati
 
 The inversion symmetry \cref{prop:inversion} is just one element belonging to a group of $48$ symmetries consisting of inversions of eigenvalues, $\ex \rightarrow \ex^{*}$, or permutations of elements in the tuple $(\ea,\eb,\ec,\ed,\ee,\ef)$.
 
-\begin{prop}[Oriented]
+\begin{prop}[Signed permutation]
     \label{prop:tet_symmetry}
     The following transformations preserve $\Tetra(n)$:
     \begin{align}
         \label{eq:gens_of_tet_sym}
         \begin{split}
-            T_1 \coloneqq \tightoctuple{( & \ea & \eb & \ec & \ed  & \ee  & \ef & )}
+            T_1 \coloneqq (\ea, \eb, \ec, \ed, \ee, \ef)
             &\mapsto
-            \tightoctuple{( & \ea & \ef  & \ee  & \ed^{*}  & \ec  & \eb & )}, \\
-            T_2 \coloneqq \tightoctuple{( & \ea & \eb & \ec & \ed  & \ee  & \ef & )}
+            (\ea, \ef, \ee, \ed^{*}, \ec, \eb), \\
+            T_2 \coloneqq (\ea, \eb, \ec, \ed, \ee, \ef)
             &\mapsto
-            \tightoctuple{( & \ec  & \ee^*  & \ed^{*}  & \ef  & \eb  & \ea^* & )}.
+            (\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*).
         \end{split}
     \end{align}
     Moreover, $T_1$ and $T_2$ generate a finite group of order $48$ with presentation
@@ -1652,7 +1652,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
     To begin, notice that both $T_1$ and $T_2$ are invertible (indeed the first operation has order two, while the second operation has order four).
     The claim that these two operations generate a finite group of order $48$ can be checked explicitly using computer software.
     Now suppose $(\ea,\eb,\ec,\ed,\ee,\ef)$ are the eigenvalues of a tuple of Hermitian matrices $(A,B,C,D,E,F)$ satisfying \cref{eq:tet_cond}.
-    Then the tuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) is also tetrahedral because
+    Then the tuple $(A',B',C',D',E',F') = (A,F,E,-D,C,B)$ (which has the eigenvalues $(\ea, \ef, \ee, \ed^{*}, \ec, \eb)$) also satisfies the tetrahedral conditions because
     \begin{align}
         \label{eq:signed_perm_rows}
         \begin{split}
@@ -1662,8 +1662,9 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
             A'+F'-E' &= (A+B-C) = 0.
         \end{split}
     \end{align}
-    Moreover, as the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ea^*, \ec, \eb, \ed, \ef, \ee)$ is invertible, one also has that if $(\ea,\eb,\ec,\ed,\ee,\ef)$ is not tetrahedral, then neither is $(\ea^*, \ec, \eb, \ed, \ef, \ee)$.
-    An analogous argument holds for the operation mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ with $(A',B',C',D',E',F')$ given by $(C,-E,-D,F,B,-A)$.
+    Therefore, $(\ea,\eb,\ec,\ed,\ee,\ef) \in \Tetra(n)$ implies $(\ea^*, \ec, \eb, \ed, \ef, \ee) \not \in \Tetra(n)$ also.
+    Moreover, as the operation $T_1$ mapping $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ea^*, \ec, \eb, \ed, \ef, \ee)$ is its own inverse, we conclude that $(\ea,\eb,\ec,\ed,\ee,\ef) \not \in \Tetra(n)$ implies $(\ea^*, \ec, \eb, \ed, \ef, \ee) \not \in \Tetra(n)$ also.
+    A similar argument holds for $T_2$ which maps $(\ea,\eb,\ec,\ed,\ee,\ef)$ to $(\ec, \ee^*, \ed^{*}, \ef, \eb, \ea^*)$ where $(A',B',C',D',E',F')$ are given by the matrices $(C,-E,-D,F,B,-A)$.
 \end{proof}
 \begin{rem}
     The group $G$ of order $48$ appearing in \cref{prop:tet_symmetry} corresponds to the subgroup of all possible signed permutations of $6$ elements generated by permutations and negations of the six matrices $A,B,C,D,E$, and $F$ which preserves the set of linear constraints in \cref{eq:tet_cond}.
@@ -1717,7 +1718,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
 \end{rem}
 \begin{prop}[Shifting symmetry]
     \label{prop:shifting}
-    Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a tuple of candidate eigenvalues and let $x,y,z \in \mathbb R$ be fixed.
+    Let $(\ea, \eb, \ec, \ed, \ee, \ef) \in (\eigs{n})^{6}$ and let $x,y,z \in \mathbb R$ be fixed.
     Define shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ by
     \begin{equation}
         \label{eq:shifted_tet_eigenvalues}
@@ -1730,7 +1731,7 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
             &&\tilde \ef_i \coloneqq \ef_i + y + z.
         \end{alignedat}
     \end{equation}
-    Then shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ are tetrahedral if and only if the unshifted eigenvalues $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral.
+    Then $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef) \in \Tetra(n)$ if and only if $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$.
 \end{prop}
 \begin{proof}
     Given a Hermitian matrix $A$ with eigenvalues $\eig(A) = \ea$ and a constant $w \in \mathbb R$, the eigenvalues of $A+wI$ (where $I$ is the identity matrix) are
@@ -1748,13 +1749,13 @@ The inversion symmetry \cref{prop:inversion} is just one element belonging to a 
             &&\tilde F \coloneqq F + (y + z)I,
         \end{alignedat}
     \end{equation}
-    have the shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ and satisfy the tetrahedral constraints in \cref{eq:tet_cond} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_cond}.
+    have eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee,\tilde \ef)$ and satisfy the tetrahedral constraints in \cref{eq:tet_cond} if and only if $(A,B,C,D,E,F)$ satisfy the tetrahedral constraints in \cref{eq:tet_cond}.
 \end{proof}
-As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn problem, in a certain sense, it suffices to solve the tetrahedral Horn problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for positive definite or positive semidefinite matrices (\cref{cor:psd}).
+As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes that to solve the tetrahedral Horn problem, in a certain sense, it suffices to solve the tetrahedral Horn problem merely for traceless matrices (\cref{cor:traceless}) or, alternatively, for non-negative or positive matrices (\cref{cor:non_negativity}).
 \begin{cor}[Traceless eigenvalues]
     \label{cor:traceless}
     Let $(\ea, \eb, \ec, \ed, \ee, \ef)$ be a tuple of candidate eigenvalues and for any list of $n$ eigenvalues $\ex = (\ex_1 \geq \cdots \geq \ex_n)$, let $\ex^{0} \coloneqq \ex - {\tex}/n$ denote the traceless list of eigenvalues obtained by shifting $\ex$ by $-{\tex}/n$.
-    Then $(\ea, \eb, \ec, \ed, \ee, \ef)$ are tetrahedral if and only if (i) their traces $({\tea}, {\teb}, {\tec}, {\ted}, {\tee}, {\tef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_cond}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0)$ are tetrahedral.
+    Then $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$ if and only if (i) their traces $({\tea}, {\teb}, {\tec}, {\ted}, {\tee}, {\tef})$ are tetrahedral (they satisfy \cref{eq:tet_trace_cond}) and (ii) $(\ea^0, \eb^0, \ec^0, \ed^0, \ee^0, \ef^0) \in \Tetra(n)$.
 \end{cor}
 \begin{proof}
     This ``only if'' portion of the statement follows from both the tetrahedral trace conditions (\cref{eq:tet_trace_cond}) and applications of the shifting symmetry \cref{prop:shifting} with $(x,y,z)$ values
@@ -1765,27 +1766,32 @@ As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes t
     \end{equation}
     The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
 \end{proof}
-The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn problem it suffices to solve the tetrahedral Horn problem for non-negative (or positive) eigenvalues only.
+The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn problem it suffices to solve the tetrahedral Horn problem for non-negative (or even positive) eigenvalues only.
 Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
 The following corollary establishes, in a certain sense, the minimum shifting required to ensure non-negative (or positive) eigenvalues for all six Hermitian matrices.
 \begin{cor}[Non-negativity]
-    \label{cor:psd}
-    If $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tetrahedral tuple of eigenvalues, then necessarily the smallest eigenvalues satisfy
+    \label{cor:non_negativity}
+    If $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$, then
     \begin{equation}
         \label{eq:min_eig_ineqs}
         \ec_n \geq \ea_n + \eb_n, \qquad \ef_n \geq \eb_n + \ed_n, \qquad \ee_n \geq \ed_n + \ec_n, \qquad \ee_n \geq \ea_n + \ef_n.
     \end{equation}
-    Moreover, if $(\ea, \eb, \ec, \ed, \ee, \ef)$ are a tuple of candidate eigenvalues satisfying \cref{eq:min_eig_ineqs}, then for any $(x,y,z) \in \mathbb R^{3}$ satisfying
+    Let $(x,y,z) \in \mathbb R^{3}$ be such that
     \begin{equation}
         \label{eq:positive_shift}
         x \geq -\ea_n, \qquad
         y \geq -\eb_n, \qquad
         z \geq -\ed_n,
     \end{equation}
-    the resulting shifted eigenvalues $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ (given by \cref{eq:shifted_tet_eigenvalues}) are all non-negative.
+    and let $(\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef)$ be shifted eigenvalues given by \cref{eq:shifted_tet_eigenvalues}.
+    Then
+    \begin{equation}
+        \label{eq:positive_shift_iff}
+        (\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n) \iff (\tilde \ea, \tilde \eb, \tilde \ec, \tilde \ed, \tilde \ee, \tilde \ef) \in \Tetra^{+}(n).
+    \end{equation}
 \end{cor}
 \begin{proof}
-    That tetrahedral eigenvalues satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_n \geq \ea_n + \eb_n$ for the original Horn problem where $C=A+B$ \cite{bhatia2001linear}.
+    That $(\ea, \eb, \ec, \ed, \ee, \ef) \in \Tetra(n)$ must satisfy \cref{eq:min_eig_ineqs} follows from four applications of the well-known inequality $\ec_n \geq \ea_n + \eb_n$ for the original Horn problem where $C=A+B$ \cite{bhatia2001linear}.
     As a reminder, the smallest eigenvalue $\ex_n$ of a matrix $X$ is characterized by a minimization: $\ex_n = \min_{\norm{v} = 1} \braket{v, Xv}$ which produces
     \begin{align}
         \begin{split}
@@ -1794,13 +1800,21 @@ The following corollary establishes, in a certain sense, the minimum shifting re
         \end{split}
     \end{align}
     Four applications of this inequality produces \cref{eq:min_eig_ineqs}.
-    Now if $(x,y,z)$ satisfy \cref{eq:positive_shift}, we have for all non-negativity of the shifted eigenvalues, e.g.,
+    Now if $(x,y,z)$ satisfy \cref{eq:positive_shift}, we conclude non-negativity of the shifted eigenvalues, e.g.,
     \begin{equation}
         \forall j : \qquad \tilde \ea_j = \ea_j + x \geq \ea_n + x \geq 0,
     \end{equation}
     Similar statements hold for $\eb,\ec,\ed, \ee$ and $\ef$.
+    This establishes the $\Rightarrow$ portion of \cref{eq:positive_shift_iff}.
+    The reverse implication holds simply because $\Tetra^{+}(n) \subseteq \Tetra(n)$ and $\Tetra(n)$ is closed under shifting by \cref{prop:shifting}.
 \end{proof}
-As a consequence of \cref{cor:psd}, we will, without loss of generality, henceforth only consider candidate eigenvalues $(\ea,\eb,\ec,\ed,\ee,\ed)$ which are non-negative in the sense that they are associated to positive semidefinite Hermitian matrices.
+\begin{rem}
+    It is worth emphasizing that our main theorem, \cref{thm:tet_iff}, provides necessary and sufficient conditions for determining membership in $\Tetra^{+}(n)$.
+    Nevertheless, by a simple shifting of eigenvalues, \cref{cor:non_negativity} demonstrates how any characterization of $\Tetra^{+}(n)$ also provides a characterization of $\Tetra(n)$.
+    However, while $\Tetra(n)$ has numerous symmetries, including the discrete group of order $48$ described by \cref{prop:tet_symmetry}, the subset $\Tetra^{+}(n) \subseteq \Tetra(n)$ has fewer symmetries;
+    indeed, the only element in the aforementioned discrete group which perserves non-negativity of eigenvalues is the permutation $(\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ed, \eb, \ef, \ea, \ee, \ec)$.
+    This difference explains why the inequalities from \cref{thm:tet_iff} do not directly repsect the symmetries $\Tetra(n)$.
+\end{rem}
 \begin{rem}
     Although this section listed a handful of symmetries of the tetrahedral Horn problem, there remains the possibility of additional symmetries which are unknown at this time.
     For example, in the case of $2\times 2$ Hermitian matrices, an additional class of symmetries on the set of edge-lengths $(a,b,c,e,d,f)$ of tetrahedra, known as the \textit{Regge symmetries}, hold \cite{akopyan2019regge,boalch2007regge,ponzano1968semiclassical}.
@@ -1890,13 +1904,13 @@ The following proposition follows directly from the binomial theorem (\cref{thm:
     Once again, the condition that $\syc = \sya + \syb$ is implicitly present.
 \end{proof}
 
-Under the assumption that the matrices $X$ and $Y$ are positive semidefinite, we can conclude that the real number $\vp^{\ya\yb}_{\yc}(X,Y)$ is also non-negative because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[\Pi^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $\Pi^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
+Under the assumption that the matrices $X$ and $Y$ are non-negative, we can conclude that the real number $\vp^{\ya\yb}_{\yc}(X,Y)$ is also non-negative because $\vp^{\ya\yb}_{\yc}(X,Y) = \Tr[\Pi^{\yc}_{\ya\yb} (\Phi_{\ya}(X) \ot \Phi_{\yb}(Y))]$ where $\Pi^{\yc}_{\ya\yb}$ is a projection operator and $\Phi_{\ya}(X),\Phi_{\yb}(Y) \geq 0$ because $X,Y \geq 0$.
 Moreover, we note that $\vp^{\ya\yb}_{\yc}(X,Y) = 0$ whenever the Littlewood-Richardson coefficient $c^{\yc}_{\ya\yb}$ vanishes.
 These observations imply the following necessary condition for compatibility of eigenvalues for the original Horn problem.
 \begin{prop}
     \label{prop:coupling_condition}
-    Let $(a,b,c)$ be a triple of non-negative eigenvalues.
-    Then there exists positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$ with eigenvalues $(a,b,c)$ only if for every triple of Young diagrams $(\ya,\yb,\yc)$ there exists a non-negative $\Gamma^{\yc}_{\ya\yb} \geq 0$ such that $\Gamma^{\yc}_{\ya\yb} = 0$ whenever $c^{\yc}_{\ya\yb} = 0$ and
+    Let $(a,b,c) \in (\eigsp{n})^{3}$.
+    Then there exists $(A,B,C) \in (\hermp{n})^{3}$ satisfying $A+B=C$ with eigenvalues $(a,b,c)$ only if for every $(\ya,\yb,\yc) \in (\undomweightsp{n})^{3}$ there exists a $\Gamma^{\yc}_{\ya\yb} \geq 0$ such that $\Gamma^{\yc}_{\ya\yb} = 0$ whenever $c^{\yc}_{\ya\yb} = 0$ and
     \begin{align}
         \forall \ya,\yb : \quad \sum_{\yc} \Gamma^{\yc}_{\ya\yb} &= \vp_{\ya}(\ea)\vp_{\yb}(\eb), \\
         \forall \yc : \quad \sum_{\ya,\yb} \Gamma^{\yc}_{\ya\yb} &= \vp_{\yc}(\ec).
@@ -1907,7 +1921,8 @@ These observations imply the following necessary condition for compatibility of 
 \end{proof}
 \begin{cor}
     \label{cor:row_col_horn_ineqs}
-    Let $(a,b,c)$ be the eigenvalues of positive semidefinite $n\times n$ matrices $(A,B,C)$ satisfying $A+B=C$. Then,
+    Let $(a,b,c) \in \Horn{n}$.
+    Then,
     \begin{align}
         \forall \ya,\yb : \quad \vp_{\ya}(\ea)\vp_{\yb}(\eb) &\leq \sum_{\substack{\yc\\c^{\yc}_{\ya\yb} > 0}}\vp_{\yc}(\ec),\\
         \forall \yc : \quad \vp_{\yc}(\ec) &\leq \sum_{\substack{\ya,\yb\\c^{\yc}_{\ya\yb} > 0}}\vp_{\ya}(\ea)\vp_{\yb}(\eb).
@@ -1919,7 +1934,7 @@ These observations imply the following necessary condition for compatibility of 
 \end{proof}
 
 \begin{rem}
-    Using \cref{prop:coupling_condition}, it is possible to prove even stronger inequalities than those appearing in \cref{cor:row_col_horn_ineqs} by examining the set of triples of Young diagrams $(\ya, \yb, \yc)$ where $c^{\yc}_{\ya,\yb} \neq 0$.
+    Using \cref{prop:coupling_condition}, it is possible to prove even stronger inequalities than those appearing in \cref{cor:row_col_horn_ineqs} by examining the set of triples $(\ya, \yb, \yc) \in (\undomweightsp{n})^{3}$ where $c^{\yc}_{\ya,\yb} \neq 0$.
     We illustrate this point with an example.
     Let $k = \sya + \syb = \syc = 4$, then the following is the table of values for $c^{\yc}_{\ya\yb}$.
     \begin{center}
@@ -2061,12 +2076,12 @@ which implies \cref{eq:tri_dist_bound} because $\sqrt{8\left(n^2 + \frac{3}{2}n\
 \section{The large \texorpdfstring{$n$}{n} limit \& an entropic inequality}
 \label{sec:large_n}
 
-The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ for tetrahedral $(\ea,\eb,\ec,\ed,\ee,\ef)$ provided by \cref{thm:6j_estimates} to derive inequalities on the entropies of the eigenvalues.
+The purpose of this section is to show how to leverage the inverse polynomial bound on $\norm{\abcdefsymbol}$ provided by \cref{thm:6j_estimates} to derive inequalities on the entropies of the eigenvalues.
 Our strategy will be to prove an upper bound on the $6j$ symbol which depends only on the dimensions of the underlying irreducible representations and the multiplicity spaces between them.
 By combining this upper bound with the lower bound provided by \cref{thm:6j_estimates} (specifically the $n$-independent bound in \cref{eq:n_independent_inverse_poly}), we will prove the following.
 \begin{thm}
     \label{thm:entropic_ineq}
-    Let $(\ea,\eb,\ec,\ed,\ee,\ef)$ be tetrahedral eigenvalues.
+    Let $(\ea,\eb,\ec,\ed,\ee,\ef) \in \Tetra^{+}(n)$ be tetrahedral eigenvalues.
     Then
     \begin{equation}
         \label{eq:entropic_ineq}
@@ -2082,7 +2097,7 @@ By combining this upper bound with the lower bound provided by \cref{thm:6j_esti
 We begin with our upper bound on the $6j$ symbol.
 \begin{lem}
     \label{lem:sixj_ssa_bound}
-    Let $(\ya,\yb,\yc,\yd,\ye,\yf)$ be a tuple of Young diagrams.
+    Let $(\ya,\yb,\yc,\yd,\ye,\yf) \in (\undomweightsp{n})^{6}$.
     Then
     \begin{equation}
         \norm{\abcdefsymbol}_{2}^{2}
@@ -2173,6 +2188,9 @@ We are now in a position to prove the main result of this section.
     Then using the fact that that $(\yb_k, \yc_k, \ye_k, \yf_k)$ converge in proportion to the eigenvalues $(\eb,\ec,\ee,\ef)$ (with proportionality constant $\eta = \frac{k}{\tee}$), we conclude that \cref{eq:hook_ratio_limit} has a limit and moreover it equals the left-hand side of \cref{eq:entropic_ineq}.
 \end{proof}
 
+\begingroup
+\setlength{\emergencystretch}{2em}
 \printbibliography
+\endgroup
 
 \end{document}
