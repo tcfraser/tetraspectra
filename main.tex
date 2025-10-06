@@ -516,7 +516,7 @@ when $(\ya,\yb,\yc,\yd,\ye,\yf)$ are proportional to the candidate eigenvalues $
 
 Applying the eigenvalue estimation technique to the original Horn problem was first done by \citeauthor{christandl2008quantum} \cite{christandl2008quantum}.
 In this paper, we apply the eigenvalue estimation technique to the tetrahedral Horn problem.
-As the method of eigenvalue estimation is quite verstaile, we anticipate further works will find it applicable to the problem of determining the set of possible eigenvalues for Hermitian matrices subject to more general systems of constraints.
+As the method of eigenvalue estimation is quite versatile, we anticipate further works will find it applicable to the problem of determining the set of possible eigenvalues for Hermitian matrices subject to more general systems of constraints.
 
 \subsubsection*{Related works}
 Recent developments on Horn's problem include the development of the geometric method by \citeauthor{sherman2015geometric} \cite{sherman2015geometric} and \citeauthor{berline2018horn} \cite{berline2018horn} originally pioneered by the geometric proofs due to \citeauthor{belkale2002geometric} \cite{belkale2002geometric,belkale2005geometric}, as well the characterization and computation of the induced distribution over the eigenvalues $\ec$ of the sum $C=A+B$ if $A$ and $B$ are sampled uniformly and independently from the respective sets of Hermitian matrices with eigenvalues $\ea$ and $\eb$ by \citeauthor{coquereaux2019revisiting} in series of papers \cite{coquereaux2018orbital,coquereaux2018orbital,coquereaux2019revisiting,zuber2018horn}.
@@ -1104,7 +1104,7 @@ $\diag(x_1, \ldots, x_n)$ under the action of the unitary group $U(n)$:
     \orbit_x = \{ X = U\diag(x_1, \ldots, x_n)U^{-1} \mid U \in U(n)\} \subset \hermp{n}.
 \end{equation}
 Each conjugacy class carries a unique $U(n)$-invariant probability measure $\mu_x$.
-This measure can be constructed as the pushforward of the Haar probability measure on $U(n)$.
+This measure can be constructed as the push-forward of the Haar probability measure on $U(n)$.
 We write $X \sim \orbit_x$ to indicate $X$ distributed according to the measure $\mu_x$.
 
 \begin{prop}
@@ -1767,7 +1767,7 @@ As a corollary of the shifting symmetries (\cref{prop:shifting}) one concludes t
     The ``if'' portion of the statement follows from the shifting symmetry applied to the negated $(x,y,z)$ values.
 \end{proof}
 The next corollary of the shifting symmetry proves that to solve the tetrahedral Horn problem it suffices to solve the tetrahedral Horn problem for non-negative (or even positive) eigenvalues only.
-Indeed, one can simply take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
+Indeed, one can take the shifting parameters $(x,y,z)$ appearing in \cref{prop:shifting} to be sufficiently large.
 The following corollary establishes, in a certain sense, the minimum shifting required to ensure non-negative (or positive) eigenvalues for all six Hermitian matrices.
 \begin{cor}[Non-negativity]
     \label{cor:non_negativity}
@@ -1806,14 +1806,14 @@ The following corollary establishes, in a certain sense, the minimum shifting re
     \end{equation}
     Similar statements hold for $\eb,\ec,\ed, \ee$ and $\ef$.
     This establishes the $\Rightarrow$ portion of \cref{eq:positive_shift_iff}.
-    The reverse implication holds simply because $\Tetra^{+}(n) \subseteq \Tetra(n)$ and $\Tetra(n)$ is closed under shifting by \cref{prop:shifting}.
+    The reverse implication holds because $\Tetra^{+}(n) \subseteq \Tetra(n)$ and $\Tetra(n)$ is closed under shifting by \cref{prop:shifting}.
 \end{proof}
 \begin{rem}
     It is worth emphasizing that our main theorem, \cref{thm:tet_iff}, provides necessary and sufficient conditions for determining membership in $\Tetra^{+}(n)$.
     Nevertheless, by a simple shifting of eigenvalues, \cref{cor:non_negativity} demonstrates how any characterization of $\Tetra^{+}(n)$ also provides a characterization of $\Tetra(n)$.
     However, while $\Tetra(n)$ has numerous symmetries, including the discrete group of order $48$ described by \cref{prop:tet_symmetry}, the subset $\Tetra^{+}(n) \subseteq \Tetra(n)$ has fewer symmetries;
-    indeed, the only element in the aforementioned discrete group which perserves non-negativity of eigenvalues is the permutation $(\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ed, \eb, \ef, \ea, \ee, \ec)$.
-    This difference explains why the inequalities from \cref{thm:tet_iff} do not directly repsect the symmetries $\Tetra(n)$.
+    indeed, the only element in the aforementioned discrete group which preserves non-negativity of eigenvalues is the permutation $(\ea,\eb,\ec,\ed,\ee,\ef) \leftrightarrow (\ed, \eb, \ef, \ea, \ee, \ec)$.
+    This difference explains why the inequalities from \cref{thm:tet_iff} do not directly respect the symmetries of $\Tetra(n)$.
 \end{rem}
 \begin{rem}
     Although this section listed a handful of symmetries of the tetrahedral Horn problem, there remains the possibility of additional symmetries which are unknown at this time.
@@ -1890,7 +1890,7 @@ The following proposition follows directly from the binomial theorem (\cref{thm:
     \end{align}
 \end{prop}
 \begin{proof}
-    The first identity involving a summation over $\ya$ and $\yb$ is simply the result of taking the trace of both sides of \cref{thm:the_binomial_theorem}.
+    The first identity involving a summation over $\ya$ and $\yb$ is the result of taking the trace of both sides of \cref{thm:the_binomial_theorem}.
     For the second identity, involving a summation over $\yc$, follows from the identity $\sum_{\yc \vdash \sya+\syb} \Pi^{\yc}_{\ya\yb} = \id_{V_{\ya}\ot V_{\yb}}$:
     \begin{align}
         \begin{split}
